@@ -377,11 +377,11 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1 {
-  font-size: 2.5rem;
+  font-size: 4rem;
 }
 
 h2, .h2 {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 h3, .h3 {
@@ -10753,7 +10753,7 @@ header.masthead h1 {
 }
 
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption {
-  opacity: 1;
+  opacity: .8;
 }
 
 
@@ -10824,4 +10824,12 @@ header.masthead h1 {
 
 .vecnabold_italic {
     font-family: vecnabold_italic;
+}
+
+.outline {
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
 }
