@@ -10833,3 +10833,10 @@ header.masthead h1 {
 		-1px 1px 0 #000,
 		1px 1px 0 #000;
 }
+
+.bolden {
+    font-weight: 900;
+    font-size: 22px;
+    color:white;
+    
+}
