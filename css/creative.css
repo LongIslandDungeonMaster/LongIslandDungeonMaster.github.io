@@ -10840,3 +10840,8 @@ header.masthead h1 {
     color:white;   
 }
 
+.carousel-item img {
+    width: auto;
+    min-height: 700px;
+    max-height: 900px;
+}
