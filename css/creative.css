@@ -10877,3 +10877,12 @@ header.masthead h1 {
     display:block;
     margin-bottom: 30px;
 }
+
+.about-link {
+    color: white;
+}
+
+.about-link:hover{
+    color: #4d4d4d;
+    text-decoration: none;
+}
