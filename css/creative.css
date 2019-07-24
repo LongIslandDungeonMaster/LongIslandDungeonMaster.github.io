@@ -4927,7 +4927,7 @@ input[type="button"].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(0, 0, 0, 0.21);
 }
 
@@ -10608,7 +10608,7 @@ hr.light {
 }
 
 #mainNav .navbar-brand {
-  font-family: vecna;
+  font-family: vecnabold;
   font-weight: 700;
     font-size: 1.8rem;
   color: #212529;
@@ -10616,7 +10616,7 @@ hr.light {
 
 #mainNav .navbar-nav .nav-item .nav-link {
   color: #6c757d;
-  font-family: vecna;
+  font-family: vecnabold;
   font-weight: 700;
   font-size: 1.3rem;
   padding: 0.75rem 0;
@@ -10759,7 +10759,7 @@ header.masthead h1 {
 }
 
 
-/* My changes below this line */
+/* My classes below this line */
 
 .icon {
     max-height: 100px;
