@@ -10859,11 +10859,6 @@ header.masthead h1 {
     color:white;   
 }
 
-.carousel-item img {
-    width: auto;
-    height: 700px;
-    min-height: 700px;
-}
 
 .large-font {
     font-size: 3rem;
@@ -10885,4 +10880,11 @@ header.masthead h1 {
 .about-link:hover{
     color: #4d4d4d;
     text-decoration: none;
+}
+
+.carousel-img {
+    min-width: 500px;
+    height: 700px;
+    max-height: 700px;
+    width: 100%;
 }
