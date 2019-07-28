@@ -10884,6 +10884,6 @@ header.masthead h1 {
 
 .carousel-img {
     max-height: 700px;
-    height: 100%;
+    height: auto;
     width: 100%;
 }
