@@ -10888,8 +10888,8 @@ header.masthead h1 {
     width: 100%;
 }
 
-@media screen and (max-width:775px){
+@media all and (max-width: 775px) {
     .brand {
-        font-size: 1.3rem;
+        font-size: 1.3 rem;
     }
 }
