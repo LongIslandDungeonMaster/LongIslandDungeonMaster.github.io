@@ -4,14 +4,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Long Island Dungeon Master — a professional, 30-year Dungeon Master running highly curated D&D 5e campaigns, DM workshops, custom adventures, and a weekly one-shot newsletter on Long Island, NY.">
+  <script>document.documentElement.className += ' js';</script>
+  <title>Long Island Dungeon Master — Hire a Pro DM for D&D on Long Island, NY</title>
+  <meta name="description" content="Long Island Dungeon Master — a professional, 30-year Dungeon Master running highly curated D&D 5e campaigns, DM workshops, custom adventures, and a weekly one-shot newsletter on Long Island, NY, and online.">
+  <meta name="keywords" content="Long Island Dungeon Master, hire a dungeon master, D&D Long Island, professional DM, Dungeons and Dragons New York, tabletop RPG, DM for hire, D&D 5e campaign, custom adventures">
   <meta name="author" content="Frank Papaleo">
-  <meta property="og:title" content="Long Island Dungeon Master">
-  <meta property="og:description" content="Highly curated D&D 5e campaigns, 1-on-1 DM workshops, custom adventure commissions, and a weekly one-shot newsletter. Est. 2020 — Long Island, NY.">
-  <meta property="og:image" content="https://longislanddungeonmaster.com/img/ad.png">
-  <meta property="og:url" content="https://www.longislanddungeonmaster.com">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/">
+
+  <!-- Geo / local SEO -->
+  <meta name="geo.region" content="US-NY">
+  <meta name="geo.placename" content="Long Island, New York">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="business.business">
+  <meta property="og:site_name" content="Long Island Dungeon Master">
+  <meta property="og:title" content="Long Island Dungeon Master — Hire a Pro DM for D&D">
+  <meta property="og:description" content="Highly curated D&D 5e campaigns, 1-on-1 DM workshops, custom adventure commissions, and a weekly one-shot newsletter. Est. 2020 — Long Island, NY & online.">
+  <meta property="og:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+  <meta property="og:url" content="https://longislanddungeonmaster.com/">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Long Island Dungeon Master — Curated D&D, Workshops & More</title>
+  <meta name="twitter:title" content="Long Island Dungeon Master — Hire a Pro DM for D&D">
+  <meta name="twitter:description" content="Highly curated D&D 5e campaigns, DM workshops, custom adventures & a weekly one-shot newsletter. Est. 2020 — Long Island, NY & online.">
+  <meta name="twitter:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/brand.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/brand.png">
+
+  <!-- Performance: warm up font + CDN origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,6 +46,38 @@
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
 
   <link href="style.css" rel="stylesheet">
+
+  <!-- Structured data: Local business / professional service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Long Island Dungeon Master",
+    "image": "https://longislanddungeonmaster.com/img/og.jpg",
+    "url": "https://longislanddungeonmaster.com/",
+    "email": "frank@longislanddungeonmaster.com",
+    "description": "A professional, 30-year Dungeon Master running highly curated Dungeons & Dragons 5e campaigns, DM workshops, and custom adventure commissions on Long Island, NY and online.",
+    "founder": { "@type": "Person", "name": "Frank Papaleo" },
+    "foundingDate": "2020",
+    "priceRange": "$$",
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Long Island, New York" },
+      { "@type": "AdministrativeArea", "name": "Online / Virtual" }
+    ],
+    "address": { "@type": "PostalAddress", "addressRegion": "NY", "addressCountry": "US" },
+    "sameAs": [
+      "https://www.facebook.com/LongIslandDM4Hire",
+      "https://www.instagram.com/longislanddungeonmaster/",
+      "https://longislanddungeonmaster.substack.com"
+    ],
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Highly Curated D&D Campaigns" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "1-on-1 DM Workshops" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Adventure Commissions" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "The Weekly One-Shot Newsletter" } }
+    ]
+  }
+  </script>
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="72">
@@ -32,7 +89,8 @@
         <img src="img/brand.png" alt="Long Island Dungeon Master" class="brand-img me-2"
              onerror="this.style.display='none'">Long Island Dungeon Master
       </a>
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -41,9 +99,22 @@
           <li class="nav-item"><a class="nav-link" href="#the-dm">The DM</a></li>
           <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="#campaigns">Campaigns</a></li>
-          <li class="nav-item"><a class="nav-link" href="#the-game">The Game</a></li>
-          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Showcase</a>
+            <ul class="dropdown-menu dropdown-menu-end lidm-dropdown">
+              <li><a class="dropdown-item" href="#experience">The Experience</a></li>
+              <li><a class="dropdown-item" href="#gallery">Gallery</a></li>
+              <li><a class="dropdown-item" href="#videos">Video Gallery</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Creations</a>
+            <ul class="dropdown-menu dropdown-menu-end lidm-dropdown">
+              <li><a class="dropdown-item" href="#the-game">SKU&nbsp;Crawlers&trade;</a></li>
+              <li><a class="dropdown-item" href="#fiction">Fiction</a></li>
+              <li><a class="dropdown-item" href="#store">Merch Store</a></li>
+            </ul>
+          </li>
           <li class="nav-item ms-lg-2">
             <a class="nav-link btn-book px-3 py-2" href="https://calendly.com/longislanddungeonmaster/30min" target="_blank">
               &#9876; Book a Session
@@ -56,6 +127,11 @@
 
   <!-- ===== HERO ===== -->
   <header class="masthead">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto"
+           poster="img/bg-masthead.jpg" aria-hidden="true">
+      <source src="img/video/hero-loop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
     <div class="hero-inner container">
       <img src="img/brand.png" alt="" class="hero-crest" onerror="this.style.display='none'">
       <h1 class="hero-title">Long Island<br>Dungeon Master</h1>
@@ -178,44 +254,91 @@
   <!-- ===== MEET THE DM ===== -->
   <section id="the-dm">
     <div class="container position-relative">
-      <div class="text-center mb-2">
+      <div class="text-center mb-2" data-reveal>
         <h2>Meet the DM</h2>
         <hr class="divider-dark">
       </div>
-      <div class="text-center my-4">
-        <img class="dm-picture" src="img/Picture.jpg" alt="Frank — your Dungeon Master"
-             onerror="this.style.display='none'">
+      <div class="char-sheet" data-reveal>
+        <div class="char-header">
+          <img class="char-portrait" src="img/Picture.jpg" alt="Frank Papaleo, the Long Island Dungeon Master"
+               loading="lazy" decoding="async" onerror="this.style.display='none'">
+          <div class="char-id">
+            <h3 class="char-name">Frank Papaleo</h3>
+            <p class="char-class">Dungeon Master &bull; Level 30</p>
+            <p class="char-bg">Master of the Craft &middot; running games since 1995 &middot; Est. 2020</p>
+            <div class="char-tags">
+              <span>2014 &amp; 2024 Rules</span>
+              <span>In-Person &amp; Online</span>
+              <span>Long Island, NY</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-block" role="list" aria-label="Dungeon Master ability scores">
+          <div class="stat-box" role="listitem"><span class="stat-label">Storytelling</span><span class="stat-score">20</span><span class="stat-mod">+5</span></div>
+          <div class="stat-box" role="listitem"><span class="stat-label">Improvisation</span><span class="stat-score">19</span><span class="stat-mod">+4</span></div>
+          <div class="stat-box" role="listitem"><span class="stat-label">Worldbuilding</span><span class="stat-score">20</span><span class="stat-mod">+5</span></div>
+          <div class="stat-box" role="listitem"><span class="stat-label">NPC Voices</span><span class="stat-score">18</span><span class="stat-mod">+4</span></div>
+          <div class="stat-box" role="listitem"><span class="stat-label">Encounter Design</span><span class="stat-score">19</span><span class="stat-mod">+4</span></div>
+          <div class="stat-box" role="listitem"><span class="stat-label">Table Presence</span><span class="stat-score">20</span><span class="stat-mod">+5</span></div>
+        </div>
+
+        <h4 class="features-title">Class Features</h4>
+        <div class="char-features">
+          <div class="feature">
+            <img src="img/icons/dungeon-gate.svg" alt="" class="feat-icon">
+            <div><h5>30+ Years at the Table</h5><p>Running games since 1995 — three decades behind the screen, for first-timers and grizzled veterans alike.</p></div>
+          </div>
+          <div class="feature">
+            <img src="img/icons/dragon-head.svg" alt="" class="feat-icon">
+            <div><h5>Cinematic &amp; Committed</h5><p>Hand-painted minis, terrain, ambient sound, and real character voices. Every session feels like a movie you star in.</p></div>
+          </div>
+          <div class="feature">
+            <img src="img/icons/sacrificial-dagger.svg" alt="" class="feat-icon">
+            <div><h5>Become a Hero</h5><p>Barbarian to wizard and everything in between — the choice, and the legend, is yours.</p></div>
+          </div>
+          <div class="feature">
+            <img src="img/icons/dice-twenty-faces-twenty.svg" alt="" class="feat-icon">
+            <div><h5>Master of the Craft</h5><p>D&amp;D 5e specialist — both 2014 and 2024 rules. Easy for newcomers, deep for veterans.</p></div>
+          </div>
+        </div>
       </div>
-      <div class="row g-4 justify-content-center mt-2">
-        <div class="col-lg-3 col-md-6">
-          <div class="dm-stat text-center">
-            <img src="img/icons/dungeon-gate.svg" alt="" class="icon">
-            <h3>30+ Years at the Table</h3>
-            <p>Frank has been running games since 1995 — three decades behind the screen, for first-timers and grizzled veterans alike.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="dm-stat text-center">
-            <img src="img/icons/dragon-head.svg" alt="" class="icon">
-            <h3>Cinematic &amp; Committed</h3>
-            <p>Hand-painted minis, terrain, ambient sound, and real character voices. Every session is built to feel like a movie you star in.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="dm-stat text-center">
-            <img src="img/icons/sacrificial-dagger.svg" alt="" class="icon">
-            <h3>Become a Hero</h3>
-            <p>Barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, sorcerer, warlock, or wizard — the choice, and the legend, is yours.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="dm-stat text-center">
-            <img src="img/icons/dice-twenty-faces-twenty.svg" alt="" class="icon">
-            <h3>Master of the Craft</h3>
-            <p>D&amp;D 5e specialist — 2014 and 2024 rules. Easy for newcomers, deep for veterans, and always the DM's favorite system to run.</p>
-          </div>
-        </div>
+    </div>
+  </section>
+
+  <!-- ===== THE EXPERIENCE — ANIMATED BATTLE MAPS ===== -->
+  <section id="experience">
+    <div class="container">
+      <div class="text-center mb-2" data-reveal>
+        <span class="game-eyebrow">The Premium Table</span>
+        <h2 class="section-title">Battle Maps That <em>Move</em></h2>
+        <hr class="divider">
+        <p class="section-sub">Real, custom-animated maps on a 40&quot; tabletop screen — flowing water, dynamic light, living terrain. Your miniatures stand on a world that actually breathes.</p>
       </div>
+      <div class="map-grid">
+        <figure class="map-tile" data-reveal>
+          <video class="lazy-video" muted loop playsinline preload="none" poster="img/video/map-docks.jpg" aria-label="Animated harbor docks battle map">
+            <source src="img/video/map-docks.mp4" type="video/mp4">
+          </video>
+          <figcaption><i class="fas fa-anchor" aria-hidden="true"></i> Harbor Docks</figcaption>
+        </figure>
+        <figure class="map-tile" data-reveal>
+          <video class="lazy-video" muted loop playsinline preload="none" poster="img/video/map-dragonslair.jpg" aria-label="Animated dragon's lair battle map">
+            <source src="img/video/map-dragonslair.mp4" type="video/mp4">
+          </video>
+          <figcaption><i class="fas fa-dragon" aria-hidden="true"></i> Dragon's Lair</figcaption>
+        </figure>
+        <figure class="map-tile" data-reveal>
+          <video class="lazy-video" muted loop playsinline preload="none" poster="img/video/map-icecavern.jpg" aria-label="Animated ice cavern battle map">
+            <source src="img/video/map-icecavern.mp4" type="video/mp4">
+          </video>
+          <figcaption><i class="fas fa-snowflake" aria-hidden="true"></i> Ice Cavern</figcaption>
+        </figure>
+      </div>
+      <p class="experience-note" data-reveal>
+        <i class="fas fa-tv" aria-hidden="true"></i>
+        A premium add-on for in-person sessions — dynamic lighting, fog of war, and cinematic effects on the tabletop.
+      </p>
     </div>
   </section>
 
@@ -274,21 +397,64 @@
     <div class="campaign-header">
       <h2>Choose Your Campaign</h2>
       <p>Official 5e Adventures &bull; Homebrew Worlds &bull; Dark Sun &bull; Al-Qadim / Calimport &bull; Custom Builds</p>
+      <p class="campaign-status" id="campaignStatus"></p>
     </div>
-    <div class="container-fluid p-0">
-      <div class="row g-0">
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/1.jpg"><img src="img/portfolio/thumbnails/1.jpg" alt="Campaign 1"><div class="portfolio-caption">Click for more info</div></a></div>
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/2.jpg"><img src="img/portfolio/thumbnails/2.jpg" alt="Campaign 2"><div class="portfolio-caption">Click for more info</div></a></div>
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/3.jpg"><img src="img/portfolio/thumbnails/3.jpg" alt="Campaign 3"><div class="portfolio-caption">Click for more info</div></a></div>
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/4.jpg"><img src="img/portfolio/thumbnails/4.jpg" alt="Campaign 4"><div class="portfolio-caption">Click for more info</div></a></div>
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/5.jpg"><img src="img/portfolio/thumbnails/5.jpg" alt="Campaign 5"><div class="portfolio-caption">Click for more info</div></a></div>
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/6.jpg"><img src="img/portfolio/thumbnails/6.jpg" alt="Campaign 6"><div class="portfolio-caption">Click for more info</div></a></div>
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/7.jpg"><img src="img/portfolio/thumbnails/7.jpg" alt="Campaign 7"><div class="portfolio-caption">Click for more info</div></a></div>
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/8.jpg"><img src="img/portfolio/thumbnails/8.jpg" alt="Campaign 8"><div class="portfolio-caption">Click for more info</div></a></div>
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/9.jpg"><img src="img/portfolio/thumbnails/9.jpg" alt="Campaign 9"><div class="portfolio-caption">Click for more info</div></a></div>
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/10.jpg"><img src="img/portfolio/thumbnails/10.jpg" alt="Campaign 10"><div class="portfolio-caption">Click for more info</div></a></div>
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/11.jpg"><img src="img/portfolio/thumbnails/11.jpg" alt="Campaign 11"><div class="portfolio-caption">Click for more info</div></a></div>
-        <div class="col-lg-4 col-sm-6"><a class="portfolio-box" href="img/portfolio/fullsize/12.jpg"><img src="img/portfolio/thumbnails/12.jpg" alt="Custom Campaign"><div class="portfolio-caption">Custom Campaign</div></a></div>
+
+    <!-- The Classics — legendary published adventures (banner gallery) -->
+    <div class="container">
+      <div class="text-center mb-4">
+        <h3 class="catalog-title">The Classics</h3>
+        <p class="section-sub">Legendary published adventures — battle-tested, fully prepped, and ready when you are. Tap any banner for the full art.</p>
+      </div>
+      <div class="campaign-grid">
+        <a class="campaign-tile" href="img/portfolio/fullsize/1.jpg" aria-label="Curse of Strahd — view full art">
+          <img src="img/portfolio/thumbnails/1.jpg" alt="Curse of Strahd D&amp;D campaign banner" loading="lazy" width="650" height="350">
+          <span class="campaign-name">Curse of Strahd <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
+        <a class="campaign-tile" href="img/portfolio/fullsize/2.jpg" aria-label="Ghosts of Saltmarsh — view full art">
+          <img src="img/portfolio/thumbnails/2.jpg" alt="Ghosts of Saltmarsh D&amp;D campaign banner" loading="lazy" width="650" height="350">
+          <span class="campaign-name">Ghosts of Saltmarsh <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
+        <a class="campaign-tile" href="img/portfolio/fullsize/3.jpg" aria-label="Waterdeep: Dragon Heist — view full art">
+          <img src="img/portfolio/thumbnails/3.jpg" alt="Waterdeep: Dragon Heist D&amp;D campaign banner" loading="lazy" width="650" height="350">
+          <span class="campaign-name">Waterdeep: Dragon Heist <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
+        <a class="campaign-tile" href="img/portfolio/fullsize/4.jpg" aria-label="Hoard of the Dragon Queen — view full art">
+          <img src="img/portfolio/thumbnails/4.jpg" alt="Hoard of the Dragon Queen D&amp;D campaign banner" loading="lazy" width="650" height="350">
+          <span class="campaign-name">Hoard of the Dragon Queen <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
+        <a class="campaign-tile" href="img/portfolio/fullsize/5.jpg" aria-label="Out of the Abyss — view full art">
+          <img src="img/portfolio/thumbnails/5.jpg" alt="Out of the Abyss D&amp;D campaign banner" loading="lazy" width="650" height="350">
+          <span class="campaign-name">Out of the Abyss <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
+        <a class="campaign-tile" href="img/portfolio/fullsize/6.jpg" aria-label="Princes of the Apocalypse — view full art">
+          <img src="img/portfolio/thumbnails/6.jpg" alt="Princes of the Apocalypse D&amp;D campaign banner" loading="lazy" width="650" height="350">
+          <span class="campaign-name">Princes of the Apocalypse <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
+        <a class="campaign-tile" href="img/portfolio/fullsize/7.jpg" aria-label="The Rise of Tiamat — view full art">
+          <img src="img/portfolio/thumbnails/7.jpg" alt="The Rise of Tiamat D&amp;D campaign banner" loading="lazy" width="650" height="350">
+          <span class="campaign-name">The Rise of Tiamat <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
+        <a class="campaign-tile" href="img/portfolio/fullsize/8.jpg" aria-label="Storm King's Thunder — view full art">
+          <img src="img/portfolio/thumbnails/8.jpg" alt="Storm King's Thunder D&amp;D campaign banner" loading="lazy" width="650" height="350">
+          <span class="campaign-name">Storm King's Thunder <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
+        <a class="campaign-tile" href="img/portfolio/fullsize/9.jpg" aria-label="Tomb of Annihilation — view full art">
+          <img src="img/portfolio/thumbnails/9.jpg" alt="Tomb of Annihilation D&amp;D campaign banner" loading="lazy" width="650" height="350">
+          <span class="campaign-name">Tomb of Annihilation <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
+        <a class="campaign-tile" href="img/portfolio/fullsize/10.jpg" aria-label="Tales from the Yawning Portal — view full art">
+          <img src="img/portfolio/thumbnails/10.jpg" alt="Tales from the Yawning Portal D&amp;D campaign banner" loading="lazy" width="650" height="350">
+          <span class="campaign-name">Tales from the Yawning Portal <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
+        <a class="campaign-tile" href="img/portfolio/fullsize/11.jpg" aria-label="Waterdeep: Dungeon of the Mad Mage — view full art">
+          <img src="img/portfolio/thumbnails/11.jpg" alt="Waterdeep: Dungeon of the Mad Mage D&amp;D campaign banner" loading="lazy" width="650" height="350">
+          <span class="campaign-name">Dungeon of the Mad Mage <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
+        <a class="campaign-tile campaign-tile-custom" href="img/portfolio/fullsize/12.jpg" aria-label="Your custom campaign — view full art">
+          <img src="img/portfolio/thumbnails/12.jpg" alt="Custom homebrew campaign quest board" loading="lazy" width="650" height="350">
+          <span class="campaign-name">Your Custom Campaign <i class="fas fa-expand" aria-hidden="true"></i></span>
+        </a>
       </div>
     </div>
 
@@ -296,12 +462,12 @@
     <div class="container">
       <div class="text-center mt-5 mb-4">
         <h3 class="catalog-title">The Modern Catalog</h3>
-        <p class="section-sub">Every official 5e campaign released since 2019 — ready to run, plus the classics and full homebrew.</p>
+        <p class="section-sub">Every official 5e campaign released since 2019 — through the newest 2025&ndash;2026 titles. All ready to run.</p>
       </div>
       <div class="adventure-grid">
         <span class="adventure-pill">Baldur's Gate: Descent into Avernus</span>
-        <span class="adventure-pill">Ghosts of Saltmarsh</span>
         <span class="adventure-pill">Eberron: Rising from the Last War</span>
+        <span class="adventure-pill">Acquisitions Incorporated</span>
         <span class="adventure-pill">Explorer's Guide to Wildemount</span>
         <span class="adventure-pill">Mythic Odysseys of Theros</span>
         <span class="adventure-pill">Icewind Dale: Rime of the Frostmaiden</span>
@@ -318,7 +484,34 @@
         <span class="adventure-pill">Planescape: Adventures in the Multiverse</span>
         <span class="adventure-pill">Vecna: Eve of Ruin</span>
         <span class="adventure-pill">Quests from the Infinite Staircase</span>
+        <span class="adventure-pill adventure-pill-new">Dragon Delves<sup>New</sup></span>
+        <span class="adventure-pill adventure-pill-new">Forgotten Realms: Adventures in Faerûn<sup>New</sup></span>
+        <span class="adventure-pill adventure-pill-new">Ravenloft: The Horrors Within<sup>New</sup></span>
+      </div>
+
+      <div class="text-center mt-5 mb-4">
+        <h3 class="catalog-title">Homebrew &amp; Signature Worlds</h3>
+        <p class="section-sub">Where thirty years of craft really shows — original and converted settings you won't find run anywhere else.</p>
+      </div>
+      <div class="adventure-grid">
+        <span class="adventure-pill adventure-pill-gold">Dark Sun &mdash; Athas</span>
+        <span class="adventure-pill adventure-pill-gold">Al-Qadim / Calimport</span>
         <span class="adventure-pill adventure-pill-gold">…or a fully custom world, built for you</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HERO QUIZ ===== -->
+  <section id="quiz">
+    <div class="container">
+      <div class="text-center mb-2" data-reveal>
+        <span class="game-eyebrow">Roll for Character</span>
+        <h2 class="section-title">What Kind of Hero Are You?</h2>
+        <hr class="divider">
+        <p class="section-sub">Four questions. One destiny. Then we make it real at the table.</p>
+      </div>
+      <div class="quiz-card" data-reveal>
+        <div id="quizBody"></div>
       </div>
     </div>
   </section>
@@ -392,50 +585,79 @@
 
       <!-- Screenshots -->
       <div class="game-shots mt-5">
-        <figure class="game-shot"><a href="img/game/05_seeded_crawler.png"><img src="img/game/05_seeded_crawler.png" alt="SKU Crawlers — scan a barcode to seed a dungeon"></a><figcaption>Scan to seed a run</figcaption></figure>
-        <figure class="game-shot"><a href="img/game/02_programmable_instincts.png"><img src="img/game/02_programmable_instincts.png" alt="SKU Crawlers — programmable instinct combat rules"></a><figcaption>Programmable instincts</figcaption></figure>
-        <figure class="game-shot"><a href="img/game/01_tactical_combat.png"><img src="img/game/01_tactical_combat.png" alt="SKU Crawlers — tactical combat"></a><figcaption>Tactical combat</figcaption></figure>
-        <figure class="game-shot"><a href="img/game/03_spellbook_and_stats.png"><img src="img/game/03_spellbook_and_stats.png" alt="SKU Crawlers — spellbook and stats"></a><figcaption>Spellbook &amp; stats</figcaption></figure>
-        <figure class="game-shot"><a href="img/game/04_character_folio.png"><img src="img/game/04_character_folio.png" alt="SKU Crawlers — character folio"></a><figcaption>Character folio</figcaption></figure>
+        <figure class="game-shot"><a href="img/game/05_seeded_crawler.png"><img src="img/game/05_seeded_crawler.png" loading="lazy" decoding="async" alt="SKU Crawlers — scan a barcode to seed a dungeon"></a><figcaption>Scan to seed a run</figcaption></figure>
+        <figure class="game-shot"><a href="img/game/02_programmable_instincts.png"><img src="img/game/02_programmable_instincts.png" loading="lazy" decoding="async" alt="SKU Crawlers — programmable instinct combat rules"></a><figcaption>Programmable instincts</figcaption></figure>
+        <figure class="game-shot"><a href="img/game/01_tactical_combat.png"><img src="img/game/01_tactical_combat.png" loading="lazy" decoding="async" alt="SKU Crawlers — tactical combat"></a><figcaption>Tactical combat</figcaption></figure>
+        <figure class="game-shot"><a href="img/game/03_spellbook_and_stats.png"><img src="img/game/03_spellbook_and_stats.png" loading="lazy" decoding="async" alt="SKU Crawlers — spellbook and stats"></a><figcaption>Spellbook &amp; stats</figcaption></figure>
+        <figure class="game-shot"><a href="img/game/04_character_folio.png"><img src="img/game/04_character_folio.png" loading="lazy" decoding="async" alt="SKU Crawlers — character folio"></a><figcaption>Character folio</figcaption></figure>
       </div>
 
       <p class="trademark-line">SKU&nbsp;Crawlers<sup>&trade;</sup> is a trademark of Frank Papaleo. All game content &copy; Frank Papaleo.</p>
     </div>
   </section>
 
+  <!-- ===== FICTION (COMING SOON) ===== -->
+  <section id="fiction">
+    <div class="container">
+      <div class="text-center mb-2" data-reveal>
+        <span class="game-eyebrow">Tales from the Realm</span>
+        <h2 class="section-title">Fiction <span class="soon-badge">Coming Soon</span></h2>
+        <hr class="divider">
+        <p class="section-sub">Short fantasy fiction drawn from three decades of worldbuilding — soon on Kindle.</p>
+      </div>
+      <div class="coming-card" data-reveal>
+        <i class="fas fa-feather-pointed coming-icon" aria-hidden="true"></i>
+        <p>The first collection of short stories is being penned now. Drop your email and I'll send word the moment the first tale goes live on Kindle.</p>
+        <a class="btn btn-xl btn-crimson" href="https://longislanddungeonmaster.substack.com" target="_blank" rel="noopener">Notify Me &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MERCH STORE (COMING SOON) ===== -->
+  <section id="store">
+    <div class="container">
+      <div class="text-center mb-2" data-reveal>
+        <span class="game-eyebrow">Gear Up, Adventurer</span>
+        <h2 class="section-title">Merch Store <span class="soon-badge">Coming Soon</span></h2>
+        <hr class="divider">
+        <p class="section-sub">Apparel, prints, and tabletop gear emblazoned with original LIDM artwork — printed on demand, shipped to your door.</p>
+      </div>
+      <div class="coming-card" data-reveal>
+        <i class="fas fa-shirt coming-icon" aria-hidden="true"></i>
+        <p>The storefront is in the forge. Want first dibs and a launch-day discount? Get on the list.</p>
+        <a class="btn btn-xl btn-crimson" href="https://longislanddungeonmaster.substack.com" target="_blank" rel="noopener">Notify Me &rarr;</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== GALLERY ===== -->
   <section id="gallery">
     <div class="container">
-      <h2 class="text-center mb-4">Gallery</h2>
-      <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-        <div class="carousel-inner">
-          <div class="carousel-item active"><img class="d-block carousel-img mx-auto" src="img/gallery/1.jpg" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/2.jpg" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/3.jpg" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/4.jpg" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/5.jpg" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/6.jpg" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/7.JPG" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/8.JPG" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/9.JPG" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/10.JPG" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/11.JPG" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/12.JPG" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/13.JPG" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/14.jpg" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/15.jpg" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/16.jpg" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/17.jpg" alt="Session photo"></div>
-          <div class="carousel-item"><img class="d-block carousel-img mx-auto" src="img/gallery/18.jpg" alt="Session photo"></div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+      <div class="text-center mb-2" data-reveal>
+        <span class="game-eyebrow">Staged at the Table</span>
+        <h2>The Gallery</h2>
+        <hr class="divider">
+        <p class="section-sub">Hand-painted miniatures, custom terrain, and cinematic scenes — composed and shot at the table. Tap any image to enlarge.</p>
+      </div>
+      <div class="gallery-masonry">
+        <a class="gallery-item" href="img/gallery/1.jpg" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/1.jpg" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/2.jpg" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/2.jpg" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/3.jpg" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/3.jpg" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/4.jpg" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/4.jpg" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/5.jpg" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/5.jpg" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/6.jpg" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/6.jpg" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/7.JPG" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/7.JPG" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/8.JPG" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/8.JPG" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/9.JPG" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/9.JPG" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/10.JPG" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/10.JPG" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/11.JPG" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/11.JPG" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/12.JPG" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/12.JPG" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/13.JPG" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/13.JPG" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/14.jpg" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/14.jpg" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/15.jpg" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/15.jpg" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/16.jpg" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/16.jpg" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/17.jpg" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/17.jpg" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
+        <a class="gallery-item" href="img/gallery/18.jpg" aria-label="Long Island Dungeon Master scene — enlarge"><img src="img/gallery/18.jpg" alt="Long Island Dungeon Master staged D&amp;D scene" loading="lazy" decoding="async"></a>
       </div>
       <p class="text-center mt-4" style="color:rgba(255,255,255,0.6); font-size:0.9rem;">
         See more from my games on
@@ -443,6 +665,191 @@
         and
         <a href="https://www.instagram.com/longislanddungeonmaster/" target="_blank">Instagram</a>.
       </p>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO GALLERY ===== -->
+  <section id="videos">
+    <div class="container">
+      <div class="text-center mb-2" data-reveal>
+        <span class="game-eyebrow">Roll Camera</span>
+        <h2 class="section-title">Video Gallery</h2>
+        <hr class="divider">
+        <p class="section-sub">The table in motion — animated battle maps, naval clashes, and real moments from live games. Tap any clip to play.</p>
+      </div>
+      <div class="video-grid">
+        <button type="button" class="video-card" data-video="img/video/map-docks.mp4" aria-label="Play Harbor Docks animated map">
+          <img src="img/video/map-docks.jpg" alt="Harbor Docks animated battle map" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/map-dragonslair.mp4" aria-label="Play Dragon's Lair animated map">
+          <img src="img/video/map-dragonslair.jpg" alt="Dragon's Lair animated battle map" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/map-icecavern.mp4" aria-label="Play Ice Cavern animated map">
+          <img src="img/video/map-icecavern.jpg" alt="Ice Cavern animated battle map" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v01.mp4" aria-label="Play table footage">
+          <img src="img/video/v01.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v02.mp4" aria-label="Play table footage">
+          <img src="img/video/v02.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v03.mp4" aria-label="Play table footage">
+          <img src="img/video/v03.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v04.mp4" aria-label="Play table footage">
+          <img src="img/video/v04.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v05.mp4" aria-label="Play table footage">
+          <img src="img/video/v05.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v06.mp4" aria-label="Play table footage">
+          <img src="img/video/v06.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v07.mp4" aria-label="Play table footage">
+          <img src="img/video/v07.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v08.mp4" aria-label="Play table footage">
+          <img src="img/video/v08.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v09.mp4" aria-label="Play table footage">
+          <img src="img/video/v09.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v10.mp4" aria-label="Play table footage">
+          <img src="img/video/v10.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v11.mp4" aria-label="Play table footage">
+          <img src="img/video/v11.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v13.mp4" aria-label="Play table footage">
+          <img src="img/video/v13.jpg" alt="Long Island Dungeon Master 40-inch animated table with miniatures" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v14.mp4" aria-label="Play table footage">
+          <img src="img/video/v14.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v15.mp4" aria-label="Play table footage">
+          <img src="img/video/v15.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v16.mp4" aria-label="Play table footage">
+          <img src="img/video/v16.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+        <button type="button" class="video-card" data-video="img/video/v17.mp4" aria-label="Play table footage">
+          <img src="img/video/v17.jpg" alt="Long Island Dungeon Master animated table footage" loading="lazy" decoding="async">
+          <span class="video-play"><i class="fas fa-play" aria-hidden="true"></i></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center mb-4" data-reveal>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <hr class="divider">
+        </div>
+        <div class="col-lg-10" data-reveal>
+          <div class="accordion accordion-flush lidm-accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed vecna-btn" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Do I need to know how to play?</button>
+              </h3>
+              <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Not at all. I bring pre-made characters and teach the rules as we go — most first-timers are rolling dice and laughing within minutes. Veterans get all the depth they crave, too.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed vecna-btn" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">How much does it cost?</button>
+              </h3>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">It depends on the format — a one-shot, an ongoing campaign, a workshop, or a custom commission all price differently, and group size and session length factor in. Book a free intro call and I'll give you a straight quote for exactly what you want.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed vecna-btn" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">In person or online?</button>
+              </h3>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Both. In-person games run across Long Island, NY with hand-painted minis, terrain, and the 40&quot; animated battle-map table. Prefer to play remote? I run fully online sessions over video with digital maps and animated boards — same cinematic experience, anywhere.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed vecna-btn" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">How long is a session?</button>
+              </h3>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">One-shots run in 2- or 4-hour blocks. Ongoing campaign sessions usually run 4–8 hours, scheduled around your group. We'll lock in a rhythm that fits your table.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed vecna-btn" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">What do I need to bring?</button>
+              </h3>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Just yourselves. I arrive with everything — characters, hand-painted miniatures, terrain, battle maps, dice, and ambient music. You bring the players; I bring the world.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed vecna-btn" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">Do you run the 2014 or 2024 rules?</button>
+              </h3>
+              <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Either — your call. New players can jump straight into the streamlined 2024 revision; veterans can stick with classic 2014 5e. The adventure is the same; only the dice math changes.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Do I need to know how to play D&D?", "acceptedAnswer": { "@type": "Answer", "text": "Not at all. The Long Island Dungeon Master provides pre-made characters and teaches the rules as you go. First-timers are playing within minutes, and veterans get all the depth they want." } },
+      { "@type": "Question", "name": "How much does it cost to hire a Dungeon Master?", "acceptedAnswer": { "@type": "Answer", "text": "Pricing depends on the format — one-shot, ongoing campaign, workshop, or custom commission — plus group size and session length. Book a free intro call for a quote." } },
+      { "@type": "Question", "name": "Do you run games in person or online?", "acceptedAnswer": { "@type": "Answer", "text": "Both. In-person games run across Long Island, NY with miniatures, terrain, and a 40-inch animated battle-map table. Fully online games are also available over video with digital maps." } },
+      { "@type": "Question", "name": "How long is a session?", "acceptedAnswer": { "@type": "Answer", "text": "One-shots run 2 to 4 hours. Ongoing campaign sessions usually run 4 to 8 hours, scheduled around your group." } },
+      { "@type": "Question", "name": "What do I need to bring?", "acceptedAnswer": { "@type": "Answer", "text": "Just yourselves. The DM brings everything: characters, hand-painted miniatures, terrain, battle maps, dice, and ambient music." } },
+      { "@type": "Question", "name": "Do you run the 2014 or 2024 D&D rules?", "acceptedAnswer": { "@type": "Answer", "text": "Either one. New players can use the 2024 revision; veterans can use classic 2014 5e." } }
+    ]
+  }
+  </script>
+
+  <!-- ===== LATEST FROM SUBSTACK ===== -->
+  <section id="latest">
+    <div class="container">
+      <div class="text-center mb-2" data-reveal>
+        <span class="game-eyebrow">From the DM's Screen</span>
+        <h2 class="section-title">Latest from The Weekly One-Shot</h2>
+        <hr class="divider">
+        <p class="section-sub">Fresh adventures and table craft, straight from the newsletter.</p>
+      </div>
+      <div id="latestPosts" class="latest-grid" data-reveal></div>
+      <div class="text-center mt-4" data-reveal>
+        <a class="btn btn-xl btn-outline-parchment" href="https://longislanddungeonmaster.substack.com" target="_blank" rel="noopener">Read the Newsletter &rarr;</a>
+      </div>
     </div>
   </section>
 
@@ -459,6 +866,22 @@
           </a>
         </div>
       </div>
+
+      <div class="row g-4 justify-content-center align-items-start mb-5">
+        <div class="col-lg-7" data-reveal>
+          <h3 class="contact-sub"><i class="fas fa-calendar-check" aria-hidden="true"></i> Book Your Free Intro Call</h3>
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/longislanddungeonmaster/30min?hide_gdpr_banner=1&background_color=1a0000&text_color=f2e8d0&primary_color=c9a84c"
+               style="min-width:300px;height:640px;"></div>
+        </div>
+        <div class="col-lg-5" data-reveal>
+          <h3 class="contact-sub"><i class="fas fa-scroll" aria-hidden="true"></i> Get The Weekly One-Shot</h3>
+          <p class="contact-blurb">A brand-new, ready-to-run one-shot adventure in your inbox <em>every week</em> — free to join.</p>
+          <iframe class="substack-embed" src="https://longislanddungeonmaster.substack.com/embed"
+                  title="Subscribe to The Weekly One-Shot newsletter" loading="lazy"></iframe>
+        </div>
+      </div>
+
       <div class="row g-4 justify-content-center text-center">
         <div class="col-lg-3 col-sm-6">
           <i class="fas fa-envelope fa-3x mb-3 contact-icon"></i>
@@ -496,10 +919,32 @@
     </div>
   </footer>
 
+  <!-- Calendly inline-widget assets -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <!-- Floating d20 roller -->
+  <button id="d20Btn" class="d20-btn" type="button" aria-label="Roll a twenty-sided die" title="Roll for initiative!">
+    <i class="fas fa-dice-d20" aria-hidden="true"></i>
+  </button>
+  <div id="d20Result" class="d20-result" role="status" aria-live="polite"></div>
+
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
+    /* ===== AVAILABILITY TOGGLE =====================================
+       Flip to false when your campaign roster is full. Other services
+       (workshops, commissions, newsletter) stay open either way. */
+    const TAKING_NEW_CAMPAIGN_CLIENTS = true;
+    (() => {
+      const el = document.getElementById('campaignStatus');
+      if (!el) return;
+      el.innerHTML = TAKING_NEW_CAMPAIGN_CLIENTS
+        ? '<span class="avail avail-open"><i class="fas fa-circle" aria-hidden="true"></i> Now accepting new campaign players</span>'
+        : '<span class="avail avail-full"><i class="fas fa-hourglass-half" aria-hidden="true"></i> Campaign roster is full &mdash; join the waitlist</span>';
+    })();
+
     // Nav shrink on scroll
     window.addEventListener('scroll', () => {
       document.getElementById('mainNav').classList.toggle('navbar-shrink', window.scrollY > 80);
@@ -508,7 +953,9 @@
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
+        const href = a.getAttribute('href');
+        if (!href || href === '#' || a.dataset.bsToggle) return; // skip dropdown toggles
+        const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth' });
@@ -518,22 +965,260 @@
       });
     });
 
-    // Simple lightbox for campaign portfolio + game screenshots
-    document.querySelectorAll('.portfolio-box, .game-shot').forEach(link => {
+    // Accessible lightbox for campaign banners + game screenshots + gallery
+    document.querySelectorAll('.campaign-tile, .game-shot, .gallery-item').forEach(link => {
       link.addEventListener('click', e => {
         // Don't lightbox empty/placeholder screenshots
         if (link.classList.contains('shot-empty')) { e.preventDefault(); return; }
         e.preventDefault();
         const overlay = document.createElement('div');
-        overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:pointer;';
+        overlay.className = 'lightbox-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.setAttribute('aria-label', link.getAttribute('aria-label') || 'Image preview');
+        overlay.tabIndex = -1;
         const img = document.createElement('img');
         img.src = link.href;
-        img.style.cssText = 'max-width:90vw;max-height:90vh;object-fit:contain;border:2px solid #c9a84c;';
+        const inner = link.querySelector('img');
+        img.alt = inner ? inner.alt : '';
         overlay.appendChild(img);
-        overlay.addEventListener('click', () => overlay.remove());
+        const close = () => { overlay.remove(); document.removeEventListener('keydown', onKey); link.focus(); };
+        const onKey = ev => { if (ev.key === 'Escape') close(); };
+        overlay.addEventListener('click', close);
+        document.addEventListener('keydown', onKey);
         document.body.appendChild(overlay);
+        overlay.focus();
       });
     });
+
+    // Video lightbox — load + play a clip only when its tile is clicked
+    document.querySelectorAll('.video-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const src = card.getAttribute('data-video');
+        if (!src) return;
+        const overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.setAttribute('aria-label', card.getAttribute('aria-label') || 'Video player');
+        overlay.tabIndex = -1;
+        const v = document.createElement('video');
+        v.src = src;
+        v.controls = true; v.autoplay = true; v.loop = true; v.playsInline = true;
+        overlay.appendChild(v);
+        const close = () => { v.pause(); overlay.remove(); document.removeEventListener('keydown', onKey); card.focus(); };
+        const onKey = ev => { if (ev.key === 'Escape') close(); };
+        overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+        document.addEventListener('keydown', onKey);
+        document.body.appendChild(overlay);
+        overlay.focus();
+        const p = v.play(); if (p && p.catch) p.catch(() => {});
+      });
+    });
+
+    // Respect reduced-motion for the optional enhancements below
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Scroll-reveal: fade/rise sections as they enter view
+    (() => {
+      const els = document.querySelectorAll('[data-reveal]');
+      const revealAll = () => els.forEach(el => el.classList.add('revealed'));
+      if (reduceMotion || !('IntersectionObserver' in window)) { revealAll(); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(el => io.observe(el));
+      // Safety net: never leave content hidden if the observer never fires
+      setTimeout(revealAll, 3500);
+    })();
+
+    // Hero video: nudge play() in case the browser holds autoplay
+    (() => {
+      const h = document.querySelector('.hero-video');
+      if (h && !reduceMotion) { const p = h.play(); if (p && p.catch) p.catch(() => {}); }
+    })();
+
+    // Latest Substack posts (RSS via JSON proxy, with graceful fallback)
+    (() => {
+      const wrap = document.getElementById('latestPosts');
+      if (!wrap) return;
+      const SUB = 'https://longislanddungeonmaster.substack.com';
+      const fallback = [
+        { title: 'The Weekly One-Shot', link: SUB, desc: 'A brand-new, ready-to-run one-shot adventure in your inbox every week — maps, NPCs, hooks, and twists from a 30-year DM.' },
+        { title: 'Subscribe on Substack', link: SUB, desc: 'Free to join. Upgrade any time for the full archive and bonus material.' }
+      ];
+      const card = p =>
+        '<a class="latest-card" href="' + p.link + '" target="_blank" rel="noopener">' +
+        (p.thumbnail ? '<img src="' + p.thumbnail + '" alt="" loading="lazy" decoding="async">' : '<div class="latest-noimg"><i class="fas fa-scroll" aria-hidden="true"></i></div>') +
+        '<div class="latest-body"><h3>' + p.title + '</h3><p>' + p.desc + '</p></div></a>';
+      const render = posts => { wrap.innerHTML = posts.slice(0, 3).map(card).join(''); };
+      render(fallback);
+      const clean = s => (s || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().slice(0, 130);
+      fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(SUB + '/feed'))
+        .then(r => r.json())
+        .then(d => {
+          if (d && d.status === 'ok' && d.items && d.items.length) {
+            render(d.items.map(i => ({
+              title: i.title, link: i.link,
+              desc: clean(i.description || i.content) + '…',
+              thumbnail: i.thumbnail || (i.enclosure && i.enclosure.link) || ''
+            })));
+          }
+        })
+        .catch(() => {});
+    })();
+
+    // "What kind of hero are you?" quiz
+    (() => {
+      const body = document.getElementById('quizBody');
+      if (!body) return;
+      const QUESTIONS = [
+        { q: 'A locked door blocks the way. You…', a: [
+          { t: 'Kick it off its hinges.', c: 'fighter' },
+          { t: 'Pick the lock — quietly.', c: 'rogue' },
+          { t: 'Search for a magical bypass.', c: 'wizard' },
+          { t: 'Rally the group to find another route.', c: 'bard' } ] },
+        { q: 'You find a mysterious, unlabeled potion. You…', a: [
+          { t: 'Chug it. What’s the worst that could happen?', c: 'fighter' },
+          { t: 'Pocket it to sell later — buyer beware.', c: 'rogue' },
+          { t: 'Run a careful arcane analysis first.', c: 'wizard' },
+          { t: 'Dare someone else to drink it.', c: 'bard' } ] },
+        { q: 'In a crowded tavern, you’re…', a: [
+          { t: 'Arm-wrestling a half-orc for coin.', c: 'fighter' },
+          { t: 'Eyeing the rich patron’s coin purse.', c: 'rogue' },
+          { t: 'In the corner with an old tome.', c: 'wizard' },
+          { t: 'Working the room for secrets.', c: 'bard' } ] },
+        { q: 'A goblin offers you a “totally legitimate” deal. You…', a: [
+          { t: 'Intimidate it into a better offer.', c: 'fighter' },
+          { t: 'Already pickpocketed it mid-sentence.', c: 'rogue' },
+          { t: 'Ask for the terms in writing.', c: 'wizard' },
+          { t: 'Counter with a song and a handshake.', c: 'bard' } ] },
+        { q: 'Your ideal victory looks like…', a: [
+          { t: 'Standing over the dragon’s corpse.', c: 'fighter' },
+          { t: 'Nobody even knew you were there.', c: 'rogue' },
+          { t: 'Outwitting the villain completely.', c: 'wizard' },
+          { t: 'Everyone makes it home alive.', c: 'bard' } ] },
+        { q: 'Snacks at the table — you brought…', a: [
+          { t: 'A whole rotisserie chicken. No apologies.', c: 'fighter' },
+          { t: 'Whatever I “borrowed” from the host’s fridge.', c: 'rogue' },
+          { t: 'Color-coded dice and exactly zero snacks.', c: 'wizard' },
+          { t: 'Enough to share — plus the latest gossip.', c: 'bard' } ] },
+        { q: 'Your character’s tragic backstory is…', a: [
+          { t: '“They killed my master. Now they pay.”', c: 'fighter' },
+          { t: '“Backstory? I don’t even use my real name.”', c: 'rogue' },
+          { t: '“I read one forbidden book. Worth it.”', c: 'wizard' },
+          { t: '“It’s complicated… and it rhymes.”', c: 'bard' } ] },
+        { q: 'The DM says “roll for it.” You’re secretly hoping…', a: [
+          { t: 'To hit so hard the dice crack.', c: 'fighter' },
+          { t: 'To not get caught. Again.', c: 'rogue' },
+          { t: 'To finally land the big spell.', c: 'wizard' },
+          { t: 'To talk your way out entirely.', c: 'bard' } ] },
+        { q: 'Pick your weapon:', a: [
+          { t: 'A greatsword.', c: 'fighter' },
+          { t: 'A pair of daggers.', c: 'rogue' },
+          { t: 'A well-worn spellbook.', c: 'wizard' },
+          { t: 'A silver tongue.', c: 'bard' } ] }
+      ];
+      const RESULTS = {
+        fighter: { name: 'The Vanguard', sub: 'Fighter · Barbarian', icon: 'fa-khanda', text: 'You lead from the front and let your blade do the talking. A high-stakes, monster-slaying campaign is calling your name.' },
+        rogue:   { name: 'The Shadow',   sub: 'Rogue · Ranger',    icon: 'fa-mask',  text: 'Subtle, clever, and always three steps ahead. A heist or infiltration campaign would suit you perfectly.' },
+        wizard:  { name: 'The Mastermind', sub: 'Wizard · Artificer', icon: 'fa-hat-wizard', text: 'You win with your mind before a sword is ever drawn. A campaign of mystery and intrigue awaits.' },
+        bard:    { name: 'The Face',     sub: 'Bard · Cleric',     icon: 'fa-masks-theater', text: 'Charm, chaos, and heart. A roleplay-rich, character-driven campaign is where you shine.' }
+      };
+      let idx = 0; const tally = { fighter: 0, rogue: 0, wizard: 0, bard: 0 };
+
+      function renderQuestion() {
+        const item = QUESTIONS[idx];
+        body.innerHTML =
+          '<div class="quiz-progress">Question ' + (idx + 1) + ' of ' + QUESTIONS.length + '</div>' +
+          '<p class="quiz-q">' + item.q + '</p>' +
+          '<div class="quiz-options">' +
+          item.a.map((o, i) => '<button type="button" class="quiz-opt" data-c="' + o.c + '">' + o.t + '</button>').join('') +
+          '</div>';
+        body.querySelectorAll('.quiz-opt').forEach(b => b.addEventListener('click', () => {
+          tally[b.dataset.c]++;
+          idx++;
+          if (idx < QUESTIONS.length) renderQuestion(); else renderResult();
+        }));
+      }
+      function renderResult() {
+        let win = 'fighter', best = -1;
+        for (const k in tally) { if (tally[k] > best) { best = tally[k]; win = k; } }
+        const r = RESULTS[win];
+        body.innerHTML =
+          '<div class="quiz-result">' +
+          '<div class="quiz-result-icon"><i class="fas ' + r.icon + '" aria-hidden="true"></i></div>' +
+          '<p class="quiz-result-eyebrow">You are…</p>' +
+          '<h3 class="quiz-result-name">' + r.name + '</h3>' +
+          '<p class="quiz-result-sub">' + r.sub + '</p>' +
+          '<p class="quiz-result-text">' + r.text + '</p>' +
+          '<div class="quiz-result-actions">' +
+          '<a class="btn btn-xl btn-crimson" href="https://calendly.com/longislanddungeonmaster/30min" target="_blank" rel="noopener">Bring this hero to life &rarr;</a>' +
+          '<button type="button" class="quiz-restart">Roll again</button>' +
+          '</div></div>';
+        body.querySelector('.quiz-restart').addEventListener('click', () => {
+          idx = 0; tally.fighter = tally.rogue = tally.wizard = tally.bard = 0; renderQuestion();
+        });
+      }
+      renderQuestion();
+    })();
+
+    // Floating d20 roller
+    (() => {
+      const btn = document.getElementById('d20Btn');
+      const out = document.getElementById('d20Result');
+      if (!btn || !out) return;
+      const verdict = n =>
+        n === 20 ? 'Natural 20 — a legend is born!' :
+        n === 1  ? 'Natural 1 — the dice gods are cruel!' :
+        n >= 15  ? 'A mighty roll!' :
+        n >= 8   ? 'Steady as she goes.' :
+                   'the dungeon is unforgiving…';
+      let hideTimer, rolling = false;
+      btn.addEventListener('click', () => {
+        if (rolling) return;
+        rolling = true;
+        clearTimeout(hideTimer);
+        btn.classList.add('rolling');
+        out.classList.add('show');
+        out.classList.remove('crit');
+        let ticks = 0;
+        const spin = reduceMotion ? 1 : 14;
+        const iv = setInterval(() => {
+          ticks++;
+          if (ticks < spin) {
+            out.textContent = '🎲 ' + (1 + Math.floor(Math.random() * 20));
+            return;
+          }
+          clearInterval(iv);
+          const n = 1 + Math.floor(Math.random() * 20);
+          const cta = n >= 15 ? ' <a href="https://calendly.com/longislanddungeonmaster/30min" target="_blank" rel="noopener">Book a session →</a>' : '';
+          out.innerHTML = '<strong>' + n + '</strong> &mdash; ' + verdict(n) + cta;
+          if (n === 20) out.classList.add('crit');
+          btn.classList.remove('rolling');
+          rolling = false;
+          hideTimer = setTimeout(() => out.classList.remove('show'), 7000);
+        }, reduceMotion ? 0 : 55);
+      });
+    })();
+
+    // Play battle-map videos only while visible (saves bandwidth/CPU)
+    (() => {
+      const vids = document.querySelectorAll('video.lazy-video');
+      if (!vids.length) return;
+      if (reduceMotion) return; // leave posters showing
+      if (!('IntersectionObserver' in window)) { vids.forEach(v => { v.play().catch(()=>{}); }); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          const v = e.target;
+          if (e.isIntersecting) { v.play().catch(()=>{}); }
+          else { v.pause(); }
+        });
+      }, { threshold: 0.25 });
+      vids.forEach(v => io.observe(v));
+    })();
   </script>
 
 </body>
