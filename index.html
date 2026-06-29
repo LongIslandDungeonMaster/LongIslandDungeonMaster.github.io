@@ -81,6 +81,17 @@
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="72">
+  <!--
+     ┌───────────────────────────────────────────────────────────────┐
+     │  ACERERAK'S WARNING                                            │
+     │  So you dig where others only read. Good. The clever survive.  │
+     │  This realm is riddled with secrets — eggs, runes, and hidden  │
+     │  vaults. Start where the GOLD FLICKERS at the foot of the page.│
+     │  Speak the names of the dead (try typing one). Roll the bones. │
+     │  Find the sigils. The bold are rewarded; the foolish find dust.│
+     └───────────────────────────────────────────────────────────────┘
+  -->
+
 
   <!-- ===== NAVIGATION ===== -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3" id="mainNav">
@@ -1368,6 +1379,7 @@
           }
           clearInterval(iv);
           const n = 1 + Math.floor(Math.random() * 20);
+          document.dispatchEvent(new CustomEvent('lidm:roll', { detail: n }));
           const cta = n >= 15 ? ' <a href="https://calendly.com/longislanddungeonmaster/30min" target="_blank" rel="noopener">Book a session →</a>' : '';
           out.innerHTML = '<strong>' + n + '</strong> &mdash; ' + verdict(n) + cta;
           if (n === 20) out.classList.add('crit');
@@ -1394,6 +1406,9 @@
       vids.forEach(v => io.observe(v));
     })();
   </script>
+
+  <!-- The Secret Engine (Easter eggs / hidden hunts) -->
+  <script src="js/secrets.js" defer></script>
 
 </body>
 </html>
