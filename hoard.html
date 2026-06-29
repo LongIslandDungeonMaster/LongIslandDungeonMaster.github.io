@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Hoard — Free D&amp;D Loot from the Long Island Dungeon Master</title>
+  <meta name="description" content="The Hoard — free downloads, one-shots, maps and goodies from the Long Island Dungeon Master, plus sealed chests that only open for those who uncover the realm's secrets.">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/hoard">
+  <link rel="icon" href="img/brand.png" type="image/png">
+
+  <!-- Chest gate: open the chests this seeker has earned -->
+  <script>
+    (function () {
+      var s = {}; try { s = JSON.parse(localStorage.getItem('lidm_secrets_v1') || '{}'); } catch (e) {}
+      var u = s.unlocked || {};
+      document.addEventListener('DOMContentLoaded', function () {
+        var list = document.querySelectorAll('.chest[data-reward]');
+        for (var i = 0; i < list.length; i++) { if (u[list[i].getAttribute('data-reward')]) list[i].classList.add('open'); }
+      });
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 75%); min-height: 100vh; }
+    .h-top { position: fixed; top: 0; left: 0; right: 0; z-index: 10; background: linear-gradient(180deg, rgba(26,0,0,.98), rgba(61,0,0,.92)); border-bottom: 2px solid var(--gold); padding: .9rem 0; }
+    .h-top .container { display: flex; align-items: center; justify-content: space-between; }
+    .h-brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.3rem; letter-spacing: 1px; text-decoration: none; }
+    .h-brand:hover { color: var(--gold-light); }
+    .h-back { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .h-back:hover { color: var(--gold); }
+    .h-wrap { max-width: 1040px; margin: 0 auto; padding: 7rem 1.2rem 4rem; }
+    .h-head { text-align: center; margin-bottom: 1rem; }
+    .h-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.75); text-transform: uppercase; letter-spacing: 2px; font-size: .72rem; }
+    .h-title { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: clamp(2.6rem, 9vw, 4.6rem); line-height: 1; margin: .3rem 0 .5rem; text-shadow: 0 0 34px rgba(201,168,76,.4), 2px 2px 0 #000; }
+    .h-sub { color: rgba(255,255,255,.72); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+    .h-divider { width: 6rem; height: 2px; margin: 1.6rem auto 2.4rem; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+    .hoard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .chest { position: relative; background: linear-gradient(160deg, rgba(139,0,0,.18), rgba(0,0,0,.4)); border: 1px solid rgba(201,168,76,.35); border-radius: 10px; padding: 1.8rem 1.5rem; text-align: center; overflow: hidden; box-shadow: 0 8px 26px rgba(0,0,0,.5); }
+    .chest::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .chest-icon { font-size: 2.6rem; color: var(--gold); filter: drop-shadow(0 0 12px rgba(201,168,76,.4)); margin-bottom: .7rem; }
+    .chest h3 { font-family: 'Merriweather Sans', sans-serif; color: var(--gold-light); font-size: 1.05rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: .5rem; }
+    .chest p { color: rgba(255,255,255,.72); font-size: .9rem; line-height: 1.65; margin-bottom: 1rem; }
+    .chest-status { display: inline-block; font-family: 'Merriweather Sans', sans-serif; font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: .28rem .8rem; border-radius: 14px; }
+    .chest .st-free { background: rgba(43,107,43,.28); border: 1px solid #5a9a5a; color: #a7e6a7; }
+    .chest .st-sealed { background: rgba(0,0,0,.35); border: 1px solid rgba(201,168,76,.4); color: rgba(201,168,76,.8); }
+    .chest .st-open { background: var(--gold); color: var(--crimson-dark); }
+    .chest .code { display: inline-block; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; letter-spacing: 2px; color: #fff; background: #8B0000; border: 1px solid var(--gold); border-radius: 4px; padding: .25rem .7rem; }
+    /* state toggles for secret chests */
+    .chest[data-reward] .open-text, .chest[data-reward] .st-open { display: none; }
+    .chest[data-reward] .locked-text, .chest[data-reward] .st-sealed { display: inline-block; }
+    .chest[data-reward].open { border-color: var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,.6), 0 0 22px rgba(201,168,76,.18); }
+    .chest[data-reward].open .open-text, .chest[data-reward].open .st-open { display: inline-block; }
+    .chest[data-reward].open .locked-text, .chest[data-reward].open .st-sealed { display: none; }
+    .chest[data-reward].open .chest-icon { color: var(--gold-light); }
+    .open-text a { color: var(--gold); font-weight: 700; }
+
+    .h-words { max-width: 720px; margin: 3.5rem auto 0; background: var(--parchment); color: var(--ink); border: 2px solid var(--gold); border-radius: 8px; box-shadow: 0 0 0 4px rgba(139,0,0,.35), 0 12px 40px rgba(0,0,0,.5); padding: 2.4rem; }
+    .h-words h2 { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--crimson-dark); font-size: 1.9rem; text-align: center; margin-bottom: 1rem; }
+    .h-words p { line-height: 1.85; font-size: .98rem; }
+    .h-words ul { line-height: 1.9; }
+    .h-words strong { color: var(--crimson-dark); }
+    .h-foot { text-align: center; color: rgba(201,168,76,.5); font-family: 'Merriweather Sans', sans-serif; font-size: .72rem; letter-spacing: .5px; padding: 2.5rem 1rem 1rem; line-height: 1.7; }
+    .h-foot a { color: rgba(201,168,76,.7); }
+    @media (max-width: 860px) { .hoard-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .hoard-grid { grid-template-columns: 1fr; } .h-words { padding: 1.6rem 1.3rem; } }
+  </style>
+</head>
+
+<body>
+  <div class="h-top">
+    <div class="container">
+      <a class="h-brand" href="/">Long Island Dungeon Master</a>
+      <a class="h-back" href="/">&larr; Back to the realm</a>
+    </div>
+  </div>
+
+  <main class="h-wrap">
+    <div class="h-head">
+      <p class="h-eyebrow">Free Loot for the Table</p>
+      <h1 class="h-title">The Hoard</h1>
+      <p class="h-sub">Treasure, freely given &mdash; one-shots, maps, and tools from thirty years behind the screen. And among them: <em>sealed chests</em> that open only for those who uncover the realm's secrets.</p>
+      <div class="h-divider"></div>
+    </div>
+
+    <div class="hoard-grid">
+
+      <!-- ===== FREE CHESTS (drop real downloads in as they're forged) ===== -->
+      <article class="chest free">
+        <div class="chest-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+        <h3>The DM's Field Kit</h3>
+        <p>A free starter pack for new players and first-time DMs &mdash; the essentials to get a table rolling.</p>
+        <span class="chest-status st-free">Coming Soon</span>
+      </article>
+
+      <article class="chest free">
+        <div class="chest-icon"><i class="fas fa-scroll" aria-hidden="true"></i></div>
+        <h3>A Free One-Shot</h3>
+        <p>A complete, ready-to-run adventure &mdash; maps, NPCs, hooks and twists. Print it and play tonight.</p>
+        <span class="chest-status st-free">Coming Soon</span>
+      </article>
+
+      <article class="chest free">
+        <div class="chest-icon"><i class="fas fa-map" aria-hidden="true"></i></div>
+        <h3>Printable Battle Maps</h3>
+        <p>High-res maps from the realm, sized for the table or the 40&quot; animated screen.</p>
+        <span class="chest-status st-free">Coming Soon</span>
+      </article>
+
+      <!-- ===== SEALED CHESTS (open via the secret hunts) ===== -->
+      <article class="chest" data-reward="vault">
+        <div class="chest-icon"><i class="fas fa-gem" aria-hidden="true"></i></div>
+        <h3>The Founder's Vault</h3>
+        <p class="locked-text">A chest bound by seven runes. Walk the Sigil Path to break the seal.</p>
+        <p class="open-text">You walked the Sigil Path. <a href="vault.html">Open the Vault &rarr;</a></p>
+        <span class="chest-status st-sealed">Sealed</span>
+        <span class="chest-status st-open">Unlocked</span>
+      </article>
+
+      <article class="chest" data-reward="lore">
+        <div class="chest-icon"><i class="fas fa-feather" aria-hidden="true"></i></div>
+        <h3>The Hidden Scroll</h3>
+        <p class="locked-text">A chest that answers only to whispers. Hear all three to open it.</p>
+        <p class="open-text">You heard the whispers. <a href="scroll.html">Read the Scroll &rarr;</a></p>
+        <span class="chest-status st-sealed">Sealed</span>
+        <span class="chest-status st-open">Unlocked</span>
+      </article>
+
+      <article class="chest" data-reward="perk">
+        <div class="chest-icon"><i class="fas fa-skull" aria-hidden="true"></i></div>
+        <h3>The Bound One's Favor</h3>
+        <p class="locked-text">A dark boon, sealed by the Cipher of the Damned. Solve it to claim your token.</p>
+        <p class="open-text">Your founder's token: <span class="code">STRAHD-FALLS</span> &mdash; mention it when you book.</p>
+        <span class="chest-status st-sealed">Sealed</span>
+        <span class="chest-status st-open">Claimed</span>
+      </article>
+
+    </div>
+
+    <!-- ===== Words of Power — how to open the sealed chests ===== -->
+    <section class="h-words">
+      <h2>Words of Power</h2>
+      <p>The sealed chests answer only to those who uncover the realm's secrets &mdash; eggs and runes hidden across these pages. Here is what the old seekers knew:</p>
+      <ul>
+        <li><strong>Look where the gold flickers.</strong> Faint sigils hide in the realm's words; they glow when your cursor passes over them. Collect a full set, and a chest opens.</li>
+        <li><strong>A true mage casts spells through the keys beneath their fingers.</strong> Simply <em>type</em> a word of power &mdash; a name, a legend, a cursed place &mdash; and the realm will answer. The bold know many such words.</li>
+        <li><strong>Roll the bones, wander to the end, and visit when the veil is thin.</strong> Fortune favors the curious.</li>
+      </ul>
+      <p style="margin-bottom:0;">Begin your hunt on the <a href="/" style="color:var(--crimson)">home page</a> &mdash; press <strong>Begin the Hunt</strong>, and watch your <strong>Tome of Secrets</strong> start to fill.</p>
+    </section>
+  </main>
+
+  <div class="h-foot">
+    &copy; 2020&ndash;2026 Frank Papaleo &mdash; Long Island Dungeon Master &bull; <a href="/">Home</a> &bull; <a href="/privacy">Privacy</a><br>
+    Long Island Dungeon Master is an independent service, not affiliated with or endorsed by Wizards of the Coast. Dungeons &amp; Dragons and D&amp;D are trademarks of Wizards of the Coast LLC.
+  </div>
+
+  <script src="js/secrets.js" defer></script>
+</body>
+</html>
