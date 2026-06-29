@@ -31,18 +31,24 @@
     { id: 'vecna',    name: 'The Eye of Vecna' },
     { id: 'strahd',   name: 'Children of the Night' },
     { id: 'gygax',    name: 'Old-School Mode' },
+    { id: 'barovia',  name: 'The Mists of Barovia' },
+    { id: 'owlbear',  name: 'Here Comes the Owlbear' },
+    { id: 'dragon',   name: 'Here Be Dragons' },
     { id: 'nat20',    name: 'Critical Hit!' },
     { id: 'nat1',     name: 'Critical Fail!' },
     { id: 'theend',   name: 'The End… or is it?' },
     { id: 'midnight', name: 'The Witching Hour' },
-    { id: 'crest',    name: 'The Sigil of the Master' }
+    { id: 'crest',    name: 'The Sigil of the Master' },
+    { id: 'herocrest',name: 'The Crest Awakens' },
+    { id: 'merch',    name: 'The Early Bird' },
+    { id: 'sku',      name: 'The Whole World Is Your Dungeon' }
   ];
   function eggName(id) { for (var i = 0; i < EGGS.length; i++) if (EGGS[i].id === id) return EGGS[i].name; return id; }
 
   // Hunts: chains of hidden sigils that unlock a reward page.
   var HUNTS = {
     sigil: {
-      name: 'The Sigil Path',
+      name: 'The Sigil Path', glyph: '✦', cls: '',
       reward: 'vault', rewardName: "The Founder's Vault", rewardUrl: 'vault.html',
       sigils: [
         { id: 's1', sel: '.hero-sub-title' },
@@ -52,6 +58,26 @@
         { id: 's5', sel: '.event-tomb .event-tag' },
         { id: 's6', sel: '#pantheon .section-title' },
         { id: 's7', sel: '#faq .section-title' }
+      ]
+    },
+    strahd: {
+      name: 'The Cipher of the Damned', glyph: '☠', cls: 'sx-sig-crimson',
+      reward: 'perk', rewardName: "The Bound One's Favor",
+      rewardCode: 'STRAHD-FALLS', rewardNote: 'Mention this token when you book — a founder’s discount, for those who braved the dark.',
+      sigils: [
+        { id: 'd1', sel: '.event-strahd .event-tag' },
+        { id: 'd2', sel: '.fallen-title' },
+        { id: 'd3', sel: '#experience .section-title' },
+        { id: 'd4', sel: '.game-title' }
+      ]
+    },
+    lore: {
+      name: 'Whispers of Lore', glyph: '❂', cls: 'sx-sig-teal',
+      reward: 'lore', rewardName: 'The Hidden Scroll', rewardUrl: 'scroll.html',
+      sigils: [
+        { id: 'w1', sel: '#services .section-title' },
+        { id: 'w2', sel: '#latest .section-title' },
+        { id: 'w3', sel: '#the-game .game-eyebrow' }
       ]
     }
   };
@@ -93,6 +119,9 @@
   .sx-reward-link{display:inline-block;margin-top:.4rem;color:#8B0000;font-weight:700;text-decoration:underline}\
   .sx-hunt{margin:0 0 1rem}.sx-hunt h3{font-family:"Merriweather Sans",sans-serif;font-size:.82rem;text-transform:uppercase;letter-spacing:1px;color:#3d0000;margin:0 0 .35rem}\
   .sx-bar{height:8px;background:rgba(139,0,0,.15);border-radius:4px;overflow:hidden}.sx-bar>i{display:block;height:100%;background:linear-gradient(90deg,#8B0000,#c9a84c)}\
+  .sx-sig-crimson{color:#c0392b}.sx-sig-crimson:hover{text-shadow:0 0 12px #c0392b}.sx-sig-crimson.got{color:#e8746a;text-shadow:0 0 8px #c0392b}\
+  .sx-sig-teal{color:#3fae9a}.sx-sig-teal:hover{text-shadow:0 0 12px #3fae9a}.sx-sig-teal.got{color:#7fd8c8;text-shadow:0 0 8px #3fae9a}\
+  .sx-codebox{display:inline-block;font-family:"Merriweather Sans",sans-serif;font-weight:700;letter-spacing:2px;color:#fff;background:#8B0000;border:1px solid #c9a84c;border-radius:4px;padding:.25rem .7rem}\
   body.sx-shake{animation:sx-shake .5s linear}\
   @keyframes sx-shake{10%{transform:translate(-4px,2px)}20%{transform:translate(5px,-3px)}30%{transform:translate(-6px,1px)}40%{transform:translate(4px,3px)}50%{transform:translate(-3px,-2px)}60%{transform:translate(5px,2px)}70%{transform:translate(-4px,-1px)}80%{transform:translate(3px,2px)}90%{transform:translate(-2px,-1px)}100%{transform:translate(0,0)}}\
   body.sx-warp{animation:sx-warp 1.4s ease}\
@@ -107,6 +136,8 @@
   body.sx-tomb{filter:saturate(.4) sepia(.5) hue-rotate(50deg) contrast(1.1)}\
   body.sx-tomb::after{content:"";position:fixed;inset:0;z-index:99996;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,40,0,.12),rgba(0,40,0,.12) 1px,transparent 2px,transparent 4px)}\
   body.sx-vampire::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 40%,rgba(60,0,0,.5) 100%);mix-blend-mode:multiply}\
+  .sx-fog{position:fixed;inset:0;z-index:99995;pointer-events:none;background:radial-gradient(ellipse at center,rgba(200,200,210,0),rgba(178,184,196,.6));animation:sx-fogin 4.5s ease forwards}\
+  @keyframes sx-fogin{0%{opacity:0}25%{opacity:1}75%{opacity:1}100%{opacity:0}}\
   @media (prefers-reduced-motion: reduce){.sx-flick{animation:none;opacity:.7}.sx-tome.show{animation:none}}\
   ';
   var st = document.createElement('style'); st.id = 'sx-styles'; st.textContent = css;
@@ -146,7 +177,12 @@
     var huntsHtml = '';
     for (var hid in HUNTS) {
       var hu = HUNTS[hid], g = huntProgress(hid), tt = huntTotal(hid), pct = Math.round(g / tt * 100);
-      var rl = state.unlocked[hu.reward] ? '<a class="sx-reward-link" href="' + hu.rewardUrl + '">Enter ' + hu.rewardName + ' &rarr;</a>' : (g > 0 ? '<em>Seek the remaining runes…</em>' : '<em>An undiscovered path…</em>');
+      var rl;
+      if (state.unlocked[hu.reward]) {
+        rl = hu.rewardUrl
+          ? '<a class="sx-reward-link" href="' + hu.rewardUrl + '">Enter ' + hu.rewardName + ' &rarr;</a>'
+          : '<span class="sx-codebox">' + hu.rewardCode + '</span>' + (hu.rewardNote ? '<div style="font-size:.8rem;color:#6b5b45;margin-top:.25rem">' + hu.rewardNote + '</div>' : '');
+      } else { rl = g > 0 ? '<em>Seek the remaining marks…</em>' : '<em>An undiscovered path…</em>'; }
       huntsHtml += '<div class="sx-hunt"><h3>' + hu.name + ' &mdash; ' + g + ' / ' + tt + '</h3><div class="sx-bar"><i style="width:' + pct + '%"></i></div><div style="margin-top:.35rem;font-size:.85rem">' + rl + '</div></div>';
     }
     var hint = remaining > 0
@@ -175,11 +211,12 @@
   function injectSigils() {
     for (var hid in HUNTS) {
       (function (hid) {
-        HUNTS[hid].sigils.forEach(function (sg) {
+        var hunt = HUNTS[hid];
+        hunt.sigils.forEach(function (sg) {
           var host = document.querySelector(sg.sel);
           if (!host || host.querySelector('.sx-sigil')) return;
           var s = document.createElement('span');
-          s.className = 'sx-sigil'; s.setAttribute('aria-hidden', 'true'); s.textContent = '✦';
+          s.className = 'sx-sigil ' + (hunt.cls || ''); s.setAttribute('aria-hidden', 'true'); s.textContent = hunt.glyph || '✦';
           if (state.hunts[hid] && state.hunts[hid][sg.id]) s.classList.add('got');
           s.addEventListener('click', function (ev) { ev.stopPropagation(); ev.preventDefault(); collectSigil(hid, sg.id, s); });
           host.appendChild(s);
@@ -201,7 +238,8 @@
     var hunt = HUNTS[hid];
     if (!state.unlocked[hunt.reward]) { state.unlocked[hunt.reward] = true; persist(); }
     revealTome();
-    toast('🗝 ' + hunt.rewardName + ' opens!', 'You walked the whole Sigil Path. Open your Tome to claim your reward.', 8000);
+    var sub = hunt.rewardCode ? 'Your token: <b>' + hunt.rewardCode + '</b> — open your Tome for details.' : 'A path is complete. Open your Tome to claim it.';
+    toast('🗝 ' + hunt.rewardName + '!', sub, 8000);
     if (tomeBtn) tomeBtn.style.boxShadow = '0 0 0 4px rgba(201,168,76,.7)';
   }
 
@@ -268,6 +306,22 @@
     })();
   }
 
+  function flyAcross(emoji, count, size) {
+    if (reduce) return;
+    for (var i = 0; i < (count || 1); i++) (function () {
+      var b = document.createElement('div'); b.className = 'sx-bat'; b.textContent = emoji;
+      b.style.fontSize = (size || 2) + 'rem'; b.style.left = '-60px'; b.style.top = (Math.random() * 65 + 8) + 'vh';
+      var dur = 2.4 + Math.random() * 1.8;
+      b.style.animation = 'sx-batfly ' + dur + 's linear forwards'; b.style.animationDelay = (Math.random() * 0.6) + 's';
+      document.body.appendChild(b); setTimeout(function () { b.remove(); }, (dur + 1.5) * 1000);
+    })();
+  }
+  function fog() {
+    if (reduce) return;
+    var f = document.createElement('div'); f.className = 'sx-fog'; document.body.appendChild(f);
+    setTimeout(function () { f.remove(); }, 4600);
+  }
+
   /* ---------- the Gygaxian entry hint ---------- */
   var GYGAX_VERSE = 'Acererak whispers: “Here secrets sleep for the bold and the cursed. ' +
     'Go back to the start where the gold flickers faint — speak the names of the dead, roll true, and you may yet find what is hidden. The foolish find only dust.”';
@@ -302,6 +356,9 @@
         if (buf.indexOf('vecna') !== -1) { buf = ''; eyeOfVecna(); }
         else if (buf.indexOf('strahd') !== -1) { buf = ''; childrenOfNight(); }
         else if (buf.indexOf('gygax') !== -1) { buf = ''; tombMode(); }
+        else if (buf.indexOf('barovia') !== -1) { buf = ''; discover('barovia'); fog(); toast('🌫 The Mists Rise', 'Barovia welcomes you… you may never leave.'); }
+        else if (buf.indexOf('owlbear') !== -1) { buf = ''; discover('owlbear'); flyAcross('🦉', 1, 3); toast('🦉 OWLBEAR!', 'It shrieks across the realm. Roll for initiative.'); }
+        else if (buf.indexOf('dragon') !== -1) { buf = ''; discover('dragon'); flyAcross('🐉', 1, 3.4); toast('🐉 Here Be Dragons', 'A great shadow passes overhead.'); }
       }
     });
 
@@ -315,6 +372,18 @@
     // brand wordmark tapped 7x -> Wizard Mode (mobile-friendly)
     var brand = document.querySelector('.navbar-brand') || document.querySelector('.legal-brand');
     if (brand) { var taps = 0, tmr; brand.addEventListener('click', function () { taps++; clearTimeout(tmr); tmr = setTimeout(function () { taps = 0; }, 1600); if (taps >= 7) { taps = 0; discover('crest'); wizardMode(); } }); }
+
+    // Merch "Coming Soon" badge tapped 3x -> early-bird secret
+    var mb = document.querySelector('#store .soon-badge');
+    if (mb) { mb.style.cursor = 'pointer'; var mc = 0, mt; mb.addEventListener('click', function () { mc++; clearTimeout(mt); mt = setTimeout(function () { mc = 0; }, 1500); if (mc >= 3) { mc = 0; if (discover('merch')) toast('🛒 The Early Bird', 'Founder’s token: <b>FIRST-FORGE</b> — for early-bird pricing when the store opens.', 8000); } }); }
+
+    // SKU Crawlers trademark line -> tease
+    var tl = document.querySelector('.trademark-line');
+    if (tl) { tl.style.cursor = 'pointer'; tl.addEventListener('click', function () { if (discover('sku')) { diceRain(16); toast('🎲 Scan to Seed', 'The whole world is your dungeon. SKU Crawlers™ stirs…'); } }); }
+
+    // Hero crest awakens
+    var hc = document.querySelector('.hero-crest');
+    if (hc) { hc.style.cursor = 'pointer'; hc.addEventListener('click', function () { if (discover('herocrest')) { confetti(); toast('✦ The Crest Awakens', 'The Master’s sigil glows for you.'); } }); }
 
     // scroll to the very bottom
     var endDone = false;
