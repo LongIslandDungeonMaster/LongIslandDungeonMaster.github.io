@@ -163,7 +163,7 @@
     tomeBtn.innerHTML = '<i class="fas fa-book-skull" aria-hidden="true"></i><span class="sx-badge">0</span>';
     tomeBtn.addEventListener('click', openTome);
     document.body.appendChild(tomeBtn);
-    if (foundCount() > 0) revealTome();
+    if (foundCount() > 0 || state.flags.seeking) revealTome();
   }
   function revealTome() { if (tomeBtn) tomeBtn.classList.add('show'); updateBadge(); }
   function updateBadge() { if (tomeBtn) { var b = tomeBtn.querySelector('.sx-badge'); if (b) b.textContent = foundCount(); } }
@@ -384,6 +384,14 @@
     // Hero crest awakens
     var hc = document.querySelector('.hero-crest');
     if (hc) { hc.style.cursor = 'pointer'; hc.addEventListener('click', function () { if (discover('herocrest')) { confetti(); toast('✦ The Crest Awakens', 'The Master’s sigil glows for you.'); } }); }
+
+    // "Begin the Hunt" — the visible entry point: reveal the Tome + first nudge
+    var begin = document.getElementById('beginHunt');
+    if (begin) begin.addEventListener('click', function () {
+      state.flags.seeking = true; persist();
+      revealTome(); openTome();
+      setTimeout(function () { toast('The hunt begins', GYGAX_VERSE, 10000); }, 400);
+    });
 
     // scroll to the very bottom
     var endDone = false;
