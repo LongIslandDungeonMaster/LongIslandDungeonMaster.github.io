@@ -38,8 +38,28 @@
     { id: 'crest',    name: 'The Sigil of the Master' }
   ];
   function eggName(id) { for (var i = 0; i < EGGS.length; i++) if (EGGS[i].id === id) return EGGS[i].name; return id; }
-  function totalSecrets() { return EGGS.length; }
-  function foundCount() { return Object.keys(state.found).length; }
+
+  // Hunts: chains of hidden sigils that unlock a reward page.
+  var HUNTS = {
+    sigil: {
+      name: 'The Sigil Path',
+      reward: 'vault', rewardName: "The Founder's Vault", rewardUrl: 'vault.html',
+      sigils: [
+        { id: 's1', sel: '.hero-sub-title' },
+        { id: 's2', sel: '#about .section-title' },
+        { id: 's3', sel: '.char-name' },
+        { id: 's4', sel: '#campaigns .campaign-header p' },
+        { id: 's5', sel: '.event-tomb .event-tag' },
+        { id: 's6', sel: '#pantheon .section-title' },
+        { id: 's7', sel: '#faq .section-title' }
+      ]
+    }
+  };
+  function huntProgress(h) { return state.hunts[h] ? Object.keys(state.hunts[h]).length : 0; }
+  function huntTotal(h) { return HUNTS[h].sigils.length; }
+
+  function totalSecrets() { var t = EGGS.length; for (var h in HUNTS) t += HUNTS[h].sigils.length; return t; }
+  function foundCount() { var c = Object.keys(state.found).length; for (var h in state.hunts) c += Object.keys(state.hunts[h]).length; return c; }
 
   /* ---------- injected styles ---------- */
   var css = '\
@@ -66,6 +86,13 @@
   .sx-close{float:right;background:none;border:none;font-size:1.4rem;color:#8B0000;cursor:pointer;line-height:1}\
   .sx-flick{color:#c9a84c;cursor:pointer;animation:sx-flicker 4s infinite;text-decoration:none}\
   @keyframes sx-flicker{0%,18%,22%,100%{opacity:.25}20%,40%{opacity:1}45%{opacity:.4}}\
+  .sx-sigil{display:inline-block;margin-left:.25em;color:#c9a84c;opacity:.13;cursor:pointer;font-size:.62em;vertical-align:super;transition:opacity .3s,transform .3s,text-shadow .3s;-webkit-user-select:none;user-select:none}\
+  .sx-sigil:hover{opacity:1;transform:scale(1.4);text-shadow:0 0 12px #c9a84c}\
+  .sx-sigil.got{opacity:.95;color:#e8d5a0;cursor:default;text-shadow:0 0 8px #c9a84c;animation:sx-ignite .6s ease}\
+  @keyframes sx-ignite{0%{transform:scale(1)}50%{transform:scale(2.1);text-shadow:0 0 22px #c9a84c}100%{transform:scale(1)}}\
+  .sx-reward-link{display:inline-block;margin-top:.4rem;color:#8B0000;font-weight:700;text-decoration:underline}\
+  .sx-hunt{margin:0 0 1rem}.sx-hunt h3{font-family:"Merriweather Sans",sans-serif;font-size:.82rem;text-transform:uppercase;letter-spacing:1px;color:#3d0000;margin:0 0 .35rem}\
+  .sx-bar{height:8px;background:rgba(139,0,0,.15);border-radius:4px;overflow:hidden}.sx-bar>i{display:block;height:100%;background:linear-gradient(90deg,#8B0000,#c9a84c)}\
   body.sx-shake{animation:sx-shake .5s linear}\
   @keyframes sx-shake{10%{transform:translate(-4px,2px)}20%{transform:translate(5px,-3px)}30%{transform:translate(-6px,1px)}40%{transform:translate(4px,3px)}50%{transform:translate(-3px,-2px)}60%{transform:translate(5px,2px)}70%{transform:translate(-4px,-1px)}80%{transform:translate(3px,2px)}90%{transform:translate(-2px,-1px)}100%{transform:translate(0,0)}}\
   body.sx-warp{animation:sx-warp 1.4s ease}\
@@ -116,11 +143,18 @@
       var got = !!state.found[e.id];
       return '<li class="' + (got ? '' : 'locked') + '"><span class="sx-mark">' + (got ? '✦' : '✧') + '</span>' + (got ? e.name : '<em>undiscovered secret</em>') + '</li>';
     }).join('');
+    var huntsHtml = '';
+    for (var hid in HUNTS) {
+      var hu = HUNTS[hid], g = huntProgress(hid), tt = huntTotal(hid), pct = Math.round(g / tt * 100);
+      var rl = state.unlocked[hu.reward] ? '<a class="sx-reward-link" href="' + hu.rewardUrl + '">Enter ' + hu.rewardName + ' &rarr;</a>' : (g > 0 ? '<em>Seek the remaining runes…</em>' : '<em>An undiscovered path…</em>');
+      huntsHtml += '<div class="sx-hunt"><h3>' + hu.name + ' &mdash; ' + g + ' / ' + tt + '</h3><div class="sx-bar"><i style="width:' + pct + '%"></i></div><div style="margin-top:.35rem;font-size:.85rem">' + rl + '</div></div>';
+    }
     var hint = remaining > 0
       ? 'The realm still hides <b>' + remaining + '</b> secret' + (remaining === 1 ? '' : 's') + '. Look where the gold flickers, speak the names of the dead, and roll well.'
       : 'You have uncovered every secret the realm now holds. A true Initiate. More will come…';
     panel.innerHTML = '<div class="sx-panel-card"><button class="sx-close" aria-label="Close">&times;</button>' +
       '<h2>Tome of Secrets</h2><p class="sx-count">' + foundCount() + ' of ' + totalSecrets() + ' uncovered</p>' +
+      huntsHtml +
       '<ul class="sx-list">' + items + '</ul><p class="sx-hint">' + hint + '</p></div>';
     panel.querySelector('.sx-close').addEventListener('click', function () { panel.classList.remove('open'); });
     panel.classList.add('open');
@@ -135,6 +169,40 @@
     revealTome();
     if (first) setTimeout(function () { toast('A Tome appears…', 'Your discoveries are now recorded. Seek the rest.', 4200); }, 1400);
     return true;
+  }
+
+  /* ---------- hunts (sigil paths) ---------- */
+  function injectSigils() {
+    for (var hid in HUNTS) {
+      (function (hid) {
+        HUNTS[hid].sigils.forEach(function (sg) {
+          var host = document.querySelector(sg.sel);
+          if (!host || host.querySelector('.sx-sigil')) return;
+          var s = document.createElement('span');
+          s.className = 'sx-sigil'; s.setAttribute('aria-hidden', 'true'); s.textContent = '✦';
+          if (state.hunts[hid] && state.hunts[hid][sg.id]) s.classList.add('got');
+          s.addEventListener('click', function (ev) { ev.stopPropagation(); ev.preventDefault(); collectSigil(hid, sg.id, s); });
+          host.appendChild(s);
+        });
+      })(hid);
+    }
+  }
+  function collectSigil(hid, sid, el) {
+    state.hunts[hid] = state.hunts[hid] || {};
+    if (state.hunts[hid][sid]) return;
+    state.hunts[hid][sid] = true; persist();
+    if (el) el.classList.add('got');
+    revealTome();
+    var got = huntProgress(hid), tot = huntTotal(hid);
+    if (got >= tot) unlockReward(hid);
+    else toast('✦ A sigil ignites', HUNTS[hid].name + ' — ' + got + ' of ' + tot + ' runes found', 3400);
+  }
+  function unlockReward(hid) {
+    var hunt = HUNTS[hid];
+    if (!state.unlocked[hunt.reward]) { state.unlocked[hunt.reward] = true; persist(); }
+    revealTome();
+    toast('🗝 ' + hunt.rewardName + ' opens!', 'You walked the whole Sigil Path. Open your Tome to claim your reward.', 8000);
+    if (tomeBtn) tomeBtn.style.boxShadow = '0 0 0 4px rgba(201,168,76,.7)';
   }
 
   /* ---------- effects ---------- */
@@ -261,6 +329,6 @@
   }
 
   /* ---------- boot ---------- */
-  function boot() { buildTome(); plantHint(); wireTriggers(); }
+  function boot() { buildTome(); plantHint(); injectSigils(); wireTriggers(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
