@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Hidden Scroll — Long Island Dungeon Master</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="icon" href="img/brand.png" type="image/png">
+
+  <!-- Gate: only those who heard the Whispers of Lore -->
+  <script>
+    (function () {
+      var ok = false;
+      try { var s = JSON.parse(localStorage.getItem('lidm_secrets_v1') || '{}'); ok = !!(s.unlocked && s.unlocked.lore); } catch (e) {}
+      document.documentElement.className += ok ? ' lore-open' : ' lore-sealed';
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body { background: var(--crimson-deep); min-height: 100vh; }
+    .s-wrap { max-width: 740px; margin: 0 auto; padding: 5rem 1.2rem 4rem; }
+    .s-head { text-align: center; }
+    .s-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.75); text-transform: uppercase; letter-spacing: 2px; font-size: .72rem; }
+    .s-title { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: clamp(2.2rem, 7vw, 3.4rem); margin: .3rem 0 .4rem; text-shadow: 0 0 26px rgba(201,168,76,.35), 2px 2px 0 #000; }
+    .s-divider { width: 6rem; height: 2px; margin: 1.4rem auto 2rem; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .s-scroll { background: var(--parchment); color: var(--ink); border: 2px solid var(--gold); border-radius: 6px; box-shadow: 0 0 0 4px rgba(139,0,0,.4), 0 14px 44px rgba(0,0,0,.55); padding: 2.6rem; }
+    .s-scroll h2 { font-family: 'Merriweather Sans', sans-serif; color: var(--crimson-dark); font-size: 1.05rem; text-transform: uppercase; letter-spacing: .5px; margin: 1.8rem 0 .5rem; border-bottom: 1px solid rgba(139,0,0,.18); padding-bottom: .3rem; }
+    .s-scroll h2:first-child { margin-top: 0; }
+    .s-scroll p { color: var(--ink); line-height: 1.85; font-size: .98rem; }
+    .s-scroll .drop::first-letter { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; font-size: 2.6rem; color: var(--crimson-dark); float: left; line-height: .8; padding: .1rem .3rem .1rem 0; }
+    .s-back { display: inline-block; margin-top: 1.6rem; color: var(--gold-light); font-family: 'Merriweather Sans', sans-serif; font-size: .85rem; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; }
+    .s-back:hover { color: var(--gold); }
+    .s-foot { text-align: center; }
+    .lore-reward { display: none; }
+    html.lore-open .lore-reward { display: block; }
+    html.lore-open .lore-sealed { display: none; }
+  </style>
+</head>
+
+<body>
+  <div class="s-wrap">
+
+    <!-- For those who heard the whispers -->
+    <div class="lore-reward">
+      <div class="s-head">
+        <p class="s-eyebrow">Whispers of Lore — heard at last</p>
+        <h1 class="s-title">The Hidden Scroll</h1>
+        <div class="s-divider"></div>
+      </div>
+      <div class="s-scroll">
+        <p class="drop">You followed the whispers to their source. What you hold now is not for the casual visitor — it is the quiet truth behind the screen, passed only to those who listen.</p>
+
+        <h2>The Dungeon Master's Creed</h2>
+        <p>The dice are honest, even when they are cruel. The story belongs to the table, not the screen. A villain is only as good as the mercy they refuse. And no character truly dies while someone still tells their tale — which is why this realm keeps a Pantheon.</p>
+
+        <h2>Three Things the DM Never Tells You</h2>
+        <p><strong>One:</strong> half the monsters were improvised, and those are always the ones you remember. <strong>Two:</strong> the "random" tavern NPC was the whole plot. <strong>Three:</strong> the best nights were never the ones that went according to plan.</p>
+
+        <h2>A Gift for the Initiated</h2>
+        <p>You've proven you read between the lines. So here's an open door: reply to any Weekly One-Shot with the words <strong>“the whispers sent me,”</strong> and you'll get a say in a future one-shot — a monster, a twist, a doomed NPC of your design, woven into the realm.</p>
+
+        <a class="btn btn-xl btn-crimson" href="https://longislanddungeonmaster.substack.com" target="_blank" rel="noopener" style="margin-top:1.4rem;">Join the Whispered Few &rarr;</a>
+      </div>
+      <div class="s-foot"><a class="s-back" href="/">&larr; Return to the realm</a></div>
+    </div>
+
+    <!-- For everyone else -->
+    <div class="lore-sealed s-head">
+      <p class="s-eyebrow">Silence</p>
+      <h1 class="s-title">No Whispers Here</h1>
+      <div class="s-divider"></div>
+      <p style="color:rgba(255,255,255,.8);max-width:460px;margin:0 auto 1.4rem;line-height:1.8;">This scroll speaks only to those who first heard its whispers — three of them, hidden in the words of the realm. Listen closer. Hover where the teal glimmers.</p>
+      <a class="s-back" href="/">&larr; Return to the realm</a>
+    </div>
+
+  </div>
+
+  <script src="js/secrets.js" defer></script>
+</body>
+</html>
