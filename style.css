@@ -113,6 +113,13 @@ h1, h2, h3, h4 {
   filter: drop-shadow(0 0 4px rgba(201,168,76,0.5));
 }
 
+.brand-icon {
+  color: var(--gold);
+  font-size: 1.4rem;
+  vertical-align: -2px;
+  filter: drop-shadow(0 0 6px rgba(201,168,76,0.55));
+}
+
 /* Nav dropdowns (Showcase / Creations) */
 #mainNav .dropdown-toggle::after { vertical-align: 0.12em; margin-left: 0.35em; }
 
