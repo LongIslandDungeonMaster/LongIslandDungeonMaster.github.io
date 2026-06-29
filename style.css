@@ -2077,3 +2077,37 @@ html.js [data-reveal].revealed {
 .event-tomb .event-cta:hover { color: #cdeeb5; }
 
 @media (max-width: 760px) { .events-grid { grid-template-columns: 1fr; } }
+
+/* ===== SEEKER'S INVITATION (visible "there are secrets" cue) ===== */
+#seek {
+  background: linear-gradient(180deg, var(--crimson-deep) 0%, #0a0202 100%);
+  padding: 4rem 0;
+  border-top: 2px solid rgba(201,168,76,0.4);
+}
+
+.seek-card { max-width: 640px; margin: 0 auto; text-align: center; }
+
+.seek-icon {
+  font-size: 2rem;
+  color: var(--gold);
+  filter: drop-shadow(0 0 12px rgba(201,168,76,0.4));
+  margin-bottom: 0.7rem;
+  opacity: 0.85;
+}
+
+.seek-title {
+  font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive;
+  color: var(--gold);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+  margin-bottom: 0.6rem;
+}
+
+#seek p {
+  color: rgba(255,255,255,0.66);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  font-style: italic;
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
+}
