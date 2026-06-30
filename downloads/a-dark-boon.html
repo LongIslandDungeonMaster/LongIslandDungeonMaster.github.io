@@ -25,6 +25,7 @@
   --panel:#21100f; --rule:#5c2a23;
 }
 *{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 html,body{margin:0;padding:0;}
 body{
   background:radial-gradient(140% 90% at 50% 0%, #2a0f0d 0%, var(--bg) 55%, #0c0606 100%);
@@ -56,12 +57,27 @@ a{color:var(--gold-br);}
 .divider .ln{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold),transparent);max-width:220px;}
 .divider .dia{font-size:13px;}
 
+/* Contents / jump nav */
+.toc-nav{max-width:62ch;margin:0 auto 28px;background:rgba(0,0,0,.22);border:1px solid var(--rule);border-radius:6px;padding:12px 18px 14px;}
+.toc-nav summary{font-family:'Playfair Display',Georgia,serif;font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--gold);cursor:pointer;list-style:none;}
+.toc-nav summary::-webkit-details-marker{display:none;}
+.toc-nav summary::before{content:"\25B8\00a0";color:var(--gold-br);}
+.toc-nav[open] summary::before{content:"\25BE\00a0";}
+.toc-nav .toc{margin-top:11px;}
+.toc-nav .toc>ul{list-style:none;margin:0;padding:0;columns:2;column-gap:28px;}
+.toc-nav .toc ul ul{display:none;}
+.toc-nav .toc li{margin:0 0 6px;break-inside:avoid;}
+.toc-nav .toc a{color:var(--ink-soft);text-decoration:none;font-size:14px;border-bottom:1px dotted rgba(201,162,75,.32);}
+.toc-nav .toc a:hover{color:var(--gold-br);border-bottom-color:var(--gold-br);}
+@media (max-width:600px){.toc-nav .toc>ul{columns:1;}}
+
 /* body typography */
 .body{max-width:62ch;margin:0 auto;}
 .body h2{font-family:'Breathe Fire','Playfair Display',Georgia,serif;font-weight:400;color:var(--gold-br);font-size:30px;line-height:1.12;margin:34px 0 10px;letter-spacing:.01em;}
 .body h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:var(--crimson-br);text-transform:uppercase;letter-spacing:.05em;font-size:16px;margin:24px 0 8px;}
 .body h4{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:var(--gold);font-size:14px;letter-spacing:.04em;margin:18px 0 6px;}
 .body h2:first-child,.body h3:first-child{margin-top:4px;}
+.body h2,.body h3{scroll-margin-top:18px;}
 .body p{margin:0 0 14px;}
 .body p.dek{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:21px;line-height:1.4;color:var(--ink-soft);text-align:center;max-width:34em;margin:0 auto 26px;}
 .body ul,.body ol{margin:0 0 16px;padding-left:1.4em;}
@@ -73,6 +89,9 @@ a{color:var(--gold-br);}
 .body em{color:var(--ink);}
 .body hr{border:none;border-top:1px solid rgba(201,162,75,.28);margin:30px auto;max-width:60%;}
 .body code{font-family:'Courier New',ui-monospace,monospace;font-size:.9em;background:rgba(201,162,75,.1);border:1px solid rgba(201,162,75,.25);border-radius:4px;padding:1px 5px;color:var(--gold-br);}
+/* block code (e.g. the ASCII map): one clean monospace panel, NOT per-line inline-code bars */
+.body pre{background:#0e0706;border:1px solid var(--rule);border-radius:6px;padding:14px 16px;margin:0 0 18px;overflow-x:auto;line-height:1.32;}
+.body pre code{display:block;background:none;border:none;border-radius:0;padding:0;color:var(--ink-soft);font-size:11px;white-space:pre;}
 .body a{text-decoration:underline;text-decoration-color:rgba(201,162,75,.5);}
 
 /* drop cap on the first body paragraph after the dek */
@@ -117,7 +136,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 @media print{
   @page{margin:16mm;}
   body{background:#f4ead2 !important;color:#2a1d10 !important;padding:0;margin:0;font-size:11.5pt;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  .dm-block,.note-bar,.dm-notes,.dm-reset{display:none !important;}
+  .dm-block,.note-bar,.dm-notes,.dm-reset,.toc-nav{display:none !important;}
   .page{background:transparent !important;border:none !important;border-radius:0 !important;box-shadow:none !important;margin:0 !important;max-width:none !important;padding:0 !important;}
   .page::before,.page::after,.corner{display:none !important;}
   .cover{border-bottom-color:#9a7b2e;}
@@ -159,6 +178,18 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
       <div class="divider"><span class="ln"></span><span class="dia">&#10070;</span><span class="ln"></span></div>
     </header>
 
+    <details class="toc-nav" open><summary>Contents</summary><div class="toc">
+<ul>
+<li><a href="#1-cursed-treasures">1. Cursed Treasures</a></li>
+<li><a href="#2-omens-of-the-damned">2. Omens of the Damned</a></li>
+<li><a href="#3-what-the-dead-remember">3. What the Dead Remember</a></li>
+<li><a href="#4-the-price-of-a-favor">4. The Price of a Favor</a></li>
+<li><a href="#5-three-dark-boons-signature-cursed-items">5. Three Dark Boons &mdash; Signature Cursed Items</a></li>
+<li><a href="#you-braved-the-dark-spend-the-favor">You braved the dark. Spend the favor.</a></li>
+</ul>
+</div>
+</details>
+
     <article class="body">
 <p class="dek">For the one who found the four skulls.</p>
 <p>You went looking in the dark places of this site, you found four crimson skulls, and you read the cipher to the end. Most people don't. They skim, they bounce, they never notice the thing grinning at them from the corner of the page. You did. So here's the favor you earned &mdash; a boon, the kind that bites.</p>
@@ -167,7 +198,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 <p>A real person wrote these, the same way the Field Kit got written &mdash; every row had to hand you a hook or a decision, or it got cut. Curses with no story are just minus signs on a sheet. These have stories. Flavor's up top, the mechanics that need a number are penned off where you can find them under pressure.</p>
 <p>You braved the dark. Here's the boon that bites.</p>
 <hr>
-<h2>1. Cursed Treasures</h2>
+<h2 id="1-cursed-treasures">1. Cursed Treasures</h2>
 <p><em>Roll when the party earns loot you want them to grab fast and regret slow &mdash; every piece is genuinely worth taking, and every piece comes with a string, a cost, or somebody coming to collect.</em></p>
 <p>Treasure that's just treasure is a number. Treasure that's a problem is a plot. Each row is tempting enough that a sensible party still takes it, and each one has a hook that doesn't show until later. Read the bold part as what they see; the dash is the bill, for you.</p>
 <div class="table-wrap"><table class="kit">
@@ -263,7 +294,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 <p><strong>The mechanics, for the rows that need them.</strong> Keep the flavor above; reach down here only when a player demands the number. <em>(1)</em> While worn, the next creature that lies to the wearer within 30 ft takes the damage the wearer would have taken. <em>(6)</em> On a critical hit the wielder gains temporary hit points equal to the damage dealt; if a full day passes without the blade drawing blood, the wielder takes that much necrotic damage at dawn. <em>(16)</em> Drinking restores hit points as a potion of healing, then the drinker rolls on a "lingering scars" effect of your choice. <em>(19)</em> Each night the candle burns, the lighter loses one hit die from their maximum until they finish a long rest away from it.</p>
 <p><strong>Roll twice and combine</strong> for a treasure with two hooks: the first roll is the gift the party can't refuse, the second is the catch they don't read until it's load-bearing. (The never-empty purse <em>and</em> the bell that answers its own name is one bad week.)</p>
 <hr>
-<h2>2. Omens of the Damned</h2>
+<h2 id="2-omens-of-the-damned">2. Omens of the Damned</h2>
 <p><em>Roll when the party has crossed something bound or cursed and you want them to feel watched before they're ever touched &mdash; small wrongnesses, then larger ones.</em></p>
 <p>The bound don't announce themselves. They leak. Drop one of these the session after the party desecrates the wrong tomb or stiffs the wrong debt, then escalate down the list as they keep ignoring it. Each is a thing a careful player flags and a reckless one rides past.</p>
 <div class="table-wrap"><table class="kit">
@@ -326,7 +357,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Quick key.</strong> Rows 1&ndash;4 are <em>wrongnesses</em> a player might write off as flavor. Rows 5&ndash;8 are <em>escalations</em> a paranoid party can't ignore. Rows 9&ndash;12 are <em>the thing is close now</em> &mdash; pull these out when the debt's nearly due and you want the table to feel the cold before the reveal.</p>
 <hr>
-<h2>3. What the Dead Remember</h2>
+<h2 id="3-what-the-dead-remember">3. What the Dead Remember</h2>
 <p><em>Roll when the party meets the restless dead &mdash; a ghost, a bound servant, a corpse that won't settle &mdash; and you need to know, on the spot, what it wants, what it remembers, and the lever that lays it down or lets it loose.</em></p>
 <p>A ghost with no want is a jump-scare. A ghost with a want is a scene. Each row is one small tragedy and the thing the party can do about it &mdash; the right move puts it to rest, the wrong move makes it worse. Read the want aloud; the dash is the lever, for you.</p>
 <div class="table-wrap"><table class="kit">
@@ -421,7 +452,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Roll twice and combine</strong> for a dead thing pulling two ways: what it says it wants (the first roll) and what it'll actually do when the party tries to give it (the second). A ghost that "wants its name said right" but is secretly the one "holding a door shut against something worse" punishes the easy fix.</p>
 <hr>
-<h2>4. The Price of a Favor</h2>
+<h2 id="4-the-price-of-a-favor">4. The Price of a Favor</h2>
 <p><em>Roll when a desperate NPC &mdash; or a desperate party &mdash; sits down to bargain with a thing that should never be bargained with. What it offers, and the cost buried where nobody reads.</em></p>
 <p>The deal always sounds fair. That's the craft of it. Each row gives the offer the supplicant hears and the price they don't, until it's collected. Lead with the offer; the dash is the fine print.</p>
 <div class="table-wrap"><table class="kit">
@@ -476,27 +507,27 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Quick key.</strong> Rows 1, 4, 5, 7 cost <em>someone the bargainer loves</em> &mdash; best when the party can still intervene. Rows 2, 8, 9 cost <em>the bargainer's own future</em> &mdash; Faustian slow burns. Rows 3, 6, 10 are <em>open hooks</em> the thing leaves dangling so it can collect on its own schedule. <strong>Roll twice</strong> when the party tries to outsmart the deal &mdash; the second cost is the one waiting behind the clever loophole.</p>
 <hr>
-<h2>5. Three Dark Boons &mdash; Signature Cursed Items</h2>
+<h2 id="5-three-dark-boons-signature-cursed-items">5. Three Dark Boons &mdash; Signature Cursed Items</h2>
 <p>The centerpiece. Three originals, written full. Each is worth taking. Each will cost the party something they didn't price in. Hand them out when you want a reward the table argues about for the rest of the campaign.</p>
-<h3>The Widow's Patience</h3>
+<h3 id="the-widows-patience">The Widow's Patience</h3>
 <p><strong>Appearance.</strong> A wedding band of tarnished silver, sized to no finger in particular &mdash; it shrinks to fit whoever puts it on. A single black pearl sits where a stone should, and the pearl is warm, always, the temperature of a hand that just let go of yours.</p>
 <p><strong>What it does.</strong> While worn, you cannot die from a wound. Reduced to 0 hit points, you drop to 1 instead and stay standing. Plain enough.</p>
 <p><strong>The catch.</strong> The ring is keeping someone else dead in your place. The first time it saves you, an NPC you've shared a meal with dies that night, peacefully, in their sleep, somewhere else. You won't be told. You'll just hear, weeks later, that they passed. The ring saves you every time, and someone you've broken bread with pays every time, and the ring picks them in the order you'd miss them least &mdash; which means it knows you better than you'd like.</p>
 <p><strong>Origin.</strong> A woman buried four husbands and could not bear a fifth grave, so she struck a bargain to never bury anyone again. She never did. Everyone around her did the burying instead, until there was no one left to do it for her.</p>
 <hr>
-<h3>The Honest Coin</h3>
+<h3 id="the-honest-coin">The Honest Coin</h3>
 <p><strong>Appearance.</strong> A heavy gold coin, blank on both faces, smooth as a worn tooth. Flip it and a face appears as it lands &mdash; a stranger's, frightened, looking up at you. A different face each time. They never repeat.</p>
 <p><strong>What it does.</strong> Once per day, flip the coin and ask a yes-or-no question about something within a mile. It answers true, every time, no save, no trick, no riddling. The most honest oracle a party will ever hold.</p>
 <p><strong>The catch.</strong> The face on the coin is a real person, somewhere, and asking the question kills them. They die the instant the coin lands, wherever they are, of nothing in particular &mdash; a stopped heart, a missed step on a stair. The coin spends a life to buy a truth. The party will not connect the deaths to the coin for a long time, because the dead are strangers, far away, unmourned by anyone the party knows. That's the design. It only gets expensive when they realize, and by then they'll have asked it a dozen things they could have figured out themselves.</p>
 <p><strong>Origin.</strong> A spymaster who valued certainty above every other thing commissioned a tool that could not lie. The smith warned him truth has to be paid for in the same coin as a life. He paid. He got his certainty, and a kingdom of small unexplained funerals, and at the end he flipped it one last time to ask whether he'd been a good man, and saw his own face come up.</p>
 <hr>
-<h3>Granny Ashfall's Stitch</h3>
+<h3 id="granny-ashfalls-stitch">Granny Ashfall's Stitch</h3>
 <p><strong>Appearance.</strong> A bone needle threaded with a single grey hair too long to belong to any living head, wound around a spool of the same. The thread never runs out. The needle is always faintly warm and a little damp, like it's been held in a mouth.</p>
 <p><strong>What it does.</strong> With ten minutes and the needle, you can sew a wound shut &mdash; any wound, on anyone, even a fatal one, even a few minutes after death. The stitched return to life or to health, breathing, talking, themselves. No magic anyone can detect. No catch a healer can find.</p>
 <p><strong>The catch.</strong> Whatever you sew up is now sewn to you. You feel their pain, faintly, always &mdash; and if they die again, properly, you take the death you spared them, on the spot, no save. Sew up a friend and you've roped your life to theirs. Sew up a stranger to be kind and you've handed a knife to anyone who learns the trick. There is one way out: cut the thread with the same needle, and the binding breaks &mdash; but cutting it kills the person you saved, then and there, the death you'd held off finally landing. So you're never free for nothing. Free yourself and they die; leave it and your life hangs on theirs. Either way the scar stays, a line of grey stitching under the skin that never fades, marking everyone you've ever saved &mdash; and everyone who can still kill you by killing them.</p>
 <p><strong>Origin.</strong> A midwife in a plague year refused to let the children go. She learned a stitch from something that came to her door offering to help, and she saved every child in the village, and tied every one of their small lives to her own. When the plague took them anyway, one by one, it took her with each. They found her at her table, needle in hand, with two hundred grey scars and not a mark of illness on her.</p>
 <hr>
-<h2>You braved the dark. Spend the favor.</h2>
+<h2 id="you-braved-the-dark-spend-the-favor">You braved the dark. Spend the favor.</h2>
 <p>Here's the token, as promised. Use <strong>STRAHD-FALLS</strong> when you book a session with me &mdash; a founder's cut off the price, because you're the kind of person who reads to the end and notices the skull in the corner. That's exactly the kind of player I like at a table.</p>
 <p>The rest of it &mdash; a complete, run-ready adventure every week, villain with a reason and a twist already built &mdash; is <strong>The Weekly One-Shot</strong>. Open it Thursday, run it Friday. Same deal as everything here: every reward has a story, and none of them are filler.</p>
 <p>You found the four skulls. You read the cipher. Whatever you summon at your table next, summon it on purpose.</p>

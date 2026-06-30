@@ -25,6 +25,7 @@
   --panel:#21100f; --rule:#5c2a23;
 }
 *{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 html,body{margin:0;padding:0;}
 body{
   background:radial-gradient(140% 90% at 50% 0%, #2a0f0d 0%, var(--bg) 55%, #0c0606 100%);
@@ -56,12 +57,27 @@ a{color:var(--gold-br);}
 .divider .ln{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold),transparent);max-width:220px;}
 .divider .dia{font-size:13px;}
 
+/* Contents / jump nav */
+.toc-nav{max-width:62ch;margin:0 auto 28px;background:rgba(0,0,0,.22);border:1px solid var(--rule);border-radius:6px;padding:12px 18px 14px;}
+.toc-nav summary{font-family:'Playfair Display',Georgia,serif;font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--gold);cursor:pointer;list-style:none;}
+.toc-nav summary::-webkit-details-marker{display:none;}
+.toc-nav summary::before{content:"\25B8\00a0";color:var(--gold-br);}
+.toc-nav[open] summary::before{content:"\25BE\00a0";}
+.toc-nav .toc{margin-top:11px;}
+.toc-nav .toc>ul{list-style:none;margin:0;padding:0;columns:2;column-gap:28px;}
+.toc-nav .toc ul ul{display:none;}
+.toc-nav .toc li{margin:0 0 6px;break-inside:avoid;}
+.toc-nav .toc a{color:var(--ink-soft);text-decoration:none;font-size:14px;border-bottom:1px dotted rgba(201,162,75,.32);}
+.toc-nav .toc a:hover{color:var(--gold-br);border-bottom-color:var(--gold-br);}
+@media (max-width:600px){.toc-nav .toc>ul{columns:1;}}
+
 /* body typography */
 .body{max-width:62ch;margin:0 auto;}
 .body h2{font-family:'Breathe Fire','Playfair Display',Georgia,serif;font-weight:400;color:var(--gold-br);font-size:30px;line-height:1.12;margin:34px 0 10px;letter-spacing:.01em;}
 .body h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:var(--crimson-br);text-transform:uppercase;letter-spacing:.05em;font-size:16px;margin:24px 0 8px;}
 .body h4{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:var(--gold);font-size:14px;letter-spacing:.04em;margin:18px 0 6px;}
 .body h2:first-child,.body h3:first-child{margin-top:4px;}
+.body h2,.body h3{scroll-margin-top:18px;}
 .body p{margin:0 0 14px;}
 .body p.dek{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:21px;line-height:1.4;color:var(--ink-soft);text-align:center;max-width:34em;margin:0 auto 26px;}
 .body ul,.body ol{margin:0 0 16px;padding-left:1.4em;}
@@ -73,6 +89,9 @@ a{color:var(--gold-br);}
 .body em{color:var(--ink);}
 .body hr{border:none;border-top:1px solid rgba(201,162,75,.28);margin:30px auto;max-width:60%;}
 .body code{font-family:'Courier New',ui-monospace,monospace;font-size:.9em;background:rgba(201,162,75,.1);border:1px solid rgba(201,162,75,.25);border-radius:4px;padding:1px 5px;color:var(--gold-br);}
+/* block code (e.g. the ASCII map): one clean monospace panel, NOT per-line inline-code bars */
+.body pre{background:#0e0706;border:1px solid var(--rule);border-radius:6px;padding:14px 16px;margin:0 0 18px;overflow-x:auto;line-height:1.32;}
+.body pre code{display:block;background:none;border:none;border-radius:0;padding:0;color:var(--ink-soft);font-size:11px;white-space:pre;}
 .body a{text-decoration:underline;text-decoration-color:rgba(201,162,75,.5);}
 
 /* drop cap on the first body paragraph after the dek */
@@ -117,7 +136,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 @media print{
   @page{margin:16mm;}
   body{background:#f4ead2 !important;color:#2a1d10 !important;padding:0;margin:0;font-size:11.5pt;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  .dm-block,.note-bar,.dm-notes,.dm-reset{display:none !important;}
+  .dm-block,.note-bar,.dm-notes,.dm-reset,.toc-nav{display:none !important;}
   .page{background:transparent !important;border:none !important;border-radius:0 !important;box-shadow:none !important;margin:0 !important;max-width:none !important;padding:0 !important;}
   .page::before,.page::after,.corner{display:none !important;}
   .cover{border-bottom-color:#9a7b2e;}
@@ -159,6 +178,21 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
       <div class="divider"><span class="ln"></span><span class="dia">&#10070;</span><span class="ln"></span></div>
     </header>
 
+    <details class="toc-nav" open><summary>Contents</summary><div class="toc">
+<ul>
+<li><a href="#the-village-at-a-glance">The village at a glance</a></li>
+<li><a href="#the-keyed-locations">The keyed locations</a></li>
+<li><a href="#the-people">The people</a></li>
+<li><a href="#the-notice-board-d10">The notice board (d10)</a></li>
+<li><a href="#whats-simmering">What's simmering</a></li>
+<li><a href="#a-creature-for-the-marches-the-fen-shrike">A creature for the Marches: the Fen-Shrike</a></li>
+<li><a href="#the-local-map">The local map</a></li>
+<li><a href="#drop-it-into-your-game">Drop it into your game</a></li>
+<li><a href="#if-brackenford-earns-a-spot-on-your-table">If Brackenford earns a spot on your table</a></li>
+</ul>
+</div>
+</details>
+
     <article class="body">
 <p class="dek">A frontier village you can drop into any campaign and run tonight. A home base with the lights on and the doors locked a little early.</p>
 <p>Every campaign needs a place the party comes back to. Somewhere to spend the gold, hear the rumor, sleep off the wounds, and pick up the next job before they ride out again. Most DMs build that place on the fly, the first time the party asks "is there a town near here?", and they end up with a tavern, an innkeeper named Bob, and nothing under the surface.</p>
@@ -166,64 +200,64 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 <p>A real person built this. Thirty years running games, and the same lesson learned over and over: a town the players love is a town with problems they can choose to fix. Not a backdrop. A place that's already living its own life when the party rides in, and keeps living it whether they help or not. Everything below is here to do one job: let you run Brackenford cold, tonight, and have something true to say the moment a player asks "what do I see?"</p>
 <p>Drop it into the map you already have. The road comes from anywhere. The wild country past it goes anywhere you need. That's the whole point.</p>
 <hr>
-<h2>The village at a glance</h2>
+<h2 id="the-village-at-a-glance">The village at a glance</h2>
 <p>You come down out of the hills on an old trade road, and the first thing you see is the bridge &mdash; a stone span over the River Wend, half of it fallen into the water years ago, the gap never repaired. Beside it, where the river runs wide and shallow over flat stones, there's a ford, and that's where the road actually crosses now. A man sits at the near bank in a chair he carried out there himself, and he wants a copper from everyone who wets their boots.</p>
 <p>Past the ford the village rises up the far slope: timber and daub houses with steep roofs, smoke from the cookfires, a square with a well and a notice board, and at the top of it all the inn &mdash; <strong>The Broken Wheel</strong> &mdash; with light in the windows and noise behind the door. Above the whole town, on the highest hill, sits the dark shape of <strong>Caer Brack</strong>, a ruined keep that nobody goes into and everybody can see.</p>
 <p>It's a friendly place. People wave. The ale's good and the beds are clean. But ride in near dusk and you'll catch the other thing: shutters closing a little early, a mother calling a child in by name, the way conversation drops half a tone when a stranger walks past. Brackenford is on edge, quietly, in the way of a town that's learned to live next to wild country and has lately started learning to live next to something worse.</p>
 <p><strong>For the DM:</strong> Brackenford works at any party level. As a level 1&ndash;3 home base it's a place of human-scale problems: tolls, grudges, a missing shepherd. Run it for higher-level parties and the same locations carry bigger weight: what's under the keep gets hungrier, the stones on the moor matter more, and the people who run the village from behind the curtain get bolder. Scale by deciding how far the rot has spread, not by changing the map.</p>
 <hr>
-<h2>The keyed locations</h2>
+<h2 id="the-keyed-locations">The keyed locations</h2>
 <p>Eight places, keyed for the table. The boxed text is what you read aloud. Everything after it is yours.</p>
-<h3>1. The Ford &amp; the Broken Bridge</h3>
+<h3 id="1-the-ford-the-broken-bridge">1. The Ford &amp; the Broken Bridge</h3>
 <blockquote>
 <p>The river runs wide and shallow here, brown over flat grey stones, cold enough to numb your shins by the second step. Beside the crossing, the old bridge stands with half its span gone &mdash; the near arch still solid, the far arch a stub of broken masonry hanging over the water. A man sits in a wooden chair on the bank with a strongbox between his boots and a cudgel across his knees. "Copper a head to cross," he says, not unkindly. "Two for the horse. The bridge is free, if you can fly."</p>
 </blockquote>
 <p><strong>What's here:</strong> <strong>Doran Welk</strong>, the ford-keeper (see the people, below). The toll is new, within the last year, and it's the village's biggest open argument. Doran says he collects it for repairs to the bridge. The bridge has not been touched.</p>
 <p><strong>The bridge itself</strong> collapsed a generation ago and was never rebuilt, which is strange for a village that depends on the crossing. Old folk will say the stone was needed elsewhere. Pressed, a few will admit the far arch was pulled down on purpose, the year the trouble started at the keep, by people who wanted the far bank harder to reach after dark.</p>
 <p><strong>Hooks:</strong> Who is Doran really paying? (Follow the money and it leads up the hill, then past it.) And why does the ford freeze over in a hard cold faster than running water should &mdash; and why won't anyone cross it the night it does?</p>
-<h3>2. The Broken Wheel (the inn)</h3>
+<h3 id="2-the-broken-wheel-the-inn">2. The Broken Wheel (the inn)</h3>
 <blockquote>
 <p>The common room is low-beamed and warm, a fire going, a wheel with three spokes left nailed over the hearth as a joke nobody explains. A big woman works the taps with her sleeves shoved up, trading insults with the regulars by name. The board over the bar lists three ales and a stew, and the stew is good. A back stair goes up to the rooms. There's one chair by the fire that nobody sits in, and a clean mug set in front of it.</p>
 </blockquote>
 <p><strong>What's here:</strong> <strong>Mara Tullamore</strong>, the keeper (see the people). The inn is the social heart of Brackenford, the place every hook passes through, where the party hears everything and is heard by everyone. Rooms are a few coppers a night; the stew is mutton, and Mara will tell you not to ask about the lamb.</p>
 <p><strong>The empty chair</strong> by the fire is set for her husband, Tobin, a shepherd who walked out onto the moor last autumn and didn't come back. She sets his mug every dusk. She is not grieving wrong, whatever the gossip says. She is waiting, because once, on a night the ford froze, she heard him at the door &mdash; and when she opened it, there was nothing but his crook, stuck upright in the frost.</p>
 <p><strong>Hooks:</strong> Mara knows everyone's business and trades it for a song or a kind word. She's the party's best information broker. And if they're the kind to go looking on the moor for a missing man &mdash; she'll pay them in free beds for a year, and beg them not to bring back what they find if it isn't really him.</p>
-<h3>3. The Notice Board</h3>
+<h3 id="3-the-notice-board">3. The Notice Board</h3>
 <blockquote>
 <p>A slab of weathered oak stands in the square by the well, layered with notices old and new &mdash; some printed, most scrawled, a few just charcoal on bark. A lottery winner from three seasons back. A reward for a lost dog, the ink run with rain. And, pinned over all of it with a black-headed nail, a fresh sheet in a careful hand that wasn't there yesterday.</p>
 </blockquote>
 <p><strong>What's here:</strong> the village's job board and gossip wall, the on-ramp for adventures (the full table is below). Anyone can post. Most notices are mundane. A few are the start of something.</p>
 <p><strong>The black-nailed notices</strong> are the ones that matter. They appear overnight, written in the same careful hand, and they never name who posted them. The villagers have learned to take them seriously. Doran the ford-keeper takes them down by morning if he can &mdash; he doesn't like them up where strangers can read them.</p>
 <p><strong>Hook:</strong> roll on the notice board table for what's posted when the party arrives, and again any time they pass through. The strange ones (marked) reward a party that asks who wrote them.</p>
-<h3>4. Caer Brack (the ruined keep)</h3>
+<h3 id="4-caer-brack-the-ruined-keep">4. Caer Brack (the ruined keep)</h3>
 <blockquote>
 <p>The road up the hill is grown over but still walkable, and at the top the keep waits &mdash; a square stone shell, roof long gone, walls standing two and three storeys where they haven't fallen. The gateway gapes open; the gate itself rotted off its hinges. Inside the bailey, grass and gorse grow waist-high, and in one corner a stone stair leads down into the dark, the steps swept clean. Somebody keeps that stair clear of leaves.</p>
 </blockquote>
 <p><strong>What's here:</strong> the bones of the keep that Brackenford grew up beneath. The upper levels are a ruin, safe enough to explore, good for a low-level skirmish with whatever's denned up there (wild dogs, a desperate squatter, a nest of the <strong>fen-shrikes</strong> described below). Treat the exterior and the ground floor as a runnable site: collapsed halls, a dry cistern, an old armory long since looted, a chapel with the altar smashed.</p>
 <p><strong>The swept stair</strong> is the thing. It goes down past the cellars into older stone, and it is always clear of debris, no matter how long since anyone admits to going down. Cold air comes up it that smells of wet rock and, faintly, of tallow. Someone burns candles down there. The villagers will not discuss what's below. The bravest of them will only say: "It used to sleep more."</p>
 <p><strong>For the DM: leave this open.</strong> Do not detail the lower levels here. Whatever is under Caer Brack is the seed of a bigger story; a companion adventure will go down those stairs. For now, the keep's depths are the question the whole village is built around and nobody answers. Let the party feel the cold come up the stair. Let them find a fresh candle-stub. Then let them decide they're not ready &mdash; yet.</p>
-<h3>5. The Stone Circle (out on the moor)</h3>
+<h3 id="5-the-stone-circle-out-on-the-moor">5. The Stone Circle (out on the moor)</h3>
 <blockquote>
 <p>An hour's walk out onto the moor, where the heather gives way to bare turf and standing water, a ring of grey stones breaks the skyline &mdash; nine of them, taller than a man, leaning at angles that feel wrong the longer you look. The ground inside the ring is bare. Nothing grows there, though the moor crowds right up to the edge. In the center, flat in the grass, lies a tenth stone, fallen, with a worn channel cut around its rim.</p>
 </blockquote>
 <p><strong>What's here:</strong> the <strong>Wend Stones</strong>, a circle older than Brackenford, older than the keep, that the villagers treat with a careful, practical respect. Shepherds leave a coin or a crust on the fallen center stone when they pass; they say it keeps the moor "quiet." Nobody remembers who set the stones or why. The channel around the center stone has, on close inspection, been kept clean of moss. Someone still tends it.</p>
 <p><strong>The thing about the stones:</strong> count them twice and you may not get nine both times. On the nights the ford freezes, the bare ground inside the ring is the only place on the moor where frost doesn't form. People who've spent a night inside the circle by accident come back fine, but they come back a day later than they should, swearing only one night passed.</p>
 <p><strong>Hooks:</strong> the stones and the keep are connected &mdash; the same cold, the same nights. A party that maps the connection has the spine of a campaign. And the offerings on the center stone have lately started disappearing faster than the weather can explain.</p>
-<h3>6. The Shrine of the Quiet Hand (temple)</h3>
+<h3 id="6-the-shrine-of-the-quiet-hand-temple">6. The Shrine of the Quiet Hand (temple)</h3>
 <blockquote>
 <p>A small stone chapel at the edge of the square, older than the houses around it, with a carved hand above the door &mdash; palm out, fingers together, the universal sign for <em>stop, wait, be still</em>. The door is shut. A month of dead leaves has piled against it. Through a gap in the shutters you can see candlelight inside, and hear, faintly, someone moving.</p>
 </blockquote>
 <p><strong>What's here:</strong> the shrine of a small local faith, the <strong>Quiet Hand</strong>: a creed of patience, vigil, and holding the line against what comes in the dark. (System-agnostic; reskin to any deity of watchfulness or protection your setting uses.) Until a month ago, the keeper, <strong>Brother Anselm</strong>, opened the doors each dawn, took the village's worries, and rang the bell at dusk. Then the doors stopped opening. The bell still rings, every dusk, on time.</p>
 <p><strong>What's wrong:</strong> Anselm is still inside. He hasn't left in a month, and he hasn't let anyone in. He still takes the offerings left on the step; they vanish overnight. The villagers are frightened of what his silence means, and too respectful, or too scared, to break the door down. The truth (yours): Anselm saw something come up the swept stair at the keep, and he believes the only thing keeping it penned is the dusk bell and his unbroken vigil. He may be right. He may be losing his mind. He may be both.</p>
 <p><strong>Hooks:</strong> a party can talk their way in, break in, or wait him out. What they find is a man who hasn't slept in thirty days, ringing a bell on time, and a very good question: what happens to Brackenford if he stops?</p>
-<h3>7. Greel's Yard (market &amp; trade)</h3>
+<h3 id="7-greels-yard-market-trade">7. Greel's Yard (market &amp; trade)</h3>
 <blockquote>
 <p>A muddy yard behind the square, fenced with cart-wheels and hung with everything a frontier village trades &mdash; pelts, iron tools, dried fish, rope, a wall of mismatched boots. A wiry man with a tally-stick haggles three conversations at once, never writing anything down, never wrong about a price. A boy runs goods between him and the river. A goat eats a hat.</p>
 </blockquote>
 <p><strong>What's here:</strong> <strong>Pell Greel</strong>, the trader (see the people), and the village's de facto market &mdash; there's no proper shop, just Greel's yard, where everything bought and sold in Brackenford passes through. He fronts as a cheerful junk-dealer. He is the man who actually knows what moves through this village, who's selling family silver quietly, who came through with goods they shouldn't have had, what's been carried up the hill road and not carried back down.</p>
 <p><strong>The catch:</strong> Greel buys information as readily as goods, and sells it to whoever pays. He is not the villain. He's the weathervane. Whatever's really happening in Brackenford, Greel can be paid to point at it. He'll also, for the right price, sell the party out to whoever asks about <em>them</em>.</p>
 <p><strong>Hooks:</strong> the party's best fence, supplier, and rumor-tap, all in one greedy package, as long as they remember he's selling them, too.</p>
-<h3>8. The Drowned Lane (the far bank)</h3>
+<h3 id="8-the-drowned-lane-the-far-bank">8. The Drowned Lane (the far bank)</h3>
 <blockquote>
 <p>Across the ford, on the wild side of the river, a single row of houses stands half-sunk in the boggy ground &mdash; doors swollen shut, roofs caved, a lane that was a street once and is mud now. Reeds grow through the floors. This was a part of Brackenford, once, before the far arch came down. Nobody lives here now. Nobody crosses to it after dark.</p>
 </blockquote>
@@ -231,7 +265,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 <p><strong>What's wrong:</strong> the far bank is closer to both the keep and the moor, and it's where the cold gets in first on a freezing night. The villagers abandoned it not because it flooded (it always flooded) but because, after the trouble started, things began using the empty houses to get closer to the ford. Lights are sometimes seen in the windows. The party may be the first people to walk the Drowned Lane in years, and they will not be alone if they do it at the wrong hour.</p>
 <p><strong>Hooks:</strong> what's nesting in the far-bank houses (the <strong>fen-shrikes</strong>, below, or worse). And the reason one house, at the lane's dead end, has a door that's been recently, carefully, nailed shut from the <em>outside</em>.</p>
 <hr>
-<h2>The people</h2>
+<h2 id="the-people">The people</h2>
 <p>Eight named villagers. Each one wants something, has a reason they think they're right, carries one habit you'll remember them by, and hides one thing. Allies, problems, and people the party won't be sure about.</p>
 <p><strong>Doran Welk, the ford-keeper.</strong> A broad, tired man who collects the toll from a chair he won't leave. <em>Wants:</em> to keep his family fed and out of the cold &mdash; both meanings. <em>Why he's right (to himself):</em> somebody has to pay the price the keep demands, and better coin than blood; he's the wall between the village and a worse bill. <em>Mannerism:</em> tests every coin against his teeth, even coppers, even when he knows them. <em>Secret:</em> the toll money doesn't fund the bridge and never will. It's tribute, carried up the hill road on the nights the ford freezes, and Doran is the one who carries it. He hates it. He does it because the year he refused, his eldest didn't come home.</p>
 <p><strong>Mara Tullamore, the innkeeper.</strong> Loud, kind, sharp as a tack, runs The Broken Wheel like a ship. <em>Wants:</em> her husband Tobin back, or proof he's gone, so she can stop setting the mug. <em>Why she's right:</em> she heard him at the door; a wife knows. <em>Mannerism:</em> sets a clean mug at the empty chair every dusk, without breaking conversation, like breathing. <em>Secret:</em> she knows more about the swept stair and the freezing nights than anyone living, because Tobin told her things before he walked out, and she's been quietly feeding the party rumors, hoping someone brave and stupid enough will finish what he started.</p>
@@ -242,7 +276,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 <p><strong>Bryn, the boy who runs Greel's goods.</strong> Quick, watchful, twelve or so, sees everything in the village and says little. <em>Wants:</em> to matter, to be let in on the grown-ups' secrets, to be brave. <em>Why he's right:</em> he's the only one who goes everywhere and is invisible doing it. <em>Mannerism:</em> repeats back the last thing an adult says, quietly, like he's filing it. <em>Secret:</em> he's been up the hill road and down the swept stair, on a dare, farther than any adult would dare, and he came back. He's seen what's down there. He hasn't told anyone, because the one time he tried, the words wouldn't come out, and now he's not sure they ever will.</p>
 <p><strong>Goodwife Alder, who runs the village from her kitchen.</strong> A plump, gracious woman who hosts the women of Brackenford for tea and somehow every decision in the village gets made over her table. <em>Wants:</em> the village to hold together, by her hand, on her terms. <em>Why she's right:</em> somebody competent has to steer, and the men with titles are all useless or absent, so she does it where it actually works &mdash; the kitchen, not the council. <em>Mannerism:</em> offers food as a tactic &mdash; you cannot refuse her bread, and you cannot stay angry while eating it, and she knows both. <em>Secret:</em> she made the call, a year ago, to start paying the toll-tribute rather than fight it. She is the one who told Doran to carry the coin up the hill, and she carries the weight of every soul it's cost since, alone, smiling, pouring tea.</p>
 <hr>
-<h2>The notice board (d10)</h2>
+<h2 id="the-notice-board-d10">The notice board (d10)</h2>
 <p>What's pinned to the board when the party comes through the square. Roll, or pick. The ones marked ◆ are the black-nailed notices &mdash; strange, unsigned, and worth chasing.</p>
 <div class="table-wrap"><table class="kit">
 <thead>
@@ -295,7 +329,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </tbody>
 </table></div>
 <hr>
-<h2>What's simmering</h2>
+<h2 id="whats-simmering">What's simmering</h2>
 <p>Four tensions running under Brackenford. Each one is a thread a DM can pull on for a session or a season. The visible problem is what the party meets first. What's underneath is yours. How it blows is where the campaign goes.</p>
 <p><strong>1. The toll, and who really collects it.</strong>
 <em>Visible:</em> Doran charges a copper to cross a ford that used to be free, and tells everyone it's for a bridge he never repairs. Half the village resents him for it.
@@ -314,12 +348,12 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 <em>Underneath:</em> Goodwife Alder runs it, from her kitchen table, and has for years. She made the call to pay the tribute. She tells the captain, the ford-keeper, and half the village what to do, and they do it, because she's the only one with a plan. She's competent, kind, and carrying the cost of every choice alone behind a teapot.
 <em>How it blows:</em> the party works out who's really in charge, and has to decide what to do about a woman who's been quietly trading lives for the village's survival the whole time. Is she the villain who's been feeding a monster, or the only adult in the room who did the math nobody else would? Let them sit with that one. There's no clean answer, which is the point.</p>
 <hr>
-<h2>A creature for the Marches: the Fen-Shrike</h2>
+<h2 id="a-creature-for-the-marches-the-fen-shrike">A creature for the Marches: the Fen-Shrike</h2>
 <p><em>An original threat for the moor and the far-bank houses, system-agnostic. Stat it to your party's level using your system's "pack predator" template.</em></p>
 <p>A fen-shrike is a long-legged moor bird the size of a wolfhound, grey as standing water, with a beak it uses the way other birds use a hawk's talons. It hunts the wet country in silent pairs and impales what it kills on the broken reeds and fence-stakes of the Drowned Lane, leaving a larder of small, neatly-spitted corpses that the party will find before they find the bird. It's drawn to the cold that comes off the keep: where the fen-shrikes nest, the freezing nights have been. They're a real danger to a low-level party and a tell for everyone else. A fresh shrike-larder means the cold's been here recently, and may be coming back.</p>
 <p><strong>Signature tactic:</strong> silent until it strikes. A fen-shrike makes no call, which is how it lives in a place where everything listens. The first warning is the rush of wide wings, and by then it's already inside your reach. Run them in pairs; one drives the prey, one waits where the prey will run.</p>
 <hr>
-<h2>The local map</h2>
+<h2 id="the-local-map">The local map</h2>
 <p>A text sketch so it can be illustrated later. North is up. The River Wend runs roughly east&ndash;west across the bottom of the village.</p>
 <pre><code>                    ~ ~ ~  THE HOLLOW MARCHES  ~ ~ ~
               moor · fen · old forest · standing water
@@ -348,7 +382,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </code></pre>
 <p><strong>Spatial logic for the DM:</strong> the road comes in from the south, crosses the Wend at the ford (the broken bridge a useless landmark beside it), and climbs the far slope through the square to the inn at the top. The temple sits on the square's edge; Greel's yard runs between square and river. The hill road leaves the back of the village and climbs to Caer Brack. Past the keep, the Hollow Marches open out: moor and fen, the stone circle an hour's walk northeast, Sefa's hut on the moor's edge. The Drowned Lane is the old far-bank quarter, northwest across the ford, closer to both keep and moor, which is why the cold reaches it first.</p>
 <hr>
-<h2>Drop it into your game</h2>
+<h2 id="drop-it-into-your-game">Drop it into your game</h2>
 <p>Brackenford needs no setting of its own. It's a river crossing on a trade road at the edge of wild country, which exists on every fantasy map ever drawn. To plug it in:</p>
 <ul>
 <li><strong>Pick the road.</strong> The trade road comes from your nearest established town and goes toward your next adventure. Brackenford is the waystop in between.</li>
@@ -358,7 +392,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </ul>
 <p><strong>Running it in other systems.</strong> Nothing here is bolted to one rule set. The locations, people, hooks, and tensions are pure narrative. Drop them into any d20 fantasy game, or into Draw Steel, Daggerheart, a Cosmere game, an OSR retroclone, or your own homebrew, and stat the fen-shrike and any keep-dwellers with that system's own monster math. The only numbers in this document are "a copper to cross" and "nine stones, sometimes ten," and both of those travel fine.</p>
 <hr>
-<h2>If Brackenford earns a spot on your table</h2>
+<h2 id="if-brackenford-earns-a-spot-on-your-table">If Brackenford earns a spot on your table</h2>
 <p>This village is yours, free, to run forever. Name it, rename it, burn it down, build it up. A home base is only worth anything if your players come to love it, and the way they come to love it is by choosing, session after session, to protect a place that has real problems and real people in it.</p>
 <p>If running Brackenford makes you want a full adventure to drop the party into, the kind where the villain has a reason, the players have a real choice, and the boxed text is already written, that's what we make every week. <strong>The Weekly One-Shot</strong> lands in your inbox ready to run: open it Thursday, run it Friday. And one of these weeks, the party's going to be ready to go down that swept stair under Caer Brack. We'll have written what's waiting.</p>
 <p>No pressure. The village runs either way. See you at the table.</p>
