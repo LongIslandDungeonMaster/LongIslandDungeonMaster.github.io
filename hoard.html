@@ -63,6 +63,13 @@
     .chest[data-reward].open .locked-text, .chest[data-reward].open .st-sealed { display: none; }
     .chest[data-reward].open .chest-icon { color: var(--gold-light); }
     .open-text a { color: var(--gold); font-weight: 700; }
+    /* free-chest download link */
+    .chest .dl { display: inline-block; margin: 0 0 .9rem; color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .82rem; letter-spacing: .3px; text-decoration: none; border-bottom: 1px solid rgba(201,168,76,.5); }
+    .chest .dl:hover { color: var(--gold-light); border-color: var(--gold-light); }
+    .chest .dl-sub { display: block; color: rgba(255,255,255,.5); font-size: .72rem; font-style: italic; margin: -.4rem 0 .9rem; }
+    /* "still in the forge" line under the grid */
+    .h-coming { max-width: 720px; margin: 1.8rem auto 0; text-align: center; color: rgba(201,168,76,.6); font-family: 'Merriweather Sans', sans-serif; font-size: .82rem; font-style: italic; line-height: 1.7; }
+    .h-coming b { color: rgba(201,168,76,.85); font-style: normal; }
 
     .h-words { max-width: 720px; margin: 3.5rem auto 0; background: var(--parchment); color: var(--ink); border: 2px solid var(--gold); border-radius: 8px; box-shadow: 0 0 0 4px rgba(139,0,0,.35), 0 12px 40px rgba(0,0,0,.5); padding: 2.4rem; }
     .h-words h2 { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--crimson-dark); font-size: 1.9rem; text-align: center; margin-bottom: 1rem; }
@@ -94,26 +101,31 @@
 
     <div class="hoard-grid">
 
-      <!-- ===== FREE CHESTS (drop real downloads in as they're forged) ===== -->
+      <!-- ===== FREE CHESTS ===== -->
       <article class="chest free">
         <div class="chest-icon"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
         <h3>The DM's Field Kit</h3>
-        <p>A free starter pack for new players and first-time DMs &mdash; the essentials to get a table rolling.</p>
-        <span class="chest-status st-free">Coming Soon</span>
+        <p>Eight tables you can reach for at any table, in any game &mdash; the silence-fillers that keep a session moving. Free when you join the list.</p>
+        <a class="dl" href="https://longislanddungeonmaster.substack.com" target="_blank" rel="noopener">Get it on Substack &rarr;</a>
+        <span class="dl-sub">The free signup gift for The Weekly One-Shot.</span>
+        <span class="chest-status st-free">Free Gift</span>
       </article>
 
       <article class="chest free">
-        <div class="chest-icon"><i class="fas fa-scroll" aria-hidden="true"></i></div>
-        <h3>A Free One-Shot</h3>
-        <p>A complete, ready-to-run adventure &mdash; maps, NPCs, hooks and twists. Print it and play tonight.</p>
-        <span class="chest-status st-free">Coming Soon</span>
+        <div class="chest-icon"><i class="fas fa-fort-awesome" aria-hidden="true"></i></div>
+        <h3>The Brackenford Starter Setting</h3>
+        <p>A frontier village you can drop into any campaign and run tonight &mdash; a ford town on the edge of the Hollow Marches, with a notice board of hooks, eight people worth knowing, and a ruined keep nobody talks about.</p>
+        <a class="dl" href="downloads/brackenford-starter-setting.pdf" target="_blank" rel="noopener">Download the PDF &rarr;</a>
+        <span class="chest-status st-free">Free Download</span>
       </article>
 
       <article class="chest free">
-        <div class="chest-icon"><i class="fas fa-map" aria-hidden="true"></i></div>
-        <h3>Printable Battle Maps</h3>
-        <p>High-res maps from the realm, sized for the table or the 40&quot; animated screen.</p>
-        <span class="chest-status st-free">Coming Soon</span>
+        <div class="chest-icon"><i class="fas fa-campground" aria-hidden="true"></i></div>
+        <h3>Table Packs</h3>
+        <p>Random-event tables to spark play when the road goes quiet. First pack: <strong>The Wilderness Pack</strong> &mdash; the campfire, the night watch, and what&rsquo;s out there in the dark.</p>
+        <a class="dl" href="downloads/wilderness-table-pack.pdf" target="_blank" rel="noopener">Download the Wilderness Pack &rarr;</a>
+        <span class="dl-sub">More packs coming. Printable battle maps still in the forge.</span>
+        <span class="chest-status st-free">Free Download</span>
       </article>
 
       <!-- ===== SEALED CHESTS (open via the secret hunts) ===== -->
@@ -138,13 +150,15 @@
       <article class="chest" data-reward="perk">
         <div class="chest-icon"><i class="fas fa-skull" aria-hidden="true"></i></div>
         <h3>The Bound One's Favor</h3>
-        <p class="locked-text">A dark boon, sealed by the Cipher of the Damned. Solve it to claim your token.</p>
-        <p class="open-text">Your founder's token: <span class="code">STRAHD-FALLS</span> &mdash; mention it when you book.</p>
+        <p class="locked-text">A dark boon, sealed by the Cipher of the Damned. Solve it to claim your favor.</p>
+        <p class="open-text">Your founder's token: <span class="code">STRAHD-FALLS</span> &mdash; mention it when you book. And a boon that bites: <a href="downloads/a-dark-boon.pdf" target="_blank" rel="noopener">open <em>A Dark Boon</em> (PDF) &rarr;</a></p>
         <span class="chest-status st-sealed">Sealed</span>
         <span class="chest-status st-open">Claimed</span>
       </article>
 
     </div>
+
+    <p class="h-coming">Still in the forge: <b>Printable Battle Maps</b> (bound for Pinterest), more <b>Table Packs</b>, and chests not yet sealed. The Hoard grows. Check back, or join the list and I&rsquo;ll tell you when it does.</p>
 
     <!-- ===== Words of Power — how to open the sealed chests ===== -->
     <section class="h-words">
