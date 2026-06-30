@@ -25,6 +25,7 @@
   --panel:#21100f; --rule:#5c2a23;
 }
 *{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 html,body{margin:0;padding:0;}
 body{
   background:radial-gradient(140% 90% at 50% 0%, #2a0f0d 0%, var(--bg) 55%, #0c0606 100%);
@@ -56,12 +57,27 @@ a{color:var(--gold-br);}
 .divider .ln{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold),transparent);max-width:220px;}
 .divider .dia{font-size:13px;}
 
+/* Contents / jump nav */
+.toc-nav{max-width:62ch;margin:0 auto 28px;background:rgba(0,0,0,.22);border:1px solid var(--rule);border-radius:6px;padding:12px 18px 14px;}
+.toc-nav summary{font-family:'Playfair Display',Georgia,serif;font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--gold);cursor:pointer;list-style:none;}
+.toc-nav summary::-webkit-details-marker{display:none;}
+.toc-nav summary::before{content:"\25B8\00a0";color:var(--gold-br);}
+.toc-nav[open] summary::before{content:"\25BE\00a0";}
+.toc-nav .toc{margin-top:11px;}
+.toc-nav .toc>ul{list-style:none;margin:0;padding:0;columns:2;column-gap:28px;}
+.toc-nav .toc ul ul{display:none;}
+.toc-nav .toc li{margin:0 0 6px;break-inside:avoid;}
+.toc-nav .toc a{color:var(--ink-soft);text-decoration:none;font-size:14px;border-bottom:1px dotted rgba(201,162,75,.32);}
+.toc-nav .toc a:hover{color:var(--gold-br);border-bottom-color:var(--gold-br);}
+@media (max-width:600px){.toc-nav .toc>ul{columns:1;}}
+
 /* body typography */
 .body{max-width:62ch;margin:0 auto;}
 .body h2{font-family:'Breathe Fire','Playfair Display',Georgia,serif;font-weight:400;color:var(--gold-br);font-size:30px;line-height:1.12;margin:34px 0 10px;letter-spacing:.01em;}
 .body h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:var(--crimson-br);text-transform:uppercase;letter-spacing:.05em;font-size:16px;margin:24px 0 8px;}
 .body h4{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:var(--gold);font-size:14px;letter-spacing:.04em;margin:18px 0 6px;}
 .body h2:first-child,.body h3:first-child{margin-top:4px;}
+.body h2,.body h3{scroll-margin-top:18px;}
 .body p{margin:0 0 14px;}
 .body p.dek{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:21px;line-height:1.4;color:var(--ink-soft);text-align:center;max-width:34em;margin:0 auto 26px;}
 .body ul,.body ol{margin:0 0 16px;padding-left:1.4em;}
@@ -73,6 +89,9 @@ a{color:var(--gold-br);}
 .body em{color:var(--ink);}
 .body hr{border:none;border-top:1px solid rgba(201,162,75,.28);margin:30px auto;max-width:60%;}
 .body code{font-family:'Courier New',ui-monospace,monospace;font-size:.9em;background:rgba(201,162,75,.1);border:1px solid rgba(201,162,75,.25);border-radius:4px;padding:1px 5px;color:var(--gold-br);}
+/* block code (e.g. the ASCII map): one clean monospace panel, NOT per-line inline-code bars */
+.body pre{background:#0e0706;border:1px solid var(--rule);border-radius:6px;padding:14px 16px;margin:0 0 18px;overflow-x:auto;line-height:1.32;}
+.body pre code{display:block;background:none;border:none;border-radius:0;padding:0;color:var(--ink-soft);font-size:11px;white-space:pre;}
 .body a{text-decoration:underline;text-decoration-color:rgba(201,162,75,.5);}
 
 /* drop cap on the first body paragraph after the dek */
@@ -117,7 +136,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 @media print{
   @page{margin:16mm;}
   body{background:#f4ead2 !important;color:#2a1d10 !important;padding:0;margin:0;font-size:11.5pt;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  .dm-block,.note-bar,.dm-notes,.dm-reset{display:none !important;}
+  .dm-block,.note-bar,.dm-notes,.dm-reset,.toc-nav{display:none !important;}
   .page{background:transparent !important;border:none !important;border-radius:0 !important;box-shadow:none !important;margin:0 !important;max-width:none !important;padding:0 !important;}
   .page::before,.page::after,.corner{display:none !important;}
   .cover{border-bottom-color:#9a7b2e;}
@@ -159,6 +178,20 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
       <div class="divider"><span class="ln"></span><span class="dia">&#10070;</span><span class="ln"></span></div>
     </header>
 
+    <details class="toc-nav" open><summary>Contents</summary><div class="toc">
+<ul>
+<li><a href="#1-on-the-road-today">1. On the Road Today</a></li>
+<li><a href="#2-what-you-hear-on-the-watch">2. What You Hear on the Watch</a></li>
+<li><a href="#3-the-campfire-sputters">3. The Campfire Sputters</a></li>
+<li><a href="#4-weather-turns">4. Weather Turns</a></li>
+<li><a href="#5-what-the-forager-finds">5. What the Forager Finds</a></li>
+<li><a href="#6-signs-of-what-hunts-these-woods">6. Signs of What Hunts These Woods</a></li>
+<li><a href="#7-a-stranger-on-the-trail">7. A Stranger on the Trail</a></li>
+<li><a href="#if-this-is-useful-the-rest-is-too">If this is useful, the rest is too</a></li>
+</ul>
+</div>
+</details>
+
     <article class="body">
 <p class="dek">Seven tables for the road, the campfire, and the watch &mdash; for the nights when the journey goes quiet and four people are waiting for something to happen.</p>
 <p>Travel is where games go to die. The party says "we head to the mountains," you say "okay, three days later you arrive," and three days of road just evaporated. Nobody decided anything. Nothing went wrong. The map got smaller and the session got shorter, and everyone felt it.</p>
@@ -166,7 +199,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 <p>This pack is seven tables for that. Roll one when the road goes flat and you'll have something true to say in the next five seconds &mdash; and most of the time, a decision waiting under it. A real person ran a lot of bad travel before writing these. The rule was simple: if a row was just weather and mood, it got cut, and one that hands the players a problem went in its place. Atmosphere is free. Decisions are the product.</p>
 <p>Seven tables below: the day's march, the watch, the camp that won't settle, weather that does something, what the foragers turn up, the signs that something's hunting you, and who you meet on the trail.</p>
 <hr>
-<h2>1. On the Road Today</h2>
+<h2 id="1-on-the-road-today">1. On the Road Today</h2>
 <p><em>Roll once a day on the march when the travel needs a beat &mdash; a thing seen, met, or found that isn't a fight, but isn't nothing either.</em></p>
 <p>Most days on the road, nothing tries to kill you. That doesn't mean nothing happens. Each row is a small event with a hook or a choice folded in: a reason to stop, a reason to hurry, or a reason to argue about it for ten minutes. Read the bold part; keep the dash for what's really going on.</p>
 <div class="table-wrap"><table class="kit">
@@ -261,7 +294,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Roll twice and combine</strong> for a day with weight: the first roll is what the party meets in the morning, the second is what's waiting at dusk &mdash; and the two are connected if you decide they are. (The people walking away fast, and the smoke on the horizon where the party's headed.)</p>
 <hr>
-<h2>2. What You Hear on the Watch</h2>
+<h2 id="2-what-you-hear-on-the-watch">2. What You Hear on the Watch</h2>
 <p><em>Roll for the character standing watch when the camp's asleep and you want the night to lean in &mdash; some of it's real, some of it's nothing, and the player shouldn't know which.</em></p>
 <p>The watch is the best horror tool in the game and most tables skip it. One person, awake, in the dark, with everyone else's lives on them. The trick is that not every roll is a threat &mdash; if every sound is a monster, the players stop being scared and start being bored. Mix the real in with the nothing so they can never relax. Read the bold part to the watcher; keep the dash for whether it's anything at all.</p>
 <div class="table-wrap"><table class="kit">
@@ -356,7 +389,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Quick key.</strong> Rows 2, 4, 8, 10, 12, 14 are <em>nothing</em> &mdash; the wilderness playing tricks, so a paranoid party occasionally cries wolf. Rows 1, 6, 9, 13, 16, 19 are <em>something real and mundane-ish</em> &mdash; people, predators, a problem the party can act on. Rows 3, 5, 7, 11, 15, 17, 18, 20 run <em>wrong</em> &mdash; save those for the night you want the watch to wake the others. <strong>Roll twice</strong> to braid a false alarm into a real one: the deer in the brush (row 8), and then the smell of smoke that isn't theirs (row 9) &mdash; so the party relaxes a beat before they shouldn't.</p>
 <hr>
-<h2>3. The Campfire Sputters</h2>
+<h2 id="3-the-campfire-sputters">3. The Campfire Sputters</h2>
 <p><em>Roll at camp when you want a small wrongness &mdash; not a threat yet, just the grit in the gears that puts the party on edge before anything's actually happened.</em></p>
 <p>Big dangers announce themselves. Dread is built out of small things going slightly wrong: the fire that won't take, the food gone bad a day early, the dog that won't lie down. None of these will kill anyone. All of them make the players start watching the dark. Each row is a complication, a chore, or a tiny mystery &mdash; fuel for tension, or for a half-hour of paranoia over nothing.</p>
 <div class="table-wrap"><table class="kit">
@@ -419,7 +452,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Roll twice and combine</strong> when you want the camp to feel haunted without a monster in sight: a small theft (row 3) and the dog that won't settle (row 4) tell a story the party will write for themselves, and the story they invent will scare them worse than anything you'd have rolled. Let them. Don't explain it the same night.</p>
 <hr>
-<h2>4. Weather Turns</h2>
+<h2 id="4-weather-turns">4. Weather Turns</h2>
 <p><em>Roll when the sky should do something that matters &mdash; not flavor, but weather that forces a choice or changes what's possible.</em></p>
 <p>"It rains" is not an event. Weather earns its place when it makes the party decide something: push on or hole up, cross now or wait, keep the fire or keep hidden. Every row here comes with a cost and a fork. The bold is what the party sees coming; the dash is what it does to them.</p>
 <div class="table-wrap"><table class="kit">
@@ -482,7 +515,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Quick key.</strong> Rows 1, 2, 4, 7, 9 are <em>route</em> problems &mdash; the weather closes, opens, or blinds a way and the clock starts. Rows 3, 5, 6 are <em>attrition</em> &mdash; they grind resources and patience, good for the middle of a long haul. Rows 8, 10 are <em>immediate danger</em> &mdash; roll for cover. Rows 11, 12 are <em>omens</em> &mdash; the weather's the herald, not the threat; pair with whatever's coming.</p>
 <hr>
-<h2>5. What the Forager Finds</h2>
+<h2 id="5-what-the-forager-finds">5. What the Forager Finds</h2>
 <p><em>Roll when someone hunts, fishes, gathers, or searches the ground for what the land will give up &mdash; useful, useless, or the first hint of what else lives here.</em></p>
 <p>A foraging roll shouldn't just be "you find three days of food." The wilderness is a ledger of who came before and what's still out there, written in tracks, leavings, and the things people drop when they run. Mix the genuinely useful in with the ominous so a good roll might feed the party &mdash; or warn them. Read the bold; the dash is what it really means.</p>
 <div class="table-wrap"><table class="kit">
@@ -577,7 +610,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Quick key.</strong> Rows 1, 3, 4, 6, 10, 12, 17, 20 deliver something <em>useful</em> (with a string). Rows 2, 13, 14, 18 mean <em>people</em> are near. Rows 5, 7, 9, 11, 15, 16, 19 are <em>warnings</em> &mdash; something hunts this ground. Rows 8, 12 carry a <em>risk roll</em>. <strong>Roll twice and combine</strong> for a find with a sting: a clean kill the party can eat (row 1) sitting right beside the big clawed tracks heading their way (row 9) &mdash; dinner, and the bill for it.</p>
 <hr>
-<h2>6. Signs of What Hunts These Woods</h2>
+<h2 id="6-signs-of-what-hunts-these-woods">6. Signs of What Hunts These Woods</h2>
 <p><em>Roll to show the predator before the party ever meets it &mdash; tracks, kills, and territory-marks that say something dangerous is near, and let the dread do the work first.</em></p>
 <p>The monster is scariest before it has a face. Show the party what it's done before they see what did it &mdash; the kill it left, the mark it makes, the way the woods change around it &mdash; and they'll build the threat bigger in their heads than any stat block. These are the breadcrumbs. Drop one or two on the approach; let the party put it together. The bold is what they find; the dash is what it tells you, the DM, about the thing.</p>
 <div class="table-wrap"><table class="kit">
@@ -640,7 +673,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Roll twice and combine</strong> to escalate across a day's travel: the silent dead woods in the morning (row 3), then the fresh claw-marks at noon (row 2), then the circling tracks at dusk (row 9). By the time the thing actually shows up, the players have already met it a dozen times in their own heads &mdash; which is exactly where you wanted it.</p>
 <hr>
-<h2>7. A Stranger on the Trail</h2>
+<h2 id="7-a-stranger-on-the-trail">7. A Stranger on the Trail</h2>
 <p><em>Roll when the party meets someone on the road and you need that someone to have a want, a story, and the chance of being something other than they appear.</em></p>
 <p>The road is where strangers happen, and the best ones aren't simple. Every person here wants something, and some of them aren't people at all &mdash; they're something wearing the shape of a traveler because a traveler is easy to trust. Give the party the surface and the want; decide whether the twist is true before they pull on it. Read the bold; the dash is what's underneath, for you.</p>
 <div class="table-wrap"><table class="kit">
@@ -735,7 +768,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Roll twice and combine</strong> for a stranger with a second floor: the surface (the first roll) and the truth under it (the second). A "pilgrim walking to a shrine" who's actually "leading a string of dead people's horses" is a better scene than either alone &mdash; and the tell is in the gap between what they say and what they're carrying. Drop the tell early, pay it off late, same as any good lie.</p>
 <hr>
-<h2>If this is useful, the rest is too</h2>
+<h2 id="if-this-is-useful-the-rest-is-too">If this is useful, the rest is too</h2>
 <p>The Wilderness Pack is yours, free, for as long as you're subscribed. Print it, fold it into your screen, scrawl new rows in the margins.</p>
 <p>If it earns a spot at your table, here's what else lands in your inbox: <strong>The Weekly One-Shot</strong> &mdash; a complete, ready-to-run adventure every week. A villain with a reason. A real choice for the players. The boxed text written, the stat blocks sorted, the twist already built. Open it Thursday, run it Friday. That's the paid tier, and it's built on the same idea this pack is: that the quiet stretches of a game should be yours to fill on purpose, not to scramble through.</p>
 <p>No pressure. The tables work either way. See you on the road.</p>

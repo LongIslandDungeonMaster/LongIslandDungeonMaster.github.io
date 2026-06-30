@@ -25,6 +25,7 @@
   --panel:#21100f; --rule:#5c2a23;
 }
 *{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 html,body{margin:0;padding:0;}
 body{
   background:radial-gradient(140% 90% at 50% 0%, #2a0f0d 0%, var(--bg) 55%, #0c0606 100%);
@@ -56,12 +57,27 @@ a{color:var(--gold-br);}
 .divider .ln{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold),transparent);max-width:220px;}
 .divider .dia{font-size:13px;}
 
+/* Contents / jump nav */
+.toc-nav{max-width:62ch;margin:0 auto 28px;background:rgba(0,0,0,.22);border:1px solid var(--rule);border-radius:6px;padding:12px 18px 14px;}
+.toc-nav summary{font-family:'Playfair Display',Georgia,serif;font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--gold);cursor:pointer;list-style:none;}
+.toc-nav summary::-webkit-details-marker{display:none;}
+.toc-nav summary::before{content:"\25B8\00a0";color:var(--gold-br);}
+.toc-nav[open] summary::before{content:"\25BE\00a0";}
+.toc-nav .toc{margin-top:11px;}
+.toc-nav .toc>ul{list-style:none;margin:0;padding:0;columns:2;column-gap:28px;}
+.toc-nav .toc ul ul{display:none;}
+.toc-nav .toc li{margin:0 0 6px;break-inside:avoid;}
+.toc-nav .toc a{color:var(--ink-soft);text-decoration:none;font-size:14px;border-bottom:1px dotted rgba(201,162,75,.32);}
+.toc-nav .toc a:hover{color:var(--gold-br);border-bottom-color:var(--gold-br);}
+@media (max-width:600px){.toc-nav .toc>ul{columns:1;}}
+
 /* body typography */
 .body{max-width:62ch;margin:0 auto;}
 .body h2{font-family:'Breathe Fire','Playfair Display',Georgia,serif;font-weight:400;color:var(--gold-br);font-size:30px;line-height:1.12;margin:34px 0 10px;letter-spacing:.01em;}
 .body h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:var(--crimson-br);text-transform:uppercase;letter-spacing:.05em;font-size:16px;margin:24px 0 8px;}
 .body h4{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:var(--gold);font-size:14px;letter-spacing:.04em;margin:18px 0 6px;}
 .body h2:first-child,.body h3:first-child{margin-top:4px;}
+.body h2,.body h3{scroll-margin-top:18px;}
 .body p{margin:0 0 14px;}
 .body p.dek{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:21px;line-height:1.4;color:var(--ink-soft);text-align:center;max-width:34em;margin:0 auto 26px;}
 .body ul,.body ol{margin:0 0 16px;padding-left:1.4em;}
@@ -73,6 +89,9 @@ a{color:var(--gold-br);}
 .body em{color:var(--ink);}
 .body hr{border:none;border-top:1px solid rgba(201,162,75,.28);margin:30px auto;max-width:60%;}
 .body code{font-family:'Courier New',ui-monospace,monospace;font-size:.9em;background:rgba(201,162,75,.1);border:1px solid rgba(201,162,75,.25);border-radius:4px;padding:1px 5px;color:var(--gold-br);}
+/* block code (e.g. the ASCII map): one clean monospace panel, NOT per-line inline-code bars */
+.body pre{background:#0e0706;border:1px solid var(--rule);border-radius:6px;padding:14px 16px;margin:0 0 18px;overflow-x:auto;line-height:1.32;}
+.body pre code{display:block;background:none;border:none;border-radius:0;padding:0;color:var(--ink-soft);font-size:11px;white-space:pre;}
 .body a{text-decoration:underline;text-decoration-color:rgba(201,162,75,.5);}
 
 /* drop cap on the first body paragraph after the dek */
@@ -117,7 +136,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 @media print{
   @page{margin:16mm;}
   body{background:#f4ead2 !important;color:#2a1d10 !important;padding:0;margin:0;font-size:11.5pt;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  .dm-block,.note-bar,.dm-notes,.dm-reset{display:none !important;}
+  .dm-block,.note-bar,.dm-notes,.dm-reset,.toc-nav{display:none !important;}
   .page{background:transparent !important;border:none !important;border-radius:0 !important;box-shadow:none !important;margin:0 !important;max-width:none !important;padding:0 !important;}
   .page::before,.page::after,.corner{display:none !important;}
   .cover{border-bottom-color:#9a7b2e;}
@@ -159,6 +178,20 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
       <div class="divider"><span class="ln"></span><span class="dia">&#10070;</span><span class="ln"></span></div>
     </header>
 
+    <details class="toc-nav" open><summary>Contents</summary><div class="toc">
+<ul>
+<li><a href="#1-this-npc-is-not-who-they-seem">1. This NPC Is Not Who They Seem</a></li>
+<li><a href="#2-whats-actually-in-this-room">2. What's Actually in This Room</a></li>
+<li><a href="#3-the-reward-has-a-story">3. The Reward Has a Story</a></li>
+<li><a href="#4-fail-forward">4. Fail Forward</a></li>
+<li><a href="#5-mannerisms-tics">5. Mannerisms &amp; Tics</a></li>
+<li><a href="#6-what-this-npc-actually-wants">6. What This NPC Actually Wants</a></li>
+<li><a href="#7-why-the-towns-on-edge">7. Why the Town's on Edge</a></li>
+<li><a href="#if-this-is-useful-the-rest-is-too">If this is useful, the rest is too</a></li>
+</ul>
+</div>
+</details>
+
     <article class="body">
 <p class="dek">Seven tables you can reach for at any table, in any fantasy game. Plus the d100 you already have.</p>
 <p>Here's the thing nobody tells you when you start running games: the prep is never the problem. The problem is the moment the party does something you didn't write down, and four people are looking at you, and the silence is getting expensive.</p>
@@ -166,7 +199,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 <p>A real person made these. Thirty years behind the screen, a lot of bad nights and a few good ones, and zero machine slop. Every row had to earn its place: if it was just decoration, I cut it and wrote one that hands the players a decision instead. You'll feel the difference at the table, which is the only place any of this counts.</p>
 <p>Seven tables below. The eighth &mdash; the d100 <strong>What the Villain Is Doing Right Now</strong> &mdash; is the centerpiece, and it's already in your welcome email. Between them they cover the whole session: who the people are and what they actually want, the tic you'll remember them by, the room, the loot, the town that's already on edge when you ride in, and the worst roll of the night.</p>
 <hr>
-<h2>1. This NPC Is Not Who They Seem</h2>
+<h2 id="1-this-npc-is-not-who-they-seem">1. This NPC Is Not Who They Seem</h2>
 <p><em>Roll when the party leans on a "minor" NPC harder than you planned &mdash; and you need that NPC to have a second floor under the first.</em></p>
 <p>Most NPCs are exactly what they look like. The interesting ones aren't. Each row gives you who they seem to be, who they actually are, and the tell &mdash; the one detail a careful player can catch before the reveal, so the twist feels earned instead of cheap. Drop the tell early. Pay it off later.</p>
 <div class="table-wrap"><table class="kit">
@@ -303,7 +336,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Roll twice and combine</strong> when you want layers: the first roll is the mask the party sees, the second is what's under it when they peel the first one back. (A "grieving widow" hiding a "retired killer" is a better villain than either alone.)</p>
 <hr>
-<h2>2. What's Actually in This Room</h2>
+<h2 id="2-whats-actually-in-this-room">2. What's Actually in This Room</h2>
 <p><em>Roll when the party opens a door you didn't detail, and "it's an empty room" would kill the momentum.</em></p>
 <p>Dungeon dressing usually means furniture. This is dressing that hands the players a decision the second they walk in. Every row is a small fork: take it, use it, break it, or leave it and wonder. Read the bold thing aloud; keep the part after the dash for yourself.</p>
 <div class="table-wrap"><table class="kit">
@@ -398,7 +431,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Roll twice and combine</strong> for a room with a layer: the first roll is what they see, the second is what they find when they actually search it. (Warm food on the table, and the ledger underneath naming the cook.)</p>
 <hr>
-<h2>3. The Reward Has a Story</h2>
+<h2 id="3-the-reward-has-a-story">3. The Reward Has a Story</h2>
 <p><em>Roll when the party earns loot and you want it to mean something past the gold-piece value &mdash; a string attached, a door it opens, a problem it becomes.</em></p>
 <p>Treasure with no story is just a number on a sheet. Every item here carries a hook: a consequence, a lead, or a person who wants it back. Hand it out freely. The hook does the work later.</p>
 <div class="table-wrap"><table class="kit">
@@ -493,7 +526,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Quick key.</strong> Rows 1&ndash;6 are loot that's <em>hot</em> (someone wants it back). Rows 7&ndash;14 are loot that's a <em>lead</em> (it points somewhere). Rows 15&ndash;20 are loot that's a <em>slow burn</em> (the problem shows up sessions later). Pick the timing your table needs.</p>
 <hr>
-<h2>4. Fail Forward</h2>
+<h2 id="4-fail-forward">4. Fail Forward</h2>
 <p><em>Roll when a check fails and "nothing happens" would stall the whole night. The failed roll doesn't stop the story; it bends it.</em></p>
 <p>The deadliest words at any table are "you don't find anything." A failed roll should cost something or move something, never just end the turn. Roll on this when you're stuck for what a failure <em>does</em>. The party still doesn't get the clean win &mdash; they get a complication they have to deal with instead.</p>
 <div class="table-wrap"><table class="kit">
@@ -556,7 +589,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>How to use it without it getting samey.</strong> Don't roll every failure. Save this for the rolls that <em>matter</em> &mdash; the locked door to the only exit, the negotiation the whole session hinged on. A clean failure is fine when the stakes are low. Pull this out when "nothing happens" would put four people on their phones.</p>
 <hr>
-<h2>5. Mannerisms &amp; Tics</h2>
+<h2 id="5-mannerisms-tics">5. Mannerisms &amp; Tics</h2>
 <p><em>Roll when an NPC needs to exist as a person five seconds after you invent them &mdash; give them one habit and the players will remember them all night.</em></p>
 <p>A name is forgettable. A tic isn't. Hand an NPC one physical or verbal habit and the players will start calling them "the one who keeps cleaning his glasses" before they ever learn his name &mdash; and that's the NPC who survives the session in their memory. Some of these reveal something true about the person. Some are just texture. A few will make the table lean back. Grab one mid-sentence; you don't have to know why they do it yet.</p>
 <div class="table-wrap"><table class="kit">
@@ -651,7 +684,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Quick key.</strong> Rows 1, 6, 11, 14, 17, 18 <em>reveal</em> something &mdash; a lie, a fear, a past, a tell a sharp player can read. Rows 2, 3, 4, 8, 12, 16 are pure <em>texture</em> &mdash; they make the NPC stick without meaning anything. Rows 19 and 20 run <em>unsettling</em> &mdash; use them on the NPC you want the party to distrust before they know why. <strong>Roll twice</strong> for a person, not a prop: a tic that reveals plus a tic that's just them.</p>
 <hr>
-<h2>6. What This NPC Actually Wants</h2>
+<h2 id="6-what-this-npc-actually-wants">6. What This NPC Actually Wants</h2>
 <p><em>Roll the moment a conversation gets interesting and you realize you never decided what the NPC across the table is really after.</em></p>
 <p>Every NPC walks into a scene wanting something the party can't see on their face. Pin that down and the conversation steers itself &mdash; they'll dodge, push, flatter, or stall, and the players will feel a current under the words without knowing the source. This is the want <em>right now</em>, in this room, not the grand life goal. Read the bold part as the pressure they're putting on the scene; keep the dash for what it costs them if the party figures it out.</p>
 <div class="table-wrap"><table class="kit">
@@ -746,7 +779,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 </table></div>
 <p><strong>Roll twice and combine</strong> for a two-faced scene: the want they'll admit to (the first roll) and the want driving them under it (the second). Someone "stalling until backup arrives" who <em>also</em> "wants to be talked out of it" is a scene that can break either way &mdash; and the party's choices decide which.</p>
 <hr>
-<h2>7. Why the Town's on Edge</h2>
+<h2 id="7-why-the-towns-on-edge">7. Why the Town's on Edge</h2>
 <p><em>Roll when the party rides into a place you didn't fully prep and the locals are clearly bracing for something &mdash; give the town a problem before the party even dismounts.</em></p>
 <p>A town with nothing wrong is a town with nothing to do. The fix is to decide, before the party's boots hit the dirt, what's got the place wound tight &mdash; the thing everyone's talking around, the reason doors shut a little faster after dark. Each row is local tension the party can walk straight into. The bold part is what they'll notice; the dash is what's actually underneath, for you.</p>
 <div class="table-wrap"><table class="kit">
@@ -843,7 +876,7 @@ table.kit tbody td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 <hr>
 <p><em>And the d100 you already have:</em> <strong>What the Villain Is Doing Right Now</strong> &mdash; the centerpiece of this kit, in your welcome email. Roll it between sessions so your antagonist has a life the party hasn't earned access to yet, and the world keeps moving while the heroes sleep.</p>
 <hr>
-<h2>If this is useful, the rest is too</h2>
+<h2 id="if-this-is-useful-the-rest-is-too">If this is useful, the rest is too</h2>
 <p>The Field Kit is yours, free, for as long as you're subscribed. Print it, share it, scrawl on it.</p>
 <p>If it earns a spot on your desk, here's what else lands in your inbox: <strong>The Weekly One-Shot</strong> &mdash; a complete, ready-to-run adventure every week. Villain with a reason. A real choice for the players. The boxed text written, the stat blocks sorted, the twist already built. Open it Thursday, run it Friday. That's the paid tier, and it exists for the same reason this kit does: so the silence at the table is yours to fill on purpose, not to scramble through.</p>
 <p>No pressure. The tables work either way. See you at the table.</p>
