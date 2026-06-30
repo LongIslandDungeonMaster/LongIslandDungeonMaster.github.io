@@ -375,7 +375,7 @@
 
     // Merch "Coming Soon" badge tapped 3x -> early-bird secret
     var mb = document.querySelector('#store .soon-badge');
-    if (mb) { mb.style.cursor = 'pointer'; var mc = 0, mt; mb.addEventListener('click', function () { mc++; clearTimeout(mt); mt = setTimeout(function () { mc = 0; }, 1500); if (mc >= 3) { mc = 0; if (discover('merch')) toast('🛒 The Early Bird', 'Founder’s token: <b>FIRST-FORGE</b> — for early-bird pricing when the store opens.', 8000); } }); }
+    if (mb) { mb.style.cursor = 'pointer'; var mc = 0, mt; mb.addEventListener('click', function () { mc++; clearTimeout(mt); mt = setTimeout(function () { mc = 0; }, 1500); if (mc >= 3) { mc = 0; if (discover('merch')) toast('🛒 The Early Bird', 'Founder’s token: <b>FIRSTFORGE</b> — <a href="https://the-hoard-shop.fourthwall.com/promo/FIRSTFORGE" target="_blank" rel="noopener" style="color:#c9a84c;text-decoration:underline">claim your founder’s discount →</a>', 11000); } }); }
 
     // SKU Crawlers trademark line -> tease
     var tl = document.querySelector('.trademark-line');
