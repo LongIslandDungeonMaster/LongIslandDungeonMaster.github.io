@@ -1020,6 +1020,47 @@ footer .small {
   top: -0.1em;
 }
 
+/* Signature setting tile — the #1, highlighted in the worlds gallery */
+.campaign-tile-signature {
+  border-color: var(--gold);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.5), 0 0 0 2px var(--gold), 0 0 22px rgba(201,168,76,0.5);
+}
+.campaign-tile-signature:hover,
+.campaign-tile-signature:focus-visible {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.65), 0 0 0 2px var(--gold), 0 0 30px rgba(201,168,76,0.72);
+}
+/* persistent corner badges on the world tiles */
+.signature-ribbon,
+.tile-tag {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 2;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 0.16rem 0.5rem;
+  border-radius: 6px;
+  line-height: 1.4;
+}
+.signature-ribbon {
+  background: var(--gold);
+  color: var(--crimson-dark);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.45);
+}
+.signature-ribbon i { margin-right: 0.3rem; }
+.tile-tag {
+  background: rgba(10,2,2,0.82);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.5);
+}
+/* Signature Worlds: always show the setting name (not hover-gated) so each tile reads at a glance */
+.worlds-grid .campaign-name {
+  opacity: 1;
+  transform: none;
+}
+
 /* ===== THE GAME — SKU CRAWLERS ===== */
 #the-game {
   background:
