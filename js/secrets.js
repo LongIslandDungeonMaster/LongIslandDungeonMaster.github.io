@@ -47,18 +47,20 @@
   function eggName(id) { for (var i = 0; i < EGGS.length; i++) if (EGGS[i].id === id) return EGGS[i].name; return id; }
 
   // Hunts: chains of hidden sigils that unlock a reward page.
+  // Each sigil carries a "word of power" — the name of the place it sleeps in —
+  // so keyboard and screen-reader seekers can collect it from the Tome.
   var HUNTS = {
     sigil: {
       name: 'The Sigil Path', glyph: '✦', cls: '',
       reward: 'vault', rewardName: "The Founder's Vault", rewardUrl: 'vault.html',
       sigils: [
-        { id: 's1', sel: '.hero-sub-title' },
-        { id: 's2', sel: '#about .section-title' },
-        { id: 's3', sel: '.char-name' },
-        { id: 's4', sel: '#campaigns .campaign-header p' },
-        { id: 's5', sel: '.event-tomb .event-tag' },
-        { id: 's6', sel: '#pantheon .section-title' },
-        { id: 's7', sel: '#faq .section-title' }
+        { id: 's1', sel: '.hero-sub-title', word: ['hero', 'home'] },
+        { id: 's2', sel: '#about .section-title', word: 'about' },
+        { id: 's3', sel: '.char-name', word: 'the dm' },
+        { id: 's4', sel: '#campaigns .campaign-header p', word: ['campaigns', 'campaign'] },
+        { id: 's5', sel: '.event-tomb .event-tag', word: ['tomb night', 'the tomb'] },
+        { id: 's6', sel: '#pantheon .section-title', word: 'pantheon' },
+        { id: 's7', sel: '#faq .section-title', word: ['faq', 'questions'] }
       ]
     },
     strahd: {
@@ -66,31 +68,58 @@
       reward: 'perk', rewardName: "The Bound One's Favor",
       rewardCode: 'STRAHD-FALLS', rewardNote: 'Mention this token when you book — a founder’s discount, for those who braved the dark.',
       sigils: [
-        { id: 'd1', sel: '.event-strahd .event-tag' },
-        { id: 'd2', sel: '.fallen-title' },
-        { id: 'd3', sel: '#experience .section-title' },
-        { id: 'd4', sel: '.game-title' }
+        { id: 'd1', sel: '.event-strahd .event-tag', word: 'strahd must die' },
+        { id: 'd2', sel: '.fallen-title', word: ['avernus', 'the fallen'] },
+        { id: 'd3', sel: '#experience .section-title', word: 'experience' },
+        { id: 'd4', sel: '.game-title', word: ['sku crawlers', 'sku'] }
       ]
     },
     lore: {
       name: 'Whispers of Lore', glyph: '❂', cls: 'sx-sig-teal',
       reward: 'lore', rewardName: 'The Hidden Scroll', rewardUrl: 'scroll.html',
       sigils: [
-        { id: 'w1', sel: '#services .section-title' },
-        { id: 'w2', sel: '#latest .section-title' },
-        { id: 'w3', sel: '#the-game .game-eyebrow' }
+        { id: 'w1', sel: '#services .section-title', word: 'services' },
+        { id: 'w2', sel: '#latest .section-title', word: ['latest', 'the weekly one-shot'] },
+        { id: 'w3', sel: '#the-game .game-eyebrow', word: 'the game' }
       ]
     }
   };
   function huntProgress(h) { return state.hunts[h] ? Object.keys(state.hunts[h]).length : 0; }
   function huntTotal(h) { return HUNTS[h].sigils.length; }
 
+  // "hero", "The Hero", "the-hero" all speak the same word.
+  function normWord(s) {
+    s = String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    return s.indexOf('the') === 0 ? s.slice(3) : s;
+  }
+  function speakWord(raw) {
+    var w = normWord(raw);
+    if (!w) return false;
+    for (var hid in HUNTS) {
+      var hunt = HUNTS[hid];
+      for (var i = 0; i < hunt.sigils.length; i++) {
+        var sg = hunt.sigils[i];
+        if (state.hunts[hid] && state.hunts[hid][sg.id]) continue;
+        var words = sg.word ? (Array.isArray(sg.word) ? sg.word : [sg.word]) : [];
+        for (var j = 0; j < words.length; j++) {
+          if (normWord(words[j]) === w) {
+            var host = document.querySelector(sg.sel);
+            collectSigil(hid, sg.id, host ? host.querySelector('.sx-sigil') : null);
+            return true;
+          }
+        }
+      }
+    }
+    toast('The realm keeps silent…', 'That word holds no power here — or its rune already burns.', 3800);
+    return false;
+  }
+
   function totalSecrets() { var t = EGGS.length; for (var h in HUNTS) t += HUNTS[h].sigils.length; return t; }
   function foundCount() { var c = Object.keys(state.found).length; for (var h in state.hunts) c += Object.keys(state.hunts[h]).length; return c; }
 
   /* ---------- injected styles ---------- */
   var css = '\
-  .sx-toast-wrap{position:fixed;left:50%;top:1.2rem;transform:translateX(-50%);z-index:100000;display:flex;flex-direction:column;gap:.5rem;align-items:center;pointer-events:none}\
+  .sx-toast-wrap{position:fixed;left:50%;top:1.2rem;transform:translateX(-50%);z-index:100002;display:flex;flex-direction:column;gap:.5rem;align-items:center;pointer-events:none}\
   .sx-toast{background:rgba(26,0,0,.97);border:1px solid #c9a84c;border-radius:6px;color:#f2e8d0;font-family:"Merriweather Sans",sans-serif;font-size:.85rem;padding:.6rem 1rem;box-shadow:0 6px 24px rgba(0,0,0,.6);max-width:90vw;text-align:center;opacity:0;transform:translateY(-10px);transition:opacity .3s,transform .3s}\
   .sx-toast.in{opacity:1;transform:translateY(0)}\
   .sx-toast b{color:#c9a84c}\
@@ -119,6 +148,14 @@
   @keyframes sx-ignite{0%{transform:scale(1)}50%{transform:scale(2.1);text-shadow:0 0 22px #c9a84c}100%{transform:scale(1)}}\
   .sx-reward-link{display:inline-block;margin-top:.4rem;color:#8B0000;font-weight:700;text-decoration:underline}\
   .sx-hunt{margin:0 0 1rem}.sx-hunt h3{font-family:"Merriweather Sans",sans-serif;font-size:.82rem;text-transform:uppercase;letter-spacing:1px;color:#3d0000;margin:0 0 .35rem}\
+  .sx-word{margin:0 0 1rem;padding:.8rem 1rem;background:rgba(139,0,0,.06);border:1px dashed rgba(139,0,0,.35);border-radius:6px}\
+  .sx-word label{display:block;font-family:"Breathe Fire","UnifrakturMaguntia",cursive;color:#3d0000;font-size:1.2rem;margin-bottom:.4rem}\
+  .sx-word-row{display:flex;gap:.5rem}\
+  .sx-word-row input{flex:1;min-width:0;border:1px solid #c9a84c;border-radius:4px;background:#fff;color:#1a0a00;font-family:"Merriweather Sans",sans-serif;font-size:.9rem;padding:.45rem .6rem}\
+  .sx-word-row input:focus{outline:2px solid #8B0000;outline-offset:1px}\
+  .sx-word-row button{background:#8B0000;color:#e8d5a0;border:1px solid #c9a84c;border-radius:4px;font-family:"Merriweather Sans",sans-serif;font-size:.85rem;font-weight:700;padding:.45rem .9rem;cursor:pointer}\
+  .sx-word-row button:hover,.sx-word-row button:focus{background:#a51111}\
+  .sx-word-hint{font-size:.78rem;color:#6b5b45;font-style:italic;margin:.5rem 0 0}\
   .sx-bar{height:8px;background:rgba(139,0,0,.15);border-radius:4px;overflow:hidden}.sx-bar>i{display:block;height:100%;background:linear-gradient(90deg,#8B0000,#c9a84c)}\
   .sx-sig-crimson{color:#c0392b}.sx-sig-crimson:hover{text-shadow:0 0 12px #c0392b}.sx-sig-crimson.got{color:#e8746a;text-shadow:0 0 8px #c0392b}\
   .sx-sig-teal{color:#3fae9a}.sx-sig-teal:hover{text-shadow:0 0 12px #3fae9a}.sx-sig-teal.got{color:#7fd8c8;text-shadow:0 0 8px #3fae9a}\
@@ -147,7 +184,7 @@
   /* ---------- toast ---------- */
   var toastWrap;
   function toast(title, sub, ms) {
-    if (!toastWrap) { toastWrap = document.createElement('div'); toastWrap.className = 'sx-toast-wrap'; document.body.appendChild(toastWrap); }
+    if (!toastWrap) { toastWrap = document.createElement('div'); toastWrap.className = 'sx-toast-wrap'; toastWrap.setAttribute('role', 'status'); toastWrap.setAttribute('aria-live', 'polite'); document.body.appendChild(toastWrap); }
     var t = document.createElement('div'); t.className = 'sx-toast';
     t.innerHTML = '<b>' + title + '</b>' + (sub ? '<span class="sx-sub">' + sub + '</span>' : '');
     toastWrap.appendChild(t);
@@ -189,11 +226,21 @@
     var hint = remaining > 0
       ? 'The realm still hides <b>' + remaining + '</b> secret' + (remaining === 1 ? '' : 's') + '. Look where the gold flickers, speak the names of the dead, and roll well.'
       : 'You have uncovered every secret the realm now holds. A true Initiate. More will come…';
+    var wordForm = '<form class="sx-word" autocomplete="off">' +
+      '<label for="sxWordIn">Speak a word of power</label>' +
+      '<div class="sx-word-row"><input id="sxWordIn" type="text" placeholder="the name of a place&hellip;" aria-describedby="sxWordHint"><button type="submit">Speak</button></div>' +
+      '<p class="sx-word-hint" id="sxWordHint">Every sigil sleeps in a named part of this realm. Name that place aloud here and its rune will answer &mdash; no mouse required.</p></form>';
     panel.innerHTML = '<div class="sx-panel-card"><button class="sx-close" aria-label="Close">&times;</button>' +
       '<h2>Tome of Secrets</h2><p class="sx-count">' + foundCount() + ' of ' + totalSecrets() + ' uncovered</p>' +
-      huntsHtml +
+      huntsHtml + wordForm +
       '<ul class="sx-list">' + items + '</ul><p class="sx-hint">' + hint + '</p></div>';
     panel.querySelector('.sx-close').addEventListener('click', function () { panel.classList.remove('open'); });
+    panel.querySelector('.sx-word').addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var inp = panel.querySelector('#sxWordIn');
+      if (speakWord(inp.value)) { openTome(); var f = panel.querySelector('#sxWordIn'); if (f) f.focus(); }
+      else inp.value = '';
+    });
     panel.classList.add('open');
   }
 
