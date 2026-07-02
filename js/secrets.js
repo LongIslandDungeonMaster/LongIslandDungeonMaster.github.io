@@ -41,7 +41,8 @@
     { id: 'crest',    name: 'The Sigil of the Master' },
     { id: 'herocrest',name: 'The Crest Awakens' },
     { id: 'merch',    name: 'The Early Bird' },
-    { id: 'sku',      name: 'The Whole World Is Your Dungeon' }
+    { id: 'sku',      name: 'The Whole World Is Your Dungeon' },
+    { id: 'fabulist', name: 'The Fabulist' }
   ];
   function eggName(id) { for (var i = 0; i < EGGS.length; i++) if (EGGS[i].id === id) return EGGS[i].name; return id; }
 
@@ -294,6 +295,20 @@
     var on = document.body.classList.contains('sx-tomb');
     toast('☠ Old-School Mode ' + (on ? 'ON' : 'OFF'), on ? 'Gary would be proud. Save vs. nostalgia.' : 'Back to the modern age.');
   }
+  function theFabulist() {
+    discover('fabulist');
+    flyAcross('🦊', 1, 2.6);
+    var MORALS = [
+      'A villain who believes he is kind needs no fangs.',
+      'The dice owe you nothing. That is why they are honest.',
+      'Prep is a lantern, not a leash.',
+      'A locked door is a promise. Keep it.',
+      'The quietest player is carrying the loudest story. Pass the torch.',
+      'Monsters are cheap. A reason is expensive. Spend accordingly.'
+    ];
+    var m = MORALS[Math.floor(Math.random() * MORALS.length)];
+    toast('🦊 The Fabulist speaks', '“' + m + '” <em>— Aesop, who keeps the margins of this realm</em>', 9000);
+  }
   function confetti() {
     if (reduce) return;
     var colors = ['#c9a84c', '#e8d5a0', '#8B0000', '#f2e8d0'];
@@ -359,6 +374,7 @@
         else if (buf.indexOf('barovia') !== -1) { buf = ''; discover('barovia'); fog(); toast('🌫 The Mists Rise', 'Barovia welcomes you… you may never leave.'); }
         else if (buf.indexOf('owlbear') !== -1) { buf = ''; discover('owlbear'); flyAcross('🦉', 1, 3); toast('🦉 OWLBEAR!', 'It shrieks across the realm. Roll for initiative.'); }
         else if (buf.indexOf('dragon') !== -1) { buf = ''; discover('dragon'); flyAcross('🐉', 1, 3.4); toast('🐉 Here Be Dragons', 'A great shadow passes overhead.'); }
+        else if (buf.indexOf('aesop') !== -1) { buf = ''; theFabulist(); }
       }
     });
 
