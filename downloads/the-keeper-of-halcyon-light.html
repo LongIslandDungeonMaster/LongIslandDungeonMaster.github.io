@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   ============================================================================
-  LIDM TABLE ENGINE — canonical Dungeon Keepers template (v3)
+  LIDM TABLE ENGINE — canonical Adventure Keepers template (v3)
   ============================================================================
   THE file every Keeper is cloned from. Chrome = The Seventh Rune (print frame,
   cover treatment, drawer, tracker). Engine = The Quiet Year v2 (unified save,
@@ -492,7 +492,7 @@ table.kit.scale td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 <!-- ====== STICKY TOP BAR ====== -->
 <header class="topbar">
   <div class="topbar-inner">
-    <div class="wordmark" id="wmTitle">The Keeper of Halcyon Light<small id="wmSub">Dungeon Keepers · The Weekly One-Shot</small></div>
+    <div class="wordmark" id="wmTitle">The Keeper of Halcyon Light<small id="wmSub">Adventure Keepers · The Weekly One-Shot</small></div>
     <nav class="toc" aria-label="Contents">
       <a href="#cover">Cover</a>
       <a href="#hook">Hook</a>
@@ -1336,7 +1336,7 @@ table.kit.scale td:first-child{font-family:'Playfair Display',Georgia,serif;colo
 var ADV = {
   id: "halcyon-light",                          /* -> localStorage lidm:halcyon-light:v3 */
   title: "The Keeper of Halcyon Light",
-  edition: "Dungeon Keepers · The Weekly One-Shot",
+  edition: "Adventure Keepers · The Weekly One-Shot",
   calendar: { day: 1, month: "First Gale", hour: 19, dayLen: 24 },   /* the party rows out at dusk */
   clocks: [                                     /* Scene 4 runs on the dark-round clock */
     { name: "Dark rounds — the Tide rises (+1d4/round)", segments: 8 },
@@ -1413,7 +1413,7 @@ var ADV = {
   /* ---------------- header from config ---------------- */
   document.title = ADV.title+" — LIDM";
   $('wmTitle').childNodes[0].nodeValue = ADV.title;
-  $('wmSub').textContent = ADV.edition||"Dungeon Keepers · LIDM";
+  $('wmSub').textContent = ADV.edition||"Adventure Keepers · LIDM";
   $('dmTitle').textContent = "DM Tools";
 
   /* ---------------- drawer (slide-in + scrim + Esc + aria) ---------------- */
