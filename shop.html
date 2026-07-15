@@ -84,6 +84,15 @@
     @keyframes spin { to { transform: rotate(360deg); } }
     @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
 
+    /* the Treasure Hoard shelf (Etsy) — hidden entirely until a listing exists */
+    .etsy-sec { margin-top: 3.6rem; padding-top: 3rem; border-top: 1px solid rgba(201,168,76,.22); }
+    .etsy-head { text-align: center; margin-bottom: 2rem; }
+    .etsy-title { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--shop-gold); font-size: clamp(2rem, 5vw, 3rem); line-height: 1; margin: .3rem 0 .6rem; text-shadow: 0 0 28px rgba(201,168,76,.3), 2px 2px 0 #000; }
+    .etsy-head .s-divider { margin-left: auto; margin-right: auto; margin-bottom: 1.4rem; }
+    .etsy-head .s-sub { margin: 0 auto; }
+    .etsy-foot { text-align: center; margin-top: 1.8rem; }
+    .prod .etsy-mark { font-family: 'Merriweather Sans', sans-serif; font-size: .64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(201,168,76,.75); margin-bottom: .45rem; }
+
     .s-note { text-align: center; color: rgba(232,226,208,.55); font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; line-height: 1.7; max-width: 640px; margin: 2.6rem auto 0; }
     .s-note a { color: rgba(201,168,76,.8); }
 
@@ -121,6 +130,20 @@
     <div class="shop-grid" id="shopGrid">
       <div class="shop-state"><div class="spinner" aria-hidden="true"></div>Opening the Hoard&hellip;</div>
     </div>
+
+    <!-- The Treasure Hoard shelf. Stays hidden until ETSY_LISTINGS (below) has an entry. -->
+    <section class="etsy-sec" id="etsySec" hidden>
+      <div class="etsy-head">
+        <p class="s-eyebrow">The Treasure Hoard &bull; Woven Goods</p>
+        <h2 class="etsy-title">Heavier Loot</h2>
+        <div class="s-divider"></div>
+        <p class="s-sub">Woven blankets and weightier treasures, made to order on a real loom. These pieces live in the Treasure Hoard, our shop over on Etsy.</p>
+      </div>
+      <div class="shop-grid" id="etsyGrid"></div>
+      <div class="etsy-foot">
+        <a class="s-store-link" href="https://www.etsy.com/shop/LIDMTreasureHoard" target="_blank" rel="noopener">Visit the Treasure Hoard on Etsy &rarr;</a>
+      </div>
+    </section>
 
     <p class="s-note">Tapping a piece takes you to our secure shop to pick your size and check out. Fulfillment &amp; shipping handled by our print partner. Questions? <a href="/#contact">Reach out</a>.</p>
   </main>
@@ -194,6 +217,50 @@
         if (main) main.src = t.getAttribute('data-full');
         Array.prototype.forEach.call(card.querySelectorAll('.prod-thumbs .thumb'), function (x) { x.classList.toggle('active', x === t); });
       });
+    })();
+  </script>
+  <script>
+    (function () {
+      // THE TREASURE HOARD SHELF (Etsy).
+      //
+      // Etsy has no browser-usable product feed for a static site: the v3 API needs
+      // Commercial Access approval plus a server-side key, and it sends no CORS
+      // headers. So this shelf is hand-curated rather than fetched.
+      //
+      // AN EMPTY ARRAY KEEPS THE WHOLE SECTION DARK, on purpose: a link to a shop
+      // with nothing in it costs more trust than it earns. As of 2026-07-14 the Etsy
+      // shop is live and branded but has zero listings, so the shelf stays hidden.
+      //
+      // TO LIGHT IT UP: publish the listing on Etsy, then add one entry per live
+      // listing and push. The section reveals itself.
+      //   { name: 'Buried in the Hoard | Fantasy Woven Treasure Blanket',
+      //     price: 89.00,
+      //     sizes: ['80x60', '60x50', '52x37'],
+      //     img: 'img/shop/blanket-001.jpg',
+      //     url: 'https://www.etsy.com/listing/0000000/buried-in-the-hoard' }
+      var ETSY_LISTINGS = [];
+
+      var sec = document.getElementById('etsySec');
+      var grid = document.getElementById('etsyGrid');
+      if (!sec || !grid || !ETSY_LISTINGS.length) return;
+
+      function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+      grid.innerHTML = ETSY_LISTINGS.map(function (p) {
+        var sizes = (p.sizes || []).map(function (s) { return '<span class="sz">' + esc(s) + '</span>'; }).join('');
+        return '' +
+          '<article class="prod">' +
+          '<a class="prod-img" href="' + esc(p.url) + '" target="_blank" rel="noopener" aria-label="' + esc(p.name) + '"><img class="prod-main" src="' + esc(p.img || 'img/shop/gnash-cute.png') + '" alt="' + esc(p.name) + '" loading="lazy"></a>' +
+          '<div class="prod-body">' +
+          '<div class="etsy-mark">On Etsy</div>' +
+          '<h3>' + esc(p.name) + '</h3>' +
+          (p.price != null ? '<div class="price">$' + Number(p.price).toFixed(2) + '</div>' : '') +
+          (sizes ? '<div class="sizes">' + sizes + '</div>' : '') +
+          '<a class="buy" href="' + esc(p.url) + '" target="_blank" rel="noopener">View on Etsy &rarr;</a>' +
+          '</div></article>';
+      }).join('');
+
+      sec.hidden = false;
     })();
   </script>
   <!-- The Herald's Nudge (dismissible newsletter bar) -->
