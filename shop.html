@@ -227,18 +227,22 @@
       // Commercial Access approval plus a server-side key, and it sends no CORS
       // headers. So this shelf is hand-curated rather than fetched.
       //
-      // AN EMPTY ARRAY KEEPS THE WHOLE SECTION DARK, on purpose: a link to a shop
-      // with nothing in it costs more trust than it earns. As of 2026-07-14 the Etsy
-      // shop is live and branded but has zero listings, so the shelf stays hidden.
-      //
-      // TO LIGHT IT UP: publish the listing on Etsy, then add one entry per live
-      // listing and push. The section reveals itself.
-      //   { name: 'Buried in the Hoard | Fantasy Woven Treasure Blanket',
-      //     price: 89.00,
-      //     sizes: ['80x60', '60x50', '52x37'],
-      //     img: 'img/shop/blanket-001.jpg',
-      //     url: 'https://www.etsy.com/listing/0000000/buried-in-the-hoard' }
-      var ETSY_LISTINGS = [];
+      // An empty array keeps the whole section dark. As of 2026-07-16 the Etsy shop
+      // is LIVE with woven blankets, so the shelf is lit with the ten woven designs
+      // below. Card art = the local weave-optimized crop (img/shop/etsy-*.jpg); the
+      // click-through goes to the live Etsy listing. Add or remove entries and push.
+      var ETSY_LISTINGS = [
+        { name: 'Buried in the Hoard',   price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-buried-in-the-hoard.jpg', url: 'https://www.etsy.com/listing/4538082451/buried-in-the-hoard-fantasy-woven' },
+        { name: 'The Dungeon Archive',   price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-dungeon-archive.jpg',    url: 'https://www.etsy.com/listing/4538669650/dungeon-archive-woven-blanket-sleeping' },
+        { name: "The Cartographer's Table", price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-cartographers-table.jpg', url: 'https://www.etsy.com/listing/4538654775/cartographer-table-woven-blanket-cozy' },
+        { name: 'The Cavern Window',     price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-cavern-window.jpg',     url: 'https://www.etsy.com/listing/4538669912/cavern-window-woven-blanket-cozy' },
+        { name: 'The Raven Key',         price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-raven-key.jpg',         url: 'https://www.etsy.com/listing/4538628305/raven-key-woven-blanket-dark-botanical' },
+        { name: 'The Moon Hare',         price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-moon-hare.jpg',         url: 'https://www.etsy.com/listing/4538669352/moon-hare-woven-blanket-celestial' },
+        { name: 'The Lantern Fox',       price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-lantern-fox.jpg',       url: 'https://www.etsy.com/listing/4538654685/lantern-fox-woven-blanket-midnight' },
+        { name: 'The Moonkeeper Moth',   price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-moonkeeper-moth.jpg',   url: 'https://www.etsy.com/listing/4538081969/luna-moth-woven-blanket-celestial-moon' },
+        { name: "The Familiar's Cabinet", price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-familiars-cabinet.jpg', url: 'https://www.etsy.com/listing/4538082337/black-cat-woven-blanket-gothic' },
+        { name: 'Fallen Moonwood',       price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-fallen-moonwood.jpg',   url: 'https://www.etsy.com/listing/4538094862/mushroom-woven-blanket-luna-moth-forest' }
+      ];
 
       var sec = document.getElementById('etsySec');
       var grid = document.getElementById('etsyGrid');
