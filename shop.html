@@ -140,6 +140,17 @@
         <p class="s-sub">Woven blankets and weightier treasures, made to order on a real loom. These pieces live in the Treasure Hoard, our shop over on Etsy.</p>
       </div>
       <div class="shop-grid" id="etsyGrid"></div>
+    </section>
+
+    <!-- The rest of the Treasure Hoard: wall decor, table gear, and small treasures. -->
+    <section class="etsy-sec" id="etsyMoreSec" hidden style="margin-top:2.6rem;padding-top:2.6rem;">
+      <div class="etsy-head">
+        <p class="s-eyebrow">The Treasure Hoard &bull; More Loot</p>
+        <h2 class="etsy-title">More from the Hoard</h2>
+        <div class="s-divider"></div>
+        <p class="s-sub">Wall decor, table gear, and smaller treasures from the realm &mdash; desk mats, art prints, a camp mug, and more. Made to order and shipped from the Treasure Hoard on Etsy.</p>
+      </div>
+      <div class="shop-grid" id="etsyMoreGrid"></div>
       <div class="etsy-foot">
         <a class="s-store-link" href="https://www.etsy.com/shop/LIDMTreasureHoard" target="_blank" rel="noopener">Visit the Treasure Hoard on Etsy &rarr;</a>
       </div>
@@ -231,40 +242,61 @@
       // is LIVE with woven blankets, so the shelf is lit with the ten woven designs
       // below. Card art = the local weave-optimized crop (img/shop/etsy-*.jpg); the
       // click-through goes to the live Etsy listing. Add or remove entries and push.
-      var ETSY_LISTINGS = [
-        { name: 'Buried in the Hoard',   price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-buried-in-the-hoard.jpg', url: 'https://www.etsy.com/listing/4538082451/buried-in-the-hoard-fantasy-woven' },
-        { name: 'The Dungeon Archive',   price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-dungeon-archive.jpg',    url: 'https://www.etsy.com/listing/4538669650/dungeon-archive-woven-blanket-sleeping' },
-        { name: "The Cartographer's Table", price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-cartographers-table.jpg', url: 'https://www.etsy.com/listing/4538654775/cartographer-table-woven-blanket-cozy' },
-        { name: 'The Cavern Window',     price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-cavern-window.jpg',     url: 'https://www.etsy.com/listing/4538669790/cavern-window-woven-blanket-cozy' },
-        { name: 'The Raven Key',         price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-raven-key.jpg',         url: 'https://www.etsy.com/listing/4538628305/raven-key-woven-blanket-dark-botanical' },
-        { name: 'The Moon Hare',         price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-moon-hare.jpg',         url: 'https://www.etsy.com/listing/4538669352/moon-hare-woven-blanket-celestial' },
-        { name: 'The Lantern Fox',       price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-lantern-fox.jpg',       url: 'https://www.etsy.com/listing/4538654685/lantern-fox-woven-blanket-midnight' },
-        { name: 'The Moonkeeper Moth',   price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-moonkeeper-moth.jpg',   url: 'https://www.etsy.com/listing/4538081969/luna-moth-woven-blanket-celestial-moon' },
-        { name: "The Familiar's Cabinet", price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-familiars-cabinet.jpg', url: 'https://www.etsy.com/listing/4538082337/black-cat-woven-blanket-gothic' },
-        { name: 'Fallen Moonwood',       price: 69.00, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-fallen-moonwood.jpg',   url: 'https://www.etsy.com/listing/4538094862/mushroom-woven-blanket-luna-moth-forest' }
+      // Woven blankets. Every blanket is a 3-size listing ($69 / $89 / $119), so
+      // the card shows "From $69" to match the range a buyer sees on Etsy.
+      var BLANKETS = [
+        { name: 'Buried in the Hoard',   price: 69, from: true, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-buried-in-the-hoard.jpg', url: 'https://www.etsy.com/listing/4538082451/buried-in-the-hoard-fantasy-woven' },
+        { name: 'The Dungeon Archive',   price: 69, from: true, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-dungeon-archive.jpg',    url: 'https://www.etsy.com/listing/4538669650/dungeon-archive-woven-blanket-sleeping' },
+        { name: "The Cartographer's Table", price: 69, from: true, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-cartographers-table.jpg', url: 'https://www.etsy.com/listing/4538654775/cartographer-table-woven-blanket-cozy' },
+        { name: 'The Cavern Window',     price: 69, from: true, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-cavern-window.jpg',     url: 'https://www.etsy.com/listing/4538669790/cavern-window-woven-blanket-cozy' },
+        { name: 'The Raven Key',         price: 69, from: true, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-raven-key.jpg',         url: 'https://www.etsy.com/listing/4538628305/raven-key-woven-blanket-dark-botanical' },
+        { name: 'The Moon Hare',         price: 69, from: true, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-moon-hare.jpg',         url: 'https://www.etsy.com/listing/4538669352/moon-hare-woven-blanket-celestial' },
+        { name: 'The Lantern Fox',       price: 69, from: true, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-lantern-fox.jpg',       url: 'https://www.etsy.com/listing/4538654685/lantern-fox-woven-blanket-midnight' },
+        { name: 'The Moonkeeper Moth',   price: 69, from: true, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-moonkeeper-moth.jpg',   url: 'https://www.etsy.com/listing/4538081969/luna-moth-woven-blanket-celestial-moon' },
+        { name: "The Familiar's Cabinet", price: 69, from: true, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-familiars-cabinet.jpg', url: 'https://www.etsy.com/listing/4538082337/black-cat-woven-blanket-gothic' },
+        { name: 'Fallen Moonwood',       price: 69, from: true, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-fallen-moonwood.jpg',   url: 'https://www.etsy.com/listing/4538094862/mushroom-woven-blanket-luna-moth-forest' }
       ];
 
-      var sec = document.getElementById('etsySec');
-      var grid = document.getElementById('etsyGrid');
-      if (!sec || !grid || !ETSY_LISTINGS.length) return;
+      // Everything else worth featuring — wall decor, table gear, small treasures.
+      // Prices mirror the live Etsy listings; ranged items ("from") show a starting price.
+      var MORE_LOOT = [
+        { name: 'Game Master Desk Mat',        price: 39.99, sizes: ['16x32'],           img: 'img/shop/etsy-desk-mat.jpg',        url: 'https://www.etsy.com/listing/4539101950/game-master-desk-mat-dark-academia' },
+        { name: 'Dungeon Archive Art Print Set', price: 24.99, from: true, sizes: ['11x14', '16x20'], img: 'img/shop/etsy-art-print-set.jpg', url: 'https://www.etsy.com/listing/4539102140/dungeon-archive-fantasy-art-print-set' },
+        { name: 'Vintage Compass Wall Clock',  price: 44.99, sizes: ['10 in'],            img: 'img/shop/etsy-wall-clock.jpg',      url: 'https://www.etsy.com/listing/4539100650/fantasy-dungeon-map-wall-clock' },
+        { name: 'Moonlit Mushroom Cabinet Canvas', price: 49.00, sizes: ['12x16'],       img: 'img/shop/etsy-mushroom-canvas.jpg', url: 'https://www.etsy.com/listing/4539724066/moonlit-mushroom-cabinet-canvas' },
+        { name: 'Luna Moth Fantasy Pennant',   price: 29.99, sizes: ['18x21'],           img: 'img/shop/etsy-luna-pennant.jpg',    url: 'https://www.etsy.com/listing/4539085689/luna-moth-fantasy-pennant-celestial' },
+        { name: 'Adventurers Welcome Wood Sign', price: 32.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-wood-sign.jpg', url: 'https://www.etsy.com/listing/4539084207/adventurers-welcome-wood-sign-fantasy' },
+        { name: "Game Master's Campaign Journal", price: 24.99, sizes: ['5.75x8'],       img: 'img/shop/etsy-campaign-journal.jpg', url: 'https://www.etsy.com/listing/4538669912/game-master-campaign-journal-tabletop' },
+        { name: 'Game Night Enamel Mug',       price: 19.99, sizes: ['12 oz'],           img: 'img/shop/etsy-enamel-mug.jpg',      url: 'https://www.etsy.com/listing/4538655225/game-night-enamel-mug-cozy-cartographer' }
+      ];
 
       function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+      function money(v) { v = Number(v); return v % 1 === 0 ? String(v) : v.toFixed(2); }
 
-      grid.innerHTML = ETSY_LISTINGS.map(function (p) {
+      function cardHtml(p) {
         var sizes = (p.sizes || []).map(function (s) { return '<span class="sz">' + esc(s) + '</span>'; }).join('');
+        var price = p.price != null ? '<div class="price">' + (p.from ? 'From ' : '') + '$' + money(p.price) + '</div>' : '';
         return '' +
           '<article class="prod">' +
           '<a class="prod-img" href="' + esc(p.url) + '" target="_blank" rel="noopener" aria-label="' + esc(p.name) + '"><img class="prod-main" src="' + esc(p.img || 'img/shop/gnash-cute.png') + '" alt="' + esc(p.name) + '" loading="lazy"></a>' +
           '<div class="prod-body">' +
           '<div class="etsy-mark">On Etsy</div>' +
           '<h3>' + esc(p.name) + '</h3>' +
-          (p.price != null ? '<div class="price">$' + Number(p.price).toFixed(2) + '</div>' : '') +
+          price +
           (sizes ? '<div class="sizes">' + sizes + '</div>' : '') +
           '<a class="buy" href="' + esc(p.url) + '" target="_blank" rel="noopener">View on Etsy &rarr;</a>' +
           '</div></article>';
-      }).join('');
+      }
 
-      sec.hidden = false;
+      function lightShelf(secId, gridId, items) {
+        var sec = document.getElementById(secId), grid = document.getElementById(gridId);
+        if (!sec || !grid || !items.length) return;
+        grid.innerHTML = items.map(cardHtml).join('');
+        sec.hidden = false;
+      }
+
+      lightShelf('etsySec', 'etsyGrid', BLANKETS);
+      lightShelf('etsyMoreSec', 'etsyMoreGrid', MORE_LOOT);
     })();
   </script>
   <!-- The Herald's Nudge (dismissible newsletter bar) -->
