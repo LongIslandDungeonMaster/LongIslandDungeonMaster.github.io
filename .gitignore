@@ -1,2 +1,8 @@
 node_modules
 bower_components
+
+# Windows folder-customization junk (never part of the site)
+desktop.ini
+folder.ico
+Thumbs.db
+ehthumbs.db

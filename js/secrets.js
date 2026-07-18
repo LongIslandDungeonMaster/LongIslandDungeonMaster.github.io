@@ -79,7 +79,7 @@
       reward: 'lore', rewardName: 'The Hidden Scroll', rewardUrl: 'scroll.html',
       sigils: [
         { id: 'w1', sel: '#services .section-title', word: 'services' },
-        { id: 'w2', sel: '#latest .section-title', word: ['latest', 'the weekly one-shot'] },
+        { id: 'w2', sel: '#latest .section-title', word: ['latest', 'the bi-weekly one-shot'] },
         { id: 'w3', sel: '#the-game .game-eyebrow', word: 'the game' }
       ]
     }
