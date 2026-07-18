@@ -48,9 +48,9 @@
     bar = document.createElement('div');
     bar.className = 'lidm-nudge';
     bar.setAttribute('role', 'region');
-    bar.setAttribute('aria-label', 'The Weekly One-Shot newsletter');
+    bar.setAttribute('aria-label', 'The Bi-Weekly One-Shot newsletter');
     bar.innerHTML =
-      '<p><b>The Weekly One-Shot</b> &mdash; a ready-to-run adventure in your inbox, every week. Free.</p>' +
+      '<p><b>The Bi-Weekly One-Shot</b> &mdash; a ready-to-run adventure in your inbox, every other week. Free.</p>' +
       '<a class="lidm-nudge-cta" href="' + SUB + '" target="_blank" rel="noopener">Join the List &rarr;</a>' +
       '<button class="lidm-nudge-x" type="button" aria-label="Dismiss">&times;</button>';
     bar.querySelector('.lidm-nudge-x').addEventListener('click', dismiss);
