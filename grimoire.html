@@ -289,6 +289,19 @@
     @media (prefers-reduced-motion: reduce) {
       .g-status .dot, .gsummon-in .caret, .mini-pal .in .caret { animation: none; }
     }
+    /* The live table (Theater) panel */
+    .g-theater-panel { display: flex; flex-direction: column; gap: .55rem; background: linear-gradient(180deg, rgba(40,10,10,.55), rgba(10,4,4,.5)); border: 1px solid rgba(201,168,76,.4); border-radius: 14px; padding: 1.1rem; box-shadow: inset 0 0 40px rgba(0,0,0,.35); }
+    .g-theater-panel .tp-row { display: flex; align-items: center; gap: .8rem; padding: .6rem .75rem; border-radius: 10px; background: rgba(0,0,0,.32); border: 1px solid rgba(201,168,76,.18); }
+    .g-theater-panel .tp-row i { color: var(--gold); font-size: 1.1rem; width: 1.4rem; text-align: center; }
+    .g-theater-panel .tp-row b { display: block; color: #f4e4b0; font-family:'Merriweather Sans',sans-serif; font-size: .9rem; }
+    .g-theater-panel .tp-row span { display: block; color: rgba(255,255,255,.6); font-size: .74rem; }
+    .g-theater-panel .tp-host { border-color: rgba(201,168,76,.5); background: rgba(201,168,76,.1); }
+    .g-theater-panel .tp-turn { color: #7bd88f !important; font-weight: 700; }
+    .g-theater-panel .tp-rest { opacity: .58; }
+    .g-theater-panel .tp-link { display: flex; align-items: center; justify-content: center; gap: .7rem; padding: .1rem 0; }
+    .g-theater-panel .tp-code { font-family: 'Merriweather Sans',sans-serif; letter-spacing: 2px; font-size: .8rem; color: var(--gold); border: 1px dashed rgba(201,168,76,.5); border-radius: 6px; padding: .2rem .6rem; }
+    .g-theater-panel .tp-flow { font-size: .72rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1px; }
+    .g-theater-panel .tp-flow i { color: var(--gold); margin-right: .3rem; }
   </style>
 </head>
 
@@ -464,12 +477,38 @@
       </div>
     </section>
 
+    <!-- ==================== THE THEATER (live table) ==================== -->
+    <section class="g-sec g-theater">
+      <div class="g-spot">
+        <div class="copy">
+          <p class="sub">New &middot; Connect the whole table</p>
+          <h2>The live table</h2>
+          <p>You run the night from the Grimoire. Your players carry <a href="/satchel"><b>Gnasher's Satchel</b></a>, the free character app, on their phones. Pair once and the two halves lock together, with no server and no account.</p>
+          <ul>
+            <li><i class="fas fa-satellite-dish"></i> <b>One code opens the table.</b> Read it aloud, players type it in, and everyone is linked in seconds. No venue Wi-Fi? Same-room mode or a phone hotspot works too.</li>
+            <li><i class="fas fa-bolt"></i> <b>Initiative drives every screen.</b> When you muster a fight and advance turns on the War Table, each player's phone lights up on their turn. You do nothing extra.</li>
+            <li><i class="fas fa-paper-plane"></i> <b>Push handouts and whispers.</b> Send a map or a note to the whole table, or slip one player a private line.</li>
+            <li><i class="fas fa-dice-d20"></i> <b>Their rolls come home.</b> Player rolls land in your dice log and the session Chronicle, labeled by name.</li>
+            <li><i class="fas fa-moon"></i> <b>Phones sleep, seats are held.</b> A dozing phone rejoins by itself and catches up on anything it missed.</li>
+          </ul>
+          <p><a class="g-btn g-btn-ghost" href="/satchel"><i class="fas fa-hand-sparkles" aria-hidden="true"></i> Meet Gnasher's Satchel</a></p>
+        </div>
+        <div class="g-theater-panel" aria-label="How the live table connects: the Grimoire hosts, players pair the Satchel, initiative and handouts flow to their phones">
+          <div class="tp-row tp-host"><i class="fas fa-book-bookmark"></i><div><b>Gnasher's Grimoire</b><span>You host the table</span></div></div>
+          <div class="tp-link"><span class="tp-code">EMBER&middot;42</span><span class="tp-flow"><i class="fas fa-arrow-down-long"></i> paired</span></div>
+          <div class="tp-row tp-player"><i class="fas fa-mobile-screen"></i><div><b>Nyx &middot; Rogue</b><span class="tp-turn">Your turn</span></div></div>
+          <div class="tp-row tp-player"><i class="fas fa-mobile-screen"></i><div><b>Keros &middot; Druid</b><span>Handout received</span></div></div>
+          <div class="tp-row tp-player tp-rest"><i class="fas fa-mobile-screen"></i><div><b>Ruudak &middot; Wizard</b><span>Resting &middot; held</span></div></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ==================== THE MODEL ==================== -->
     <section class="g-sec g-model">
       <div class="g-sec-head" style="margin-bottom:.4rem;">
         <span class="free-badge">The binder is free.</span>
       </div>
-      <p>Gnasher's Grimoire is free, and it always will be &mdash; it's the shelf, and a shelf only matters once there's something on it. <strong>What you fill it with is up to you.</strong> Load it with free Table Keepers from The Hoard and the weekly one-shots, or add paid Keepers when you want more teeth. Own more, summon more. That's the whole deal.</p>
+      <p>Gnasher's Grimoire is free, and it always will be &mdash; it's the shelf, and a shelf only matters once there's something on it. <strong>What you fill it with is up to you.</strong> Load it with free Table Keepers from The Hoard, then fill it with the Bi-Weekly One-Shots and Keepers when you want more teeth. Own more, summon more. That's the whole deal.</p>
       <div class="split">
         <div>
           <h4>Free, forever</h4>
@@ -477,7 +516,7 @@
             <li><i class="fas fa-check"></i> Gnasher's Grimoire app itself</li>
             <li><i class="fas fa-check"></i> The DM's Field Kit &amp; Hoard tables</li>
             <li><i class="fas fa-check"></i> Free Keepers &mdash; like <em>Where the Road Ends</em></li>
-            <li><i class="fas fa-check"></i> Free weekly one-shots</li>
+            <li><i class="fas fa-check"></i> Occasional free one-shots</li>
             <li><i class="fas fa-check"></i> Install anything you download</li>
           </ul>
         </div>
@@ -488,7 +527,7 @@
             <li><i class="fas fa-gem"></i> Creature Keepers &mdash; monsters for the War Table</li>
             <li><i class="fas fa-gem"></i> Character Keepers &mdash; NPCs, ready to speak</li>
             <li><i class="fas fa-gem"></i> Table Keepers &mdash; roll for anything</li>
-            <li><i class="fas fa-gem"></i> The paid Weekly One-Shot</li>
+            <li><i class="fas fa-gem"></i> The Bi-Weekly One-Shots</li>
           </ul>
           <p class="g-store">Find them on <a href="https://longislanddungeonmaster.itch.io" target="_blank" rel="noopener">itch.io</a> &mdash; with <b>DriveThruRPG</b> on the way.</p>
         </div>
@@ -526,11 +565,11 @@
     <!-- ==================== FINAL CTA ==================== -->
     <section id="get-it" class="g-final">
       <h2>Take it &mdash; it's free</h2>
-      <p>Gnasher's Grimoire is one file. Download it, double-click it, and you're holding the binder &mdash; the <b>DM's Field Kit</b> and a sample Adventure Keeper come pre-loaded, so the Summon works from your very first keypress. No account. No install. No internet after this page. Then join <b>The Weekly One-Shot</b> and there's a new Keeper to feed it most weeks.</p>
+      <p>Gnasher's Grimoire is one file. Download it, double-click it, and you're holding the binder &mdash; the <b>DM's Field Kit</b> and a sample Adventure Keeper come pre-loaded, so the Summon works from your very first keypress. No account. No install. No internet after this page. Then join <b>The Bi-Weekly One-Shot</b> and there's a new Keeper to feed it every other week.</p>
       <a class="g-btn g-btn-gold" href="downloads/gnashers-grimoire.html" download="gnashers-grimoire.html"><i class="fas fa-book-bookmark" aria-hidden="true"></i> Download Gnasher's Grimoire &mdash; free</a>
-      <a class="g-btn g-btn-ghost" href="https://longislanddungeonmaster.substack.com" target="_blank" rel="noopener"><i class="fas fa-scroll" aria-hidden="true"></i> Join The Weekly One-Shot &mdash; free</a>
+      <a class="g-btn g-btn-ghost" href="https://longislanddungeonmaster.substack.com" target="_blank" rel="noopener"><i class="fas fa-scroll" aria-hidden="true"></i> Join The Bi-Weekly One-Shot &mdash; free</a>
       <div class="g-embed">
-        <iframe src="https://longislanddungeonmaster.substack.com/embed" width="480" height="150" scrolling="no" title="Join The Weekly One-Shot"></iframe>
+        <iframe src="https://longislanddungeonmaster.substack.com/embed" width="480" height="150" scrolling="no" title="Join The Bi-Weekly One-Shot"></iframe>
       </div>
     </section>
 
