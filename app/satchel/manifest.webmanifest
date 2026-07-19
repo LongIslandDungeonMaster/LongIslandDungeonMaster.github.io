@@ -1,0 +1,30 @@
+{
+ "name": "Gnasher's Satchel",
+ "short_name": "Satchel",
+ "description": "Your 5E-compatible character, rolls, and table handouts. Free, offline, no account. A companion to Gnasher's Grimoire.",
+ "start_url": "./players-satchel.html",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#160a0a",
+ "theme_color": "#160a0a",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
