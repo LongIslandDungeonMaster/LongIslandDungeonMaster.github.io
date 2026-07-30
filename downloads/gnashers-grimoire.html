@@ -2,7 +2,7 @@
 <!--
   ============================================================================
   GNASHER'S GRIMOIRE — "A Dungeon Master Companion"  (source; internal nickname "Keeper Keeper" retired 2026-07-03)
-  Gnasher's Grimoire™ · build 2026-07-18 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
+  Gnasher's Grimoire™ · build 2026-07-28 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
   ============================================================================
   v15 (2026-07-18) - THE CHRONICLE: campaign memory across Keepers (FINAL-ORDERS
   C1; the law is Scriptorium/CAMPAIGN-WEB-SPEC.md - hourglass web, one flag
@@ -24,6 +24,16 @@
   with liveness on both ends; a dropped player's seat is HELD, and the same
   name rejoining reclaims it (the Satchel auto-rejoins by its stored table
   code); handout pushes aim at the whole table or WHISPER to one player.
+  ============================================================================
+  v16 (2026-07-28) - THE TABLE BOARD + THE ROSTER EDITOR. Two field failures,
+  both fixed here. (1) A table is now a SAVED thing: name, its own sticky code,
+  its party, its seats, all riding STATE.tables. The code is minted once and
+  KEPT, so a reload re-arms the same code and every Satchel's stored code still
+  works; if the code was live when the tab went away, boot re-opens it by itself
+  and the players rejoin with nothing typed by anyone. Held seats and the
+  store-and-forward queue survive the refresh too. (2) The party drawer is a
+  real roster editor: add and remove heroes, edit every field, reorder them,
+  MOVE a hero to another party, and rename, copy or delete a party.
   ============================================================================
   WINNING FORMULA: Speed + Zero context-loss + Everything in one reach.
   The core gesture: press SPACE -> type -> any table from ANY book you own
@@ -464,6 +474,37 @@ body.strip-on .pane{max-height:calc(100vh - 139px);}
 .pc .stats .s .k{color:var(--ink-soft);font-size:9.5px;letter-spacing:.03em;}
 .drawer-foot{flex:0 0 auto;border-top:1px solid var(--rule);padding:10px 16px;font-size:11.5px;color:#8a6d5f;text-align:center;}
 
+/* ===================== v16 - ROSTER EDITOR + TABLE BOARD ===================== */
+.pty-head{display:flex;align-items:center;gap:6px;margin:0 0 10px;}
+.pty-head .pnm{flex:1 1 auto;min-width:0;font-family:var(--serif);font-size:19px;color:var(--gold-br);background:#170b0a;border:1px solid var(--rule);border-radius:7px;padding:6px 9px;}
+.pty-head .pnm:focus{outline:none;border-color:var(--gold);}
+.mini-btn{flex:0 0 auto;background:#241211;border:1px solid var(--rule);color:var(--ink-soft);border-radius:6px;padding:5px 9px;font-family:var(--serif);font-size:12px;cursor:pointer;line-height:1.2;}
+.mini-btn:hover{border-color:var(--gold);color:var(--gold-br);}
+.mini-btn.warn{color:#ce8f8f;}
+.mini-btn.warn:hover{border-color:var(--crimson-br);color:#f0b0b0;background:rgba(139,0,0,.16);}
+.mini-btn.armed{background:var(--crimson);border-color:var(--crimson-br);color:#f3e3d6;}
+.mini-btn.gold{background:linear-gradient(180deg,var(--gold-br),var(--gold));color:#160a0a;border-color:var(--gold-br);font-weight:700;}
+.pc .info .cls{font-size:12.5px;color:var(--ink-soft);margin:1px 0 8px;background:none;border:none;padding:0;width:100%;font-family:var(--body);}
+.pc .info .cls:focus{outline:none;color:var(--gold-br);}
+.pc .stats .s input{width:34px;background:none;border:none;color:var(--gold-br);font-family:var(--mono);font-size:11.5px;padding:0;}
+.pc .stats .s input:focus{outline:none;color:#f0d28a;}
+.pc .stats .s input.hp{width:62px;}
+.pc .stats{gap:5px;flex-wrap:nowrap;}
+.pc .stats .s{padding:3px 6px;white-space:nowrap;}
+.hero-acts{display:flex;gap:4px;flex-wrap:wrap;margin-top:9px;align-items:center;}
+.hero-acts .mv{background:#170b0a;border:1px solid var(--rule);color:var(--ink-soft);border-radius:6px;padding:4px 6px;font-family:var(--body);font-size:11.5px;max-width:148px;}
+.hero-acts .mv:focus{outline:none;border-color:var(--gold);}
+.hero-acts .sp{flex:1 1 auto;}
+.pty-add{width:100%;margin:2px 0 16px;border-style:dashed;}
+.pty-empty{font-size:13px;color:var(--ink-soft);font-style:italic;text-align:center;padding:16px 8px;border:1px dashed var(--rule);border-radius:9px;margin-bottom:12px;}
+.tbl-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:6px 0;}
+.tbl-pill{font-size:12px;background:#241211;border:1px solid var(--rule);color:var(--ink-soft);border-radius:20px;padding:5px 12px;font-family:var(--serif);cursor:pointer;}
+.tbl-pill:hover{border-color:var(--gold);}
+.tbl-pill.on{background:var(--crimson);border-color:var(--crimson-br);color:#f3e3d6;}
+.tbl-pill.add{border-style:dashed;color:var(--gold-br);}
+.th-code{font-family:var(--serif);font-size:20px;letter-spacing:.05em;color:var(--gold-br);}
+.th-peer.th-seat{opacity:.78;border-style:dashed;}
+
 /* ===================== HELP OVERLAY ===================== */
 #help{position:fixed;inset:0;z-index:110;background:rgba(10,5,4,.82);display:none;align-items:center;justify-content:center;padding:20px;}
 #help.show{display:flex;}
@@ -764,6 +805,17 @@ body.strip-on .chronicle{top:146px;}
 .ch-node.here{color:var(--gold-br);border-color:var(--gold);}
 .ch-code{font-family:var(--mono);font-size:16px;letter-spacing:.12em;color:var(--gold-br);background:rgba(201,162,75,.08);border:1px dashed var(--gold);border-radius:8px;padding:7px 10px;margin:7px 0 2px;text-align:center;}
 .ch-exit{display:block;width:100%;text-align:left;margin:5px 0;}
+/* rollable dice chips inside card prose (click to roll; lit = last rolled) */
+.idice{font-family:var(--mono);font-size:.92em;color:var(--gold-br);background:rgba(201,162,75,.1);
+  border:1px solid rgba(201,162,75,.32);border-radius:4px;padding:0 5px;cursor:pointer;white-space:nowrap;
+  transition:background .12s,border-color .12s,color .12s;}
+.idice:hover{background:rgba(201,162,75,.24);border-color:var(--gold);color:#f0d28a;}
+.idice.lit{background:var(--crimson);border-color:var(--crimson-br);color:#ffe9c9;}
+/* cross-reference links: live = gold + clickable (summons the card), dead = muted */
+.xref{border-bottom:1px dotted transparent;transition:color .12s,background .12s,border-color .12s;}
+.xref-live{color:var(--gold-br);border-bottom-color:rgba(201,162,75,.5);cursor:pointer;}
+.xref-live:hover{color:#f0d28a;border-bottom-color:var(--gold);background:rgba(201,162,75,.09);}
+.xref-dead{color:#8a7358;border-bottom:1px dashed rgba(120,100,80,.4);cursor:default;}
 </style>
 </head>
 <body>
@@ -881,7 +933,7 @@ body.strip-on .chronicle{top:146px;}
     <p>A PDF dies in a downloads folder. Give away this deck free and every LIDM adventure someone buys <b>snaps into a living thing that gets better the more they own</b> &mdash; a deeper Summon, cross-book tables, one party through all of it. It's the DM's second screen, and it only fills up with <i>your</i> books.</p>
 
     <h2>About</h2>
-    <p class="about-ip">Gnasher's Grimoire&trade; &middot; build 2026-07-18 &middot; &copy; 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.</p>
+    <p class="about-ip">Gnasher's Grimoire&trade; &middot; build 2026-07-28 &middot; &copy; 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.</p>
     <p class="about-ip">Free tool. Runs offline; your books stay yours. Get more books at <a href="https://longislanddungeonmaster.com/keepers" target="_blank" rel="noopener">longislanddungeonmaster.com/keepers</a>.</p>
     <p class="about-ip">The Theater: your players pair Gnasher's Satchel, its free companion, straight to this screen. No server, no accounts; the pairing code is the connection, and a same-room mode works with no internet at all.</p>
     <p class="about-ip">The Chronicle: the binder's campaign memory. Seal how each chapter of a campaign ended and every later chapter opens already knowing what your table did; a short Chronicle Code carries the same story to any table, no binder needed.</p>
@@ -925,10 +977,10 @@ body.strip-on .chronicle{top:146px;}
     <div class="sub">One roster, every adventure.</div>
   </div>
   <div class="drawer-body">
-    <div class="party-note">Drag an image onto a portrait &mdash; or click it. Passives show in the strip at the top of every adventure.</div>
+    <div class="party-note">Every group you run, kept side by side. Drop an image on a portrait, or click it.</div>
     <div id="partyList"></div>
   </div>
-  <div class="drawer-foot">Names editable. Portraits, HP, passives all save to the binder.</div>
+  <div class="drawer-foot">Every field edits in place and saves to the binder.</div>
 </aside>
 
 <!-- ===================== DOCK RAIL — references dock here instead of floating over the adventure ===================== -->
@@ -958,14 +1010,21 @@ body.strip-on .chronicle{top:146px;}
     <button class="x" title="Hide (the table stays linked)" onclick="hideTheater()">&times;</button>
   </div>
   <div class="theater-b">
+    <div class="th-sec">Your tables</div>
+    <div class="tbl-row" id="thTables"></div>
     <div class="th-row">
       <input class="th-inp" id="thTable" placeholder="Table name" style="flex:1 1 auto;min-width:0;" onchange="theaterTableChanged(this.value)">
       <button class="th-btn" id="thSameRoom" onclick="theaterToggleRoom()" title="No internet at the table? Pair on the room&#39;s own network instead.">Same room</button>
+    </div>
+    <div class="th-row">
+      <select class="th-inp" id="thTableParty" style="flex:1 1 auto;min-width:0;" onchange="theaterSetTableParty(this.value)" title="The party that sits at this table"></select>
+      <button class="th-btn" id="thForget" onclick="theaterDeleteTable(this)" title="Forget this table">Forget</button>
     </div>
     <div class="th-sec">Players</div>
     <div id="thPeers"></div>
     <div class="th-row"><button class="th-btn gold" id="thCodeBtn" style="flex:1 1 auto;" onclick="theaterCodeStart()">Open the table by code</button></div>
     <div class="th-hint" id="thCodeLine"></div>
+    <div class="th-row"><button class="th-btn" id="thNewCode" style="flex:1 1 auto;" onclick="theaterNewCode(this)" title="Only if the code leaked. Everyone has to retype the new one.">Change the code</button></div>
     <button class="th-btn gold" style="width:100%;margin-top:4px;" onclick="theaterAddPeer()">+ Invite by paste</button>
     <p class="th-hint">Each player opens Gnasher's Satchel, taps the pairing ring, and pastes your invite; their reply comes back here. Once linked, the War Table lights their screens by itself.</p>
     <div class="th-sec">Handouts</div>
@@ -986,6 +1045,7 @@ body.strip-on .chronicle{top:146px;}
         <b>2. Run the fight.</b> Nothing extra to do: your combat tracker drives every paired Satchel. Each player sees the order, and a YOUR TURN banner when it's them.<br>
         <b>3. Handouts.</b> Title, text or image, <b>Push text</b> or <b>Push image</b>. Pick a name in the To row to whisper it to one player alone; everyone else never sees it.<br>
         <b>4. Resting seats.</b> A player's phone dozing off shows their seat as resting. Keep playing; whatever you push is held and delivered the moment their screen wakes. Their Satchel rejoins by itself.<br>
+        <b>5. The code sticks.</b> A saved table keeps the same code, so your players type it once and it still works next week. Reload this page mid-session and the table reopens on its own, seats and all, with nobody typing anything. Only <b>Change the code</b> makes them retype.<br>
         Players start at <a href="https://longislanddungeonmaster.com/satchel" target="_blank" rel="noopener" style="color:var(--gold,#c9a24b);">longislanddungeonmaster.com/satchel</a>.
       </div>
     </details>
@@ -1107,7 +1167,7 @@ let INDEX = TABLES.map(t=>Object.assign({kind:'table'},t))
   .concat(NPCS.map(n=>Object.assign({kind:'npc'},n)));
 const SEED_INDEX = INDEX.slice();
 let INSTALLED = {};                       // id -> {id,title,kind,entries,html}
-function rebuildIndex(){ INDEX = SEED_INDEX.slice(); Object.values(INSTALLED).forEach(k=>k.entries.forEach(e=>INDEX.push(Object.assign({src:k.id},e)))); }
+function rebuildIndex(){ INDEX = SEED_INDEX.slice(); Object.values(INSTALLED).forEach(k=>k.entries.forEach(e=>INDEX.push(Object.assign({src:k.id},e)))); XREF_MAP=null; }
 /* v13 fix (found 2026-07-08): honor the manifest's declared kind — packs shelve with the packs,
    plaques read the true Keeper class, and a manifest-carried cover rides onto the shelf tile. */
 function addInstalledToBooks(k){
@@ -1147,6 +1207,62 @@ function stripEnt(s){return String(s).replace(/&[a-z]+;/gi,' ').replace(/&#\d+;/
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 /* "Surface | Truth | Tell" reveal rows -> layered display */
 function rowHTML(r){if(r.indexOf(' | ')<0)return r;const p=r.split(' | ');return '<b>'+p[0]+'</b>'+p.slice(1).map(s=>'<span class="rsub">'+s+'</span>').join('');}
+/* ---- prose enrichment: rollable dice + cross-reference links ----------------
+   enrichProse() runs over a card's prose fields (monster notes, NPC lines, table
+   rows). It (1) turns {@tag name|src|display} markup into cross-ref links that
+   summon the target card, and (2) wraps bare dice like 8d6 / 2d10+5 as click-to-
+   roll chips. Both are no-ops on plain text, so a card carrying neither is byte-
+   for-byte unchanged. Content-neutral: it links/rolls whatever the library holds. */
+const LINK_KIND={creature:'monster',monster:'monster',npc:'npc',character:'npc',table:'table',
+  spell:'',item:'',itemgroup:'',condition:'',status:'',disease:'',action:'',skill:'',sense:'',
+  hazard:'',trap:'',object:'',feat:'',optfeature:'',race:'',background:'',deity:'',variantrule:'',
+  rule:'',reward:'',vehicle:'',classfeature:'',subclassfeature:'',class:'',book:'',adventure:''};
+function enrichProse(s){
+  if(s==null)return '';
+  s=String(s);
+  s=s.replace(/\{@(\w+)\s+([^{}]*)\}/g,(m,tag,payload)=>{
+    const parts=payload.split('|'),name=(parts[0]||'').trim(),disp=((parts.length>2?parts[2]:'')||name).trim();
+    const k=LINK_KIND[tag.toLowerCase()];
+    if(k===undefined)return esc(disp||payload);            // non-linking tag (i/b/dice/hit/dc…): show its text
+    return '<span class="xref" data-k="'+esc(k)+'" data-n="'+esc(name)+'">'+esc(disp)+'</span>';
+  });
+  s=s.replace(/(<[^>]*>)|(\b\d{0,3}d\d{1,3}(?:\s*[+-]\s*\d+)?\b)/gi,(m,tagChunk,dice)=>
+    tagChunk!=null?tagChunk:'<span class="idice" data-d="'+dice.replace(/\s+/g,'')+'">'+dice+'</span>');
+  return s;
+}
+/* cross-reference resolver: link {@tag name} spans to library cards by name (kind
+   hint disambiguates collisions, name-only fallback). Cache is keyed to INDEX
+   length and busted by rebuildIndex(). */
+let XREF_MAP=null,XREF_MAP_N=-1;
+function xrefNorm(s){return stripEnt(String(s)).replace(/\s+/g,' ').trim().toLowerCase();}
+function xrefMap(){
+  if(XREF_MAP&&XREF_MAP_N===INDEX.length)return XREF_MAP;
+  const m=Object.create(null);
+  for(let i=0;i<INDEX.length;i++){const key=xrefNorm(INDEX[i].nm||INDEX[i].name||'');if(key)(m[key]||(m[key]=[])).push(i);}
+  XREF_MAP=m;XREF_MAP_N=INDEX.length;return m;
+}
+function resolveXref(kind,name){
+  const cand=xrefMap()[xrefNorm(name)];
+  if(!cand||!cand.length)return -1;
+  if(kind){for(let x=0;x<cand.length;x++){if(INDEX[cand[x]].kind===kind)return cand[x];}}
+  return cand[0];
+}
+/* wire a floated card's dice chips + xref links (resolve fresh at click so INDEX
+   shifts don't stale). Called for every kind from floatTable(). */
+function wireCardEnrichments(card,t){
+  const foot=card.querySelector('.fcard-foot');
+  card.querySelectorAll('.idice').forEach(d=>d.addEventListener('click',e=>{
+    e.stopPropagation();const expr=d.dataset.d,r=rollDmg(expr);
+    if(foot)foot.innerHTML='<b>'+esc(expr)+' &rarr; '+r.sum+'</b> '+r.txt;
+    logRoll(expr,r.sum,stripEnt((t&&t.nm)||'roll'));
+    card.querySelectorAll('.idice.lit').forEach(o=>o.classList.remove('lit'));d.classList.add('lit');
+  }));
+  card.querySelectorAll('.xref').forEach(a=>{
+    if(resolveXref(a.dataset.k,a.dataset.n)>=0){a.classList.add('xref-live');
+      a.addEventListener('click',e=>{e.stopPropagation();const j=resolveXref(a.dataset.k,a.dataset.n);if(j>=0)floatTable(j);});}
+    else{a.classList.add('xref-dead');}
+  });
+}
 function motifSVG(motif,accent){const m={
   lighthouse:'<path d="M50 14 L58 40 L58 78 L42 78 L42 40 Z" fill="'+accent+'"/><rect x="40" y="38" width="20" height="8" fill="#160a0a"/><circle cx="50" cy="24" r="6" fill="#e0c074"/><path d="M50 24 L20 16 M50 24 L80 16" stroke="#e0c074" stroke-width="2"/>',
   goblet:'<path d="M34 22 H66 L60 46 Q50 58 40 46 Z" fill="'+accent+'"/><rect x="47" y="56" width="6" height="18" fill="'+accent+'"/><rect x="36" y="74" width="28" height="6" fill="'+accent+'"/><circle cx="50" cy="34" r="5" fill="#b3201b"/>',
@@ -1253,23 +1369,43 @@ function detectWatermark(html,doc){             // the per-buyer piracy trace, i
   if(!trace){ try{ if(new RegExp(ZWB+'['+ZW0+ZW1+']+'+ZWB).test(html))trace='present'; }catch(e){} }
   return trace;
 }
+// HARDENING (2026-07-23): the gate no longer degrades SILENTLY. Every malformed input
+// now either rejects loudly, or installs with a named warning (surfaced by installFromFiles).
+// warnings[] rides on the success object; nothing is dropped, mislabelled, or scraped without a trace.
+function findManifest(doc){                      // the credential is the id; a lost/altered type attr must not silently un-verify a real Keeper
+  let el=doc.querySelector('script[type="application/json"][id="keeper-manifest"]'); if(el) return {el,how:'strict'};
+  el=doc.querySelector('script[id="keeper-manifest"]'); if(el) return {el,how:'id'};   // right id, wrong/missing type → repairable
+  for(const s of doc.querySelectorAll('script[type="application/json"]')){            // last resort: a JSON script that self-declares as a manifest
+    try{ const j=JSON.parse(s.textContent); if(j&&(Array.isArray(j.tables)||Array.isArray(j.monsters)||Array.isArray(j.npcs)||typeof j.kind==='string')) return {el:s,how:'shape'}; }catch(_){}
+  }
+  return null;
+}
+function isKnownKind(k){ return !k || Object.prototype.hasOwnProperty.call(KIND_LABELS, String(k).toLowerCase()); }
 function parseKeeper(html, fname){
   let doc; try{doc=new DOMParser().parseFromString(html,'text/html');}catch(e){return {reject:true,reason:'That file couldn&rsquo;t be read as HTML.'};}
   // RULE 1 — reject a Grimoire dropped into a Grimoire
   if(looksLikeGrimoire(html,doc)) return {reject:true,reason:'That&rsquo;s a Grimoire, not a Keeper &mdash; you can&rsquo;t nest one binder inside another.'};
   const g=sel=>{const el=doc.querySelector(sel);return el?el.textContent.trim():'';};
   let title=(g('#wmTitle')||g('h1.title')||g('.title')||g('title')||fname||'Imported Keeper').replace(/\s+/g,' ').trim();
-  let entries=[], cues=[], verified=false, unverified=false, declaredKind='', cover='', chronicleBlk=null;
-  const man=doc.querySelector('script[type="application/json"][id="keeper-manifest"]');
+  let entries=[], cues=[], verified=false, unverified=false, declaredKind='', cover='', chronicleBlk=null, warnings=[];
+  const found=findManifest(doc), man=found&&found.el;
   if(man){
     let m=null; try{ m=JSON.parse(man.textContent); }catch(e){ return {reject:true,reason:'This Keeper&rsquo;s manifest is corrupt &mdash; it can&rsquo;t be read.'}; }
     // RULE 2 (schema) — a Keeper built for a newer Grimoire shouldn't half-load
     const sc=+(m.schema||1); if(sc>GG_KEEPER_SCHEMA) return {reject:true,reason:'This Keeper needs a newer Grimoire (manifest schema '+sc+'). Update your Grimoire to open it.'};
     if(m.title)title=m.title; declaredKind=m.kind||''; verified=true;   // RULE 2 — valid credential
+    if(found.how==='id') warnings.push('Manifest tag was malformed (wrong or missing type attribute) &mdash; recovered on import.');
+    else if(found.how==='shape') warnings.push('Manifest tag id was missing &mdash; recovered by content shape.');
+    if(!isKnownKind(declaredKind)) warnings.push('Declared kind &ldquo;'+esc(declaredKind)+'&rdquo; isn&rsquo;t a known Keeper class &mdash; shelved as Adventure Keeper.');
     if(typeof m.cover==='string'&&/^data:image\//.test(m.cover))cover=m.cover;   // v13: B8 cover inheritance, the dynamic half
-    (m.tables||[]).forEach(t=>entries.push({kind:'table',nm:t.name||t.nm,dice:t.dice||('d'+((t.rows||[]).length||6)),tags:t.tags||['imported'],rows:t.rows||[]}));
-    (m.monsters||[]).forEach(x=>entries.push(Object.assign({kind:'monster',tags:x.tags||['imported']},x,{nm:x.nm||x.name})));
-    (m.npcs||[]).forEach(x=>entries.push(Object.assign({kind:'npc',tags:x.tags||['imported']},x,{nm:x.nm||x.name})));
+    else if(m.cover) warnings.push('Manifest cover was ignored (not a data:image URI).');
+    let emptyTables=0, nameless=0;
+    (m.tables||[]).forEach(t=>{ const rows=Array.isArray(t.rows)?t.rows:[]; if(rows.length<1){emptyTables++;return;}   // skip empty tables rather than shelve a broken d6
+      entries.push({kind:'table',nm:t.name||t.nm||'Table',dice:t.dice||('d'+rows.length),tags:t.tags||['imported'],rows}); });
+    (m.monsters||[]).forEach(x=>{ const nm=x.nm||x.name; if(!nm)nameless++; entries.push(Object.assign({kind:'monster',tags:x.tags||['imported']},x,{nm:nm||'Unnamed monster'})); });
+    (m.npcs||[]).forEach(x=>{ const nm=x.nm||x.name; if(!nm)nameless++; entries.push(Object.assign({kind:'npc',tags:x.tags||['imported']},x,{nm:nm||'Unnamed NPC'})); });
+    if(emptyTables) warnings.push(emptyTables+' empty table'+(emptyTables!==1?'s':'')+' skipped (no rows).');
+    if(nameless) warnings.push(nameless+' unnamed entr'+(nameless!==1?'ies':'y')+' imported with a placeholder name.');
     if(Array.isArray(m.cues)) cues=m.cues.filter(c=>c&&c.tag);
     /* THE CHRONICLE (v15) — a chapter of a campaign web declares its place in it (CAMPAIGN-WEB-SPEC) */
     if(m.chronicle&&typeof m.chronicle==='object'&&m.chronicle.web&&m.chronicle.node)chronicleBlk={
@@ -1279,35 +1415,50 @@ function parseKeeper(html, fname){
       lexicon:(m.chronicle.lexicon&&typeof m.chronicle.lexicon==='object')?m.chronicle.lexicon:{},
       tells:(m.chronicle.tells&&typeof m.chronicle.tells==='object')?m.chronicle.tells:{},
       exits:m.chronicle.exits||null};
+    if(m.chronicle&&typeof m.chronicle==='object'&&!(m.chronicle.web&&m.chronicle.node)) warnings.push('Chronicle block was incomplete (needs web + node) &mdash; ignored.');
+    if(verified&&!entries.length) warnings.push('Manifest carried no usable tables, monsters, or NPCs.');
   }
   // FORK A (recommended) — no manifest but real tables on the page → soft-accept, UNVERIFIED
   if(!entries.length){ doc.querySelectorAll('table.kit').forEach(tbl=>{
     const cap=tbl.querySelector('caption'); const nm=(cap?cap.textContent:'Table').replace(/\s+/g,' ').trim();
     const rows=[...tbl.querySelectorAll('tbody tr')].map(tr=>{const td=tr.querySelectorAll('td');return td.length?(td[td.length-1].textContent||'').replace(/\s+/g,' ').trim():'';}).filter(Boolean);
     if(rows.length>=2) entries.push({kind:'table',nm,dice:'d'+rows.length,tags:['imported'],rows});
-  }); if(entries.length) unverified=true; }
+  }); if(entries.length){ unverified=true; verified=false; warnings.push('No Keeper credential &mdash; tables were scraped off the page (unverified).'); } }
   // RULE 3 — no credential and nothing readable → not a Keeper
   if(!entries.length) return {reject:true,reason:'That&rsquo;s not an Adventure Keeper &mdash; no Keeper manifest and no readable tables in it.'};
   const trace=detectWatermark(html,doc);
-  return {id:'inst_'+Math.abs(hashStr(title)).toString(36), title:esc(title), kind:'keeper', declaredKind, cover, entries, cues, chronicle:chronicleBlk, html, verified, unverified, trace};
+  return {id:'inst_'+Math.abs(hashStr(title)).toString(36), title:esc(title), kind:'keeper', declaredKind, cover, entries, cues, chronicle:chronicleBlk, html, verified, unverified, trace, warnings};
 }
 async function installFromFiles(files){
-  let n=0, unv=0, rej=[];
-  for(const f of files){ if(!/\.html?$/i.test(f.name||'')&&!/html/.test(f.type||''))continue;
-    let html; try{html=await f.text();}catch(e){continue;}
-    const k=parseKeeper(html,(f.name||'keeper').replace(/\.html?$/i,'')); if(!k)continue;
+  let n=0, unv=0; const rej=[], skip=[], warn=[], dup=[];
+  for(const f of files){
+    const fn=f.name||'keeper';
+    if(!/\.html?$/i.test(f.name||'')&&!/html/.test(f.type||'')){ skip.push(fn+' (not an HTML file)'); continue; }
+    let html; try{html=await f.text();}catch(e){ skip.push(fn+' (couldn&rsquo;t be read)'); continue; }
+    const k=parseKeeper(html,(f.name||'keeper').replace(/\.html?$/i,'')); if(!k){ skip.push(fn+' (unreadable)'); continue; }
     if(k.reject){ rej.push(k.reason); continue; }
+    // COLLISION GUARD — same title-hash id but DIFFERENT content = a different Keeper. Don't overwrite (that was silent data loss);
+    // shelve it alongside under a content-disambiguated id. Identical content (same file re-dropped) still updates in place.
+    const prev=INSTALLED[k.id];
+    if(prev && prev.html!==k.html){ k.id='inst_'+Math.abs(hashStr(k.title+'|'+k.html.slice(0,4000))).toString(36); dup.push(k.title); }
+    if(k.warnings&&k.warnings.length) warn.push(...k.warnings.map(w=>k.title+' &mdash; '+w));
     if(k.cover)k.cover=await thumbCover(k.cover);   // v13: cover rides the shelf as a compact thumbnail
     INSTALLED[k.id]=k; addInstalledToBooks(k); if(DB)await idbPut('keepers',k); driveSaveKeeper(k); n++; if(k.unverified)unv++;
   }
-  if(n){ rebuildIndex(); renderShelf();
-    let msg='Installed '+n+' Keeper'+(n!==1?'s':'')+' &mdash; their tables, monsters &amp; NPCs are now in your Summon.';
-    if(unv) msg+=' <b>'+unv+'</b> came in as <b>unverified import'+(unv!==1?'s':'')+'</b> (no Keeper credential &mdash; tables scraped off the page).';
-    toast(msg);
-    const before=(STATE.nudge&&STATE.nudge.i)||0; STATE.nudge=STATE.nudge||{i:0,s:0}; STATE.nudge.i=before+n; saveState();
+  if(n){ rebuildIndex(); renderShelf(); }
+  // ONE honest summary — installs, unverified, duplicates, rejections, and skips are all surfaced, never swallowed.
+  const parts=[];
+  if(n){ let m='Installed '+n+' Keeper'+(n!==1?'s':''); if(unv)m+=' <b>'+unv+' unverified</b>'; parts.push(m); }
+  if(dup.length) parts.push(dup.length+' duplicate name'+(dup.length!==1?'s':'')+' &mdash; shelved alongside the existing');
+  if(rej.length){ const uq=[...new Set(rej)]; parts.push(rej.length+' rejected: '+uq[0]+(uq.length>1?' (+'+(uq.length-1)+' more, see console)':'')); }
+  if(skip.length) parts.push(skip.length+' skipped'+(skip.length===1?' &mdash; '+skip[0]:' (see console)'));
+  if(warn.length) parts.push('<b>'+warn.length+' warning'+(warn.length!==1?'s':'')+'</b> (see console)');
+  if(!parts.length) parts.push('No readable Keeper file found &mdash; drop an Adventure Keeper .html');
+  toast(parts.join(' &middot; ')+'.');
+  if(warn.length) console.warn('[Keeper import] warnings:\n- '+warn.join('\n- '));
+  if(rej.length>1||skip.length>1) console.info('[Keeper import] rejected:',rej,'skipped:',skip);
+  if(n){ const before=(STATE.nudge&&STATE.nudge.i)||0; STATE.nudge=STATE.nudge||{i:0,s:0}; STATE.nudge.i=before+n; saveState();
     if(Math.floor(STATE.nudge.i/3)>Math.floor(before/3)) setTimeout(()=>toast('Your whole binder lives in this browser. Back it up: Export a .keeper, or keep your binder on a drive.'),3800); }
-  else if(rej.length) toast(rej[0]);
-  else toast('No readable Keeper file found. Drop an Adventure Keeper .html.');
 }
 function pickKeeperFile(){ let inp=document.getElementById('kkFileInput'); if(!inp){inp=document.createElement('input');inp.type='file';inp.accept='.html,text/html';inp.multiple=true;inp.id='kkFileInput';inp.style.display='none';inp.addEventListener('change',()=>{if(inp.files.length)installFromFiles(inp.files);});document.body.appendChild(inp);} inp.value='';inp.click(); }
 function uninstallKeeper(id){ delete INSTALLED[id]; delete BOOKS[id]; if(DB)idbDel('keepers',id); driveDeleteKeeper(id); rebuildIndex(); renderShelf(); }
@@ -1688,7 +1839,7 @@ function floatTable(i,opts){
   pushRecent(i);
   const existing=[...document.querySelectorAll('.fcard')].find(c=>+c.dataset.ti===i);
   if(existing){ flashFocus(existing); if(opts.roll){const rb=existing.querySelector('.roll');if(rb)rb.click();} closePalette(); return existing; }
-  const t=INDEX[i],b=BOOKS[t.src];
+  const t=INDEX[i],b=BOOKS[t.src]||{t:'&mdash;'};
   const n=document.querySelectorAll('.fcard').length, off=n*26;
   const dock=document.body.classList.contains('dock-on');
   const card=document.createElement('div'); card.className='fcard fcard-'+t.kind+(dock?' docked':''); card.dataset.ti=i;
@@ -1696,22 +1847,23 @@ function floatTable(i,opts){
   const fav=STATE.favorites.includes(i);
   let meta,body,rollBtn='';
   if(t.kind==='monster'){
-    meta='CR '+t.cr+' &middot; from '+b.t;
-    const atks=t.atk.map(a=>'<button class="atk" data-n="'+esc(a.n)+'" data-hit="'+a.hit+'" data-dmg="'+a.dmg+'">'+a.n+'<span class="ah">+'+a.hit+'</span><span class="ad">'+a.dmg+'</span></button>').join('');
-    body='<div class="fcard-body stat"><div class="statline"><span><b>AC</b> '+t.ac+'</span><span><b>HP</b> '+t.hp+'</span><span><b>Spd</b> '+t.speed+'</span></div>'+
-      '<div class="atks">'+atks+'</div><div class="mnote">'+t.note+'</div><div class="mtags">'+t.tags.join(' &middot; ')+'</div></div>'+
+    meta='CR '+(t.cr??'&mdash;')+' &middot; from '+b.t;
+    const atks=(t.atk||[]).map(a=>'<button class="atk" data-n="'+esc(a.n||'Attack')+'" data-hit="'+(a.hit||0)+'" data-dmg="'+esc(a.dmg||'')+'">'+esc(a.n||'Attack')+'<span class="ah">+'+(a.hit||0)+'</span><span class="ad">'+esc(a.dmg||'')+'</span></button>').join('');
+    body='<div class="fcard-body stat"><div class="statline"><span><b>AC</b> '+(t.ac??'&mdash;')+'</span><span><b>HP</b> '+(t.hp??'&mdash;')+'</span><span><b>Spd</b> '+(t.speed||'&mdash;')+'</span></div>'+
+      '<div class="atks">'+atks+'</div><div class="mnote">'+enrichProse(t.note||'')+'</div><div class="mtags">'+(t.tags||[]).join(' &middot; ')+'</div></div>'+
       '<div class="fcard-foot">Click an attack to roll &middot; <kbd>R</kbd> = initiative</div>';
     rollBtn='<button class="roll">Init</button>';
   } else if(t.kind==='npc'){
     meta='NPC &middot; from '+b.t;
-    body='<div class="fcard-body dossier"><div class="drow"><span class="dk">Role</span><span>'+t.role+'</span></div>'+
-      '<div class="drow"><span class="dk">Wants</span><span>'+t.want+'</span></div>'+
-      '<div class="drow"><span class="dk">Tell</span><span>'+t.voice+'</span></div>'+
-      '<div class="dline">'+t.line+'</div><div class="mtags">'+t.tags.join(' &middot; ')+'</div></div>'+
+    body='<div class="fcard-body dossier"><div class="drow"><span class="dk">Role</span><span>'+enrichProse(t.role||'')+'</span></div>'+
+      '<div class="drow"><span class="dk">Wants</span><span>'+enrichProse(t.want||'')+'</span></div>'+
+      '<div class="drow"><span class="dk">Tell</span><span>'+enrichProse(t.voice||'')+'</span></div>'+
+      '<div class="dline">'+enrichProse(t.line||'')+'</div><div class="mtags">'+(t.tags||[]).join(' &middot; ')+'</div></div>'+
       '<div class="fcard-foot">Your NPC, one reach away</div>';
   } else {
-    meta=t.dice+' &middot; from '+b.t;
-    const rows=t.rows.map((r,ri)=>'<tr data-r="'+ri+'"><td class="d">'+(ri+1)+'</td><td>'+rowHTML(r)+'</td></tr>').join('');
+    const trows=Array.isArray(t.rows)?t.rows:[];
+    meta=(t.dice||('d'+(trows.length||6)))+' &middot; from '+b.t;
+    const rows=trows.map((r,ri)=>'<tr data-r="'+ri+'"><td class="d">'+(ri+1)+'</td><td>'+enrichProse(rowHTML(typeof r==='string'?r:(r==null?'':String(r))))+'</td></tr>').join('');
     body='<div class="fcard-body"><table><tbody>'+rows+'</tbody></table></div><div class="fcard-foot">Drag me &middot; <kbd>R</kbd> to roll</div>';
     rollBtn='<button class="roll">Roll</button>';
   }
@@ -1731,6 +1883,7 @@ function floatTable(i,opts){
     card.querySelector('.roll').addEventListener('click',()=>{const v=1+Math.floor(Math.random()*20);foot.innerHTML='<b>Initiative d20 &rarr; '+v+'</b> &middot; '+stripEnt(t.nm);logRoll('init',v,'Init '+stripEnt(t.nm));});
     card.querySelectorAll('.atk').forEach(a=>a.addEventListener('click',()=>{const hit=+a.dataset.hit,d=a.dataset.dmg;const roll=1+Math.floor(Math.random()*20);const nat=roll===20?' &#9733;CRIT':roll===1?' fumble':'';const dm=rollDmg(d);foot.innerHTML='<b>'+esc(a.dataset.n)+'</b> to-hit <b>'+(roll+hit)+'</b> (d20 '+roll+'+'+hit+')'+nat+' &middot; dmg '+dm.txt+' = <b>'+dm.sum+'</b>';logRoll('atk',roll+hit,stripEnt(t.nm)+' '+a.dataset.n);}));
   }
+  wireCardEnrichments(card,t);
   card.querySelector('.ic.x').addEventListener('click',()=>{card.remove();saveBoard();renderDockRail();});
   card.querySelector('.ic.cl').addEventListener('click',e=>{e.stopPropagation();toggleCollapse(card);});
   card.querySelector('.fcard-head').addEventListener('dblclick',e=>{if(e.target.closest('.roll,.ic'))return;toggleCollapse(card);});
@@ -2182,32 +2335,135 @@ function showDice(v,brk){document.getElementById('dout').innerHTML='<span class=
 
 /* ============================================================ PARTY strip + drawer */
 function passiveChips(p){return '<span class="pp"><span class="k">PP</span> '+p.pp+'</span>';}
-function renderStrip(){const s=document.getElementById('pstrip');
+function renderStrip(){const s=document.getElementById('pstrip'); if(!s)return;
+  if(!Array.isArray(PARTIES)||!PARTIES.length)PARTIES=[{name:'My Party',pcs:[]}];
+  if(!PARTIES[activeParty])activeParty=0;
+  PARTY=PARTIES[activeParty].pcs;
   s.innerHTML='<span class="lead" title="Active party — switch in the Party panel">'+esc(PARTIES[activeParty].name)+'</span>'+PARTY.map((p,i)=>{
     const bg=p.img?'background-image:url('+p.img+')':''; const ini=stripEnt(p.nm).trim()[0]||'?';
     return '<div class="pchip" onclick="openParty()"><div class="av" style="'+bg+'">'+(p.img?'':ini)+'</div><div class="pn">'+p.nm+'</div>'+passiveChips(p)+'</div>';}).join('');}
 function toggleStrip(){document.body.classList.toggle('strip-on');document.getElementById('btnStrip').classList.toggle('on',document.body.classList.contains('strip-on'));}
 function openParty(){document.getElementById('partyScrim').classList.add('show');document.getElementById('partyDrawer').classList.add('open');renderParty();}
 function closeParty(){document.getElementById('partyScrim').classList.remove('show');document.getElementById('partyDrawer').classList.remove('open');}
-function setParty(i){activeParty=i;PARTY=PARTIES[i].pcs;if(currentBook){STATE.bookParty=STATE.bookParty||{};STATE.bookParty[currentBook]=i;}saveState();renderParty();renderStrip();}
-function newParty(){PARTIES.push({name:'New Party '+(PARTIES.length+1),pcs:[{nm:'New Hero',cls:'Level 1',ac:10,hp:'8 / 8',pp:10,img:null}]});activeParty=PARTIES.length-1;PARTY=PARTIES[activeParty].pcs;saveState();renderParty();renderStrip();toast('New party created — rename it and its heroes inline. Full roster editor comes in the real build.');}
+/* ===== v16 THE ROSTER EDITOR - parties are real groups you can build and reshuffle =====
+   Was: newParty() dropped a placeholder hero and toasted "full roster editor comes in the
+   real build". Now: add/remove/reorder heroes, edit every field, MOVE a hero to another
+   party, and rename/copy/delete the party itself. Everything rides saveState(), so it lands
+   in IndexedDB, the .keeper export and the Drive Binder like the rest of the binder. */
+let ARMED=null, ARMT=null;                       /* two-tap confirm for anything destructive */
+function armTap(key,btn,label){
+  if(ARMED===key){ ARMED=null; clearTimeout(ARMT); return true; }
+  ARMED=key; clearTimeout(ARMT);
+  if(btn){ btn.classList.add('armed'); btn.textContent=label||'Tap again'; }
+  ARMT=setTimeout(function(){ ARMED=null; renderParty(); },2800);
+  return false;
+}
+function partySafe(){
+  if(!Array.isArray(PARTIES)||!PARTIES.length)PARTIES=[{name:'My Party',pcs:[]}];
+  PARTIES.forEach(function(p){ if(!Array.isArray(p.pcs))p.pcs=[]; if(!p.name)p.name='Untitled Party'; });
+  if(!(activeParty>=0)||activeParty>=PARTIES.length)activeParty=0;
+  PARTY=PARTIES[activeParty].pcs;
+}
+function partyTouch(){ partySafe(); saveState(); renderParty(); renderStrip();
+  if(typeof renderTheaterTables==='function')renderTheaterTables(); }
+function setParty(i){ partySafe(); if(!PARTIES[i])return;
+  activeParty=i; PARTY=PARTIES[i].pcs;
+  if(currentBook){STATE.bookParty=STATE.bookParty||{};STATE.bookParty[currentBook]=i;}
+  ARMED=null; partyTouch(); }
+function newParty(){ partySafe();
+  PARTIES.push({name:'New Party '+(PARTIES.length+1),pcs:[]});
+  activeParty=PARTIES.length-1; PARTY=PARTIES[activeParty].pcs;
+  partyTouch(); toast('New party. Name it, then add your heroes.'); }
+function partyRename(v){ partySafe();
+  PARTIES[activeParty].name=String(v||'').trim()||'Untitled Party';
+  saveState(); renderStrip(); if(typeof renderTheaterTables==='function')renderTheaterTables(); }
+function partyCopy(){ partySafe();
+  const src=PARTIES[activeParty];
+  PARTIES.push({name:src.name+' (copy)',pcs:JSON.parse(JSON.stringify(src.pcs||[]))});
+  activeParty=PARTIES.length-1; PARTY=PARTIES[activeParty].pcs;
+  partyTouch(); toast('Copied. Change the copy without touching the original.'); }
+function partyDelete(btn){ partySafe();
+  if(PARTIES.length<2){ toast('This is your only party. Make another one first.'); return; }
+  if(!armTap('pdel'+activeParty,btn,'Delete for good?'))return;
+  const gone=PARTIES[activeParty].name, at=activeParty;
+  PARTIES.splice(at,1);
+  if(activeParty>=PARTIES.length)activeParty=PARTIES.length-1;
+  /* anything pointing past the hole slides back with it */
+  if(STATE.bookParty)Object.keys(STATE.bookParty).forEach(function(k){
+    const v=STATE.bookParty[k];
+    if(v===at)delete STATE.bookParty[k]; else if(v>at)STATE.bookParty[k]=v-1; });
+  (STATE.tables||[]).forEach(function(t){
+    if(t.party===at)t.party=0; else if(t.party>at)t.party=t.party-1; });
+  partyTouch(); toast(esc(gone)+' is gone.'); }
+function heroAdd(){ partySafe();
+  PARTY.push({nm:'New hero',cls:'Level 1',ac:10,hp:'8 / 8',pp:10,img:null});
+  partyTouch(); }
+function heroField(i,k,v){ partySafe(); if(!PARTY[i])return;
+  if(k==='ac'||k==='pp')PARTY[i][k]=Math.max(0,parseInt(v,10)||0); else PARTY[i][k]=String(v);
+  saveState(); renderStrip(); }
+function heroDel(i,btn){ partySafe(); if(!PARTY[i])return;
+  if(!armTap('hdel'+activeParty+'_'+i,btn,'Remove?'))return;
+  PARTY.splice(i,1); partyTouch(); }
+function heroMove(i,d){ partySafe();
+  const j=i+d; if(j<0||j>=PARTY.length)return;
+  const t=PARTY[i]; PARTY[i]=PARTY[j]; PARTY[j]=t; partyTouch(); }
+/* the ask: move a player into another group without retyping them */
+function heroTo(i,sel){ partySafe();
+  const tp=parseInt(sel.value,10);
+  if(isNaN(tp)||tp===activeParty||!PARTIES[tp]||!PARTY[i]){ renderParty(); return; }
+  const hero=PARTY.splice(i,1)[0];
+  PARTIES[tp].pcs.push(hero);
+  partyTouch();
+  toast(esc(stripEnt(hero.nm).trim()||'That hero')+' moved to '+esc(PARTIES[tp].name)+'.'); }
 function renderParty(){
-  const sel='<div class="psel">'+PARTIES.map((p,i)=>'<button class="pselb'+(i===activeParty?' on':'')+'" onclick="setParty('+i+')">'+esc(p.name)+'</button>').join('')+'<button class="pselb add" onclick="newParty()">+ New party</button></div>';
-  document.getElementById('partyList').innerHTML=sel+PARTY.map((p,i)=>{
-    const filled=p.img?'filled':'',bg=p.img?'background-image:url('+p.img+')':'',inner=p.img?'':'<span class="cam">&#128247;</span>';
-    return '<div class="pc"><div class="portrait '+filled+'" style="'+bg+'" data-i="'+i+'" title="Drag an image here, or click">'+inner+'</div>'+
-      '<div class="info"><input class="nm" value="'+esc(p.nm)+'" onchange="PARTY['+i+'].nm=this.value;renderStrip();saveState();"><div class="cls">'+p.cls+'</div>'+
-      '<div class="stats"><span class="s"><span class="k">AC </span>'+p.ac+'</span><span class="s"><span class="k">HP </span>'+p.hp+'</span><span class="s"><span class="k">PP </span>'+p.pp+'</span></div></div></div>';}).join('');
-  document.querySelectorAll('.portrait').forEach(z=>{const i=+z.dataset.i;
-    z.addEventListener('click',()=>loadSample(i));
-    ['dragover','dragenter'].forEach(e=>z.addEventListener(e,ev=>{ev.preventDefault();z.classList.add('drop');}));
-    z.addEventListener('dragleave',()=>z.classList.remove('drop'));
-    z.addEventListener('drop',ev=>{ev.preventDefault();z.classList.remove('drop');const f=ev.dataTransfer.files[0];
-      if(f&&f.type.startsWith('image/')){const rd=new FileReader();rd.onload=()=>{PARTY[i].img=rd.result;renderParty();renderStrip();saveState();};rd.readAsDataURL(f);}else loadSample(i);});});}
-function loadSample(i){const cols=['#5b93a8','#9a4a63','#7a8a54','#6a63b0'],c=cols[i%cols.length];
+  const host=document.getElementById('partyList'); if(!host)return;
+  partySafe();
+  const P=PARTIES[activeParty];
+  const sel='<div class="psel">'+PARTIES.map(function(p,i){
+      return '<button class="pselb'+(i===activeParty?' on':'')+'" onclick="setParty('+i+')">'+esc(p.name)+
+        ' <span style="opacity:.6;font-size:11px;">'+(p.pcs||[]).length+'</span></button>';}).join('')+
+    '<button class="pselb add" onclick="newParty()">+ New party</button></div>';
+  const head='<div class="pty-head">'+
+    '<input class="pnm" value="'+esc(P.name)+'" aria-label="Party name" onchange="partyRename(this.value)">'+
+    '<button class="mini-btn" title="Copy this party" onclick="partyCopy()">Copy</button>'+
+    '<button class="mini-btn warn" title="Delete this party" onclick="partyDelete(this)">Delete</button></div>';
+  const others=PARTIES.map(function(p,i){return {i:i,name:p.name};}).filter(function(o){return o.i!==activeParty;});
+  const body=(!PARTY.length)
+    ? '<div class="pty-empty">No heroes in this party yet. Add the first one below.</div>'
+    : PARTY.map(function(p,i){
+        const filled=p.img?'filled':'',bg=p.img?'background-image:url('+p.img+')':'',inner=p.img?'':'<span class="cam">&#128247;</span>';
+        const moveSel=others.length
+          ? '<select class="mv" title="Move this hero to another party" onchange="heroTo('+i+',this)">'+
+            '<option value="">Move to&hellip;</option>'+
+            others.map(function(o){return '<option value="'+o.i+'">'+esc(o.name)+'</option>';}).join('')+'</select>'
+          : '';
+        return '<div class="pc"><div class="portrait '+filled+'" style="'+bg+'" data-i="'+i+'" title="Drop an image here, or click">'+inner+'</div>'+
+          '<div class="info">'+
+            '<input class="nm" value="'+esc(p.nm)+'" aria-label="Hero name" onchange="heroField('+i+',&quot;nm&quot;,this.value)">'+
+            '<input class="cls" value="'+esc(p.cls||'')+'" aria-label="Class and level" placeholder="Race, class, level" onchange="heroField('+i+',&quot;cls&quot;,this.value)">'+
+            '<div class="stats">'+
+              '<span class="s"><span class="k">AC </span><input value="'+esc(String(p.ac))+'" aria-label="Armour class" onchange="heroField('+i+',&quot;ac&quot;,this.value)"></span>'+
+              '<span class="s"><span class="k">HP </span><input class="hp" value="'+esc(String(p.hp))+'" aria-label="Hit points" onchange="heroField('+i+',&quot;hp&quot;,this.value)"></span>'+
+              '<span class="s"><span class="k">PP </span><input value="'+esc(String(p.pp))+'" aria-label="Passive perception" onchange="heroField('+i+',&quot;pp&quot;,this.value)"></span>'+
+            '</div>'+
+            '<div class="hero-acts">'+
+              '<button class="mini-btn" title="Move up" onclick="heroMove('+i+',-1)"'+(i===0?' disabled style="opacity:.35;"':'')+'>&#9650;</button>'+
+              '<button class="mini-btn" title="Move down" onclick="heroMove('+i+',1)"'+(i===PARTY.length-1?' disabled style="opacity:.35;"':'')+'>&#9660;</button>'+
+              moveSel+'<span class="sp"></span>'+
+              '<button class="mini-btn warn" title="Remove from this party" onclick="heroDel('+i+',this)">Remove</button>'+
+            '</div>'+
+          '</div></div>';}).join('');
+  host.innerHTML=sel+head+body+'<button class="mini-btn gold pty-add" onclick="heroAdd()">+ Add a hero</button>';
+  host.querySelectorAll('.portrait').forEach(function(z){const i=+z.dataset.i;
+    z.addEventListener('click',function(){loadSample(i);});
+    ['dragover','dragenter'].forEach(function(e){z.addEventListener(e,function(ev){ev.preventDefault();z.classList.add('drop');});});
+    z.addEventListener('dragleave',function(){z.classList.remove('drop');});
+    z.addEventListener('drop',function(ev){ev.preventDefault();z.classList.remove('drop');const f=ev.dataTransfer.files[0];
+      if(f&&f.type.startsWith('image/')){const rd=new FileReader();rd.onload=function(){PARTY[i].img=rd.result;partyTouch();};rd.readAsDataURL(f);}else loadSample(i);});});}
+function loadSample(i){ partySafe(); if(!PARTY[i])return;
+  const cols=['#5b93a8','#9a4a63','#7a8a54','#6a63b0'],c=cols[i%cols.length];
   const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#160a0a"/><circle cx="50" cy="40" r="20" fill="'+c+'"/><path d="M18 92 Q50 60 82 92 Z" fill="'+c+'"/><rect x="4" y="4" width="92" height="92" fill="none" stroke="#C9A24B" stroke-width="3"/></svg>';
-  PARTY[i].img='data:image/svg+xml;utf8,'+encodeURIComponent(svg);renderParty();renderStrip();saveState();
-  toast('Real build: your dropped portrait saves to the binder and follows the party into every adventure.');}
+  PARTY[i].img='data:image/svg+xml;utf8,'+encodeURIComponent(svg); partyTouch(); }
 
 /* ============================================================ HELP + toast */
 function openHelp(){document.getElementById('help').classList.add('show');}
@@ -2388,6 +2644,7 @@ function theaterQueueSeat(name,env){
   const k=String(name||'').toLowerCase();if(!k)return;
   const q=THEATER.seats[k]=THEATER.seats[k]||[];
   q.push(env);if(q.length>20)q.shift();
+  try{ tblSaveQueue(); }catch(e){}   /* v16: a held whisper survives the DM reloading too */
 }
 /* v14.5 heartbeat: ping every open peer; a silent one goes 'away' but keeps their seat */
 THEATER.hb=setInterval(function(){
@@ -2399,11 +2656,112 @@ THEATER.hb=setInterval(function(){
       toast(esc(p.name)+' is resting. The seat is held; anything you push will be waiting for them.');}
   });
 },5000);
-function theaterTableName(){ return (STATE.theaterTable||'').trim()||'The Table'; }
-function theaterTableChanged(v){ STATE.theaterTable=String(v||'').trim(); saveState();
+/* ===== v16 THE TABLE BOARD - a table is a saved thing, and it KEEPS ITS CODE =====
+   The v14 code was minted fresh on every Open and never persisted, so a DM reload killed
+   every player's stored code and the whole table had to retype. A saved table now carries
+   {id,name,code,party,seats,queue}: the code is minted once and reused, the seats and the
+   store-and-forward queue survive the reload, and if the code was live when the tab went
+   away, boot re-arms THE SAME code silently. The Satchel has always auto-rejoined by its
+   stored code, so the players come back on their own. */
+const TH_LIVE_WINDOW=43200000;                    /* 12h: a session, a nap, and the next morning */
+function tblNewId(){ return 't'+Date.now().toString(36)+Math.floor(Math.random()*46656).toString(36); }
+function tblAll(){ if(!Array.isArray(STATE.tables))STATE.tables=[]; return STATE.tables; }
+function tblMigrate(){
+  const t=tblAll();
+  if(!t.length){
+    /* fold v14's single "last table name" forward so nobody loses their table */
+    t.push({id:tblNewId(),name:(STATE.theaterTable||'').trim()||'My Table',code:'',
+            party:(PARTIES[activeParty]?activeParty:0),seats:[],queue:{},last:0});
+    STATE.activeTable=t[0].id;
+  }
+  t.forEach(function(x){
+    if(!x.id)x.id=tblNewId();
+    if(!Array.isArray(x.seats))x.seats=[];
+    if(!x.queue||typeof x.queue!=='object')x.queue={};
+    if(!PARTIES[x.party])x.party=0; });
+  if(!t.some(function(x){return x.id===STATE.activeTable;}))STATE.activeTable=t[0].id;
+  return t;
+}
+function tblActive(){ const all=tblMigrate(), id=STATE.activeTable;
+  return all.filter(function(t){return t.id===id;})[0]||all[0]; }
+function tblCode(){ const t=tblActive(); if(!t.code)t.code=theaterMintCode(); return t.code; }
+/* seats + queue are the table's memory of who sat there; both persist */
+function tblRememberSeat(name,cls,lvl){
+  const t=tblActive(),k=String(name||'').toLowerCase(); if(!k)return;
+  const hit=t.seats.filter(function(s){return String(s.name).toLowerCase()===k;})[0];
+  if(hit){ hit.name=name; hit.cls=cls||hit.cls; if(lvl!=null)hit.lvl=lvl; }
+  else t.seats.push({name:name,cls:cls||'',lvl:(lvl==null?null:lvl)});
+  if(t.seats.length>12)t.seats.shift();
+  t.last=Date.now(); saveState();
+}
+function tblForgetSeatAt(i){ const t=tblActive(), s=t.seats[i]; if(!s)return;
+  const k=String(s.name).toLowerCase();
+  t.seats.splice(i,1); delete t.queue[k]; delete THEATER.seats[k];
+  saveState(); renderTheaterPeers(); renderTheaterCount(); }
+/* mirror the live queue into the table, skipping anything too fat for the binder */
+function tblSaveQueue(){ const t=tblActive(),out={};
+  Object.keys(THEATER.seats||{}).forEach(function(k){
+    const keep=(THEATER.seats[k]||[]).filter(function(e){ try{return JSON.stringify(e).length<200000;}catch(x){return false;} });
+    if(keep.length)out[k]=keep; });
+  t.queue=out; saveState(); }
+function theaterTableName(){ const t=tblActive(); return (t.name||'').trim()||'The Table'; }
+function theaterTableChanged(v){ const t=tblActive(); t.name=String(v||'').trim()||'My Table';
+  STATE.theaterTable=t.name; saveState(); renderTheaterTables();
   THEATER.peers.forEach(p=>{ if(p.open)p.peer.send(TheaterTransport.envelope('hello','host',{table:theaterTableName()})); }); }
+function theaterNewTable(){
+  if(THEATER.codeOn)theaterCodeStop();
+  const t={id:tblNewId(),name:'New Table '+(tblAll().length+1),code:'',party:activeParty,seats:[],queue:{},last:Date.now()};
+  tblAll().push(t); STATE.activeTable=t.id; saveState();
+  THEATER.peers.slice().forEach(function(p){ theaterDropPeer(p.id); });
+  THEATER.seats={}; theaterSyncPanel();
+  toast('New table. Name it, pick its party, then open it by code.'); }
+function theaterSelectTable(id){
+  if(id===STATE.activeTable){ renderTheaterTables(); return; }
+  if(THEATER.codeOn)theaterCodeStop();
+  THEATER.peers.slice().forEach(function(p){ theaterDropPeer(p.id); });
+  STATE.activeTable=id;
+  const t=tblActive();
+  THEATER.seats=JSON.parse(JSON.stringify(t.queue||{}));
+  STATE.theaterTable=t.name;
+  if(PARTIES[t.party])setParty(t.party); else saveState();
+  theaterSyncPanel(); }
+function theaterSetTableParty(v){ const t=tblActive(),i=parseInt(v,10);
+  if(isNaN(i)||!PARTIES[i])return; t.party=i; setParty(i); }
+function theaterDeleteTable(btn){
+  const all=tblAll(); if(all.length<2){ toast('This is your only table. Rename it instead.'); return; }
+  if(btn&&btn.dataset.arm!=='1'){ btn.dataset.arm='1'; btn.textContent='Forget it?';
+    setTimeout(function(){ if(btn.dataset.arm==='1'){btn.dataset.arm='';btn.textContent='Forget';} },2800); return; }
+  if(btn){btn.dataset.arm='';btn.textContent='Forget';}
+  if(THEATER.codeOn)theaterCodeStop();
+  const gone=tblActive();
+  STATE.tables=all.filter(function(t){return t.id!==gone.id;});
+  STATE.activeTable=STATE.tables[0].id;
+  THEATER.peers.slice().forEach(function(p){ theaterDropPeer(p.id); });
+  THEATER.seats=JSON.parse(JSON.stringify(tblActive().queue||{}));
+  saveState(); theaterSyncPanel(); toast(esc(gone.name)+' forgotten.'); }
+function renderTheaterTables(){
+  const host=document.getElementById('thTables'); if(!host)return;
+  const cur=tblActive();
+  host.innerHTML=tblAll().map(function(t){
+      const n=(t.seats||[]).length;
+      return '<button class="tbl-pill'+(t.id===cur.id?' on':'')+'" onclick="theaterSelectTable(&quot;'+t.id+'&quot;)" title="'+
+        (t.code?'Code '+esc(t.code):'No code yet')+'">'+esc(t.name)+(n?' <span style="opacity:.6;font-size:11px;">'+n+'</span>':'')+'</button>';
+    }).join('')+'<button class="tbl-pill add" onclick="theaterNewTable()">+ New table</button>';
+  const ps=document.getElementById('thTableParty');
+  if(ps)ps.innerHTML=PARTIES.map(function(p,i){
+    return '<option value="'+i+'"'+(i===cur.party?' selected':'')+'>'+esc(p.name)+'</option>';}).join(''); }
+/* one call that puts the whole panel back in step with the active table */
+function theaterSyncPanel(){
+  const t=tblActive(), inp=document.getElementById('thTable');
+  if(inp)inp.value=t.name||'';
+  renderTheaterTables(); renderTheaterPeers(); renderTheaterCount();
+  const btn=document.getElementById('thCodeBtn');
+  if(btn)btn.textContent=THEATER.codeOn?('Close the code ('+THEATER.code+')')
+    :(t.code?('Open the table ('+t.code+')'):'Open the table by code');
+  if(THEATER.codeOn)theaterCodeShow();
+  else theaterCodeLine(t.code?'Last code: <b class="th-code">'+esc(t.code)+'</b>. Open the table and the same code works again.':''); }
 function toggleTheater(){ const p=document.getElementById('theater'); p.classList.toggle('show');
-  if(p.classList.contains('show')){ document.getElementById('thTable').value=STATE.theaterTable||''; renderTheaterPeers(); renderTheaterCount(); } }
+  if(p.classList.contains('show'))theaterSyncPanel(); }
 function hideTheater(){ document.getElementById('theater').classList.remove('show'); }
 function theaterToggleRoom(){ THEATER.sameRoom=!THEATER.sameRoom;
   document.getElementById('thSameRoom').classList.toggle('on',THEATER.sameRoom);
@@ -2462,9 +2820,26 @@ function renderTheaterPeers(){
         '<div class="th-row"><button class="th-btn gold" onclick="theaterConnect('+p.id+')">Link</button></div>';
     }
     return h+'</div>';
-  }).join('');
+  }).join('')+theaterHeldSeatsHTML();
   renderTheaterTo();
 }
+/* v16: seats this table remembers with no live peer yet. After a reload these ARE the
+   players on their way back: their Satchel re-dials the stored code by itself. Rendering
+   them is what makes a refresh feel like the table held instead of vanishing. */
+function theaterHeldSeatsHTML(){
+  const t=tblActive(), live={};
+  THEATER.peers.forEach(function(p){ live[String(p.name).toLowerCase()]=1; });
+  return (t.seats||[]).map(function(s,i){ return {s:s,i:i}; })
+    .filter(function(r){ return !live[String(r.s.name).toLowerCase()]; })
+    .map(function(r){
+      const q=(THEATER.seats[String(r.s.name).toLowerCase()]||[]).length;
+      return '<div class="th-peer th-seat"><div class="ph"><span class="pn">'+esc(r.s.name)+
+        (r.s.cls?' &middot; '+esc(r.s.cls)+' '+esc(r.s.lvl==null?'':r.s.lvl):'')+'</span>'+
+        '<span class="th-pill">'+(THEATER.codeOn?'rejoining':'away')+'</span>'+
+        '<button class="th-btn" style="padding:3px 8px;" title="Forget this seat" onclick="tblForgetSeatAt('+r.i+')">&times;</button></div>'+
+        (q?'<div class="th-step">'+q+' item'+(q===1?'':'s')+' held for them.</div>':'')+
+        '<div class="th-step">Their Satchel comes back on the table code by itself.</div></div>';
+    }).join(''); }
 /* v14.5: where the next handout goes - the whole table, or a whisper to one chair */
 function renderTheaterTo(){
   const host=document.getElementById('thToRow');if(!host)return;
@@ -2510,6 +2885,7 @@ function theaterOnMsg(rec,env){
       return false;
     });
     rec.hasHello=true;
+    try{ tblRememberSeat(rec.name,rec.cls,rec.lvl); }catch(e){}   /* v16: the table remembers the seat */
     /* catch-up: hand over everything the seat missed while resting, oldest first.
        Delivered on a short settle delay, and the queue survives until a delivery
        actually goes through: losing a whisper silently is the one unforgivable sin. */
@@ -2524,6 +2900,7 @@ function theaterOnMsg(rec,env){
         q.forEach(function(env){ try{rec.peer.send(env);}catch(e){allOk=false;} });
         if(allOk){
           delete THEATER.seats[sk];
+          try{ tblSaveQueue(); }catch(e){}
           toast(esc(rec.name)+' is back and caught up on '+q.length+' missed item'+(q.length===1?'':'s')+'.');
         }
       },1200);
@@ -2577,16 +2954,46 @@ function theaterCodeShow(extra){
   theaterCodeLine('Players type <b style="font-family:var(--serif);font-size:20px;color:var(--gold-br);letter-spacing:.05em;">'+esc(THEATER.code)+'</b> into their Satchel.'+(extra||' Waiting&hellip;'));}
 function theaterCodeStop(){
   THEATER.codeOn=false;
-  const btn=document.getElementById('thCodeBtn');if(btn)btn.textContent='Open the table by code';
-  theaterCodeLine('');}
+  if(STATE.theaterLive){ delete STATE.theaterLive; saveState(); }
+  const t=tblActive(),btn=document.getElementById('thCodeBtn');
+  if(btn)btn.textContent=t.code?('Open the table ('+t.code+')'):'Open the table by code';
+  theaterCodeLine(t.code?'Last code: <b class="th-code">'+esc(t.code)+'</b>. Open the table and the same code works again.':'');}
 function theaterCodeFail(msg){theaterCodeStop();toast(msg);}
-async function theaterCodeStart(){
+/* v16: reuse THIS TABLE'S code instead of minting a new one, and mark the table live so a
+   reload re-arms it. This is the whole fix for "every refresh drops the table". */
+async function theaterCodeStart(resume){
   if(THEATER.codeOn){theaterCodeStop();return;}
-  THEATER.codeOn=true;THEATER.code=theaterMintCode();
+  const t=tblActive();
+  THEATER.codeOn=true; THEATER.code=tblCode();
+  STATE.theaterLive={id:t.id,ts:Date.now()}; t.last=Date.now(); STATE.theaterTable=t.name; saveState();
   const btn=document.getElementById('thCodeBtn');if(btn)btn.textContent='Close the code ('+THEATER.code+')';
-  theaterCodeShow();
+  renderTheaterTables(); theaterCodeShow();
+  if(resume)toast('The table is open again on '+esc(THEATER.code)+'. Your players rejoin by themselves.');
   try{await theaterCodeLoop();}catch(e){theaterCodeFail('The table code hit a snag: '+esc(e&&e.message||'unknown'));}
 }
+/* the escape hatch: only if a code leaked. Everyone retypes after this, so it is two-tap. */
+function theaterNewCode(btn){
+  if(btn&&btn.dataset.arm!=='1'){ btn.dataset.arm='1'; btn.textContent='Everyone retypes. Sure?';
+    setTimeout(function(){ if(btn.dataset.arm==='1'){btn.dataset.arm='';btn.textContent='Change the code';} },3000); return; }
+  if(btn){btn.dataset.arm='';btn.textContent='Change the code';}
+  const was=THEATER.codeOn; if(was)theaterCodeStop();
+  tblActive().code=theaterMintCode(); saveState();
+  if(was)theaterCodeStart(); else theaterSyncPanel();
+  toast('New code: '+esc(tblActive().code)+'. Read it out; everyone types it again.'); }
+/* v16 boot: put the table back exactly as the DM left it, code and all */
+async function theaterRestore(){
+  tblMigrate();
+  const t=tblActive();
+  THEATER.seats=JSON.parse(JSON.stringify(t.queue||{}));
+  if(t.name)STATE.theaterTable=t.name;
+  theaterSyncPanel();
+  const live=STATE.theaterLive;
+  if(live&&live.id===t.id&&t.code&&Date.now()-(live.ts||0)<TH_LIVE_WINDOW){
+    theaterCodeStart(true);
+    const held=(t.seats||[]).length;
+    if(held)setTimeout(function(){ toast('Picking '+esc(t.name)+' back up. '+held+' seat'+(held===1?'':'s')+
+      ' waiting; their Satchels rejoin on their own.'); },2200);
+  } }
 async function theaterCodeLoop(){
   while(THEATER.codeOn){
     const rec=theaterAddPeer(true);
@@ -2830,6 +3237,7 @@ document.getElementById('palInput').addEventListener('input',()=>{palSel=0;rende
   STATE.nudge=STATE.nudge||{i:0,s:0}; STATE.nudge.s++; saveState();
   renderShelf(); renderDiceGrid(); renderLog(); renderCombat(); applyDock();
   soundApplyMode(); renderSound(); soundReconnect();
+  try{ await theaterRestore(); }catch(e){ console.warn('[theater] restore skipped:',e&&e.message); }
   go('shelf'); showResume();
   if(STATE.nudge.s%5===0) setTimeout(()=>toast('Your whole binder lives in this browser. Back it up: Export a .keeper, or keep your binder on a drive.'),1600);
 })();
