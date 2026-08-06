@@ -2,7 +2,7 @@
 <!--
   ============================================================================
   GNASHER'S GRIMOIRE — "A Dungeon Master Companion"  (source; internal nickname "Keeper Keeper" retired 2026-07-03)
-  Gnasher's Grimoire™ · build 2026-07-28 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
+  Gnasher's Grimoire™ · build 2026-08-05 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
   ============================================================================
   v15 (2026-07-18) - THE CHRONICLE: campaign memory across Keepers (FINAL-ORDERS
   C1; the law is Scriptorium/CAMPAIGN-WEB-SPEC.md - hourglass web, one flag
@@ -332,6 +332,19 @@ body.strip-on .pane{max-height:calc(100vh - 139px);}
 /* ===================== SUMMON PALETTE ===================== */
 .pscrim{position:fixed;inset:0;background:rgba(8,4,4,.6);z-index:100;display:none;}
 .pscrim.show{display:block;}
+/* v18 problem report: same trade dress as the Summon, sized for reading a report */
+.bugpanel{position:fixed;top:8vh;left:50%;transform:translateX(-50%);width:660px;max-width:94vw;z-index:102;
+  background:linear-gradient(180deg,#20100e,#160b0a);border:1px solid var(--gold);border-radius:12px;
+  box-shadow:0 24px 70px rgba(0,0,0,.7);display:none;flex-direction:column;overflow:hidden;max-height:84vh;}
+.bugpanel.show{display:flex;}
+.bugpanel .bug-head{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 14px;border-bottom:1px solid rgba(224,192,116,.35);font-family:var(--serif);
+  font-size:16px;color:var(--gold-br);letter-spacing:.03em;}
+.bugpanel .bug-body{padding:12px 14px 16px;overflow:auto;}
+.bugpanel textarea#bugWhat{width:100%;min-height:74px;resize:vertical;margin:2px 0 6px;font-size:13px;}
+.bugpanel .bug-out{width:100%;min-height:190px;resize:vertical;font-family:ui-monospace,Consolas,monospace;
+  font-size:11.5px;line-height:1.45;color:#e8d9c4;background:#120908;border:1px solid rgba(224,192,116,.28);
+  border-radius:8px;padding:8px 10px;white-space:pre;overflow:auto;}
 .palette{position:fixed;top:12vh;left:50%;transform:translateX(-50%);width:640px;max-width:94vw;z-index:101;
   background:linear-gradient(180deg,#20100e,#160b0a);border:1px solid var(--gold);border-radius:12px;
   box-shadow:0 24px 70px rgba(0,0,0,.7);display:none;flex-direction:column;overflow:hidden;max-height:76vh;}
@@ -752,6 +765,33 @@ body.dock-on .sound.dock .sound-b{max-height:none;overflow:visible;}
   color:var(--gold-br);border-radius:7px;font-size:12px;padding:3px 9px;cursor:pointer;}
 .tray-h .chrbtn:hover{background:rgba(122,28,28,.55);color:#ffd98a;}
 
+
+/* ===================== v17 - THE QUIET WORD + PACKETS ===================== */
+.th-wh{max-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;
+  padding:6px;border:1px solid var(--rule);border-radius:8px;background:rgba(0,0,0,.18);margin-bottom:6px;}
+.th-wm{max-width:88%;padding:6px 9px;border-radius:9px;font-size:12.5px;line-height:1.45;border:1px solid var(--rule);}
+.th-wm .w{display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#8a6d5f;margin-bottom:2px;}
+.th-wm.from{align-self:flex-start;background:rgba(80,20,16,.35);border-color:#6b2a20;}
+.th-wm.to{align-self:flex-end;background:rgba(201,162,75,.14);border-color:var(--rule);}
+.th-wh-empty{font-size:11.5px;color:#8a6d5f;text-align:center;padding:10px 0;}
+.th-peer .unread{background:var(--crimson-br,#b3201b);color:#fff;border-radius:9px;
+  font-size:9.5px;padding:1px 6px;margin-left:5px;}
+.pk-row{display:flex;align-items:center;gap:6px;padding:6px;margin-bottom:5px;
+  border:1px solid var(--rule);border-radius:8px;background:rgba(201,162,75,.04);}
+.pk-row img{flex:0 0 30px;width:30px;height:30px;object-fit:cover;border-radius:5px;border:1px solid var(--rule);}
+.pk-row .pkg{flex:0 0 30px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--rule);border-radius:5px;font-size:14px;color:#8a6d5f;}
+.pk-row .pkm{flex:1 1 auto;min-width:0;}
+.pk-row .pkm b{display:block;font-family:var(--serif);font-size:12.5px;color:var(--ink,#ece2ce);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pk-row .pkm i{display:block;font-style:normal;font-size:10px;color:#8a6d5f;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pk-edit{border:1px solid var(--rule);border-radius:8px;padding:8px;margin-bottom:6px;background:rgba(0,0,0,.14);}
+.pk-edit .th-inp{width:100%;margin-bottom:5px;}
+.pk-secret{border-left:2px solid var(--crimson-br,#b3201b);padding-left:7px;margin-top:6px;}
+.pk-secret .lb{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#c98a80;display:block;margin-bottom:3px;}
+.pk-face{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#9dc47e;display:block;margin:6px 0 3px;}
+.pk-thumb{width:100%;max-height:120px;object-fit:contain;border-radius:6px;border:1px solid var(--rule);margin-bottom:5px;}
 /* ===================== THE THEATER - live table link (v14) ===================== */
 .theater{position:fixed;top:100px;left:16px;bottom:16px;z-index:67;width:372px;max-width:94vw;
   background:linear-gradient(180deg,#20100e,#160b0a);border:1px solid var(--gold);border-radius:12px;
@@ -864,7 +904,7 @@ body.strip-on .chronicle{top:146px;}
       <h1>Your Shelf</h1>
       <p>Every book you own in one binder. Open one to run it &mdash; then <b style="color:var(--gold-br)">press <kbd>Space</kbd></b> to summon a table from any of the others, right over the top.</p>
     </div>
-    <div class="binder-bar"><button class="bbtn" onclick="exportBinder()">&#10515; Export .keeper</button><button class="bbtn" onclick="importBinder()">&#10514; Import .keeper</button><button class="bbtn" id="driveBtn" onclick="driveClick()" title="Keep your whole binder in a folder you pick. A USB stick works: run the Grimoire from the stick, and your books, notes and saves live there too, following you to any computer.">&#128190; Binder on a drive</button><button class="bbtn" onclick="exportChronicle()" title="Export the night as a handsome page: rolls, the battle, bookmarks. Share it with your players.">&#128220; Session Chronicle</button><span class="bnote">back up your whole binder, or move it to another device</span></div>
+    <div class="binder-bar"><button class="bbtn" onclick="exportBinder()">&#10515; Export .keeper</button><button class="bbtn" onclick="importBinder()">&#10514; Import .keeper</button><button class="bbtn" id="driveBtn" onclick="driveClick()" title="Keep your whole binder in a folder you pick. A USB stick works: run the Grimoire from the stick, and your books, notes and saves live there too, following you to any computer.">&#128190; Binder on a drive</button><button class="bbtn" onclick="exportChronicle()" title="Export the night as a handsome page: rolls, the battle, bookmarks. Share it with your players.">&#128220; Session Chronicle</button><button class="bbtn" onclick="openBugReport()" title="Something broken or confusing? Tell me. Nothing is sent automatically — you read the report and send it yourself.">&#128027; Report a problem</button><span class="bnote">back up your whole binder, or move it to another device</span></div>
     <div class="shelf-divider"><span class="ln"></span>&#9670;<span class="ln"></span></div>
     <div class="rowlabel">Adventure Keepers <span class="ct" id="keeperCt"></span></div>
     <div class="grid" id="keeperGrid"></div>
@@ -933,12 +973,42 @@ body.strip-on .chronicle{top:146px;}
     <p>A PDF dies in a downloads folder. Give away this deck free and every LIDM adventure someone buys <b>snaps into a living thing that gets better the more they own</b> &mdash; a deeper Summon, cross-book tables, one party through all of it. It's the DM's second screen, and it only fills up with <i>your</i> books.</p>
 
     <h2>About</h2>
-    <p class="about-ip">Gnasher's Grimoire&trade; &middot; build 2026-07-28 &middot; &copy; 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.</p>
+    <p class="about-ip">Gnasher's Grimoire&trade; &middot; build 2026-08-05 &middot; &copy; 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.</p>
     <p class="about-ip">Free tool. Runs offline; your books stay yours. Get more books at <a href="https://longislanddungeonmaster.com/keepers" target="_blank" rel="noopener">longislanddungeonmaster.com/keepers</a>.</p>
     <p class="about-ip">The Theater: your players pair Gnasher's Satchel, its free companion, straight to this screen. No server, no accounts; the pairing code is the connection, and a same-room mode works with no internet at all.</p>
+    <p class="about-ip">Found a bug, or something that made no sense? <a href="#" onclick="openBugReport();return false;">Tell me about it</a> &mdash; the Grimoire writes up the technical details, you read them, and you send it. Nothing is ever transmitted by the app itself.</p>
     <p class="about-ip">The Chronicle: the binder's campaign memory. Seal how each chapter of a campaign ended and every later chapter opens already knowing what your table did; a short Chronicle Code carries the same story to any table, no binder needed.</p>
   </div>
 </section>
+
+<!-- ===================== v18 PROBLEM REPORT ===================== -->
+<div class="pscrim" id="bugScrim" onclick="hideBugReport()"></div>
+<div class="bugpanel" id="bugPanel" role="dialog" aria-label="Report a problem">
+  <div class="bug-head"><span>&#128027; Report a problem</span>
+    <button class="th-btn" onclick="hideBugReport()">Close</button></div>
+  <div class="bug-body">
+    <p class="th-hint">Something broken, confusing, or just wrong? Tell me what happened and the
+      Grimoire will write up the technical details for you.</p>
+    <textarea id="bugWhat" class="th-inp" placeholder="What were you doing, and what went wrong? &#10;e.g. &ldquo;my player&rsquo;s phone kept dropping every time I opened the War Table&rdquo;"
+      oninput="bugRefresh()"></textarea>
+    <div class="th-sec">What gets sent &mdash; read it, it is the whole report</div>
+    <textarea id="bugOut" class="bug-out" readonly></textarea>
+    <p class="th-hint"><b>The Grimoire never sends this anywhere.</b> There is no telemetry and no
+      reporting service; you copy or send it yourself. Everything the app added is counts and
+      status &mdash; no book text, no character names, no table code, no whispers, no notes.
+      <b>Your description is included exactly as you type it</b>, so leave out anything you would
+      not want to share. (&ldquo;Email it&rdquo; hands the report to your own mail app, which may be
+      webmail. If a table is open, the Grimoire keeps talking to the code service for pairing, as
+      it always does &mdash; that is unrelated to this report.)</p>
+    <div class="th-row">
+      <button class="th-btn gold" style="flex:1 1 auto;" onclick="bugCopy(this)">Copy the report</button>
+      <button class="th-btn" onclick="bugMail()" title="Opens your own mail app with the report in it">Email it to me</button>
+      <button class="th-btn" onclick="bugSave()" title="Save it as a text file you can attach anywhere">Save as a file</button>
+    </div>
+    <p class="th-hint">Paste it wherever suits you: <a href="mailto:frank@longislanddungeonmaster.com">frank@longislanddungeonmaster.com</a>.
+      Bugs, wishes and &ldquo;this bit made no sense&rdquo; are all equally welcome.</p>
+  </div>
+</div>
 
 <!-- ===================== SUMMON PALETTE ===================== -->
 <div class="pscrim" id="palScrim" onclick="closePalette()"></div>
@@ -1024,7 +1094,8 @@ body.strip-on .chronicle{top:146px;}
     <div id="thPeers"></div>
     <div class="th-row"><button class="th-btn gold" id="thCodeBtn" style="flex:1 1 auto;" onclick="theaterCodeStart()">Open the table by code</button></div>
     <div class="th-hint" id="thCodeLine"></div>
-    <div class="th-row"><button class="th-btn" id="thNewCode" style="flex:1 1 auto;" onclick="theaterNewCode(this)" title="Only if the code leaked. Everyone has to retype the new one.">Change the code</button></div>
+    <div class="th-row"><button class="th-btn" id="thNewCode" style="flex:1 1 auto;" onclick="theaterNewCode(this)" title="Only if the code leaked. Everyone has to retype the new one.">Change the code</button>
+      <button class="th-btn" id="thLock" style="flex:1 1 auto;" onclick="theaterToggleLock()" title="Locked: only the seats this table remembers may join. Your party keeps auto-rejoining; new faces wait for you to unlock.">Lock the table</button></div>
     <button class="th-btn gold" style="width:100%;margin-top:4px;" onclick="theaterAddPeer()">+ Invite by paste</button>
     <p class="th-hint">Each player opens Gnasher's Satchel, taps the pairing ring, and pastes your invite; their reply comes back here. Once linked, the War Table lights their screens by itself.</p>
     <div class="th-sec">Handouts</div>
@@ -1036,6 +1107,23 @@ body.strip-on .chronicle{top:146px;}
       <button class="th-btn" onclick="document.getElementById('thImgFile').click()">Push image&hellip;</button>
       <input type="file" id="thImgFile" accept="image/*" style="display:none" onchange="theaterPushImage(this)">
     </div>
+    <div class="th-sec">The quiet word<button class="th-btn" style="padding:2px 9px;font-size:10.5px;" onclick="theaterWhClear(this)">Clear</button></div>
+    <div class="th-hint" id="thWhWho">Pick a player in the To row above; whispers go to that chair alone.</div>
+    <div class="th-wh" id="thWhThread"></div>
+    <div class="th-row">
+      <input class="th-inp" id="thWhInput" placeholder="Say it to one player only&hellip;" style="flex:1 1 auto;min-width:0;" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();theaterWhSend();}">
+      <button class="th-btn gold" onclick="theaterWhSend()">Send</button>
+    </div>
+
+    <div class="th-sec">Packets<button class="th-btn" style="padding:2px 9px;font-size:10.5px;" onclick="pkNew()">+ New</button></div>
+    <p class="th-hint">A dossier you hand a player: the face they get, and the notes they never do. Build one from anything on your shelf and it splits itself.</p>
+    <div class="th-row">
+      <input class="th-inp" id="pkFromQ" placeholder="Build from your shelf: type a name&hellip;" style="flex:1 1 auto;min-width:0;" oninput="pkSuggest()">
+    </div>
+    <div id="pkSuggest"></div>
+    <div id="pkEdit"></div>
+    <div id="pkList"></div>
+
     <div class="th-sec">Table rolls<button class="th-btn" id="thClearLog" style="padding:2px 9px;font-size:10.5px;" onclick="theaterClearLog(this)">Clear</button></div>
     <div id="thLog" class="th-log"><div class="th-hint">Player rolls land here and in the session dice log.</div></div>
     <details class="th-help" style="margin-top:8px;">
@@ -1182,7 +1270,7 @@ function addInstalledToBooks(k){
 
 /* ---- persisted binder state (mock localStorage; real = IndexedDB) ---- */
 const SKEY='grimoire_v1';
-let STATE={favorites:[],recents:[],boards:{},session:null,coachDone:false,rollLog:[],bookParty:{},keeperSaves:{},bookmarks:{},combat:null,splitRatio:1,dock:false,dockw:360,soundMat:{open:false,mode:'dock',pack:null,vol:0.85},chronicle:{}};
+let STATE={favorites:[],recents:[],boards:{},session:null,coachDone:false,rollLog:[],bookParty:{},keeperSaves:{},bookmarks:{},combat:null,splitRatio:1,dock:false,dockw:360,soundMat:{open:false,mode:'dock',pack:null,vol:0.85},theaterWh:{},packets:[],chronicle:{}};
 /* ===== persistence: IndexedDB (real build), localStorage fallback ===== */
 let DB=null;
 function idbOpen(){return new Promise((res,rej)=>{try{const r=indexedDB.open('grimoire',1);
@@ -1653,7 +1741,10 @@ function openBook(id){
   if(splitOn)toggleSplit();
   go('stage');
   renderStrip();
-  STATE.session={book:id}; saveState();
+  STATE.session={book:id};
+  /* v17: the active table remembers its adventure, so picking the table back up is ONE act */
+  try{ const _tb=tblActive(); if(_tb&&_tb.book!==id)_tb.book=id; }catch(e){}
+  saveState();
   restoreBoard(id);
   renderBookmarks();
   if(STATE.combat) openCombat(); else hideCombat();
@@ -2142,6 +2233,10 @@ function renderCombat(){
   if(rd)rd.textContent='Round '+(C.round||1);
   body.innerHTML=C.list.map(c=>{
     const active=c.id===C.activeId, down=c.hp<=0;
+    /* v17.6: a combatant missing its conds array (an old .keeper, a half-written binder
+       restore, a hand-edited save) used to throw here and take the WHOLE War Table down
+       mid-fight. Same crash-safety law as the v17.5 card render: degrade, never blank. */
+    if(!Array.isArray(c.conds))c.conds=[];
     const conds=c.conds.map(cn=>{ const nm=(cn&&cn.n)?cn.n:cn, rr=(cn&&cn.r)?cn.r:0;
       return '<span class="cond">'+esc(nm)+(rr?'<b class="cr" title="Rounds left">'+rr+'</b>':'')+'<button title="Remove" onclick="combatDelCond(\''+c.id+'\',\''+esc(nm)+'\')">&times;</button></span>'; }).join('');
     const condSel='<select class="cbt-addcond" title="Add a condition" onchange="combatAddCond(\''+c.id+'\',this.value);this.selectedIndex=0;"><option value="">&#43; cond</option>'+CONDITIONS.map(x=>'<option value="'+x+'">'+x+'</option>').join('')+'</select>'+
@@ -2499,6 +2594,14 @@ var PROTOCOL_VERSION = 1;
 var CHUNK = 15000;       // safe SCTP interop frame size (handouts are auto-chunked)
 var ICE_TIMEOUT = 1500;  // ms: do not stall on an unreachable STUN server offline
 var STUN = [{ urls: "stun:stun.l.google.com:19302" }];
+/* v17.5: last-resort TURN relay for the phone stuck behind a carrier NAT that STUN
+   alone cannot punch through. Open Relay Project public relay: static creds, no
+   account; a dead relay only means no relayed candidates (gathering timeout caps
+   the wait). Mirror of Theater/theater-transport.js - keep the two in step. */
+var TURN = [
+  { urls: "turn:openrelay.metered.ca:80",  username: "openrelayproject", credential: "openrelayproject" },
+  { urls: "turn:openrelay.metered.ca:443?transport=tcp", username: "openrelayproject", credential: "openrelayproject" }
+];
 
 /* utf-8-safe base64 so any SDP / payload survives the round trip */
 function b64encode(s) { return btoa(unescape(encodeURIComponent(s))); }
@@ -2507,7 +2610,7 @@ function pack(desc) { return b64encode(JSON.stringify({ type: desc.type, sdp: de
 function unpack(str) { return JSON.parse(b64decode(str)); }
 
 function makeConn(sameRoom) {
-  return new RTCPeerConnection({ iceServers: sameRoom ? [] : STUN });
+  return new RTCPeerConnection({ iceServers: sameRoom ? [] : STUN.concat(TURN) });
 }
 
 /* Resolve once ICE gathering completes, end-of-candidates arrives, or the
@@ -2555,14 +2658,23 @@ function Framer(dc, onFrame) {
     }
   };
   return {
+    /* v17.6: returns TRUE only when every frame was handed to an open channel.
+       It used to return undefined always, so callers could not tell a delivered
+       message from one dropped into a closed channel - the false-success bug
+       that silently ate held rolls. Local handoff, NOT proof of arrival: what
+       must not be lost carries an app-level ACK on top. */
     send: function (obj) {
+      if (!dc || dc.readyState !== "open") return false;
       var str = JSON.stringify(obj);
-      if (str.length <= CHUNK) { dc.send("1|" + str); return; }
-      var id = (++seq).toString(36) + Math.random().toString(36).slice(2, 6);
-      var chunks = [];
-      for (var i = 0; i < str.length; i += CHUNK) chunks.push(str.slice(i, i + CHUNK));
-      dc.send("H|" + id + "|" + chunks.length);
-      for (var j = 0; j < chunks.length; j++) dc.send("D|" + id + "|" + j + "|" + chunks[j]);
+      try {
+        if (str.length <= CHUNK) { dc.send("1|" + str); return true; }
+        var id = (++seq).toString(36) + Math.random().toString(36).slice(2, 6);
+        var chunks = [];
+        for (var i = 0; i < str.length; i += CHUNK) chunks.push(str.slice(i, i + CHUNK));
+        dc.send("H|" + id + "|" + chunks.length);
+        for (var j = 0; j < chunks.length; j++) dc.send("D|" + id + "|" + j + "|" + chunks[j]);
+        return true;
+      } catch (e) { return false; }
     }
   };
 }
@@ -2587,7 +2699,7 @@ function HostPeer(opts) {
         .then(function () { return pack(pc.localDescription); });
     },
     acceptAnswer: function (str) { return pc.setRemoteDescription(unpack(str)); },
-    send: function (obj) { if (dc.readyState === "open") framer.send(obj); },
+    send: function (obj) { return dc.readyState === "open" ? framer.send(obj) : false; },
     isOpen: function () { return dc.readyState === "open"; },
     close: function () { try { dc.close(); } catch (e) {} try { pc.close(); } catch (e) {} }
   };
@@ -2640,8 +2752,10 @@ global.TheaterTransport = {
 const THEATER={peers:[],nid:0,sameRoom:false,lastSig:'',tmr:null,tlog:[],pushTo:'all',hb:null,seats:{}};
 /* v14.5 store-and-forward: a resting (asleep) player's seat queues what they miss.
    Waking to find it already in the satchel IS the product behavior. Cap 20 per seat. */
-function theaterQueueSeat(name,env){
-  const k=String(name||'').toLowerCase();if(!k)return;
+function theaterQueueSeat(target,env){
+  /* v17.7: `target` is a peer record or a saved seat, so the queue hangs on the CREDENTIAL
+     when there is one. A bare string still works (legacy callers) and keys by name. */
+  const k=(typeof target==='string')?seatKey(target):seatSlot(target);if(!k)return;
   const q=THEATER.seats[k]=THEATER.seats[k]||[];
   q.push(env);if(q.length>20)q.shift();
   try{ tblSaveQueue(); }catch(e){}   /* v16: a held whisper survives the DM reloading too */
@@ -2678,25 +2792,72 @@ function tblMigrate(){
     if(!x.id)x.id=tblNewId();
     if(!Array.isArray(x.seats))x.seats=[];
     if(!x.queue||typeof x.queue!=='object')x.queue={};
-    if(!PARTIES[x.party])x.party=0; });
+    if(!PARTIES[x.party])x.party=0;
+    /* v17 THE DOOR: lock (known seats only), bans (kicked names), book (the open adventure) */
+    if(typeof x.lock!=='boolean')x.lock=false;
+    if(!Array.isArray(x.bans))x.bans=[];
+    if(typeof x.book!=='string')x.book=''; });
   if(!t.some(function(x){return x.id===STATE.activeTable;}))STATE.activeTable=t[0].id;
   return t;
 }
 function tblActive(){ const all=tblMigrate(), id=STATE.activeTable;
   return all.filter(function(t){return t.id===id;})[0]||all[0]; }
 function tblCode(){ const t=tblActive(); if(!t.code)t.code=theaterMintCode(); return t.code; }
-/* seats + queue are the table's memory of who sat there; both persist */
-function tblRememberSeat(name,cls,lvl){
-  const t=tblActive(),k=String(name||'').toLowerCase(); if(!k)return;
-  const hit=t.seats.filter(function(s){return String(s.name).toLowerCase()===k;})[0];
-  if(hit){ hit.name=name; hit.cls=cls||hit.cls; if(lvl!=null)hit.lvl=lvl; }
-  else t.seats.push({name:name,cls:cls||'',lvl:(lvl==null?null:lvl)});
+/* v17.6 seat keys: ONE normalizer for every seat/queue/ban lookup. Plain lowercase let
+   " Nyx" and "Nyx" and a full-width unicode twin read as different people, which is how a
+   ban was dodged. NFKC + trim + collapsed inner space closes that; ASCII names are
+   unchanged, so existing lowercase queue keys still match. */
+function seatKey(name){ var s=String(name==null?'':name);
+  try{ s=s.normalize('NFKC'); }catch(e){}
+  return s.replace(/\s+/g,' ').trim().toLowerCase(); }
+/* ===== v17.7 THE SLOT - the key everything private hangs on =====
+   Queues and whisper threads used to hang on the NAME alone, so a second device typing an
+   existing character's name inherited that seat's held handouts and whispers on its very
+   first hello. The slot prefers the device's own credential and only falls back to the name
+   for a Satchel too old to have one. Legacy name-keyed queues are migrated the first time
+   their seat presents a credential (seatSlotAdopt). */
+function seatSlot(x){ return (x&&x.sid) ? 'sid:'+x.sid : seatKey(x&&x.name); }
+function seatSlotAdopt(t,rec){
+  if(!rec.sid)return seatSlot(rec);
+  const slot=seatSlot(rec), old=seatKey(rec.name);
+  if(slot===old)return slot;
+  /* carry a pre-credential queue across exactly once, then never again */
+  const seat=(t.seats||[]).filter(function(s){return seatKey(s.name)===old&&!s.sid;})[0];
+  if(seat){
+    if(THEATER.seats[old]&&!THEATER.seats[slot]){ THEATER.seats[slot]=THEATER.seats[old]; delete THEATER.seats[old]; }
+    if(t.queue[old]&&!t.queue[slot]){ t.queue[slot]=t.queue[old]; delete t.queue[old]; }
+  }
+  return slot;
+}
+/* name matching is legacy-only: it may decide a match ONLY when one side has no credential.
+   Two credentialed devices sharing a character name are two different people. */
+function seatSameAs(seat,rec){
+  if(seat.sid&&rec.sid)return seat.sid===rec.sid;
+  return seatKey(seat.name)===seatKey(rec.name);
+}
+/* seats + queue are the table's memory of who sat there; both persist.
+   v17.6: a seat also carries `sid` - the Satchel's own persistent random seat credential.
+   Identity is the sid when present; the NAME is only a label (and the legacy fallback for
+   an older Satchel that sends none). */
+function tblRememberSeat(name,cls,lvl,sid){
+  const t=tblActive(),k=seatKey(name); if(!k)return;
+  /* v17.7: a credentialed device may only claim a seat that is ITS OWN or one that predates
+     credentials. Falling back to the name unconditionally (v17.6) let anyone type an existing
+     character's name and take that chair, its history and its private queue. */
+  const rec={name:name,sid:sid||''};
+  const hit=(sid?t.seats.filter(function(s){return s.sid===sid;})[0]:null)
+         || t.seats.filter(function(s){return !s.sid&&seatKey(s.name)===k;})[0]
+         || (!sid?t.seats.filter(function(s){return seatKey(s.name)===k;})[0]:null);
+  if(hit){ hit.name=name; hit.cls=cls||hit.cls; if(lvl!=null)hit.lvl=lvl; if(sid&&!hit.sid)hit.sid=sid; }
+  else t.seats.push({name:name,cls:cls||'',lvl:(lvl==null?null:lvl),sid:sid||''});
   if(t.seats.length>12)t.seats.shift();
   t.last=Date.now(); saveState();
 }
 function tblForgetSeatAt(i){ const t=tblActive(), s=t.seats[i]; if(!s)return;
-  const k=String(s.name).toLowerCase();
-  t.seats.splice(i,1); delete t.queue[k]; delete THEATER.seats[k];
+  const k=seatSlot(s), old=seatKey(s.name);
+  t.seats.splice(i,1);
+  delete t.queue[k]; delete THEATER.seats[k];
+  delete t.queue[old]; delete THEATER.seats[old];   /* a pre-credential queue leaves too */
   saveState(); renderTheaterPeers(); renderTheaterCount(); }
 /* mirror the live queue into the table, skipping anything too fat for the binder */
 function tblSaveQueue(){ const t=tblActive(),out={};
@@ -2704,10 +2865,85 @@ function tblSaveQueue(){ const t=tblActive(),out={};
     const keep=(THEATER.seats[k]||[]).filter(function(e){ try{return JSON.stringify(e).length<200000;}catch(x){return false;} });
     if(keep.length)out[k]=keep; });
   t.queue=out; saveState(); }
+/* ===== v17 THE DOOR - who may sit at this table (v17.6: a REAL admission gate) =====
+   Open (default): anyone with the code joins, exactly as before. Locked: only the seats the
+   table already remembers get in - the party keeps auto-rejoining through every refresh, and
+   a stranger who overhears the code bounces off. Kick bars them, because a kicked player's
+   Satchel auto-rejoins on its stored code within seconds; without the ban the kick never sticks.
+
+   ⚠ THE v17.6 CORRECTION (Codex red-team, 2026-08-05): the gate used to run one round too
+   late. `onOpen` fired the moment the data channel opened - BEFORE the player identified
+   themselves - and already sent the host hello (table name), pushed initiative (the whole
+   combat roster) and toasted "a Satchel joined". A locked-out or barred peer saw all of it
+   in the window before their hello was judged, and could inject a roll on the way out. Now:
+   NOTHING leaves the host until `rec.admitted` is true, a refused peer is marked `rec.refused`
+   and every later envelope from it is ignored, and identity is the Satchel's own seat
+   credential (`sid`), not a typed name that anyone can copy. */
+/* v17.7: a NAME match only counts when one side has no credential. Two credentialed devices
+   sharing a character name are two different people - barring one must not bar the other. */
+function theaterBanned(t,rec){
+  const bans=t.bans||[], nm=seatKey(rec.name);
+  return bans.some(function(b){
+    if(b&&typeof b==='object'){
+      if(b.sid&&rec.sid)return b.sid===rec.sid;
+      return !!b.nm&&b.nm===nm;                  /* one side pre-credential: name is all we have */
+    }
+    return String(b)===nm;                       /* pre-v17.6 bans were bare name strings */
+  });
+}
+function theaterKnownSeat(t,rec){
+  return (t.seats||[]).some(function(s){ return seatSameAs(s,rec); });
+}
+function theaterDoorAdmits(rec){
+  const t=tblActive();
+  const barred=theaterBanned(t,rec);
+  if(!barred&&(!t.lock||theaterKnownSeat(t,rec)))return true;
+  theaterRefuse(rec,barred?'removed':'locked');
+  toast(barred?esc(rec.name)+' tried to sit down, but they are barred from this table.'
+             :esc(rec.name)+' knocked, but the table is locked to the party. Unlock to let them in.');
+  return false;
+}
+/* one refusal path: say why, then go deaf to them and close. Nothing else is ever sent. */
+function theaterRefuse(rec,reason){
+  rec.refused=true; rec.admitted=false; rec.open=false; rec.away=false; rec.hasHello=false;
+  try{rec.peer.send(TheaterTransport.envelope('bye','host',{reason:reason}));}catch(e){}
+  setTimeout(function(){ theaterDropPeer(rec.id,true); },400);   /* let the reasoned bye leave first */
+  renderTheaterPeers(); renderTheaterCount();
+}
+function theaterToggleLock(){ const t=tblActive(); t.lock=!t.lock; saveState(); theaterSyncPanel();
+  toast(t.lock?'The table is locked. The seats it remembers keep rejoining as normal; new faces wait for you to unlock.'
+             :'The table is open. Anyone with the code can join.'); }
+function theaterKickPeer(id,btn){
+  const rec=THEATER.peers.find(function(p){return p.id===id;}); if(!rec)return;
+  if(!rec.hasHello){ theaterDropPeer(id); return; }   /* an unpaired invite card: just clear it */
+  if(btn&&btn.dataset.arm!=='1'){ btn.dataset.arm='1'; btn.textContent='Kick?';
+    setTimeout(function(){ if(btn.dataset.arm==='1'){btn.dataset.arm='';btn.innerHTML='&times;';} },2800); return; }
+  const t=tblActive(), nm=seatKey(rec.name);
+  /* v17.6: bar the CREDENTIAL first (a rename cannot dodge it) and keep the name as the
+     human label + the fallback for a pre-v17.6 Satchel that carries no credential */
+  if(!theaterBanned(t,rec))t.bans.push({sid:rec.sid||'',nm:nm,label:rec.name||nm});
+  /* their seat, their held items and their whisper ghost all leave with them */
+  t.seats=(t.seats||[]).filter(function(s){ return !seatSameAs(s,rec); });
+  const slot=seatSlot(rec);
+  delete t.queue[slot]; delete THEATER.seats[slot];
+  delete t.queue[nm];   delete THEATER.seats[nm];   /* and any pre-credential queue of theirs */
+  theaterRefuse(rec,'removed');
+  saveState();
+  toast(esc(rec.name)+' was removed and barred. The barred list below can seat them again.');
+}
+function theaterBanLabel(b){ return (b&&typeof b==='object')?(b.label||b.nm||'someone'):String(b); }
+function theaterUnban(i){ const t=tblActive(), b=(t.bans||[])[i]; if(b==null)return;
+  t.bans.splice(i,1); saveState(); renderTheaterPeers();
+  toast(esc(theaterBanLabel(b))+' may sit at this table again. They rejoin with the same code.'); }
+function theaterBansHTML(){ const t=tblActive();
+  if(!(t.bans||[]).length)return '';
+  return '<div class="th-step" style="margin-top:6px;">Barred from this table:</div>'+
+    t.bans.map(function(b,i){ return '<span class="th-pill" style="display:inline-block;margin:2px 4px 2px 0;">'+esc(theaterBanLabel(b))+
+      ' &middot; <a href="#" style="color:var(--gold-br);" onclick="theaterUnban('+i+');return false;" title="Let them back in">restore</a></span>'; }).join(''); }
 function theaterTableName(){ const t=tblActive(); return (t.name||'').trim()||'The Table'; }
 function theaterTableChanged(v){ const t=tblActive(); t.name=String(v||'').trim()||'My Table';
   STATE.theaterTable=t.name; saveState(); renderTheaterTables();
-  THEATER.peers.forEach(p=>{ if(p.open)p.peer.send(TheaterTransport.envelope('hello','host',{table:theaterTableName()})); }); }
+  THEATER.peers.forEach(p=>{ if(p.open&&p.admitted)p.peer.send(TheaterTransport.envelope('hello','host',{table:theaterTableName(),ack:1})); }); }
 function theaterNewTable(){
   if(THEATER.codeOn)theaterCodeStop();
   const t={id:tblNewId(),name:'New Table '+(tblAll().length+1),code:'',party:activeParty,seats:[],queue:{},last:Date.now()};
@@ -2724,6 +2960,8 @@ function theaterSelectTable(id){
   THEATER.seats=JSON.parse(JSON.stringify(t.queue||{}));
   STATE.theaterTable=t.name;
   if(PARTIES[t.party])setParty(t.party); else saveState();
+  /* v17: the table carries its adventure too - one tap swaps party, seats, AND the open book */
+  if(t.book&&BOOKS[t.book]&&t.book!==currentBook){ try{openBook(t.book);}catch(e){} }
   theaterSyncPanel(); }
 function theaterSetTableParty(v){ const t=tblActive(),i=parseInt(v,10);
   if(isNaN(i)||!PARTIES[i])return; t.party=i; setParty(i); }
@@ -2752,12 +2990,15 @@ function renderTheaterTables(){
     return '<option value="'+i+'"'+(i===cur.party?' selected':'')+'>'+esc(p.name)+'</option>';}).join(''); }
 /* one call that puts the whole panel back in step with the active table */
 function theaterSyncPanel(){
+  try{renderTheaterWh();renderPackets();}catch(e){}
   const t=tblActive(), inp=document.getElementById('thTable');
   if(inp)inp.value=t.name||'';
   renderTheaterTables(); renderTheaterPeers(); renderTheaterCount();
   const btn=document.getElementById('thCodeBtn');
   if(btn)btn.textContent=THEATER.codeOn?('Close the code ('+THEATER.code+')')
     :(t.code?('Open the table ('+t.code+')'):'Open the table by code');
+  const lk=document.getElementById('thLock');
+  if(lk){ lk.classList.toggle('on',!!t.lock); lk.innerHTML=t.lock?'&#128274; Locked to the party':'Lock the table'; }
   if(THEATER.codeOn)theaterCodeShow();
   else theaterCodeLine(t.code?'Last code: <b class="th-code">'+esc(t.code)+'</b>. Open the table and the same code works again.':''); }
 function toggleTheater(){ const p=document.getElementById('theater'); p.classList.toggle('show');
@@ -2766,21 +3007,31 @@ function hideTheater(){ document.getElementById('theater').classList.remove('sho
 function theaterToggleRoom(){ THEATER.sameRoom=!THEATER.sameRoom;
   document.getElementById('thSameRoom').classList.toggle('on',THEATER.sameRoom);
   toast(THEATER.sameRoom?'Same-room pairing: no outside lookup. New invites pair on the local network.':'Standard pairing restored for new invites.'); }
-function theaterOpenCount(){ return THEATER.peers.filter(p=>p.open).length; }
+/* v17.6: "paired" means ADMITTED. A peer whose channel is open but whose hello has not
+   passed the door is not at the table and must never be counted or broadcast to. */
+function theaterOpenCount(){ return THEATER.peers.filter(p=>p.open&&p.admitted).length; }
 function renderTheaterCount(){ const n=theaterOpenCount(), el=document.getElementById('thCount');
   if(el){ el.textContent=n+' paired'; el.classList.toggle('on',n>0); }
   const b=document.getElementById('btnTheater'); if(b)b.classList.toggle('on',n>0); }
-function theaterBroadcast(env){ THEATER.peers.forEach(p=>{ if(p.open)p.peer.send(env); }); }
+function theaterBroadcast(env){ THEATER.peers.forEach(p=>{ if(p.open&&p.admitted)p.peer.send(env); }); }
+/* v17.6: one send path for anything that must not evaporate. A send that did not actually
+   go out is queued for that seat instead of being reported as delivered. Returns true when
+   it went down the wire right now. */
+function theaterSendOrHold(rec,env){
+  if(rec.open&&rec.admitted&&rec.peer.send(env)===true)return true;
+  theaterQueueSeat(rec,env);
+  return false;
+}
 function theaterAddPeer(viaCode){
   const id=++THEATER.nid;
   const rec={id,name:'Player '+id,cls:'',lvl:null,open:false,offer:'',peer:null,viaCode:!!viaCode};
   THEATER.peers.push(rec);
   rec.peer=TheaterTransport.HostPeer({
     sameRoom:THEATER.sameRoom,
-    onOpen:function(){ rec.open=true; rec.away=false; rec.lastSeen=Date.now(); renderTheaterPeers(); renderTheaterCount();
-      rec.peer.send(TheaterTransport.envelope('hello','host',{table:theaterTableName()}));
-      theaterPushInit(true);
-      toast('A Satchel joined the table.'); },
+    /* v17.6: the channel opening is NOT admission. Say nothing, show nothing, disclose
+       nothing until their hello has passed the door - see theaterDoorAdmits. */
+    onOpen:function(){ rec.open=true; rec.away=false; rec.lastSeen=Date.now();
+      renderTheaterPeers(); renderTheaterCount(); },
     onClose:function(){ if(rec.open){ rec.open=false; if(rec.hasHello)rec.away=true; renderTheaterPeers(); renderTheaterCount(); } },
     onMessage:function(env){ theaterOnMsg(rec,env); }
   });
@@ -2788,8 +3039,10 @@ function theaterAddPeer(viaCode){
   if(!viaCode)rec.peer.makeOffer().then(function(o){ rec.offer=o; renderTheaterPeers(); });
   return rec;
 }
-function theaterDropPeer(id){ const rec=THEATER.peers.find(p=>p.id===id); if(!rec)return;
-  try{ rec.peer.send(TheaterTransport.envelope('bye','host',{})); }catch(e){}
+function theaterDropPeer(id,silent){ const rec=THEATER.peers.find(p=>p.id===id); if(!rec)return;
+  /* silent: a reasoned bye already went out (kick/door); a second bare bye would overwrite
+     the reason on the player's screen and clear a code they should keep */
+  if(!silent){ try{ rec.peer.send(TheaterTransport.envelope('bye','host',{})); }catch(e){} }
   try{ rec.peer.close(); }catch(e){}
   THEATER.peers=THEATER.peers.filter(p=>p.id!==id);
   renderTheaterPeers(); renderTheaterCount(); }
@@ -2805,9 +3058,12 @@ function renderTheaterPeers(){
   /* preserve any reply text mid-paste before the rebuild */
   THEATER.peers.forEach(p=>{ const ta=document.getElementById('thAns'+p.id); if(ta)p.ansDraft=ta.value; });
   host.innerHTML=THEATER.peers.map(function(p){
-    let h='<div class="th-peer"><div class="ph"><span class="pn">'+esc(p.name)+(p.cls?' &middot; '+esc(p.cls)+' '+esc(p.lvl==null?'':p.lvl):'')+'</span>'+
+    const _wu=((STATE.theaterWh||{})[String(p.name||'').toLowerCase()]||{}).unread||0;
+    let h='<div class="th-peer"><div class="ph"><span class="pn">'+esc(p.name)+(p.cls?' &middot; '+esc(p.cls)+' '+esc(p.lvl==null?'':p.lvl):'')+
+      (_wu?'<span class="unread" title="whispers waiting">'+_wu+'</span>':'')+
+      (p.hasHello&&!p.build?'<span style="opacity:.5;font-size:10px;margin-left:5px;" title="Their Satchel is an older build; newer table features may not reach it. A fresh free copy lives at longislanddungeonmaster.com/satchel">older Satchel</span>':'')+'</span>'+
       '<span class="th-pill'+(p.open?' on':'')+'" id="thSt'+p.id+'">'+(p.open?'PAIRED':(p.away?'resting':'waiting'))+'</span>'+
-      '<button class="th-btn" style="padding:3px 8px;" title="Remove this player" onclick="theaterDropPeer('+p.id+')">&times;</button></div>';
+      '<button class="th-btn" style="padding:3px 8px;" title="'+(p.hasHello?'Remove this player and bar them from rejoining':'Clear this invite')+'" onclick="theaterKickPeer('+p.id+',this)">&times;</button></div>';
     if(!p.open&&p.viaCode){
       h+='<div class="th-step">Waiting on table code '+esc(THEATER.code||'')+'&hellip;</div>';
     }
@@ -2820,7 +3076,7 @@ function renderTheaterPeers(){
         '<div class="th-row"><button class="th-btn gold" onclick="theaterConnect('+p.id+')">Link</button></div>';
     }
     return h+'</div>';
-  }).join('')+theaterHeldSeatsHTML();
+  }).join('')+theaterHeldSeatsHTML()+theaterBansHTML();
   renderTheaterTo();
 }
 /* v16: seats this table remembers with no live peer yet. After a reload these ARE the
@@ -2832,7 +3088,7 @@ function theaterHeldSeatsHTML(){
   return (t.seats||[]).map(function(s,i){ return {s:s,i:i}; })
     .filter(function(r){ return !live[String(r.s.name).toLowerCase()]; })
     .map(function(r){
-      const q=(THEATER.seats[String(r.s.name).toLowerCase()]||[]).length;
+      const q=((THEATER.seats[seatSlot(r.s)]||THEATER.seats[seatKey(r.s.name)]||[])).length;
       return '<div class="th-peer th-seat"><div class="ph"><span class="pn">'+esc(r.s.name)+
         (r.s.cls?' &middot; '+esc(r.s.cls)+' '+esc(r.s.lvl==null?'':r.s.lvl):'')+'</span>'+
         '<span class="th-pill">'+(THEATER.codeOn?'rejoining':'away')+'</span>'+
@@ -2843,16 +3099,16 @@ function theaterHeldSeatsHTML(){
 /* v14.5: where the next handout goes - the whole table, or a whisper to one chair */
 function renderTheaterTo(){
   const host=document.getElementById('thToRow');if(!host)return;
-  const seats=THEATER.peers.filter(function(p){return p.open||(p.away&&p.hasHello);});
+  const seats=THEATER.peers.filter(function(p){return p.admitted&&(p.open||(p.away&&p.hasHello));});
   if(THEATER.pushTo!=='all'&&!seats.some(function(p){return p.id===THEATER.pushTo;}))THEATER.pushTo='all';
   host.innerHTML='<span class="th-step" style="margin:0 4px 0 0;">To:</span>'+
     '<button class="th-btn'+(THEATER.pushTo==='all'?' on':'')+'" onclick="theaterSetTo(0)">The whole table</button>'+
     seats.map(function(p){return '<button class="th-btn'+(THEATER.pushTo===p.id?' on':'')+'" onclick="theaterSetTo('+p.id+')" title="Whisper: only this player sees it">'+esc(p.name)+(p.open?'':' (resting)')+'</button>';}).join('');
 }
-function theaterSetTo(v){THEATER.pushTo=v?+v:'all';renderTheaterTo();}
+function theaterSetTo(v){THEATER.pushTo=v?+v:'all';renderTheaterTo();renderTheaterWh();}
 function theaterTarget(){
   if(THEATER.pushTo==='all')return null;
-  const rec=THEATER.peers.find(function(p){return p.id===THEATER.pushTo&&(p.open||(p.away&&p.hasHello));});
+  const rec=THEATER.peers.find(function(p){return p.id===THEATER.pushTo&&p.admitted&&(p.open||(p.away&&p.hasHello));});
   if(!rec){THEATER.pushTo='all';renderTheaterTo();toast('That player left; sending to the whole table now.');return null;}
   return rec;
 }
@@ -2861,62 +3117,294 @@ function theaterSendHandout(pay){
   if(rec){
     pay.whisper=true;
     const env=TheaterTransport.envelope('handout','host',pay);
-    if(rec.open){rec.peer.send(env);toast('Whispered to '+esc(rec.name)+'. Only they saw it.');}
-    else{theaterQueueSeat(rec.name,env);toast(esc(rec.name)+' is resting. The whisper will be waiting when they wake.');}
+    if(theaterSendOrHold(rec,env))toast('Whispered to '+esc(rec.name)+'. Only they saw it.');
+    else toast(esc(rec.name)+' is not on the line. The whisper will be waiting when they wake.');
   }else{
     const env=TheaterTransport.envelope('handout','host',pay);
-    theaterBroadcast(env);
     let held=0;
-    THEATER.peers.forEach(function(p){ if(!p.open&&p.away&&p.hasHello){theaterQueueSeat(p.name,env);held++;} });
+    THEATER.peers.forEach(function(p){ if(p.admitted&&p.hasHello&&!theaterSendOrHold(p,env))held++; });
     toast('Handout pushed to the whole table.'+(held?' Held for '+held+' resting seat'+(held===1?'':'s')+'.':''));
   }
 }
+
+/* ===================== v17 - THE QUIET WORD (whispers, both directions) =====================
+   Protocol v1.2, additive to the frozen v1 wire: a `whisper` envelope carrying
+   {text}. Player to host and host to player. Older Satchels that only know
+   handout{whisper:true} still work; this is the two-way upgrade. Threads are
+   kept per seat NAME (not per connection), so a phone that drops, sleeps, and
+   rejoins keeps its conversation. */
+function thWhKey(n){ return seatKey(n); }
+function thWhThread(name){ STATE.theaterWh=STATE.theaterWh||{};
+  const k=thWhKey(name); return STATE.theaterWh[k]=STATE.theaterWh[k]||{name:String(name||''),msgs:[],unread:0}; }
+function theaterOnWhisper(rec,env){
+  const p=env.payload||{};
+  /* v17.6: ACK first (it releases the player's held copy), then ignore a repeat */
+  theaterAck(rec,p.mid||'');
+  if(theaterSeen(rec,p.mid||''))return;
+  const th=thWhThread(rec.name||'player');       /* the verified seat, never env.from */
+  th.name=String(rec.name||'player');
+  th.msgs.push({dir:'from',text:String(p.text||''),t:Date.now()});
+  if(th.msgs.length>200)th.msgs=th.msgs.slice(-200);
+  const looking=(THEATER.pushTo!=='all')&&(rec.id===THEATER.pushTo)&&document.getElementById('theater').classList.contains('show');
+  if(looking)th.unread=0; else th.unread=(th.unread||0)+1;
+  saveState(); renderTheaterPeers(); renderTheaterWh();
+  if(!looking)toast('<b>'+esc(th.name)+'</b> whispers: '+esc(String(p.text||'').slice(0,90)));
+}
+function theaterWhSeat(){
+  if(THEATER.pushTo==='all')return null;
+  return THEATER.peers.find(function(p){return p.id===THEATER.pushTo;})||null;
+}
+function renderTheaterWh(){
+  const who=document.getElementById('thWhWho'), box=document.getElementById('thWhThread');
+  if(!who||!box)return;
+  const rec=theaterWhSeat();
+  if(!rec){
+    who.innerHTML='Pick a player in the <b>To</b> row above; whispers go to that chair alone.';
+    box.innerHTML='<div class="th-wh-empty">No chair picked.</div>';
+    return;
+  }
+  const th=thWhThread(rec.name); th.unread=0;
+  who.innerHTML='Whispering <b>'+esc(rec.name)+'</b>'+(rec.open?'':' (resting; it will be waiting when they wake)')+'.';
+  box.innerHTML=th.msgs.map(function(m){
+    return '<div class="th-wm '+(m.dir==='from'?'from':'to')+'"><span class="w">'+
+      esc(m.dir==='from'?th.name:'You')+'</span>'+esc(m.text)+'</div>';
+  }).join('')||'<div class="th-wh-empty">Nothing said yet.</div>';
+  box.scrollTop=box.scrollHeight;
+}
+function theaterWhSend(){
+  const inp=document.getElementById('thWhInput');
+  const text=(inp.value||'').trim(); if(!text)return;
+  const rec=theaterWhSeat();
+  if(!rec){ toast('Pick a player in the To row first. A whisper needs one chair.'); return; }
+  const env=TheaterTransport.envelope('whisper','host',{text:text});
+  const th=thWhThread(rec.name);
+  th.msgs.push({dir:'to',text:text,t:Date.now()});
+  /* v17.6: held on a send that did not actually leave, instead of vanishing */
+  if(!theaterSendOrHold(rec,env))toast(esc(rec.name)+' is not on the line. It will be waiting when they wake.');
+  inp.value=''; saveState(); renderTheaterWh();
+}
+function theaterWhClear(btn){
+  const rec=theaterWhSeat();
+  if(!rec){ toast('Pick a player first.'); return; }
+  if(btn&&btn.dataset.arm!=='1'){ btn.dataset.arm='1'; btn.textContent='Tap again'; setTimeout(function(){ if(btn){btn.dataset.arm='';btn.textContent='Clear';} },2600); return; }
+  const th=thWhThread(rec.name); th.msgs=[]; th.unread=0;
+  if(btn){btn.dataset.arm='';btn.textContent='Clear';}
+  saveState(); renderTheaterWh(); renderTheaterPeers();
+  toast('Your copy of that thread is cleared. Their Satchel keeps theirs.');
+}
+
+/* ===================== v17 - PACKETS =====================
+   THE SPLIT IS THE POINT. A packet has a FACE and a BACK:
+     face  - title, subtitle, image, blurb, tags. This is what crosses the wire.
+     back  - the DM's own notes. Never serialized into an envelope, anywhere.
+   pkSend builds the outbound payload by NAMING the five public fields, so a
+   field added to the back later cannot leak by being forgotten. */
+const PK_KINDS={person:{g:'\u{1F464}',l:'Person'},place:{g:'\u{1F5FA}',l:'Place'},
+  thing:{g:'\u{1F5DD}',l:'Thing'},event:{g:'⚑',l:'Event'},quest:{g:'✚',l:'Quest'}};
+let PK_OPEN='';
+function pkAll(){ STATE.packets=STATE.packets||[]; return STATE.packets; }
+function pkNewId(){ return 'pk'+Date.now().toString(36)+Math.floor(Math.random()*46656).toString(36); }
+function pkNew(seed){
+  const p=Object.assign({id:pkNewId(),ptype:'person',title:'',subtitle:'',img:'',body:'',tags:[],dm:''},seed||{});
+  pkAll().unshift(p); PK_OPEN=p.id; saveState(); renderPackets(); return p;
+}
+/* Build from the shelf. The law of the split, applied per kind:
+   NPC   -> name + role go out. want / voice / line / tags are the DM's, always.
+   Monster -> name only goes out. AC, HP, attacks and the note stay home.
+   Table -> name only; a random table is prep, not a handout. */
+function pkFromIndex(i){
+  const t=INDEX[i]; if(!t)return;
+  const src=(BOOKS[t.src]&&stripEnt(BOOKS[t.src].t))||'';
+  if(t.kind==='npc'){
+    pkNew({ptype:'person',title:stripEnt(t.nm),subtitle:stripEnt(t.role||''),
+      body:'',
+      dm:'From '+src+'.\nWants: '+stripEnt(t.want||'')+'\nTell: '+stripEnt(t.voice||'')+
+         '\nLine: '+stripEnt(t.line||'')+'\nTags: '+((t.tags||[]).join(', '))});
+    toast('Packet built. Their <b>role</b> is the face; wants, tell, line and tags stayed with you.');
+  }else if(t.kind==='monster'){
+    pkNew({ptype:'thing',title:stripEnt(t.nm),subtitle:'',body:'',
+      dm:'From '+src+'.\nCR '+(t.cr==null?'?':t.cr)+' · AC '+(t.ac==null?'?':t.ac)+' · HP '+(t.hp==null?'?':t.hp)+
+         '\n'+stripEnt(t.note||'')});
+    toast('Packet built with the name only. The stat block stayed with you.');
+  }else{
+    pkNew({ptype:'thing',title:stripEnt(t.nm),subtitle:'',body:'',dm:'From '+src+'. (Random table; rows kept here.)'});
+    toast('Packet built. The table rows stayed with you.');
+  }
+  document.getElementById('pkFromQ').value='';
+  document.getElementById('pkSuggest').innerHTML='';
+}
+function pkSuggest(){
+  const q=(document.getElementById('pkFromQ').value||'').trim();
+  const host=document.getElementById('pkSuggest');
+  if(!q){host.innerHTML='';return;}
+  const hits=searchTables(q).slice(0,6);
+  host.innerHTML=hits.map(function(r){
+    const t=INDEX[r.i];
+    const g=t.kind==='npc'?'\u{1F464}':(t.kind==='monster'?'\u{1F5DD}':'\u{1F3B2}');
+    return '<div class="pk-row" onclick="pkFromIndex('+r.i+')" style="cursor:pointer;">'+
+      '<span class="pkg">'+g+'</span><span class="pkm"><b>'+t.nm+'</b><i>'+
+      esc(t.kind==='npc'?stripEnt(t.role||'npc'):t.kind)+'</i></span></div>';
+  }).join('')||'<p class="th-hint">Nothing on your shelf matches that.</p>';
+}
+function pkSet(id,field,v){ const p=pkAll().find(function(x){return x.id===id;}); if(!p)return;
+  if(field==='tags')p.tags=String(v).split(',').map(function(s){return s.trim().toLowerCase();}).filter(Boolean).slice(0,12);
+  else p[field]=v;
+  saveState(); if(field==='title'||field==='ptype')renderPackets(); }
+function pkImage(inp,id){ const f=inp.files&&inp.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=function(){ pkSet(id,'img',r.result); renderPackets(); };
+  r.readAsDataURL(f); inp.value=''; }
+function pkDelete(id,btn){
+  if(btn&&btn.dataset.arm!=='1'){ btn.dataset.arm='1'; btn.textContent='Tap again'; setTimeout(function(){ if(btn){btn.dataset.arm='';btn.textContent='Delete';} },2600); return; }
+  STATE.packets=pkAll().filter(function(p){return p.id!==id;});
+  if(PK_OPEN===id)PK_OPEN='';
+  saveState(); renderPackets(); toast('Packet deleted.');
+}
+function pkOpen(id){ PK_OPEN=(PK_OPEN===id?'':id); renderPackets(); }
+/* the only place a packet becomes an envelope: five named public fields, nothing else */
+function pkFace(p){ return {id:p.id,ptype:p.ptype||'person',title:p.title||'Packet',
+  subtitle:p.subtitle||'',img:p.img||'',body:p.body||'',tags:(p.tags||[]).slice()}; }
+function pkSend(id){
+  const p=pkAll().find(function(x){return x.id===id;}); if(!p)return;
+  if(!p.title.trim()){ toast('Give the packet a name first.'); return; }
+  if(!theaterOpenCount()&&!THEATER.peers.some(function(q){return q.away&&q.hasHello;})){ toast('No Satchels paired yet.'); return; }
+  const face=pkFace(p);
+  const rec=theaterTarget();
+  if(rec){
+    face.whisper=true;
+    const env=TheaterTransport.envelope('packet','host',face);
+    if(theaterSendOrHold(rec,env))toast('<b>'+esc(p.title)+'</b> went to '+esc(rec.name)+' alone.');
+    else toast(esc(rec.name)+' is not on the line. The packet will be waiting.');
+  }else{
+    const env=TheaterTransport.envelope('packet','host',face);
+    let held=0;
+    THEATER.peers.forEach(function(q){ if(q.admitted&&q.hasHello&&!theaterSendOrHold(q,env))held++; });
+    toast('<b>'+esc(p.title)+'</b> went to the whole table.'+(held?' Held for '+held+' resting seat'+(held===1?'':'s')+'.':''));
+  }
+}
+function renderPackets(){
+  const list=document.getElementById('pkList'), ed=document.getElementById('pkEdit');
+  if(!list||!ed)return;
+  const all=pkAll();
+  const p=all.find(function(x){return x.id===PK_OPEN;});
+  ed.innerHTML=p?('<div class="pk-edit">'+
+    '<span class="pk-face">The face &mdash; this is what they get</span>'+
+    (p.img?'<img class="pk-thumb" src="'+esc(p.img)+'" alt="">':'')+
+    '<input class="th-inp" placeholder="Name" value="'+esc(p.title)+'" oninput="pkSet(\''+p.id+'\',\'title\',this.value)">'+
+    '<input class="th-inp" placeholder="One line under the name" value="'+esc(p.subtitle)+'" oninput="pkSet(\''+p.id+'\',\'subtitle\',this.value)">'+
+    '<select class="th-inp" onchange="pkSet(\''+p.id+'\',\'ptype\',this.value)">'+
+      Object.keys(PK_KINDS).map(function(k){return '<option value="'+k+'"'+(p.ptype===k?' selected':'')+'>'+PK_KINDS[k].g+' '+PK_KINDS[k].l+'</option>';}).join('')+
+    '</select>'+
+    '<textarea class="th-inp" placeholder="What the table is allowed to know&hellip;" style="min-height:56px;font-size:12.5px;resize:vertical;" oninput="pkSet(\''+p.id+'\',\'body\',this.value)">'+esc(p.body)+'</textarea>'+
+    '<input class="th-inp" placeholder="tags, comma separated" value="'+esc((p.tags||[]).join(', '))+'" oninput="pkSet(\''+p.id+'\',\'tags\',this.value)">'+
+    '<div class="th-row"><button class="th-btn" onclick="this.nextElementSibling.click()">Picture&hellip;</button>'+
+      '<input type="file" accept="image/*" style="display:none" onchange="pkImage(this,\''+p.id+'\')">'+
+      (p.img?'<button class="th-btn" onclick="pkSet(\''+p.id+'\',\'img\',\'\');renderPackets()">Remove picture</button>':'')+'</div>'+
+    '<div class="pk-secret"><span class="lb">Yours only &mdash; never sent</span>'+
+      '<textarea class="th-inp" placeholder="Secrets, stats, what they really want&hellip;" style="min-height:56px;font-size:12.5px;resize:vertical;" oninput="pkSet(\''+p.id+'\',\'dm\',this.value)">'+esc(p.dm)+'</textarea></div>'+
+    '<div class="th-row" style="margin-top:6px;">'+
+      '<button class="th-btn gold" style="flex:1 1 auto;" onclick="pkSend(\''+p.id+'\')">Send it</button>'+
+      '<button class="th-btn" onclick="pkOpen(\''+p.id+'\')">Close</button>'+
+      '<button class="th-btn" onclick="pkDelete(\''+p.id+'\',this)">Delete</button>'+
+    '</div></div>'):'';
+  list.innerHTML=all.map(function(x){
+    const k=PK_KINDS[x.ptype]||PK_KINDS.person;
+    return '<div class="pk-row">'+
+      (x.img?'<img src="'+esc(x.img)+'" alt="">':'<span class="pkg">'+k.g+'</span>')+
+      '<span class="pkm" onclick="pkOpen(\''+x.id+'\')" style="cursor:pointer;"><b>'+esc(x.title||'Untitled packet')+'</b>'+
+        '<i>'+esc(x.subtitle||k.l)+(x.dm?' · has private notes':'')+'</i></span>'+
+      '<button class="th-btn" onclick="pkSend(\''+x.id+'\')">Send</button></div>';
+  }).join('')||'<p class="th-hint">No packets yet. Type a name above to build one from your shelf, or tap + New.</p>';
+}
+
+/* v17.6 exactly-once receipt: a held roll/whisper carries a `mid`. We ACK every one we
+   accept (so the Satchel can stop holding it) and ignore a `mid` we have already taken, so
+   a resend after a lost ACK cannot double-log the roll. Per-seat, capped, memory-only. */
+function theaterSeen(rec,mid){
+  if(!mid)return false;
+  rec.seen=rec.seen||[];
+  if(rec.seen.indexOf(mid)>=0)return true;
+  rec.seen.push(mid); if(rec.seen.length>200)rec.seen.shift();
+  return false;
+}
+function theaterAck(rec,mid){ if(mid&&rec.peer)rec.peer.send(TheaterTransport.envelope('ack','host',{mid:mid})); }
 function theaterOnMsg(rec,env){
   if(!env||env.v!==TheaterTransport.PROTOCOL_VERSION)return;
+  /* v17.6: a refused peer is DEAD to us - nothing it says is processed while the bye flushes */
+  if(rec.refused)return;
   rec.lastSeen=Date.now();
-  if(!rec.open&&rec.away&&rec.peer.isOpen()){ rec.open=true; rec.away=false; renderTheaterPeers(); renderTheaterCount(); }
+  if(!rec.open&&rec.away&&rec.peer.isOpen()&&rec.admitted){ rec.open=true; rec.away=false; renderTheaterPeers(); renderTheaterCount(); }
+  /* v17.6 THE GATE: before admission the ONLY envelope that means anything is hello.
+     A roll, whisper or anything else arriving first is dropped, not processed. */
+  if(!rec.admitted&&env.type!=='hello')return;
   if(env.type==='hello'){ const p=env.payload||{};
+    if(rec.admitted)return;                       /* already seated: a second hello changes nothing */
     rec.name=p.name||rec.name; rec.cls=p.class||''; rec.lvl=p.level;
-    /* seat reclaim: the same name rejoining replaces any stale ghost of itself */
+    rec.build=p.build||'';   /* v17: the Satchel says which build it is; silence means an older one */
+    rec.sid=String(p.sid||'');/* v17.6: the seat credential - identity that a rename cannot forge */
+    /* v17 THE DOOR: barred seats bounce, and a locked table admits remembered seats only.
+       The refusal rides a bye with a reason so a current Satchel stops knocking on its own. */
+    if(!theaterDoorAdmits(rec))return;
+    rec.admitted=true;
+    /* seat reclaim: the same seat rejoining replaces any stale ghost of itself */
     THEATER.peers=THEATER.peers.filter(function(q){
       if(q===rec)return true;
-      if(String(q.name).toLowerCase()!==String(rec.name).toLowerCase())return true;
+      if(!seatSameAs(q,rec))return true;
       try{q.peer.close();}catch(e){}
       return false;
     });
     rec.hasHello=true;
-    try{ tblRememberSeat(rec.name,rec.cls,rec.lvl); }catch(e){}   /* v16: the table remembers the seat */
+    /* v17.7: adopt a pre-credential queue BEFORE the seat is recorded, then the seat itself */
+    let slot=seatKey(rec.name);
+    try{ slot=seatSlotAdopt(tblActive(),rec); }catch(e){}
+    try{ tblRememberSeat(rec.name,rec.cls,rec.lvl,rec.sid); }catch(e){}   /* v16/v17.6: the table remembers the seat */
+    /* NOW they are at the table, and only now does the host disclose anything */
+    rec.peer.send(TheaterTransport.envelope('hello','host',{table:theaterTableName(),ack:1}));
+    theaterPushInit(true);
+    toast('A Satchel joined the table.');
     /* catch-up: hand over everything the seat missed while resting, oldest first.
-       Delivered on a short settle delay, and the queue survives until a delivery
-       actually goes through: losing a whisper silently is the one unforgivable sin. */
+       v17.6: each item is dropped from the queue ONLY when send() actually reported it out.
+       The old code deleted the whole queue if nothing threw - and nothing ever throws. */
     (function(){
-      const sk=String(rec.name).toLowerCase();
+      const sk=slot;   /* the credential's slot: nobody inherits another device's held items */
       if(!THEATER.seats[sk]||!THEATER.seats[sk].length)return;
       setTimeout(function(){
         const q=THEATER.seats[sk];
         if(!q||!q.length)return;
         if(!rec.open||!rec.peer.isOpen())return;   /* gone again: keep the queue for the next wake */
-        let allOk=true;
-        q.forEach(function(env){ try{rec.peer.send(env);}catch(e){allOk=false;} });
-        if(allOk){
-          delete THEATER.seats[sk];
-          try{ tblSaveQueue(); }catch(e){}
-          toast(esc(rec.name)+' is back and caught up on '+q.length+' missed item'+(q.length===1?'':'s')+'.');
-        }
+        let sent=0;
+        while(q.length){ if(rec.peer.send(q[0])!==true)break; q.shift(); sent++; }
+        if(!q.length)delete THEATER.seats[sk];
+        try{ tblSaveQueue(); }catch(e){}
+        if(sent)toast(esc(rec.name)+' is back and caught up on '+sent+' missed item'+(sent===1?'':'s')+'.');
+        if(q.length)toast(esc(rec.name)+' dropped again mid-catch-up. '+q.length+' item'+(q.length===1?' is':'s are')+' still held.');
       },1200);
     })();
     renderTheaterPeers(); renderTheaterCount(); }
   else if(env.type==='ping'){ if(rec.peer.isOpen())rec.peer.send(TheaterTransport.envelope('pong','host',{})); }
   else if(env.type==='pong'){ /* liveness only */ }
-  else if(env.type==='roll'){ theaterOnRoll(env); }
+  else if(env.type==='roll'){ theaterOnRoll(rec,env); }
+  else if(env.type==='whisper'){ theaterOnWhisper(rec,env); }
   else if(env.type==='bye'){ rec.open=false; if(rec.hasHello)rec.away=true; renderTheaterPeers(); renderTheaterCount(); }
 }
-function theaterOnRoll(env){ const p=env.payload||{};
-  THEATER.tlog.unshift({from:String(env.from||'player'),label:String(p.label||'roll'),total:p.total,adv:p.adv,t:Date.now()});
+function theaterOnRoll(rec,env){ const p=env.payload||{};
+  const mid=p.mid||'';
+  /* the ACK goes back even for a duplicate: the Satchel is still holding it and the ACK
+     is what releases it. Only the LOGGING is suppressed. */
+  theaterAck(rec,mid);
+  if(theaterSeen(rec,mid))return;
+  /* v17.5: a held roll (queued through a dead spot, delivered on rejoin) arrives with its
+     original ts. Old enough = label it, so the table knows it happened a while ago. */
+  const held=env.ts&&(Date.now()-env.ts>60000);
+  const lbl=String(p.label||'roll')+(held?' (held)':'');
+  /* v17.6: attribution is the ADMITTED seat, never the sender-supplied `from` */
+  const who=String(rec.name||'player');
+  THEATER.tlog.unshift({from:who,label:lbl,total:p.total,adv:p.adv,t:Date.now()});
   THEATER.tlog=THEATER.tlog.slice(0,80);
   renderTheaterLog();
-  logRoll(String(p.expr||'table'),p.total,String(env.from||'player')+' · '+String(p.label||'roll'));
-  theaterBroadcast(env); /* to ALL paired Satchels, preserving the roller's `from` */ }
+  logRoll(String(p.expr||'table'),p.total,who+' · '+lbl);
+  const out=TheaterTransport.envelope('roll',who,{label:lbl,expr:p.expr,total:p.total,breakdown:p.breakdown,adv:p.adv});
+  theaterBroadcast(out); /* to ALL paired Satchels, attributed to the seat we verified */ }
 function renderTheaterLog(){ const el=document.getElementById('thLog'); if(!el)return;
   el.innerHTML=THEATER.tlog.map(function(e){
     return '<div class="tlr"><span class="who">'+esc(e.from)+'</span><span class="lb">'+esc(e.label)+
@@ -2948,10 +3436,212 @@ const THEATER_WORDS=["ACORN","AMBER","ANVIL","ARROW","BADGER","BANNER","BIRCH","
   "LANTERN","MAPLE","MARBLE","MEADOW","OTTER","PEBBLE","QUIVER","RAVEN","RIVER","SADDLE","SHIELD","SILVER",
   "TALON","THISTLE","TIMBER","TORCH","WILLOW","WOLF"];
 function theaterMintCode(){return THEATER_WORDS[Math.floor(Math.random()*THEATER_WORDS.length)]+"-"+(10+Math.floor(Math.random()*90));}
+/* the hosted Satchel, for the QR join link (the single-file download pairs by typing the code) */
+var SATCHEL_URL="https://longislanddungeonmaster.com/app/satchel/";
+/* ===== v17.5 QR (pairing) - a tiny self-contained QR encoder =====
+   Byte mode, EC level M, versions 1-10, mask 0 fixed (any mask is legal; every
+   reader tries all eight). Enough for the Satchel join link and nothing else.
+   Proven module-for-module against two independent references (python qrcode +
+   reedsolo RS vectors) across v1-v10 and all 40 relay-word join URLs; the
+   committed golden matrix in qc/v17_features.py locks it down. Returns null when the text outruns version 10. */
+var QR = (function () {
+  var EXP = new Array(512), LOG = new Array(256);
+  (function () {
+    var x = 1;
+    for (var i = 0; i < 255; i++) { EXP[i] = x; LOG[x] = i; x <<= 1; if (x & 256) x ^= 285; }
+    for (var j = 255; j < 512; j++) EXP[j] = EXP[j - 255];
+  })();
+  function polyMul(a, b) {
+    var r = new Array(a.length + b.length - 1).fill(0);
+    for (var i = 0; i < a.length; i++) for (var j = 0; j < b.length; j++)
+      if (a[i] && b[j]) r[i + j] ^= EXP[(LOG[a[i]] + LOG[b[j]]) % 255];
+    return r;
+  }
+  function rsEC(data, n) {
+    var gen = [1];
+    for (var i = 0; i < n; i++) gen = polyMul(gen, [1, EXP[i]]);
+    var res = data.concat(new Array(n).fill(0));
+    for (var k = 0; k < data.length; k++) {
+      var c = res[k];
+      if (!c) continue;
+      for (var j = 0; j < gen.length; j++) res[k + j] ^= EXP[(LOG[gen[j]] + LOG[c]) % 255];
+    }
+    return res.slice(data.length);
+  }
+  /* EC-M structure per version: [ecPerBlock, g1Blocks, g1DataCW, g2Blocks, g2DataCW] */
+  var SPEC = {
+    1: [10, 1, 16, 0, 0], 2: [16, 1, 28, 0, 0], 3: [26, 1, 44, 0, 0],
+    4: [18, 2, 32, 0, 0], 5: [24, 2, 43, 0, 0], 6: [16, 4, 27, 0, 0],
+    7: [18, 4, 31, 0, 0], 8: [22, 2, 38, 2, 39], 9: [22, 3, 36, 2, 37],
+    10: [26, 4, 43, 1, 44]
+  };
+  var ALIGN = {
+    1: [], 2: [6, 18], 3: [6, 22], 4: [6, 26], 5: [6, 30], 6: [6, 34],
+    7: [6, 22, 38], 8: [6, 24, 42], 9: [6, 26, 46], 10: [6, 28, 50]
+  };
+  /* format info, EC level M, mask 0 (precomputed BCH) */
+  var FORMAT_M0 = [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0];
+  /* version info bit strings, v7-10 (18-bit BCH), MSB first */
+  var VERINFO = { 7: 0x07C94, 8: 0x085BC, 9: 0x09A99, 10: 0x0A4D3 };
+
+  function bytesOf(text) {
+    /* UTF-8, which every current reader assumes for byte mode */
+    var out = [], enc = encodeURIComponent(text);
+    for (var i = 0; i < enc.length; i++) {
+      var ch = enc.charAt(i);
+      if (ch === '%') { out.push(parseInt(enc.substr(i + 1, 2), 16)); i += 2; }
+      else out.push(enc.charCodeAt(i));
+    }
+    return out;
+  }
+
+  function codewords(text) {
+    var data = bytesOf(text), ver = 0, spec = null;
+    for (var v = 1; v <= 10; v++) {
+      var s = SPEC[v], dcw = s[1] * s[2] + s[3] * s[4];
+      var header = v >= 10 ? 20 : 12;             /* mode(4) + count(8|16) bits */
+      if (data.length <= Math.floor((dcw * 8 - header - 4) / 8)) { ver = v; spec = s; break; }
+    }
+    if (!ver) return null;
+    var dcwTotal = spec[1] * spec[2] + spec[3] * spec[4];
+
+    /* bitstream: mode 0100, count, data, terminator, pad */
+    var bits = [];
+    function push(val, n) { for (var i = n - 1; i >= 0; i--) bits.push((val >> i) & 1); }
+    push(4, 4);
+    push(data.length, ver >= 10 ? 16 : 8);
+    for (var i = 0; i < data.length; i++) push(data[i], 8);
+    var cap = dcwTotal * 8;
+    push(0, Math.min(4, cap - bits.length));
+    while (bits.length % 8) bits.push(0);
+    var cw = [];
+    for (var b = 0; b < bits.length; b += 8) {
+      var x = 0;
+      for (var k = 0; k < 8; k++) x = (x << 1) | bits[b + k];
+      cw.push(x);
+    }
+    var pads = [236, 17], pi = 0;
+    while (cw.length < dcwTotal) cw.push(pads[(pi++) % 2]);
+
+    /* split into blocks, compute EC, interleave */
+    var blocks = [], ecs = [], at = 0;
+    for (var g = 0; g < 2; g++) {
+      var nb = spec[1 + g * 2], sz = spec[2 + g * 2];
+      for (var bl = 0; bl < nb; bl++) {
+        var d = cw.slice(at, at + sz); at += sz;
+        blocks.push(d); ecs.push(rsEC(d, spec[0]));
+      }
+    }
+    var seq = [];
+    var maxD = Math.max.apply(null, blocks.map(function (d) { return d.length; }));
+    for (var col = 0; col < maxD; col++) blocks.forEach(function (d) { if (col < d.length) seq.push(d[col]); });
+    for (var ec = 0; ec < spec[0]; ec++) ecs.forEach(function (e) { seq.push(e[ec]); });
+    return { ver: ver, seq: seq };
+  }
+
+  function matrix(text) {
+    var enc = codewords(text);
+    if (!enc) return null;
+    var ver = enc.ver, seq = enc.seq;
+
+    /* the matrix: null = free for data, 0/1 = function module */
+    var size = 17 + 4 * ver;
+    var m = [];
+    for (var r = 0; r < size; r++) m.push(new Array(size).fill(null));
+    function setBox(r0, c0) {
+      for (var r = -1; r <= 7; r++) for (var c = -1; c <= 7; c++) {
+        var rr = r0 + r, cc = c0 + c;
+        if (rr < 0 || cc < 0 || rr >= size || cc >= size) continue;
+        var on = (r >= 0 && r <= 6 && c >= 0 && c <= 6) &&
+                 !((r >= 1 && r <= 5 && c >= 1 && c <= 5) && !(r >= 2 && r <= 4 && c >= 2 && c <= 4));
+        m[rr][cc] = on ? 1 : 0;
+      }
+    }
+    setBox(0, 0); setBox(0, size - 7); setBox(size - 7, 0);
+    for (var t = 8; t < size - 8; t++) { if (m[6][t] === null) m[6][t] = t % 2 ? 0 : 1; if (m[t][6] === null) m[t][6] = t % 2 ? 0 : 1; }
+    /* alignment patterns: every center pair EXCEPT the three finder corners. For v7+ the
+       (6,x)/(x,6) patterns legitimately sit ON the timing lines and override them - testing
+       the center for occupancy skips real patterns and shifts every later data bit. */
+    var cts = ALIGN[ver], la = cts.length - 1;
+    for (var ai = 0; ai < cts.length; ai++) for (var aj = 0; aj < cts.length; aj++) {
+      if ((ai === 0 && aj === 0) || (ai === 0 && aj === la) || (ai === la && aj === 0)) continue;
+      var ar = cts[ai], ac = cts[aj];
+      for (var r2 = -2; r2 <= 2; r2++) for (var c2 = -2; c2 <= 2; c2++)
+        m[ar + r2][ac + c2] = (Math.max(Math.abs(r2), Math.abs(c2)) !== 1) ? 1 : 0;
+    }
+    m[size - 8][8] = 1;                       /* the dark module */
+    /* reserve the format areas (filled below, but they must not take data):
+       row 8 cols 0-8 + cols size-8..size-1; col 8 rows 0-8 + rows size-7..size-1.
+       EXACT cell counts matter - one cell too many shifts every later data bit. */
+    for (var f = 0; f <= 8; f++) {
+      if (m[8][f] === null) m[8][f] = 0;
+      if (m[f][8] === null) m[f][8] = 0;
+    }
+    for (var f2 = 0; f2 < 8; f2++) if (m[8][size - 1 - f2] === null) m[8][size - 1 - f2] = 0;
+    for (var f3 = 0; f3 < 7; f3++) if (m[size - 1 - f3][8] === null) m[size - 1 - f3][8] = 0;
+    if (ver >= 7) {                           /* version info blocks, LSB in the outer corner */
+      var vi = VERINFO[ver];
+      for (var vb = 0; vb < 18; vb++) {
+        var bit = (vi >> vb) & 1;
+        m[Math.floor(vb / 3)][size - 11 + (vb % 3)] = bit;
+        m[size - 11 + (vb % 3)][Math.floor(vb / 3)] = bit;
+      }
+    }
+
+    /* data placement: two-column zigzag from the right, skipping column 6; mask 0 */
+    var di = 0, total = seq.length * 8, up = true;
+    for (var cc2 = size - 1; cc2 > 0; cc2 -= 2) {
+      if (cc2 === 6) cc2--;
+      for (var s2 = 0; s2 < size; s2++) {
+        var rr2 = up ? size - 1 - s2 : s2;
+        for (var dc = 0; dc < 2; dc++) {
+          var col2 = cc2 - dc;
+          if (m[rr2][col2] !== null) continue;
+          var bit2 = di < total ? (seq[di >> 3] >> (7 - (di & 7))) & 1 : 0;
+          di++;
+          if (((rr2 + col2) % 2) === 0) bit2 ^= 1;   /* mask 0 */
+          m[rr2][col2] = bit2;
+        }
+      }
+      up = !up;
+    }
+
+    /* format info, both copies (EC M, mask 0) */
+    var F = FORMAT_M0;
+    for (var fb = 0; fb <= 5; fb++) m[8][fb] = F[fb];
+    m[8][7] = F[6]; m[8][8] = F[7]; m[7][8] = F[8];
+    for (var fb2 = 9; fb2 <= 14; fb2++) m[14 - fb2][8] = F[fb2];
+    for (var fb3 = 0; fb3 <= 6; fb3++) m[size - 1 - fb3][8] = F[fb3];
+    for (var fb4 = 7; fb4 <= 14; fb4++) m[8][size - 15 + fb4] = F[fb4];
+    return m;
+  }
+
+  function svg(text, px) {
+    var m = matrix(text);
+    if (!m) return '';
+    var n = m.length, q = 4, dim = n + q * 2, sz = px || 148;
+    var cells = [];
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++)
+      if (m[r][c]) cells.push('M' + (c + q) + ' ' + (r + q) + 'h1v1h-1z');
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="' + sz + '" height="' + sz +
+      '" viewBox="0 0 ' + dim + ' ' + dim + '" shape-rendering="crispEdges">' +
+      '<rect width="' + dim + '" height="' + dim + '" fill="#fff"/>' +
+      '<path d="' + cells.join('') + '" fill="#000"/></svg>';
+  }
+
+  return { matrix: matrix, svg: svg, _cw: codewords };
+})();
+
 function thSleep(ms){return new Promise(r=>setTimeout(r,ms));}
 function theaterCodeLine(msg){const el=document.getElementById('thCodeLine');if(el)el.innerHTML=msg;}
 function theaterCodeShow(extra){
-  theaterCodeLine('Players type <b style="font-family:var(--serif);font-size:20px;color:var(--gold-br);letter-spacing:.05em;">'+esc(THEATER.code)+'</b> into their Satchel.'+(extra||' Waiting&hellip;'));}
+  /* v17.5: the QR is the same join, one gesture shorter - a phone camera scans it and
+     lands in the hosted Satchel already joining. Typing the code stays the fallback. */
+  var qr='';
+  try{ var s=QR.svg(SATCHEL_URL+'?join='+THEATER.code,148);
+    if(s)qr='<div style="margin-top:7px;text-align:center;"><span style="display:inline-block;line-height:0;border-radius:6px;overflow:hidden;">'+s+'</span>'+
+      '<div style="opacity:.6;font-size:11px;margin-top:3px;">or scan with a phone camera &mdash; it opens the Satchel already joining</div></div>'; }catch(e){}
+  theaterCodeLine('Players type <b style="font-family:var(--serif);font-size:20px;color:var(--gold-br);letter-spacing:.05em;">'+esc(THEATER.code)+'</b> into their Satchel.'+(extra||' Waiting&hellip;')+qr);}
 function theaterCodeStop(){
   THEATER.codeOn=false;
   if(STATE.theaterLive){ delete STATE.theaterLive; saveState(); }
@@ -2990,6 +3680,10 @@ async function theaterRestore(){
   const live=STATE.theaterLive;
   if(live&&live.id===t.id&&t.code&&Date.now()-(live.ts||0)<TH_LIVE_WINDOW){
     theaterCodeStart(true);
+    /* v17: a mid-session refresh reopens the adventure too - the whole table comes back, not just
+       the code. Deferred past init's go('shelf') so the stage is what the DM lands on. */
+    if(t.book&&BOOKS[t.book]){ setTimeout(function(){
+      if(!currentBook&&BOOKS[t.book]){ try{openBook(t.book);}catch(e){} } },450); }
     const held=(t.seats||[]).length;
     if(held)setTimeout(function(){ toast('Picking '+esc(t.name)+' back up. '+held+' seat'+(held===1?'':'s')+
       ' waiting; their Satchels rejoin on their own.'); },2200);
@@ -3035,6 +3729,164 @@ function theaterPushImage(inp){
   const r=new FileReader();
   r.onload=function(){ theaterSendHandout({title:t,kind:'image',data:r.result}); };
   r.readAsDataURL(f); inp.value=''; }
+
+/* ===================== v18 THE BUG REPORT - the only way a stranger can tell us =====================
+   The Grimoire ships free with no account, no telemetry and no network. That is the product, and
+   it also means we learn NOTHING when it breaks on someone else's machine. This closes that loop
+   WITHOUT breaking the promise: nothing is ever transmitted by the app. The player builds a report,
+   READS IT IN FULL on screen, and chooses to copy / mail / save it themselves.
+
+   ⚠ THE LAW OF THIS PAYLOAD, same discipline as pkFace(): it is built by NAMING the keys that go in.
+   There is no "copy the state and delete the private bits" - a field added to STATE next year must
+   not be able to ride along by being forgotten. What is deliberately NOT here: table codes and seat
+   credentials (live join secrets), character/party/hero names, book titles, adventure or table text,
+   whisper and packet contents, bookmark labels, roll history, drive folder names, file paths. */
+const GRIM_BUILD='2026-08-05';   /* bump with the app, not with the About paragraph */
+const BUG_ERRORS=[];
+/* ⚠ ERROR MESSAGES ARE NOT SAFE TEXT. A browser quotes the offending input back at you:
+   JSON.parse('the duke is the doppelganger') throws
+     Unexpected token 'h', "the duke is"... is not valid JSON
+   so a failed import of someone's notes, a bad .keeper, or a fetch of a URL carrying the live
+   table code would smuggle real content into a report the user is about to email a stranger.
+   ⚠ AND REDACTION IS NOT ENOUGH. A blocklist of quotes/URLs/codes still passes
+   `Character Vashti Quellwind failed` — you cannot tell private prose from diagnostics with a
+   regex. So this is an ALLOWLIST: an error is reduced to its TYPE plus a fixed classification we
+   recognise. Anything we do not recognise becomes <redacted>. The shape of the failure is the
+   diagnostic value; the prose never was. */
+const BUG_CLASSES=[
+  [/json/i,'JSON parse'],[/network|fetch|load failed/i,'network'],
+  [/quota|storage|indexeddb|idb/i,'storage'],[/permission|denied|notallowed/i,'permission'],
+  [/null|undefined/i,'missing value'],[/not a function/i,'bad call'],
+  [/timeout|timed out/i,'timeout'],[/abort/i,'aborted']
+];
+function bugScrub(msg){
+  const s=String(msg||'');
+  const type=(s.match(/^\s*([A-Z][A-Za-z]*Error)\b/)||[])[1]||'Error';
+  let cls='';
+  for(let i=0;i<BUG_CLASSES.length;i++){ if(BUG_CLASSES[i][0].test(s)){ cls=BUG_CLASSES[i][1]; break; } }
+  return type+(cls?(' / '+cls):' / <redacted>');
+}
+(function(){
+  function note(kind,msg,src,line){
+    /* ⚠ NO FILENAME. The Satchel opened from a QR link is literally
+       players-satchel.html?join=FALCON-31, and a locally renamed file can carry a person's name -
+       so an ErrorEvent.filename smuggles the LIVE TABLE CODE past every message scrub. Line only. */
+    BUG_ERRORS.push({k:kind,m:bugScrub(msg),l:line||0,t:Date.now()});
+    if(BUG_ERRORS.length>12)BUG_ERRORS.shift();
+  }
+  window.addEventListener('error',function(e){ note('error',e.message,e.filename,e.lineno); });
+  window.addEventListener('unhandledrejection',function(e){
+    note('promise',(e.reason&&(e.reason.message||e.reason))||'unhandled rejection','',0); });
+})();
+function bugFacts(){
+  const t=(function(){try{return tblActive();}catch(e){return null;}})();
+  const C=STATE.combat;
+  return {
+    app:'Gnashers Grimoire',
+    build:GRIM_BUILD,   /* one authoritative constant - parsing the About copy reported a stale date */
+    when:new Date().toISOString().slice(0,16).replace('T',' '),
+    browser:navigator.userAgent.slice(0,150),
+    screen:(window.innerWidth||0)+'x'+(window.innerHeight||0),
+    online:!!navigator.onLine,
+    storage:(function(){try{return DB?'indexeddb':'localstorage';}catch(e){return 'unknown';}})(),
+    /* COUNTS ONLY - never a title, a name, or a line of anyone's text */
+    books:Object.keys(BOOKS||{}).length,
+    installed:Object.keys(INSTALLED||{}).length,
+    indexRows:(INDEX||[]).length,
+    parties:(PARTIES||[]).length,
+    heroes:(PARTIES||[]).reduce(function(n,p){return n+((p.pcs||[]).length);},0),
+    tables:((STATE.tables||[]).length),
+    seats:t?((t.seats||[]).length):0,
+    heldItems:Object.keys(THEATER.seats||{}).reduce(function(n,k){return n+(THEATER.seats[k]||[]).length;},0),
+    pairedNow:(function(){try{return theaterOpenCount();}catch(e){return 0;}})(),
+    tableLocked:t?!!t.lock:false,
+    codeArmed:!!THEATER.codeOn,          /* whether a code is open - NEVER the code itself */
+    inFight:!!(C&&C.list&&C.list.length),
+    round:(C&&C.round)||0,
+    bookOpen:!!currentBook,
+    dock:!!STATE.dock,
+    soundLinked:!!soundDir,          /* whether a folder is linked - never its name or path */
+    driveLinked:!!driveDir&&!!driveOK,
+    errors:BUG_ERRORS.slice(-12)
+  };
+}
+function bugReportText(){
+  const f=bugFacts();
+  const said=(document.getElementById('bugWhat')||{value:''}).value.trim();
+  const L=[];
+  L.push('GNASHER’S GRIMOIRE — problem report');
+  L.push('');
+  L.push('WHAT HAPPENED (in their words):');
+  L.push(said||'(not described)');
+  L.push('');
+  L.push('THE APP');
+  L.push('  build '+f.build+'  ·  '+f.when+'  ·  '+f.screen+'  ·  '+(f.online?'online':'offline')+'  ·  storage: '+f.storage);
+  L.push('  '+f.browser);
+  L.push('');
+  L.push('THE BINDER (counts only)');
+  L.push('  books '+f.books+' ('+f.installed+' installed)  ·  index rows '+f.indexRows+
+         '  ·  parties '+f.parties+' / heroes '+f.heroes);
+  L.push('  tables '+f.tables+'  ·  seats '+f.seats+'  ·  held items '+f.heldItems+
+         '  ·  paired now '+f.pairedNow);
+  L.push('  code armed: '+(f.codeArmed?'yes':'no')+'  ·  table locked: '+(f.tableLocked?'yes':'no')+
+         '  ·  in a fight: '+(f.inFight?('yes, round '+f.round):'no'));
+  L.push('  book open: '+(f.bookOpen?'yes':'no')+'  ·  dock '+(f.dock?'on':'off')+
+         '  ·  sound folder '+(f.soundLinked?'linked':'no')+'  ·  drive binder '+(f.driveLinked?'linked':'no'));
+  L.push('');
+  L.push('ERRORS THE APP CAUGHT ('+f.errors.length+')');
+  if(!f.errors.length)L.push('  none');
+  else f.errors.forEach(function(e){ L.push('  ['+e.k+'] '+e.m+(e.l?('  (line '+e.l+')'):'')); });
+  L.push('');
+  /* ⚠ HONEST WORDING. This used to claim no names/codes/whispers were present - which the user
+     falsifies the moment they type "Vashti keeps dropping off EMBER-42" into their own
+     description. The app's half is counts and status; their half is theirs, and saying so is
+     what makes this informed consent instead of a broken promise. */
+  L.push('Everything above under THE APP / THE BINDER / ERRORS was added by the Grimoire and is');
+  L.push('counts and status only: no book text, character names, table code, whispers or notes.');
+  L.push('Your own description is included exactly as you typed it.');
+  return L.join('\n');
+}
+function openBugReport(){
+  const p=document.getElementById('bugPanel'); if(!p)return;
+  p.classList.add('show');
+  const s=document.getElementById('bugScrim'); if(s)s.classList.add('show');
+  bugRefresh();
+  setTimeout(function(){ const w=document.getElementById('bugWhat'); if(w)w.focus(); },80);
+}
+function hideBugReport(){ const p=document.getElementById('bugPanel'); if(p)p.classList.remove('show');
+  const s=document.getElementById('bugScrim'); if(s)s.classList.remove('show'); }
+function bugRefresh(){ const o=document.getElementById('bugOut'); if(o)o.value=bugReportText(); }
+function bugCopy(btn){
+  const o=document.getElementById('bugOut'); if(!o)return;
+  bugRefresh(); o.select();
+  const say=function(ok){ if(btn){btn.textContent=ok?'Copied':'Copy failed - select it and press Ctrl+C';
+    setTimeout(function(){btn.textContent='Copy the report';},2600);} if(!ok)o.focus(); };
+  const legacy=function(){ let ok=false; try{ ok=document.execCommand('copy')===true; }catch(e){} say(ok); };
+  try{ navigator.clipboard.writeText(o.value).then(function(){say(true);},legacy); }
+  catch(e){ legacy(); }
+}
+/* slice by CODE POINT: cutting a surrogate pair in half makes encodeURIComponent throw URIError
+   and no mail client ever opens */
+function bugTrim(s,n){ const a=Array.from(s);
+  return a.length<=n?s:(a.slice(0,n).join('')+'\n\n[...trimmed. Paste the full report from the app.]'); }
+function bugMail(){
+  bugRefresh();
+  const body=document.getElementById('bugOut').value;
+  const href='mailto:frank@longislanddungeonmaster.com'+
+    '?subject='+encodeURIComponent('Grimoire problem report')+
+    '&body='+encodeURIComponent(body.length>1500?(body.slice(0,1500)+'\n\n[...trimmed. Paste the full report from the app.]'):body);
+  window.location.href=href;
+  toast('Your mail app should open. If it does not, copy the report and paste it into an email.');
+}
+function bugSave(){
+  bugRefresh();
+  const blob=new Blob([document.getElementById('bugOut').value],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='grimoire-problem-report.txt';
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },400);
+}
 
 /* ===================== THE CHRONICLE (v15) - campaign memory across Keepers =====================
    The law is Scriptorium/CAMPAIGN-WEB-SPEC.md: a Chronicle is an hourglass web of chapter
