@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VillainCraft &mdash; how the opposition actually operates | Long Island Dungeon Master</title>
+  <meta name="description" content="VillainCraft is thirty years of notes on how the villain operates when the party isn't looking. Volume one is Barovia: Strahd's loadouts, the predator rotation, the dinner at Castle Ravenloft, and the cons that ran for a year.">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/villaincraft">
+  <link rel="icon" href="img/brand.png" type="image/png">
+
+  <meta property="og:title" content="VillainCraft &mdash; how the opposition actually operates">
+  <meta property="og:description" content="Not lore. Not location prep. Operations. Loadouts, rotations, tells, escalation ladders, and what the villain does with the hours between sessions. Volume one: Barovia.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://longislanddungeonmaster.com/villaincraft">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VillainCraft &mdash; how the opposition actually operates">
+  <meta name="twitter:description" content="Loadouts, rotations, tells, and what the villain does between sessions. Volume one: Barovia.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 75%); min-height: 100vh; }
+    .h-top { position: fixed; top: 0; left: 0; right: 0; z-index: 10; background: linear-gradient(180deg, rgba(26,0,0,.98), rgba(61,0,0,.92)); border-bottom: 2px solid var(--gold); padding: .9rem 0; }
+    .h-top .container { display: flex; align-items: center; justify-content: space-between; }
+    .h-brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.3rem; letter-spacing: 1px; text-decoration: none; }
+    .h-brand:hover { color: var(--gold-light); }
+    .h-back { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .h-back:hover { color: var(--gold); }
+    .h-wrap { max-width: 1040px; margin: 0 auto; padding: 7rem 1.2rem 4rem; }
+
+    .vc-head { text-align: center; margin-bottom: 2.6rem; }
+    .vc-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.75); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; }
+    .vc-title { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: clamp(3rem, 11vw, 6rem); line-height: 1; margin: .4rem 0 .7rem; text-shadow: 0 0 38px rgba(201,168,76,.42), 2px 2px 0 #000; }
+    .vc-lede { color: rgba(255,255,255,.82); max-width: 660px; margin: 0 auto; line-height: 1.9; font-size: 1.06rem; }
+    .vc-lede b { color: var(--gold-light); }
+    .vc-divider { width: 6rem; height: 2px; margin: 1.9rem auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+    .vc-manifesto { max-width: 760px; margin: 0 auto 3.4rem; text-align: center; }
+    .vc-manifesto h2 { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold-light); font-size: clamp(1.7rem,5vw,2.3rem); margin-bottom: 1rem; }
+    .vc-manifesto p { color: rgba(255,255,255,.74); line-height: 1.95; font-size: 1rem; }
+    .vc-manifesto p + p { margin-top: 1rem; }
+    .vc-manifesto strong { color: var(--gold); }
+
+    .vol-label { text-align: center; font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.7); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; margin: 0 0 1.4rem; }
+
+    .vc-list { display: grid; gap: 1.1rem; margin-bottom: 3rem; }
+    .vc-card { display: grid; grid-template-columns: 84px 1fr; gap: 1.4rem; align-items: start; background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.42)); border: 1px solid rgba(201,168,76,.32); border-radius: 10px; padding: 1.6rem 1.7rem; text-decoration: none; transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease; }
+    .vc-card:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 12px 32px rgba(0,0,0,.5); }
+    .vc-num { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: rgba(201,168,76,.55); font-size: 3.1rem; line-height: 1; text-align: center; }
+    .vc-card h3 { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.75rem; line-height: 1.15; margin: 0 0 .35rem; }
+    .vc-card .kicker { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.8); text-transform: uppercase; letter-spacing: 1.6px; font-size: .68rem; margin-bottom: .5rem; }
+    .vc-card p { color: rgba(255,255,255,.74); font-size: .95rem; line-height: 1.8; margin: 0 0 .6rem; }
+    .vc-card .tags { font-family: 'Merriweather Sans', sans-serif; font-size: .74rem; color: rgba(255,255,255,.45); }
+    .vc-card .tags b { color: rgba(201,168,76,.85); font-weight: 400; }
+
+    .vc-next { max-width: 780px; margin: 0 auto 3rem; background: rgba(0,0,0,.28); border: 1px dashed rgba(201,168,76,.35); border-radius: 10px; padding: 1.5rem 1.8rem; }
+    .vc-next h3 { font-family: 'Merriweather Sans', sans-serif; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1.4px; font-size: .8rem; margin-bottom: .8rem; text-align: center; }
+    .vc-next ul { margin: 0; padding-left: 1.2rem; color: rgba(255,255,255,.66); font-size: .92rem; line-height: 1.85; }
+    .vc-next li b { color: rgba(201,168,76,.85); font-weight: 400; }
+
+    .vc-foot-cta { background: linear-gradient(160deg, rgba(139,0,0,.18), rgba(0,0,0,.42)); border: 1px solid rgba(201,168,76,.4); border-radius: 12px; padding: 2rem; text-align: center; }
+    .vc-foot-cta h3 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: 1.8rem; margin-bottom: .6rem; }
+    .vc-foot-cta p { color: rgba(255,255,255,.72); font-size: .95rem; line-height:1.8; margin-bottom: 1.2rem; max-width: 560px; margin-left:auto; margin-right:auto; }
+    .vc-btns { display:flex; flex-wrap:wrap; gap:.7rem; justify-content:center; }
+    .vc-btn { display:inline-flex; align-items:center; gap:.45rem; font-family:'Merriweather Sans',sans-serif; font-weight:700; font-size:.83rem; text-decoration:none; padding:.72rem 1.25rem; border-radius:6px; transition: transform .12s ease; }
+    .vc-btn-gold { background: var(--gold); color: var(--crimson-dark); }
+    .vc-btn-gold:hover { color: var(--crimson-deep); transform: translateY(-2px); }
+    .vc-btn-ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .vc-btn-ghost:hover { background: rgba(201,168,76,.12); color: var(--gold-light); transform: translateY(-2px); }
+
+    .h-foot { text-align: center; color: rgba(201,168,76,.5); font-family: 'Merriweather Sans', sans-serif; font-size: .72rem; letter-spacing: .5px; padding: 3rem 1rem 1rem; line-height: 1.7; }
+    .h-foot a { color: rgba(201,168,76,.7); }
+
+    @media (max-width: 620px) {
+      .vc-card { grid-template-columns: 1fr; gap: .5rem; }
+      .vc-num { text-align: left; font-size: 2.2rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="h-top">
+    <div class="container">
+      <a class="h-brand" href="/">Long Island Dungeon Master</a>
+      <a class="h-back" href="/">&larr; Back to the realm</a>
+    </div>
+  </div>
+
+  <main class="h-wrap">
+
+    <div class="vc-head">
+      <p class="vc-eyebrow">A Running Series</p>
+      <h1 class="vc-title">VillainCraft</h1>
+      <p class="vc-lede">How the opposition <b>actually operates</b> when the party isn't looking. Not lore. Not location prep. <b>Operations</b> &mdash; loadouts, rotations, tells, escalation ladders, and what the villain does with the hours between your sessions.</p>
+      <div class="vc-divider"></div>
+    </div>
+
+    <section class="vc-manifesto">
+      <h2>Your villain has a calendar. Use it.</h2>
+      <p>Most villain advice tells you who the villain <em>is.</em> Almost none of it tells you what he <strong>does on a Tuesday.</strong> That gap is where campaigns go flat: the big bad sits in his castle until the finale, and the players work out he's a stationary hit-point total with good dialogue.</p>
+      <p>These are my notes from thirty years behind the screen and five full runs of Curse of Strahd. They're about the machinery &mdash; what he prepared before he knocked, what he was really doing while they ate, and why the courteous version is scarier than the raging one. <strong>Everything here is free, complete, and written to be stolen.</strong></p>
+    </section>
+
+    <p class="vol-label">&#9670; Volume One &middot; Barovia &#9670;</p>
+
+    <div class="vc-list">
+
+      <a class="vc-card" href="/villaincraft-omnipresent-strahd">
+        <div class="vc-num">I</div>
+        <div>
+          <p class="kicker">The foundation</p>
+          <h3>The Omnipresent Strahd</h3>
+          <p>What made him frightening at my table was never the stat block. It was that he is the land, and the land does what he says &mdash; the fog, the roads, the weather, the coins. He doesn't have to be in the room to be in the scene.</p>
+          <p class="tags"><b>Read this first.</b> Everything else assumes it.</p>
+        </div>
+      </a>
+
+      <a class="vc-card" href="/villaincraft-failing-vallaki">
+        <div class="vc-num">II</div>
+        <div>
+          <p class="kicker">Failure as content</p>
+          <h3>Let Them Fail in Vallaki</h3>
+          <p>Vallaki is the best failure state in the module, and most tables treat it as a puzzle to be solved. Here's what happens when you let the town be lost instead, and why the party remembers that session longest.</p>
+          <p class="tags"><b>Pairs with</b> the escalation ladder in entry III.</p>
+        </div>
+      </a>
+
+      <a class="vc-card" href="/villaincraft-strahd-loadouts">
+        <div class="vc-num">III</div>
+        <div>
+          <p class="kicker">The machinery</p>
+          <h3>Loadouts, the Rotation, and the Longest Con</h3>
+          <p>He doesn't have a spell list, he has loadouts &mdash; six of them, one chosen before he leaves the castle each day. Plus the five-phase predator rotation you can run a whole campaign off, the flip ladder, and the suit of plate armour that sat on my paladin for over a year before it turned.</p>
+          <p class="tags"><b>The most stolen one.</b> Includes the full spell lists.</p>
+        </div>
+      </a>
+
+      <a class="vc-card" href="/villaincraft-dinner-at-ravenloft">
+        <div class="vc-num">IV</div>
+        <div>
+          <p class="kicker">The set piece &middot; complete &amp; uncut</p>
+          <h3>Dinner at Castle Ravenloft</h3>
+          <p>The whole night, start to finish. The invitation and how to make refusing expensive, Cyrus and the carriage, Rahadin's Deathly Choir as a seating chart, running the meal on popcorn initiative, the fourth bottle, the mistake smart parties make with Ireena, letting them roam, and the exact moment the safe passage runs out.</p>
+          <p class="tags"><b>The longest entry.</b> Includes the Feast loadout, the four-course menu, Cyrus's joke list, and the attention list for the table.</p>
+        </div>
+      </a>
+
+    </div>
+
+    <section class="vc-next">
+      <h3>&#9670; In the works &#9670;</h3>
+      <ul>
+        <li><b>The wedding at Ravenloft</b> &mdash; the second visit, and what all that foreshadowing was for.</li>
+        <li><b>Running the fight</b> &mdash; the attrition math, the lair actions, and why an immobilised Strahd is a dead Strahd.</li>
+        <li><b>Izek Strazni</b> &mdash; building the bully your players hate and then hate killing.</li>
+        <li><b>How I start a Strahd campaign</b> &mdash; the missing-persons job that isn't, and the tree that pulls them in.</li>
+      </ul>
+    </section>
+
+    <section class="vc-foot-cta">
+      <h3>Free tools for your table</h3>
+      <p>Everything on this page is free and always will be. So are the apps I built because I needed them at my own table.</p>
+      <div class="vc-btns">
+        <a class="vc-btn vc-btn-gold" href="/grimoire"><i class="fas fa-book-skull"></i> Gnasher's Grimoire &mdash; free DM app</a>
+        <a class="vc-btn vc-btn-ghost" href="/keepers"><i class="fas fa-scroll"></i> Adventure Keepers</a>
+        <a class="vc-btn vc-btn-ghost" href="/hoard"><i class="fas fa-gem"></i> The Hoard &mdash; free loot</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="h-foot">
+    &copy; Long Island Dungeon Master &middot; <a href="/">longislanddungeonmaster.com</a><br>
+    Original content. Compatible with SRD 5.1. Not affiliated with Wizards of the Coast.
+  </div>
+  <!-- Cloudflare Web Analytics (cookieless, no personal data) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+</body>
+</html>

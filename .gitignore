@@ -6,3 +6,6 @@ desktop.ini
 folder.ico
 Thumbs.db
 ehthumbs.db
+# Python build-script bytecode (the VillainCraft corpus generator)
+__pycache__/
+*.pyc
