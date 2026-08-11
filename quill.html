@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gnasher's Quill &mdash; record your session, offline, with no AI service listening</title>
+  <meta name="description" content="Gnasher's Quill records your tabletop session and turns it into a transcript on your own machine. No cloud, no subscription, no account, and no AI service ever hears your table. It gives back a recap, a Ledger of what you owe your players, a Concordance, a Cold Open, and a Mirror on how you ran the night.">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/quill">
+  <link rel="icon" href="img/brand.png" type="image/png">
+
+  <meta property="og:title" content="Gnasher's Quill &mdash; your session, transcribed on your own machine">
+  <meta property="og:description" content="Record the table, transcribe it offline, and get back what your players actually said. No cloud, no subscription, no AI service listening. The third leg of the Grimoire and the Satchel.">
+  <meta property="og:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://longislanddungeonmaster.com/quill">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gnasher's Quill &mdash; your session, transcribed on your own machine">
+  <meta name="twitter:description" content="Record the table, transcribe it offline, get back what your players actually said. No cloud, no subscription, no AI service listening.">
+  <meta name="twitter:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 78%); min-height: 100vh; }
+
+    /* ---- Top bar (matches the Grimoire / Satchel pages) ---- */
+    .h-top { position: fixed; top: 0; left: 0; right: 0; z-index: 30; background: linear-gradient(180deg, rgba(26,0,0,.98), rgba(61,0,0,.92)); border-bottom: 2px solid var(--gold); padding: .9rem 0; }
+    .h-top .container { display: flex; align-items: center; justify-content: space-between; }
+    .h-brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.3rem; letter-spacing: 1px; text-decoration: none; }
+    .h-brand:hover { color: var(--gold-light); }
+    .h-back { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .h-back:hover { color: var(--gold); }
+    .h-wrap { max-width: 1060px; margin: 0 auto; padding: 6.6rem 1.2rem 4rem; }
+
+    /* ---- Shared type ---- */
+    .g-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.78); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; }
+    .g-breathe { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); }
+    .g-divider { width: 6rem; height: 2px; margin: 1.8rem auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    section { scroll-margin-top: 5.5rem; }
+
+    /* ---- HERO ---- */
+    .g-hero { text-align: center; margin-bottom: 3rem; }
+    .g-status { display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 1.1rem; padding: .35rem .95rem; border: 1px solid rgba(201,168,76,.45); border-radius: 999px; background: rgba(201,168,76,.08); font-family: 'Merriweather Sans', sans-serif; font-size: .72rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-light); }
+    .g-status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 0 rgba(201,168,76,.6); animation: gpulse 2.4s infinite; }
+    @keyframes gpulse { 0% { box-shadow: 0 0 0 0 rgba(201,168,76,.55);} 70% { box-shadow: 0 0 0 9px rgba(201,168,76,0);} 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0);} }
+    .g-title { font-size: clamp(3rem, 11vw, 6.4rem); line-height: .95; margin: .2rem 0 .5rem; text-shadow: 0 0 42px rgba(201,168,76,.42), 2px 2px 0 #000; }
+    .g-kicker { font-family: 'Merriweather Sans', sans-serif; color: var(--gold-light); text-transform: uppercase; letter-spacing: 5px; font-size: clamp(.72rem,2.6vw,.95rem); margin-bottom: .3rem; }
+    .g-lede { color: rgba(255,255,255,.82); max-width: 660px; margin: 1.2rem auto 0; line-height: 1.9; font-size: 1.06rem; }
+    .g-lede b { color: var(--gold-light); }
+    .g-cta-row { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; margin-top: 1.8rem; }
+
+    .g-btn { display: inline-flex; align-items: center; gap: .55rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .86rem; letter-spacing: .4px; text-decoration: none; padding: .8rem 1.4rem; border-radius: 6px; transition: transform .12s ease, box-shadow .12s ease, background .15s ease; }
+    .g-btn-gold { background: var(--gold); color: var(--crimson-dark); box-shadow: 0 6px 18px rgba(201,168,76,.28); }
+    .g-btn-gold:hover { color: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(201,168,76,.44); }
+    .g-btn-ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .g-btn-ghost:hover { background: rgba(201,168,76,.12); color: var(--gold-light); transform: translateY(-2px); }
+    .g-caption { text-align: center; margin-top: 1.1rem; font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; color: rgba(201,168,76,.62); font-style: italic; letter-spacing: .3px; }
+
+    /* ---- section shell ---- */
+    .g-sec { margin-top: 4.5rem; }
+    .g-sec-head { text-align: center; max-width: 720px; margin: 0 auto 2.2rem; }
+    .g-sec-head h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(2rem,6vw,3rem); line-height: 1.04; margin-bottom: .8rem; }
+    .g-sec-head p { color: rgba(255,255,255,.75); line-height: 1.9; font-size: 1rem; }
+    .g-sec-head p strong { color: var(--gold-light); }
+
+    /* ---- the privacy stand ---- */
+    .q-stand { max-width: 820px; margin: 0 auto; text-align: center; padding: 2.2rem 1.6rem; border: 1px solid var(--gold); border-radius: 16px; background: radial-gradient(ellipse at top, rgba(139,0,0,.3), rgba(0,0,0,.5)); box-shadow: 0 0 0 4px rgba(139,0,0,.25), 0 20px 50px rgba(0,0,0,.45); }
+    .q-stand .shield { font-size: 2.2rem; color: var(--gold); filter: drop-shadow(0 0 16px rgba(201,168,76,.45)); }
+    .q-stand h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(1.9rem,5.5vw,2.8rem); margin: .6rem 0 .7rem; line-height: 1.08; }
+    .q-stand p { color: rgba(255,255,255,.8); line-height: 1.9; font-size: 1rem; max-width: 620px; margin: 0 auto; }
+    .q-stand p + p { margin-top: .9rem; }
+    .q-stand strong { color: var(--gold-light); }
+    .q-nots { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1.4rem; }
+    .q-nots span { font-family: 'Merriweather Sans', sans-serif; font-size: .68rem; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-light); border: 1px solid rgba(201,168,76,.42); background: rgba(201,168,76,.08); border-radius: 999px; padding: .28rem .7rem; }
+    .q-nots span i { color: var(--gold); margin-right: .35rem; font-size: .62rem; }
+
+    /* ---- three-beat gesture ---- */
+    .g-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 900px; margin: 2.6rem auto 0; }
+    .g-step { text-align: center; padding: 1.3rem 1rem; background: linear-gradient(160deg, rgba(139,0,0,.14), rgba(0,0,0,.35)); border: 1px solid rgba(201,168,76,.25); border-radius: 10px; position: relative; }
+    .g-step .num { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: rgba(201,168,76,.5); font-size: 2rem; line-height: 1; }
+    .g-step .key { display:inline-block; margin: .3rem 0 .5rem; font-family:'Merriweather Sans',sans-serif; font-weight:700; font-size:.7rem; letter-spacing:1px; text-transform:uppercase; color: var(--gold-light); border:1px solid rgba(201,168,76,.5); border-radius:5px; padding:.25rem .6rem; }
+    .g-step h3 { font-family:'Merriweather Sans',sans-serif; color: var(--gold-light); font-size: .9rem; text-transform:uppercase; letter-spacing:.5px; margin-bottom:.35rem; }
+    .g-step p { color: rgba(255,255,255,.68); font-size: .82rem; line-height: 1.6; margin: 0; }
+
+    /* ---- feature grid ---- */
+    .g-feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .g-feat { background: linear-gradient(160deg, rgba(139,0,0,.18), rgba(0,0,0,.42)); border: 1px solid rgba(201,168,76,.3); border-radius: 12px; padding: 1.6rem 1.3rem; transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease; }
+    .g-feat:hover { transform: translateY(-3px); border-color: var(--gold); box-shadow: 0 12px 30px rgba(0,0,0,.4); }
+    .g-feat .fi { font-size: 1.5rem; color: var(--gold); filter: drop-shadow(0 0 10px rgba(201,168,76,.35)); margin-bottom: .8rem; }
+    .g-feat h3 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold-light); font-size: 1.35rem; letter-spacing: .4px; margin-bottom: .45rem; }
+    .g-feat .file { display:block; font-family:'Merriweather Sans',sans-serif; font-size:.6rem; letter-spacing:1.4px; text-transform:uppercase; color: rgba(201,168,76,.6); margin-bottom:.4rem; }
+    .g-feat p { color: rgba(255,255,255,.7); font-size: .86rem; line-height: 1.65; margin: 0; }
+    .g-feat p em { color: rgba(232,213,160,.85); }
+
+    /* ---- spotlight ---- */
+    .g-spot { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem; align-items: center; max-width: 980px; margin: 0 auto; }
+    .g-spot .copy h2 { font-family:'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(2rem,5vw,2.8rem); line-height: 1.05; margin-bottom: .3rem; }
+    .g-spot .copy .sub { font-family:'Merriweather Sans',sans-serif; color: rgba(201,168,76,.75); text-transform: uppercase; letter-spacing: 2px; font-size: .68rem; margin-bottom: 1rem; }
+    .g-spot .copy p { color: rgba(255,255,255,.76); line-height: 1.85; font-size: .95rem; }
+    .g-spot .copy ul { list-style: none; padding: 0; margin: 1rem 0 0; }
+    .g-spot .copy li { position: relative; padding-left: 1.5rem; margin-bottom: .55rem; color: rgba(255,255,255,.74); font-size: .88rem; line-height: 1.5; }
+    .g-spot .copy li i { position: absolute; left: 0; top: .2rem; color: var(--gold); font-size: .8rem; }
+
+    /* ---- transcript panel (the Chorus) ---- */
+    .q-script { background: linear-gradient(180deg, #1c0708, #130506); border: 1px solid rgba(201,168,76,.5); border-radius: 10px; overflow: hidden; box-shadow: 0 18px 44px rgba(0,0,0,.5); }
+    .q-script-top { display: flex; align-items: center; gap: .6rem; padding: .6rem .85rem; background: linear-gradient(180deg, #2a0a0a, #1a0606); border-bottom: 1px solid rgba(201,168,76,.3); }
+    .q-script-top .ttl { font-family:'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: 1rem; }
+    .q-script-top .tag { margin-left: auto; font-family:'Merriweather Sans',sans-serif; font-size:.6rem; letter-spacing:1px; text-transform:uppercase; color: rgba(201,168,76,.7); border:1px solid rgba(201,168,76,.35); border-radius: 999px; padding: .15rem .6rem; }
+    .q-lines { padding: .9rem .5rem .9rem .85rem; overflow-x: auto; }
+    .q-lines .ln { display: flex; gap: .7rem; align-items: baseline; padding: .3rem 0; font-size: .78rem; white-space: nowrap; }
+    .q-lines .ts { font-family: 'Merriweather Sans', sans-serif; font-size: .62rem; color: rgba(201,168,76,.5); flex-shrink: 0; }
+    .q-lines .who { font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .62rem; letter-spacing: .8px; text-transform: uppercase; border-radius: 4px; padding: .1rem .4rem; flex-shrink: 0; min-width: 4.6rem; text-align: center; }
+    .q-lines .who.dm { background: rgba(139,0,0,.5); color: #f2c9c9; }
+    .q-lines .who.p1 { background: rgba(201,168,76,.2); color: var(--gold-light); }
+    .q-lines .who.p2 { background: rgba(77,107,58,.45); color: #cfe3b8; }
+    .q-lines .said { font-family: 'Merriweather', serif; color: rgba(255,255,255,.86); }
+    .q-script-foot { padding: .6rem .85rem; border-top: 1px solid rgba(201,168,76,.22); font-family:'Merriweather Sans',sans-serif; font-size:.66rem; color: rgba(255,255,255,.5); }
+
+    /* ---- the trio ---- */
+    .q-trio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; max-width: 960px; margin: 0 auto; }
+    .q-leg { position: relative; display: block; padding: 1.6rem 1.2rem 1.4rem; text-align: center; text-decoration: none; background: linear-gradient(160deg, rgba(139,0,0,.18), rgba(0,0,0,.42)); border: 1px solid rgba(201,168,76,.3); border-radius: 12px; transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease; }
+    .q-leg:hover { transform: translateY(-3px); border-color: var(--gold); box-shadow: 0 12px 30px rgba(0,0,0,.4); }
+    .q-leg.here { border-color: var(--gold); background: radial-gradient(ellipse at top, rgba(139,0,0,.36), rgba(0,0,0,.5)); box-shadow: 0 0 0 3px rgba(139,0,0,.28); }
+    .q-leg > i { font-size: 1.7rem; color: var(--gold); filter: drop-shadow(0 0 10px rgba(201,168,76,.35)); }
+    .q-leg b { display: block; font-family:'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold-light); font-size: 1.5rem; letter-spacing:.3px; margin: .6rem 0 .1rem; }
+    .q-leg .verb { display: block; font-family:'Merriweather Sans',sans-serif; font-weight: 700; font-size: .68rem; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+    .q-leg span.blurb { display: block; color: rgba(255,255,255,.68); font-size: .82rem; line-height: 1.6; }
+    .q-leg .tag { position: absolute; top: .8rem; right: .8rem; font-family:'Merriweather Sans',sans-serif; font-size: .5rem; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; padding: .2rem .45rem; border-radius: 999px; }
+    .q-leg .tag.now { background: rgba(43,107,43,.28); border: 1px solid #5a9a5a; color: #b6ecb6; }
+    .q-leg .tag.soon { background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.45); color: var(--gold-light); }
+    .q-chain { text-align: center; font-family:'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold-light); font-size: clamp(1.3rem,4.2vw,2rem); line-height: 1.35; margin: 2rem auto 0; max-width: 760px; text-shadow: 0 0 26px rgba(201,168,76,.25); }
+    .q-chain i { color: rgba(201,168,76,.65); font-size: .6em; margin: 0 .3rem; vertical-align: middle; }
+
+    /* ---- honest limits ---- */
+    .g-list { max-width: 780px; margin: 0 auto; padding: 1.6rem 1.8rem; border: 1px solid rgba(201,168,76,.3); border-radius: 12px; background: linear-gradient(160deg, rgba(139,0,0,.12), rgba(0,0,0,.35)); }
+    .g-list ul, .g-list ol { margin: 0; padding-left: 1.3rem; }
+    .g-list li { color: rgba(255,255,255,.76); line-height: 1.7; font-size: .92rem; margin-bottom: .55rem; }
+    .g-list li::marker { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-weight: 700; }
+    .g-list li:last-child { margin-bottom: 0; }
+    .g-list b { color: var(--gold-light); }
+    .g-list a { color: var(--gold); }
+
+    /* ---- the download slot ---- */
+    .q-slot { text-align: center; max-width: 720px; margin: 4.6rem auto 0; padding: 2.6rem 1.6rem; border: 1px dashed var(--gold); border-radius: 16px; background: radial-gradient(ellipse at top, rgba(139,0,0,.28), rgba(0,0,0,.5)); box-shadow: 0 0 0 4px rgba(139,0,0,.25), 0 20px 50px rgba(0,0,0,.5); }
+    .q-slot h2 { font-family:'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(2rem,6vw,3rem); margin-bottom: .8rem; }
+    .q-slot p { color: rgba(255,255,255,.8); line-height: 1.9; font-size: 1rem; max-width: 560px; margin: 0 auto 1.4rem; }
+    .q-slot p b { color: var(--gold-light); }
+    .q-slot .g-cta-row { margin-top: 1.2rem; }
+    .g-embed { margin-top: 1.4rem; }
+    .g-embed iframe { border: none; background: transparent; max-width: 100%; }
+
+    .g-more { max-width: 720px; margin: 2.2rem auto 0; text-align: center; color: rgba(201,168,76,.62); font-family: 'Merriweather Sans', sans-serif; font-size: .84rem; font-style: italic; line-height: 1.8; }
+    .g-more a { color: var(--gold); }
+
+    .h-foot { text-align: center; color: rgba(201,168,76,.5); font-family: 'Merriweather Sans', sans-serif; font-size: .72rem; letter-spacing: .5px; padding: 3.4rem 1rem 1rem; line-height: 1.7; }
+    .h-foot a { color: rgba(201,168,76,.7); }
+
+    /* trademark mark */
+    .tm { font-family: 'Merriweather Sans', sans-serif; font-size: .26em; letter-spacing: 0; vertical-align: super; color: var(--gold-light); font-weight: 400; }
+
+    /* ---- responsive ---- */
+    @media (max-width: 860px) {
+      .g-feats { grid-template-columns: 1fr 1fr; }
+      .g-spot { grid-template-columns: 1fr; }
+      .q-trio-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .g-steps { grid-template-columns: 1fr; }
+      .g-feats { grid-template-columns: 1fr; }
+      .q-stand { padding: 1.8rem 1.1rem; }
+      .g-list { padding: 1.3rem 1.1rem; }
+      .q-slot { padding: 2rem 1.1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .g-status .dot { animation: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="h-top">
+    <div class="container">
+      <a class="h-brand" href="/">Long Island Dungeon Master</a>
+      <a class="h-back" href="/">&larr; Back to the realm</a>
+    </div>
+  </div>
+
+  <main class="h-wrap">
+
+    <!-- ==================== HERO ==================== -->
+    <section class="g-hero">
+      <span class="g-status"><span class="dot"></span> Built at my own table &middot; testers first</span>
+      <p class="g-kicker">The third leg of the table</p>
+      <h1 class="g-title g-breathe">Gnasher's Quill<sup class="tm">&trade;</sup></h1>
+      <p class="g-lede">Record your session. Get back what your table <b>actually said</b>. The Quill listens on the machine already sitting on your table, transcribes it there, and hands you a night you can read &mdash; a recap, the promises you owe your players, a who's-who, and an honest look at how you ran it. <b>Nothing is uploaded. No AI service ever hears your table.</b></p>
+      <div class="g-cta-row">
+        <a class="g-btn g-btn-gold" href="#what"><i class="fas fa-feather-pointed" aria-hidden="true"></i> See what it gives back</a>
+        <a class="g-btn g-btn-ghost" href="#get-it"><i class="fas fa-hourglass-half" aria-hidden="true"></i> How to get it</a>
+      </div>
+      <p class="g-caption" style="margin-top:.6rem;">Runs on your own machine &middot; offline transcription &middot; no account, no subscription &middot; ask your table before you record them</p>
+      <div class="g-divider"></div>
+    </section>
+
+    <!-- ==================== THE STAND (the differentiator) ==================== -->
+    <section class="g-sec">
+      <div class="q-stand">
+        <i class="fas fa-shield-halved shield" aria-hidden="true"></i>
+        <h2>Every other session tool is a cloud subscription</h2>
+        <p>They all ask the same thing: upload six hours of your friends talking to somebody else's server, and pay monthly for the privilege. Your in-jokes, your arguments, the bit where somebody's real life leaked into the game &mdash; all of it, on a machine you don't own, under a policy you didn't write.</p>
+        <p><strong>The Quill doesn't, and that isn't a limitation to apologise for. It's the product.</strong> The speech engine runs locally, on your hardware, with the network off if you like. The audio and the transcript stay in a folder you can see.</p>
+        <div class="q-nots">
+          <span><i class="fas fa-xmark"></i> No cloud</span>
+          <span><i class="fas fa-xmark"></i> No subscription</span>
+          <span><i class="fas fa-xmark"></i> No account</span>
+          <span><i class="fas fa-xmark"></i> No AI service listening</span>
+          <span><i class="fas fa-check"></i> Your machine, your folder</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== THREE BEATS ==================== -->
+    <section class="g-sec">
+      <div class="g-sec-head">
+        <h2>Three moves, and one of them happens while you sleep</h2>
+        <p>You do nothing during the game except press a button when something good lands.</p>
+      </div>
+      <div class="g-steps">
+        <div class="g-step">
+          <div class="num">1</div>
+          <div class="key">Before the game</div>
+          <h3>Hit record</h3>
+          <p>One audio file covers the whole night. The recording is written so a hard crash at hour five doesn't cost you the session.</p>
+        </div>
+        <div class="g-step">
+          <div class="num">2</div>
+          <div class="key">During the game</div>
+          <h3>Mark the moments</h3>
+          <p>A key, a floating button, or your phone. Marks are <em>retroactive</em> &mdash; you press <em>after</em> the beat lands, because nobody sees a great moment coming.</p>
+        </div>
+        <div class="g-step">
+          <div class="num">3</div>
+          <div class="key">After everyone leaves</div>
+          <h3>Transcribe and mine</h3>
+          <p>Offline, on your own hardware, free. Then it reads the transcript for you and writes the pages below.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHAT IT GIVES BACK ==================== -->
+    <section class="g-sec" id="what">
+      <div class="g-sec-head">
+        <h2>A transcript nobody reads is worthless</h2>
+        <p>Six hours of table talk becomes a wall of unpunctuated text. So the Quill reads it <strong>for</strong> you and writes the pages a DM actually opens.</p>
+      </div>
+      <div class="g-feats">
+        <article class="g-feat">
+          <i class="fas fa-scale-balanced fi" aria-hidden="true"></i>
+          <span class="file">The Ledger</span>
+          <h3>What you owe your table</h3>
+          <p>The promises, debts, and threats spoken aloud in fiction, across every session. <em>A campaign doesn't die because you forgot last session. It dies because in session 4 an NPC said "come back when you have the seal," the players wrote it down, and you never did.</em></p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-address-book fi" aria-hidden="true"></i>
+          <span class="file">The Concordance</span>
+          <h3>A who's-who that builds itself</h3>
+          <p>Every name your table said, gathered as you play, with search across every night you've recorded. <em>"When did we first meet Talia?"</em> stops being an argument.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-mug-hot fi" aria-hidden="true"></i>
+          <span class="file">The Cold Open</span>
+          <h3>The page you read at 6:40</h3>
+          <p>Twenty minutes before they arrive: how last session ended <em>in your own words</em>, what you pinned, what you still owe, who turned up that you never wrote down, and where the table leaned in.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-chart-simple fi" aria-hidden="true"></i>
+          <span class="file">The Mirror</span>
+          <h3>How you ran it</h3>
+          <p>The shape of the night. Where the clock actually went, your longest unbroken stretch of narration, the dead air. No other session tool tells a DM anything about their own craft.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-bookmark fi" aria-hidden="true"></i>
+          <span class="file">The Marks</span>
+          <h3>The bits worth keeping</h3>
+          <p>Every moment you flagged, served back with the minutes of audio <em>leading into</em> it &mdash; so the line that made the table lose it is still there, in context, in their own voices.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-calculator fi" aria-hidden="true"></i>
+          <span class="file">The method</span>
+          <h3>Arithmetic, not opinion</h3>
+          <p>All of it is deterministic &mdash; word lists, timestamps, and counting. Nothing here calls a model to decide what your session <em>meant</em>. Where a number can't be known, it says <b>"couldn't tell"</b> instead of inventing one.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== THE CHORUS ==================== -->
+    <section class="g-sec">
+      <div class="g-spot">
+        <div class="copy">
+          <p class="sub">The Chorus</p>
+          <h2>Who said what, known &mdash; not guessed</h2>
+          <p>Working out speakers from one room microphone is genuinely hard, and five people talking over each other defeats it entirely. So don't try. <b>If every voice records itself, the speaker isn't inferred &mdash; it's known.</b></p>
+          <p>Each player opens a link on their own phone, types their name, and taps record. Afterwards the tracks are braided into one transcript with the names already on it.</p>
+          <ul>
+            <li><i class="fas fa-mobile-screen"></i> <b>One phone per voice.</b> No app to install; it's a page on your table's own network.</li>
+            <li><i class="fas fa-globe"></i> <b>Remote tables get it free.</b> Everyone records their local mic &mdash; nobody has to capture the call.</li>
+            <li><i class="fas fa-user-slash"></i> <b>It also shows who <em>didn't</em> get to talk.</b> That is a harder read than it sounds, and a useful one.</li>
+            <li><i class="fas fa-moon"></i> <b>Phones sleep.</b> The page asks for a wake lock and warns you; if one dozes, that player rejoins and everything already uploaded is safe.</li>
+          </ul>
+        </div>
+        <div class="q-script" aria-label="Example of a speaker-labelled transcript produced by the Chorus">
+          <div class="q-script-top">
+            <i class="fas fa-feather-pointed" aria-hidden="true" style="color:var(--gold);"></i>
+            <span class="ttl">session-transcript.txt</span>
+            <span class="tag">3 voices</span>
+          </div>
+          <div class="q-lines">
+            <div class="ln"><span class="ts">01:42:08</span><span class="who dm">DM</span><span class="said">The warden's hands are shaking.</span></div>
+            <div class="ln"><span class="ts">01:42:15</span><span class="who p1">Kris</span><span class="said">I step between them.</span></div>
+            <div class="ln"><span class="ts">01:42:19</span><span class="who p2">Garthax</span><span class="said">Bad idea. I ready an action.</span></div>
+            <div class="ln"><span class="ts">01:42:24</span><span class="who dm">DM</span><span class="said">He looks at the door, not at you.</span></div>
+            <div class="ln"><span class="ts">01:42:31</span><span class="who p1">Kris</span><span class="said">Then I look at the door too.</span></div>
+          </div>
+          <div class="q-script-foot">Timestamps and names, straight out of the merge &mdash; no model decided who spoke.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== HONEST LIMITS ==================== -->
+    <section class="g-sec">
+      <div class="g-sec-head">
+        <h2>What it won't do</h2>
+        <p>Accuracy is the whole brand here. If a tool oversells itself at the table, it's worse than no tool.</p>
+      </div>
+      <div class="g-list">
+        <ul>
+          <li><b>Ask your table before you record them.</b> Every time. A recorder nobody agreed to is a betrayal, not a tool.</li>
+          <li><b>One microphone means no speaker labels.</b> That's what the Chorus is for. Crosstalk across a loud table beats single-mic speaker guessing, and the Quill won't pretend otherwise.</li>
+          <li><b>It's a tool for a table in a house, not a hardened server.</b> Controls and transcripts are locked to the machine running it. Don't put it on a network you wouldn't hand a USB stick to.</li>
+          <li><b>Windows is where it was built and measured.</b> The macOS and Linux paths are written and follow the documented interfaces, but nobody has recorded a real session on a Mac with it yet.</li>
+          <li><b>It transcribes; it doesn't write your campaign.</b> The pages above are counted and quoted from what was said. The judgement stays yours.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================== THE TRIO ==================== -->
+    <section class="g-sec" id="trio">
+      <div class="g-sec-head">
+        <h2>The Quill, the Grimoire, and the Satchel</h2>
+        <p>Three free tools, one table. They're built as a set, and each one is useless in a different direction without the other two.</p>
+      </div>
+      <div class="q-trio-grid">
+        <div class="q-leg here">
+          <span class="tag soon">Testers first</span>
+          <i class="fas fa-feather-pointed" aria-hidden="true"></i>
+          <b>Gnasher's Quill<sup class="tm">&trade;</sup></b>
+          <span class="verb">records</span>
+          <span class="blurb">The night your table actually played, kept in your own words &mdash; offline, on your own machine.</span>
+        </div>
+        <a class="q-leg" href="/grimoire">
+          <span class="tag now">Available now</span>
+          <i class="fas fa-book-bookmark" aria-hidden="true"></i>
+          <b>Gnasher's Grimoire<sup class="tm">&trade;</sup></b>
+          <span class="verb">holds</span>
+          <span class="blurb">The DM's binder. Every adventure, table, and monster you own, summoned over the scene you're running.</span>
+        </a>
+        <a class="q-leg" href="/satchel">
+          <span class="tag now">Available now</span>
+          <i class="fas fa-hand-sparkles" aria-hidden="true"></i>
+          <b>Gnasher's Satchel<sup class="tm">&trade;</sup></b>
+          <span class="verb">carries</span>
+          <span class="blurb">The player's pocket. A 5E-compatible sheet that rolls with one tap and links live to the DM's screen.</span>
+        </a>
+      </div>
+      <p class="q-chain">the Quill <b>records</b> <i class="fas fa-arrow-right-long" aria-hidden="true"></i> the Grimoire <b>holds</b> <i class="fas fa-arrow-right-long" aria-hidden="true"></i> the Satchel <b>carries</b></p>
+    </section>
+
+    <!-- ==================================================================
+         DOWNLOAD-SLOT  ·  PLACEHOLDER — NOT YET RELEASED
+         ------------------------------------------------------------------
+         The distributable does not exist on this site yet. Nothing on this
+         page may claim it is downloadable until this block is replaced.
+
+         TO GO LIVE, swap the block between the DOWNLOAD-SLOT markers for
+         the release version, and make these edits at the same time:
+           1. Drop the package into  downloads/  (match the sibling naming:
+              downloads/gnashers-grimoire.html, downloads/gnashers-satchel.html).
+           2. Replace the two buttons below with the real one, e.g.
+              <a class="g-btn g-btn-gold" href="downloads/<REAL-FILENAME>" download>
+                <i class="fas fa-download" aria-hidden="true"></i> Download Gnasher's Quill &mdash; free</a>
+           3. Change .q-slot's border from `1px dashed` to `1px solid` (see the
+              stylesheet above) so it stops reading as a placeholder.
+           4. Hero: change the .g-status pill text and the "How to get it"
+              button label/target to the real download.
+           5. The Trio section: swap the Quill's `<span class="tag soon">Testers
+              first</span>` for `<span class="tag now">Available now</span>`.
+           6. Cross-links: grimoire.html and satchel.html each carry a
+              "the Quill records" line in their .g-more paragraph — update the
+              wording there if the status language changes.
+           7. index.html Creations dropdown: the entry reads
+              "Gnasher's Quill (session recorder)" — adjust if needed.
+         ================================================================== -->
+    <!-- DOWNLOAD-SLOT:START -->
+    <section id="get-it" class="q-slot">
+      <h2>Not out yet &mdash; and that's deliberate</h2>
+      <p>The Quill was built for <b>my own table</b>, and it has been running there. Before it goes anywhere else it goes to a handful of testers, because a tool that eats a six-hour recording of your friends is a tool that has to be <b>boring and correct</b> first.</p>
+      <p>When it's ready it lands here, free, alongside the Grimoire and the Satchel. The fastest way to hear about it is the newsletter &mdash; the same one the free tables and one-shots go out on.</p>
+      <div class="g-cta-row">
+        <a class="g-btn g-btn-gold" href="https://longislanddungeonmaster.substack.com" target="_blank" rel="noopener"><i class="fas fa-scroll" aria-hidden="true"></i> Get told when it drops</a>
+        <a class="g-btn g-btn-ghost" href="/grimoire"><i class="fas fa-book-bookmark" aria-hidden="true"></i> Meanwhile, take the Grimoire</a>
+      </div>
+      <div class="g-embed">
+        <iframe src="https://longislanddungeonmaster.substack.com/embed" width="480" height="150" scrolling="no" title="Join The Bi-Weekly One-Shot"></iframe>
+      </div>
+    </section>
+    <!-- DOWNLOAD-SLOT:END -->
+
+    <p class="g-more">The companion line: <b>Gnasher's Quill&trade;</b> (the session recorder) &middot; <a href="/grimoire">Gnasher's Grimoire&trade;</a> (the DM app) &middot; <a href="/satchel">Gnasher's Satchel&trade;</a> (the player app).<br><span style="opacity:.85;">Free tools live in <a href="/hoard">The Hoard</a>. Curious how any of this gets built? <a href="/how-its-made">How this gets made</a>.</span></p>
+
+  </main>
+
+  <div class="h-foot">
+    <b>Gnasher's Quill&trade;</b> &middot; local &middot; offline &middot; free &middot; &copy; 2020&ndash;2026 Frank Papaleo &mdash; Long Island Dungeon Master &bull; <a href="/">Home</a> &bull; <a href="/grimoire">Gnasher's Grimoire</a> &bull; <a href="/satchel">Gnasher's Satchel</a> &bull; <a href="/keepers">Adventure Keepers</a> &bull; <a href="/privacy">Privacy</a><br>
+    An independent tool; not affiliated with, endorsed, or sponsored by Wizards of the Coast LLC. Dungeons &amp; Dragons and D&amp;D are trademarks of Wizards of the Coast LLC.
+  </div>
+
+  <!-- Cloudflare Web Analytics (cookieless, no personal data) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+
+</body>
+
+</html>
