@@ -1,0 +1,886 @@
+# The Night Watchman
+## Act Three: Last Watch (toward dawn)
+
+**Draft v0.1** for red-team review. Continues directly from **315** at the end of Middle Watch.
+
+> **Draft notes for the red team.** 58 authored entries; a single run plays roughly 24, because Act Three is a fan of five endings rather than a route. Five finales, four of them unlocked by codewords carried out of Middle Watch and one always available, none of them a "true path" and none of them requiring foreknowledge. **The thing on the ice cannot be killed and the book says so out loud**; every ending is a way of surviving the night rather than winning it, which is the only honest reading of the setting and keeps the swept stair at Caer Brack unopened for a future product. Dawn Track: the finale reads it rather than filling it.
+
+---
+
+## THE THING AT THE FORD
+
+---
+
+### 400
+
+It comes up the slope into your lantern light and stops at the edge of it, considerately, the way a caller stops at a gate.
+
+It is Doran Welk.
+
+He is wearing the coat he died in, and the frost is still on him in the seams of it and packed white in the folds of his ears, and there is not a mark on him anywhere. He is a broad tired man with a strongbox habit and a chair he carried out to the bank himself, and you brought him down that hill on your shoulder an hour ago, or you did not, and either way he is standing here now with his hands loose at his sides.
+
+"Evening," it says, in his voice, kindly.
+
+→ **401**
+
+---
+
+### 401
+
+Beside you, Hett Vance makes a sound that is not a word.
+
+*If you have **TOLLPAID**:* you left Doran Welk sitting against the bank on the hill road, or you carried him down and laid him in his own house with a cloth over him. Either way you know exactly where his body was twenty minutes ago and it was not here.
+
+*If you do not have **TOLLPAID**:* you last saw Doran Welk at dusk, standing up so fast his chair went over, walking away with a strongbox and asking you not to have seen him.
+
+"You've had a long night, the pair of you," it says. "Come down off there. It's cold."
+
+→ "You're not him." **402**
+→ "What are you?" **403**
+→ "What do you want?" **405**
+
+---
+
+### 402
+
+"No," it agrees, without any hesitation at all.
+
+That is the worst answer available and it gives it immediately, pleasantly, the way you would agree about the weather.
+
+"He's in here, though," it says, and taps his chest with his own knuckles, twice. "Most of him. Enough for the voice and the walk and knowing your name, watchman, which I do." It smiles with Doran's mouth. "He liked you. He thought you'd not last the week. He liked you anyway."
+
+*Make a DC 13 Wisdom saving throw. On a failure, take 1d6 psychic damage: something in the way it said that gets in under your ribs and sits there.*
+
+→ "What do you want?" **405**
+
+---
+
+### 403
+
+"Cold," it says.
+
+It says it the way you would say *a farmer* or *a miller*. Not a description. An occupation.
+
+"That's all. There's no more to me than that and there never was, and every one of you has spent a hundred years putting a face on it and a name to it and a bargain around it, and I have let you, because it makes you easier to talk to." It shrugs Doran's heavy shoulders. "I come down the hill when it's cold enough. I take what's outside. If you'd all just stayed in, we'd never have met."
+
+→ "What do you want?" **405**
+
+---
+
+### 405
+
+"Eleven," it says. "That was the arrangement. Eleven, over the years, and the coin in between as a kindness, and nobody in this village ever had to know the number."
+
+It looks past you, up the dark slope at the shuttered houses.
+
+"Nine are done. Doran here is ten." A small movement of the borrowed head. "And your captain is eleven, and then I am finished with Brackenford for a generation and the ford runs all winter and nobody freezes and everyone lives. That is the whole of the bargain. It is not even a bad one."
+
+Beside you, Hett Vance says, very quietly, "Ah."
+
+→ **406**
+
+---
+
+### 406
+
+*If you have **TOLLPAID**:* you take the folded list out of your coat and you do not need to look at it. Eleven names in a careful hand. Nine crossed out. Doran Welk and Hett Vance not.
+
+You put it in Hett's hand. He reads it by your lantern in about two seconds and then he stands there holding it.
+
+*If you do not have **TOLLPAID**:* there is a list somewhere. You have not seen it. You do not need to have seen it, because the thing at the bottom of the slope has just read it out.
+
+→ **407**
+
+---
+
+### 407
+
+"You knew," you say to Hett.
+
+"No." He is looking at the ice. "I worked out the cold takes the able-bodied and I sent my lads to Aldermere on an errand I invented, and I have felt like a coward about it every day for a year." A short breath that is not a laugh. "Turns out I wasn't saving them. Turns out there was only ever one name left on it and it was mine, and I have been standing in the road in front of a bill that was never addressed to anybody else."
+
+He hands you back the list.
+
+"Well," says Hett Vance. "That's a relief, honestly."
+
+→ **408**
+
+---
+
+### 408
+
+And then he starts down the slope.
+
+He does it without any speech at all, which is how you know he means it: a square-jawed man in a tabard nobody granted him, walking down toward the ford at three in the morning to settle a village's account, because he has spent twenty years being the only thing between Brackenford and the hill and he is not going to stop being it now that it is finally convenient.
+
+You have about four seconds.
+
+→ Stop him. **409**
+→ Let him go. **412**
+
+---
+
+### 409
+
+You get a hand on his arm.
+
+He does not shake it off. He stands there with your hand on his sleeve, in the frost, halfway down a slope, and he does not look at you, and he says:
+
+"Don't. Please. I have wanted this to be simple for a year."
+
+→ "It isn't yours to pay." **410**
+→ "The job isn't beating it. You told me that." **411**
+
+---
+
+### 410
+
+"It is, though," Hett says. "That's the thing nobody will say out loud in this village. Somebody's name was always going to be on that paper. Alder made the call, Doran carried the box, Sefa feeds the stones, Anselm rings the bell, and every single one of them has been paying it in instalments for a year so that nobody had to pay it in full." He finally looks at you. "I can pay it in full. That's not brave. That's just the shortest way."
+
+→ "The job isn't beating it. You told me that." **411**
+
+---
+
+### 411
+
+"You told me the fourth rule," you say. "Eight hours ago, at the top of this slope. You said the job isn't to beat the dark. You said the job is to be a light that moves on a schedule so the village knows the night's still got somebody in it."
+
+Hett Vance stops.
+
+"You said I'd break that rule tonight because everyone does, and to know which rule it was when I did." Your hand is still on his sleeve. "This is you breaking it. You're not the watch right now. You're the shortest way."
+
+The silence goes on a while.
+
+"Ah, hell," says Hett.
+
+→ **413**
+
+---
+
+### 412
+
+You let him go.
+
+He gets nine steps down the slope before you understand that you are not going to be able to live with it, and you go after him, and you are faster than a man of fifty in frost, and you get in front of him.
+
+He looks at you for a long moment.
+
+"You're going to be a nuisance about this," he says. "Aren't you."
+
+→ **413**
+
+---
+
+### 413
+
+At the bottom of the slope, the thing wearing Doran Welk waits with its hands loose at its sides, patient as weather, because it is weather.
+
+It has all night. It has, precisely, until dawn, and so do you, and that is the entire remaining shape of this: **you cannot kill it.** Understand that plainly, because the book is not going to pretend otherwise at any point in the next hour. There is no stat block for the cold. Nothing you do to that borrowed body does anything to the thing standing behind it. You are a watchman with a lantern and a bell-clapper and a night to get through.
+
+What is left to you is not victory. It is the four hours until the sun, and what you choose to do with them.
+
+→ **415**
+
+---
+
+### 415
+
+**The last watch.**
+
+*Choose your ending. Each is complete. There is no correct one, and the book will not tell you afterward which you should have taken.*
+
+→ **Pay it.** Take the box down to the ford and finish what Doran started. *(requires **TOLLPAID**)* **420**
+→ **Ring it.** Get to the shrine and hold the vigil until dawn. *(requires **RELIEVED**)* **440**
+→ **Refuse it.** Get behind a door with the rest of them and give it nothing. *(requires **DOORHELD**)* **460**
+→ **Go and get her.** Across the ice to the Drowned Lane. *(requires **TAKEN**)* **480**
+→ **Stand the watch.** No plan. Walk your round until the sun comes up. *(always available)* **500**
+
+---
+
+## ENDING: PAY IT
+
+---
+
+### 420
+
+The strongbox is where you left it, or where you carried it to, and it is heavier than a box of coppers has any right to be.
+
+You carry it down the slope past Hett Vance, who says your name once and then does not say anything else, and you set it down on the frozen stones at the edge of the ford in front of a dead man, and you step back.
+
+"Ah," it says, pleased. "There. That's the arrangement."
+
+→ **421**
+
+---
+
+### 421
+
+It does not touch the box.
+
+"You've misunderstood, but only slightly, and it's a common one." Doran's hands stay loose at his sides. "The coin was never the thing. The coin is how a village agrees to a number without having to say the number out loud. Eleven, watchman. The box is just where they keep the eleven so they don't have to look at it."
+
+It tips the borrowed head.
+
+"So. You've brought me the box. Whose name is in it?"
+
+→ **422**
+
+---
+
+### 422
+
+This is the moment. You knew it was coming from the second you picked the box up.
+
+*If you write Hett Vance's name, or say nothing and let the list stand as written:* → **423**
+*If you write your own:* → **425**
+*If you refuse to answer at all:* → **427**
+
+---
+
+### 423
+
+You say nothing.
+
+Which is an answer. The list is in your coat and there are two names on it not crossed out and one of them is standing thirty feet behind you, and you say nothing at all, and the silence does the work.
+
+"Right," it says, and starts up the slope.
+
+→ **424**
+
+---
+
+### 424
+
+You do not remember deciding to move.
+
+You get in front of it on a frozen slope with a lantern in one hand, and Hett Vance shouts something behind you, and the cold comes off the thing in front of you like an open door in winter, and you stand in it.
+
+It stops. It looks at you with a dead man's eyes and something in it is genuinely, mildly curious.
+
+"You had a whole night to work out you can't stop me," it says.
+
+"I know."
+
+"Then move."
+
+"No."
+
+**Tick one box on the Dawn Track.** → **428**
+
+---
+
+### 425
+
+You take the list out of your coat and you cross out Hett Vance with your thumbnail, and under it, in frost and lamp-black because you have nothing else, you put your own name.
+
+Then you hold it out.
+
+The thing wearing Doran Welk looks at the paper for a long moment, and then it laughs, and it is Doran's laugh, and it is the single most horrible sound of the night.
+
+"Eleven's eleven," it says. "It was never particular."
+
+→ **426**
+
+---
+
+### 426
+
+Hett Vance comes down that slope like a landslide.
+
+He does not make it. He gets four strides and his boots go out from under him on the frost and he goes down hard on the frozen stones, and by the time he is up you have already stepped forward, and the cold closes over you like water.
+
+It does not hurt. That is the thing nobody tells you. It is enormously, gently cold, and it is like lying down after a very long day.
+
+→ **429**
+
+---
+
+### 427
+
+"No," you say. "I'm not writing a name in your book. Find your own eleven."
+
+"I have found eleven. It is written down. You are holding it."
+
+"Then it's a piece of paper," you say, "and I've got a lamp," and you hold the list over the chimney of your lantern and you let it catch.
+
+It goes up fast. Eleven names in a careful hand, nine crossed out, gone in about four seconds, and the ash goes up into the dark over the frozen river.
+
+**Tick one box on the Dawn Track.** → **428**
+
+---
+
+### 428
+
+Nothing happens.
+
+You had perhaps half-expected something to happen. There is no sound and no flash and the cold does not lift, and the thing at the bottom of the slope does not react at all, and after a moment you understand that you have burned a piece of paper.
+
+"That was somebody's careful handwriting," it says, mildly. "Alder's, I think. She'll be upset."
+
+And then it waits, because it can, because dawn is four hours off and it has nowhere to be and neither do you, and the last watch of the night turns out to be exactly what the job always was.
+
+→ **520**
+
+---
+
+### 429
+
+You come back at dawn.
+
+That is not a metaphor and it is not a resurrection. You wake on the frozen stones at the edge of the ford with the sun on your face and Hett Vance slapping at your cheek and shouting, and you are alive, and you are extremely cold, and you have been out for four hours.
+
+*If you are playing Ember Watch:* you take no lasting harm. It looked at you, took what was owed from somebody else's ledger, and left you on the ice.
+*If you are playing Lantern Watch:* your hair has gone white at the temple and stays that way. Write the codeword **SCARRED**.
+*If you are playing Dark Watch:* you do not come back at dawn. Go to **535**.
+
+→ **520**
+
+---
+
+## ENDING: RING IT
+
+---
+
+### 440
+
+You go up the slope at a dead run for the shrine, and behind you Hett Vance does the only useful thing left, which is to stand in the middle of the road and make himself the most interesting object in Brackenford.
+
+"Oi," you hear him say, conversationally, to the thing at the ford. "Vance. That's me. That's the name you want. Come on, then."
+
+You do not look back. That is the hardest thing you have ever done and it takes about a second and a half.
+
+→ **441**
+
+---
+
+### 441
+
+The shrine door is where you left it, open or broken, and inside, Brother Anselm is asleep on the floor in the altar cloth for the first time in thirty days.
+
+The rope hangs in the dark with a band of blood on it at the height of a man's hands.
+
+You told him you would take the vigil. You did not know what you were agreeing to. You are about to find out, and what you find out is this: it is not difficult. It is not clever. There is a rope, and there is dawn, and the entire job is to still be here in four hours.
+
+→ **442**
+
+---
+
+### 442
+
+You ring.
+
+Not the alarm Anselm rang. The proper one: one stroke, a pause the length of a breath, another, unhurried. The dusk pattern, at four in the morning, because it is the only pattern you know and because the point is not the hour, the point is that it is still happening.
+
+The sound goes out over a shuttered village.
+
+And out on the road, the thing that was walking toward Hett Vance stops walking toward Hett Vance.
+
+**Tick one box on the Dawn Track.**
+
+→ **443**
+
+---
+
+### 443
+
+It comes for the shrine.
+
+You hear it arrive. You hear it come up the step and stop at the door, and you keep ringing, one stroke, breath, one stroke, and the cold comes through the doorway ahead of it and the candle stubs on the floor go out in a wave from the door inward.
+
+"Anselm," it says, from the step, in Doran Welk's kind voice. "Brother. Are you awake in there?"
+
+On the floor, in the altar cloth, Anselm does not stir. He is thirty days gone and eight hours into the first sleep of it and nothing in this world is waking him.
+
+→ Keep ringing. **444**
+→ Answer it. **445**
+
+---
+
+### 444
+
+You keep ringing.
+
+That is the whole of it, for four hours. It talks the entire time. It uses Doran's voice, and then, when that stops working, it uses others: a shepherd's, warm, asking to be let in; a woman's, level, saying you've not asked after the dog; a child's, from six feet outside the door, crying and asking why nobody is coming.
+
+*Make a DC 15 Wisdom saving throw at the end of each of the first three hours. Ember Watch: DC 12. Dark Watch: DC 17.*
+
+**On each failure:** take 1d6 psychic damage and tick one box on the Dawn Track. You do not stop ringing. Your hands open up on the rope in a band at exactly the height of Anselm's.
+
+**If you fail all three:** → **446**
+**Otherwise:** → **447**
+
+---
+
+### 445
+
+"He's asleep," you say. "You'll have to make do with me."
+
+A pause on the step.
+
+"You're not on the list."
+
+"No," you agree, and pull the rope. "I'm the watch."
+
+And the thing outside the door of the Shrine of the Quiet Hand is quiet for a moment, and then it says, almost warmly, "Ah. He's given it to you. That was quick of him," and it settles in to wait, and so do you.
+
+→ **444**
+
+---
+
+### 446
+
+Somewhere in the third hour you stop being able to tell which of the voices outside are real.
+
+You keep hauling. That is the only fact you can be sure of and you hold on to it the way Anselm told you he held on to the weight of the brass: a man can hold a weight when he cannot hold anything else.
+
+When Hett Vance finally gets the door open at sunrise you swing at him. Write the codeword **SCARRED**.
+
+→ **447**
+
+---
+
+### 447
+
+And then it is light.
+
+There is no moment. That is what nobody tells you about dawn: it does not arrive, it accumulates, and at some point you notice you can see the far wall and that you have been able to see it for some time.
+
+The voices outside stopped at some point too. You could not say when.
+
+Your hands are ruined. The rope has a second band of blood on it now, a little above the first, because you are taller than Anselm.
+
+→ **520**
+
+---
+
+## ENDING: REFUSE IT
+
+---
+
+### 460
+
+You get behind a door.
+
+Specifically: you go up the square hammering on shutters and shouting the same four words at every window, *stay in, bar it, stay in, bar it*, and then you go through the scullery of the Broken Wheel where Mara Tullamore has left the latch off every night for a year, and you drop the bar behind you, and you sit down on the floor of the common room with your back against the wood.
+
+Mara is already sitting against the front door. She looks at you.
+
+"Two of us, then," she says.
+
+→ **461**
+
+---
+
+### 461
+
+It comes up the square about twenty minutes later.
+
+You hear it go along the row, unhurried, and you hear it try every door on the way, not violently, just a hand on a latch and then moving on, and you hear about a dozen households in Brackenford discover in real time what it sounds like when somebody tests your door at four in the morning.
+
+Nobody opens. Nobody in this village has ever once been embarrassed about a door.
+
+**Tick one box on the Dawn Track.**
+
+→ **462**
+
+---
+
+### 462
+
+Then it comes to the Wheel and it starts on the voices.
+
+It does Tobin first, because it knows what worked. It stands out there in the frost and it asks Mara to let him in, in his voice, warmly, and it asks after the dog, because it was listening the first time and it has learned.
+
+Mara Tullamore sits with her back against her own front door and her hands flat on the boards and does not move.
+
+*If you have **DOORHELD**, she has done this once tonight already and she does not need you for it.*
+
+→ Sit with her. **463**
+→ Talk to it through the door. **464**
+
+---
+
+### 463
+
+You sit with her.
+
+You do not say anything, because there is nothing to say, and at some point in the second hour she puts her hand out flat on the floor between you, palm down, and you put yours next to it, not touching, and that is the entire conversation.
+
+Outside, it works through the voices it has. Tobin. Doran. Anselm's careful liturgical cadence. A child. Hett Vance, which is when your stomach goes, and which you will need to check on at sunrise.
+
+It never gets angry. That is the part you will tell people about and they will not understand: it never once got angry. It stood outside a door for four hours being reasonable.
+
+→ **465**
+
+---
+
+### 464
+
+"You're wasting a night," you tell it through the wood.
+
+"I've got the night," it says. "That is precisely what I've got and it is the only thing I have ever had. You have four hours of standing between me and a door, and I have every winter there will ever be." A pause. "I don't say that to frighten you. I say it because you seem to think this is a contest."
+
+"It's not a contest," you say. "It's a door."
+
+It thinks about that.
+
+"Yes," it says. "All right. That is fair."
+
+→ **465**
+
+---
+
+### 465
+
+At some point the voices stop.
+
+Neither of you notices when. You work it out afterward, comparing, and you cannot agree within half an hour.
+
+The light comes up grey behind the shutters, and Mara Tullamore gets up off the floor of her own inn, and puts the bar up, and opens the door on an empty square with frost on it and no prints in the frost at all.
+
+Then she goes and takes the clean mug off the table by the fire and puts it back on the rail behind the bar, where it lives.
+
+→ **520**
+
+---
+
+## ENDING: GO AND GET HER
+
+---
+
+### 480
+
+You go across the ice.
+
+Hett Vance shouts your name once. You do not stop, because there is a six-year-old in a nightshirt somewhere in the Drowned Lane and everything else in this village is behind a door, and this is the fourth rule, and you knew you were breaking it when you took the first step.
+
+The Wend under your boots is a grey floor that creaks and does not give. You pass within fifteen feet of the thing wearing Doran Welk. It does not stop you. It turns its head and watches you go by with an expression of mild professional interest, the way a man watches somebody else's dog run off.
+
+→ **481**
+
+---
+
+### 481
+
+The Drowned Lane is a row of half-sunk houses with reeds growing through the floors, and it has been empty for a generation, and it is not empty.
+
+Your lantern finds the larder first: the line of broken reed-stems and fence-posts along the bank with small neat corpses pushed down onto the points, and it is longer than it was at dusk, and there is nothing on the newest stake yet.
+
+The nothing on the newest stake is the best thing you have ever seen.
+
+→ **482**
+
+---
+
+### 482
+
+She is in the third house along, in the one with the light.
+
+It is not a light. You worked that out on the bridge hours ago and you are only now standing close enough to see what it actually is: the walls of that room are furred an inch thick with hoarfrost, floor to ceiling, and your lantern is coming back off all of it at once.
+
+The child is sitting in the middle of the floor with her arms around her knees. She is grey with cold and she is alive and her eyes track you when you come through the door.
+
+Above her, in the rafters, something shifts its weight.
+
+→ **483**
+
+---
+
+### 483
+
+**FEN-SHRIKE (two)**
+
+Medium beast. AC 13. Speed 30 ft., fly 50 ft. HP as the Watch Lamp line below.
+**Beak.** Melee attack, +5 to hit, reach 5 ft. Hit: 1d8+3 piercing damage.
+**Silent Rush.** Advantage on its first attack roll against a creature that has not yet acted in combat.
+
+**Tactics script.**
+This is a nest, not a hunt, and the roles are different here.
+Round 1: both drop from the rafters. The first attacks you with Silent Rush. The second lands between you and the child and does not attack at all: it stands over her with its beak lowered, and it will attack the instant you move toward her.
+Round 2 onward: the attacker fights normally and does not withdraw. This is their larder and they are not giving it up.
+The guard never leaves the child and never pursues. If you drop the attacker, the guard fights on alone from where it stands.
+If you get the child behind you (a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), both break for the moor within one round.
+**Fail-forward:** if you drop to 0 hit points here, you do not die on Ember or Lantern. Go to **486**.
+
+> **Watch Lamp** · **Ember:** 14 HP each; the guard is slow to react and you may take the child on round two without a check. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, and there is a third in the rafters that drops on round three.
+
+*If you win:* → **484**
+*If you go down:* → **486**
+
+---
+
+### 484
+
+You get her up inside your coat with her face against your collarbone and her hands like ice on your neck, and she does not make a sound the entire way, which is worse than screaming.
+
+Going back across the ford is the longest four minutes of your life. Halfway over you pass the thing wearing Doran Welk again, standing on the ice in the middle of the crossing, facing the village.
+
+It looks at the shape inside your coat.
+
+"That one wasn't mine," it says. "Those are just birds. They come because I do." A pause, and then, and you will think about this for years: "Not everything in the dark is me, watchman. You'd all be a great deal safer if it were."
+
+→ **485**
+
+---
+
+### 485
+
+You get her to the near bank and up the slope and Hett Vance takes her off you at the top without a word, and somewhere behind you the ice starts complaining again as the thing goes back the way it came, unhurried, because dawn is coming and it has all the winters there will ever be.
+
+The mother is at a door with her arms out and her mouth open and no sound coming.
+
+Write the codeword **CARRIED**.
+
+→ **520**
+
+---
+
+### 486
+
+You go down in a frozen room in an abandoned house with a child six feet away.
+
+What wakes you is being dragged. Hett Vance came across that ice after you, alone, in the dark, because of course he did, and he has got you by the collar of your coat and the child under his other arm and he is hauling both of you toward the door.
+
+"Rule three," he says through his teeth. "Rule three, you great idiot, you come and get me."
+
+Take one level of exhaustion and write the codewords **CARRIED** and **SCARRED**.
+
+→ **485**
+
+---
+
+## ENDING: STAND THE WATCH
+
+---
+
+### 500
+
+You do not have a plan.
+
+You have a lantern with about two hours of oil in it, a bell-clapper, a tabard that belonged to somebody else, and a route: up from the ford through the square, along the top past the inn, down the back by Greel's yard, out to the broken bridge, and back to the water.
+
+So you walk it.
+
+→ **501**
+
+---
+
+### 501
+
+It follows you.
+
+Not closely. It walks the round with you at about thirty feet, on the other side of the street, in a dead man's coat, keeping pace, and at the first post it stops when you stop and waits while you ring in.
+
+Two strokes, brass on brass, out over the shuttered roofs.
+
+"Why do you do that?" it asks.
+
+→ "So they know I'm here." **502**
+→ Don't answer. Ring the next post. **503**
+
+---
+
+### 502
+
+"So they know I'm here."
+
+"They're asleep."
+
+"Some of them." You start walking. "Some of them are lying awake listening for it, and they'll hear it, and they'll go back to sleep. That's the job."
+
+It considers this for most of a street.
+
+"That is a very small job," it says at last, and it is not being cruel, it is genuinely appraising the size of it.
+
+"Yes," you say.
+
+→ **503**
+
+---
+
+### 503
+
+You walk the round.
+
+You do it four times between three and dawn, which is more than the schedule asks for, and you ring in at every post every time, and the thing walks it with you and does not touch you, because you are not on the list and it is, in its way, extremely well organised.
+
+Somewhere in the third circuit it says, "You know I'll be back within the month."
+
+"I know."
+
+"And you'll be doing this."
+
+"Yes."
+
+**Tick one box on the Dawn Track.**
+
+→ **504**
+
+---
+
+### 504
+
+*Make a DC 13 Constitution saving throw. Ember Watch: DC 10. Dark Watch: DC 15.*
+
+**Success.** You are still upright. Cold has got into your hands and you cannot feel the clapper, so you hold it in your fist and swing your whole arm.
+
+**Failure.** Take 1d6 cold damage and one level of exhaustion. You go down on one knee at the Greel's Yard post, and you get up, and you ring it, and the sound is fine, and that is the only part anybody else will ever hear.
+
+→ **505**
+
+---
+
+### 505
+
+On the last circuit, at the bridge post, it is not with you.
+
+You ring in and turn around and the street behind you is empty and grey, and you understand two things at once: that the light has been coming up for some time, and that you did not see it go.
+
+There are no prints in the frost.
+
+→ **520**
+
+---
+
+## DAWN
+
+---
+
+### 520
+
+The sun comes up over the Hollow Marches at about seven, and it is a plain, ordinary, entirely unremarkable winter sunrise, and there is not one person in Brackenford who will ever be able to explain to an outsider why they cried at it.
+
+The ford thaws by nine. It does it fast, the way it froze: the grey floor goes to slush and then to brown water sliding over flat stones, loud again, and the sound of it coming back is the sound of the village letting out a breath it has been holding since dusk.
+
+Doran Welk's chair is still lying on its side on the bank. Somebody sets it up.
+
+→ **521**
+
+---
+
+### 521
+
+*This is your night. Read the lines you have earned.*
+
+*If you have **BLOODED**:* you killed something on the round and you have not thought about it once since it happened, and you will, in about a week, at an inconvenient moment.
+
+*If you have **SHELTERED**:* the child from the wellhead is asleep in her own bed and will remember none of this correctly, and her mother will remember all of it, and will not be able to say a word to you for eleven days and will then say far too many at once.
+
+*If you have **CARRIED**:* you went across the ice for one person and left a whole village behind a door to do it, and Hett Vance has already told you it was the wrong call twice, and he has not once been able to say it while looking at you.
+
+*If you have **RELIEVED**:* Brother Anselm slept nine hours on the floor of his own shrine and woke to find the bell had been rung all night by somebody else. He has not said thank you. He has opened the doors.
+
+*If you have **DOORHELD**:* Mara Tullamore put the clean mug back on the rail behind the bar. She has not set it out since. She will not discuss it.
+
+*If you have **TOLLPAID**:* you know the number. You are one of five people alive who does, and by noon Goodwife Alder will know that you know, because Goodwife Alder always knows, and there will be an invitation to tea.
+
+*If you have **SCARRED**:* whatever it took out of you, it did not take all of it, and you got up.
+
+→ **522**
+
+---
+
+### 522
+
+They bury Doran Welk on the third day, and the whole village comes, including the ones who spent a year calling him a thief to his face over a copper.
+
+Goodwife Alder speaks. She is gracious and warm and says almost nothing, and it is the single most careful piece of work you have ever watched anybody do, and at the end of it she catches your eye across the grave for about half a second.
+
+Afterward, Hett Vance walks you back down the hill.
+
+→ **523**
+
+---
+
+### 523
+
+"There's a tabard going spare," he says. "Doran's size. Bit big on you."
+
+"That's not funny."
+
+"No," he agrees. "I've been up all night for two nights and I've stopped being able to tell." He stops walking. "I'm asking, though. Properly. There's supposed to be six of us and there's one, and last night there were two, and I would very much like there to be two again."
+
+→ Take it. **524**
+→ Ask him something first. **525**
+→ Say no. **526**
+
+---
+
+### 524
+
+You take the tabard.
+
+It is too big and it belonged to a broad, tired man who tested every coin against his teeth and carried a box up a hill for a village that resented him for it, and you will wear it for the next eleven years.
+
+→ **530**
+
+---
+
+### 525
+
+"How long have we got?"
+
+"Before it's back?" Hett looks up at the hill, at the square black shape of Caer Brack against a clean cold morning sky. "It said within the month. It's not lied yet, as far as anyone can tell. That's the thing about it that nobody's ready for. It doesn't lie. It just waits until you've stopped being able to bear it and then it's reasonable at you."
+
+He shrugs.
+
+"Sefa'll say a fortnight. Alder'll say we've time. Anselm's got his doors open, which he hasn't in a month, so make of that what you like." He starts walking again. "So: not long. Are you in?"
+
+→ Take it. **524**
+→ Say no. **526**
+
+---
+
+### 526
+
+You say no, and Hett Vance takes it exactly the way you would want a man to take it, which is to say completely, immediately, and without a single word of argument.
+
+"Right," he says. "Then thank you. I'll not pretend I'm not sorry."
+
+You give him back the lantern at the bottom of the hill.
+
+You are two streets away when you hear him, out of sight, announcing the hour to an empty street the way he has done for a year, and you stop walking, and you stand there in the road for a long moment.
+
+The book is not going to tell you what you did next. That one is yours.
+
+→ **530**
+
+---
+
+### 530
+
+**Here ends the night watch.**
+
+You were the watch for one night, on the night the ford froze, and you did not beat anything. There is nothing under the hill that is any weaker this morning than it was yesterday. The swept stair is still swept. The candle at the bottom of it is still burning. Eleven is still eleven, or ten, or however the ledger stands now, and somewhere out on the moor an old woman is counting stones and getting the wrong answer.
+
+But the village woke up.
+
+That is the whole of it, and it is not nothing, and Hett Vance was right about the size of the job and wrong about what it is worth.
+
+**THE END.**
+
+*You can play this night again. Take a different route at dusk, keep different company in the dead hours, and stand somewhere else when it comes across the ice. There are four other endings and none of them is the correct one.*
+
+*If you would rather keep going, turn to **Appendix A: After the Dawn**, and keep playing Brackenford freehand. It will be a fortnight, at the outside.*
+
+---
+
+### 535
+
+**Dark Watch only.**
+
+You do not come back at dawn.
+
+They find you on the ice at first light with the frost already in the seams of your coat and packed white in the folds of your ears, and there is not a mark on you anywhere, and the ground under you is not thawed at all.
+
+Hett Vance carries you up the slope himself and will not let anybody take the other end.
+
+They bury you on the third day, next to Doran Welk, and the whole village comes. Goodwife Alder speaks. She is gracious and warm and says almost nothing, and she does not catch anybody's eye.
+
+The ledger is settled. Brackenford will have a quiet winter, and the ford will run all season, and in the spring the children will paddle in it.
+
+You were the watch for one night. Eleven was always going to be somebody.
+
+**THE END.**
+
+*Bury the watchman properly, then make another one and go back to **001**. The night runs differently for a different person, and Brackenford is going to need somebody in about a fortnight.*

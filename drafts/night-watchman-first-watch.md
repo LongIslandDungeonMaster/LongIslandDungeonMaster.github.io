@@ -251,7 +251,8 @@ You will not get to all five. You never do. That is what the bell is for: the vi
 → **The Square and the Well**, the heart of it, the notice board. **060**
 → **The Broken Bridge**, and past it, across the water, the Drowned Lane. **070**
 
-*After your second post, the night will not let you choose a third. Follow the book.*
+*After your second post, do not choose a third. Go to **090**.*
+*After your third post, the round is walked. Go to **100**.*
 
 ---
 
