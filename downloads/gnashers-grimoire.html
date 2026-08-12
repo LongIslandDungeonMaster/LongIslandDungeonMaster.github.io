@@ -2,7 +2,7 @@
 <!--
   ============================================================================
   GNASHER'S GRIMOIRE — "A Dungeon Master Companion"  (source; internal nickname "Keeper Keeper" retired 2026-07-03)
-  Gnasher's Grimoire™ · build 2026-08-11 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
+  Gnasher's Grimoire™ · build 2026-08-12 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
   ============================================================================
   v15 (2026-07-18) - THE CHRONICLE: campaign memory across Keepers (FINAL-ORDERS
   C1; the law is Scriptorium/CAMPAIGN-WEB-SPEC.md - hourglass web, one flag
@@ -267,6 +267,31 @@ body.on-stage .bmkbar{display:flex;}
 .cover .kind.k-creature{background:linear-gradient(#3d4d1e,#26330f);border-color:#7a8a4a;}
 .cover .kind.k-char{background:linear-gradient(#4d3d1e,#33260f);border-color:#8a7a4a;}
 .cover .kind.k-map{background:linear-gradient(#3d2a4d,#261933);border-color:#7a5a8a;}
+/* ===== v20 · THE TOME — the DM's own PDFs on the shelf ===== */
+.cover .kind.k-tome{background:linear-gradient(#4d2a1e,#33190f);border-color:#8a5f4a;}
+.tome-shell{display:flex;flex-direction:column;height:100%;}
+.tome-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 14px;background:linear-gradient(180deg,#241205,#1d0e0c);border-bottom:1px solid var(--gold-line);}
+.tome-bar .tt{font-family:var(--serif);font-size:16px;color:var(--gold-br);letter-spacing:.03em;}
+.tome-bar .tsz{font-size:11px;color:#8a6d5f;font-style:italic;}
+.tome-bar .tbtn{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-br);background:linear-gradient(#2b1a11,#1d0e0c);border:1px solid var(--gold-line);border-radius:3px;padding:4px 9px;}
+.tome-bar .tbtn:hover{border-color:var(--gold);}
+.tome-bar .tbtn.warn{color:#c98a7a;}
+.tome-bar .tbtn.armed{color:#fff;background:linear-gradient(#7a2a1e,#4d1a10);border-color:#b3564a;}
+.tome-chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--gold-br);background:#241205;border:1px solid var(--gold-line);border-radius:12px;padding:2px 4px 2px 9px;}
+.tome-chip>span{cursor:pointer;}
+.tome-chip:hover{border-color:var(--gold);}
+.tome-chip .pg{color:#8a6d5f;font-size:10px;}
+.tome-chip .rm{background:none;border:0;color:#8a6d5f;font-size:13px;line-height:1;padding:0 3px;}
+.tome-chip .rm:hover{color:var(--crimson-br);}
+.tome-add{display:inline-flex;gap:5px;align-items:center;margin-left:auto;}
+.tome-add input{background:#160a0a;border:1px solid var(--gold-line);border-radius:3px;color:var(--ink);font-size:11.5px;padding:3.5px 7px;width:160px;}
+.tome-add input#tomeMkPage{width:60px;}
+.tome-frame{height:calc(100vh - 144px);}
+body.strip-on .tome-frame{height:calc(100vh - 191px);}
+.tome-fallback{max-width:540px;margin:70px auto;text-align:center;color:var(--ink-soft);font-size:14.5px;line-height:1.65;}
+.tome-fallback b{color:var(--gold-br);}
+.tome-fallback .tbtn{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-br);background:linear-gradient(#2b1a11,#1d0e0c);border:1px solid var(--gold-line);border-radius:3px;padding:7px 14px;margin-top:14px;}
+.tome-fallback .tbtn:hover{border-color:var(--gold);}
 .cover.pack .art{background:radial-gradient(circle at 50% 36%, #301c12, #1d0e0c 74%);}
 .cover .badge{position:absolute;top:9px;right:8px;display:flex;align-items:center;gap:4px;font-family:var(--mono);font-size:10px;
   padding:3px 8px;border-radius:20px;background:rgba(14,7,6,.82);border:1px solid rgba(201,162,75,.5);color:var(--gold-br);z-index:4;
@@ -966,6 +991,8 @@ body.strip-on .chronicle{top:146px;}
     <div class="grid" id="keeperGrid"></div>
     <div class="rowlabel">Packs, Bestiaries &amp; Kits <span class="ct" id="packCt"></span></div>
     <div class="grid" id="packGrid"></div>
+    <div class="rowlabel">Tomes &middot; Your PDFs <span class="ct" id="tomeCt"></span></div>
+    <div class="grid" id="tomeGrid"></div>
     <div class="shelf-foot"><img class="gfoot" id="gnashFoot" alt="Gnash, listening">This shelf only fills up with <i>your</i> books &mdash; Gnash is listening for the next one. <a href="https://longislanddungeonmaster.com/keepers" target="_blank" rel="noopener">Get more books &rarr;</a> &mdash; every Adventure Keeper, bestiary &amp; pack drops straight into the binder.</div>
   </div>
 </section>
@@ -1029,11 +1056,12 @@ body.strip-on .chronicle{top:146px;}
     <p>A PDF dies in a downloads folder. Give away this deck free and every LIDM adventure someone buys <b>snaps into a living thing that gets better the more they own</b> &mdash; a deeper Summon, cross-book tables, one party through all of it. It's the DM's second screen, and it only fills up with <i>your</i> books.</p>
 
     <h2>About</h2>
-    <p class="about-ip">Gnasher's Grimoire&trade; &middot; build 2026-08-11 &middot; &copy; 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.</p>
+    <p class="about-ip">Gnasher's Grimoire&trade; &middot; build 2026-08-12 &middot; &copy; 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.</p>
     <p class="about-ip">Free tool. Runs offline; your books stay yours. Get more books at <a href="https://longislanddungeonmaster.com/keepers" target="_blank" rel="noopener">longislanddungeonmaster.com/keepers</a>.</p>
     <p class="about-ip">The Theater: your players pair Gnasher's Satchel, its free companion, straight to this screen. No server, no accounts; the pairing code is the connection, and a same-room mode works with no internet at all.</p>
     <p class="about-ip">Found a bug, or something that made no sense? <a href="#" onclick="openBugReport();return false;">Tell me about it</a> &mdash; the Grimoire writes up the technical details, you read them, and you send it. Nothing is ever transmitted by the app itself.</p>
     <p class="about-ip">The Chronicle: the binder's campaign memory. Seal how each chapter of a campaign ended and every later chapter opens already knowing what your table did; a short Chronicle Code carries the same story to any table, no binder needed.</p>
+    <p class="about-ip" id="aboutTomes">Tomes: shelve your own PDFs beside your Keepers. They are stored in this browser only and never leave it. They stay out of .keeper backups and the Drive Binder, so keep the PDF files themselves too.</p>
   </div>
 </section>
 
@@ -1419,7 +1447,8 @@ function motifSVG(motif,accent){const m={
   skull:'<path d="M32 46 a18 18 0 0 1 36 0 v9 a7 7 0 0 1 -6 7 v7 h-24 v-7 a7 7 0 0 1 -6 -7 z" fill="'+accent+'"/><circle cx="42" cy="48" r="5" fill="#160a0a"/><circle cx="58" cy="48" r="5" fill="#160a0a"/><path d="M47 61 l3 -6 l3 6 z" fill="#160a0a"/>',
   house:'<path d="M26 52 L50 30 L74 52" fill="none" stroke="'+accent+'" stroke-width="3"/><path d="M33 50 V76 H67 V50" fill="none" stroke="'+accent+'" stroke-width="3"/><rect x="45" y="60" width="10" height="16" fill="'+accent+'"/>',
   claw:'<path d="M30 20 Q34 46 38 74 M44 18 Q46 47 48 76 M58 18 Q56 47 54 76 M70 20 Q66 46 62 74" fill="none" stroke="'+accent+'" stroke-width="4" stroke-linecap="round"/>',
-  mask:'<path d="M28 34 Q50 26 72 34 Q74 58 58 74 Q50 81 42 74 Q26 58 28 34 Z" fill="none" stroke="'+accent+'" stroke-width="3"/><ellipse cx="41" cy="47" rx="4.5" ry="7" fill="'+accent+'"/><ellipse cx="59" cy="47" rx="4.5" ry="7" fill="'+accent+'"/>'};
+  mask:'<path d="M28 34 Q50 26 72 34 Q74 58 58 74 Q50 81 42 74 Q26 58 28 34 Z" fill="none" stroke="'+accent+'" stroke-width="3"/><ellipse cx="41" cy="47" rx="4.5" ry="7" fill="'+accent+'"/><ellipse cx="59" cy="47" rx="4.5" ry="7" fill="'+accent+'"/>',
+  tome:'<path d="M32 22 H62 a8 8 0 0 1 8 8 V78 H40 a8 8 0 0 1 -8 -8 Z" fill="none" stroke="'+accent+'" stroke-width="3"/><path d="M32 22 V70 a8 8 0 0 0 8 8" fill="none" stroke="'+accent+'" stroke-width="3"/><path d="M44 38 H60 M44 48 H60 M44 58 H54" stroke="'+accent+'" stroke-width="3"/><rect x="66" y="44" width="8" height="10" rx="2" fill="'+accent+'"/>'};
   return '<svg class="seal" viewBox="0 0 100 100" aria-hidden="true">'+(m[motif]||m.compass)+'</svg>';}
 function tableCount(id){return TABLES.filter(t=>t.src===id).length;}
 
@@ -1432,6 +1461,7 @@ function go(v){
   document.body.classList.toggle('on-stage', v==='stage');
   if(v!=='stage'){ document.querySelectorAll('.fcard').forEach(c=>c.remove()); hideCombat(); } // cards + combat panel belong to the stage
   if(v==='shelf'&&typeof INDEX!=='undefined')renderShelf();   // v13: keep the on-the-table ribbon + counts live
+  if(v==='hood'&&typeof TOMES!=='undefined')tomeAboutUpdate();   // v20: live Tome storage total in About
   window.scrollTo(0,0);
 }
 
@@ -1495,6 +1525,15 @@ function renderShelf(){
   ['dragover','dragenter'].forEach(e=>tile.addEventListener(e,ev=>{ev.preventDefault();ev.stopPropagation();tile.classList.add('drop');}));
   tile.addEventListener('dragleave',()=>tile.classList.remove('drop'));
   tile.addEventListener('drop',ev=>{ev.preventDefault();ev.stopPropagation();tile.classList.remove('drop');const fs=ev.dataTransfer&&ev.dataTransfer.files;if(fs&&fs.length)installFromFiles(fs);});
+  /* v20 · the Tome row: the DM's own PDFs, shelved beside the Keepers */
+  const ts=Object.keys(TOMES);
+  document.getElementById('tomeGrid').innerHTML=ts.map(tomeCoverHTML).join('')+
+    '<div class="cover add" id="tomeTile" onclick="pickTomeFile()"><div><div class="plus">+</div><div class="t">Add a Tome</div><div class="m">Drop any PDF you own here: a bought adventure, a scan, house rules. Your PDFs never leave this browser.</div></div></div>';
+  document.getElementById('tomeCt').innerHTML=ts.length?(ts.length+' owned &middot; '+tomeSizeLabel(tomeTotalBytes())):'none yet';
+  const tt=document.getElementById('tomeTile');
+  ['dragover','dragenter'].forEach(e=>tt.addEventListener(e,ev=>{ev.preventDefault();ev.stopPropagation();tt.classList.add('drop');}));
+  tt.addEventListener('dragleave',()=>tt.classList.remove('drop'));
+  tt.addEventListener('drop',ev=>{ev.preventDefault();ev.stopPropagation();tt.classList.remove('drop');const fs=ev.dataTransfer&&ev.dataTransfer.files;if(fs&&fs.length)installFromFiles(fs);});
 }
 /* ===== install: read a dropped/picked Keeper, index it (manifest, else scrape table.kit) ===== */
 function hashStr(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0;}return h;}
@@ -1596,10 +1635,14 @@ function parseKeeper(html, fname){
   return {id:'inst_'+Math.abs(hashStr(title)).toString(36), title:esc(title), kind:'keeper', declaredKind, cover, entries, cues, chronicle:chronicleBlk, html, verified, unverified, trace, warnings};
 }
 async function installFromFiles(files){
-  let n=0, unv=0; const rej=[], skip=[], warn=[], dup=[];
+  let n=0, unv=0, nt=0; const rej=[], skip=[], warn=[], dup=[], big=[];
   for(const f of files){
     const fn=f.name||'keeper';
-    if(!/\.html?$/i.test(f.name||'')&&!/html/.test(f.type||'')){ skip.push(fn+' (not an HTML file)'); continue; }
+    if(/\.pdf$/i.test(f.name||'')||/\bpdf\b/i.test(f.type||'')){   // v20: a PDF routes to the Tome shelf; HTML flows on untouched
+      try{ const r=await installTome(f); nt++; if(r.big)big.push(fn+' ('+tomeSizeLabel(f.size||0)+')'); }
+      catch(e){ skip.push(fn+' (couldn&rsquo;t be stored)'); }
+      continue; }
+    if(!/\.html?$/i.test(f.name||'')&&!/html/.test(f.type||'')){ skip.push(fn+' (not an HTML or PDF file)'); continue; }
     let html; try{html=await f.text();}catch(e){ skip.push(fn+' (couldn&rsquo;t be read)'); continue; }
     const k=parseKeeper(html,(f.name||'keeper').replace(/\.html?$/i,'')); if(!k){ skip.push(fn+' (unreadable)'); continue; }
     if(k.reject){ rej.push(k.reason); continue; }
@@ -1611,30 +1654,152 @@ async function installFromFiles(files){
     if(k.cover)k.cover=await thumbCover(k.cover);   // v13: cover rides the shelf as a compact thumbnail
     INSTALLED[k.id]=k; addInstalledToBooks(k); if(DB)await idbPut('keepers',k); driveSaveKeeper(k); n++; if(k.unverified)unv++;
   }
-  if(n){ rebuildIndex(); renderShelf(); }
+  if(n){ rebuildIndex(); renderShelf(); } else if(nt){ renderShelf(); }
   // ONE honest summary — installs, unverified, duplicates, rejections, and skips are all surfaced, never swallowed.
   const parts=[];
   if(n){ let m='Installed '+n+' Keeper'+(n!==1?'s':''); if(unv)m+=' <b>'+unv+' unverified</b>'; parts.push(m); }
+  if(nt){ let m='Shelved '+nt+' Tome'+(nt!==1?'s':'')+' ('+(nt!==1?'PDFs':'PDF')+', stored in this browser only)'; if(!DB)m+=' <b>this browser cannot keep PDFs between visits, so the Tome lasts until you close the page</b>'; parts.push(m); }
+  if(big.length) parts.push('<b>'+big.length+' big PDF'+(big.length!==1?'s':'')+' over 50 MB</b> &middot; browser storage has limits, so keep the original file safe too');
   if(dup.length) parts.push(dup.length+' duplicate name'+(dup.length!==1?'s':'')+' &mdash; shelved alongside the existing');
   if(rej.length){ const uq=[...new Set(rej)]; parts.push(rej.length+' rejected: '+uq[0]+(uq.length>1?' (+'+(uq.length-1)+' more, see console)':'')); }
   if(skip.length) parts.push(skip.length+' skipped'+(skip.length===1?' &mdash; '+skip[0]:' (see console)'));
   if(warn.length) parts.push('<b>'+warn.length+' warning'+(warn.length!==1?'s':'')+'</b> (see console)');
-  if(!parts.length) parts.push('No readable Keeper file found &mdash; drop an Adventure Keeper .html');
+  if(!parts.length) parts.push('No readable file found. Drop an Adventure Keeper .html, or a PDF for the Tome shelf');
   toast(parts.join(' &middot; ')+'.');
   if(warn.length) console.warn('[Keeper import] warnings:\n- '+warn.join('\n- '));
   if(rej.length>1||skip.length>1) console.info('[Keeper import] rejected:',rej,'skipped:',skip);
   if(n){ const before=(STATE.nudge&&STATE.nudge.i)||0; STATE.nudge=STATE.nudge||{i:0,s:0}; STATE.nudge.i=before+n; saveState();
-    if(Math.floor(STATE.nudge.i/3)>Math.floor(before/3)) setTimeout(()=>toast('Your whole binder lives in this browser. Back it up: Export a .keeper, or keep your binder on a drive.'),3800); }
+    if(Math.floor(STATE.nudge.i/3)>Math.floor(before/3)) setTimeout(()=>toast(backupNudgeMsg()),3800); }
 }
-function pickKeeperFile(){ let inp=document.getElementById('kkFileInput'); if(!inp){inp=document.createElement('input');inp.type='file';inp.accept='.html,text/html';inp.multiple=true;inp.id='kkFileInput';inp.style.display='none';inp.addEventListener('change',()=>{if(inp.files.length)installFromFiles(inp.files);});document.body.appendChild(inp);} inp.value='';inp.click(); }
+function pickKeeperFile(){ let inp=document.getElementById('kkFileInput'); if(!inp){inp=document.createElement('input');inp.type='file';inp.accept='.html,text/html,.pdf,application/pdf';inp.multiple=true;inp.id='kkFileInput';inp.style.display='none';inp.addEventListener('change',()=>{if(inp.files.length)installFromFiles(inp.files);});document.body.appendChild(inp);} inp.value='';inp.click(); }
+function pickTomeFile(){ let inp=document.getElementById('kkTomeInput'); if(!inp){inp=document.createElement('input');inp.type='file';inp.accept='.pdf,application/pdf';inp.multiple=true;inp.id='kkTomeInput';inp.style.display='none';inp.addEventListener('change',()=>{if(inp.files.length)installFromFiles(inp.files);});document.body.appendChild(inp);} inp.value='';inp.click(); }
+/* v20: the backup nudge stays honest about what a .keeper carries */
+function backupNudgeMsg(){ return 'Your whole binder lives in this browser. Back it up: Export a .keeper, or keep your binder on a drive.'+(Object.keys(TOMES).length?' Tomes stay out of .keeper files, so keep your PDF files themselves too.':''); }
 function uninstallKeeper(id){ delete INSTALLED[id]; delete BOOKS[id]; if(DB)idbDel('keepers',id); driveDeleteKeeper(id); rebuildIndex(); renderShelf(); }
+/* ===== v20 · THE TOME — the DM's own PDFs, shelved beside the Keepers (Frank 2026-08-12) =====
+   A Tome is a PDF the DM already owns (a DriveThruRPG adventure, a scan, house rules). The bytes
+   live in this browser's IndexedDB as a Blob and never leave it. The viewer is the browser's OWN
+   native PDF renderer in an in-app frame — no PDF library, offline forever (Chromium + Firefox);
+   where the browser can't render inline (navigator.pdfViewerEnabled===false) we degrade honestly
+   to an open-in-a-new-tab panel. HONEST CAPABILITY: without a PDF library there is no in-PDF text
+   search, so Tomes deliberately do NOT feed the Summon index — the DM marks pages by hand and we
+   jump with the native viewer's #page=N fragment. STORAGE LAW: tomes ride as 'tome:<id>' entries
+   in the existing kv store (NO DB version bump — an older build opening this DB must never see a
+   VersionError and boot into an empty-looking binder). EXCLUSIONS (v1, deliberate): tomes ride
+   NEITHER the .keeper export (state format, not binaries) NOR the Drive Binder write-through. */
+let TOMES={};                     // id -> {id,title,size,added,bookmarks:[{label,page}],blob}
+let currentTome=null, tomeURL=null;
+const TOME_WARN_BYTES=50*1024*1024, TOME_MARK_CAP=20;
+function idbEachKV(fn){return new Promise(res=>{try{const c=DB.transaction('kv','readonly').objectStore('kv').openCursor();c.onsuccess=e=>{const cur=e.target.result;if(cur){try{fn(cur.key,cur.value);}catch(_){}cur.continue();}else res(true);};c.onerror=()=>res(false);}catch(e){res(false);}});}
+async function loadTomes(){ if(!DB)return; await idbEachKV((k,v)=>{ if(typeof k==='string'&&k.indexOf('tome:')===0&&v&&v.id&&v.blob)TOMES[v.id]=v; }); }
+function tomeSave(t){ if(DB)idbPut('kv',t,'tome:'+t.id); }
+function tomeSizeLabel(n){ n=n||0; return n>=1048576?(n/1048576).toFixed(1)+' MB':Math.max(1,Math.round(n/1024))+' KB'; }
+function tomeTotalBytes(){ return Object.values(TOMES).reduce((s,t)=>s+(t.size||0),0); }
+async function installTome(f){
+  const size=f.size||0;
+  const title=String(f.name||'Tome').replace(/\.pdf$/i,'').replace(/[_]+/g,' ').replace(/\s+/g,' ').trim()||'Tome';
+  const id='tome_'+Math.abs(hashStr((f.name||'tome')+'|'+size)).toString(36);
+  const prev=TOMES[id];   // the same file dropped again updates in place and keeps its name + marks
+  const rec={id, title:prev?prev.title:title, size, added:prev?prev.added:Date.now(), bookmarks:prev?(prev.bookmarks||[]):[], blob:f};
+  TOMES[id]=rec; tomeSave(rec);
+  return {id, updated:!!prev, big:size>TOME_WARN_BYTES};
+}
+function tomeCoverHTML(id){ const t=TOMES[id], bm=(t.bookmarks||[]).length;
+  return '<div class="cover" onclick="openTome(\''+id+'\')">'+
+    '<b class="cp tl"></b><b class="cp tr"></b><b class="cp bl"></b><b class="cp br"></b>'+
+    '<span class="kind k-tome">Tome &middot; PDF</span>'+
+    '<div class="art" style="background:radial-gradient(circle at 50% 36%, #2b1a11, #1d0e0c 74%)">'+motifSVG('tome','#c98a5a')+'<span class="inrule"></span></div>'+
+    '<div class="cap"><div class="t">'+esc(t.title)+'</div><div class="m">Your PDF &middot; '+tomeSizeLabel(t.size)+(bm?' &middot; '+bm+' page mark'+(bm!==1?'s':''):'')+'</div></div></div>'; }
+function tomePdfSupported(){ return navigator.pdfViewerEnabled!==false; }   // false = the browser SAYS it can't; undefined = older browser, try it with a note
+function openTome(id){
+  const t=TOMES[id]; if(!t||!t.blob){ toast('That Tome is missing its file. Remove it and add the PDF again.'); return; }
+  currentTome=id; currentBook=null;
+  const _rz=document.getElementById('resume'); if(_rz)_rz.classList.remove('show');
+  if(tomeURL){ try{URL.revokeObjectURL(tomeURL);}catch(e){} }
+  tomeURL=URL.createObjectURL(t.blob);
+  document.getElementById('paneL').innerHTML='<div class="tome-shell"><div class="tome-bar" id="tomeBar"></div><div id="tomeFrameWrap"></div></div>';
+  renderTomeBar(); tomeMount(1);
+  document.getElementById('summonPh').textContent='Summon anything over '+stripEnt(t.title)+'…';
+  if(splitOn)toggleSplit();
+  go('stage');
+  document.getElementById('bmkbar').innerHTML='';   // paragraph bookmarks are Keeper territory; a Tome marks pages in its own bar
+  renderStrip();
+  if(STATE.combat) openCombat(); else hideCombat();
+}
+function tomeMount(page){
+  const wrap=document.getElementById('tomeFrameWrap'); const t=TOMES[currentTome]; if(!wrap||!t)return;
+  if(tomePdfSupported()){
+    /* a FRESH frame per jump: fragment-only src changes don't reliably renavigate the native viewer */
+    wrap.innerHTML='<iframe class="keeper-frame tome-frame" title="'+esc(t.title)+'" src="'+tomeURL+'#page='+(page||1)+'"></iframe>';
+  } else {
+    wrap.innerHTML='<div class="pane-inner"><div class="tome-fallback">'+
+      '<p><b>This browser will not show a PDF inside the page.</b></p>'+
+      '<p>Your Tome is safe on the shelf. Open it in its own tab instead; your page marks still remember their numbers.</p>'+
+      '<button class="tbtn" onclick="tomeNewTab('+(page||1)+')">Open in a new tab</button></div></div>';
+  }
+}
+function tomeGo(p){ tomeMount(p); }
+function tomeNewTab(page){ if(!tomeURL)return; const w=window.open(tomeURL+'#page='+(page||1),'_blank'); if(!w)toast('The browser blocked the tab. Allow pop-ups for this page and try again.'); }
+function renderTomeBar(){
+  const bar=document.getElementById('tomeBar'); const t=TOMES[currentTome]; if(!bar||!t)return;
+  let h='<button class="tbtn" onclick="go(\'shelf\')" title="Back to the shelf">&#8592; Shelf</button>'+
+    '<span class="tt" id="tomeTitle">'+esc(t.title)+'</span>'+
+    '<button class="tbtn" onclick="tomeRename()" title="Rename this Tome (the file itself is untouched)">&#9998;</button>'+
+    '<span class="tsz">PDF &middot; '+tomeSizeLabel(t.size)+'</span>';
+  (t.bookmarks||[]).forEach((bm,i)=>{ h+='<span class="tome-chip"><span onclick="tomeGo('+(+bm.page||1)+')" title="Jump to page '+(+bm.page||1)+'">'+esc(bm.label)+' <span class="pg">p.'+(+bm.page||1)+'</span></span><button class="rm" title="Remove this mark" onclick="event.stopPropagation();tomeDelMark('+i+')">&times;</button></span>'; });
+  h+='<span class="tome-add"><input id="tomeMkLabel" placeholder="Mark a page: label" maxlength="40"><input id="tomeMkPage" type="number" min="1" placeholder="page"><button class="tbtn" onclick="tomeAddMark()">&#43; Mark</button></span>'+
+    '<button class="tbtn" onclick="tomeNewTab(1)" title="Open this PDF in its own browser tab">&#8599; New tab</button>'+
+    '<button class="tbtn warn" onclick="removeTome(\''+t.id+'\',this)" title="Take this Tome off the shelf. The PDF file on your computer is untouched.">Remove</button>';
+  if(navigator.pdfViewerEnabled===undefined) h+='<span class="tsz">If the page below stays blank, this browser cannot show PDFs inline. Use New tab.</span>';
+  bar.innerHTML=h;
+  const li=document.getElementById('tomeMkLabel'), pi=document.getElementById('tomeMkPage');
+  [li,pi].forEach(el=>el&&el.addEventListener('keydown',e=>{ e.stopPropagation(); if(e.key==='Enter'){e.preventDefault();tomeAddMark();} }));
+}
+function tomeAddMark(){
+  const t=TOMES[currentTome]; if(!t)return;
+  const li=document.getElementById('tomeMkLabel'), pi=document.getElementById('tomeMkPage');
+  const page=Math.max(1,Math.floor(+(pi&&pi.value)||0));
+  if(!page){ toast('Give the mark a page number. The native viewer shows the page you are on.'); if(pi)pi.focus(); return; }
+  t.bookmarks=t.bookmarks||[];
+  if(t.bookmarks.length>=TOME_MARK_CAP){ toast('This Tome already has '+TOME_MARK_CAP+' page marks. Remove one first.'); return; }
+  const label=String((li&&li.value)||'').replace(/\s+/g,' ').trim()||('Page '+page);
+  t.bookmarks.push({label:label.slice(0,40),page}); tomeSave(t); renderTomeBar();
+  toast('Marked <b>'+esc(label)+'</b> at page '+page+'. The chip jumps straight there.');
+}
+function tomeDelMark(i){ const t=TOMES[currentTome]; if(!t||!t.bookmarks||!t.bookmarks[i])return; t.bookmarks.splice(i,1); tomeSave(t); renderTomeBar(); }
+function tomeRename(){
+  const t=TOMES[currentTome]; const sp=document.getElementById('tomeTitle'); if(!t||!sp||sp.tagName==='INPUT')return;
+  const inp=document.createElement('input'); inp.className='bmk-edit'; inp.id='tomeTitle'; inp.value=stripEnt(t.title);
+  sp.replaceWith(inp); inp.focus(); inp.select();
+  const commit=save=>{ if(inp._done)return; inp._done=true;
+    if(save){ const v=inp.value.replace(/\s+/g,' ').trim(); if(v){ t.title=v.slice(0,80); tomeSave(t); } }
+    renderTomeBar(); };
+  inp.addEventListener('keydown',e=>{ e.stopPropagation(); if(e.key==='Enter'){e.preventDefault();commit(true);} else if(e.key==='Escape'){e.preventDefault();commit(false);} });
+  inp.addEventListener('blur',()=>commit(true));
+}
+function removeTome(id,btn){
+  if(!armTap('tomedel'+id,btn,'Tap again to remove'))return;
+  delete TOMES[id]; if(DB)idbDel('kv','tome:'+id);
+  if(currentTome===id){ currentTome=null; if(tomeURL){ try{URL.revokeObjectURL(tomeURL);}catch(e){} tomeURL=null; } go('shelf'); }
+  renderShelf();
+  toast('Tome removed from the shelf. The PDF file itself is still wherever you keep it.');
+}
+function tomeAboutUpdate(){
+  const el=document.getElementById('aboutTomes'); if(!el)return;
+  const n=Object.keys(TOMES).length;
+  el.innerHTML='Tomes: shelve your own PDFs beside your Keepers. They are stored in this browser only and never leave it. They stay out of .keeper backups and the Drive Binder, so keep the PDF files themselves too.'+
+    (n?' On this shelf now: '+n+' Tome'+(n!==1?'s':'')+' using '+tomeSizeLabel(tomeTotalBytes())+' of browser storage.':'');
+}
 /* ===== the whole binder as one portable .keeper file ===== */
 function exportBinder(){
+  /* v20: TOMES are deliberately NOT in the package — PDF binaries would balloon the backup
+     and .keeper is a state format, not a file locker. The DM's PDF is its own backup. */
   const pkg={format:'grimoire-binder',v:1,exported:Date.now(),state:STATE,keepers:Object.values(INSTALLED)};
   const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([JSON.stringify(pkg)],{type:'application/json'}));
   a.download='my-grimoire.keeper'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),3000);
   const nk=Object.keys(INSTALLED).length;
-  toast('Exported your binder &mdash; '+nk+' installed book'+(nk!==1?'s':'')+' + all your parties, boards &amp; saves, in one .keeper file.');
+  toast('Exported your binder &mdash; '+nk+' installed book'+(nk!==1?'s':'')+' + all your parties, boards &amp; saves, in one .keeper file.'+
+    (Object.keys(TOMES).length?' Tomes (your PDFs) stay out of it, so keep those files safe yourself.':''));
 }
 /* shared adoption: fold a {state,keepers} package into the running binder (used by Import + the Drive Binder) */
 async function adoptBinder(pkg,opts){ opts=opts||{};
@@ -1804,6 +1969,7 @@ const STAGE={
 function stageHTML(id){return (STAGE[id]||STAGE._generic)(id);}
 function openBook(id){
   currentBook=id;
+  currentTome=null;   // v20: a book on the stage means the Tome frame is gone
   voiceFrameDoc=null;   // v13: stale frame docs never keep chips; the new frame re-registers on load
   const _rz=document.getElementById('resume'); if(_rz)_rz.classList.remove('show');  // opening a book answers the "resume?" prompt — clear it off the stage
   if(STATE.bookParty&&STATE.bookParty[id]!=null&&PARTIES[STATE.bookParty[id]]){activeParty=STATE.bookParty[id];PARTY=PARTIES[activeParty].pcs;}
@@ -4164,6 +4330,7 @@ document.getElementById('palInput').addEventListener('input',()=>{palSel=0;rende
   try{ DB=await idbOpen(); }catch(e){ DB=null; }
   await loadState();
   await loadInstalled();
+  await loadTomes();   // v20: the Tome shelf (PDF blobs ride the kv store as 'tome:<id>' entries)
   /* v13½ · Drive Binder: if this browser has a linked binder folder (USB stick), load from it */
   await driveConnect();
   /* seeded builds pre-install their sample Keeper(s) once (build injects window.KK_PREINSTALL) */
@@ -4178,7 +4345,7 @@ document.getElementById('palInput').addEventListener('input',()=>{palSel=0;rende
   soundApplyMode(); renderSound(); soundReconnect();
   try{ await theaterRestore(); }catch(e){ console.warn('[theater] restore skipped:',e&&e.message); }
   go('shelf'); showResume();
-  if(STATE.nudge.s%5===0) setTimeout(()=>toast('Your whole binder lives in this browser. Back it up: Export a .keeper, or keep your binder on a drive.'),1600);
+  if(STATE.nudge.s%5===0) setTimeout(()=>toast(backupNudgeMsg()),1600);
 })();
 </script>
 </body>
