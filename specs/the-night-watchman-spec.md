@@ -14,7 +14,8 @@
 | Title | The Night Watchman |
 | Format | Keyed-entry solo adventure (no DM required) |
 | System | D&D 5e, SRD 5.2.1 content only (no Product Identity; publishable on our own site and itch) |
-| Character | One 1st-level PC, bring-your-own or included pregen, plus an optional sidekick |
+| Character | One 3rd-level PC, bring-your-own or included pregen, plus an optional sidekick |
+| Night Rating | 2 of 5 lanterns (see section 5.0) |
 | Play time | 2 to 2.5 hours per run; replayable |
 | Length target | 120 to 180 keyed entries, 45 to 70 PDF pages |
 | Deliverables | `downloads/the-night-watchman.html` (hyperlinked, self-contained, site styling) and `downloads/the-night-watchman.pdf` |
@@ -55,27 +56,49 @@ These are distilled from the market's documented quality bar (see The Solo Lane 
 
 | Act | Fiction | Function | Entry budget |
 |---|---|---|---|
-| **First Watch** (dusk to midnight) | The route as normal: posts, townsfolk, small wrongnesses | Tutorial in disguise: teaches checks, the map, the oracle of the codewords; 1 easy combat or evasion | ~35 entries |
-| **Middle Watch** (the dead hours) | The threat surfaces; the route breaks; choices about who and what to protect | The open middle: posts can be visited in player-chosen order; consequences accumulate | ~70 entries |
+| **First Watch** (dusk to midnight) | The route as normal: posts, townsfolk, small wrongnesses | Tutorial in disguise: teaches checks, the map, the codewords; a guaranteed mid-act encounter | 64 authored, ~36 played (drafted) |
+| **Middle Watch** (the dead hours) | The threat surfaces; the route breaks; choices about who and what to protect | The open middle: posts can be visited in player-chosen order; consequences accumulate | ~60 entries |
 | **Last Watch** (toward dawn) | Confrontation shaped by accumulated state | Convergence: 3 to 4 distinct finales selected by codewords, not by a single "true path" | ~45 entries |
 
 ### 4.2 The route map
 
-Seven posts on the watchman's circuit (gate, mill, chapel yard, warehouse row, the green, the low bridge, the beacon). The map ships in the book (and as progressive-reveal regions in the HTML edition). Travel between posts is an entry choice; some transitions have night encounters that vary by act and by the Dawn Track.
+Five posts on the watchman's circuit, mapped onto canonical Brackenford locations: **the Broken Wheel** (the inn), **the Shrine of the Quiet Hand**, **Greel's Yard**, **the Square and the Well**, and **the Broken Bridge** (with the Drowned Lane across the water). The ford is the circuit's start and end rather than a post. Revised from seven generic posts to five canonical ones during First Watch drafting: seven proved to be more ground than a two-hour night can cover, and Brackenford already had better locations than the placeholders. The map ships in the book (and as progressive-reveal regions in the HTML edition). Travel between posts is an entry choice; some transitions have night encounters that vary by act and by the Dawn Track.
 
 ### 4.3 State: codewords and the Dawn Track
 
-- **Codewords:** maximum 12 in the whole adventure, thematic single words (e.g. EMBERS, VOUCHED, MARKED). Written on the sheet when granted; later entries branch on them. Codewords are the memory of the night.
+- **Codewords:** maximum 12 in the whole adventure, of which First Watch spends eight (ICEBOUND, VOUCHED, MUGSET, HANDSIGN, WITNESS, BLACKNAIL, LARDER, BLOODED); later acts add at most four new ones and otherwise branch on these, which is the reincorporation pillar doing its job, thematic single words (e.g. EMBERS, VOUCHED, MARKED). Written on the sheet when granted; later entries branch on them. Codewords are the memory of the night.
 - **The Dawn Track:** a 12-step track. Certain failures, rests, and deliberate delays advance it. When it fills, dawn breaks and the finale begins *in whatever state the night is in*. The track is the pacing engine and the anti-turtling mechanism: resting is allowed but costs night.
 - **Lamp oil:** a 4-unit resource. Light matters mechanically (darkness imposes disadvantage on route events; some entries need the lamp). Oil is the one supply decision the player makes all night. It exists because the tiers (below) hook into it.
 
-## 5. Solo difficulty tiers: the Watch Lamps
+## 5. Difficulty: the Night Rating and the Watch Lamps
+
+### 5.0 Two different questions
+
+Difficulty in a solo *line* has to answer two questions that do not have the same answer, so the system has two parts.
+
+**"How hard is this module?" is a shelf question.** It is asked once, before purchase, by someone choosing between six modules on a page. It is answered by the **Night Rating**: 1 to 5 lanterns, printed on the cover, in the listing, and on the Hoard card. A 1-lantern night is a gentle haunted evening; a 5-lantern night expects a played-out character and will end runs. This is what gives the line range and lets a returning customer pick their next night by appetite. It costs nothing to author because it is a description of the module we were going to build anyway.
+
+**"How hard is tonight, for me?" is a table question.** It is asked by the person holding the dice, and the honest answers vary from "I am here to write in a journal and I do not want to lose the character" to "I want it to be able to kill me." That is the **Watch Lamp** tier, chosen and changeable at play time.
+
+Dropping the tiers and keeping only the rating was considered and rejected: a rating alone means a player who finds module three too punishing has no move except to stop buying the line, and a player who finds module one toothless has no move except to stop caring. The tiers keep both of them in the line. Critically, the tiers were designed so they are nearly free to author: **they change dials, never text**, so a rated-and-tiered module costs the same to write as a rated one.
+
+**The two interlock.** The Night Rating sets where the module's Lantern Watch sits; Ember and Dark flex around that anchor. So Lantern Watch on a 4-lantern module is genuinely harder than Lantern Watch on a 2-lantern module, and Ember on a 5-lantern night is still a real night. The rating is the module's identity. The tier is the player's accommodation. Neither substitutes for the other.
+
+| Night Rating | What Lantern Watch means on that module |
+|---|---|
+| 1 lantern | Atmosphere and mystery; combat avoidable throughout; failure costs time and story, not the character |
+| 2 lanterns | *The Night Watchman.* One or two real fights, losable, with rescue-with-cost branches everywhere |
+| 3 lanterns | Resource attrition matters; the character can die to carelessness |
+| 4 lanterns | Expects system mastery and a built character; death on a bad sequence of choices |
+| 5 lanterns | Expects a survivor of earlier nights; death on a bad sequence of rolls |
+
+### 5.1 The Watch Lamps
 
 Three tiers, chosen at the start of the night, switchable at any rest with no penalty and no scolding text. The tier system is the answer to the two truths the research surfaced: 5e math wants four PCs, and solo players range from journal-first storytellers to ironman grognards. One book must serve both.
 
 **Design rule that keeps this affordable to author: tiers never fork entries.** All three tiers read the same numbered entries. A tier changes dials, not text branches. The dials live in a one-line **Watch Lamp sidebar** inside every combat and hazard entry.
 
-### 5.1 The tiers
+### 5.2 The tiers
 
 | | 🕯️ **Ember Watch** (story) | 🏮 **Lantern Watch** (standard) | 🌑 **Dark Watch** (veteran) |
 |---|---|---|---|
@@ -91,13 +114,13 @@ Three tiers, chosen at the start of the night, switchable at any rest with no pe
 
 **Rekindle token:** spend one to reroll any d20 you just rolled, or to auto-stabilize at 0 HP, or to refill 1 lamp oil. One mechanic, three uses, zero extra tracking (it is two checkboxes on the sheet).
 
-### 5.2 The Watch Lamp sidebar format
+### 5.3 The Watch Lamp sidebar format
 
 Every combat/hazard entry ends with one compact line, always in the same order, so the eye learns where to look:
 
 > **Watch Lamp** · Ember: the ghast has 22 HP and will not pursue past the lychgate. · Lantern: 33 HP. · Dark: 33 HP; it targets whoever carries the lamp.
 
-### 5.3 Tier rules for the red team
+### 5.4 Tier rules for the red team
 
 - Ember must be completable by the pregen with median dice and no system mastery (verify by scripted playthrough).
 - Lantern must be losable but not swingy: no single enemy action may deal more than 60% of the pregen's max HP.
@@ -106,8 +129,8 @@ Every combat/hazard entry ends with one compact line, always in the same order, 
 
 ## 6. Character rules
 
-- **Bring your own:** any 1st-level 5e character (2014 or 2024 rules; entries reference checks and saves in edition-neutral wording).
-- **Pregen included:** the default watchman, a human fighter with a sensible sheet, one page, ready in two minutes. A second pregen (a cleric of the dawn) ships in the appendix for replay contrast.
+- **Bring your own:** any 3rd-level 5e character (2014 or 2024 rules; entries reference checks and saves in edition-neutral wording).
+- **Pregen included:** the default watchman, a human champion fighter with a sensible sheet, one page, ready in two minutes. A second pregen (a cleric of the dawn) ships in the appendix for replay contrast.
 - **The watch-dog (optional sidekick):** a mastiff-pattern companion with a simple sidekick block (attack, help, guard; three abilities, no spell list). It solves the action economy the friendly way and gives the night a second heartbeat. Entries occasionally address it ("If the dog is with you..."), which doubles as conditional-content coverage. On Ember it cannot die, only flee.
 - **SRD 5.2.1 compliance:** all creatures and effects drawn from or reskinned within SRD content. No named WotC IP. This keeps every distribution channel open, including our own site, itch, and DriveThruRPG later.
 
@@ -162,9 +185,9 @@ MUST items; a failure on any blocks release.
 1. **No dead ends:** traverse every failure branch; each leads to a live entry that advances or complicates the night. Zero "restart" outcomes outside Dark Watch death.
 2. **No orphans or broken links:** every entry reachable from some path; every referenced entry exists; HTML anchors all resolve.
 3. **Closure:** every finale is a complete ending with aftermath text reflecting at least 3 codewords.
-4. **Tactics scripts:** every combat has behavior, morale, and retreat lines. Sample-play each combat on all three tiers per the tier rules in 5.3.
+4. **Tactics scripts:** every combat has behavior, morale, and retreat lines. Sample-play each combat on all three tiers per the tier rules in 5.4.
 5. **Balance bounds:** verify the 60% single-hit cap (Lantern), Ember completability, and Dark winnability by scripted playthroughs with the pregen.
-6. **Conditional coverage:** count the conditional entries; at least 25, touching martial, caster, skill-monkey, and dog, with no capability referenced that a 1st-level SRD character cannot have.
+6. **Conditional coverage:** count the conditional entries; at least 25, touching martial, caster, skill-monkey, and dog, with no capability referenced that a 3rd-level SRD character cannot have.
 7. **Tracker audit:** confirm nothing beyond the four trackers is ever required.
 8. **Tier integrity:** confirm no Watch Lamp sidebar changes story outcome, only dials.
 9. **Prose audit:** every entry passes the read-aloud test and the section 9 banned-list grep (including the em dash check); flag any entry over the word caps.
@@ -172,7 +195,13 @@ MUST items; a failure on any blocks release.
 11. **Primer test:** a reader who has never soloed can start playing within 10 minutes using only the primer (test with a cold reader).
 12. **State audit:** all 12 codewords are both grantable and consumed somewhere; the Dawn Track's every step is reachable; lamp oil can run out and the book says what happens when it does.
 
-## 13. Out of scope for v2.0
+## 13. Changelog
+
+**v1.1.** Character level revised from 1st to 3rd. Reasons, in order of weight: (a) at 1st level a single critical hit ends a solo run, which makes Dark Watch a coin flip rather than a challenge and makes fail-forward branching cosmetic, because the player is dead before the branch fires; (b) 3rd level puts the subclass online, and the subclass is the single richest source of the class-conditional entries that pillar 5 requires, since two 1st-level fighters are nearly the same character and two 3rd-level fighters are not; (c) roughly 25 to 30 hit points gives the encounters room to hurt without killing, which is the range the tier dials are built to work in; (d) the fiction survives it, since a watchman with a couple of years behind them is still a humble figure. Consequence: encounter budgets, the pregens, and the 60% single-hit cap are all recalculated against a 3rd-level baseline.
+
+**v1.2.** Difficulty restructured into the Night Rating (per module, shelf-facing) plus the Watch Lamps (per session, player-facing). See section 5.0 for why both are kept.
+
+## 14. Out of scope for v2.0
 
 - The browser-native interactive edition with auto-tracked state (Rung 4): structure must support it, but it does not gate this release.
 - The standalone solo toolkit (Rung 2): Appendix A is the teaser, not the product.
