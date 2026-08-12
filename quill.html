@@ -4,19 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gnasher's Quill &mdash; record your session, offline, with no AI service listening</title>
+  <title>Gnasher's Quill: record your session offline, with no AI service listening</title>
   <meta name="description" content="Gnasher's Quill records your tabletop session and turns it into a transcript on your own machine. No cloud, no subscription, no account, and no AI service ever hears your table. It gives back a recap, a Ledger of what you owe your players, a Concordance, a Cold Open, and a Mirror on how you ran the night.">
   <meta name="theme-color" content="#1a0000">
   <link rel="canonical" href="https://longislanddungeonmaster.com/quill">
   <link rel="icon" href="img/brand.png" type="image/png">
 
-  <meta property="og:title" content="Gnasher's Quill &mdash; your session, transcribed on your own machine">
+  <meta property="og:title" content="Gnasher's Quill: your session, transcribed on your own machine">
   <meta property="og:description" content="Record the table, transcribe it offline, and get back what your players actually said. No cloud, no subscription, no AI service listening. The third leg of the Grimoire and the Satchel.">
   <meta property="og:image" content="https://longislanddungeonmaster.com/img/og.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://longislanddungeonmaster.com/quill">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Gnasher's Quill &mdash; your session, transcribed on your own machine">
+  <meta name="twitter:title" content="Gnasher's Quill: your session, transcribed on your own machine">
   <meta name="twitter:description" content="Record the table, transcribe it offline, get back what your players actually said. No cloud, no subscription, no AI service listening.">
   <meta name="twitter:image" content="https://longislanddungeonmaster.com/img/og.jpg">
 
@@ -107,6 +107,12 @@
     .g-spot .copy ul { list-style: none; padding: 0; margin: 1rem 0 0; }
     .g-spot .copy li { position: relative; padding-left: 1.5rem; margin-bottom: .55rem; color: rgba(255,255,255,.74); font-size: .88rem; line-height: 1.5; }
     .g-spot .copy li i { position: absolute; left: 0; top: .2rem; color: var(--gold); font-size: .8rem; }
+
+    /* ---- the Lexicon art (Gnasher) ---- */
+    .q-lex-art { text-align: center; }
+    .q-lex-art img { width: min(340px, 82%); display: block; margin: 0 auto; filter: drop-shadow(0 20px 42px rgba(0,0,0,.6)); }
+    .q-lex-cap { margin-top: .8rem; font-family: 'Merriweather Sans', sans-serif; font-size: .76rem; font-style: italic; color: rgba(201,168,76,.62); letter-spacing: .3px; }
+    .g-spot .copy code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .84em; color: var(--gold-light); background: rgba(201,168,76,.1); border-radius: 3px; padding: .05rem .3rem; }
 
     /* ---- transcript panel (the Chorus) ---- */
     .q-script { background: linear-gradient(180deg, #1c0708, #130506); border: 1px solid rgba(201,168,76,.5); border-radius: 10px; overflow: hidden; box-shadow: 0 18px 44px rgba(0,0,0,.5); }
@@ -200,7 +206,7 @@
       <span class="g-status"><span class="dot"></span> Free &middot; offline &middot; early build &middot; Windows</span>
       <p class="g-kicker">The third leg of the table</p>
       <h1 class="g-title g-breathe">Gnasher's Quill<sup class="tm">&trade;</sup></h1>
-      <p class="g-lede">Record your session. Get back what your table <b>actually said</b>. The Quill listens on the machine already sitting on your table, transcribes it there, and hands you a night you can read &mdash; a recap, the promises you owe your players, a who's-who, and an honest look at how you ran it. <b>Nothing is uploaded. No AI service ever hears your table.</b></p>
+      <p class="g-lede">Record your session. Get back what your table <b>actually said</b>. The Quill listens on the machine already sitting on your table, transcribes it there, and hands you a night you can read: a recap, the promises you owe your players, a who's-who, and an honest look at how you ran it. <b>Nothing is uploaded. No AI service ever hears your table.</b></p>
       <div class="g-cta-row">
         <a class="g-btn g-btn-gold" href="#what"><i class="fas fa-feather-pointed" aria-hidden="true"></i> See what it gives back</a>
         <a class="g-btn g-btn-ghost" href="#get-it"><i class="fas fa-download" aria-hidden="true"></i> Download it free</a>
@@ -214,7 +220,7 @@
       <div class="q-stand">
         <i class="fas fa-shield-halved shield" aria-hidden="true"></i>
         <h2>Every other session tool is a cloud subscription</h2>
-        <p>They all ask the same thing: upload six hours of your friends talking to somebody else's server, and pay monthly for the privilege. Your in-jokes, your arguments, the bit where somebody's real life leaked into the game &mdash; all of it, on a machine you don't own, under a policy you didn't write.</p>
+        <p>They all ask the same thing: upload six hours of your friends talking to somebody else's server, and pay monthly for the privilege. Your in-jokes, your arguments, the bit where somebody's real life leaked into the game. All of it, on a machine you don't own, under a policy you didn't write.</p>
         <p><strong>The Quill doesn't, and that isn't a limitation to apologise for. It's the product.</strong> The speech engine runs locally, on your hardware, with the network off if you like. The audio and the transcript stay in a folder you can see.</p>
         <div class="q-nots">
           <span><i class="fas fa-xmark"></i> No cloud</span>
@@ -243,7 +249,7 @@
           <div class="num">2</div>
           <div class="key">During the game</div>
           <h3>Mark the moments</h3>
-          <p>A key, a floating button, or your phone. Marks are <em>retroactive</em> &mdash; you press <em>after</em> the beat lands, because nobody sees a great moment coming.</p>
+          <p>A key, a floating button, or your phone. Marks are <em>retroactive</em>. You press <em>after</em> the beat lands, because nobody sees a great moment coming.</p>
         </div>
         <div class="g-step">
           <div class="num">3</div>
@@ -283,20 +289,49 @@
           <i class="fas fa-chart-simple fi" aria-hidden="true"></i>
           <span class="file">The Mirror</span>
           <h3>How you ran it</h3>
-          <p>The shape of the night. Where the clock actually went, your longest unbroken stretch of narration, the dead air. No other session tool tells a DM anything about their own craft.</p>
+          <p>The shape of the night. Where the clock actually went, your longest unbroken stretch of narration, the dead air. Most session tools tell you what happened in the game. This one tells you how you ran it.</p>
         </article>
         <article class="g-feat">
           <i class="fas fa-bookmark fi" aria-hidden="true"></i>
           <span class="file">The Marks</span>
           <h3>The bits worth keeping</h3>
-          <p>Every moment you flagged, served back with the minutes of audio <em>leading into</em> it &mdash; so the line that made the table lose it is still there, in context, in their own voices.</p>
+          <p>Every moment you flagged, served back with the minutes of audio <em>leading into</em> it, so the line that made the table lose it is still there in context, timestamped in the recording.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-spell-check fi" aria-hidden="true"></i>
+          <span class="file">The Lexicon</span>
+          <h3>Your campaign's own words</h3>
+          <p>Every proper noun your table says, kept in one list the transcriber reads before it writes. It's the difference between <em>"Vethric Ashgrave"</em> and four sessions of phonetic soup. You don't type it: point it at the campaign notes you already keep and it pulls the names out for you.</p>
         </article>
         <article class="g-feat">
           <i class="fas fa-calculator fi" aria-hidden="true"></i>
           <span class="file">The method</span>
           <h3>Arithmetic, not opinion</h3>
-          <p>All of it is deterministic &mdash; word lists, timestamps, and counting. Nothing here calls a model to decide what your session <em>meant</em>. Where a number can't be known, it says <b>"couldn't tell"</b> instead of inventing one.</p>
+          <p>All of it is deterministic: word lists, timestamps, and counting. Nothing here calls a model to decide what your session <em>meant</em>. Where a number can't be known, it says <b>"couldn't tell"</b> instead of inventing one.</p>
         </article>
+      </div>
+    </section>
+
+    <!-- ==================== THE LEXICON ==================== -->
+    <section class="g-sec" id="lexicon">
+      <div class="g-spot">
+        <div class="copy">
+          <p class="sub">The Lexicon</p>
+          <h2>It learns your campaign's words</h2>
+          <p>A transcriber has never heard of Vethric Ashgrave. Left alone it will guess, differently every time, and you'll spend four sessions reading phonetic soup where your villain's name should be.</p>
+          <p>The Lexicon is one plain list of the proper nouns your table actually says: your party, your NPCs, your towns, your factions. The transcriber reads it before it writes, and the names come out spelled right.</p>
+          <p><b>You don't have to type it.</b> Point it at the campaign notes you already keep and it reads the names out of them for you. It shows you what it wants to add before it changes anything, and it never touches a line you wrote yourself.</p>
+          <ul>
+            <li><i class="fas fa-file-lines"></i> <b>Built from your own notes.</b> Any folder of <code>.md</code> or <code>.txt</code> files you already have.</li>
+            <li><i class="fas fa-eye"></i> <b>Shows its work first.</b> It lists what it would add and changes nothing until you say so.</li>
+            <li><i class="fas fa-pen-nib"></i> <b>Your edits are yours.</b> Suggestions land in their own block at the bottom. Prune it, or bin the lot.</li>
+            <li><i class="fas fa-scale-balanced"></i> <b>It stops at about eighty names.</b> These are hints, not a dictionary. Feed it too many and the transcriber starts hearing names in quiet audio. That's a real failure from a real session, so there's a ceiling.</li>
+          </ul>
+        </div>
+        <div class="q-lex-art">
+          <img src="img/gnash-quill.png" alt="Gnasher the mimic, lid open, with a quill pen standing in an inkwell" width="760" height="760">
+          <p class="q-lex-cap">Gnasher keeps the words.</p>
+        </div>
       </div>
     </section>
 
@@ -305,12 +340,12 @@
       <div class="g-spot">
         <div class="copy">
           <p class="sub">The Chorus</p>
-          <h2>Who said what, known &mdash; not guessed</h2>
-          <p>Working out speakers from one room microphone is genuinely hard, and five people talking over each other defeats it entirely. So don't try. <b>If every voice records itself, the speaker isn't inferred &mdash; it's known.</b></p>
+          <h2>Who said what, known instead of guessed</h2>
+          <p>Working out speakers from one room microphone is genuinely hard, and five people talking over each other defeats it entirely. So don't try. <b>If every voice records itself, the speaker isn't inferred. It's known.</b></p>
           <p>Each player opens a link on their own phone, types their name, and taps record. Afterwards the tracks are braided into one transcript with the names already on it.</p>
           <ul>
             <li><i class="fas fa-mobile-screen"></i> <b>One phone per voice.</b> No app to install; it's a page on your table's own network.</li>
-            <li><i class="fas fa-globe"></i> <b>Remote tables get it free.</b> Everyone records their local mic &mdash; nobody has to capture the call.</li>
+            <li><i class="fas fa-globe"></i> <b>Remote tables get it free.</b> Everyone records their local mic, so nobody has to capture the call.</li>
             <li><i class="fas fa-user-slash"></i> <b>It also shows who <em>didn't</em> get to talk.</b> That is a harder read than it sounds, and a useful one.</li>
             <li><i class="fas fa-moon"></i> <b>Phones sleep.</b> The page asks for a wake lock and warns you; if one dozes, that player rejoins and everything already uploaded is safe.</li>
           </ul>
@@ -328,7 +363,7 @@
             <div class="ln"><span class="ts">01:42:24</span><span class="who dm">DM</span><span class="said">He looks at the door, not at you.</span></div>
             <div class="ln"><span class="ts">01:42:31</span><span class="who p1">Kris</span><span class="said">Then I look at the door too.</span></div>
           </div>
-          <div class="q-script-foot">Timestamps and names, straight out of the merge &mdash; no model decided who spoke.</div>
+          <div class="q-script-foot">Timestamps and names, straight out of the merge. No model decided who spoke.</div>
         </div>
       </div>
     </section>
@@ -342,8 +377,8 @@
       <div class="g-list">
         <ul>
           <li><b>Ask your table before you record them.</b> Every time. A recorder nobody agreed to is a betrayal, not a tool.</li>
-          <li><b>One microphone means no speaker labels.</b> That's what the Chorus is for. Crosstalk across a loud table beats single-mic speaker guessing, and the Quill won't pretend otherwise.</li>
-          <li><b>It's a tool for a table in a house, not a hardened server.</b> Controls and transcripts are locked to the machine running it. Don't put it on a network you wouldn't hand a USB stick to.</li>
+          <li><b>One microphone means no speaker labels.</b> On a single mic it writes down what was said, not who said it. That's what the Chorus is for: everyone records on their own phone, and then the speaker is known. A loud table talking over one mic is the hardest case there is, and it's the one I've tested least.</li>
+          <li><b>It's built for a table in a house, not for the open internet.</b> Your transcripts and the controls stay locked to the machine running it. Phones on the same Wi-Fi can reach the recording page, which is how the Chorus works. Run it on your home Wi-Fi, not on hotel or coffee-shop Wi-Fi.</li>
           <li><b>Windows is where it was built and measured.</b> The macOS and Linux paths are written and follow the documented interfaces, but nobody has recorded a real session on a Mac with it yet.</li>
           <li><b>It transcribes; it doesn't write your campaign.</b> The pages above are counted and quoted from what was said. The judgement stays yours.</li>
         </ul>
@@ -362,7 +397,7 @@
           <i class="fas fa-feather-pointed" aria-hidden="true"></i>
           <b>Gnasher's Quill<sup class="tm">&trade;</sup></b>
           <span class="verb">records</span>
-          <span class="blurb">The night your table actually played, kept in your own words &mdash; offline, on your own machine.</span>
+          <span class="blurb">The night your table actually played, kept in your own words, offline, on your own machine.</span>
         </div>
         <a class="q-leg" href="/grimoire">
           <span class="tag now">Available now</span>
@@ -382,45 +417,20 @@
       <p class="q-chain">the Quill <b>records</b> <i class="fas fa-arrow-right-long" aria-hidden="true"></i> the Grimoire <b>holds</b> <i class="fas fa-arrow-right-long" aria-hidden="true"></i> the Satchel <b>carries</b></p>
     </section>
 
-    <!-- ==================================================================
-         DOWNLOAD-SLOT  ·  PLACEHOLDER — NOT YET RELEASED
-         ------------------------------------------------------------------
-         The distributable does not exist on this site yet. Nothing on this
-         page may claim it is downloadable until this block is replaced.
-
-         TO GO LIVE, swap the block between the DOWNLOAD-SLOT markers for
-         the release version, and make these edits at the same time:
-           1. Drop the package into  downloads/  (match the sibling naming:
-              downloads/gnashers-grimoire.html, downloads/gnashers-satchel.html).
-           2. Replace the two buttons below with the real one, e.g.
-              <a class="g-btn g-btn-gold" href="downloads/<REAL-FILENAME>" download>
-                <i class="fas fa-download" aria-hidden="true"></i> Download Gnasher's Quill &mdash; free</a>
-           3. Change .q-slot's border from `1px dashed` to `1px solid` (see the
-              stylesheet above) so it stops reading as a placeholder.
-           4. Hero: change the .g-status pill text and the "How to get it"
-              button label/target to the real download.
-           5. The Trio section: swap the Quill's `<span class="tag soon">Testers
-              first</span>` for `<span class="tag now">Available now</span>`.
-           6. Cross-links: grimoire.html and satchel.html each carry a
-              "the Quill records" line in their .g-more paragraph — update the
-              wording there if the status language changes.
-           7. index.html Creations dropdown: the entry reads
-              "Gnasher's Quill (session recorder)" — adjust if needed.
-         ================================================================== -->
     <!-- DOWNLOAD-SLOT:START -->
     <section id="get-it" class="q-slot">
-      <h2>Take it &mdash; and then tell me what broke</h2>
+      <h2>Take it, then tell me what broke</h2>
       <p>The Quill was built for <b>my own table</b> and it has been running there. This is an <b>early build</b>, handed out to find the sharp edges before it goes wide. It's free, it always will be, and it works entirely offline.</p>
 
       <div class="g-cta-row">
-        <a class="g-btn g-btn-gold" href="downloads/gnashers-quill-1.8.0.zip" download="gnashers-quill-1.8.0.zip"><i class="fas fa-download" aria-hidden="true"></i> Download Gnasher's Quill &mdash; free</a>
+        <a class="g-btn g-btn-gold" href="downloads/gnashers-quill-1.8.0.zip" download="gnashers-quill-1.8.0.zip"><i class="fas fa-download" aria-hidden="true"></i> Download Gnasher's Quill, free</a>
         <a class="g-btn g-btn-ghost" href="mailto:quill@longislanddungeonmaster.com?subject=Quill%20feedback&amp;body=Where%20I%20got%20stuck%3A%0AWhat%20the%20screen%20said%3A%0AMy%20machine%20(Windows%20version)%3A%0AWhat%20I%20expected%20it%20to%20do%3A%0A"><i class="fas fa-envelope" aria-hidden="true"></i> Tell me what broke</a>
       </div>
       <p class="g-caption" style="margin-top:.6rem;">v1.8.0 &middot; 177&nbsp;KB &middot; <b>Windows only for now</b> &middot; unzip and read START-HERE.txt &middot; no account, nothing phones home</p>
 
-      <p class="q-testers"><b>Read this before you download it.</b> It is <b>Windows only</b> &mdash; the Mac and Linux paths are written but genuinely unproven, and I'd rather say so than waste your evening. The scripts are <b>not code-signed</b>, so Windows will warn you; every file in the folder is plain text you can open and read first. Transcribing takes real time on a real CPU, and <b>a loud table with everyone talking at once is the case I've tested least</b> &mdash; so don't take the accuracy on faith, take it for a spin.</p>
+      <p class="q-testers"><b>Read this before you download it.</b> It is <b>Windows only</b>. The Mac and Linux paths are written but genuinely unproven, and I'd rather say so than waste your evening. The scripts are <b>not code-signed</b>, so Windows will warn you; every file in the folder is plain text you can open and read first. Transcribing takes real time on a real CPU, and <b>a loud table with everyone talking at once is the case I've tested least</b>. Don't take the accuracy on faith, take it for a spin.</p>
 
-      <p class="q-testers"><b>What I actually want back.</b> Not downloads, not stars &mdash; I want to know where you got stuck, what the screen said, and what you expected it to do that it didn't. <b>Bad news is the useful kind.</b> A one-line "this bit broke" beats a paragraph of nice. And please <b>don't send me your recordings or transcripts</b> &mdash; I don't want them, and your table didn't agree to me reading them.</p>
+      <p class="q-testers"><b>What I actually want back.</b> Not downloads, not stars. I want to know where you got stuck, what the screen said, and what you expected it to do that it didn't. <b>Bad news is the useful kind.</b> A one-line "this bit broke" beats a paragraph of nice. And please <b>don't send me your recordings or transcripts</b>. I don't want them, and your table didn't agree to me reading them.</p>
       <div class="g-embed">
         <iframe src="https://longislanddungeonmaster.substack.com/embed" width="480" height="150" scrolling="no" title="Join The Bi-Weekly One-Shot"></iframe>
       </div>
@@ -432,7 +442,7 @@
   </main>
 
   <div class="h-foot">
-    <b>Gnasher's Quill&trade;</b> &middot; local &middot; offline &middot; free &middot; &copy; 2020&ndash;2026 Frank Papaleo &mdash; Long Island Dungeon Master &bull; <a href="/">Home</a> &bull; <a href="/grimoire">Gnasher's Grimoire</a> &bull; <a href="/satchel">Gnasher's Satchel</a> &bull; <a href="/keepers">Adventure Keepers</a> &bull; <a href="/privacy">Privacy</a><br>
+    <b>Gnasher's Quill&trade;</b> &middot; local &middot; offline &middot; free &middot; &copy; 2020&ndash;2026 Frank Papaleo, Long Island Dungeon Master &bull; <a href="/">Home</a> &bull; <a href="/grimoire">Gnasher's Grimoire</a> &bull; <a href="/satchel">Gnasher's Satchel</a> &bull; <a href="/keepers">Adventure Keepers</a> &bull; <a href="/privacy">Privacy</a><br>
     An independent tool; not affiliated with, endorsed, or sponsored by Wizards of the Coast LLC. Dungeons &amp; Dragons and D&amp;D are trademarks of Wizards of the Coast LLC.
   </div>
 
