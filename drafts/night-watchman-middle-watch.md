@@ -16,7 +16,7 @@ Setting: Brackenford. Spec: `specs/the-night-watchman-spec.md`.
 
 The bell does not stop.
 
-A dusk bell is a shape: one stroke, a pause the length of a breath, another, unhurried, a man counting. This is not that. This is a rope being hauled by somebody who has stopped counting, strokes falling over each other, the clapper hitting on the backswing, the sound of a bell being rung by a man who has decided the only thing left that matters is that it be loud.
+The rhythm of a dusk bell is one stroke, a pause the length of a breath, another, unhurried, a man counting. This is not that. This is a rope being hauled back and forth violently by somebody who has stopped counting, strokes falling over each other, the clapper hitting on the backswing. It is the sound of a bell being rung by a man who has decided the only thing left that matters is that it be loud.
 
 All over Brackenford, shutters that closed an hour ago are opening again. Faces in gaps. The village listening to its own alarm and not knowing the word for it, because there has never been one.
 
@@ -370,7 +370,6 @@ It knew to come here. Of everything in this village, of every door with a light 
 
 Something has been watching how this village grieves.
 
-**Tick one box on the Dawn Track.**
 
 → Back to the dead hours. **220**
 
@@ -413,7 +412,6 @@ It is not locked.
 
 It has not been locked all month. A man sat in a chair behind an unlocked door for thirty days and the entire village agreed, without ever discussing it, that the door was shut. You think about the leaves frozen against it. Nobody even tried.
 
-**Tick one box on the Dawn Track.**
 
 → Go in. **254**
 
@@ -506,7 +504,6 @@ He looks up, and for the first time there is something in his face other than ex
 
 "No. It is the only honest one available and I have spent a month learning to live inside it." He tips his head back against the altar. "Everything I have done since the harvest has been done on a belief I cannot test. So has everything Sefa does with her crusts on the stone. So has everything Goodwife Alder decided in her kitchen. Three of us, watchman, holding this village up with three different guesses, none of us speaking to the others, and it has *worked*, and not one of us knows which part is the part that works."
 
-**Tick one box on the Dawn Track.**
 
 → "Can you stand?" **260**
 
@@ -616,7 +613,6 @@ She is a plump, gracious woman in a good coat over her nightdress and she is sta
 
 She stands on the lip of the dry well and says eleven sentences and the square empties in under two minutes with every child accounted for.
 
-**Tick one box on the Dawn Track.**
 
 → **275**
 
@@ -644,13 +640,17 @@ It comes up out of a dry well like something poured upward: long grey legs, a bo
 
 The second one is already out and standing on the notice board.
 
-*If you have **LARDER**:* you know exactly what these are, you know they hunt in pairs, and you know one drives while the other waits where the prey will run.
+*If you have **LARDER**:* you know exactly what these are, and you know how they hunt: in pairs, one chasing the prey into a panic while the other waits where the running will end.
 
 → **277**
 
 ---
 
 ### 277
+
+The square empties around you in every direction at once: fifty people running for fifty doors, and two grey shapes owning the air above them, and one child standing still on the wellhead in a circle of lantern light. You are the only armed thing in Brackenford moving toward the well instead of away from it.
+
+This is a fight now. **Roll initiative.** Here is what you are fighting, and how it will behave.
 
 **FEN-SHRIKE (two)**
 
@@ -660,17 +660,16 @@ STR 12 (+1) DEX 16 (+3) CON 13 (+1) INT 3 (-4) WIS 14 (+2) CHA 5 (-3)
 **Beak.** Melee attack, +5 to hit, reach 5 ft. Hit: 1d8+3 piercing damage.
 **Silent Rush.** Advantage on its first attack roll against a creature that has not yet acted in combat.
 
-**Tactics script.**
-The pair does not fight you. It hunts, and hunting has roles.
-**The driver** (the one on the notice board) goes for the crowd, not for you: on its turn it flies at the largest group of villagers to break them into runners. It attacks a villager only if nobody interferes.
-**The waiter** (the one on the wellhead) stays exactly where it is, beside the child, and attacks the first thing that comes within ten feet of the well. It does not pursue. It is waiting for what the driver sends.
-Round 1: if you go for the child, the waiter attacks you with Silent Rush. If you go for the driver, the waiter takes the child.
-If either is reduced to half hit points or fewer, it screams for the first time, and both break for the far bank together.
-If you get the child off the wellhead and behind a door, both disengage within two rounds. They are not here for a fight. They are here because the cold came and this is where the cold goes.
+**How the pair fights.** They hunt like a team that has done this before, and each has a job.
+**The first shrike**, the one that landed on the notice board, is the chaser. On its turn it flies at the biggest cluster of running villagers to scatter them. It only attacks a person if nothing gets in its way.
+**The second shrike**, the one on the wellhead, is the catcher. It stays beside the child and attacks the first thing that comes within ten feet of the well. It chases nobody. It is waiting for what the chaser drives toward it.
+Round 1: if you go for the child, the catcher attacks you with Silent Rush. If you go for the chaser instead, the catcher grabs the child.
+If either shrike drops to half its hit points or fewer, it screams, the first sound either has made, and both fly for the far bank together.
+If you get the child off the wellhead and behind a door, both leave within two rounds. They did not come here to fight you. They came here to hunt.
 
-*If Nell is with you:* send her to the wellhead and she goes, flat out, and puts herself over the child and becomes a low wall with a heartbeat. The waiter does not understand a thing that gives its body to a smaller thing. While Nell stands over the child, it does not take her; it attacks Nell instead.
+*If Nell is with you:* send her to the wellhead and she goes, flat out, and stands over the child. The catcher will not go near her. A dog standing its ground over a child is nothing it has ever hunted, and it does not know what to do with one, so while Nell guards the child, the shrike attacks Nell instead of taking her.
 
-> **Watch Lamp** · **Ember:** 14 HP each, and the driver spends its first turn circling, which buys you a round. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, they act on the same initiative, and the waiter takes the child on round one unless you are already within reach of the well.
+> **Watch Lamp** · **Ember:** 14 HP each, and the chaser circles the square before its first dive, which buys you a full round. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, they act on the same initiative count, and the catcher grabs the child on round one unless you are already within reach of the well.
 
 *If you drive them off or drop them:* → **278**
 *If the child is taken:* → **279**
@@ -787,7 +786,6 @@ The other is Hett Vance.
 
 Write the codeword **TOLLPAID**.
 
-**Tick one box on the Dawn Track.**
 
 → **294**
 
@@ -813,7 +811,6 @@ There is no wound on him. Nothing took anything from him. He walked up this road
 
 *If you have **VOUCHED**:* he asked you not to have seen him on this road tonight, and you agreed, and that is the last conversation he had with anyone.
 
-**Tick one box on the Dawn Track.**
 
 → **296**
 
@@ -892,7 +889,9 @@ The village is dark. Every shutter on the square, closed. Every door barred. Fif
 
 You did that. Whatever else happened tonight, they are inside, and you are not.
 
-The deep cold has been at your wick for hours. **The lamp drinks a unit: mark off one oil.** If that was your last, the only light left in Brackenford is the one somebody set on the wellhead, and you are carrying a dark lantern through a shut village.
+The deep cold has been at your wick for hours. **The lamp drinks a unit: mark off one oil.**
+
+*If your lamp is dark:* the only light left in Brackenford is the one somebody set on the wellhead, and you are carrying a dead lantern through a shut village.
 
 → **311**
 
@@ -910,7 +909,7 @@ The deep cold has been at your wick for hours. **The lamp drinks a unit: mark of
 
 *If you do not have **RELIEVED**:* the bell stopped ringing at some point while you were elsewhere. You do not know why it stopped.
 
-*If you have **SHELTERED**:* there is a child in a house on the square who will grow up telling this story wrong, and the doors went in a rolling wave up the street after you.
+*If you have **SHELTERED**:* there is a child in a house on the square who will grow up telling this story wrong, and when the village saw you get her behind a door, every family on the square did the same. You could hear the bars dropping, door after door, all the way up the street.
 
 *If you have **TAKEN**:* something carried a six-year-old northwest over the roofs, and you have known where it went since the moment it happened, and you have not gone yet.
 
