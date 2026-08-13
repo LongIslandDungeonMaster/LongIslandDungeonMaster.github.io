@@ -126,7 +126,7 @@ Every combat/hazard entry ends with one compact line, always in the same order, 
 ### 5.4 Tier rules for the red team
 
 - Ember must be completable by the pregen with median dice and no system mastery (verify by scripted playthrough).
-- Lantern must be losable but not swingy: no single enemy action may deal more than 60% of the pregen's max HP.
+- Lantern must be losable but not swingy: no single enemy action may deal more than 60% of the pregen's max HP **on a non-critical hit** (ruled v1.5: any d8 attack's critical breaks a literal 60% cap at 3rd level; criticals are the dice's jurisdiction, and the tier system, rescue branches, and Ember's no-death rule are the safety net for them). The Dark-only arch push at the bridge is sanctioned as a stacked worst case: it is avoidable by not fighting on the arch, and Dark's shelf promise is that it can kill you.
 - Dark must be winnable: at least one route to each finale must exist that a careful player can find without foreknowledge (no luck-only survival).
 - The three Lamp lines in any sidebar must differ only in dials (HP, targets, morale, DCs), never in story outcome. **One sanctioned exception:** the Middle Watch crisis hub's visit count (Ember reaches three of the four crises, Lantern and Dark reach two). It widens how much of the night an Ember player sees without changing any scene's outcome, it is disclosed in the tier descriptions up front, and it is the only tier dial permitted to touch story breadth.
 
@@ -203,6 +203,22 @@ MUST items; a failure on any blocks release.
 **v1.1.** Character level revised from 1st to 3rd. Reasons, in order of weight: (a) at 1st level a single critical hit ends a solo run, which makes Dark Watch a coin flip rather than a challenge and makes fail-forward branching cosmetic, because the player is dead before the branch fires; (b) 3rd level puts the subclass online, and the subclass is the single richest source of the class-conditional entries that pillar 5 requires, since two 1st-level fighters are nearly the same character and two 3rd-level fighters are not; (c) roughly 25 to 30 hit points gives the encounters room to hurt without killing, which is the range the tier dials are built to work in; (d) the fiction survives it, since a watchman with a couple of years behind them is still a humble figure. Consequence: encounter budgets, the pregens, and the 60% single-hit cap are all recalculated against a 3rd-level baseline.
 
 **v1.2.** Difficulty restructured into the Night Rating (per module, shelf-facing) plus the Watch Lamps (per session, player-facing). See section 5.0 for why both are kept.
+
+**v1.5 (2026-08-13, Codex red-team REVISE closed).** Codex ran three seeded playthroughs plus a
+static engine attack and returned 13 findings; all closed. New rulings this version: (a) **roll
+integrity** — a rolled result stands, rerolls cost a Rekindle token, outcome branches and all
+choices in a check entry lock until the dice are thrown; (b) **tier transition arithmetic** — on a
+Watch Lamp switch, temporary hit points, oil, and Rekindle clamp DOWN to the new tier's values and
+nothing refills until the next act begins; (c) the 60% single-hit cap measures non-critical hits
+(see 5.4); (d) the **full Dawn Track routes to 312**, not 315, so Hett's return (313) and the
+dawn-band read (314) stay in the fiction, and the finales are time-neutral about the remaining
+night; (e) the crisis hub never offers the same crisis twice, on paper and in the engine; (f) 444
+is a three-save sequence the engine runs as three gated rolls; (g) explicit per-tier DCs printed
+in a check override the generic tier dials; (h) dark-lamp disadvantage auto-applies only to
+Wisdom (Perception); (i) 0 HP transitions are enforced (Ember auto-writes SCARRED; Dark routes to
+the burial ending, now location-neutral); (j) the build lint gained an INDEPENDENT second
+extractor that fails the build whenever the parser's manifest disagrees with a dumb regex pass
+over the raw markdown — the class fix for silently dropped operations.
 
 **v1.4 (2026-08-12, Frank's playtest).** Frank played the Keeper edition into Act Three and returned the pass that produced pillars 11-13. Changes: Dawn Track rebalanced from 34 tick sites to 21 (good-deed and conversation ticks cut; ALL Last Watch ticks cut, since the finale reads the track rather than filling it; a thorough run now enters Last Watch at 9-10 of 12) and the full-track event now routes (rule in "What you track": twelfth box before Last Watch sends you to 315; the engine banners it). Prose clarity pass per pillar 12: the dusk-bell rhythm line (Frank's own wording), Anselm's lock speech, the square-fight tactics renamed chaser/catcher with a proper combat setup and "Roll initiative" on all three fights, the Nell-shields-the-child line, the SHELTERED doors line, "fortnight" replaced with "two weeks" everywhere, and every dawn epilogue line extended with a closing beat. Keeper engine per pillar 13: auto-state language, resolved-only conditionals, first-use teaching, circuit and dawn enforcement, candle icons replacing the red lanterns on the cover.
 
