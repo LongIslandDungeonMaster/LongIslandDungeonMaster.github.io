@@ -2,7 +2,7 @@
 
 *A small oracle, so the night does not have to be the end of it.*
 
-Brackenford will have a fortnight, at the outside. If you want to keep playing it without a Dungeon Master and without another book, you need exactly two things: a way to ask questions, and a way to be surprised. Here they are on one page.
+Brackenford has two weeks of quiet at most before the cold tries again. If you want to keep playing it without a Dungeon Master and without another book, you need exactly two things: a way to ask questions, and a way to be surprised. Here they are on one page.
 
 ### Asking the night a question
 

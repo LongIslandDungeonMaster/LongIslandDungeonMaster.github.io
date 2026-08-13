@@ -179,7 +179,7 @@ He looks at you for a long moment.
 
 At the bottom of the slope, the thing wearing Doran Welk waits with its hands loose at its sides, patient as weather, because it is weather.
 
-It has all night. It has, precisely, until dawn, and so do you, and that is the entire remaining shape of this: **you cannot kill it.** Understand that plainly, because the book is not going to pretend otherwise at any point in the next hour. There is no stat block for the cold. Nothing you do to that borrowed body does anything to the thing standing behind it. You are a watchman with a lantern and a bell-clapper and a night to get through.
+It has all night. It has, precisely, until dawn, and so do you, and here is the one thing you must understand about the rest of this night: **you cannot kill it.** Understand that plainly, because the book is not going to pretend otherwise at any point in the next hour. There is no stat block for the cold. Nothing you do to that borrowed body does anything to the thing standing behind it. You are a watchman with a lantern and a bell-clapper and a night to get through.
 
 What is left to you is not victory. It is the four hours until the sun, and what you choose to do with them.
 
@@ -269,7 +269,7 @@ It stops. It looks at you with a dead man's eyes and something in it is genuinel
 
 "No."
 
-**Tick one box on the Dawn Track.** → **428**
+→ **428**
 
 ---
 
@@ -309,7 +309,7 @@ It does not hurt. That is the thing nobody tells you. It is enormously, gently c
 
 It goes up fast. Eleven names in a careful hand, nine crossed out, gone in about four seconds, and the ash goes up into the dark over the frozen river.
 
-**Tick one box on the Dawn Track.** → **428**
+→ **428**
 
 ---
 
@@ -365,7 +365,9 @@ The rope hangs in the dark with a band of blood on it at the height of a man's h
 
 You told him you would take the vigil. You did not know what you were agreeing to. You are about to find out, and what you find out is this: it is not difficult. It is not clever. There is a rope, and there is dawn, and the entire job is to still be here in four hours.
 
-You set your lantern at the foot of the rope, where it will burn until morning. **The lamp drinks a unit: mark off one oil.** If you have none left, you ring in the dark, and the dark listens.
+You set your lantern at the foot of the rope, where it will burn until morning. **The lamp drinks a unit: mark off one oil.**
+
+*If your lamp is dark:* you ring with no light at all, and the dark listens.
 
 → **442**
 
@@ -381,7 +383,6 @@ The sound goes out over a shuttered village.
 
 And out on the road, the thing that was walking toward Hett Vance stops walking toward Hett Vance.
 
-**Tick one box on the Dawn Track.**
 
 → **443**
 
@@ -410,7 +411,7 @@ That is the whole of it, for four hours. It talks the entire time. It uses Doran
 
 *Make a DC 15 Wisdom saving throw at the end of each of the first three hours. Ember Watch: DC 12. Dark Watch: DC 17.*
 
-**On each failure:** take 1d6 psychic damage and tick one box on the Dawn Track. You do not stop ringing. Your hands open up on the rope in a band at exactly the height of Anselm's.
+**On each failure:** take 1d6 psychic damage. You do not stop ringing. Your hands open up on the rope in a band at exactly the height of Anselm's.
 
 **If you fail all three:** → **446**
 **Otherwise:** → **447**
@@ -473,7 +474,9 @@ Mara is already sitting against the front door. She looks at you.
 
 "Two of us, then," she says.
 
-Your lantern goes on the bar, lit, and stays lit until dawn, because a barred common room with the lamp out is not something either of you is prepared to sit in. **The lamp drinks a unit: mark off one oil.** If you have none left, Mara feeds the fire instead, all night, one log at a time.
+Your lantern goes on the bar, lit, and stays lit until dawn, because a barred common room with the lamp out is not something either of you is prepared to sit in. **The lamp drinks a unit: mark off one oil.**
+
+*If your lamp is dark:* Mara feeds the fire instead, all night, one log at a time.
 
 → **461**
 
@@ -487,7 +490,6 @@ You hear it go along the row, unhurried, and you hear it try every door on the w
 
 Nobody opens. Nobody in this village has ever once been embarrassed about a door.
 
-**Tick one box on the Dawn Track.**
 
 → **462**
 
@@ -562,7 +564,9 @@ You go across the ice.
 
 Hett Vance shouts your name once. You do not stop, because there is a six-year-old in a nightshirt somewhere in the Drowned Lane and everything else in this village is behind a door, and this is the fourth rule, and you knew you were breaking it when you took the first step.
 
-At the edge of the ice you turn the wick up as far as it goes, because whatever is over there, you want it to see the watch coming. **The lamp drinks a unit: mark off one oil.** *If you have none to mark:* you cross dark, the ice reads as one grey sheet, and your checks in the Drowned Lane are made at disadvantage until you find light.
+At the edge of the ice you turn the wick up as far as it goes, because whatever is over there, you want it to see the watch coming. **The lamp drinks a unit: mark off one oil.**
+
+*If your lamp is dark:* you cross with no light, the ice reads as one grey sheet, and your checks in the Drowned Lane are made at disadvantage until you find light.
 
 The Wend under your boots is a grey floor that creaks and does not give. You pass within fifteen feet of the thing wearing Doran Welk. It does not stop you. It turns its head and watches you go by with an expression of mild professional interest, the way a man watches somebody else's dog run off.
 
@@ -598,13 +602,15 @@ Above her, in the rafters, something shifts its weight.
 
 ### 483
 
+The rafters above you move, twice, and you understand that they were here the whole time. This is a fight in a close dark room, with a child on the far side of it. **Roll initiative.** Here is the nest.
+
 **FEN-SHRIKE (two)**
 
 Medium beast. AC 13. Speed 30 ft., fly 50 ft. HP as the Watch Lamp line below.
 **Beak.** Melee attack, +5 to hit, reach 5 ft. Hit: 1d8+3 piercing damage.
 **Silent Rush.** Advantage on its first attack roll against a creature that has not yet acted in combat.
 
-**Tactics script.**
+**How the nest fights.**
 This is a nest, not a hunt, and the roles are different here.
 Round 1: both drop from the rafters. The first attacks you with Silent Rush. The second lands between you and the child and does not attack at all: it stands over her with its beak lowered, and it will attack the instant you move toward her.
 Round 2 onward: the attacker fights normally and does not withdraw. This is their larder and they are not giving it up.
@@ -673,7 +679,9 @@ You have a lantern with about two hours of oil in it, a bell-clapper, a tabard t
 
 So you walk it.
 
-**The lamp drinks a unit: mark off one oil.** The round takes what the round takes. *If you have none to mark:* you walk it dark, and the thing keeps you company at ten feet instead of thirty, which it appears to consider polite.
+**The lamp drinks a unit: mark off one oil.** The round takes what the round takes.
+
+*If your lamp is dark:* you walk the round with no light, and the thing keeps you company at ten feet instead of thirty, which it appears to consider polite.
 
 → **501**
 
@@ -726,7 +734,6 @@ Somewhere in the third circuit it says, "You know I'll be back within the month.
 
 "Yes."
 
-**Tick one box on the Dawn Track.**
 
 → **504**
 
@@ -776,19 +783,19 @@ Doran Welk's chair is still lying on its side on the bank. Somebody sets it up.
 
 *This is your night. Read the lines you have earned.*
 
-*If you have **BLOODED**:* you killed something on the round and you have not thought about it once since it happened, and you will, in about a week, at an inconvenient moment.
+*If you have **BLOODED**:* you killed something on the round and you have not thought about it once since it happened, and you will, in about a week, at an inconvenient moment. When it comes, let it come, and let it pass, because it does pass. Killing a thing that was hunting children is a weight a person can carry.
 
-*If you have **SHELTERED**:* the child from the wellhead is asleep in her own bed and will remember none of this correctly, and her mother will remember all of it, and will not be able to say a word to you for eleven days and will then say far too many at once.
+*If you have **SHELTERED**:* the child from the wellhead is asleep in her own bed and will remember none of this correctly, and her mother will remember all of it, and will not be able to say a word to you for eleven days and will then say far too many at once. Every one of those words will amount to thank you.
 
-*If you have **CARRIED**:* you went across the ice for one person and left a whole village behind a door to do it, and Hett Vance has already told you it was the wrong call twice, and he has not once been able to say it while looking at you.
+*If you have **CARRIED**:* you went across the ice for one person and left a whole village behind a door to do it, and Hett Vance has already told you it was the wrong call twice, and he has not once been able to say it while looking at you. He is wrong, and he knows he is wrong, and the girl is alive. That is the whole argument, and you won it.
 
-*If you have **RELIEVED**:* Brother Anselm slept nine hours on the floor of his own shrine and woke to find the bell had been rung all night by somebody else. He has not said thank you. He has opened the doors.
+*If you have **RELIEVED**:* Brother Anselm slept nine hours on the floor of his own shrine and woke to find the bell had been rung all night by somebody else. He has not said thank you. He has opened the doors. The shrine takes its first morning congregation in a month, and you sleep through the whole service, and he does not let anyone wake you.
 
-*If you have **DOORHELD**:* Mara Tullamore put the clean mug back on the rail behind the bar. She has not set it out since. She will not discuss it.
+*If you have **DOORHELD**:* Mara Tullamore put the clean mug back on the rail behind the bar. She has not set it out since. She will not discuss it. But your drink is poured before you reach the bar now, every night, and that is the discussion.
 
-*If you have **TOLLPAID**:* you know the number. You are one of five people alive who does, and by noon Goodwife Alder will know that you know, because Goodwife Alder always knows, and there will be an invitation to tea.
+*If you have **TOLLPAID**:* you know the number. You are one of five people alive who does, and by noon Goodwife Alder will know that you know, because Goodwife Alder always knows, and there will be an invitation to tea. Go. She does not waste tea, and this village is about to need the two of you agreeing on what happens next.
 
-*If you have **SCARRED**:* whatever it took out of you, it did not take all of it, and you got up.
+*If you have **SCARRED**:* whatever it took out of you, it did not take all of it, and you got up. The white at your temple is not a wound. It is a receipt, and the village reads it every time you pass, and stands you drinks accordingly.
 
 *If Nell is with you:* she sleeps for a day and a half in front of the Broken Wheel's fire, and wakes up a village dog: fed at five doors, owned at none, and on the round every night after, with whoever carries the lamp.
 
@@ -877,7 +884,7 @@ That is the whole of it, and it is not nothing, and Hett Vance was right about t
 
 *You can play this night again. Take a different route at dusk, keep different company in the dead hours, and stand somewhere else when it comes across the ice. There are four other endings and none of them is the correct one.*
 
-*If you would rather keep going, turn to **Appendix A: After the Dawn**, and keep playing Brackenford freehand. It will be a fortnight, at the outside.*
+*If you would rather keep going, turn to **Appendix A: After the Dawn**, and keep playing Brackenford freehand. The village has two weeks of quiet at most before the cold tries again, and now you know what walks it.*
 
 ---
 
@@ -899,4 +906,4 @@ You were the watch for one night. Eleven was always going to be somebody.
 
 **THE END.**
 
-*Bury the watchman properly, then make another one and go back to **001**. The night runs differently for a different person, and Brackenford is going to need somebody in about a fortnight.*
+*Bury the watchman properly, then make another one and go back to **001**. The night runs differently for a different person, and Brackenford is going to need somebody on the round again in about two weeks.*

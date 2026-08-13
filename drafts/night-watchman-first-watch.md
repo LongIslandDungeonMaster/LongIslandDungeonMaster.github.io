@@ -214,7 +214,6 @@ He stands up so fast the chair goes over backward, and he picks up the strongbox
 
 Write the codeword **VOUCHED** if you do not have it.
 
-**Tick one box on the Dawn Track.**
 
 → Watch him go, then start the circuit. **020**
 
@@ -336,7 +335,6 @@ She lets that sit for a second.
 
 *If you have **ICEBOUND**:* you tell her the ford is skinning over. Mara stops moving. Then she turns to the room and calls last orders, two hours early, in a voice that does not invite discussion, and forty people look at her, and start putting their coats on. Nobody argues. That frightens you more than the water did.
 
-**Tick one box on the Dawn Track.**
 
 → Go. **036**
 
@@ -411,7 +409,7 @@ A long pause.
 
 "I'm listening."
 
-"The bell rings at dusk and it rings at dawn and it has not missed. That is the whole of it. That is the lock." The voice is patient in a way that is worse than raving. "Do not ask me what it locks. Ask me instead what you will do if one evening you are out on your round and you hear nothing."
+"The bell rings at dusk and it rings at dawn and it has not missed in a month. That is the whole of it. The bell is a lock on this village, and the ringing is the key turning in it, twice a day, on time. As long as it turns, something stays out." The voice is patient in a way that is worse than raving. "Do not ask me what stays out, because I do not know. Ask me instead what you will do if one evening you are out on your round and you hear nothing."
 
 You do not have an answer.
 
@@ -551,7 +549,6 @@ He goes without arguing, which tells you something, and at the gate of the yard 
 
 The goat has finished the hat.
 
-**Tick one box on the Dawn Track.**
 
 → Ring in and go. **056**
 
@@ -765,6 +762,8 @@ Then the wings go, and there is no cry, just the enormous soft rush of them, and
 
 ### 076
 
+It is inside your reach and you are on a broken arch with forty feet of air behind your back foot. This is a fight now. **Roll initiative.** Here is what has you.
+
 **FEN-SHRIKE**
 
 Medium beast. AC 13. Speed 30 ft., fly 50 ft.
@@ -773,7 +772,7 @@ STR 12 (+1) DEX 16 (+3) CON 13 (+1) INT 3 (-4) WIS 14 (+2) CHA 5 (-3)
 **Beak.** Melee attack, +5 to hit, reach 5 ft. Hit: 1d8+3 piercing damage.
 **Silent Rush.** The shrike has advantage on its first attack roll against a creature that has not yet acted in combat.
 
-**Tactics script.**
+**How it fights.**
 Round 1: the shrike attacks with Silent Rush, then does not stay. It flies twenty feet off and lands on the broken arch, out of reach, and looks at you.
 Round 2 onward: it dives, attacks, and withdraws thirty feet on the same turn. It will not stand and trade. It is trying to make you step backward, off a bridge, in the dark.
 If reduced to half its hit points or fewer: it breaks and flies for the far bank. It does not come back tonight.
@@ -892,7 +891,6 @@ You have a speech. You do not get to use any of it. She says, "Right," and shuts
 
 Nobody in Brackenford has ever once been embarrassed about a door.
 
-**Tick one box on the Dawn Track.**
 
 → **095**
 
@@ -902,7 +900,7 @@ Nobody in Brackenford has ever once been embarrassed about a door.
 
 The village is going dark around you as you stand there. Not sleeping. Closing. A shutter, then another, then a whole street of them, the sound moving away from you up the slope like something passing.
 
-In four hours of this you have learned the shape of tonight: the water is stopping, the cold came down off the hill, a boy cannot say what he saw, a priest is holding a door shut with a bell, and a broad tired man has gone up the hill road with a strongbox to pay somebody.
+In four hours of this you have learned what tonight is: the water is stopping, the cold came down off the hill, a boy cannot say what he saw, a priest is holding a door shut with a bell, and a broad tired man has gone up the hill road with a strongbox to pay somebody.
 
 You have one post left on the round and then it is midnight.
 
@@ -930,7 +928,7 @@ Doran's chair is where it fell over. Doran is not in it.
 
 ### 101
 
-*Count your codewords. This is the shape of your first watch, and the night will remember it.*
+*Count your codewords. This is what your first watch amounted to, and the night will remember every piece of it.*
 
 *If you have **ICEBOUND**:* you knew at dusk. You had four hours of knowing, and you spent them ringing a bell at posts, because that was the job you were given. You will think about that.
 
