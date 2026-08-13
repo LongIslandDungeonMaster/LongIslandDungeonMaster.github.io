@@ -21,15 +21,15 @@ You cannot win this adventure. There is nothing at the end of it that you defeat
 
 ## What you need
 
-- **A 3rd-level D&D character.** Yours, built normally, any class, 2014 or 2024 rules. Or take a pregen from Appendix B and start in two minutes.
+- **A 3rd-level D&D character.** Yours, built normally, any class, 2014 or 2024 rules. Or take a ready-made character from Appendix B and start in two minutes.
 - **Dice.** The usual set.
 - **One page for your night sheet.** Appendix D is printable if you want it, but the back of an envelope is traditional.
 
 ## Why 3rd level
 
-Because a lone character at 1st level dies to a single lucky hit, and a book that kills you on page four has not told you a story, it has wasted your evening. At 3rd level your subclass is online, which means this book can notice what you actually are. It does, constantly. A Battle Master reads a frozen street differently from a cleric of the dawn, and the entries know it.
+Because a lone character at 1st level dies to a single lucky hit, and a book that kills you on page four has not told you a story, it has wasted your evening. At 3rd level your character has chosen a subclass, which means this book can notice what you actually are. It does, constantly. A Battle Master reads a frozen street differently from a cleric of the dawn, and the entries know it.
 
-If your character is a different level, play them as they are and change nothing. The encounters are tuned for 3rd and the Watch Lamp below will absorb the rest.
+If your character is a different level, play them as they are and change nothing. The encounters are tuned for 3rd level, and the Watch Lamp choice below will make up the difference.
 
 ## What you track
 
@@ -37,25 +37,25 @@ Four things. Nothing else. If you find yourself keeping a fifth list, the book h
 
 **Your character sheet.** Hit points, spell slots, the usual.
 
-**Codewords.** Single words in small caps. When an entry grants one, write it down. Later entries look for them, sometimes hours later. The codewords are the night's memory, and they are how this book knows what kind of person you were at two in the morning. In the last stretch of the night the book may also hand you a **dawn mark**, which is a codeword the finale writes and only the dawn reads. Same box on the sheet. You will not need to remember it long.
+**Codewords.** Single words in small caps. When an entry grants one, write it down. Later entries look for them, sometimes hours later. The codewords are the night's memory, and they are how this book knows what kind of person you were at two in the morning. In the last stretch of the night the book may also hand you a **dawn mark**, which is simply a codeword you gain near the very end of the night, and that only the final dawn entries ever check. Same box on the sheet. You will not need to remember it long.
 
-**The Dawn Track.** Twelve boxes. Tick one whenever an entry says to. Investigating things costs night. Standing in the cold getting your breath back costs night. You are not being punished. You are being timed, the way a night times you. **If the twelfth box ticks before you have reached the Last Watch:** finish the scene you are in, then go to entry **315**. Dawn is coming, and the thing at the ford is done waiting. If it ticks during the Last Watch, keep playing: the dawn takes the finale as it finds it.
+**The Dawn Track.** Twelve boxes. Tick one whenever an entry says to. Investigating things costs night. Standing in the cold getting your breath back costs night. You are not being punished. You are being timed, the way a night times you. **If the twelfth box ticks before you have reached the Last Watch, the night's final act:** finish the scene you are in, then go to entry **315**. Dawn is coming, and the thing at the ford is done waiting. If it ticks during the Last Watch, keep playing: the dawn takes the finale as it finds it.
 
-**Lamp oil.** Four units at Lantern Watch. When an entry says the lamp drinks a unit, mark one off; the cold makes it drink, and so do certain choices. You can never carry more than your starting number. When you mark off the last one, your lamp is dark: outdoors you have disadvantage on Wisdom (Perception) checks, and some entries have a line that only happens to a dark lamp, and you do not want those lines. A dark lamp relights from any lit fire in the village, or a Rekindle token. Not from wishing.
+**Lamp oil.** You start with four units if you play at Lantern Watch, the standard tier described in the next section. When an entry says the lamp drinks a unit, mark one off; the cold makes it drink, and so do certain choices. You can never carry more than your starting number. When you mark off the last one, your lamp is dark: outdoors you have disadvantage on Wisdom (Perception) checks, and some entries have a line that only happens to a dark lamp, and you do not want those lines. A dark lamp relights from any lit fire in the village, or by spending a Rekindle token, which is explained just below. Not from wishing.
 
 ## Choose your Watch Lamp
 
 Three ways to play the same night. Pick one now. Change it at any rest, as often as you like, and the book will never mention it again.
 
-**Ember Watch.** You want the night and not its teeth. You start each act with 10 + your level in temporary hit points, you carry two Rekindle tokens, every printed DC drops by 2, you get five oil, and you cannot die. At 0 hit points you are dragged to safety by dawn and the night goes on without you. In the dead hours you reach three of the four crises instead of two, so you will also see more of this village than anyone else.
+**Ember Watch.** You want the night and not its teeth. You start each act with 10 + your level in temporary hit points, you carry two Rekindle tokens, every printed DC drops by 2, you get five oil, and you cannot die. At 0 hit points someone finds you and drags you to safety before dawn, and the night goes on without you. In the dead hours of the night, four crises break out at once and a watchman can normally reach only two of them; at this tier you reach three, so you will also see more of this village than anyone else.
 
 **Lantern Watch.** The night as written. 5 + your level in temporary hit points at the start of each act, one Rekindle token, DCs as printed, four oil. You can lose. Every dying moment has a rescue that costs you something.
 
-**Dark Watch.** The night does not care about you. No temporary hit points, no Rekindle, DCs as printed and worse late, three oil, and enemies win initiative ties. Death is death, and there is an ending written for it. Bury the watchman and make another one.
+**Dark Watch.** The night does not care about you. No temporary hit points, no Rekindle, DCs as printed with some late-night entries raising them further, three oil, and enemies win initiative ties. Death is death, and there is an ending written for it. Bury the watchman and make another one.
 
 **Rekindle token.** Spend one to reroll any d20 you have just rolled, or to stabilise yourself at 0 hit points, or to refill one unit of lamp oil. One mechanic, three uses, two boxes on your sheet.
 
-**Watch Lamp sidebars.** Combat and hazard entries end with a single line giving all three dials at once, always in the same order:
+**Watch Lamp sidebars.** Combat and hazard entries end with a single line giving the numbers for all three tiers at once, always in the same order:
 
 > **Watch Lamp** · **Ember:** the shrike has 14 HP and does not use Silent Rush. · **Lantern:** 22 HP. · **Dark:** 22 HP, and it tries to push you off the arch.
 

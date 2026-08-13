@@ -17,7 +17,7 @@ Frame anything as a yes or no question and roll d6.
 | 5 | **Yes.** |
 | 6 | **Yes, and** more than you asked for. |
 
-If the answer seems very likely, roll twice and take the higher. Very unlikely, roll twice and take the lower. That is the entire system and it is enough.
+If the answer seems very likely, roll twice and take the higher. If it seems very unlikely, roll twice and take the lower. That is the entire system and it is enough.
 
 ### Being surprised
 
@@ -36,7 +36,7 @@ Whenever you roll a 1 or a 6 on the question above, or any time the night has go
 
 ### Where to point it
 
-The Brackenford Starter Setting has eight keyed locations, eight named villagers, a notice board table, and four simmering tensions, and this night has just moved every one of them. Roll the notice board. Ask who is collecting the toll now that Doran is dead. Ask what Goodwife Alder wants over tea. Ask what Sefa's count comes to this week.
+The Brackenford Starter Setting has eight keyed locations, eight named villagers, a notice board table, and four simmering tensions, and this night has just moved every one of them. Roll on the notice board table. Ask who is collecting the toll now that Doran is dead. Ask what Goodwife Alder wants over tea. Ask what Sefa's count comes to this week.
 
 The Wilderness Pack's tables cover the moor and the road, if you go out to the stones.
 
@@ -71,7 +71,7 @@ Skills: Insight +5, Medicine +5, Persuasion +4, Perception +5. Passive Perceptio
 **Cantrips:** *guidance*, *light*, *sacred flame*, *spare the dying*.
 **Spells (4 first-level, 2 second-level):** *bless*, *cure wounds*, *healing word*, *shield of faith*, *lesser restoration*, *spiritual weapon*, *aid*, *prayer of healing*.
 **Disciple of Life:** healing spells restore an extra 2 + spell level.
-**Channel Divinity (1/rest):** Turn Undead, or Preserve Life (15 HP of healing, split).
+**Channel Divinity (1/rest):** Turn Undead, or Preserve Life (15 HP of healing, split among creatures you choose).
 *You keep the Quiet Hand, in the small way a layperson does. You have met Brother Anselm twice. He frightened you both times.*
 
 ### The watch-dog (optional companion)
