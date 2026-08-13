@@ -9,3 +9,25 @@ ehthumbs.db
 # Python build-script bytecode (the VillainCraft corpus generator)
 __pycache__/
 *.pyc
+
+# ── THE PUBLIC-REPO LAW (2026-08-13) ───────────────────────────────────────────
+# This repo is PUBLIC. It has to be: GitHub Pages serves the site from it, and a
+# free account cannot serve Pages from a private repo. So everything committed
+# here is world-readable, on every branch, forever — not just on master.
+#
+# On 2026-08-12 two working branches (claude/dark-sun-content-videos-w507de and
+# claude/solo-dnd-content-ax050t) were pushed here carrying agent working files,
+# including a 25 KB editorial ledger of Frank's own 78-entry campaign bestiary,
+# pulled from his Drive and marked "nothing below is publish-ready." It was
+# anonymously readable. Both branches were backed up and deleted 2026-08-13.
+#
+# Nothing but the WEBSITE belongs in this repo. Working notes, agent config,
+# build tooling and unreleased content live in Cerberus, which stays local.
+.claude/
+CLAUDE.md
+AGENTS.md
+agents.md
+content/
+drafts/
+tools/
+*.bundle
