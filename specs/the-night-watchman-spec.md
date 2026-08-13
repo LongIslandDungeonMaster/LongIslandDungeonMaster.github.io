@@ -66,7 +66,7 @@ Five posts on the watchman's circuit, mapped onto canonical Brackenford location
 
 ### 4.3 State: codewords and the Dawn Track
 
-- **Codewords:** maximum 12 in the whole adventure, of which First Watch spends eight (ICEBOUND, VOUCHED, MUGSET, HANDSIGN, WITNESS, BLACKNAIL, LARDER, BLOODED); later acts add at most four new ones and otherwise branch on these, which is the reincorporation pillar doing its job, thematic single words (e.g. EMBERS, VOUCHED, MARKED). Written on the sheet when granted; later entries branch on them. Codewords are the memory of the night.
+- **Codewords:** maximum 12 slots in the whole adventure, of which First Watch spends eight (ICEBOUND, VOUCHED, MUGSET, HANDSIGN, WITNESS, BLACKNAIL, LARDER, BLOODED); Middle Watch adds four (DOORHELD, RELIEVED, TOLLPAID, and the two-faced SHELTERED/TAKEN slot, whose faces never coexist) and Last Watch adds none. Written on the sheet when granted; later entries branch on them. Codewords are the memory of the night. Separately, the finale may write up to two **dawn marks** (SCARRED, CARRIED): same notation, granted only in the finale and read only by the dawn epilogue, so they never load the player's memory during play and do not count against the 12. ~~(Tombstoned 2026-08-12: previously allowed "at most four new" later-act codewords with THAWED among them; THAWED encoded nothing, since its entry is on every path, and was folded into the act structure.)~~
 - **The Dawn Track:** a 12-step track. Certain failures, rests, and deliberate delays advance it. When it fills, dawn breaks and the finale begins *in whatever state the night is in*. The track is the pacing engine and the anti-turtling mechanism: resting is allowed but costs night.
 - **Lamp oil:** a 4-unit resource. Light matters mechanically (darkness imposes disadvantage on route events; some entries need the lamp). Oil is the one supply decision the player makes all night. It exists because the tiers (below) hook into it.
 
@@ -109,7 +109,7 @@ Three tiers, chosen at the start of the night, switchable at any rest with no pe
 | Check DCs | As printed, minus 2 | As printed | As printed, plus 2 on Dawn Track steps 9+ |
 | Dawn Track | Advances only on the entry's listed triggers | As printed | Also advances on every short rest |
 | Lamp oil | 5 units | 4 units | 3 units |
-| At 0 HP | You are dragged to safety by dawn; take the codeword SCARRED and read the aftermath entry. The night continues without you and the finale reflects it. | Death saves as normal; every dying situation has a rescue-with-cost branch (a codeword, a lost post, a debt) | Death is death. The run ends; the book invites you to bury the watchman and start a new one. |
+| At 0 HP | You are dragged to safety by dawn; take the dawn mark SCARRED and read the aftermath entry. The night continues without you and the finale reflects it. | Death saves as normal; every dying situation has a rescue-with-cost branch (a codeword, a lost post, a debt) | Death is death. The run ends; the book invites you to bury the watchman and start a new one. |
 | Who it serves | First-time soloists, journal-first players, kids at the table with a parent | Most players | The r/Solo_Roleplaying ironman crowd; streamers; replay value |
 
 **Rekindle token:** spend one to reroll any d20 you just rolled, or to auto-stabilize at 0 HP, or to refill 1 lamp oil. One mechanic, three uses, zero extra tracking (it is two checkboxes on the sheet).
@@ -125,7 +125,7 @@ Every combat/hazard entry ends with one compact line, always in the same order, 
 - Ember must be completable by the pregen with median dice and no system mastery (verify by scripted playthrough).
 - Lantern must be losable but not swingy: no single enemy action may deal more than 60% of the pregen's max HP.
 - Dark must be winnable: at least one route to each finale must exist that a careful player can find without foreknowledge (no luck-only survival).
-- The three Lamp lines in any sidebar must differ only in dials (HP, targets, morale, DCs), never in story outcome.
+- The three Lamp lines in any sidebar must differ only in dials (HP, targets, morale, DCs), never in story outcome. **One sanctioned exception:** the Middle Watch crisis hub's visit count (Ember reaches three of the four crises, Lantern and Dark reach two). It widens how much of the night an Ember player sees without changing any scene's outcome, it is disclosed in the tier descriptions up front, and it is the only tier dial permitted to touch story breadth.
 
 ## 6. Character rules
 
@@ -200,6 +200,8 @@ MUST items; a failure on any blocks release.
 **v1.1.** Character level revised from 1st to 3rd. Reasons, in order of weight: (a) at 1st level a single critical hit ends a solo run, which makes Dark Watch a coin flip rather than a challenge and makes fail-forward branching cosmetic, because the player is dead before the branch fires; (b) 3rd level puts the subclass online, and the subclass is the single richest source of the class-conditional entries that pillar 5 requires, since two 1st-level fighters are nearly the same character and two 3rd-level fighters are not; (c) roughly 25 to 30 hit points gives the encounters room to hurt without killing, which is the range the tier dials are built to work in; (d) the fiction survives it, since a watchman with a couple of years behind them is still a humble figure. Consequence: encounter budgets, the pregens, and the 60% single-hit cap are all recalculated against a 3rd-level baseline.
 
 **v1.2.** Difficulty restructured into the Night Rating (per module, shelf-facing) plus the Watch Lamps (per session, player-facing). See section 5.0 for why both are kept.
+
+**v1.3 (2026-08-12, post-QC).** Six findings from the first full QC pass closed in the draft sources. (1) Lamp oil wired for real: the lamp drinks a unit at the cold's arrival (090) and at deep night (310), plus one path spend in each finale route (vigil 441, barred door 460, the ice 480, the walked round 500); Mara sells nothing but hands the watch a spare flask (032, +1 capped at tier start); dark-lamp lines exist and fail forward (400, 480, 500), so oil can run out and the book says what happens. (2) The watch-dog Nell is now noticed by nine entries across all three acts (009, 076, 090, 220, 277, 400, 483, and the dawn), including two mechanical assists, making Appendix B's claim true. (3) THAWED folded into the act structure per the draft's own red-team note. (4) Codeword accounting settled at 12 slots plus two finale-only dawn marks (SCARRED, CARRIED), defined in 4.3. (5) The assembled edition no longer duplicates the primer: the First Watch source's "Before you begin" recap is a standalone-review aid that the assembler strips. (6) The crisis-hub visit count sanctioned as the single tier exception in 5.4.
 
 ## 14. Out of scope for v2.0
 

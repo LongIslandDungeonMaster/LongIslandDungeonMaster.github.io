@@ -121,18 +121,21 @@ You will break that last one. Everyone does.
 
 **WATCH LAMP TIER:** ....................................
 
-**CODEWORDS**
+**CODEWORDS** *(the night grants at most twelve)*
 
 | | |
 |---|---|
-| ☐ ICEBOUND | ☐ THAWED |
-| ☐ VOUCHED | ☐ DOORHELD |
-| ☐ MUGSET | ☐ RELIEVED |
-| ☐ HANDSIGN | ☐ SHELTERED / TAKEN |
-| ☐ WITNESS | ☐ TOLLPAID |
-| ☐ BLACKNAIL | ☐ CARRIED |
-| ☐ LARDER | ☐ SCARRED |
+| ☐ ICEBOUND | ☐ DOORHELD |
+| ☐ VOUCHED | ☐ RELIEVED |
+| ☐ MUGSET | ☐ TOLLPAID |
+| ☐ HANDSIGN | ☐ SHELTERED / TAKEN *(one or the other, never both)* |
+| ☐ WITNESS | |
+| ☐ BLACKNAIL | |
+| ☐ LARDER | |
 | ☐ BLOODED | |
+
+**DAWN MARKS** *(the finale writes these; only the dawn reads them)*
+☐ SCARRED · ☐ CARRIED
 
 **NOTES ON THE NIGHT**
 
