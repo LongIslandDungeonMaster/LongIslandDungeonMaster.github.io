@@ -39,7 +39,7 @@ Four things. Nothing else. If you find yourself keeping a fifth list, the book h
 
 **Codewords.** Single words in small caps. When an entry grants one, write it down. Later entries look for them, sometimes hours later. The codewords are the night's memory, and they are how this book knows what kind of person you were at two in the morning. In the last stretch of the night the book may also hand you a **dawn mark**, which is simply a codeword you gain near the very end of the night, and that only the final dawn entries ever check. Same box on the sheet. You will not need to remember it long.
 
-**The Dawn Track.** Twelve boxes. Tick one whenever an entry says to. Investigating things costs night. Standing in the cold getting your breath back costs night. You are not being punished. You are being timed, the way a night times you. **If the twelfth box ticks before you have reached the Last Watch, the night's final act:** finish the scene you are in, then go to entry **315**. Dawn is coming, and the thing at the ford is done waiting. If it ticks during the Last Watch, keep playing: the dawn takes the finale as it finds it.
+**The Dawn Track.** Twelve boxes. Tick one whenever an entry says to. Investigating things costs night. Standing in the cold getting your breath back costs night. You are not being punished. You are being timed, the way a night times you. **If the twelfth box ticks before you have reached the Last Watch, the night's final act:** finish the scene you are in, then go to entry **312**. The last of the dark is running out, and the thing at the ford is done waiting. If it ticks during the Last Watch, keep playing: the dawn takes the finale as it finds it.
 
 **Lamp oil.** You start with four units if you play at Lantern Watch, the standard tier described in the next section. When an entry says the lamp drinks a unit, mark one off; the cold makes it drink, and so do certain choices. You can never carry more than your starting number. When you mark off the last one, your lamp is dark: outdoors you have disadvantage on Wisdom (Perception) checks, and some entries have a line that only happens to a dark lamp, and you do not want those lines. A dark lamp relights from any lit fire in the village, or by spending a Rekindle token, which is explained just below. Not from wishing.
 
@@ -1275,7 +1275,7 @@ It is somewhere past midnight. The bell is still going. There is a man walking u
 
 And there are four places in Brackenford that need the watch right now, and one of you.
 
-*Choose where you go. When you return here, choose again.*
+*Choose where you go. When you return here, choose again, somewhere you have not yet been: the night does not offer the same crisis twice.*
 
 *If Nell is with you:* she looks down each of the four roads in turn, and then up at you, and waits. She has no advice. She is just not leaving.
 
@@ -1766,6 +1766,7 @@ STR 12 (+1) DEX 16 (+3) CON 13 (+1) INT 3 (-4) WIS 14 (+2) CHA 5 (-3)
 Round 1: if you go for the child, the catcher attacks you with Silent Rush. If you go for the chaser instead, the catcher grabs the child.
 If either shrike drops to half its hit points or fewer, it screams, the first sound either has made, and both fly for the far bank together.
 If you get the child off the wellhead and behind a door, both leave within two rounds. They did not come here to fight you. They came here to hunt.
+**Getting her out:** the well is thirty feet from the nearest door. Reaching her takes your move; lifting her off the wellhead takes your action, and if the catcher is alive and within ten feet of the well, it gets one attack against you as you lift her. Carrying her, you move at half speed. Any door on that square opens for a child without being asked.
 
 *If Nell is with you:* send her to the wellhead and she goes, flat out, and stands over the child. The catcher will not go near her. A dog standing its ground over a child is nothing it has ever hunted, and it does not know what to do with one, so while Nell guards the child, the shrike attacks Nell instead of taking her.
 
@@ -2170,9 +2171,7 @@ Beside you, Hett Vance says, very quietly, "Ah."
 
 ### 406
 
-*If you have **TOLLPAID**:* you take the folded list out of your coat and you do not need to look at it. Eleven names in a careful hand. Nine crossed out. Doran Welk and Hett Vance not.
-
-You put it in Hett's hand. He reads it by your lantern in about two seconds and then he stands there holding it.
+*If you have **TOLLPAID**:* you take the folded list out of your coat and you do not need to look at it. Eleven names in a careful hand. Nine crossed out. Doran Welk and Hett Vance not. You put it in Hett's hand, and he reads it by your lantern in about two seconds, and then he stands there holding it.
 
 *If you do not have **TOLLPAID**:* there is a list somewhere. You have not seen it. You do not need to have seen it, because the thing at the bottom of the slope has just read it out.
 
@@ -2292,6 +2291,8 @@ What is left to you is not victory. It is the four hours until the sun, and what
 
 The strongbox is where you left it, or where you carried it to, and it is heavier than a box of coppers has any right to be.
 
+You turn the wick up as far as it goes before you lift the box, because you want your hands seen while you do this. **The lamp drinks a unit: mark off one oil.**
+
 You carry it down the slope past Hett Vance, who says your name once and then does not say anything else, and you set it down on the frozen stones at the edge of the ford in front of a dead man, and you step back.
 
 "Ah," it says, pleased. "There. That's the arrangement."
@@ -2304,7 +2305,7 @@ You carry it down the slope past Hett Vance, who says your name once and then do
 
 It does not touch the box.
 
-"You've misunderstood, but only slightly, and it's a common one." Doran's hands stay loose at his sides. "The coin was never the thing. The coin is how a village agrees to a number without having to say the number out loud. Eleven, watchman. The box is just where they keep the eleven so they don't have to look at it."
+"You've misunderstood, but only slightly, and it's a common one." Doran's hands stay loose at his sides. "The coin was never the thing. The coin is how a village agrees to a number without having to say the number out loud. Eleven, watchman. The box is just where the village keeps its debt of eleven names, so nobody has to look at it."
 
 It tips the borrowed head.
 
@@ -2358,7 +2359,7 @@ It stops. It looks at you with a dead man's eyes and something in it is genuinel
 
 ### 425
 
-You take the list out of your coat and you cross out Hett Vance with your thumbnail, and under it, in frost and lamp-black because you have nothing else, you put your own name.
+You take the list out of your coat and you scratch out Hett Vance's name with your thumbnail, gouging the paper until it cannot be read, and under it, in frost and lamp-black because you have nothing else, you put your own name.
 
 Then you hold it out.
 
@@ -2402,7 +2403,9 @@ Nothing happens.
 
 You had perhaps half-expected something to happen. There is no sound and no flash and the cold does not lift, and the thing wearing Doran Welk does not react at all. If you burned the list, you understand after a moment that all you have done is burn a piece of paper, and it says, mildly, "That was somebody's careful handwriting. Alder's, I think. She'll be upset." If you are standing in its path, it stops walking, and it does not try to push past you or go around you.
 
-And then it waits, because it can, because dawn is four hours off and it has nowhere to be and neither do you. It does not go up the slope for Hett Vance. It stands where it is, and you stand where you are, and the last watch of the night turns out to be exactly what the job always was: staying between the cold and the village until the sun comes up.
+And then it waits, because it can, because dawn is not here yet and it has nowhere to be and neither do you. It does not go up the slope for Hett Vance. It stands where it is, and you stand where you are, and the last watch of the night turns out to be exactly what the job always was: staying between the cold and the village until the sun comes up.
+
+*If your lamp is dark:* you hold the line anyway, by the grey light that comes up off the ice, and it looks at your dead lantern for a long moment with something uncomfortably close to approval.
 
 → **520**
 
@@ -2444,7 +2447,7 @@ The shrine door is where you left it, open or broken, and inside, Brother Anselm
 
 The rope hangs in the dark with a band of blood on it at the height of a man's hands.
 
-You told him you would take the vigil. You did not know what you were agreeing to. You are about to find out, and what you find out is this: it is not difficult. It is not clever. There is a rope, and there is dawn, and the entire job is to still be here in four hours.
+You told him you would take the vigil. You did not know what you were agreeing to. You are about to find out, and what you find out is this: it is not difficult. It is not clever. There is a rope, and there is dawn, and the entire job is to still be here when the sun comes up.
 
 You set your lantern at the foot of the rope, where it will burn until morning. **The lamp drinks a unit: mark off one oil.**
 
@@ -2693,9 +2696,11 @@ Medium beast. AC 13. Speed 30 ft., fly 50 ft. HP as the Watch Lamp line below.
 This is a nest, not a hunt, and the roles are different here.
 Round 1: both drop from the rafters. The first attacks you with Silent Rush. The second lands between you and the child and does not attack at all: it stands over her with its beak lowered, and it will attack the instant you move toward her.
 Round 2 onward: the attacker fights normally and does not withdraw. This is their larder and they are not giving it up.
+On Dark Watch, the third shrike drops from the rafters on round three and attacks whoever is nearest. It shares the pair's morale: when they break, all three break together.
 The guard never leaves the child and never pursues. If you drop the attacker, the guard fights on alone from where it stands.
 
 *If Nell is with you:* the guard cannot watch both of you, and Nell knows which of you is the distraction. Your check to get past the guard to the child is made with advantage.
+
 If you get the child behind you (a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), both break for the moor within one round.
 **Fail-forward:** if you drop to 0 hit points here, you do not die on Ember or Lantern. Go to **486**.
 
@@ -2921,7 +2926,7 @@ It is too big and it belonged to a broad, tired man who tested every coin agains
 
 "How long have we got?"
 
-"Before it's back?" Hett looks up at the hill, at the square black shape of Caer Brack against a clean cold morning sky. "It said within the month. It's not lied yet, as far as anyone can tell. That's the thing about it that nobody's ready for. It doesn't lie. It just waits until you've stopped being able to bear it and then it's reasonable at you."
+"Before it's back?" Hett looks up at the hill, at the square black shape of Caer Brack against a clean cold morning sky. "Within the month, if Sefa's count is right, and her count has not been wrong in thirty years. And here is the thing about it that nobody's ready for. It doesn't lie. It just waits until you've stopped being able to bear it and then it's reasonable at you."
 
 He shrugs.
 
@@ -2952,7 +2957,7 @@ The book is not going to tell you what you did next. That one is yours.
 
 **Here ends the night watch.**
 
-You were the watch for one night, on the night the ford froze, and you did not beat anything. There is nothing under the hill that is any weaker this morning than it was yesterday. The swept stair is still swept. The candle at the bottom of it is still burning. Eleven is still eleven, or ten, or however the ledger stands now, and somewhere out on the moor an old woman is counting stones and getting the wrong answer.
+You were the watch for one night, on the night the ford froze, and you did not beat anything. There is nothing under the hill that is any weaker this morning than it was yesterday. The swept stair is still swept. The candle at the bottom of it is still burning. The debt still stands however you left it at the ford this morning, and somewhere out on the moor an old woman is counting stones and getting an answer she does not like.
 
 But the village woke up.
 
@@ -2972,7 +2977,7 @@ That is the whole of it, and it is not nothing, and Hett Vance was right about t
 
 You do not come back at dawn.
 
-They find you on the ice at first light with the frost already in the seams of your coat and packed white in the folds of your ears, and there is not a mark on you anywhere, and the ground under you is not thawed at all.
+They find you at first light, wherever the night left you, with the frost already in the seams of your coat and packed white in the folds of your ears, and there is not a mark on you anywhere, and the ground under you is not thawed at all, wherever you lay.
 
 Hett Vance carries you up the slope himself and will not let anybody take the other end.
 

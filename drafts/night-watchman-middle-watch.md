@@ -171,7 +171,7 @@ It is somewhere past midnight. The bell is still going. There is a man walking u
 
 And there are four places in Brackenford that need the watch right now, and one of you.
 
-*Choose where you go. When you return here, choose again.*
+*Choose where you go. When you return here, choose again, somewhere you have not yet been: the night does not offer the same crisis twice.*
 
 *If Nell is with you:* she looks down each of the four roads in turn, and then up at you, and waits. She has no advice. She is just not leaving.
 
@@ -666,6 +666,7 @@ STR 12 (+1) DEX 16 (+3) CON 13 (+1) INT 3 (-4) WIS 14 (+2) CHA 5 (-3)
 Round 1: if you go for the child, the catcher attacks you with Silent Rush. If you go for the chaser instead, the catcher grabs the child.
 If either shrike drops to half its hit points or fewer, it screams, the first sound either has made, and both fly for the far bank together.
 If you get the child off the wellhead and behind a door, both leave within two rounds. They did not come here to fight you. They came here to hunt.
+**Getting her out:** the well is thirty feet from the nearest door. Reaching her takes your move; lifting her off the wellhead takes your action, and if the catcher is alive and within ten feet of the well, it gets one attack against you as you lift her. Carrying her, you move at half speed. Any door on that square opens for a child without being asked.
 
 *If Nell is with you:* send her to the wellhead and she goes, flat out, and stands over the child. The catcher will not go near her. A dog standing its ground over a child is nothing it has ever hunted, and it does not know what to do with one, so while Nell guards the child, the shrike attacks Nell instead of taking her.
 
