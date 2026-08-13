@@ -37,11 +37,11 @@ Four things. Nothing else. If you find yourself keeping a fifth list, the book h
 
 **Your character sheet.** Hit points, spell slots, the usual.
 
-**Codewords.** Single words in small caps. When an entry grants one, write it down. Later entries look for them, sometimes hours later. The codewords are the night's memory, and they are how this book knows what kind of person you were at two in the morning.
+**Codewords.** Single words in small caps. When an entry grants one, write it down. Later entries look for them, sometimes hours later. The codewords are the night's memory, and they are how this book knows what kind of person you were at two in the morning. In the last stretch of the night the book may also hand you a **dawn mark**, which is a codeword the finale writes and only the dawn reads. Same box on the sheet. You will not need to remember it long.
 
 **The Dawn Track.** Twelve boxes. Tick one whenever an entry says to. Investigating things costs night. Standing in the cold getting your breath back costs night. When the track fills, dawn comes, ready or not. You are not being punished. You are being timed, the way a night times you.
 
-**Lamp oil.** Four units at Lantern Watch. Some entries burn one. Outdoors without a lit lamp you have disadvantage on Wisdom (Perception) checks, and some things in this village will not happen to you at all in the dark, which is not always a mercy.
+**Lamp oil.** Four units at Lantern Watch. When an entry says the lamp drinks a unit, mark one off; the cold makes it drink, and so do certain choices. You can never carry more than your starting number. When you mark off the last one, your lamp is dark: outdoors you have disadvantage on Wisdom (Perception) checks, and some entries have a line that only happens to a dark lamp, and you do not want those lines. A dark lamp relights from any lit fire in the village, or a Rekindle token. Not from wishing.
 
 ## Choose your Watch Lamp
 

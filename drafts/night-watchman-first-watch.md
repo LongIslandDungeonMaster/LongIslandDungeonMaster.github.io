@@ -160,6 +160,8 @@ You turn your back on the river and start up the bank, and the cold comes with y
 
 Not wind. There is no wind. Just the temperature going down a step at a time, the way a house cools when someone opens a door in another room.
 
+*If Nell is with you:* she takes up her place half a stride ahead, ears up, tail governing itself, entirely satisfied that the two of you are doing something normal. She has walked this village her whole life. She has never once done it in a tabard's company, and she approves.
+
 Doran Welk is still in his chair at the near bank, which is unusual, because Doran goes in at dusk.
 
 → Go to him. **010**
@@ -294,6 +296,10 @@ Mara sees the tabard and something crosses her face that is not quite a smile.
 She pours you something without asking and sets it on the bar, and while she does it, without breaking stride or conversation, she takes a clean mug from the rail, walks it to the empty chair by the fire, and sets it down in front of nobody.
 
 Nobody at the tables reacts. They have watched her do it every dusk for a year.
+
+She looks once at your lantern, reaches under the bar, and stands a small stoppered flask next to your drink. Lamp oil. "House rule," she says. "The watch carries spare. The last one didn't."
+
+**Add one unit of lamp oil**, up to your Watch Lamp's starting number.
 
 → Ask about the chair. **033**
 → Ask what the village is worried about tonight. **035**
@@ -773,6 +779,8 @@ Round 2 onward: it dives, attacks, and withdraws thirty feet on the same turn. I
 If reduced to half its hit points or fewer: it breaks and flies for the far bank. It does not come back tonight.
 If you retreat toward the village: it follows for exactly one round, then returns to the larder. It is not hunting you. It is hunting *here*, and you are standing in the pantry.
 
+*If Nell is with you:* she plants herself at the break of the arch and gives the dark over the water everything she has. While she stands with you, the shrike's dives lose Silent Rush. Nothing gets to be silent near Nell.
+
 > **Watch Lamp** · **Ember:** 14 HP, and it does not use Silent Rush; you hear the wings in time. · **Lantern:** 22 HP. · **Dark:** 22 HP, and if you are standing on the arch when it attacks, you must also make a DC 12 Dexterity saving throw or be pushed 5 feet toward the drop. Fall from the arch: 3d6 bludgeoning and you are in the freezing water.
 
 *If you win:* → **077**
@@ -821,6 +829,10 @@ The smoke from the chimneys along the top of the street is going straight up. Th
 Dogs stop. Smoke goes straight up when there's a wind. Water does what water shouldn't.
 
 Hett gave you the list and you did not know it was a list.
+
+Your lamp flame shrinks to a bead, steadies, and burns on, drinking hard against the cold. **The lamp drinks a unit: mark off one oil.**
+
+*If Nell is with you:* she has stopped. She is pressed against your shin, not trembling, not growling, not making any sound at all, and that is the wrongest thing yet, because until this moment she has had an opinion about everything.
 
 **Tick one box on the Dawn Track.**
 

@@ -4,7 +4,7 @@
 **Draft v0.1** for red-team review. Continues directly from **107** at the end of First Watch.
 Setting: Brackenford. Spec: `specs/the-night-watchman-spec.md`.
 
-> **Draft notes for the red team.** 63 authored entries; a single run plays roughly 34. This act is the "you cannot be everywhere" act, and that is enforced mechanically: four crises are live at once and the Watch Lamp tier decides how many you reach (Dark and Lantern: two. Ember: three). Four new codewords, bringing the adventure total to twelve as specced. Dawn Track consumed: four to seven boxes, which should land the player at nine or ten of twelve entering Last Watch. One combat, one corpse, one door, one bell. Numbering is sparse on purpose; unlisted numbers inside each block are reserved for expansion.
+> **Draft notes for the red team.** 63 authored entries; a single run plays roughly 34. This act is the "you cannot be everywhere" act, and that is enforced mechanically: four crises are live at once and the Watch Lamp tier decides how many you reach (Dark and Lantern: two. Ember: three; this visit-count dial is the one sanctioned tier effect on story breadth, per spec 5.4). New state this act: DOORHELD, RELIEVED, TOLLPAID, and the two-faced SHELTERED/TAKEN slot, bringing the adventure to its specced twelve codeword slots. Dawn Track consumed: four to seven boxes, which should land the player at nine or ten of twelve entering Last Watch. One combat, one corpse, one door, one bell. Numbering is sparse on purpose; unlisted numbers inside each block are reserved for expansion.
 
 ---
 
@@ -155,8 +155,6 @@ Tobin Tullamore has come home.
 
 *If you have **MUGSET**:* she told you herself, with both hands flat on the bar, in the voice she uses for arguments about sheep, and you did not believe her, and you were polite about not believing her, and she saw that too.
 
-Write the codeword **THAWED**.
-
 → **220**
 
 ---
@@ -174,6 +172,8 @@ It is somewhere past midnight. The bell is still going. There is a man walking u
 And there are four places in Brackenford that need the watch right now, and one of you.
 
 *Choose where you go. When you return here, choose again.*
+
+*If Nell is with you:* she looks down each of the four roads in turn, and then up at you, and waits. She has no advice. She is just not leaving.
 
 → **The Broken Wheel.** Get there before he does. **230**
 → **The Shrine of the Quiet Hand.** Somebody is on that rope. **250**
@@ -668,6 +668,8 @@ Round 1: if you go for the child, the waiter attacks you with Silent Rush. If yo
 If either is reduced to half hit points or fewer, it screams for the first time, and both break for the far bank together.
 If you get the child off the wellhead and behind a door, both disengage within two rounds. They are not here for a fight. They are here because the cold came and this is where the cold goes.
 
+*If Nell is with you:* send her to the wellhead and she goes, flat out, and puts herself over the child and becomes a low wall with a heartbeat. The waiter does not understand a thing that gives its body to a smaller thing. While Nell stands over the child, it does not take her; it attacks Nell instead.
+
 > **Watch Lamp** · **Ember:** 14 HP each, and the driver spends its first turn circling, which buys you a round. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, they act on the same initiative, and the waiter takes the child on round one unless you are already within reach of the well.
 
 *If you drive them off or drop them:* → **278**
@@ -890,6 +892,8 @@ The village is dark. Every shutter on the square, closed. Every door barred. Fif
 
 You did that. Whatever else happened tonight, they are inside, and you are not.
 
+The deep cold has been at your wick for hours. **The lamp drinks a unit: mark off one oil.** If that was your last, the only light left in Brackenford is the one somebody set on the wellhead, and you are carrying a dark lantern through a shut village.
+
 → **311**
 
 ---
@@ -985,9 +989,9 @@ Beside you in the dark, Hett Vance says, "Well. Now we know what it wants."
 
 ## Appendix: state carried into Last Watch
 
-**Codewords in play (twelve total).** From First Watch: ICEBOUND, VOUCHED, MUGSET, HANDSIGN, WITNESS, BLACKNAIL, LARDER, BLOODED. From Middle Watch: THAWED (always granted), DOORHELD, RELIEVED, SHELTERED, TOLLPAID, TAKEN.
+**Codewords in play (twelve slots).** From First Watch: ICEBOUND, VOUCHED, MUGSET, HANDSIGN, WITNESS, BLACKNAIL, LARDER, BLOODED. From Middle Watch: DOORHELD, RELIEVED, TOLLPAID, and SHELTERED/TAKEN (one slot with two faces; they never coexist). Last Watch adds no codewords, only the two dawn marks (SCARRED, CARRIED), which the finale writes and only the dawn epilogue reads.
 
-*Note for the red team: that is fourteen names against a specced ceiling of twelve. THAWED is granted on every path and is arguably act structure rather than state, and TAKEN is the failure counterpart of SHELTERED and never coexists with it. Either fold THAWED into the act transition and treat SHELTERED/TAKEN as one slot with two faces (bringing the true count to twelve), or raise the spec ceiling to fourteen. Recommend the former; flagging rather than deciding it here.*
+*Resolved 2026-08-12 per the earlier red-team flag: THAWED was folded into the act structure (entry 211 is on every path, so the word encoded nothing) and SHELTERED/TAKEN counts as one slot, bringing the true count to the specced twelve. ~~(Tombstoned: the flag previously read "fourteen names against a specced ceiling of twelve... flagging rather than deciding it here.")~~*
 
 **Dawn Track on entering Last Watch:** expected six to ten of twelve. Below six means the player skipped nearly everything and Last Watch should still work but will feel underpopulated; above ten means dawn arrives fast and the finale runs hot. Both are legitimate and Act Three must handle both.
 

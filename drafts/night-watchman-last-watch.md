@@ -21,6 +21,10 @@ He is wearing the coat he died in, and the frost is still on him in the seams of
 
 "Evening," it says, in his voice, kindly.
 
+*If your lamp is dark:* there is no edge of the light for it to stop at. It stops at arm's length instead, out of what appears to be courtesy, and you learn that its breath does not smell like anything at all.
+
+*If Nell is with you:* she makes a sound you have never heard a dog make, once, and then she is pressed flat against the backs of your knees, and she stays there. She does not run. She will not look at it.
+
 → **401**
 
 ---
@@ -330,7 +334,7 @@ You come back at dawn.
 That is not a metaphor and it is not a resurrection. You wake on the frozen stones at the edge of the ford with the sun on your face and Hett Vance slapping at your cheek and shouting, and you are alive, and you are extremely cold, and you have been out for four hours.
 
 *If you are playing Ember Watch:* you take no lasting harm. It looked at you, took what was owed from somebody else's ledger, and left you on the ice.
-*If you are playing Lantern Watch:* your hair has gone white at the temple and stays that way. Write the codeword **SCARRED**.
+*If you are playing Lantern Watch:* your hair has gone white at the temple and stays that way. Write the dawn mark **SCARRED**.
 *If you are playing Dark Watch:* you do not come back at dawn. Go to **535**.
 
 → **520**
@@ -360,6 +364,8 @@ The shrine door is where you left it, open or broken, and inside, Brother Anselm
 The rope hangs in the dark with a band of blood on it at the height of a man's hands.
 
 You told him you would take the vigil. You did not know what you were agreeing to. You are about to find out, and what you find out is this: it is not difficult. It is not clever. There is a rope, and there is dawn, and the entire job is to still be here in four hours.
+
+You set your lantern at the foot of the rope, where it will burn until morning. **The lamp drinks a unit: mark off one oil.** If you have none left, you ring in the dark, and the dark listens.
 
 → **442**
 
@@ -433,7 +439,7 @@ Somewhere in the third hour you stop being able to tell which of the voices outs
 
 You keep hauling. That is the only fact you can be sure of and you hold on to it the way Anselm told you he held on to the weight of the brass: a man can hold a weight when he cannot hold anything else.
 
-When Hett Vance finally gets the door open at sunrise you swing at him. Write the codeword **SCARRED**.
+When Hett Vance finally gets the door open at sunrise you swing at him. Write the dawn mark **SCARRED**.
 
 → **447**
 
@@ -466,6 +472,8 @@ Specifically: you go up the square hammering on shutters and shouting the same f
 Mara is already sitting against the front door. She looks at you.
 
 "Two of us, then," she says.
+
+Your lantern goes on the bar, lit, and stays lit until dawn, because a barred common room with the lamp out is not something either of you is prepared to sit in. **The lamp drinks a unit: mark off one oil.** If you have none left, Mara feeds the fire instead, all night, one log at a time.
 
 → **461**
 
@@ -554,6 +562,8 @@ You go across the ice.
 
 Hett Vance shouts your name once. You do not stop, because there is a six-year-old in a nightshirt somewhere in the Drowned Lane and everything else in this village is behind a door, and this is the fourth rule, and you knew you were breaking it when you took the first step.
 
+At the edge of the ice you turn the wick up as far as it goes, because whatever is over there, you want it to see the watch coming. **The lamp drinks a unit: mark off one oil.** *If you have none to mark:* you cross dark, the ice reads as one grey sheet, and your checks in the Drowned Lane are made at disadvantage until you find light.
+
 The Wend under your boots is a grey floor that creaks and does not give. You pass within fifteen feet of the thing wearing Doran Welk. It does not stop you. It turns its head and watches you go by with an expression of mild professional interest, the way a man watches somebody else's dog run off.
 
 → **481**
@@ -599,6 +609,8 @@ This is a nest, not a hunt, and the roles are different here.
 Round 1: both drop from the rafters. The first attacks you with Silent Rush. The second lands between you and the child and does not attack at all: it stands over her with its beak lowered, and it will attack the instant you move toward her.
 Round 2 onward: the attacker fights normally and does not withdraw. This is their larder and they are not giving it up.
 The guard never leaves the child and never pursues. If you drop the attacker, the guard fights on alone from where it stands.
+
+*If Nell is with you:* the guard cannot watch both of you, and Nell knows which of you is the distraction. Your check to get past the guard to the child is made with advantage.
 If you get the child behind you (a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), both break for the moor within one round.
 **Fail-forward:** if you drop to 0 hit points here, you do not die on Ember or Lantern. Go to **486**.
 
@@ -629,7 +641,7 @@ You get her to the near bank and up the slope and Hett Vance takes her off you a
 
 The mother is at a door with her arms out and her mouth open and no sound coming.
 
-Write the codeword **CARRIED**.
+Write the dawn mark **CARRIED**.
 
 → **520**
 
@@ -643,7 +655,7 @@ What wakes you is being dragged. Hett Vance came across that ice after you, alon
 
 "Rule three," he says through his teeth. "Rule three, you great idiot, you come and get me."
 
-Take one level of exhaustion and write the codewords **CARRIED** and **SCARRED**.
+Take one level of exhaustion and write the dawn marks **CARRIED** and **SCARRED**.
 
 → **485**
 
@@ -660,6 +672,8 @@ You do not have a plan.
 You have a lantern with about two hours of oil in it, a bell-clapper, a tabard that belonged to somebody else, and a route: up from the ford through the square, along the top past the inn, down the back by Greel's yard, out to the broken bridge, and back to the water.
 
 So you walk it.
+
+**The lamp drinks a unit: mark off one oil.** The round takes what the round takes. *If you have none to mark:* you walk it dark, and the thing keeps you company at ten feet instead of thirty, which it appears to consider polite.
 
 → **501**
 
@@ -775,6 +789,8 @@ Doran Welk's chair is still lying on its side on the bank. Somebody sets it up.
 *If you have **TOLLPAID**:* you know the number. You are one of five people alive who does, and by noon Goodwife Alder will know that you know, because Goodwife Alder always knows, and there will be an invitation to tea.
 
 *If you have **SCARRED**:* whatever it took out of you, it did not take all of it, and you got up.
+
+*If Nell is with you:* she sleeps for a day and a half in front of the Broken Wheel's fire, and wakes up a village dog: fed at five doors, owned at none, and on the round every night after, with whoever carries the lamp.
 
 → **522**
 
