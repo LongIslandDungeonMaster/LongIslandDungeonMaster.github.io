@@ -56,7 +56,7 @@ You wait. He does not give you a fourth.
 
 "Four's the one I can't teach," he says. "You'll know it when you need it."
 
-He puts the bell-clapper in your other hand. Brass, cold, the size of a spoon.
+He puts the bell-clapper in your other hand, the striker you will ring the posts with. Brass, cold, the size of a spoon.
 
 → Ask him something. **003**
 → Say nothing and start the circuit. **007**
@@ -140,7 +140,7 @@ You are the watch.
 
 *Make a DC 12 Wisdom (Perception) check, with disadvantage if your lamp is not lit.*
 
-**Success.** The brown water is sliding over the flat stones the way it always has, except at the edges, in the slack water behind the biggest rocks, where it has gone still and grey and slightly wrong, like a mirror breathed on. It is skinning over. In autumn. In an hour it will bear a coin. By midnight it will bear a man.
+**Success.** The brown water is sliding over the flat stones the way it always has, except at the edges, in the slack water behind the biggest rocks, where it has gone still and grey and slightly wrong, like a mirror breathed on. Thin ice is forming over the still patches. In autumn. In an hour it will be thick enough to hold a coin. By midnight it will hold a man's weight.
 
 The ford is icing, and you are the only person in Brackenford who knows it yet.
 
@@ -160,9 +160,9 @@ You turn your back on the river and start up the bank, and the cold comes with y
 
 Not wind. There is no wind. Just the temperature going down a step at a time, the way a house cools when someone opens a door in another room.
 
-*If Nell is with you:* she takes up her place half a stride ahead, ears up, tail governing itself, entirely satisfied that the two of you are doing something normal. She has walked this village her whole life. She has never once done it in a tabard's company, and she approves.
+*If Nell is with you:* the dog takes up her place half a stride ahead, ears up, tail swinging easy, entirely satisfied that the two of you are doing something normal. She has walked this village her whole life. She has never once done it in a tabard's company, and she approves.
 
-Doran Welk is still in his chair at the near bank, which is unusual, because Doran goes in at dusk.
+Doran Welk, who keeps the ford and takes its copper toll, is still in his chair at the near bank, which is unusual, because Doran goes in at dusk.
 
 → Go to him. **010**
 
@@ -172,7 +172,7 @@ Doran Welk is still in his chair at the near bank, which is unusual, because Dor
 
 He has not gone in. He is sitting in the chair he carried out here himself with the strongbox between his boots, and he is not collecting anything, because there is nobody to collect from. He is just sitting, facing the water, with his cudgel across his knees and his coat buttoned to the throat.
 
-He hears the tabard before he sees it. Something in his shoulders drops.
+He hears your boots before he sees you, and when he turns and sees the tabard, something in his shoulders drops.
 
 "Oh," he says. "It's you. Vance found somebody."
 
@@ -374,7 +374,7 @@ An hour ago that bell rang, on time, from in there.
 
 You put your eye to the gap in the shutter.
 
-Candles. Dozens, most of them guttered to stubs and left where they died, on the floor, on the sill, in a rough line down the middle of the nave that does not correspond to anything. At the far end, past the altar, a shape sits upright in a chair facing the door with its hands on its knees.
+Candles. Dozens, most of them guttered to stubs and left where they died, on the floor, on the sill, in a rough line down the middle of the nave that lines up with nothing in the room. At the far end, past the altar, a shape sits upright in a chair facing the door with its hands on its knees.
 
 It is a man. He is awake. His eyes are open and they are pointed at the door, and the door is where you are.
 
@@ -516,7 +516,7 @@ Bryn puts down the crate.
 
 He is a quick, watchful boy who goes everywhere in this village and is invisible doing it, and right now he is neither quick nor invisible. He is a child in a cold yard trying to say something.
 
-His mouth opens. Nothing comes out. He tries again, and you can see him get as far as the shape of the first word before it goes.
+His mouth opens. Nothing comes out. He tries again, and you can see his mouth start to form the first word before it fails him.
 
 *If you have a lit lamp and you crouch to his level, or you make a DC 12 Charisma (Persuasion) or Wisdom (Insight) check:* **054**
 *Otherwise, or if you would rather not push a frightened child:* **055**
@@ -529,7 +529,7 @@ You crouch, so the lantern is between you and low, and you are not a tall shape 
 
 "You don't have to say it," you tell him. "Point."
 
-Bryn thinks about that for a long moment. Then he lifts his arm and points, straight and steady, past the fence, past the roofs, up the black slope of the hill behind the village to where Caer Brack sits against the last of the light.
+Bryn thinks about that for a long moment. Then he lifts his arm and points, straight and steady, past the fence, past the roofs, up the black slope of the hill behind the village to where Caer Brack, the ruined keep on the hilltop, sits against the last of the light.
 
 Then he points down. At the ground. At *under*.
 
@@ -584,7 +584,7 @@ The notice board stands at the edge of the light with its layers of paper going 
 
 ### 061
 
-The lantern is warm. It has been lit maybe an hour, which puts it at the dusk bell.
+The lantern is warm. It has been burning for about an hour, which means somebody set it here at the time the dusk bell rang.
 
 The well it stands on has been dry for years. There is a plank cover, warped, pushed aside by about a hand's width, and the gap is the kind of black that a lantern a foot away does not touch at all.
 
@@ -633,9 +633,9 @@ That is all of it.
 
 The nail is black and square-headed and driven through four other notices to reach the wood.
 
-*If you have **HANDSIGN**:* it is not Anselm's hand. You heard the man an hour ago through a door and you would know his careful liturgical cadence anywhere, and this is not it. This is somebody older, and in a hurry, and writing to be understood by whoever can read.
+*If you have **HANDSIGN**:* Anselm did not write this. You heard him an hour ago through a door: he speaks slowly and precisely, like a man reading a prayer, and there is nothing slow or precise about this sheet. This is somebody older, and in a hurry, and writing to be understood by whoever can read.
 
-*If you have **WITNESS**:* Bryn told you the loads go up the hill road, all of them, always. Somebody in this village has been managing this for a long time, and somebody else has been leaving warnings about it on a public board where anyone might look up.
+*If you have **WITNESS**:* Bryn told you the loads go up the hill road, all of them, always. Somebody in this village has been managing this for a long time, and somebody else has been leaving warnings about it on a public board where anyone might read them.
 
 Write the codeword **BLACKNAIL** if you do not have it.
 
@@ -676,7 +676,7 @@ The two strokes go out across the square and up the fronts of the houses. Nobody
 
 The bridge is a ruin and has been since before your grandfather. The near arch still stands, solid enough to walk out on, and then it simply stops, forty feet up, over the water, with the far arch a broken stub on the other bank and a generation of air in between.
 
-Nobody repaired it. The ford is ten yards downstream and free, except for a copper, except for tonight.
+Nobody repaired it. The ford is ten yards downstream, and crossing there costs nothing but Doran's copper toll. At least it did until tonight.
 
 You walk out to the end of the standing arch because the post is out there, and because you want to see the far bank, and those are two different reasons and only one of them is the job.
 
@@ -774,11 +774,11 @@ STR 12 (+1) DEX 16 (+3) CON 13 (+1) INT 3 (-4) WIS 14 (+2) CHA 5 (-3)
 
 **How it fights.**
 Round 1: the shrike attacks with Silent Rush, then does not stay. It flies twenty feet off and lands on the broken arch, out of reach, and looks at you.
-Round 2 onward: it dives, attacks, and withdraws thirty feet on the same turn. It will not stand and trade. It is trying to make you step backward, off a bridge, in the dark.
+Round 2 onward: it dives, attacks, and withdraws thirty feet on the same turn. It will not stand still and trade blows with you. It is trying to make you step backward, off a bridge, in the dark.
 If reduced to half its hit points or fewer: it breaks and flies for the far bank. It does not come back tonight.
 If you retreat toward the village: it follows for exactly one round, then returns to the larder. It is not hunting you. It is hunting *here*, and you are standing in the pantry.
 
-*If Nell is with you:* she plants herself at the break of the arch and gives the dark over the water everything she has. While she stands with you, the shrike's dives lose Silent Rush. Nothing gets to be silent near Nell.
+*If Nell is with you:* she plants herself at the break of the arch and barks at the dark over the water with everything she has. While she stands with you, the shrike's dives lose Silent Rush. Nothing gets to be silent near Nell.
 
 > **Watch Lamp** · **Ember:** 14 HP, and it does not use Silent Rush; you hear the wings in time. · **Lantern:** 22 HP. · **Dark:** 22 HP, and if you are standing on the arch when it attacks, you must also make a DC 12 Dexterity saving throw or be pushed 5 feet toward the drop. Fall from the arch: 3d6 bludgeoning and you are in the freezing water.
 
@@ -821,13 +821,13 @@ Two strokes. And out across the water, from the empty houses of the Drowned Lane
 
 You are between posts when the night changes, and it does not do it gradually.
 
-The cold arrives like a room. One step and your breath is a plume and your teeth ache in their sockets and the water on the cobbles has gone from wet to white. Behind you, up in the village, a dog that has been barking on and off all evening stops in the middle of it.
+The cold arrives all at once, the way it does when you step down into a cellar. One step and your breath is a plume and your teeth ache in their sockets and the water on the cobbles has gone from wet to white. Behind you, up in the village, a dog that has been barking on and off all evening stops in the middle of it.
 
 The smoke from the chimneys along the top of the street is going straight up. There is a wind. You can feel it on your face. The smoke is going straight up anyway.
 
 Dogs stop. Smoke goes straight up when there's a wind. Water does what water shouldn't.
 
-Hett gave you the list and you did not know it was a list.
+If Hett told you what to watch for, this is his list, all of it, arriving at once. If he did not, you are learning it now.
 
 Your lamp flame shrinks to a bead, steadies, and burns on, drinking hard against the cold. **The lamp drinks a unit: mark off one oil.**
 
@@ -857,7 +857,7 @@ It is gone in the space of a breath.
 
 ### 092
 
-You do not chase it. You get to the gap between the houses in time to see the alley behind them, and it is empty, and there is nothing in it but frost.
+You go after it only as far as the gap between the houses, at a fast walk you can still call watching rather than chasing. The alley behind the houses is empty, and there is nothing in it but frost.
 
 There are prints in the frost.
 
@@ -875,7 +875,7 @@ Write the codeword **BLACKNAIL** if you do not have it: whoever wrote *do not be
 
 You stand still with your lamp low and you let it go, and it goes.
 
-That is not cowardice. That is the fourth rule, the one Hett could not teach you, and it turns out the fourth rule is *know which of the two of you the night is actually about.*
+That is not cowardice. That is the fourth rule, the one Hett could not teach you, and it turns out the fourth rule is *know when the night is not about you, and let it pass.*
 
 → **095**
 
@@ -900,7 +900,7 @@ Nobody in Brackenford has ever once been embarrassed about a door.
 
 The village is going dark around you as you stand there. Not sleeping. Closing. A shutter, then another, then a whole street of them, the sound moving away from you up the slope like something passing.
 
-In four hours of this you have learned what tonight is: the water is stopping, the cold came down off the hill, a boy cannot say what he saw, a priest is holding a door shut with a bell, and a broad tired man has gone up the hill road with a strongbox to pay somebody.
+In four hours of this you have started to learn what tonight is. The cold came down off the hill, quick and quiet, and whatever you have seen on your round, all of it points the same two ways: up the hill, and down at the water.
 
 You have one post left on the round and then it is midnight.
 
@@ -984,7 +984,7 @@ For a second, before he gets his face back, he looks at you exactly the way Dora
 
 "Nothing you can help with," Hett says. "Nothing I can either, and I have had twenty years to work that out."
 
-He looks past you at the ford, at the grey floor where a river used to be, and you watch him do the arithmetic of it, and you watch him arrive somewhere he has been before.
+He looks past you at the ford, at the grey floor where a river used to be, and you watch him work out what it means, and you can tell that he has worked it out before, on other nights like this one.
 
 "That's the third one this year," he says quietly. "It used to be one."
 
@@ -996,7 +996,7 @@ He looks past you at the ford, at the grey floor where a river used to be, and y
 
 Hett does not answer that.
 
-He looks at the overturned chair on the bank, and the strongbox that is not beside it, and then at the hill road he has just come down at a run, and you understand that he knows exactly where Doran is, and that he has known for a year, and that this is the thing he sent six men to Aldermere to not be here for.
+He looks at the overturned chair on the bank, and the strongbox that is not beside it, and then at the hill road he has just come down at a run, and you understand that he knows exactly where Doran is, and that he has known for a year, and that this is why he sent six men away to Aldermere: so they would not be here on a night like this.
 
 "Go home," he says. "Please."
 

@@ -21,15 +21,15 @@ You cannot win this adventure. There is nothing at the end of it that you defeat
 
 ## What you need
 
-- **A 3rd-level D&D character.** Yours, built normally, any class, 2014 or 2024 rules. Or take a pregen from Appendix B and start in two minutes.
+- **A 3rd-level D&D character.** Yours, built normally, any class, 2014 or 2024 rules. Or take a ready-made character from Appendix B and start in two minutes.
 - **Dice.** The usual set.
 - **One page for your night sheet.** Appendix D is printable if you want it, but the back of an envelope is traditional.
 
 ## Why 3rd level
 
-Because a lone character at 1st level dies to a single lucky hit, and a book that kills you on page four has not told you a story, it has wasted your evening. At 3rd level your subclass is online, which means this book can notice what you actually are. It does, constantly. A Battle Master reads a frozen street differently from a cleric of the dawn, and the entries know it.
+Because a lone character at 1st level dies to a single lucky hit, and a book that kills you on page four has not told you a story, it has wasted your evening. At 3rd level your character has chosen a subclass, which means this book can notice what you actually are. It does, constantly. A Battle Master reads a frozen street differently from a cleric of the dawn, and the entries know it.
 
-If your character is a different level, play them as they are and change nothing. The encounters are tuned for 3rd and the Watch Lamp below will absorb the rest.
+If your character is a different level, play them as they are and change nothing. The encounters are tuned for 3rd level, and the Watch Lamp choice below will make up the difference.
 
 ## What you track
 
@@ -37,25 +37,25 @@ Four things. Nothing else. If you find yourself keeping a fifth list, the book h
 
 **Your character sheet.** Hit points, spell slots, the usual.
 
-**Codewords.** Single words in small caps. When an entry grants one, write it down. Later entries look for them, sometimes hours later. The codewords are the night's memory, and they are how this book knows what kind of person you were at two in the morning. In the last stretch of the night the book may also hand you a **dawn mark**, which is a codeword the finale writes and only the dawn reads. Same box on the sheet. You will not need to remember it long.
+**Codewords.** Single words in small caps. When an entry grants one, write it down. Later entries look for them, sometimes hours later. The codewords are the night's memory, and they are how this book knows what kind of person you were at two in the morning. In the last stretch of the night the book may also hand you a **dawn mark**, which is simply a codeword you gain near the very end of the night, and that only the final dawn entries ever check. Same box on the sheet. You will not need to remember it long.
 
-**The Dawn Track.** Twelve boxes. Tick one whenever an entry says to. Investigating things costs night. Standing in the cold getting your breath back costs night. You are not being punished. You are being timed, the way a night times you. **If the twelfth box ticks before you have reached the Last Watch:** finish the scene you are in, then go to entry **315**. Dawn is coming, and the thing at the ford is done waiting. If it ticks during the Last Watch, keep playing: the dawn takes the finale as it finds it.
+**The Dawn Track.** Twelve boxes. Tick one whenever an entry says to. Investigating things costs night. Standing in the cold getting your breath back costs night. You are not being punished. You are being timed, the way a night times you. **If the twelfth box ticks before you have reached the Last Watch, the night's final act:** finish the scene you are in, then go to entry **315**. Dawn is coming, and the thing at the ford is done waiting. If it ticks during the Last Watch, keep playing: the dawn takes the finale as it finds it.
 
-**Lamp oil.** Four units at Lantern Watch. When an entry says the lamp drinks a unit, mark one off; the cold makes it drink, and so do certain choices. You can never carry more than your starting number. When you mark off the last one, your lamp is dark: outdoors you have disadvantage on Wisdom (Perception) checks, and some entries have a line that only happens to a dark lamp, and you do not want those lines. A dark lamp relights from any lit fire in the village, or a Rekindle token. Not from wishing.
+**Lamp oil.** You start with four units if you play at Lantern Watch, the standard tier described in the next section. When an entry says the lamp drinks a unit, mark one off; the cold makes it drink, and so do certain choices. You can never carry more than your starting number. When you mark off the last one, your lamp is dark: outdoors you have disadvantage on Wisdom (Perception) checks, and some entries have a line that only happens to a dark lamp, and you do not want those lines. A dark lamp relights from any lit fire in the village, or by spending a Rekindle token, which is explained just below. Not from wishing.
 
 ## Choose your Watch Lamp
 
 Three ways to play the same night. Pick one now. Change it at any rest, as often as you like, and the book will never mention it again.
 
-**Ember Watch.** You want the night and not its teeth. You start each act with 10 + your level in temporary hit points, you carry two Rekindle tokens, every printed DC drops by 2, you get five oil, and you cannot die. At 0 hit points you are dragged to safety by dawn and the night goes on without you. In the dead hours you reach three of the four crises instead of two, so you will also see more of this village than anyone else.
+**Ember Watch.** You want the night and not its teeth. You start each act with 10 + your level in temporary hit points, you carry two Rekindle tokens, every printed DC drops by 2, you get five oil, and you cannot die. At 0 hit points someone finds you and drags you to safety before dawn, and the night goes on without you. In the dead hours of the night, four crises break out at once and a watchman can normally reach only two of them; at this tier you reach three, so you will also see more of this village than anyone else.
 
 **Lantern Watch.** The night as written. 5 + your level in temporary hit points at the start of each act, one Rekindle token, DCs as printed, four oil. You can lose. Every dying moment has a rescue that costs you something.
 
-**Dark Watch.** The night does not care about you. No temporary hit points, no Rekindle, DCs as printed and worse late, three oil, and enemies win initiative ties. Death is death, and there is an ending written for it. Bury the watchman and make another one.
+**Dark Watch.** The night does not care about you. No temporary hit points, no Rekindle, DCs as printed with some late-night entries raising them further, three oil, and enemies win initiative ties. Death is death, and there is an ending written for it. Bury the watchman and make another one.
 
 **Rekindle token.** Spend one to reroll any d20 you have just rolled, or to stabilise yourself at 0 hit points, or to refill one unit of lamp oil. One mechanic, three uses, two boxes on your sheet.
 
-**Watch Lamp sidebars.** Combat and hazard entries end with a single line giving all three dials at once, always in the same order:
+**Watch Lamp sidebars.** Combat and hazard entries end with a single line giving the numbers for all three tiers at once, always in the same order:
 
 > **Watch Lamp** · **Ember:** the shrike has 14 HP and does not use Silent Rush. · **Lantern:** 22 HP. · **Dark:** 22 HP, and it tries to push you off the arch.
 
@@ -128,7 +128,7 @@ You wait. He does not give you a fourth.
 
 "Four's the one I can't teach," he says. "You'll know it when you need it."
 
-He puts the bell-clapper in your other hand. Brass, cold, the size of a spoon.
+He puts the bell-clapper in your other hand, the striker you will ring the posts with. Brass, cold, the size of a spoon.
 
 → Ask him something. **003**
 → Say nothing and start the circuit. **007**
@@ -212,7 +212,7 @@ You are the watch.
 
 *Make a DC 12 Wisdom (Perception) check, with disadvantage if your lamp is not lit.*
 
-**Success.** The brown water is sliding over the flat stones the way it always has, except at the edges, in the slack water behind the biggest rocks, where it has gone still and grey and slightly wrong, like a mirror breathed on. It is skinning over. In autumn. In an hour it will bear a coin. By midnight it will bear a man.
+**Success.** The brown water is sliding over the flat stones the way it always has, except at the edges, in the slack water behind the biggest rocks, where it has gone still and grey and slightly wrong, like a mirror breathed on. Thin ice is forming over the still patches. In autumn. In an hour it will be thick enough to hold a coin. By midnight it will hold a man's weight.
 
 The ford is icing, and you are the only person in Brackenford who knows it yet.
 
@@ -232,9 +232,9 @@ You turn your back on the river and start up the bank, and the cold comes with y
 
 Not wind. There is no wind. Just the temperature going down a step at a time, the way a house cools when someone opens a door in another room.
 
-*If Nell is with you:* she takes up her place half a stride ahead, ears up, tail governing itself, entirely satisfied that the two of you are doing something normal. She has walked this village her whole life. She has never once done it in a tabard's company, and she approves.
+*If Nell is with you:* the dog takes up her place half a stride ahead, ears up, tail swinging easy, entirely satisfied that the two of you are doing something normal. She has walked this village her whole life. She has never once done it in a tabard's company, and she approves.
 
-Doran Welk is still in his chair at the near bank, which is unusual, because Doran goes in at dusk.
+Doran Welk, who keeps the ford and takes its copper toll, is still in his chair at the near bank, which is unusual, because Doran goes in at dusk.
 
 → Go to him. **010**
 
@@ -244,7 +244,7 @@ Doran Welk is still in his chair at the near bank, which is unusual, because Dor
 
 He has not gone in. He is sitting in the chair he carried out here himself with the strongbox between his boots, and he is not collecting anything, because there is nobody to collect from. He is just sitting, facing the water, with his cudgel across his knees and his coat buttoned to the throat.
 
-He hears the tabard before he sees it. Something in his shoulders drops.
+He hears your boots before he sees you, and when he turns and sees the tabard, something in his shoulders drops.
 
 "Oh," he says. "It's you. Vance found somebody."
 
@@ -444,7 +444,7 @@ An hour ago that bell rang, on time, from in there.
 
 You put your eye to the gap in the shutter.
 
-Candles. Dozens, most of them guttered to stubs and left where they died, on the floor, on the sill, in a rough line down the middle of the nave that does not correspond to anything. At the far end, past the altar, a shape sits upright in a chair facing the door with its hands on its knees.
+Candles. Dozens, most of them guttered to stubs and left where they died, on the floor, on the sill, in a rough line down the middle of the nave that lines up with nothing in the room. At the far end, past the altar, a shape sits upright in a chair facing the door with its hands on its knees.
 
 It is a man. He is awake. His eyes are open and they are pointed at the door, and the door is where you are.
 
@@ -586,7 +586,7 @@ Bryn puts down the crate.
 
 He is a quick, watchful boy who goes everywhere in this village and is invisible doing it, and right now he is neither quick nor invisible. He is a child in a cold yard trying to say something.
 
-His mouth opens. Nothing comes out. He tries again, and you can see him get as far as the shape of the first word before it goes.
+His mouth opens. Nothing comes out. He tries again, and you can see his mouth start to form the first word before it fails him.
 
 *If you have a lit lamp and you crouch to his level, or you make a DC 12 Charisma (Persuasion) or Wisdom (Insight) check:* **054**
 *Otherwise, or if you would rather not push a frightened child:* **055**
@@ -599,7 +599,7 @@ You crouch, so the lantern is between you and low, and you are not a tall shape 
 
 "You don't have to say it," you tell him. "Point."
 
-Bryn thinks about that for a long moment. Then he lifts his arm and points, straight and steady, past the fence, past the roofs, up the black slope of the hill behind the village to where Caer Brack sits against the last of the light.
+Bryn thinks about that for a long moment. Then he lifts his arm and points, straight and steady, past the fence, past the roofs, up the black slope of the hill behind the village to where Caer Brack, the ruined keep on the hilltop, sits against the last of the light.
 
 Then he points down. At the ground. At *under*.
 
@@ -653,7 +653,7 @@ The notice board stands at the edge of the light with its layers of paper going 
 
 ### 061
 
-The lantern is warm. It has been lit maybe an hour, which puts it at the dusk bell.
+The lantern is warm. It has been burning for about an hour, which means somebody set it here at the time the dusk bell rang.
 
 The well it stands on has been dry for years. There is a plank cover, warped, pushed aside by about a hand's width, and the gap is the kind of black that a lantern a foot away does not touch at all.
 
@@ -702,9 +702,9 @@ That is all of it.
 
 The nail is black and square-headed and driven through four other notices to reach the wood.
 
-*If you have **HANDSIGN**:* it is not Anselm's hand. You heard the man an hour ago through a door and you would know his careful liturgical cadence anywhere, and this is not it. This is somebody older, and in a hurry, and writing to be understood by whoever can read.
+*If you have **HANDSIGN**:* Anselm did not write this. You heard him an hour ago through a door: he speaks slowly and precisely, like a man reading a prayer, and there is nothing slow or precise about this sheet. This is somebody older, and in a hurry, and writing to be understood by whoever can read.
 
-*If you have **WITNESS**:* Bryn told you the loads go up the hill road, all of them, always. Somebody in this village has been managing this for a long time, and somebody else has been leaving warnings about it on a public board where anyone might look up.
+*If you have **WITNESS**:* Bryn told you the loads go up the hill road, all of them, always. Somebody in this village has been managing this for a long time, and somebody else has been leaving warnings about it on a public board where anyone might read them.
 
 Write the codeword **BLACKNAIL** if you do not have it.
 
@@ -745,7 +745,7 @@ The two strokes go out across the square and up the fronts of the houses. Nobody
 
 The bridge is a ruin and has been since before your grandfather. The near arch still stands, solid enough to walk out on, and then it simply stops, forty feet up, over the water, with the far arch a broken stub on the other bank and a generation of air in between.
 
-Nobody repaired it. The ford is ten yards downstream and free, except for a copper, except for tonight.
+Nobody repaired it. The ford is ten yards downstream, and crossing there costs nothing but Doran's copper toll. At least it did until tonight.
 
 You walk out to the end of the standing arch because the post is out there, and because you want to see the far bank, and those are two different reasons and only one of them is the job.
 
@@ -843,11 +843,11 @@ STR 12 (+1) DEX 16 (+3) CON 13 (+1) INT 3 (-4) WIS 14 (+2) CHA 5 (-3)
 
 **How it fights.**
 Round 1: the shrike attacks with Silent Rush, then does not stay. It flies twenty feet off and lands on the broken arch, out of reach, and looks at you.
-Round 2 onward: it dives, attacks, and withdraws thirty feet on the same turn. It will not stand and trade. It is trying to make you step backward, off a bridge, in the dark.
+Round 2 onward: it dives, attacks, and withdraws thirty feet on the same turn. It will not stand still and trade blows with you. It is trying to make you step backward, off a bridge, in the dark.
 If reduced to half its hit points or fewer: it breaks and flies for the far bank. It does not come back tonight.
 If you retreat toward the village: it follows for exactly one round, then returns to the larder. It is not hunting you. It is hunting *here*, and you are standing in the pantry.
 
-*If Nell is with you:* she plants herself at the break of the arch and gives the dark over the water everything she has. While she stands with you, the shrike's dives lose Silent Rush. Nothing gets to be silent near Nell.
+*If Nell is with you:* she plants herself at the break of the arch and barks at the dark over the water with everything she has. While she stands with you, the shrike's dives lose Silent Rush. Nothing gets to be silent near Nell.
 
 > **Watch Lamp** · **Ember:** 14 HP, and it does not use Silent Rush; you hear the wings in time. · **Lantern:** 22 HP. · **Dark:** 22 HP, and if you are standing on the arch when it attacks, you must also make a DC 12 Dexterity saving throw or be pushed 5 feet toward the drop. Fall from the arch: 3d6 bludgeoning and you are in the freezing water.
 
@@ -890,13 +890,13 @@ Two strokes. And out across the water, from the empty houses of the Drowned Lane
 
 You are between posts when the night changes, and it does not do it gradually.
 
-The cold arrives like a room. One step and your breath is a plume and your teeth ache in their sockets and the water on the cobbles has gone from wet to white. Behind you, up in the village, a dog that has been barking on and off all evening stops in the middle of it.
+The cold arrives all at once, the way it does when you step down into a cellar. One step and your breath is a plume and your teeth ache in their sockets and the water on the cobbles has gone from wet to white. Behind you, up in the village, a dog that has been barking on and off all evening stops in the middle of it.
 
 The smoke from the chimneys along the top of the street is going straight up. There is a wind. You can feel it on your face. The smoke is going straight up anyway.
 
 Dogs stop. Smoke goes straight up when there's a wind. Water does what water shouldn't.
 
-Hett gave you the list and you did not know it was a list.
+If Hett told you what to watch for, this is his list, all of it, arriving at once. If he did not, you are learning it now.
 
 Your lamp flame shrinks to a bead, steadies, and burns on, drinking hard against the cold. **The lamp drinks a unit: mark off one oil.**
 
@@ -926,7 +926,7 @@ It is gone in the space of a breath.
 
 ### 092
 
-You do not chase it. You get to the gap between the houses in time to see the alley behind them, and it is empty, and there is nothing in it but frost.
+You go after it only as far as the gap between the houses, at a fast walk you can still call watching rather than chasing. The alley behind the houses is empty, and there is nothing in it but frost.
 
 There are prints in the frost.
 
@@ -944,7 +944,7 @@ Write the codeword **BLACKNAIL** if you do not have it: whoever wrote *do not be
 
 You stand still with your lamp low and you let it go, and it goes.
 
-That is not cowardice. That is the fourth rule, the one Hett could not teach you, and it turns out the fourth rule is *know which of the two of you the night is actually about.*
+That is not cowardice. That is the fourth rule, the one Hett could not teach you, and it turns out the fourth rule is *know when the night is not about you, and let it pass.*
 
 → **095**
 
@@ -968,7 +968,7 @@ Nobody in Brackenford has ever once been embarrassed about a door.
 
 The village is going dark around you as you stand there. Not sleeping. Closing. A shutter, then another, then a whole street of them, the sound moving away from you up the slope like something passing.
 
-In four hours of this you have learned what tonight is: the water is stopping, the cold came down off the hill, a boy cannot say what he saw, a priest is holding a door shut with a bell, and a broad tired man has gone up the hill road with a strongbox to pay somebody.
+In four hours of this you have started to learn what tonight is. The cold came down off the hill, quick and quiet, and whatever you have seen on your round, all of it points the same two ways: up the hill, and down at the water.
 
 You have one post left on the round and then it is midnight.
 
@@ -1052,7 +1052,7 @@ For a second, before he gets his face back, he looks at you exactly the way Dora
 
 "Nothing you can help with," Hett says. "Nothing I can either, and I have had twenty years to work that out."
 
-He looks past you at the ford, at the grey floor where a river used to be, and you watch him do the arithmetic of it, and you watch him arrive somewhere he has been before.
+He looks past you at the ford, at the grey floor where a river used to be, and you watch him work out what it means, and you can tell that he has worked it out before, on other nights like this one.
 
 "That's the third one this year," he says quietly. "It used to be one."
 
@@ -1064,7 +1064,7 @@ He looks past you at the ford, at the grey floor where a river used to be, and y
 
 Hett does not answer that.
 
-He looks at the overturned chair on the bank, and the strongbox that is not beside it, and then at the hill road he has just come down at a run, and you understand that he knows exactly where Doran is, and that he has known for a year, and that this is the thing he sent six men to Aldermere to not be here for.
+He looks at the overturned chair on the bank, and the strongbox that is not beside it, and then at the hill road he has just come down at a run, and you understand that he knows exactly where Doran is, and that he has known for a year, and that this is why he sent six men away to Aldermere: so they would not be here on a night like this.
 
 "Go home," he says. "Please."
 
@@ -1120,9 +1120,9 @@ Hett Vance says, "Oh, no."
 
 The bell does not stop.
 
-The rhythm of a dusk bell is one stroke, a pause the length of a breath, another, unhurried, a man counting. This is not that. This is a rope being hauled back and forth violently by somebody who has stopped counting, strokes falling over each other, the clapper hitting on the backswing. It is the sound of a bell being rung by a man who has decided the only thing left that matters is that it be loud.
+The rhythm of a dusk bell is one stroke, a pause the length of a breath, another, unhurried, like a man counting. This is not that. This is a rope being hauled back and forth violently by somebody who has stopped counting, strokes falling over each other, the clapper hitting on the backswing. It is the sound of a bell being rung by a man who has decided the only thing left that matters is that it be loud.
 
-All over Brackenford, shutters that closed an hour ago are opening again. Faces in gaps. The village listening to its own alarm and not knowing the word for it, because there has never been one.
+All over Brackenford, shutters that closed an hour ago are opening again. Faces in gaps. The village listening to its own alarm and not knowing what it means, because the bell has never rung an alarm before tonight.
 
 → **201**
 
@@ -1132,7 +1132,7 @@ All over Brackenford, shutters that closed an hour ago are opening again. Faces 
 
 Hett Vance takes about two seconds.
 
-You watch him do it: the arithmetic of a man with one road, one ford, one bell and one recruit, and four places that all need somebody right now.
+You watch him work it out: one road, one ford, one bell, one recruit, and four places that all need somebody right now.
 
 "Right," he says. "I'm going up the hill. Doran went up there with the box and he hasn't come down and if the toll wasn't paid tonight then none of the rest of this matters."
 
@@ -1253,7 +1253,7 @@ He is going to the top of the square. To the inn.
 
 You know who it is before you let yourself know it.
 
-There is a woman at the top of this village who has set a clean mug in front of an empty chair every dusk for a year, in front of forty people, without breaking conversation, because she is not grieving wrong. She is waiting. Once, on a night the ford froze, she heard him at her door.
+There is a woman at the top of this village who has set a clean mug in front of an empty chair every dusk for a year, in front of forty people, without breaking conversation, because she is not grieving at all. She is waiting. Once, on a night the ford froze, she heard him at her door.
 
 Tobin Tullamore has come home.
 
@@ -1381,7 +1381,7 @@ Nothing on the step moves.
 
 "He'd have asked after the dog," she says. "First thing, before me, every time, thirty years. Where's the dog." A breath. "You've not asked."
 
-And the thing on the doorstep stops smiling. Not angrily. It simply stops, the way a lamp stops, all at once and completely.
+And the thing on the doorstep stops smiling. Not angrily. It simply stops, the way a candle flame stops when it is snuffed, all at once and completely.
 
 → **240**
 
@@ -1393,7 +1393,7 @@ You shout her name across the square.
 
 The door opens.
 
-It opens because a woman who has waited a year hears a shout outside and thinks *something is happening to him*, and she has her hand on the latch before the thought finishes, and this is not stupidity, this is a year of hope with the safety off.
+It opens because a woman who has waited a year hears a shout outside and thinks *something is happening to him*, and she has her hand on the latch before the thought finishes, and this is not stupidity, this is what a year of hoping does to a person.
 
 Mara Tullamore stands in her own doorway in the light with her husband in front of her.
 
@@ -1486,7 +1486,7 @@ Something has been watching how this village grieves.
 
 The noise inside the shrine is enormous.
 
-You have heard this bell from across the village every dusk of your life and you have never heard it from six feet away, and it is not a sound anymore, it is weather. The stone is shaking. The frozen leaves piled against the door are dancing on the step.
+You have heard this bell from across the village every dusk of your life and you have never heard it from six feet away, and it is not a sound anymore, it is a force you feel in your chest and in your teeth. The stone is shaking. The frozen leaves piled against the door are dancing on the step.
 
 The door has not opened in a month.
 
@@ -1535,7 +1535,7 @@ Inside is a forest of dead candles and a wall of sound.
 
 Brother Anselm is on the rope. He is a gaunt man in a robe that has not been off him in a month and he is hauling with both hands and the whole of his weight, over and over, badly, out of time, and he has been doing it long enough that his palms have opened up and there is blood on the rope in a band the width of a hand.
 
-He does not hear you. He does not hear anything. He is thirty days without sleep and past the far end of himself, and he is ringing.
+He does not hear you. He does not hear anything. He is thirty days without sleep and long past the end of his strength, and he is ringing.
 
 → Take the rope from him. **255**
 → Get in front of him where he can see you. **256**
@@ -1564,7 +1564,7 @@ You get in front of him and he looks straight through you for three full strokes
 
 "What are you doing?"
 
-"Waking them." Haul. "Every soul in this village. Waking them." Haul. "Because I have kept a schedule for thirty days and the schedule was the lock, and I have just broken it on purpose, and now they will all know something is wrong, which is the only thing I have left that is worth anything."
+"Waking them." Haul. "Every soul in this village. Waking them." Haul. "Because I have rung this bell on its exact schedule for thirty days, believing the schedule itself was the lock that kept the thing on the hill out, and I have just broken it on purpose, and now they will all know something is wrong, which is the only thing I have left that is worth anything."
 
 → Take the rope from him. **255**
 
@@ -1578,7 +1578,7 @@ In the silence Anselm sits down on the step of his own altar, which is the first
 
 He looks at his hands.
 
-"So I rang. At midnight. Which I have never done." A small dry sound. "There. It is done. Thirty days of a lock I could not test, and I have broken it myself, on purpose, to make a noise."
+"So I rang. At midnight. Which I have never done." A small dry sound that might be a laugh. "There. It is done. Thirty days of a lock I could not test, and I have broken it myself, on purpose, to make a noise."
 
 → "You did the right thing." **258**
 → "Was it the lock?" **259**
@@ -1710,7 +1710,7 @@ She is a plump, gracious woman in a good coat over her nightdress and she is sta
 
 "They'll listen to you."
 
-"They will." She sighs, and it is the sigh of a woman who has been running this village from a kitchen table for a decade and would have liked, once, for it to have cost somebody else something. "Fetch me the well, dear. I can't be heard from the flat."
+"They will." She sighs, and it is the sigh of a woman who has been running this village from a kitchen table for a decade and would have liked, once, for it to have cost somebody else something. "Help me up onto the well, dear. Nobody can hear me from level ground."
 
 She stands on the lip of the dry well and says eleven sentences and the square empties in under two minutes with every child accounted for.
 
@@ -1722,7 +1722,7 @@ She stands on the lip of the dry well and says eleven sentences and the square e
 
 And then somebody screams from the far side of the square, and the count goes wrong.
 
-There is a child up on the wellhead. Six, maybe seven, in a nightshirt and somebody's boots, standing on the stone lip in the circle of that abandoned lantern, and she is not screaming. Her mother is.
+There is a child up on the wellhead. Six, maybe seven, in a nightshirt and somebody's boots, standing on the stone lip in the light of the lantern somebody left on the wellhead, and she is not screaming. Her mother is.
 
 The child is looking down at the plank cover.
 
@@ -1904,7 +1904,7 @@ His eyes are open. They have frost on them too.
 
 ### 295
 
-He has not been dead an hour. In this cold there is no telling, but the ground under him is not thawed at all, and a living man leaves a mark on frost.
+In this cold there is no way to tell how long he has been dead. But the ground under him is not thawed at all, and a living man sitting for even a minute melts the frost beneath him. Whatever happened to Doran happened the moment he sat down.
 
 There is no wound on him. Nothing took anything from him. He walked up this road with a box of coppers to pay a toll he hated on behalf of a village that resented him for collecting it, and something met him on the way, and looked at him, and did not want the box.
 
@@ -1963,7 +1963,7 @@ Write the codeword **TOLLPAID** if you do not have it.
 
 You stand at the bottom of the hill road for a while and then you turn around, because rule three is the good rule and because there is a village behind you with its lights on and nobody in it but you.
 
-That is not cowardice. Somewhere up that road, a man who has spent twenty years being the only thing between Brackenford and the hill is finding that out for himself, the hard way, and he is doing it because he did not have a fourth rule either.
+That is not cowardice. Somewhere up that road, a man who has spent twenty years being the only thing between Brackenford and the hill is finding that out for himself, the hard way, and he is doing it because he, too, wants to be the one who fixes it.
 
 **Tick one box on the Dawn Track.**
 
@@ -1987,7 +1987,7 @@ The village is dark. Every shutter on the square, closed. Every door barred. Fif
 
 You did that. Whatever else happened tonight, they are inside, and you are not.
 
-The deep cold has been at your wick for hours. **The lamp drinks a unit: mark off one oil.**
+The deep cold has made the lamp burn its oil fast all night. **The lamp drinks a unit: mark off one oil.**
 
 *If your lamp is dark:* the only light left in Brackenford is the one somebody set on the wellhead, and you are carrying a dead lantern through a shut village.
 
@@ -2100,7 +2100,7 @@ It comes up the slope into your lantern light and stops at the edge of it, consi
 
 It is Doran Welk.
 
-He is wearing the coat he died in, and the frost is still on him in the seams of it and packed white in the folds of his ears, and there is not a mark on him anywhere. He is a broad tired man with a strongbox habit and a chair he carried out to the bank himself, and you brought him down that hill on your shoulder an hour ago, or you did not, and either way he is standing here now with his hands loose at his sides.
+He is wearing the coat he died in, and the frost is still on him in the seams of it and packed white in the folds of his ears, and there is not a mark on him anywhere. He is a broad tired man who went nowhere without his strongbox, and who carried his own chair out to the bank himself, and you brought him down that hill on your shoulder an hour ago, or you did not, and either way he is standing here now with his hands loose at his sides.
 
 "Evening," it says, in his voice, kindly.
 
@@ -2156,7 +2156,7 @@ It says it the way you would say *a farmer* or *a miller*. Not a description. An
 
 ### 405
 
-"Eleven," it says. "That was the arrangement. Eleven, over the years, and the coin in between as a kindness, and nobody in this village ever had to know the number."
+"Eleven," it says. "That was the arrangement. Eleven, over the years. The coin toll in the years between was a kindness, so that nobody in this village ever had to know the number."
 
 It looks past you, up the dark slope at the shuttered houses.
 
@@ -2184,7 +2184,7 @@ You put it in Hett's hand. He reads it by your lantern in about two seconds and 
 
 "You knew," you say to Hett.
 
-"No." He is looking at the ice. "I worked out the cold takes the able-bodied and I sent my lads to Aldermere on an errand I invented, and I have felt like a coward about it every day for a year." A short breath that is not a laugh. "Turns out I wasn't saving them. Turns out there was only ever one name left on it and it was mine, and I have been standing in the road in front of a bill that was never addressed to anybody else."
+"No." He is looking at the ice. "I worked out the cold takes the able-bodied and I sent my lads to Aldermere on an errand I invented, and I have felt like a coward about it every day for a year." A short breath that is not a laugh. "Turns out I wasn't saving them. Turns out there was only ever one name left on it and it was mine, and I have spent a year standing guard over a debt that was always going to be mine to pay."
 
 He hands you back the list.
 
@@ -2400,11 +2400,9 @@ It goes up fast. Eleven names in a careful hand, nine crossed out, gone in about
 
 Nothing happens.
 
-You had perhaps half-expected something to happen. There is no sound and no flash and the cold does not lift, and the thing at the bottom of the slope does not react at all, and after a moment you understand that you have burned a piece of paper.
+You had perhaps half-expected something to happen. There is no sound and no flash and the cold does not lift, and the thing wearing Doran Welk does not react at all. If you burned the list, you understand after a moment that all you have done is burn a piece of paper, and it says, mildly, "That was somebody's careful handwriting. Alder's, I think. She'll be upset." If you are standing in its path, it stops walking, and it does not try to push past you or go around you.
 
-"That was somebody's careful handwriting," it says, mildly. "Alder's, I think. She'll be upset."
-
-And then it waits, because it can, because dawn is four hours off and it has nowhere to be and neither do you, and the last watch of the night turns out to be exactly what the job always was.
+And then it waits, because it can, because dawn is four hours off and it has nowhere to be and neither do you. It does not go up the slope for Hett Vance. It stands where it is, and you stand where you are, and the last watch of the night turns out to be exactly what the job always was: staying between the cold and the village until the sun comes up.
 
 → **520**
 
@@ -2416,7 +2414,7 @@ You come back at dawn.
 
 That is not a metaphor and it is not a resurrection. You wake on the frozen stones at the edge of the ford with the sun on your face and Hett Vance slapping at your cheek and shouting, and you are alive, and you are extremely cold, and you have been out for four hours.
 
-*If you are playing Ember Watch:* you take no lasting harm. It looked at you, took what was owed from somebody else's ledger, and left you on the ice.
+*If you are playing Ember Watch:* you take no lasting harm. It accepted what you offered, held you in the cold for four hours, and then it gave you back and left you on the ice.
 *If you are playing Lantern Watch:* your hair has gone white at the temple and stays that way. Write the dawn mark **SCARRED**.
 *If you are playing Dark Watch:* you do not come back at dawn. Go to **535**.
 
@@ -2493,7 +2491,7 @@ That is the whole of it, for four hours. It talks the entire time. It uses Doran
 
 *Make a DC 15 Wisdom saving throw at the end of each of the first three hours. Ember Watch: DC 12. Dark Watch: DC 17.*
 
-**On each failure:** take 1d6 psychic damage. You do not stop ringing. Your hands open up on the rope in a band at exactly the height of Anselm's.
+**On each failure:** take 1d6 psychic damage. You do not stop ringing. The skin of your palms splits and bleeds on the rope, in a band at exactly the height of Anselm's.
 
 **If you fail all three:** → **446**
 **Otherwise:** → **447**
@@ -2570,7 +2568,7 @@ It comes up the square about twenty minutes later.
 
 You hear it go along the row, unhurried, and you hear it try every door on the way, not violently, just a hand on a latch and then moving on, and you hear about a dozen households in Brackenford discover in real time what it sounds like when somebody tests your door at four in the morning.
 
-Nobody opens. Nobody in this village has ever once been embarrassed about a door.
+Nobody opens. Nobody in this village has ever once been embarrassed about a barred door, and tonight that is what saves them.
 
 → **462**
 
@@ -2597,7 +2595,7 @@ You sit with her.
 
 You do not say anything, because there is nothing to say, and at some point in the second hour she puts her hand out flat on the floor between you, palm down, and you put yours next to it, not touching, and that is the entire conversation.
 
-Outside, it works through the voices it has. Tobin. Doran. Anselm's careful liturgical cadence. A child. Hett Vance, which is when your stomach goes, and which you will need to check on at sunrise.
+Outside, it works through the voices it has. Tobin. Doran. Anselm's careful liturgical cadence. A child. Hett Vance, which is when your stomach drops, because he is not behind a door tonight, and you will not know whether it is only borrowing his voice until you find him at sunrise.
 
 It never gets angry. That is the part you will tell people about and they will not understand: it never once got angry. It stood outside a door for four hours being reasonable.
 
@@ -2625,7 +2623,7 @@ It thinks about that.
 
 At some point the voices stop.
 
-Neither of you notices when. You work it out afterward, comparing, and you cannot agree within half an hour.
+Neither of you notices when. You work it out afterward, comparing memories, and your two guesses are half an hour apart.
 
 The light comes up grey behind the shutters, and Mara Tullamore gets up off the floor of her own inn, and puts the bar up, and opens the door on an empty square with frost on it and no prints in the frost at all.
 
@@ -2643,7 +2641,7 @@ Then she goes and takes the clean mug off the table by the fire and puts it back
 
 You go across the ice.
 
-Hett Vance shouts your name once. You do not stop, because there is a six-year-old in a nightshirt somewhere in the Drowned Lane and everything else in this village is behind a door, and this is the fourth rule, and you knew you were breaking it when you took the first step.
+Hett Vance shouts your name once. You do not stop, because there is a six-year-old in a nightshirt somewhere in the Drowned Lane and everything else in this village is behind a door, and this is you breaking the fourth rule, the one Hett said you would break tonight, and you knew which rule it was when you took the first step.
 
 At the edge of the ice you turn the wick up as far as it goes, because whatever is over there, you want it to see the watch coming. **The lamp drinks a unit: mark off one oil.**
 
@@ -2853,7 +2851,7 @@ The sun comes up over the Hollow Marches at about seven, and it is a plain, ordi
 
 The ford thaws by nine. It does it fast, the way it froze: the grey floor goes to slush and then to brown water sliding over flat stones, loud again, and the sound of it coming back is the sound of the village letting out a breath it has been holding since dusk.
 
-Doran Welk's chair is still lying on its side on the bank. Somebody sets it up.
+Doran Welk's chair is still lying on its side on the bank. Somebody sets it upright.
 
 → **521**
 
@@ -2927,7 +2925,7 @@ It is too big and it belonged to a broad, tired man who tested every coin agains
 
 He shrugs.
 
-"Sefa'll say a fortnight. Alder'll say we've time. Anselm's got his doors open, which he hasn't in a month, so make of that what you like." He starts walking again. "So: not long. Are you in?"
+"Sefa'll say two weeks. Alder'll say we've time. Anselm's got his doors open, which he hasn't in a month, so make of that what you like." He starts walking again. "So: not long. Are you in?"
 
 → Take it. **524**
 → Say no. **526**
@@ -3009,7 +3007,7 @@ Frame anything as a yes or no question and roll d6.
 | 5 | **Yes.** |
 | 6 | **Yes, and** more than you asked for. |
 
-If the answer seems very likely, roll twice and take the higher. Very unlikely, roll twice and take the lower. That is the entire system and it is enough.
+If the answer seems very likely, roll twice and take the higher. If it seems very unlikely, roll twice and take the lower. That is the entire system and it is enough.
 
 ### Being surprised
 
@@ -3028,7 +3026,7 @@ Whenever you roll a 1 or a 6 on the question above, or any time the night has go
 
 ### Where to point it
 
-The Brackenford Starter Setting has eight keyed locations, eight named villagers, a notice board table, and four simmering tensions, and this night has just moved every one of them. Roll the notice board. Ask who is collecting the toll now that Doran is dead. Ask what Goodwife Alder wants over tea. Ask what Sefa's count comes to this week.
+The Brackenford Starter Setting has eight keyed locations, eight named villagers, a notice board table, and four simmering tensions, and this night has just moved every one of them. Roll on the notice board table. Ask who is collecting the toll now that Doran is dead. Ask what Goodwife Alder wants over tea. Ask what Sefa's count comes to this week.
 
 The Wilderness Pack's tables cover the moor and the road, if you go out to the stones.
 
@@ -3063,7 +3061,7 @@ Skills: Insight +5, Medicine +5, Persuasion +4, Perception +5. Passive Perceptio
 **Cantrips:** *guidance*, *light*, *sacred flame*, *spare the dying*.
 **Spells (4 first-level, 2 second-level):** *bless*, *cure wounds*, *healing word*, *shield of faith*, *lesser restoration*, *spiritual weapon*, *aid*, *prayer of healing*.
 **Disciple of Life:** healing spells restore an extra 2 + spell level.
-**Channel Divinity (1/rest):** Turn Undead, or Preserve Life (15 HP of healing, split).
+**Channel Divinity (1/rest):** Turn Undead, or Preserve Life (15 HP of healing, split among creatures you choose).
 *You keep the Quiet Hand, in the small way a layperson does. You have met Brother Anselm twice. He frightened you both times.*
 
 ### The watch-dog (optional companion)

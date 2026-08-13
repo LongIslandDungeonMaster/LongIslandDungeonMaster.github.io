@@ -17,7 +17,7 @@ It comes up the slope into your lantern light and stops at the edge of it, consi
 
 It is Doran Welk.
 
-He is wearing the coat he died in, and the frost is still on him in the seams of it and packed white in the folds of his ears, and there is not a mark on him anywhere. He is a broad tired man with a strongbox habit and a chair he carried out to the bank himself, and you brought him down that hill on your shoulder an hour ago, or you did not, and either way he is standing here now with his hands loose at his sides.
+He is wearing the coat he died in, and the frost is still on him in the seams of it and packed white in the folds of his ears, and there is not a mark on him anywhere. He is a broad tired man who went nowhere without his strongbox, and who carried his own chair out to the bank himself, and you brought him down that hill on your shoulder an hour ago, or you did not, and either way he is standing here now with his hands loose at his sides.
 
 "Evening," it says, in his voice, kindly.
 
@@ -73,7 +73,7 @@ It says it the way you would say *a farmer* or *a miller*. Not a description. An
 
 ### 405
 
-"Eleven," it says. "That was the arrangement. Eleven, over the years, and the coin in between as a kindness, and nobody in this village ever had to know the number."
+"Eleven," it says. "That was the arrangement. Eleven, over the years. The coin toll in the years between was a kindness, so that nobody in this village ever had to know the number."
 
 It looks past you, up the dark slope at the shuttered houses.
 
@@ -101,7 +101,7 @@ You put it in Hett's hand. He reads it by your lantern in about two seconds and 
 
 "You knew," you say to Hett.
 
-"No." He is looking at the ice. "I worked out the cold takes the able-bodied and I sent my lads to Aldermere on an errand I invented, and I have felt like a coward about it every day for a year." A short breath that is not a laugh. "Turns out I wasn't saving them. Turns out there was only ever one name left on it and it was mine, and I have been standing in the road in front of a bill that was never addressed to anybody else."
+"No." He is looking at the ice. "I worked out the cold takes the able-bodied and I sent my lads to Aldermere on an errand I invented, and I have felt like a coward about it every day for a year." A short breath that is not a laugh. "Turns out I wasn't saving them. Turns out there was only ever one name left on it and it was mine, and I have spent a year standing guard over a debt that was always going to be mine to pay."
 
 He hands you back the list.
 
@@ -317,11 +317,9 @@ It goes up fast. Eleven names in a careful hand, nine crossed out, gone in about
 
 Nothing happens.
 
-You had perhaps half-expected something to happen. There is no sound and no flash and the cold does not lift, and the thing at the bottom of the slope does not react at all, and after a moment you understand that you have burned a piece of paper.
+You had perhaps half-expected something to happen. There is no sound and no flash and the cold does not lift, and the thing wearing Doran Welk does not react at all. If you burned the list, you understand after a moment that all you have done is burn a piece of paper, and it says, mildly, "That was somebody's careful handwriting. Alder's, I think. She'll be upset." If you are standing in its path, it stops walking, and it does not try to push past you or go around you.
 
-"That was somebody's careful handwriting," it says, mildly. "Alder's, I think. She'll be upset."
-
-And then it waits, because it can, because dawn is four hours off and it has nowhere to be and neither do you, and the last watch of the night turns out to be exactly what the job always was.
+And then it waits, because it can, because dawn is four hours off and it has nowhere to be and neither do you. It does not go up the slope for Hett Vance. It stands where it is, and you stand where you are, and the last watch of the night turns out to be exactly what the job always was: staying between the cold and the village until the sun comes up.
 
 → **520**
 
@@ -333,7 +331,7 @@ You come back at dawn.
 
 That is not a metaphor and it is not a resurrection. You wake on the frozen stones at the edge of the ford with the sun on your face and Hett Vance slapping at your cheek and shouting, and you are alive, and you are extremely cold, and you have been out for four hours.
 
-*If you are playing Ember Watch:* you take no lasting harm. It looked at you, took what was owed from somebody else's ledger, and left you on the ice.
+*If you are playing Ember Watch:* you take no lasting harm. It accepted what you offered, held you in the cold for four hours, and then it gave you back and left you on the ice.
 *If you are playing Lantern Watch:* your hair has gone white at the temple and stays that way. Write the dawn mark **SCARRED**.
 *If you are playing Dark Watch:* you do not come back at dawn. Go to **535**.
 
@@ -411,7 +409,7 @@ That is the whole of it, for four hours. It talks the entire time. It uses Doran
 
 *Make a DC 15 Wisdom saving throw at the end of each of the first three hours. Ember Watch: DC 12. Dark Watch: DC 17.*
 
-**On each failure:** take 1d6 psychic damage. You do not stop ringing. Your hands open up on the rope in a band at exactly the height of Anselm's.
+**On each failure:** take 1d6 psychic damage. You do not stop ringing. The skin of your palms splits and bleeds on the rope, in a band at exactly the height of Anselm's.
 
 **If you fail all three:** → **446**
 **Otherwise:** → **447**
@@ -488,7 +486,7 @@ It comes up the square about twenty minutes later.
 
 You hear it go along the row, unhurried, and you hear it try every door on the way, not violently, just a hand on a latch and then moving on, and you hear about a dozen households in Brackenford discover in real time what it sounds like when somebody tests your door at four in the morning.
 
-Nobody opens. Nobody in this village has ever once been embarrassed about a door.
+Nobody opens. Nobody in this village has ever once been embarrassed about a barred door, and tonight that is what saves them.
 
 
 → **462**
@@ -516,7 +514,7 @@ You sit with her.
 
 You do not say anything, because there is nothing to say, and at some point in the second hour she puts her hand out flat on the floor between you, palm down, and you put yours next to it, not touching, and that is the entire conversation.
 
-Outside, it works through the voices it has. Tobin. Doran. Anselm's careful liturgical cadence. A child. Hett Vance, which is when your stomach goes, and which you will need to check on at sunrise.
+Outside, it works through the voices it has. Tobin. Doran. Anselm's careful liturgical cadence. A child. Hett Vance, which is when your stomach drops, because he is not behind a door tonight, and you will not know whether it is only borrowing his voice until you find him at sunrise.
 
 It never gets angry. That is the part you will tell people about and they will not understand: it never once got angry. It stood outside a door for four hours being reasonable.
 
@@ -544,7 +542,7 @@ It thinks about that.
 
 At some point the voices stop.
 
-Neither of you notices when. You work it out afterward, comparing, and you cannot agree within half an hour.
+Neither of you notices when. You work it out afterward, comparing memories, and your two guesses are half an hour apart.
 
 The light comes up grey behind the shutters, and Mara Tullamore gets up off the floor of her own inn, and puts the bar up, and opens the door on an empty square with frost on it and no prints in the frost at all.
 
@@ -562,7 +560,7 @@ Then she goes and takes the clean mug off the table by the fire and puts it back
 
 You go across the ice.
 
-Hett Vance shouts your name once. You do not stop, because there is a six-year-old in a nightshirt somewhere in the Drowned Lane and everything else in this village is behind a door, and this is the fourth rule, and you knew you were breaking it when you took the first step.
+Hett Vance shouts your name once. You do not stop, because there is a six-year-old in a nightshirt somewhere in the Drowned Lane and everything else in this village is behind a door, and this is you breaking the fourth rule, the one Hett said you would break tonight, and you knew which rule it was when you took the first step.
 
 At the edge of the ice you turn the wick up as far as it goes, because whatever is over there, you want it to see the watch coming. **The lamp drinks a unit: mark off one oil.**
 
@@ -773,7 +771,7 @@ The sun comes up over the Hollow Marches at about seven, and it is a plain, ordi
 
 The ford thaws by nine. It does it fast, the way it froze: the grey floor goes to slush and then to brown water sliding over flat stones, loud again, and the sound of it coming back is the sound of the village letting out a breath it has been holding since dusk.
 
-Doran Welk's chair is still lying on its side on the bank. Somebody sets it up.
+Doran Welk's chair is still lying on its side on the bank. Somebody sets it upright.
 
 → **521**
 
@@ -847,7 +845,7 @@ It is too big and it belonged to a broad, tired man who tested every coin agains
 
 He shrugs.
 
-"Sefa'll say a fortnight. Alder'll say we've time. Anselm's got his doors open, which he hasn't in a month, so make of that what you like." He starts walking again. "So: not long. Are you in?"
+"Sefa'll say two weeks. Alder'll say we've time. Anselm's got his doors open, which he hasn't in a month, so make of that what you like." He starts walking again. "So: not long. Are you in?"
 
 → Take it. **524**
 → Say no. **526**

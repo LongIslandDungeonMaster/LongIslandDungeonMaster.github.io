@@ -16,9 +16,9 @@ Setting: Brackenford. Spec: `specs/the-night-watchman-spec.md`.
 
 The bell does not stop.
 
-The rhythm of a dusk bell is one stroke, a pause the length of a breath, another, unhurried, a man counting. This is not that. This is a rope being hauled back and forth violently by somebody who has stopped counting, strokes falling over each other, the clapper hitting on the backswing. It is the sound of a bell being rung by a man who has decided the only thing left that matters is that it be loud.
+The rhythm of a dusk bell is one stroke, a pause the length of a breath, another, unhurried, like a man counting. This is not that. This is a rope being hauled back and forth violently by somebody who has stopped counting, strokes falling over each other, the clapper hitting on the backswing. It is the sound of a bell being rung by a man who has decided the only thing left that matters is that it be loud.
 
-All over Brackenford, shutters that closed an hour ago are opening again. Faces in gaps. The village listening to its own alarm and not knowing the word for it, because there has never been one.
+All over Brackenford, shutters that closed an hour ago are opening again. Faces in gaps. The village listening to its own alarm and not knowing what it means, because the bell has never rung an alarm before tonight.
 
 → **201**
 
@@ -28,7 +28,7 @@ All over Brackenford, shutters that closed an hour ago are opening again. Faces 
 
 Hett Vance takes about two seconds.
 
-You watch him do it: the arithmetic of a man with one road, one ford, one bell and one recruit, and four places that all need somebody right now.
+You watch him work it out: one road, one ford, one bell, one recruit, and four places that all need somebody right now.
 
 "Right," he says. "I'm going up the hill. Doran went up there with the box and he hasn't come down and if the toll wasn't paid tonight then none of the rest of this matters."
 
@@ -149,7 +149,7 @@ He is going to the top of the square. To the inn.
 
 You know who it is before you let yourself know it.
 
-There is a woman at the top of this village who has set a clean mug in front of an empty chair every dusk for a year, in front of forty people, without breaking conversation, because she is not grieving wrong. She is waiting. Once, on a night the ford froze, she heard him at her door.
+There is a woman at the top of this village who has set a clean mug in front of an empty chair every dusk for a year, in front of forty people, without breaking conversation, because she is not grieving at all. She is waiting. Once, on a night the ford froze, she heard him at her door.
 
 Tobin Tullamore has come home.
 
@@ -277,7 +277,7 @@ Nothing on the step moves.
 
 "He'd have asked after the dog," she says. "First thing, before me, every time, thirty years. Where's the dog." A breath. "You've not asked."
 
-And the thing on the doorstep stops smiling. Not angrily. It simply stops, the way a lamp stops, all at once and completely.
+And the thing on the doorstep stops smiling. Not angrily. It simply stops, the way a candle flame stops when it is snuffed, all at once and completely.
 
 → **240**
 
@@ -289,7 +289,7 @@ You shout her name across the square.
 
 The door opens.
 
-It opens because a woman who has waited a year hears a shout outside and thinks *something is happening to him*, and she has her hand on the latch before the thought finishes, and this is not stupidity, this is a year of hope with the safety off.
+It opens because a woman who has waited a year hears a shout outside and thinks *something is happening to him*, and she has her hand on the latch before the thought finishes, and this is not stupidity, this is what a year of hoping does to a person.
 
 Mara Tullamore stands in her own doorway in the light with her husband in front of her.
 
@@ -383,7 +383,7 @@ Something has been watching how this village grieves.
 
 The noise inside the shrine is enormous.
 
-You have heard this bell from across the village every dusk of your life and you have never heard it from six feet away, and it is not a sound anymore, it is weather. The stone is shaking. The frozen leaves piled against the door are dancing on the step.
+You have heard this bell from across the village every dusk of your life and you have never heard it from six feet away, and it is not a sound anymore, it is a force you feel in your chest and in your teeth. The stone is shaking. The frozen leaves piled against the door are dancing on the step.
 
 The door has not opened in a month.
 
@@ -433,7 +433,7 @@ Inside is a forest of dead candles and a wall of sound.
 
 Brother Anselm is on the rope. He is a gaunt man in a robe that has not been off him in a month and he is hauling with both hands and the whole of his weight, over and over, badly, out of time, and he has been doing it long enough that his palms have opened up and there is blood on the rope in a band the width of a hand.
 
-He does not hear you. He does not hear anything. He is thirty days without sleep and past the far end of himself, and he is ringing.
+He does not hear you. He does not hear anything. He is thirty days without sleep and long past the end of his strength, and he is ringing.
 
 → Take the rope from him. **255**
 → Get in front of him where he can see you. **256**
@@ -462,7 +462,7 @@ You get in front of him and he looks straight through you for three full strokes
 
 "What are you doing?"
 
-"Waking them." Haul. "Every soul in this village. Waking them." Haul. "Because I have kept a schedule for thirty days and the schedule was the lock, and I have just broken it on purpose, and now they will all know something is wrong, which is the only thing I have left that is worth anything."
+"Waking them." Haul. "Every soul in this village. Waking them." Haul. "Because I have rung this bell on its exact schedule for thirty days, believing the schedule itself was the lock that kept the thing on the hill out, and I have just broken it on purpose, and now they will all know something is wrong, which is the only thing I have left that is worth anything."
 
 → Take the rope from him. **255**
 
@@ -476,7 +476,7 @@ In the silence Anselm sits down on the step of his own altar, which is the first
 
 He looks at his hands.
 
-"So I rang. At midnight. Which I have never done." A small dry sound. "There. It is done. Thirty days of a lock I could not test, and I have broken it myself, on purpose, to make a noise."
+"So I rang. At midnight. Which I have never done." A small dry sound that might be a laugh. "There. It is done. Thirty days of a lock I could not test, and I have broken it myself, on purpose, to make a noise."
 
 → "You did the right thing." **258**
 → "Was it the lock?" **259**
@@ -609,7 +609,7 @@ She is a plump, gracious woman in a good coat over her nightdress and she is sta
 
 "They'll listen to you."
 
-"They will." She sighs, and it is the sigh of a woman who has been running this village from a kitchen table for a decade and would have liked, once, for it to have cost somebody else something. "Fetch me the well, dear. I can't be heard from the flat."
+"They will." She sighs, and it is the sigh of a woman who has been running this village from a kitchen table for a decade and would have liked, once, for it to have cost somebody else something. "Help me up onto the well, dear. Nobody can hear me from level ground."
 
 She stands on the lip of the dry well and says eleven sentences and the square empties in under two minutes with every child accounted for.
 
@@ -622,7 +622,7 @@ She stands on the lip of the dry well and says eleven sentences and the square e
 
 And then somebody screams from the far side of the square, and the count goes wrong.
 
-There is a child up on the wellhead. Six, maybe seven, in a nightshirt and somebody's boots, standing on the stone lip in the circle of that abandoned lantern, and she is not screaming. Her mother is.
+There is a child up on the wellhead. Six, maybe seven, in a nightshirt and somebody's boots, standing on the stone lip in the light of the lantern somebody left on the wellhead, and she is not screaming. Her mother is.
 
 The child is looking down at the plank cover.
 
@@ -805,7 +805,7 @@ His eyes are open. They have frost on them too.
 
 ### 295
 
-He has not been dead an hour. In this cold there is no telling, but the ground under him is not thawed at all, and a living man leaves a mark on frost.
+In this cold there is no way to tell how long he has been dead. But the ground under him is not thawed at all, and a living man sitting for even a minute melts the frost beneath him. Whatever happened to Doran happened the moment he sat down.
 
 There is no wound on him. Nothing took anything from him. He walked up this road with a box of coppers to pay a toll he hated on behalf of a village that resented him for collecting it, and something met him on the way, and looked at him, and did not want the box.
 
@@ -865,7 +865,7 @@ Write the codeword **TOLLPAID** if you do not have it.
 
 You stand at the bottom of the hill road for a while and then you turn around, because rule three is the good rule and because there is a village behind you with its lights on and nobody in it but you.
 
-That is not cowardice. Somewhere up that road, a man who has spent twenty years being the only thing between Brackenford and the hill is finding that out for himself, the hard way, and he is doing it because he did not have a fourth rule either.
+That is not cowardice. Somewhere up that road, a man who has spent twenty years being the only thing between Brackenford and the hill is finding that out for himself, the hard way, and he is doing it because he, too, wants to be the one who fixes it.
 
 **Tick one box on the Dawn Track.**
 
@@ -889,7 +889,7 @@ The village is dark. Every shutter on the square, closed. Every door barred. Fif
 
 You did that. Whatever else happened tonight, they are inside, and you are not.
 
-The deep cold has been at your wick for hours. **The lamp drinks a unit: mark off one oil.**
+The deep cold has made the lamp burn its oil fast all night. **The lamp drinks a unit: mark off one oil.**
 
 *If your lamp is dark:* the only light left in Brackenford is the one somebody set on the wellhead, and you are carrying a dead lantern through a shut village.
 
