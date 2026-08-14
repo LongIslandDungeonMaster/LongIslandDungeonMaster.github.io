@@ -940,7 +940,7 @@ Doran's chair is where it fell over. Doran is not in it.
 
 *If you have **WITNESS**:* a twelve-year-old boy pointed up the hill, and then down, and could not make the words come.
 
-*If you have **BLACKNAIL**:* there is a sheet of paper against your chest that says *do not be on the far bank when it stops.*
+*If you have **BLACKNAIL**:* somebody warned this village once, in writing, on its own notice board: *do not be on the far bank when it stops.* However the warning reached you tonight, you know it now, and you know it was not poetry.
 
 *If you have **LARDER**:* something has a pantry on the near bank of this river, and a door has been nailed shut from the outside at the dead end of the Drowned Lane.
 

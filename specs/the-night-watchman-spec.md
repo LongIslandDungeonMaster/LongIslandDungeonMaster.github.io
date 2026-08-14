@@ -204,6 +204,20 @@ MUST items; a failure on any blocks release.
 
 **v1.2.** Difficulty restructured into the Night Rating (per module, shelf-facing) plus the Watch Lamps (per session, player-facing). See section 5.0 for why both are kept.
 
+**v1.7 (2026-08-14, Codex round three closed).** Seven findings, all closed. (a) The P0
+inversion: choice buttons now pass the same `navGuard` as links (truly one gate), and an
+**authored fail-forward route supersedes the generic collapse states** — a standing character
+cannot claim 486, a collapsed Ember or Lantern character at 483 is routed to it instead of the
+generic absence, and 486's own CARRIED/SCARRED grants are preserved. (b) 521's TAKEN line is
+chained behind CARRIED, so a recovered Ada never reads as lost. (c) BLACKNAIL is knowledge, not
+paper: 101 and the dawn line no longer assert possession of a sheet the route may never have
+touched. (d) 407's returned list is TOLLPAID-conditional. (e) The Dark death ending carries five
+conditional aftermath lines (TOLLPAID, DOORHELD, RELIEVED, VOUCHED, Nell), satisfying the
+three-codeword closure MUST on every finale including burial. (f) Rekindle validates before it
+spends: no refilling a full lamp, no stabilising the healthy, no burning a token on garbage
+input. (g) The MUGSET dawn line no longer invents the player's disbelief. Codex's acceptance of
+the v1.6 rulings (any-death ledger, quiet-ground tier switches) stands.
+
 **v1.6 (2026-08-13, Codex round two closed).** Codex confirmed the v1.5 repairs held, then broke
 the still-live controls; ten findings, all closed. Rulings: (a) **one navigation gate** — prose
 entry links now pass the same guard as choice buttons (hub budget, unresolved checks, the 444

@@ -1008,7 +1008,7 @@ Doran's chair is where it fell over. Doran is not in it.
 
 *If you have **WITNESS**:* a twelve-year-old boy pointed up the hill, and then down, and could not make the words come.
 
-*If you have **BLACKNAIL**:* there is a sheet of paper against your chest that says *do not be on the far bank when it stops.*
+*If you have **BLACKNAIL**:* somebody warned this village once, in writing, on its own notice board: *do not be on the far bank when it stops.* However the warning reached you tonight, you know it now, and you know it was not poetry.
 
 *If you have **LARDER**:* something has a pantry on the near bank of this river, and a door has been nailed shut from the outside at the dead end of the Drowned Lane.
 
@@ -2185,7 +2185,7 @@ Beside you, Hett Vance says, very quietly, "Ah."
 
 "No." He is looking at the ice. "I worked out the cold takes the able-bodied and I sent my lads to Aldermere on an errand I invented, and I have felt like a coward about it every day for a year." A short breath that is not a laugh. "Turns out I wasn't saving them. Turns out there was only ever one name left on it and it was mine, and I have spent a year standing guard over a debt that was always going to be mine to pay."
 
-He hands you back the list.
+*If you have **TOLLPAID**:* he hands you back the list, and you fold it away against your chest.
 
 "Well," says Hett Vance. "That's a relief, honestly."
 
@@ -2872,6 +2872,8 @@ Doran Welk's chair is still lying on its side on the bank. Somebody sets it upri
 
 *If you have **CARRIED**:* you went across the ice for one person and left a whole village behind a door to do it, and Hett Vance has already told you it was the wrong call twice, and he has not once been able to say it while looking at you. He is wrong, and he knows he is wrong, and the girl is alive. That is the whole argument, and you won it.
 
+*Otherwise, if you have **TAKEN**, Ada Charlock's name is not read at the counting, because her mother cannot stand to hear it and the village cannot stand to say it. You keep the watch anyway, every night after. Both of those facts are yours to carry now, and carrying them is the job.*
+
 *If you have **RELIEVED**:* Brother Anselm slept nine hours on the floor of his own shrine and woke to find the bell had been rung all night by somebody else. He has not said thank you. He has opened the doors. The shrine takes its first morning congregation in a month, and you sleep through the whole service, and he does not let anyone wake you.
 
 *If you have **DOORHELD**:* Mara Tullamore put the clean mug back on the rail behind the bar. She has not set it out since. She will not discuss it. But your drink is poured before you reach the bar now, every night, and that is the discussion.
@@ -2884,17 +2886,15 @@ Doran Welk's chair is still lying on its side on the bank. Somebody sets it upri
 
 *If you have **VOUCHED**:* six men come back from Aldermere in the spring, and Hett Vance meets them at the ford and does not explain the year, and none of them asks, and all of them look at you a moment too long. He spent his militia to keep them alive. You are the only one who knows it was spending.
 
-*If you have **MUGSET**:* Mara told you at dusk that she had heard her husband at her door on a night like this one, and you were polite about not believing her. At noon she sets a plate in front of you that you did not order, and neither of you says the word believed, and that is the apology and the acceptance both.
+*If you have **MUGSET**:* you carried the story of the clean mug through the whole of the night, and tonight the village learned what Mara Tullamore had known for a year. At noon she sets a plate in front of you that you did not order, and neither of you says a word about it, and that is how the two of you will discuss it forever.
 
 *If you have **WITNESS**:* Bryn is back in Greel's yard by eight, stacking crates, twelve years old and the only other soul who saw it coming and tried to say so. You nod to him over the fence on your next round. The nod he gives back is one watchman to another.
 
-*If you have **BLACKNAIL**:* the warning stays folded against your chest for three more days. Then you nail it back on the notice board yourself, where you found it, because whoever wrote it was right, and the next watchman is going to need it.
+*If you have **BLACKNAIL**:* within the week you write the warning out fresh, in your own hand, and nail it to the notice board yourself: *do not be on the far bank when it stops.* You did not understand it when the night began. You understand it completely now, and the next watchman is going to need it.
 
 *If you have **HANDSIGN**:* you went and got an answer before you needed it, exactly the way Anselm told you to. You will keep that habit for the rest of your life, and it will save it twice.
 
 *If you have **LARDER**:* on the third morning you cross the ford with Hett and a torch and burn the stakes in the Drowned Lane down to the mud, and neither of you says anything over them, and it is a funeral anyway.
-
-*If you have **TAKEN**:* Ada Charlock's name is not read at the counting, because her mother cannot stand to hear it and the village cannot stand to say it. You keep the watch anyway, every night after. Both of those facts are yours to carry now, and carrying them is the job.
 
 *If Nell is with you:* she sleeps for a day and a half in front of the Broken Wheel's fire, and wakes up a village dog: fed at five doors, owned at none, and on the round every night after, with whoever carries the lamp.
 
@@ -2998,6 +2998,16 @@ They find you at first light, wherever the night left you, with the frost alread
 Hett Vance carries you up the slope himself and will not let anybody take the other end.
 
 They bury you on the third day, next to Doran Welk, and the whole village comes. Goodwife Alder speaks. She is gracious and warm and says almost nothing, and she does not catch anybody's eye.
+
+*If you have **TOLLPAID**:* they find the list folded in your coat when they lay you out, and so the village finally learns its own number, and what its watchman spent the last night carrying. Goodwife Alder keeps the paper. Nobody votes on that.
+
+*If you have **DOORHELD**:* Mara Tullamore bars the Broken Wheel at dusk for a year to the day, and opens it again every dawn, and that is her attendance at your grave, and it does not miss once.
+
+*If you have **RELIEVED**:* Brother Anselm rings the dusk bell and the dawn bell without missing, and adds one extra stroke to each, and never explains it, and nobody in Brackenford ever has to ask.
+
+*If you have **VOUCHED**:* Hett Vance writes six letters to Aldermere that winter and burns five of them. The one he sends says only: *the errand is over. It has a watchman's name now. Come home.*
+
+*If Nell is with you:* Nell will not leave the churchyard for two days. Then she walks your round, alone, on schedule, every night, and the village feeds her at five doors for the rest of her life, and nobody ever calls her anything but the watchman's dog.
 
 The ledger is settled. Brackenford will have a quiet winter, and the ford will run all season, and in the spring the children will paddle in it.
 
