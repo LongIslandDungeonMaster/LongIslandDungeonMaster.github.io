@@ -584,7 +584,9 @@ The notice board stands at the edge of the light with its layers of paper going 
 
 ### 061
 
-The lantern is warm. It has been burning for about an hour, which means somebody set it here at the time the dusk bell rang.
+You crouch over the wellhead with your own lamp turned up, because you want to see this properly, and seeing things properly costs light. **The lamp drinks a unit: mark off one oil.**
+
+The lantern on the well is warm. It has been burning for about an hour, which means somebody set it here at the time the dusk bell rang.
 
 The well it stands on has been dry for years. There is a plank cover, warped, pushed aside by about a hand's width, and the gap is the kind of black that a lantern a foot away does not touch at all.
 
@@ -722,7 +724,9 @@ At first you take it for fishing stakes. It is a line of broken reed-stems and o
 
 You lower the lantern.
 
-Voles. Six of them, and a rat, and a bird, each one pushed down onto a point and left there, neatly, at even spacing, like a shelf in a larder. The nearest is not old. In this cold nothing rots, so you cannot tell how long, but the frost has not taken it yet, and everything else out here is white.
+Voles. Six of them, and a rat, and a bird, each one pushed down onto a point and left there, neatly, at even spacing, like a shelf in a larder.
+
+The mud below the stakes is printed all over with two sets of tracks, one heavier than the other, and they tell you how it was done: everything on those points was chased along the bank from the same direction, toward something that was already waiting at the end of the run. The nearest is not old. In this cold nothing rots, so you cannot tell how long, but the frost has not taken it yet, and everything else out here is white.
 
 Write the codeword **LARDER** if you do not have it.
 
@@ -932,17 +936,17 @@ Doran's chair is where it fell over. Doran is not in it.
 
 *If you have **ICEBOUND**:* you knew at dusk. You had four hours of knowing, and you spent them ringing a bell at posts, because that was the job you were given. You will think about that.
 
-*If you have **VOUCHED**:* Doran Welk went up the hill road tonight with a strongbox and asked you not to have seen him, and you have not seen him come down.
+*If you have **VOUCHED**:* somebody in this village trusted you tonight with something they should not have had to carry alone, and asked you, in so many words, to look the other way. You did. You are eight hours into this job and you are already keeping its secrets.
 
 *If you have **MUGSET**:* there is a clean mug sitting in front of an empty chair in the warmest room in Brackenford, and a woman who has heard her husband at the door on a night exactly like this one.
 
-*If you have **HANDSIGN**:* a man who has not slept in thirty days told you to get one before you needed it, and you still do not have one.
+*If you have **HANDSIGN**:* a man who has not slept in thirty days is holding a door shut with a bell, and he spoke to you through it, and nothing he said has stopped being true since.
 
 *If you have **WITNESS**:* a twelve-year-old boy pointed up the hill, and then down, and could not make the words come.
 
 *If you have **BLACKNAIL**:* somebody warned this village once, in writing, on its own notice board: *do not be on the far bank when it stops.* However the warning reached you tonight, you know it now, and you know it was not poetry.
 
-*If you have **LARDER**:* something has a pantry on the near bank of this river, and a door has been nailed shut from the outside at the dead end of the Drowned Lane.
+*If you have **LARDER**:* something keeps a pantry on the near bank of this river, and you have stood over it with a lantern and counted what was on the stakes.
 
 *If you have **BLOODED**:* your hands have stopped shaking. Mostly.
 

@@ -36,7 +36,7 @@ You watch him work it out: one road, one ford, one bell, one recruit, and four p
 
 "You're the watch." He is already turning. "The village is yours. I'm sorry. I'd give you six men if I had them."
 
-*If you have **VOUCHED**:* you know exactly why he does not have them, and that he is the reason, and that he would do it again.
+*If you have **VOUCHED**:* you have already learned tonight that this village runs on people quietly carrying things for it, and you are looking at the man who carries the most, and who is about to go up that hill alone.
 
 → "Then tell me the fourth rule." **202**
 → "What do I do about the bell?" **203**
@@ -380,6 +380,8 @@ Something has been watching how this village grieves.
 ---
 
 ### 250
+
+You go in with the lamp up, because whatever is on that rope, you want to see it. **The lamp drinks a unit: mark off one oil.**
 
 The noise inside the shrine is enormous.
 
@@ -785,6 +787,8 @@ Two names are not crossed out. One is Doran Welk.
 
 The other is Hett Vance.
 
+You fold the paper again and put it inside your coat, against your chest, because it should not be sitting in a box in a road.
+
 Write the codeword **TOLLPAID**.
 
 
@@ -852,7 +856,9 @@ You get Doran Welk over your shoulder, because you are not leaving him on a hill
 
 Halfway down you meet Hett Vance coming up, and he stops dead when he sees what you are carrying, and he does not say anything at all.
 
-Then he takes half the weight without being asked, and the two of you bring the ford-keeper of Brackenford back down into his village, and behind you, up on the hill, the candle keeps burning at the bottom of a swept stair.
+You stop once on the way down, at the strongbox still standing in the road. You put Doran on the bank for a moment and you open it, or open it again, and you take out the folded paper and read it by your lamp: eleven names in a careful hand, nine crossed out, and the two that are not are Doran Welk and Hett Vance. You put it inside your coat. The coppers you leave where they are. Nobody in Brackenford is going up that road tonight to steal them.
+
+Then Hett takes half the weight without being asked, and the two of you bring the ford-keeper of Brackenford back down into his village, and behind you, up on the hill, the candle keeps burning at the bottom of a swept stair.
 
 Write the codeword **TOLLPAID** if you do not have it.
 
@@ -888,7 +894,9 @@ The bell is not ringing. That has been true for a while.
 
 The village is dark. Every shutter on the square, closed. Every door barred. Fifty people who were standing out here in their nightclothes an hour ago are behind wood, and the only light in Brackenford is the lantern somebody left burning on the wellhead, and yours.
 
-You did that. Whatever else happened tonight, they are inside, and you are not.
+*If you have **SHELTERED**:* you did that. You stood in the middle of the square and got a village behind its doors, and they are inside, and you are not.
+
+*Otherwise, the doors closed without you. Somebody in every house made the same decision tonight, one at a time, and the result is a shut village with one light moving in it, and the light is yours.*
 
 The deep cold has made the lamp burn its oil fast all night. **The lamp drinks a unit: mark off one oil.**
 
