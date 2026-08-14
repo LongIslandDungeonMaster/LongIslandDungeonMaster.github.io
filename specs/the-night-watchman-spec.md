@@ -69,7 +69,7 @@ Five posts on the watchman's circuit, mapped onto canonical Brackenford location
 
 ### 4.3 State: codewords and the Dawn Track
 
-- **Codewords:** maximum 12 slots in the whole adventure, of which First Watch spends eight (ICEBOUND, VOUCHED, MUGSET, HANDSIGN, WITNESS, BLACKNAIL, LARDER, BLOODED); Middle Watch adds four (DOORHELD, RELIEVED, TOLLPAID, and the two-faced SHELTERED/TAKEN slot, whose faces never coexist) and Last Watch adds none. Written on the sheet when granted; later entries branch on them. Codewords are the memory of the night. Separately, the finale may write up to two **dawn marks** (SCARRED, CARRIED): same notation, granted only in the finale and read only by the dawn epilogue, so they never load the player's memory during play and do not count against the 12. ~~(Tombstoned 2026-08-12: previously allowed "at most four new" later-act codewords with THAWED among them; THAWED encoded nothing, since its entry is on every path, and was folded into the act structure.)~~
+- **Codewords:** maximum 12 slots in the whole adventure, of which First Watch spends eight (ICEBOUND, VOUCHED, MUGSET, HANDSIGN, WITNESS, BLACKNAIL, LARDER, BLOODED); Middle Watch adds four (DOORHELD, RELIEVED, TOLLPAID, and the two-faced SHELTERED/TAKEN slot, whose faces never coexist) and Last Watch adds none. Written on the sheet when granted; later entries branch on them. Codewords are the memory of the night. Separately, the night may write up to two **dawn marks** (SCARRED, CARRIED): same notation, granted only by the finale or by the Ember collapse rule in 5.2 (ruled v1.6: an Ember collapse IS that watchman's finale), read only by the dawn epilogue, so they never load the player's memory during play and do not count against the 12. ~~(Tombstoned 2026-08-12: previously allowed "at most four new" later-act codewords with THAWED among them; THAWED encoded nothing, since its entry is on every path, and was folded into the act structure.)~~
 - **The Dawn Track:** a 12-step track. Certain failures, rests, and deliberate delays advance it. When it fills, dawn breaks and the finale begins *in whatever state the night is in*. The track is the pacing engine and the anti-turtling mechanism: resting is allowed but costs night.
 - **Lamp oil:** a 4-unit resource. Light matters mechanically (darkness imposes disadvantage on route events; some entries need the lamp). Oil is the one supply decision the player makes all night. It exists because the tiers (below) hook into it.
 
@@ -203,6 +203,23 @@ MUST items; a failure on any blocks release.
 **v1.1.** Character level revised from 1st to 3rd. Reasons, in order of weight: (a) at 1st level a single critical hit ends a solo run, which makes Dark Watch a coin flip rather than a challenge and makes fail-forward branching cosmetic, because the player is dead before the branch fires; (b) 3rd level puts the subclass online, and the subclass is the single richest source of the class-conditional entries that pillar 5 requires, since two 1st-level fighters are nearly the same character and two 3rd-level fighters are not; (c) roughly 25 to 30 hit points gives the encounters room to hurt without killing, which is the range the tier dials are built to work in; (d) the fiction survives it, since a watchman with a couple of years behind them is still a humble figure. Consequence: encounter budgets, the pregens, and the 60% single-hit cap are all recalculated against a 3rd-level baseline.
 
 **v1.2.** Difficulty restructured into the Night Rating (per module, shelf-facing) plus the Watch Lamps (per session, player-facing). See section 5.0 for why both are kept.
+
+**v1.6 (2026-08-13, Codex round two closed).** Codex confirmed the v1.5 repairs held, then broke
+the still-live controls; ten findings, all closed. Rulings: (a) **one navigation gate** — prose
+entry links now pass the same guard as choice buttons (hub budget, unresolved checks, the 444
+adjudication, 483's fail-forward requiring 0 HP); (b) **death and collapse are states, not
+advisories** — a dead Dark watchman can only be buried (535, whose ledger line now states that
+any death the night takes counts toward the eleven), and an Ember collapse writes SCARRED and
+routes to the dawn, with all play locked in both states; (c) **a Rekindle reroll refunds the
+failed roll's Dawn tick** before the new roll re-charges it, and only the most recent roll
+qualifies, expiring on navigation; (d) **Watch Lamp switches are blocked at any entry with a
+check or a creature**, which is the enforceable reading of "at any rest"; (e) the dawn epilogue
+now carries a line for **every codeword and mark** (eight added), so any run's ending reflects
+all of its earned state; (f) the **Keeper primer speaks auto-state language** end to end;
+(g) the build lint's second extractor compares **operation identities** (codeword names, tick
+sizes, oil direction) using separately derived patterns, not bare counts; (h) the Dark nest's
+break line names all three shrikes; (i) dawn-mark timing reconciled in 4.3 (the Ember collapse
+is that watchman's finale).
 
 **v1.5 (2026-08-13, Codex red-team REVISE closed).** Codex ran three seeded playthroughs plus a
 static engine attack and returned 13 findings; all closed. New rulings this version: (a) **roll

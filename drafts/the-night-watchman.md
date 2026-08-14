@@ -2701,7 +2701,7 @@ The guard never leaves the child and never pursues. If you drop the attacker, th
 
 *If Nell is with you:* the guard cannot watch both of you, and Nell knows which of you is the distraction. Your check to get past the guard to the child is made with advantage.
 
-If you get the child behind you (a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), both break for the moor within one round.
+If you get the child behind you (a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), they break for the moor within one round: the pair on Ember and Lantern, all three on Dark.
 **Fail-forward:** if you drop to 0 hit points here, you do not die on Ember or Lantern. Go to **486**.
 
 > **Watch Lamp** · **Ember:** 14 HP each; the guard is slow to react and you may take the child on round two without a check. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, and there is a third in the rafters that drops on round three.
@@ -2880,6 +2880,22 @@ Doran Welk's chair is still lying on its side on the bank. Somebody sets it upri
 
 *If you have **SCARRED**:* whatever it took out of you, it did not take all of it, and you got up. The white at your temple is not a wound. It is a receipt, and the village reads it every time you pass, and stands you drinks accordingly.
 
+*If you have **ICEBOUND**:* you knew before anyone. By noon the whole village knows you knew, because Doran's chair was empty and somebody asked who saw the ford last, and the answer was the new watchman, at dusk, on his first round. Nobody says lucky. Everybody thinks it.
+
+*If you have **VOUCHED**:* six men come back from Aldermere in the spring, and Hett Vance meets them at the ford and does not explain the year, and none of them asks, and all of them look at you a moment too long. He spent his militia to keep them alive. You are the only one who knows it was spending.
+
+*If you have **MUGSET**:* Mara told you at dusk that she had heard her husband at her door on a night like this one, and you were polite about not believing her. At noon she sets a plate in front of you that you did not order, and neither of you says the word believed, and that is the apology and the acceptance both.
+
+*If you have **WITNESS**:* Bryn is back in Greel's yard by eight, stacking crates, twelve years old and the only other soul who saw it coming and tried to say so. You nod to him over the fence on your next round. The nod he gives back is one watchman to another.
+
+*If you have **BLACKNAIL**:* the warning stays folded against your chest for three more days. Then you nail it back on the notice board yourself, where you found it, because whoever wrote it was right, and the next watchman is going to need it.
+
+*If you have **HANDSIGN**:* you went and got an answer before you needed it, exactly the way Anselm told you to. You will keep that habit for the rest of your life, and it will save it twice.
+
+*If you have **LARDER**:* on the third morning you cross the ford with Hett and a torch and burn the stakes in the Drowned Lane down to the mud, and neither of you says anything over them, and it is a funeral anyway.
+
+*If you have **TAKEN**:* Ada Charlock's name is not read at the counting, because her mother cannot stand to hear it and the village cannot stand to say it. You keep the watch anyway, every night after. Both of those facts are yours to carry now, and carrying them is the job.
+
 *If Nell is with you:* she sleeps for a day and a half in front of the Broken Wheel's fire, and wakes up a village dog: fed at five doors, owned at none, and on the round every night after, with whoever carries the lamp.
 
 → **522**
@@ -2985,7 +3001,7 @@ They bury you on the third day, next to Doran Welk, and the whole village comes.
 
 The ledger is settled. Brackenford will have a quiet winter, and the ford will run all season, and in the spring the children will paddle in it.
 
-You were the watch for one night. Eleven was always going to be somebody.
+You were the watch for one night. However the night took you, it was the night that took you: the cold counts what it collects, and it collected you. Eleven was always going to be somebody.
 
 **THE END.**
 
