@@ -653,7 +653,9 @@ The notice board stands at the edge of the light with its layers of paper going 
 
 ### 061
 
-The lantern is warm. It has been burning for about an hour, which means somebody set it here at the time the dusk bell rang.
+You crouch over the wellhead with your own lamp turned up, because you want to see this properly, and seeing things properly costs light. **The lamp drinks a unit: mark off one oil.**
+
+The lantern on the well is warm. It has been burning for about an hour, which means somebody set it here at the time the dusk bell rang.
 
 The well it stands on has been dry for years. There is a plank cover, warped, pushed aside by about a hand's width, and the gap is the kind of black that a lantern a foot away does not touch at all.
 
@@ -791,7 +793,9 @@ At first you take it for fishing stakes. It is a line of broken reed-stems and o
 
 You lower the lantern.
 
-Voles. Six of them, and a rat, and a bird, each one pushed down onto a point and left there, neatly, at even spacing, like a shelf in a larder. The nearest is not old. In this cold nothing rots, so you cannot tell how long, but the frost has not taken it yet, and everything else out here is white.
+Voles. Six of them, and a rat, and a bird, each one pushed down onto a point and left there, neatly, at even spacing, like a shelf in a larder.
+
+The mud below the stakes is printed all over with two sets of tracks, one heavier than the other, and they tell you how it was done: everything on those points was chased along the bank from the same direction, toward something that was already waiting at the end of the run. The nearest is not old. In this cold nothing rots, so you cannot tell how long, but the frost has not taken it yet, and everything else out here is white.
 
 Write the codeword **LARDER** if you do not have it.
 
@@ -1000,17 +1004,17 @@ Doran's chair is where it fell over. Doran is not in it.
 
 *If you have **ICEBOUND**:* you knew at dusk. You had four hours of knowing, and you spent them ringing a bell at posts, because that was the job you were given. You will think about that.
 
-*If you have **VOUCHED**:* Doran Welk went up the hill road tonight with a strongbox and asked you not to have seen him, and you have not seen him come down.
+*If you have **VOUCHED**:* somebody in this village trusted you tonight with something they should not have had to carry alone, and asked you, in so many words, to look the other way. You did. You are eight hours into this job and you are already keeping its secrets.
 
 *If you have **MUGSET**:* there is a clean mug sitting in front of an empty chair in the warmest room in Brackenford, and a woman who has heard her husband at the door on a night exactly like this one.
 
-*If you have **HANDSIGN**:* a man who has not slept in thirty days told you to get one before you needed it, and you still do not have one.
+*If you have **HANDSIGN**:* a man who has not slept in thirty days is holding a door shut with a bell, and he spoke to you through it, and nothing he said has stopped being true since.
 
 *If you have **WITNESS**:* a twelve-year-old boy pointed up the hill, and then down, and could not make the words come.
 
 *If you have **BLACKNAIL**:* somebody warned this village once, in writing, on its own notice board: *do not be on the far bank when it stops.* However the warning reached you tonight, you know it now, and you know it was not poetry.
 
-*If you have **LARDER**:* something has a pantry on the near bank of this river, and a door has been nailed shut from the outside at the dead end of the Drowned Lane.
+*If you have **LARDER**:* something keeps a pantry on the near bank of this river, and you have stood over it with a lantern and counted what was on the stakes.
 
 *If you have **BLOODED**:* your hands have stopped shaking. Mostly.
 
@@ -1140,7 +1144,7 @@ You watch him work it out: one road, one ford, one bell, one recruit, and four p
 
 "You're the watch." He is already turning. "The village is yours. I'm sorry. I'd give you six men if I had them."
 
-*If you have **VOUCHED**:* you know exactly why he does not have them, and that he is the reason, and that he would do it again.
+*If you have **VOUCHED**:* you have already learned tonight that this village runs on people quietly carrying things for it, and you are looking at the man who carries the most, and who is about to go up that hill alone.
 
 → "Then tell me the fourth rule." **202**
 → "What do I do about the bell?" **203**
@@ -1483,6 +1487,8 @@ Something has been watching how this village grieves.
 ---
 
 ### 250
+
+You go in with the lamp up, because whatever is on that rope, you want to see it. **The lamp drinks a unit: mark off one oil.**
 
 The noise inside the shrine is enormous.
 
@@ -1885,6 +1891,8 @@ Two names are not crossed out. One is Doran Welk.
 
 The other is Hett Vance.
 
+You fold the paper again and put it inside your coat, against your chest, because it should not be sitting in a box in a road.
+
 Write the codeword **TOLLPAID**.
 
 → **294**
@@ -1950,7 +1958,9 @@ You get Doran Welk over your shoulder, because you are not leaving him on a hill
 
 Halfway down you meet Hett Vance coming up, and he stops dead when he sees what you are carrying, and he does not say anything at all.
 
-Then he takes half the weight without being asked, and the two of you bring the ford-keeper of Brackenford back down into his village, and behind you, up on the hill, the candle keeps burning at the bottom of a swept stair.
+You stop once on the way down, at the strongbox still standing in the road. You put Doran on the bank for a moment and you open it, or open it again, and you take out the folded paper and read it by your lamp: eleven names in a careful hand, nine crossed out, and the two that are not are Doran Welk and Hett Vance. You put it inside your coat. The coppers you leave where they are. Nobody in Brackenford is going up that road tonight to steal them.
+
+Then Hett takes half the weight without being asked, and the two of you bring the ford-keeper of Brackenford back down into his village, and behind you, up on the hill, the candle keeps burning at the bottom of a swept stair.
 
 Write the codeword **TOLLPAID** if you do not have it.
 
@@ -1986,7 +1996,9 @@ The bell is not ringing. That has been true for a while.
 
 The village is dark. Every shutter on the square, closed. Every door barred. Fifty people who were standing out here in their nightclothes an hour ago are behind wood, and the only light in Brackenford is the lantern somebody left burning on the wellhead, and yours.
 
-You did that. Whatever else happened tonight, they are inside, and you are not.
+*If you have **SHELTERED**:* you did that. You stood in the middle of the square and got a village behind its doors, and they are inside, and you are not.
+
+*Otherwise, the doors closed without you. Somebody in every house made the same decision tonight, one at a time, and the result is a shut village with one light moving in it, and the light is yours.*
 
 The deep cold has made the lamp burn its oil fast all night. **The lamp drinks a unit: mark off one oil.**
 
@@ -2701,7 +2713,7 @@ The guard never leaves the child and never pursues. If you drop the attacker, th
 
 *If Nell is with you:* the guard cannot watch both of you, and Nell knows which of you is the distraction. Your check to get past the guard to the child is made with advantage.
 
-If you get the child behind you (a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), they break for the moor within one round: the pair on Ember and Lantern, all three on Dark.
+If you get the child behind you (your action and a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), they break for the moor within one round: the pair on Ember and Lantern, all three on Dark.
 **Fail-forward:** if you drop to 0 hit points here, you do not die on Ember or Lantern. Go to **486**.
 
 > **Watch Lamp** · **Ember:** 14 HP each; the guard is slow to react and you may take the child on round two without a check. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, and there is a third in the rafters that drops on round three.
@@ -2866,11 +2878,11 @@ Doran Welk's chair is still lying on its side on the bank. Somebody sets it upri
 
 *This is your night. Read the lines you have earned.*
 
-*If you have **BLOODED**:* you killed something on the round and you have not thought about it once since it happened, and you will, in about a week, at an inconvenient moment. When it comes, let it come, and let it pass, because it does pass. Killing a thing that was hunting children is a weight a person can carry.
+*If you have **BLOODED**:* you fought something on the round tonight, close enough to feel it, and you have not thought about it once since it happened. You will, in about a week, at an inconvenient moment. When it comes, let it come, and let it pass, because it does pass. Standing between this village and a hunting thing is a weight a person can carry.
 
 *If you have **SHELTERED**:* the child from the wellhead is asleep in her own bed and will remember none of this correctly, and her mother will remember all of it, and will not be able to say a word to you for eleven days and will then say far too many at once. Every one of those words will amount to thank you.
 
-*If you have **CARRIED**:* you went across the ice for one person and left a whole village behind a door to do it, and Hett Vance has already told you it was the wrong call twice, and he has not once been able to say it while looking at you. He is wrong, and he knows he is wrong, and the girl is alive. That is the whole argument, and you won it.
+*If you have **CARRIED**:* you went across the ice for one person and left a whole village behind a door to do it. Hett Vance will have opinions about that for the rest of his life, and he has not managed to say a single one of them out loud yet, because the girl is alive. That is the whole argument, and you won it.
 
 *Otherwise, if you have **TAKEN**, Ada Charlock's name is not read at the counting, because her mother cannot stand to hear it and the village cannot stand to say it. You keep the watch anyway, every night after. Both of those facts are yours to carry now, and carrying them is the job.*
 
@@ -2973,7 +2985,9 @@ The book is not going to tell you what you did next. That one is yours.
 
 **Here ends the night watch.**
 
-You were the watch for one night, on the night the ford froze, and you did not beat anything. There is nothing under the hill that is any weaker this morning than it was yesterday. The swept stair is still swept. The candle at the bottom of it is still burning. The debt still stands however you left it at the ford this morning, and somewhere out on the moor an old woman is counting stones and getting an answer she does not like.
+You were the watch for one night, on the night the ford froze, and you did not beat anything. There is nothing under the hill that is any weaker this morning than it was yesterday.
+
+*If you have **TOLLPAID**:* the stair you stood ninety yards from is still swept, and the candle at the bottom of it is still burning, and you are one of the few people alive who can say so. The debt still stands however you left it at the ford this morning, and somewhere out on the moor an old woman is counting stones and getting an answer she does not like.
 
 But the village woke up.
 

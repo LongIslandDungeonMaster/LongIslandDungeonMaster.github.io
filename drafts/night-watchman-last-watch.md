@@ -619,7 +619,7 @@ The guard never leaves the child and never pursues. If you drop the attacker, th
 
 *If Nell is with you:* the guard cannot watch both of you, and Nell knows which of you is the distraction. Your check to get past the guard to the child is made with advantage.
 
-If you get the child behind you (a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), they break for the moor within one round: the pair on Ember and Lantern, all three on Dark.
+If you get the child behind you (your action and a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), they break for the moor within one round: the pair on Ember and Lantern, all three on Dark.
 **Fail-forward:** if you drop to 0 hit points here, you do not die on Ember or Lantern. Go to **486**.
 
 > **Watch Lamp** · **Ember:** 14 HP each; the guard is slow to react and you may take the child on round two without a check. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, and there is a third in the rafters that drops on round three.
@@ -785,11 +785,11 @@ Doran Welk's chair is still lying on its side on the bank. Somebody sets it upri
 
 *This is your night. Read the lines you have earned.*
 
-*If you have **BLOODED**:* you killed something on the round and you have not thought about it once since it happened, and you will, in about a week, at an inconvenient moment. When it comes, let it come, and let it pass, because it does pass. Killing a thing that was hunting children is a weight a person can carry.
+*If you have **BLOODED**:* you fought something on the round tonight, close enough to feel it, and you have not thought about it once since it happened. You will, in about a week, at an inconvenient moment. When it comes, let it come, and let it pass, because it does pass. Standing between this village and a hunting thing is a weight a person can carry.
 
 *If you have **SHELTERED**:* the child from the wellhead is asleep in her own bed and will remember none of this correctly, and her mother will remember all of it, and will not be able to say a word to you for eleven days and will then say far too many at once. Every one of those words will amount to thank you.
 
-*If you have **CARRIED**:* you went across the ice for one person and left a whole village behind a door to do it, and Hett Vance has already told you it was the wrong call twice, and he has not once been able to say it while looking at you. He is wrong, and he knows he is wrong, and the girl is alive. That is the whole argument, and you won it.
+*If you have **CARRIED**:* you went across the ice for one person and left a whole village behind a door to do it. Hett Vance will have opinions about that for the rest of his life, and he has not managed to say a single one of them out loud yet, because the girl is alive. That is the whole argument, and you won it.
 
 *Otherwise, if you have **TAKEN**, Ada Charlock's name is not read at the counting, because her mother cannot stand to hear it and the village cannot stand to say it. You keep the watch anyway, every night after. Both of those facts are yours to carry now, and carrying them is the job.*
 
@@ -892,7 +892,9 @@ The book is not going to tell you what you did next. That one is yours.
 
 **Here ends the night watch.**
 
-You were the watch for one night, on the night the ford froze, and you did not beat anything. There is nothing under the hill that is any weaker this morning than it was yesterday. The swept stair is still swept. The candle at the bottom of it is still burning. The debt still stands however you left it at the ford this morning, and somewhere out on the moor an old woman is counting stones and getting an answer she does not like.
+You were the watch for one night, on the night the ford froze, and you did not beat anything. There is nothing under the hill that is any weaker this morning than it was yesterday.
+
+*If you have **TOLLPAID**:* the stair you stood ninety yards from is still swept, and the candle at the bottom of it is still burning, and you are one of the few people alive who can say so. The debt still stands however you left it at the ford this morning, and somewhere out on the moor an old woman is counting stones and getting an answer she does not like.
 
 But the village woke up.
 
