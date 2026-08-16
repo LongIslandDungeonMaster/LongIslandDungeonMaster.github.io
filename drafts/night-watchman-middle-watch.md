@@ -93,6 +93,8 @@ He is coming from the far side, from the Drowned Lane, unhurried, on two legs, i
 
 He is walking like a man who has walked this crossing ten thousand times, which is the thing that stops your breath, because everyone in Brackenford walks the ford in the same careful hitching way, feeling for the flat stones with their feet, and he is not doing that, because there is nothing under him but ice and he knows it.
 
+*If you have darkvision:* the lantern is doing nothing for you that your own eyes are not. Out past its throw you can see him whole, in grey, and his face is pleasant, and he is not looking at the ice or the far bank or the village lights. He has been looking at you since he stepped onto the crossing.
+
 → Raise the lantern and challenge him. **207**
 → Get off the bank and watch from cover. **208**
 → Run for the village ahead of him. **210**
@@ -108,6 +110,8 @@ Your voice goes out across the ice and comes back off the far bank, and it sound
 The man stops.
 
 He stands in the middle of the frozen river with his back to the moor and looks at you across forty feet of grey, and your lantern reaches him, just, at the far end of its throw.
+
+*If you were trained to read a fight before it starts:* he stopped the instant you told him to, and he stopped at forty feet, which is the distance a man picks when he wants to be looked at. His hands are empty and open and well away from his sides. He is standing on wet ice in the dead of winter and nothing in his weight is braced against it.
 
 He is a shepherd, forty-odd, a heavy coat, a beard going grey at the chin. There is frost in it. There is frost on his eyelashes and in the seams of his coat and packed white in the folds of his ears, the way frost forms on a thing that has been out all night and is the same temperature as the air.
 
@@ -230,6 +234,8 @@ He is not rotten. Nothing about him is rotten. He is a healthy shepherd of forty
 
 "You're new," he says pleasantly. "Hett get you? Good lad, Hett. Would you mind? My wife's just inside."
 
+*If you can turn undead:* you do not have to raise the symbol to know. That cold pull you were trained to feel across a room, the one that tells you where the dead are standing before you turn your head, is not on this step at all. Whatever is in front of you does not answer to it, and nothing you were taught covers a thing that does not answer.
+
 → "You've been gone a year." **233**
 → "What's your wife's name?" **234**
 → Say nothing. Stand there. **235**
@@ -349,6 +355,8 @@ Outside, a voice with a smile in it says her name twice more, and then stops.
 The thing that is not Tobin Tullamore stands on the step for a while.
 
 Then it walks away, unhurried, back down the square toward the ford, and it does not look at the windows it passes, and the frost on the cobbles does not squeak under it.
+
+*If you can cast detect magic:* you get it off before the thing reaches the corner, and the reading is worse than any reading would have been. There is nothing on it. No school, no residue, no working of any kind laid on a shepherd who has been dead since autumn. Nobody cast this.
 
 Inside, Mara sits down on the floor with her back against the door she has just kept, and she does not cry, and she says, "Get out. Please. I'll be all right in the morning and I won't be able to look at you for a month."
 
@@ -477,6 +485,8 @@ In the silence Anselm sits down on the step of his own altar, which is the first
 "It crossed the ford," he says. "I watched it come down off the hill and across the ice. I have been watching that hill through a shutter for thirty days and tonight something walked off it."
 
 He looks at his hands.
+
+*If you are proficient in Religion:* you know the rite he means. The dusk bell of the Quiet Hand is a courtesy to the dead and a call to the living, and in every liturgy you have ever read that is the whole of it. There is no ward in a schedule. He built that lock himself, out of nothing, in a room with the door unlocked, and it may have held anyway.
 
 "So I rang. At midnight. Which I have never done." A small dry sound that might be a laugh. "There. It is done. Thirty days of a lock I could not test, and I have broken it myself, on purpose, to make a noise."
 
@@ -642,6 +652,8 @@ It comes up out of a dry well like something poured upward: long grey legs, a bo
 
 The second one is already out and standing on the notice board.
 
+*If you are proficient in Animal Handling:* neither of them is angry, and that is the part that frightens you. Wild things puff and bluster and warn you off first. These two are quiet and loose and unhurried, and the one on the wellhead has not once looked down at the child beside it, because it does not need to. It already knows where she is.
+
 *If you have **LARDER**:* you know exactly what these are, and you know how they hunt: in pairs, one chasing the prey into a panic while the other waits where the running will end.
 
 → **277**
@@ -670,9 +682,13 @@ If either shrike drops to half its hit points or fewer, it screams, the first so
 If you get the child off the wellhead and behind a door, both leave within two rounds. They did not come here to fight you. They came here to hunt.
 **Getting her out:** the well is thirty feet from the nearest door. Reaching her takes your move; lifting her off the wellhead takes your action, and if the catcher is alive and within ten feet of the well, it gets one attack against you as you lift her. Carrying her, you move at half speed. Any door on that square opens for a child without being asked.
 
+*If you fight with a shield:* as you lift her you can get the shield up over the both of you and take the catcher's attack on the boards instead. That attack is made with disadvantage. You carry her out one armed and half blind behind the rim, and your back will remember it for a week.
+
 *If Nell is with you:* send her to the wellhead and she goes, flat out, and stands over the child. The catcher will not go near her. A dog standing its ground over a child is nothing it has ever hunted, and it does not know what to do with one, so while Nell guards the child, the shrike attacks Nell instead of taking her.
 
 > **Watch Lamp** · **Ember:** 14 HP each, and the chaser circles the square before its first dive, which buys you a full round. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, they act on the same initiative count, and the catcher grabs the child on round one unless you are already within reach of the well.
+
+**If you retreat:** back away from the well and neither bird follows you. They are not hunting you and they never were. You will hear what happens behind you, and the square will hear that you heard it. Go to **279**.
 
 *If you drive them off or drop them:* → **278**
 *If the child is taken:* → **279**
@@ -768,6 +784,8 @@ It is sitting in the middle of the road, upright, closed, neatly, on a patch of 
 
 It is not damaged. It has not been forced. It is simply sitting there in the road with the coins still in it, the way a thing is put down by somebody who has been handed it and found it did not interest them.
 
+*If you are proficient in Investigation:* the swept circle around it is the wrong shape for wind and the wrong shape for a man with a broom. The frost was not brushed outward from the box. It was pushed back from something that stood where the box is standing.
+
 *If you have **VOUCHED**:* Doran Welk has carried this box up this road on freezing nights for a year, because the year he refused, his eldest did not come home.
 
 → Open it. **293**
@@ -814,6 +832,8 @@ In this cold there is no way to tell how long he has been dead. But the ground u
 
 There is no wound on him. Nothing took anything from him. He walked up this road with a box of coppers to pay a toll he hated on behalf of a village that resented him for collecting it, and something met him on the way, and looked at him, and did not want the box.
 
+*If you have a healing spell or a healer's kit:* you try anyway. You are young and it is Doran and your hands do it before you decide to. The kit finds nothing to dress and the spell goes out of you and comes back with nothing to mend, because nothing in this man is broken. He is whole. He is simply finished.
+
 *If you have **VOUCHED**:* he asked you not to have seen him on this road tonight, and you agreed, and that is the last conversation he had with anyone.
 
 
@@ -852,13 +872,13 @@ You stand in it with your lantern up, at the top of a stair going down into ston
 
 ### 298
 
-You get Doran Welk over your shoulder, because you are not leaving him on a hill road for whatever swept that stair, and he is a broad man and it is the worst walk of your life.
+You get Doran Welk over your shoulder, because you are not leaving him on that road for whatever swept the stair. He is a broad man and it is the worst walk of your life.
 
-Halfway down you meet Hett Vance coming up, and he stops dead when he sees what you are carrying, and he does not say anything at all.
+Halfway down you meet Hett Vance coming up. He stops dead when he sees what you are carrying and says nothing at all.
 
-You stop once on the way down, at the strongbox still standing in the road. You put Doran on the bank for a moment and you open it, or open it again, and you take out the folded paper and read it by your lamp: eleven names in a careful hand, nine crossed out, and the two that are not are Doran Welk and Hett Vance. You put it inside your coat. The coppers you leave where they are. Nobody in Brackenford is going up that road tonight to steal them.
+You stop once at the strongbox. You lay Doran on the bank, open it, and read the paper by your lamp: eleven names, nine crossed out. The two that are not are Doran Welk and Hett Vance. The list goes in your coat.
 
-Then Hett takes half the weight without being asked, and the two of you bring the ford-keeper of Brackenford back down into his village, and behind you, up on the hill, the candle keeps burning at the bottom of a swept stair.
+Then Hett takes half the weight without being asked, and the two of you bring the ford-keeper of Brackenford home, and behind you the candle keeps burning at the bottom of a swept stair.
 
 Write the codeword **TOLLPAID** if you do not have it.
 
@@ -937,6 +957,8 @@ It is not loud. It is the sound a frozen pond makes when the weight comes off it
 Then it comes again.
 
 Something is walking back across the ford, and this time the ice is talking about it, which means this time it is heavier.
+
+*If your passive Wisdom (Perception) is 14 or higher:* you catch the spacing. The cracks come evenly, at the pace of a man walking who has nowhere he needs to be. It has not slipped once on that ice, and it has not stopped once to listen for you.
 
 → **313**
 

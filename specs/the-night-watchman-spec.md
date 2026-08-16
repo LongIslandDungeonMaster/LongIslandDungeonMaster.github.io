@@ -142,7 +142,7 @@ Every combat/hazard entry ends with one compact line, always in the same order, 
 Every entry follows one shape:
 
 1. **Number** (three digits, e.g. 047; the HTML edition anchors and links them).
-2. **Prose** per section 9. Hard cap 160 words before the first choice or check; typical 80 to 120.
+2. **Prose** per section 9. Hard cap 160 words of READ-ALOUD PROSE before the first choice or check; typical 80 to 120. Stat blocks, tactics scripts, Watch Lamp sidebars and procedure text are reference matter, not prose, and are measured separately (ruled v1.9: a combat entry's block is looked at, not read aloud).
 3. **Conditional lines** where earned (class, species, skill, codeword, dog).
 4. **Mechanics block** when present: check with DC, both outcomes as entry links, both of which move the night forward (pillar 1).
 5. **Watch Lamp sidebar** if combat/hazard.

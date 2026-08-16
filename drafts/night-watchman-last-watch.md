@@ -25,6 +25,8 @@ He is wearing the coat he died in, and the frost is still on him in the seams of
 
 *If Nell is with you:* she makes a sound you have never heard a dog make, once, and then she is pressed flat against the backs of your knees, and she stays there. She does not run. She will not look at it.
 
+*If you have darkvision:* past the reach of your lantern the slope reads clear and grey to you, all the way down to the ice, and there is no line of broken frost behind it. Nothing walked up that hill.
+
 → **401**
 
 ---
@@ -67,6 +69,8 @@ It says it the way you would say *a farmer* or *a miller*. Not a description. An
 
 "That's all. There's no more to me than that and there never was, and every one of you has spent a hundred years putting a face on it and a name to it and a bargain around it, and I have let you, because it makes you easier to talk to." It shrugs Doran's heavy shoulders. "I come down the hill when it's cold enough. I take what's outside. If you'd all just stayed in, we'd never have met."
 
+*If you can turn undead:* you raise your holy symbol and put your whole voice behind it, and it waits politely until you have finished. "That is for the risen, and I have never once been in a grave," it says, with what sounds like real sympathy. You have learned what it is not, which is worth knowing, and you have learned that nothing you were taught was made for what it is.
+
 → "What do you want?" **405**
 
 ---
@@ -104,6 +108,8 @@ Beside you, Hett Vance says, very quietly, "Ah."
 *If you have **TOLLPAID**:* he hands you back the list, and you fold it away against your chest.
 
 "Well," says Hett Vance. "That's a relief, honestly."
+
+*If you are proficient in Insight:* that is not bravado and it is not despair. That is a man setting down something he has carried alone for a year, and he is going to move the moment you stop looking at him.
 
 → **408**
 
@@ -206,6 +212,8 @@ What is left to you is not victory. It is the four hours until the sun, and what
 ### 420
 
 The strongbox is where you left it, or where you carried it to, and it is heavier than a box of coppers has any right to be.
+
+*If you are proficient in Athletics:* you have shifted enough dead weight to know what is under your hands. Coin slides and settles when you lift it. This does not move at all, and whatever is packed in there was packed to keep still.
 
 You turn the wick up as far as it goes before you lift the box, because you want your hands seen while you do this. **The lamp drinks a unit: mark off one oil.**
 
@@ -317,7 +325,7 @@ It goes up fast. Eleven names in a careful hand, nine crossed out, gone in about
 
 Nothing happens.
 
-You had perhaps half-expected something to happen. There is no sound and no flash and the cold does not lift, and the thing wearing Doran Welk does not react at all. If you burned the list, you understand after a moment that all you have done is burn a piece of paper, and it says, mildly, "That was somebody's careful handwriting. Alder's, I think. She'll be upset." If you are standing in its path, it stops walking, and it does not try to push past you or go around you.
+You half-expected something to happen. There is no sound, no flash, and the cold does not lift. If you burned the list, you understand after a moment that all you have done is burn a piece of paper, and it says, mildly, "That was somebody's careful handwriting. Alder's, I think. She'll be upset." If you are standing in its path, it stops walking, and it does not try to push past you or go around you.
 
 And then it waits, because it can, because dawn is not here yet and it has nowhere to be and neither do you. It does not go up the slope for Hett Vance. It stands where it is, and you stand where you are, and the last watch of the night turns out to be exactly what the job always was: staying between the cold and the village until the sun comes up.
 
@@ -408,6 +416,8 @@ On the floor, in the altar cloth, Anselm does not stir. He is thirty days gone a
 You keep ringing.
 
 That is the whole of it, for four hours. It talks the entire time. It uses Doran's voice, and then, when that stops working, it uses others: a shepherd's, warm, asking to be let in; a woman's, level, saying you've not asked after the dog; a child's, from six feet outside the door, crying and asking why nobody is coming.
+
+*If your passive Wisdom (Perception) is 14 or higher:* somewhere in the second hour you catch the one thing every voice out there has in common. None of them ever takes a breath before it speaks, and once you have heard that, you cannot stop hearing it.
 
 *Make a DC 15 Wisdom saving throw at the end of each of the first three hours. Ember Watch: DC 12. Dark Watch: DC 17.*
 
@@ -504,6 +514,8 @@ It does Tobin first, because it knows what worked. It stands out there in the fr
 Mara Tullamore sits with her back against her own front door and her hands flat on the boards and does not move.
 
 *If you have **DOORHELD**, she has done this once tonight already and she does not need you for it.*
+
+*If you fight with a shield:* you set it against the boards and put your shoulder behind it out of pure drilled habit, and then you spend four hours learning there is never any weight on the other side. It does not push. It does not lean. It only ever asks.
 
 → Sit with her. **463**
 → Talk to it through the door. **464**
@@ -620,6 +632,7 @@ The guard never leaves the child and never pursues. If you drop the attacker, th
 *If Nell is with you:* the guard cannot watch both of you, and Nell knows which of you is the distraction. Your check to get past the guard to the child is made with advantage.
 
 If you get the child behind you (your action and a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), they break for the moor within one round: the pair on Ember and Lantern, all three on Dark.
+**If you retreat:** you can leave. The door is behind you and nothing in this room follows you through it. The guard does not move. The child does not make a sound. Go to **486**, and know that you walked out.
 **Fail-forward:** if you drop to 0 hit points here, you do not die on Ember or Lantern. Go to **486**.
 
 > **Watch Lamp** · **Ember:** 14 HP each; the guard is slow to react and you may take the child on round two without a check. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, and there is a third in the rafters that drops on round three.
@@ -632,6 +645,8 @@ If you get the child behind you (your action and a successful DC 13 Dexterity (A
 ### 484
 
 You get her up inside your coat with her face against your collarbone and her hands like ice on your neck, and she does not make a sound the entire way, which is worse than screaming.
+
+*If you have a healing spell or a healer's kit:* you do what you can for her one-handed while you walk. Cold is not a wound, and there is nothing in the kit and nothing in the spell that closes it, so you put her hands inside your shirt against your own skin instead. Somewhere over the middle of the ford they start to hurt her, and hurting is exactly what you wanted.
 
 Going back across the ford is the longest four minutes of your life. Halfway over you pass the thing wearing Doran Welk again, standing on the ice in the middle of the crossing, facing the village.
 
@@ -748,6 +763,8 @@ Somewhere in the third circuit it says, "You know I'll be back within the month.
 **Success.** You are still upright. Cold has got into your hands and you cannot feel the clapper, so you hold it in your fist and swing your whole arm.
 
 **Failure.** Take 1d6 cold damage and one level of exhaustion. You go down on one knee at the Greel's Yard post, and you get up, and you ring it, and the sound is fine, and that is the only part anybody else will ever hear.
+
+*If you have Second Wind, Action Surge, or a similar reserve:* somewhere in the fourth hour you reach for it out of habit and find it still sitting there, unspent. It was built for the worst thirty seconds of a fight, and this is not a fight, it is a schedule. You keep your feet the ordinary way, which was always going to be the only way.
 
 → **505**
 
@@ -880,6 +897,8 @@ You say no, and Hett Vance takes it exactly the way you would want a man to take
 
 You give him back the lantern at the bottom of the hill.
 
+*If you can cast a light cantrip:* you walk the last of it home by your own light, which is a small thing and not nothing, and you will think about the difference between a light you carry and a light you were handed for a long time after tonight.
+
 You are two streets away when you hear him, out of sight, announcing the hour to an empty street the way he has done for a year, and you stop walking, and you stand there in the road for a long moment.
 
 The book is not going to tell you what you did next. That one is yours.
@@ -914,7 +933,7 @@ That is the whole of it, and it is not nothing, and Hett Vance was right about t
 
 You do not come back at dawn.
 
-They find you at first light, wherever the night left you, with the frost already in the seams of your coat and packed white in the folds of your ears, and there is not a mark on you anywhere, and the ground under you is not thawed at all, wherever you lay.
+They find you at first light with frost in the seams of your coat and packed white in the folds of your ears. There is not a mark on you, and the ground beneath you never thawed.
 
 Hett Vance carries you up the slope himself and will not let anybody take the other end.
 
