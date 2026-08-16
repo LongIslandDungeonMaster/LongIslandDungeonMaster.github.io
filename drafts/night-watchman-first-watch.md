@@ -58,6 +58,8 @@ You wait. He does not give you a fourth.
 
 He puts the bell-clapper in your other hand, the striker you will ring the posts with. Brass, cold, the size of a spoon.
 
+*If you are proficient in Insight:* he has given this speech before, in this order, in this spot, and the pause before the third rule is not him forgetting. It is him deciding, again, whether to say it to somebody new.
+
 → Ask him something. **003**
 → Say nothing and start the circuit. **007**
 
@@ -269,6 +271,8 @@ Inside, the common room is low and gold and full. Mara Tullamore is working the 
 
 You are standing in the door in a wet tabard with a lantern, and the room notices, one table at a time, and goes quieter than a room that size should be able to.
 
+*If you were trained to read a fight before it starts:* you do it without deciding to. Nobody in this room is carrying more than a belt knife, the fire is at your back and will ruin your night eyes if you step toward it, and the only way out is the door you are standing in. None of that is a threat. It is just the shape of a room, and you will never be able to stop seeing it.
+
 → Ring the bell and go. **031**
 → Go in. **032**
 
@@ -358,6 +362,8 @@ You ring in at the plate by the door. The sound goes out over the roofs and come
 
 The shrine is the oldest building on the square and it looks it: small, stone, squat, with a carved hand above the door, palm out, fingers together. *Stop. Wait. Be still.*
 
+*If you are a cleric, paladin, or otherwise sworn:* you know that hand. Palm out, fingers together, is not a blessing and never was. It is a sign set at a threshold, and it is aimed outward, at whatever comes up the road.
+
 The door has not opened in a month. There is a drift of dead leaves against it that has been rained on and frozen and rained on again until it is less a drift than a seal.
 
 There is candlelight through the shutter gap.
@@ -377,6 +383,8 @@ You put your eye to the gap in the shutter.
 Candles. Dozens, most of them guttered to stubs and left where they died, on the floor, on the sill, in a rough line down the middle of the nave that lines up with nothing in the room. At the far end, past the altar, a shape sits upright in a chair facing the door with its hands on its knees.
 
 It is a man. He is awake. His eyes are open and they are pointed at the door, and the door is where you are.
+
+*If you have darkvision:* the candles are not what shows you that room. Past them, in the corners the light gave up on an hour ago, there is nothing: no second chair, no one standing, no door open at the back. Only wax, and stone, and him, sitting where he can watch the way in.
 
 *Make a DC 13 Wisdom saving throw. On a failure, you step back from the shutter fast enough to scrape your lantern on the stone, and you take no damage, but tick one box on the Dawn Track: you stand in the cold getting your breath for longer than you would admit.*
 
@@ -475,6 +483,8 @@ Bryn is here. The boy is twelve or so and he is stacking crates by lantern light
 
 The goat is eating a hat.
 
+*If you can speak with animals, even briefly:* the goat has a great deal to say and almost none of it is about tonight: the hat, the boy, the cold, the fence. Then it tells you it will not go in the far corner of the yard anymore. You ask why, and it looks at you, because a goat has no why.
+
 → "Does Greel know you're still here?" **051**
 → Help him stack. **052**
 → Ring in and go. **056**
@@ -499,6 +509,8 @@ The goat is eating a hat.
 You set the lantern on a barrel and take the other end of the crates.
 
 It is honest work and it goes fast with two, and after a while Bryn stops being careful around you, the way children do when an adult has proved they will actually lift something. He tells you the goat's name. He tells you which boots on the wall are the good ones. He tells you Pell Greel has never once written a number down and has never once been wrong, and that he is not sure this is a good thing.
+
+*If you are proficient in Athletics:* you take the heavy end without being asked, and because you are not fighting the weight you have attention left over for the stack itself. These crates are not being stored. Nothing is chocked, nothing is lashed, and the aisle down the middle has been left clear at the width of a cart.
 
 Then he says, without any change in his voice, "You're the watch, so you'll be out at midnight."
 
@@ -589,6 +601,8 @@ You crouch over the wellhead with your own lamp turned up, because you want to s
 The lantern on the well is warm. It has been burning for about an hour, which means somebody set it here at the time the dusk bell rang.
 
 The well it stands on has been dry for years. There is a plank cover, warped, pushed aside by about a hand's width, and the gap is the kind of black that a lantern a foot away does not touch at all.
+
+*If you are proficient with thieves' tools:* you have spent enough hours on hinges and hasps to know what iron leaves behind. There is no bite of a bar on the edge of the plank and no chock mark on the stone. Whatever shifted this cover used no tool at all.
 
 *Make a DC 13 Wisdom (Perception) check.*
 
@@ -695,6 +709,8 @@ There is a light in one of the windows.
 
 Not a fire. Not a lantern like the one on the well. A low, steady, cold-coloured glow, in the third house along, behind a window that has no glass in it.
 
+*If you can cast a light cantrip:* put the light on a stone and throw the stone across, and for a few breaths you see the far bank without spending your lamp on it. The reeds along the Drowned Lane are all bent the same way, toward the water, in a place with nothing down there to bend them.
+
 *Make a DC 14 Wisdom (Perception) check.*
 
 **Success.** → **072**
@@ -720,13 +736,13 @@ Write the codeword **LARDER**.
 
 Below you and to the left, on the near bank where the reeds come down to the water, something has been at work.
 
-At first you take it for fishing stakes. It is a line of broken reed-stems and old fence-posts standing up out of the mud, and there is something small on the top of each one.
+At first you take it for fishing stakes: reed-stems and old fence-posts standing out of the mud, something small on top of each.
 
 You lower the lantern.
 
-Voles. Six of them, and a rat, and a bird, each one pushed down onto a point and left there, neatly, at even spacing, like a shelf in a larder.
+Voles. Six of them, and a rat, and a bird, each pushed down onto a point at even spacing, like a shelf in a larder. The nearest is not old.
 
-The mud below the stakes is printed all over with two sets of tracks, one heavier than the other, and they tell you how it was done: everything on those points was chased along the bank from the same direction, toward something that was already waiting at the end of the run. The nearest is not old. In this cold nothing rots, so you cannot tell how long, but the frost has not taken it yet, and everything else out here is white.
+Two sets of tracks print the mud below, one heavier than the other, and they tell you how it was done: everything on those points was driven along the bank from one direction, toward something already waiting at the end of the run.
 
 Write the codeword **LARDER** if you do not have it.
 
@@ -786,6 +802,8 @@ If you retreat toward the village: it follows for exactly one round, then return
 
 > **Watch Lamp** · **Ember:** 14 HP, and it does not use Silent Rush; you hear the wings in time. · **Lantern:** 22 HP. · **Dark:** 22 HP, and if you are standing on the arch when it attacks, you must also make a DC 12 Dexterity saving throw or be pushed 5 feet toward the drop. Fall from the arch: 3d6 bludgeoning and you are in the freezing water.
 
+*If you fight with a shield:* stop trying to swat it out of the air and use the shield the way it was meant to be used in a narrow place. Set your back foot, hold the shield high and angled, and let the dive break on it. While you fight this way you have advantage on any saving throw made to avoid being pushed toward the drop.
+
 *If you win:* → **077**
 *If you flee to the near bank:* → **078**, and take the codeword **LARDER** if you do not have it.
 
@@ -825,9 +843,9 @@ Two strokes. And out across the water, from the empty houses of the Drowned Lane
 
 You are between posts when the night changes, and it does not do it gradually.
 
-The cold arrives all at once, the way it does when you step down into a cellar. One step and your breath is a plume and your teeth ache in their sockets and the water on the cobbles has gone from wet to white. Behind you, up in the village, a dog that has been barking on and off all evening stops in the middle of it.
+The cold arrives all at once, the way it does when you step down into a cellar. Your breath goes to a plume and the water on the cobbles turns from wet to white. Up in the village a dog that has barked all evening stops in the middle of it.
 
-The smoke from the chimneys along the top of the street is going straight up. There is a wind. You can feel it on your face. The smoke is going straight up anyway.
+The smoke along the top of the street is going straight up. There is a wind on your face. The smoke goes straight up anyway.
 
 Dogs stop. Smoke goes straight up when there's a wind. Water does what water shouldn't.
 
@@ -850,6 +868,8 @@ Down the slope, at the bottom of the street where it turns toward the ford, some
 It goes left to right through the gap between two houses, at the edge of what your lantern reaches, and it is on two legs, and it is the size of a man, and it is not walking like one. It is walking like someone doing an impression of walking who has only had it described to them.
 
 It does not look up at your light. Everything in this village looks at a light.
+
+*If your passive Wisdom (Perception) is 14 or higher:* you catch the part your eye wanted to skip. It crossed frozen cobbles at the pace of a walk and it made no sound doing it, and you have been listening to your own boots crack that same frost all night.
 
 It is gone in the space of a breath.
 
@@ -923,6 +943,8 @@ You have one post left on the round and then it is midnight.
 You come back down to the water at the end of the round because that is where the round ends.
 
 The ford is gone. Where the Wend ran wide and shallow and brown over the flat stones there is a grey floor, seamless from bank to bank, and the reeds at the edges are set in it like flies in amber. It is not the thin skin you saw at dusk. You could walk a horse over it.
+
+*If you have Second Wind, Action Surge, or a similar reserve:* standing on the bank looking at a river that is now a floor, you take stock the way you were taught to: what is left in your legs, what is left in your lungs, what you have got in you once tonight and once only. It is a short list, and it is not empty.
 
 Doran's chair is where it fell over. Doran is not in it.
 
