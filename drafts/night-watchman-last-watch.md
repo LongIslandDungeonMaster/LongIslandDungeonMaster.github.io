@@ -25,7 +25,7 @@ He is wearing the coat he died in, and the frost is still on him in the seams of
 
 *If Nell is with you:* she makes a sound you have never heard a dog make, once, and then she is pressed flat against the backs of your knees, and she stays there. She does not run. She will not look at it.
 
-*If you have darkvision:* past the reach of your lantern the slope reads clear and grey to you, all the way down to the ice, and there is no line of broken frost behind it. Nothing walked up that hill.
+*If you have darkvision:* inside the sixty feet your eyes are good for, the frost on the slope reads clear and grey and unbroken. It came up this hill and it left nothing behind, and you have been cracking that same frost with your own boots all night.
 
 → **401**
 
@@ -151,11 +151,11 @@ He does not shake it off. He stands there with your hand on his sleeve, in the f
 
 ### 411
 
-"You told me the fourth rule," you say. "Eight hours ago, at the top of this slope. You said the job isn't to beat the dark. You said the job is to be a light that moves on a schedule so the village knows the night's still got somebody in it."
+"You told me there were four rules," you say. "You gave me three and you said the fourth was the one you couldn't teach me, and that I'd know it when I needed it."
 
 Hett Vance stops.
 
-"You said I'd break that rule tonight because everyone does, and to know which rule it was when I did." Your hand is still on his sleeve. "This is you breaking it. You're not the watch right now. You're the shortest way."
+"I know it now. The job isn't beating the dark. The job is being a light that keeps moving so the village knows the night's still got somebody in it." Your hand is still on his sleeve. "That's you, and you're about to stop. You're not the watch right now. You're the shortest way."
 
 The silence goes on a while.
 
@@ -213,9 +213,11 @@ What is left to you is not victory. It is the four hours until the sun, and what
 
 The strongbox is where you left it, or where you carried it to, and it is heavier than a box of coppers has any right to be.
 
-*If you are proficient in Athletics:* you have shifted enough dead weight to know what is under your hands. Coin slides and settles when you lift it. This does not move at all, and whatever is packed in there was packed to keep still.
+*If you are proficient in Athletics:* you have carried enough dead weight to know when it is lying to you. You counted what is in this box yourself, and it does not weigh what you counted, and there is nothing to be done with that except carry it down the hill anyway.
 
 You turn the wick up as far as it goes before you lift the box, because you want your hands seen while you do this. **The lamp drinks a unit: mark off one oil.**
+
+*If your lamp is dark:* there is no wick left to turn. You carry the box down by the grey light coming up off the ice, and Hett Vance walks the last of it beside you with his own lantern held out at arm's length, over your hands, so that whatever is waiting can see them.
 
 You carry it down the slope past Hett Vance, who says your name once and then does not say anything else, and you set it down on the frozen stones at the edge of the ford in front of a dead man, and you step back.
 
@@ -313,7 +315,7 @@ It does not hurt. That is the thing nobody tells you. It is enormously, gently c
 
 "I have found eleven. It is written down. You are holding it."
 
-"Then it's a piece of paper," you say, "and I've got a lamp," and you hold the list over the chimney of your lantern and you let it catch.
+"Then it's a piece of paper," you say, and you get a flame from somewhere, your own lamp if it is lit and Hett's if it is not, and you hold the list over it and let it catch.
 
 It goes up fast. Eleven names in a careful hand, nine crossed out, gone in about four seconds, and the ash goes up into the dark over the frozen river.
 
@@ -417,7 +419,7 @@ You keep ringing.
 
 That is the whole of it, for four hours. It talks the entire time. It uses Doran's voice, and then, when that stops working, it uses others: a shepherd's, warm, asking to be let in; a woman's, level, saying you've not asked after the dog; a child's, from six feet outside the door, crying and asking why nobody is coming.
 
-*If your passive Wisdom (Perception) is 14 or higher:* somewhere in the second hour you catch the one thing every voice out there has in common. None of them ever takes a breath before it speaks, and once you have heard that, you cannot stop hearing it.
+*If your passive Wisdom (Perception) is 14 or higher:* somewhere in the second hour the thing you noticed at the ford stops being a detail and becomes the only thing you can hear. Not one of those voices takes a breath before it speaks. Not one of them ever has.
 
 *Make a DC 15 Wisdom saving throw at the end of each of the first three hours. Ember Watch: DC 12. Dark Watch: DC 17.*
 
@@ -509,7 +511,7 @@ Nobody opens. Nobody in this village has ever once been embarrassed about a barr
 
 Then it comes to the Wheel and it starts on the voices.
 
-It does Tobin first, because it knows what worked. It stands out there in the frost and it asks Mara to let him in, in his voice, warmly, and it asks after the dog, because it was listening the first time and it has learned.
+It does Tobin first, because it knows what worked. It stands out there in the frost and it asks Mara to let him in, in his voice, warmly, and it uses every small domestic thing a man knows about his own house, because it was listening the first time and it has learned.
 
 Mara Tullamore sits with her back against her own front door and her hands flat on the boards and does not move.
 
@@ -574,7 +576,7 @@ Then she goes and takes the clean mug off the table by the fire and puts it back
 
 You go across the ice.
 
-Hett Vance shouts your name once. You do not stop, because there is a six-year-old in a nightshirt somewhere in the Drowned Lane and everything else in this village is behind a door, and this is you breaking the fourth rule, the one Hett said you would break tonight, and you knew which rule it was when you took the first step.
+Hett Vance shouts your name once. You do not stop, because there is a six-year-old in a nightshirt somewhere in the Drowned Lane and everything else in this village is behind a door, and this is you breaking rule three, the one Hett gave you in plain words at dusk, and you knew exactly which rule it was when you took the first step.
 
 At the edge of the ice you turn the wick up as far as it goes, because whatever is over there, you want it to see the watch coming. **The lamp drinks a unit: mark off one oil.**
 
@@ -633,12 +635,13 @@ The guard never leaves the child and never pursues. If you drop the attacker, th
 
 If you get the child behind you (your action and a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), they break for the moor within one round: the pair on Ember and Lantern, all three on Dark.
 **If you retreat:** you can leave. The door is behind you and nothing in this room follows you through it. The guard does not move. The child does not make a sound. Go to **486**, and know that you walked out.
-**Fail-forward:** if you drop to 0 hit points here, you do not die on Ember or Lantern. Go to **486**.
+**Fail-forward:** if you drop to 0 hit points here on Ember or Lantern, you do not die. Go to **486**. On Dark Watch, a death here is a death: go to **535**.
 
 > **Watch Lamp** · **Ember:** 14 HP each; the guard is slow to react and you may take the child on round two without a check. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, and there is a third in the rafters that drops on round three.
 
 *If you win:* → **484**
-*If you go down:* → **486**
+*If you go down on Ember or Lantern:* → **486**
+*If you go down on Dark Watch:* → **535**
 
 ---
 
@@ -646,7 +649,7 @@ If you get the child behind you (your action and a successful DC 13 Dexterity (A
 
 You get her up inside your coat with her face against your collarbone and her hands like ice on your neck, and she does not make a sound the entire way, which is worse than screaming.
 
-*If you have a healing spell or a healer's kit:* you do what you can for her one-handed while you walk. Cold is not a wound, and there is nothing in the kit and nothing in the spell that closes it, so you put her hands inside your shirt against your own skin instead. Somewhere over the middle of the ford they start to hurt her, and hurting is exactly what you wanted.
+*If you have a healing spell or a healer's kit:* you do what you can for her one-handed while you walk, and it helps, and it is nowhere near enough, because the cold is not in one place where a spell can go and find it. So you put her hands inside your shirt against your own skin as well. Somewhere over the middle of the ford they start to hurt her, and hurting is exactly what you wanted.
 
 Going back across the ford is the longest four minutes of your life. Halfway over you pass the thing wearing Doran Welk again, standing on the ice in the middle of the crossing, facing the village.
 
@@ -764,7 +767,7 @@ Somewhere in the third circuit it says, "You know I'll be back within the month.
 
 **Failure.** Take 1d6 cold damage and one level of exhaustion. You go down on one knee at the Greel's Yard post, and you get up, and you ring it, and the sound is fine, and that is the only part anybody else will ever hear.
 
-*If you have Second Wind, Action Surge, or a similar reserve:* somewhere in the fourth hour you reach for it out of habit and find it still sitting there, unspent. It was built for the worst thirty seconds of a fight, and this is not a fight, it is a schedule. You keep your feet the ordinary way, which was always going to be the only way.
+*If you have Second Wind:* somewhere in the fourth hour you reach for it out of habit, and it is there, and it will buy you a breath and nothing else, because it was built for the worst thirty seconds of a fight and this is not a fight, it is a schedule. Spend it or do not. The round is the same length either way.
 
 → **505**
 
@@ -810,13 +813,13 @@ Doran Welk's chair is still lying on its side on the bank. Somebody sets it upri
 
 *Otherwise, if you have **TAKEN**, Ada Charlock's name is not read at the counting, because her mother cannot stand to hear it and the village cannot stand to say it. You keep the watch anyway, every night after. Both of those facts are yours to carry now, and carrying them is the job.*
 
-*If you have **RELIEVED**:* Brother Anselm slept nine hours on the floor of his own shrine and woke to find the bell had been rung all night by somebody else. He has not said thank you. He has opened the doors. The shrine takes its first morning congregation in a month, and you sleep through the whole service, and he does not let anyone wake you.
+*If you have **RELIEVED**:* Brother Anselm slept for the first time in thirty days because you told him to, and woke without knowing what the night had done to the village he let go of. He has not said thank you. He has opened the doors. The shrine takes its first morning congregation in a month, and you sleep through the whole service, and he does not let anyone wake you.
 
 *If you have **DOORHELD**:* Mara Tullamore put the clean mug back on the rail behind the bar. She has not set it out since. She will not discuss it. But your drink is poured before you reach the bar now, every night, and that is the discussion.
 
 *If you have **TOLLPAID**:* you know the number. You are one of five people alive who does, and by noon Goodwife Alder will know that you know, because Goodwife Alder always knows, and there will be an invitation to tea. Go. She does not waste tea, and this village is about to need the two of you agreeing on what happens next.
 
-*If you have **SCARRED**:* whatever it took out of you, it did not take all of it, and you got up. The white at your temple is not a wound. It is a receipt, and the village reads it every time you pass, and stands you drinks accordingly.
+*If you have **SCARRED**:* whatever it took out of you, it did not take all of it, and you got up. What it left on you is not a wound. It is a receipt, and the village reads it every time you pass, and stands you drinks accordingly.
 
 *If you have **ICEBOUND**:* you knew before anyone. By noon the whole village knows you knew, because Doran's chair was empty and somebody asked who saw the ford last, and the answer was the new watchman, at dusk, on his first round. Nobody says lucky. Everybody thinks it.
 
@@ -828,7 +831,7 @@ Doran Welk's chair is still lying on its side on the bank. Somebody sets it upri
 
 *If you have **BLACKNAIL**:* within the week you write the warning out fresh, in your own hand, and nail it to the notice board yourself: *do not be on the far bank when it stops.* You did not understand it when the night began. You understand it completely now, and the next watchman is going to need it.
 
-*If you have **HANDSIGN**:* you went and got an answer before you needed it, exactly the way Anselm told you to. You will keep that habit for the rest of your life, and it will save it twice.
+*If you have **HANDSIGN**:* you stood at a shut door at dusk and made a frightened man on the other side of it feel spoken to. You will keep that habit for the rest of your life, and it will save it twice.
 
 *If you have **LARDER**:* on the third morning you cross the ford with Hett and a torch and burn the stakes in the Drowned Lane down to the mud, and neither of you says anything over them, and it is a funeral anyway.
 
@@ -933,7 +936,7 @@ That is the whole of it, and it is not nothing, and Hett Vance was right about t
 
 You do not come back at dawn.
 
-They find you at first light with frost in the seams of your coat and packed white in the folds of your ears. There is not a mark on you, and the ground beneath you never thawed.
+They find you at first light, wherever the night left you. However it took you, the cold got there first: there is frost in the seams of your coat and packed white in the folds of your ears, and the ground beneath you never thawed.
 
 Hett Vance carries you up the slope himself and will not let anybody take the other end.
 

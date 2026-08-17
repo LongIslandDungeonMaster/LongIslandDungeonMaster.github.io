@@ -21,7 +21,7 @@ You cannot win this adventure. There is nothing at the end of it that you defeat
 
 ## What you need
 
-- **A 3rd-level D&D character.** Yours, built normally, any class, 2014 or 2024 rules. Or take a ready-made character from Appendix B and start in two minutes.
+- **A 3rd-level character** for the world's most popular roleplaying game. Yours, built normally, any class, 2014 or 2024 rules. Or take a ready-made character from Appendix B and start in two minutes.
 - **Dice.** The usual set.
 - **One page for your night sheet.** Appendix D is printable if you want it, but the back of an envelope is traditional.
 
