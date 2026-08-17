@@ -271,7 +271,7 @@ Inside, the common room is low and gold and full. Mara Tullamore is working the 
 
 You are standing in the door in a wet tabard with a lantern, and the room notices, one table at a time, and goes quieter than a room that size should be able to.
 
-*If you were trained to read a fight before it starts:* you do it without deciding to. Nobody in this room is carrying more than a belt knife, the fire is at your back and will ruin your night eyes if you step toward it, and the only way out is the door you are standing in. None of that is a threat. It is just the shape of a room, and you will never be able to stop seeing it.
+*If you are a fighter, a barbarian, a monk, or a ranger:* you read the room without deciding to. Nobody in this room is carrying more than a belt knife, the fire is at your back and will ruin your night eyes if you step toward it, and the only way out is the door you are standing in. None of that is a threat. It is just the shape of a room, and you will never be able to stop seeing it.
 
 → Ring the bell and go. **031**
 → Go in. **032**
@@ -362,7 +362,7 @@ You ring in at the plate by the door. The sound goes out over the roofs and come
 
 The shrine is the oldest building on the square and it looks it: small, stone, squat, with a carved hand above the door, palm out, fingers together. *Stop. Wait. Be still.*
 
-*If you are a cleric, paladin, or otherwise sworn:* you know that hand. Palm out, fingers together, is not a blessing and never was. It is a sign set at a threshold, and it is aimed outward, at whatever comes up the road.
+*If you are a cleric or a paladin:* you know that hand. Palm out, fingers together, is not a blessing and never was. It is a sign set at a threshold, and it is aimed outward, at whatever comes up the road.
 
 The door has not opened in a month. There is a drift of dead leaves against it that has been rained on and frozen and rained on again until it is less a drift than a seal.
 
@@ -709,7 +709,7 @@ There is a light in one of the windows.
 
 Not a fire. Not a lantern like the one on the well. A low, steady, cold-coloured glow, in the third house along, behind a window that has no glass in it.
 
-*If you can cast a light cantrip:* put the light on a stone and throw the stone across, and for a few breaths you see the far bank without spending your lamp on it. The reeds along the Drowned Lane are all bent the same way, toward the water, in a place with nothing down there to bend them.
+*If you can cast a light cantrip:* you put the light on a stone and send it across, and for a few breaths the far bank is lit by something that is not your lantern. The reeds along the Drowned Lane are all bent the same way, toward the water, in a place with nothing down there to bend them.
 
 *Make a DC 14 Wisdom (Perception) check.*
 
@@ -800,9 +800,11 @@ If you retreat toward the village: it follows for exactly one round, then return
 
 *If Nell is with you:* she plants herself at the break of the arch and barks at the dark over the water with everything she has. While she stands with you, the shrike's dives lose Silent Rush. Nothing gets to be silent near Nell.
 
-> **Watch Lamp** · **Ember:** 14 HP, and it does not use Silent Rush; you hear the wings in time. · **Lantern:** 22 HP. · **Dark:** 22 HP, and if you are standing on the arch when it attacks, you must also make a DC 12 Dexterity saving throw or be pushed 5 feet toward the drop. Fall from the arch: 3d6 bludgeoning and you are in the freezing water.
+> **Watch Lamp** · **Ember:** 14 HP, and it does not use Silent Rush; you hear the wings in time. · **Lantern:** 22 HP. · **Dark:** 22 HP, and if you are standing on the arch when it attacks, you must also make a DC 12 Dexterity saving throw or be pushed 5 feet toward the drop. Fall from the arch: 3d6 bludgeoning and you are in the freezing water. If that drops you to 0 hit points, follow the fail-forward below. Otherwise you get yourself out on the near bank, soaked through, and **your lamp is dark: mark off all your remaining oil**. Go to **078**.
 
-*If you fight with a shield:* stop trying to swat it out of the air and use the shield the way it was meant to be used in a narrow place. Set your back foot, hold the shield high and angled, and let the dive break on it. While you fight this way you have advantage on any saving throw made to avoid being pushed toward the drop.
+*If you fight with a shield:* you set your back foot and put the rim up, because a shield in a narrow place is a wall and not a swatter, and the dive breaks on the boards instead of on your face. It does not stop coming. It only stops being a surprise.
+
+**Fail-forward:** if you drop to 0 hit points here on Ember or Lantern, you do not die. The shrike wanted you off the arch and you are off it, and it does not come back down for you. You come to on the near bank with your lamp out and your hair frozen to the stone. Go to **078**. On Dark Watch, going down on that arch is a death: go to **535**.
 
 *If you win:* → **077**
 *If you flee to the near bank:* → **078**, and take the codeword **LARDER** if you do not have it.
@@ -869,7 +871,7 @@ It goes left to right through the gap between two houses, at the edge of what yo
 
 It does not look up at your light. Everything in this village looks at a light.
 
-*If your passive Wisdom (Perception) is 14 or higher:* you catch the part your eye wanted to skip. It crossed frozen cobbles at the pace of a walk and it made no sound doing it, and you have been listening to your own boots crack that same frost all night.
+*If your passive Wisdom (Perception) is 14 or higher, or you make a DC 14 Wisdom (Perception) check, with disadvantage if your lamp is dark:* you catch the part your eye wanted to skip. It crossed frozen cobbles at the pace of a walk and it made no sound doing it, and you have been listening to your own boots crack that same frost all night.
 
 It is gone in the space of a breath.
 
@@ -889,7 +891,7 @@ They are bare feet. They go from the middle of the alley to the wall of the hous
 
 *Make a DC 13 Wisdom saving throw.* **On a failure, you spend a long moment with your back against the opposite wall and your lantern held out in front of you like it is a weapon, and you tick one box on the Dawn Track.**
 
-Write the codeword **BLACKNAIL** if you do not have it: whoever wrote *do not be on the far bank when it stops* was not being poetic.
+Write the codeword **BLACKNAIL** if you do not have it: somebody in this village worked out what the quiet meant long before you did, and wrote it down where it could be read.
 
 → **095**
 
@@ -944,7 +946,7 @@ You come back down to the water at the end of the round because that is where th
 
 The ford is gone. Where the Wend ran wide and shallow and brown over the flat stones there is a grey floor, seamless from bank to bank, and the reeds at the edges are set in it like flies in amber. It is not the thin skin you saw at dusk. You could walk a horse over it.
 
-*If you have Second Wind, Action Surge, or a similar reserve:* standing on the bank looking at a river that is now a floor, you take stock the way you were taught to: what is left in your legs, what is left in your lungs, what you have got in you once tonight and once only. It is a short list, and it is not empty.
+*If you have Second Wind:* standing on the bank looking at a river that is now a floor, you take stock the way you were taught to: what is left in your legs, what is left in your lungs, what you have got in you once tonight and once only. It is a short list, and it is not empty.
 
 Doran's chair is where it fell over. Doran is not in it.
 

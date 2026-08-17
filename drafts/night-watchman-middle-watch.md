@@ -93,7 +93,7 @@ He is coming from the far side, from the Drowned Lane, unhurried, on two legs, i
 
 He is walking like a man who has walked this crossing ten thousand times, which is the thing that stops your breath, because everyone in Brackenford walks the ford in the same careful hitching way, feeling for the flat stones with their feet, and he is not doing that, because there is nothing under him but ice and he knows it.
 
-*If you have darkvision:* the lantern is doing nothing for you that your own eyes are not. Out past its throw you can see him whole, in grey, and his face is pleasant, and he is not looking at the ice or the far bank or the village lights. He has been looking at you since he stepped onto the crossing.
+*If you have darkvision:* your lantern is not telling you anything your own eyes are not, out to the sixty feet they are good for. He is in grey and he is whole and his face is pleasant, and he is not watching the ice under him at all, which is the part you cannot make sense of, because everybody watches the ice.
 
 → Raise the lantern and challenge him. **207**
 → Get off the bank and watch from cover. **208**
@@ -111,7 +111,7 @@ The man stops.
 
 He stands in the middle of the frozen river with his back to the moor and looks at you across forty feet of grey, and your lantern reaches him, just, at the far end of its throw.
 
-*If you were trained to read a fight before it starts:* he stopped the instant you told him to, and he stopped at forty feet, which is the distance a man picks when he wants to be looked at. His hands are empty and open and well away from his sides. He is standing on wet ice in the dead of winter and nothing in his weight is braced against it.
+*If you are a fighter, a barbarian, a monk, or a ranger:* he stopped the instant you told him to, and he stopped at forty feet, which is the distance a man picks when he wants to be looked at. His hands are empty and open and well away from his sides. He is standing on wet ice in the dead of winter and nothing in his weight is braced against it.
 
 He is a shepherd, forty-odd, a heavy coat, a beard going grey at the chin. There is frost in it. There is frost on his eyelashes and in the seams of his coat and packed white in the folds of his ears, the way frost forms on a thing that has been out all night and is the same temperature as the air.
 
@@ -157,7 +157,7 @@ There is a woman at the top of this village who has set a clean mug in front of 
 
 Tobin Tullamore has come home.
 
-*If you have **MUGSET**:* she told you herself, with both hands flat on the bar, in the voice she uses for arguments about sheep, and you did not believe her, and you were polite about not believing her, and she saw that too.
+*If you have **MUGSET**:* she told you herself, with both hands flat on the bar, in the voice she uses for arguments about sheep, and you have been carrying it around ever since without knowing where to put it.
 
 → **220**
 
@@ -198,7 +198,7 @@ And there are four places in Brackenford that need the watch right now, and one 
 
 You come up into the square at a run and the inn is the only building in Brackenford with its shutters still open.
 
-Of course it is. Mara Tullamore called last orders two hours early tonight and put forty people out into the cold and barred nothing, because she has spent a year keeping a door that a man might come back to.
+Of course it is. Whatever else Mara Tullamore has barred in her life, she has spent a year keeping this door openable, because a man might come back to it.
 
 There is a light in the window. There is a clean mug on a table in front of an empty chair by a fire that has been kept up.
 
@@ -234,7 +234,7 @@ He is not rotten. Nothing about him is rotten. He is a healthy shepherd of forty
 
 "You're new," he says pleasantly. "Hett get you? Good lad, Hett. Would you mind? My wife's just inside."
 
-*If you can turn undead:* you do not have to raise the symbol to know. That cold pull you were trained to feel across a room, the one that tells you where the dead are standing before you turn your head, is not on this step at all. Whatever is in front of you does not answer to it, and nothing you were taught covers a thing that does not answer.
+*If you can turn undead:* your hand goes to the symbol and stops there. You have raised it at the risen before and you know exactly how that begins, and nothing about this begins that way. He has colour in his cheeks and he is asking after his wife. You do not know what you would be putting it against.
 
 → "You've been gone a year." **233**
 → "What's your wife's name?" **234**
@@ -486,7 +486,7 @@ In the silence Anselm sits down on the step of his own altar, which is the first
 
 He looks at his hands.
 
-*If you are proficient in Religion:* you know the rite he means. The dusk bell of the Quiet Hand is a courtesy to the dead and a call to the living, and in every liturgy you have ever read that is the whole of it. There is no ward in a schedule. He built that lock himself, out of nothing, in a room with the door unlocked, and it may have held anyway.
+*If you are proficient in Religion:* you know the rite he means. The dusk bell of the Quiet Hand is a courtesy to the dead and a call to the living, and in every liturgy you have ever read that is the whole of it. In every liturgy you have read that is all it is ever said to be. Whether it is also the other thing, no book you have ever read has claimed either way.
 
 "So I rang. At midnight. Which I have never done." A small dry sound that might be a laugh. "There. It is done. Thirty days of a lock I could not test, and I have broken it myself, on purpose, to make a noise."
 
@@ -502,7 +502,7 @@ He looks at his hands.
 
 He looks up, and for the first time there is something in his face other than exhaustion.
 
-"But a man came to my door tonight in a tabard and asked if I was all right, and nobody had asked, and I find that I have been thinking about it for four hours." He works his ruined hands open and closed. "So perhaps. Perhaps I did."
+"But there is somebody standing in my shrine at two in the morning in a tabard, which is more than this village has managed in a month, and I find I have stopped being able to do this alone." He works his ruined hands open and closed. "So perhaps. Perhaps I did."
 
 → "Can you stand?" **260**
 
@@ -547,7 +547,7 @@ You leave him wrapped in the altar cloth on the floor of his own shrine, asleep 
 
 The bell rope hangs in the dark with a band of blood on it at the height of a man's hands.
 
-*If you have **HANDSIGN**:* he told you at dusk to get an answer before you needed it, and you did not, and now you are the one holding the rope.
+*If you have **HANDSIGN**:* he told you at dusk that the bell was the whole of the lock, and now you are the one holding the rope, and the lock is a job rather than a mystery.
 
 → Back to the dead hours. **220**
 
@@ -682,13 +682,15 @@ If either shrike drops to half its hit points or fewer, it screams, the first so
 If you get the child off the wellhead and behind a door, both leave within two rounds. They did not come here to fight you. They came here to hunt.
 **Getting her out:** the well is thirty feet from the nearest door. Reaching her takes your move; lifting her off the wellhead takes your action, and if the catcher is alive and within ten feet of the well, it gets one attack against you as you lift her. Carrying her, you move at half speed. Any door on that square opens for a child without being asked.
 
-*If you fight with a shield:* as you lift her you can get the shield up over the both of you and take the catcher's attack on the boards instead. That attack is made with disadvantage. You carry her out one armed and half blind behind the rim, and your back will remember it for a week.
+*If you fight with a shield:* you get the rim up over the both of you as you lift her, and you take the catcher on the boards instead of on your back. You carry her out one armed and half blind behind it, and your back will remember it for a week.
 
 *If Nell is with you:* send her to the wellhead and she goes, flat out, and stands over the child. The catcher will not go near her. A dog standing its ground over a child is nothing it has ever hunted, and it does not know what to do with one, so while Nell guards the child, the shrike attacks Nell instead of taking her.
 
 > **Watch Lamp** · **Ember:** 14 HP each, and the chaser circles the square before its first dive, which buys you a full round. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, they act on the same initiative count, and the catcher grabs the child on round one unless you are already within reach of the well.
 
 **If you retreat:** back away from the well and neither bird follows you. They are not hunting you and they never were. You will hear what happens behind you, and the square will hear that you heard it. Go to **279**.
+
+**Fail-forward:** if you drop to 0 hit points here on Ember or Lantern, you do not die. They are not hunting you and they never were: they take what they came for and they go, and you wake on the cobbles with the square empty around you. Go to **279**. On Dark Watch, going down in the open with those two on the square is a death: go to **535**.
 
 *If you drive them off or drop them:* → **278**
 *If the child is taken:* → **279**
@@ -832,9 +834,9 @@ In this cold there is no way to tell how long he has been dead. But the ground u
 
 There is no wound on him. Nothing took anything from him. He walked up this road with a box of coppers to pay a toll he hated on behalf of a village that resented him for collecting it, and something met him on the way, and looked at him, and did not want the box.
 
-*If you have a healing spell or a healer's kit:* you try anyway. You are young and it is Doran and your hands do it before you decide to. The kit finds nothing to dress and the spell goes out of you and comes back with nothing to mend, because nothing in this man is broken. He is whole. He is simply finished.
+*If you have a healing spell or a healer's kit:* you try anyway. You are young and it is Doran and your hands do it before you decide to. Then they stop, because there is nothing under them to work on. You spend nothing. Nothing in this man is broken. He is whole. He is simply finished.
 
-*If you have **VOUCHED**:* he asked you not to have seen him on this road tonight, and you agreed, and that is the last conversation he had with anyone.
+*If you have **VOUCHED**:* you have spent tonight keeping this village's quiet things quiet, and here is where that ends up: a man who asked nothing of anybody, on a road nobody made him walk, with frost in his beard.
 
 
 → **296**
@@ -958,7 +960,7 @@ Then it comes again.
 
 Something is walking back across the ford, and this time the ice is talking about it, which means this time it is heavier.
 
-*If your passive Wisdom (Perception) is 14 or higher:* you catch the spacing. The cracks come evenly, at the pace of a man walking who has nowhere he needs to be. It has not slipped once on that ice, and it has not stopped once to listen for you.
+*If your passive Wisdom (Perception) is 14 or higher, or you make a DC 14 Wisdom (Perception) check, with disadvantage if your lamp is dark:* you catch the spacing. The cracks come evenly, at the pace of a man walking who has nowhere he needs to be. It has not slipped once on that ice, and it has not stopped once to listen for you.
 
 → **313**
 
