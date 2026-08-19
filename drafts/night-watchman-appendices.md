@@ -76,7 +76,7 @@ Skills: Insight +5, Medicine +5, Persuasion +4, Perception +5. Passive Perceptio
 
 ### The watch-dog (optional companion)
 
-*Take her or leave her. She costs you nothing and she makes the night warmer, in every sense. Several entries notice her.*
+*Take her or leave her. She costs you nothing and she makes the night warmer, in every sense. Nine entries notice her, and in three of them she does something no person in this village could.*
 
 **Nell.** Medium beast. AC 12. HP 11. Speed 40 ft.
 STR 13 (+1) DEX 14 (+2) CON 12 (+1) INT 3 (-4) WIS 12 (+1) CHA 7 (-2)
@@ -120,6 +120,12 @@ You will break that last one. Everyone does.
 ☐ ☐
 
 **WATCH LAMP TIER:** ....................................
+
+**POSTS RUNG IN** *(your first circuit; three of five)*
+☐ the Broken Wheel · ☐ the Shrine · ☐ Greel's Yard · ☐ the Square · ☐ the Broken Bridge
+
+**CRISES ANSWERED** *(the dead hours; two, or three on Ember)*
+☐ the Broken Wheel · ☐ the Shrine · ☐ the Square · ☐ the hill road
 
 **CODEWORDS** *(the night grants at most twelve)*
 

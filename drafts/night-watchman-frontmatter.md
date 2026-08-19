@@ -23,6 +23,7 @@ You cannot win this adventure. There is nothing at the end of it that you defeat
 
 - **A 3rd-level character** for the world's most popular roleplaying game. Yours, built normally, any class, 2014 or 2024 rules. Or take a ready-made character from Appendix B and start in two minutes.
 - **Dice.** The usual set.
+- **A dog, if you want one.** Nell is an optional companion: she costs you nothing, nine entries notice her, and three of them let her do something no person could. Her block is in Appendix B. Decide now, because the night starts asking at your first post.
 - **One page for your night sheet.** Appendix D is printable if you want it, but the back of an envelope is traditional.
 
 ## Why 3rd level
@@ -33,7 +34,9 @@ If your character is a different level, play them as they are and change nothing
 
 ## What you track
 
-Four things. Nothing else. If you find yourself keeping a fifth list, the book has failed and you should stop doing it.
+Four things, and two short lists the night itself hands you. If you find yourself keeping more than that, the book has failed and you should stop doing it.
+
+The two lists are simply where you have been: **which posts you have rung in at** on your first circuit, and **which crises you have answered** in the dead hours. Both entries remind you as you go, and there is room for both on the night sheet in Appendix D.
 
 **Your character sheet.** Hit points, spell slots, the usual.
 
@@ -45,9 +48,9 @@ Four things. Nothing else. If you find yourself keeping a fifth list, the book h
 
 ## Choose your Watch Lamp
 
-Three ways to play the same night. Pick one now. Change it at any rest, as often as you like, and the book will never mention it again.
+Three ways to play the same night. Pick one now. You can change it later, on any quiet ground: any entry that is not a fight and is not asking you for a roll. You cannot change it in the middle of a scene that is testing you, and you cannot change it once you are on the floor.
 
-**Ember Watch.** You want the night and not its teeth. You start each act with 10 + your level in temporary hit points, you carry two Rekindle tokens, every printed DC drops by 2, you get five oil, and you cannot die. At 0 hit points someone finds you and drags you to safety before dawn, and the night goes on without you. In the dead hours of the night, four crises break out at once and a watchman can normally reach only two of them; at this tier you reach three, so you will also see more of this village than anyone else.
+**Ember Watch.** You want the night and not its teeth. You start each act with 10 + your level in temporary hit points, you carry two Rekindle tokens, every printed DC drops by 2 unless the entry prints an Ember number of its own, in which case use the number the entry gives you, you get five oil, and you cannot die. At 0 hit points someone finds you and drags you to safety before dawn, and the night goes on without you. In the dead hours of the night, four crises break out at once and a watchman can normally reach only two of them; at this tier you reach three, so you will also see more of this village than anyone else.
 
 **Lantern Watch.** The night as written. 5 + your level in temporary hit points at the start of each act, one Rekindle token, DCs as printed, four oil. You can lose. Every dying moment has a rescue that costs you something.
 
@@ -59,7 +62,7 @@ Three ways to play the same night. Pick one now. Change it at any rest, as often
 
 > **Watch Lamp** · **Ember:** the shrike has 14 HP and does not use Silent Rush. · **Lantern:** 22 HP. · **Dark:** 22 HP, and it tries to push you off the arch.
 
-Read your own and ignore the other two. They change numbers, never story: no tier sees a different night, only a different amount of teeth.
+Read your own and ignore the other two. They are mostly numbers: hit points, distances, whether a thing presses its advantage. Two of them do reach further than that, and you should know which before you choose. **Ember Watch reaches three of the four crises in the dead hours instead of two**, so it sees more of the village. **Dark Watch puts real teeth in three scenes**: the fight on the bridge can throw you into the water, the pair on the square can take the child before you get there, and there is a third thing in the rafters of the last house. Nothing else changes.
 
 ## How to play, if you have never done this alone
 
@@ -86,7 +89,9 @@ Three things worth knowing, because they are the three that trip people up:
 > → Knock. **043**
 > → Ring in and go. **047**
 
-You roll a d10 plus your Wisdom modifier... no. You roll a **d20** and add your Wisdom modifier, because it is a Wisdom saving throw and this book will always tell you exactly which die and which number. You get 11. That is a failure, so you tick a box on the Dawn Track, and you have lost a little of the night to standing in a square getting your breath. Then you decide: knock, or walk away.
+You roll a **d20** and add your Wisdom modifier, because this is a Wisdom saving throw, and this book always names the die and the number. Say your Wisdom is 13, so your modifier is +1. The die comes up 9. Nine plus one is ten, and ten is under thirteen, so you have failed.
+
+Failing is not a wall. You tick a box on the Dawn Track, which means the night got a little shorter while you stood in a square getting your breath back, and then you make the same choice you had before: knock, or walk away.
 
 Nobody is watching. Take the whole evening.
 

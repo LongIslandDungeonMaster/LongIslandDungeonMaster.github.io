@@ -23,6 +23,7 @@ You cannot win this adventure. There is nothing at the end of it that you defeat
 
 - **A 3rd-level character** for the world's most popular roleplaying game. Yours, built normally, any class, 2014 or 2024 rules. Or take a ready-made character from Appendix B and start in two minutes.
 - **Dice.** The usual set.
+- **A dog, if you want one.** Nell is an optional companion: she costs you nothing, nine entries notice her, and three of them let her do something no person could. Her block is in Appendix B. Decide now, because the night starts asking at your first post.
 - **One page for your night sheet.** Appendix D is printable if you want it, but the back of an envelope is traditional.
 
 ## Why 3rd level
@@ -33,7 +34,9 @@ If your character is a different level, play them as they are and change nothing
 
 ## What you track
 
-Four things. Nothing else. If you find yourself keeping a fifth list, the book has failed and you should stop doing it.
+Four things, and two short lists the night itself hands you. If you find yourself keeping more than that, the book has failed and you should stop doing it.
+
+The two lists are simply where you have been: **which posts you have rung in at** on your first circuit, and **which crises you have answered** in the dead hours. Both entries remind you as you go, and there is room for both on the night sheet in Appendix D.
 
 **Your character sheet.** Hit points, spell slots, the usual.
 
@@ -45,9 +48,9 @@ Four things. Nothing else. If you find yourself keeping a fifth list, the book h
 
 ## Choose your Watch Lamp
 
-Three ways to play the same night. Pick one now. Change it at any rest, as often as you like, and the book will never mention it again.
+Three ways to play the same night. Pick one now. You can change it later, on any quiet ground: any entry that is not a fight and is not asking you for a roll. You cannot change it in the middle of a scene that is testing you, and you cannot change it once you are on the floor.
 
-**Ember Watch.** You want the night and not its teeth. You start each act with 10 + your level in temporary hit points, you carry two Rekindle tokens, every printed DC drops by 2, you get five oil, and you cannot die. At 0 hit points someone finds you and drags you to safety before dawn, and the night goes on without you. In the dead hours of the night, four crises break out at once and a watchman can normally reach only two of them; at this tier you reach three, so you will also see more of this village than anyone else.
+**Ember Watch.** You want the night and not its teeth. You start each act with 10 + your level in temporary hit points, you carry two Rekindle tokens, every printed DC drops by 2 unless the entry prints an Ember number of its own, in which case use the number the entry gives you, you get five oil, and you cannot die. At 0 hit points someone finds you and drags you to safety before dawn, and the night goes on without you. In the dead hours of the night, four crises break out at once and a watchman can normally reach only two of them; at this tier you reach three, so you will also see more of this village than anyone else.
 
 **Lantern Watch.** The night as written. 5 + your level in temporary hit points at the start of each act, one Rekindle token, DCs as printed, four oil. You can lose. Every dying moment has a rescue that costs you something.
 
@@ -59,7 +62,7 @@ Three ways to play the same night. Pick one now. Change it at any rest, as often
 
 > **Watch Lamp** · **Ember:** the shrike has 14 HP and does not use Silent Rush. · **Lantern:** 22 HP. · **Dark:** 22 HP, and it tries to push you off the arch.
 
-Read your own and ignore the other two. They change numbers, never story: no tier sees a different night, only a different amount of teeth.
+Read your own and ignore the other two. They are mostly numbers: hit points, distances, whether a thing presses its advantage. Two of them do reach further than that, and you should know which before you choose. **Ember Watch reaches three of the four crises in the dead hours instead of two**, so it sees more of the village. **Dark Watch puts real teeth in three scenes**: the fight on the bridge can throw you into the water, the pair on the square can take the child before you get there, and there is a third thing in the rafters of the last house. Nothing else changes.
 
 ## How to play, if you have never done this alone
 
@@ -86,7 +89,9 @@ Three things worth knowing, because they are the three that trip people up:
 > → Knock. **043**
 > → Ring in and go. **047**
 
-You roll a d10 plus your Wisdom modifier... no. You roll a **d20** and add your Wisdom modifier, because it is a Wisdom saving throw and this book will always tell you exactly which die and which number. You get 11. That is a failure, so you tick a box on the Dawn Track, and you have lost a little of the night to standing in a square getting your breath. Then you decide: knock, or walk away.
+You roll a **d20** and add your Wisdom modifier, because this is a Wisdom saving throw, and this book always names the die and the number. Say your Wisdom is 13, so your modifier is +1. The die comes up 9. Nine plus one is ten, and ten is under thirteen, so you have failed.
+
+Failing is not a wall. You tick a box on the Dawn Track, which means the night got a little shorter while you stood in a square getting your breath back, and then you make the same choice you had before: knock, or walk away.
 
 Nobody is watching. Take the whole evening.
 
@@ -152,7 +157,7 @@ He puts the bell-clapper in your other hand, the striker you will ring the posts
 
 "Because you read the notice," he says. "And because you're standing here."
 
-He is quiet a moment. Somewhere up the slope a shutter bangs closed, then another, the sound moving through the village like something passing.
+He is quiet a moment. Somewhere up the slope a shutter bangs closed, then another, and then a third further off, as if the news were walking uphill ahead of you.
 
 "That's not nothing. People in this village have got clever at looking at a thing and deciding it's somebody else's. You looked at it and came down the hill." He straightens the tabard on your shoulder, tugs it flat, an old gesture from a man who used to have a row of them to straighten. "So. You."
 
@@ -1106,7 +1111,7 @@ He looks at the overturned chair on the bank, and the strongbox that is not besi
 
 You are as surprised as he is.
 
-Hett Vance looks at you for a long moment, a square-jawed man in a tabard he has no right to and a rank nobody granted him, who drills an empty yard and announces the hour to an empty street, and who has spent a year being the only thing standing between this village and the hill.
+Hett Vance looks at you for a long moment. He drills an empty yard every week. He announces the hour to an empty street. For a year he has been the whole of what stands between this village and the hill, and he has never once said so out loud.
 
 Something in his face gives out.
 
@@ -1316,7 +1321,7 @@ And there are four places in Brackenford that need the watch right now, and one 
 → **The Square.** Anselm told you: go and get the children. **270**
 → **The hill road.** After Hett, after Doran, after the answer. **290**
 
-> **Watch Lamp** · **Ember:** you may visit three of the four before the night moves on. · **Lantern:** two. · **Dark:** two, and the one you reach second will have been waiting.
+> **Watch Lamp** · **Ember:** you may visit three of the four before the night moves on. · **Lantern:** two. · **Dark:** two.
 
 *When you have used your visits, go to **310**.*
 
@@ -1561,7 +1566,7 @@ It has not been locked all month. A man sat in a chair behind an unlocked door f
 
 *Make a DC 13 Strength (Athletics) check. On Dark Watch, the door is old oak swollen into a frozen frame: DC 15.*
 
-**Success.** The door goes in on the second shoulder and you go with it, into the noise. → **254**
+**Success.** You work out on the first try what the last watchman never did: it opens outward. You haul it wide and the noise comes out at you like weather. → **254**
 
 **Failure.** You put your shoulder into a door that opens outward, twice, before you work out what is wrong with the situation. Take 1d4 bludgeoning damage, feel exactly as clever as you deserve, and **tick one box on the Dawn Track**. → **252**
 
@@ -1688,9 +1693,11 @@ The bell rope hangs in the dark with a band of blood on it at the height of a ma
 
 ### 270
 
-*Go and get the children.*
+*The children.*
 
-He said it at dusk, through a shut door, and you had no idea it was an instruction.
+*If you have **HANDSIGN**:* Anselm said it at dusk, through a shut door, and you had no idea it was an instruction until now.
+
+*Otherwise, nobody told you. You work it out yourself, standing in a square full of people in their nightclothes, counting the ones who are too small to be out here.*
 
 The square is not empty now. The bell has done what Anselm meant it to do: there are people in the doorways all around it, in coats over nightclothes, forty or fifty of them, looking at each other and at the shrine and at you, waiting for somebody to say the thing that turns a frightened crowd into a village doing something.
 
@@ -2263,7 +2270,7 @@ Beside you, Hett Vance says, very quietly, "Ah."
 
 And then he starts down the slope.
 
-He does it without any speech at all, which is how you know he means it: a square-jawed man in a tabard nobody granted him, walking down toward the ford at three in the morning to settle a village's account, because he has spent twenty years being the only thing between Brackenford and the hill and he is not going to stop being it now that it is finally convenient.
+He does it without any speech at all, which is how you know he means it: walking down toward the ford at three in the morning to settle a village's account, because he has spent twenty years arranging his whole life around this exact moment arriving, and he is not going to flinch at it now that it finally has.
 
 You have about four seconds.
 
@@ -3181,7 +3188,7 @@ Skills: Insight +5, Medicine +5, Persuasion +4, Perception +5. Passive Perceptio
 
 ### The watch-dog (optional companion)
 
-*Take her or leave her. She costs you nothing and she makes the night warmer, in every sense. Several entries notice her.*
+*Take her or leave her. She costs you nothing and she makes the night warmer, in every sense. Nine entries notice her, and in three of them she does something no person in this village could.*
 
 **Nell.** Medium beast. AC 12. HP 11. Speed 40 ft.
 STR 13 (+1) DEX 14 (+2) CON 12 (+1) INT 3 (-4) WIS 12 (+1) CHA 7 (-2)
@@ -3225,6 +3232,12 @@ You will break that last one. Everyone does.
 ☐ ☐
 
 **WATCH LAMP TIER:** ....................................
+
+**POSTS RUNG IN** *(your first circuit; three of five)*
+☐ the Broken Wheel · ☐ the Shrine · ☐ Greel's Yard · ☐ the Square · ☐ the Broken Bridge
+
+**CRISES ANSWERED** *(the dead hours; two, or three on Ember)*
+☐ the Broken Wheel · ☐ the Shrine · ☐ the Square · ☐ the hill road
 
 **CODEWORDS** *(the night grants at most twelve)*
 

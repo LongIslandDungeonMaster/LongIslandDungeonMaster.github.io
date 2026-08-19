@@ -119,7 +119,7 @@ Beside you, Hett Vance says, very quietly, "Ah."
 
 And then he starts down the slope.
 
-He does it without any speech at all, which is how you know he means it: a square-jawed man in a tabard nobody granted him, walking down toward the ford at three in the morning to settle a village's account, because he has spent twenty years being the only thing between Brackenford and the hill and he is not going to stop being it now that it is finally convenient.
+He does it without any speech at all, which is how you know he means it: walking down toward the ford at three in the morning to settle a village's account, because he has spent twenty years arranging his whole life around this exact moment arriving, and he is not going to flinch at it now that it finally has.
 
 You have about four seconds.
 

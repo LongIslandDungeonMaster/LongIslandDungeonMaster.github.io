@@ -80,7 +80,7 @@ He puts the bell-clapper in your other hand, the striker you will ring the posts
 
 "Because you read the notice," he says. "And because you're standing here."
 
-He is quiet a moment. Somewhere up the slope a shutter bangs closed, then another, the sound moving through the village like something passing.
+He is quiet a moment. Somewhere up the slope a shutter bangs closed, then another, and then a third further off, as if the news were walking uphill ahead of you.
 
 "That's not nothing. People in this village have got clever at looking at a thing and deciding it's somebody else's. You looked at it and came down the hill." He straightens the tabard on your shoulder, tugs it flat, an old gesture from a man who used to have a row of them to straighten. "So. You."
 
@@ -1038,7 +1038,7 @@ He looks at the overturned chair on the bank, and the strongbox that is not besi
 
 You are as surprised as he is.
 
-Hett Vance looks at you for a long moment, a square-jawed man in a tabard he has no right to and a rank nobody granted him, who drills an empty yard and announces the hour to an empty street, and who has spent a year being the only thing standing between this village and the hill.
+Hett Vance looks at you for a long moment. He drills an empty yard every week. He announces the hour to an empty street. For a year he has been the whole of what stands between this village and the hill, and he has never once said so out loud.
 
 Something in his face gives out.
 
