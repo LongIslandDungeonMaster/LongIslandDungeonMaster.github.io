@@ -184,7 +184,7 @@ And there are four places in Brackenford that need the watch right now, and one 
 → **The Square.** Anselm told you: go and get the children. **270**
 → **The hill road.** After Hett, after Doran, after the answer. **290**
 
-> **Watch Lamp** · **Ember:** you may visit three of the four before the night moves on. · **Lantern:** two. · **Dark:** two, and the one you reach second will have been waiting.
+> **Watch Lamp** · **Ember:** you may visit three of the four before the night moves on. · **Lantern:** two. · **Dark:** two.
 
 *When you have used your visits, go to **310**.*
 
@@ -431,7 +431,7 @@ It has not been locked all month. A man sat in a chair behind an unlocked door f
 
 *Make a DC 13 Strength (Athletics) check. On Dark Watch, the door is old oak swollen into a frozen frame: DC 15.*
 
-**Success.** The door goes in on the second shoulder and you go with it, into the noise. → **254**
+**Success.** You work out on the first try what the last watchman never did: it opens outward. You haul it wide and the noise comes out at you like weather. → **254**
 
 **Failure.** You put your shoulder into a door that opens outward, twice, before you work out what is wrong with the situation. Take 1d4 bludgeoning damage, feel exactly as clever as you deserve, and **tick one box on the Dawn Track**. → **252**
 
@@ -559,9 +559,11 @@ The bell rope hangs in the dark with a band of blood on it at the height of a ma
 
 ### 270
 
-*Go and get the children.*
+*The children.*
 
-He said it at dusk, through a shut door, and you had no idea it was an instruction.
+*If you have **HANDSIGN**:* Anselm said it at dusk, through a shut door, and you had no idea it was an instruction until now.
+
+*Otherwise, nobody told you. You work it out yourself, standing in a square full of people in their nightclothes, counting the ones who are too small to be out here.*
 
 The square is not empty now. The bell has done what Anselm meant it to do: there are people in the doorways all around it, in coats over nightclothes, forty or fifty of them, looking at each other and at the shrine and at you, waiting for somebody to say the thing that turns a frightened crowd into a village doing something.
 
