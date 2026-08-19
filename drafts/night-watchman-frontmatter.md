@@ -28,7 +28,7 @@ You cannot win this adventure. There is nothing at the end of it that you defeat
 
 ## Why 3rd level
 
-Because a lone character at 1st level dies to a single lucky hit, and a book that kills you on page four has not told you a story, it has wasted your evening. At 3rd level your character has chosen a subclass, which means this book can notice what you actually are. It does, constantly. A Battle Master reads a frozen street differently from a cleric of the dawn, and the entries know it.
+Because a lone character at 1st level dies to a single lucky hit, and a book that kills you on page four has not told you a story, it has wasted your evening. At 3rd level your character has chosen a subclass, which means this book can notice what you actually are. It does, constantly. A veteran soldier reads a frozen street differently from a cleric of the dawn, and the entries know it.
 
 If your character is a different level, play them as they are and change nothing. The encounters are tuned for 3rd level, and the Watch Lamp choice below will make up the difference.
 

@@ -580,7 +580,7 @@ Then she goes and takes the clean mug off the table by the fire and puts it back
 
 You go across the ice.
 
-Hett Vance shouts your name once. You do not stop, because there is a six-year-old in a nightshirt somewhere in the Drowned Lane and everything else in this village is behind a door, and this is you breaking rule three, the one Hett gave you in plain words at dusk, and you knew exactly which rule it was when you took the first step.
+Hett Vance shouts your name once. You do not stop. There is a six-year-old in a nightshirt somewhere in the Drowned Lane, and everything else in this village is behind a door. This is you breaking rule three, and you knew which rule it was when you took the first step.
 
 At the edge of the ice you turn the wick up as far as it goes, because whatever is over there, you want it to see the watch coming. **The lamp drinks a unit: mark off one oil.**
 
@@ -949,7 +949,7 @@ They find you at first light, wherever the night left you. However it took you, 
 
 Hett Vance carries you up the slope himself and will not let anybody take the other end.
 
-They bury you on the third day, next to Doran Welk, and the whole village comes. Goodwife Alder speaks. She is gracious and warm and says almost nothing, and she does not catch anybody's eye.
+They bury you on the third day and the whole village comes. Goodwife Alder speaks. She is gracious and warm and says almost nothing, and she does not catch anybody's eye.
 
 *If you have **TOLLPAID**:* they find the list folded in your coat when they lay you out, and so the village finally learns its own number, and what its watchman spent the last night carrying. Goodwife Alder keeps the paper. Nobody votes on that.
 

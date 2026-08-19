@@ -63,10 +63,10 @@ Skills: Athletics +5, Perception +3, Survival +3, Insight +3. Passive Perception
 
 ### Wren, who took it because somebody had to
 
-**Half-elf Cleric 3 (Life Domain).** AC 18 (chain mail, shield). HP 24. Speed 30 ft.
+**Human Cleric 3 (Life Domain).** AC 18 (chain mail, shield). HP 24. Speed 30 ft.
 STR 13 (+1) DEX 10 (+0) CON 14 (+2) INT 11 (+0) WIS 16 (+3) CHA 14 (+2)
 Proficiency +2. Saves: Wisdom +5, Charisma +4. Spell save DC 13, spell attack +5.
-Skills: Insight +5, Medicine +5, Persuasion +4, Perception +5. Passive Perception 15. Darkvision 60 ft.
+Skills: Insight +5, Medicine +5, Persuasion +4, Perception +5. Passive Perception 15.
 **Mace** +3, 1d6+1 bludgeoning.
 **Cantrips:** *guidance*, *light*, *sacred flame*, *spare the dying*.
 **Spells (4 first-level, 2 second-level):** *bless*, *cure wounds*, *healing word*, *shield of faith*, *lesser restoration*, *spiritual weapon*, *aid*, *prayer of healing*.
@@ -166,4 +166,8 @@ longislanddungeonmaster.com
 
 *The Night Watchman is set in the Brackenford Starter Setting, which is free at longislanddungeonmaster.com and which this adventure treats as canon. The Wilderness Pack's tables pair well with Appendix A.*
 
-*Compatible with the fifth edition of the world's most popular roleplaying game. Uses only SRD 5.2.1 content.*
+*Compatible with the fifth edition of the world's most popular roleplaying game.*
+
+*This work includes material from the System Reference Document 5.2.1 ("SRD 5.2.1") by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2.1 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.*
+
+*The Night Watchman, Brackenford, and all original text and characters are © Long Island Dungeon Master.*
