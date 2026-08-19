@@ -31,3 +31,6 @@ content/
 drafts/
 tools/
 *.bundle
+# internal working files must never live in the public Pages repo
+drafts/
+specs/
