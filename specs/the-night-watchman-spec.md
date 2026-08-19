@@ -17,8 +17,8 @@
 | Character | One 3rd-level PC, bring-your-own or included pregen, plus an optional sidekick |
 | Night Rating | 2 of 5 lanterns (see section 5.0) |
 | Play time | 2 to 2.5 hours per run; replayable |
-| Length target | 120 to 180 keyed entries, 45 to 70 PDF pages |
-| Deliverables | `downloads/the-night-watchman.html` (hyperlinked, self-contained, site styling) and `downloads/the-night-watchman.pdf` |
+| Length target | 186 keyed entries as built (planned 120 to 180; the three-of-five post structure and the four-crisis hub bought deliberate replay content), 45 to 70 PDF pages |
+| Deliverables | `downloads/the-night-watchman.html` (hyperlinked, self-contained, site styling). **The PDF is deferred to a later pass and is not part of this release** (ruled v2.4: the HTML edition is the product; the print edition ships when the Typst pipeline is pointed at it). |
 | Price | Free, in the Hoard, alongside the other free chests |
 | Setting | Brackenford (ties the solo line to the setting we own) |
 
@@ -47,7 +47,7 @@ These are distilled from the market's documented quality bar (see The Solo Lane 
 6. **Hyperlinked everything.** Every entry reference is a link in the HTML edition. The map reveals progressively.
 7. **Primer up front.** Two pages teaching how to play alone, before the adventure starts. Assume the reader has never soloed.
 8. **Reincorporation over randomness.** State (codewords, the Dawn Track, NPC dispositions) feeds back into later entries. Random tables in the appendix are for continuing play after the story, not a substitute for authored play inside it.
-9. **Every tracker earns its keep.** The player tracks exactly four things: HP/resources (their sheet), codewords, the Dawn Track, and lamp oil. Nothing else. If a mechanic demands a fifth tracker it must replace one of these or be cut.
+9. **Every tracker earns its keep.** The player tracks four things: HP/resources (their sheet), codewords, the Dawn Track, and lamp oil. The night additionally asks them to remember **where they have been** (which posts on the circuit, which crises in the dead hours); those are location lists rather than resources, they are printed on the night sheet, both entries restate them in play, and the interactive edition keeps them itself. Anything beyond that must replace one of these or be cut.
 10. **The prose is the DM.** Section 9 is the writing standard. This was v1's stated weakness and is this rebuild's first acceptance criterion.
 11. **A taught mechanic fires or dies (Frank, 2026-08-12, HARD BUILD RULE).** If the rules teach a mechanic, entries must use it; if a resource exists, the night must tax or expend it; if state is granted, something must read it. A mechanic that never fires is a lie about the product. ENFORCER: the MECHANIC LINT in `tools/build_keeper.py` fails the build on any grant-without-consume, resource-without-tax, or tracker-without-read.
 12. **Gygax-clear (Frank, 2026-08-12, HARD BUILD RULE).** Plain fantasy language beats literary compression everywhere the player must understand something to act: rules, tactics, conditions, transitions. Spend more words when they buy clarity ("a rope hauled back and forth violently by somebody who has stopped counting" beats "a bell is a shape"). Name things by what they do (the chaser, the catcher), never by a private metaphor (the driver, the waiter). The test: if the warmest reader stumbles, the line is wrong, whatever it cost to cut.
@@ -61,7 +61,7 @@ These are distilled from the market's documented quality bar (see The Solo Lane 
 |---|---|---|---|
 | **First Watch** (dusk to midnight) | The route as normal: posts, townsfolk, small wrongnesses | Tutorial in disguise: teaches checks, the map, the codewords; a guaranteed mid-act encounter | 64 authored, ~36 played (drafted) |
 | **Middle Watch** (the dead hours) | The threat surfaces; the route breaks; choices about who and what to protect | The open middle: posts can be visited in player-chosen order; consequences accumulate | ~60 entries |
-| **Last Watch** (toward dawn) | Confrontation shaped by accumulated state | Convergence: 3 to 4 distinct finales selected by codewords, not by a single "true path" | ~45 entries |
+| **Last Watch** (toward dawn) | Confrontation shaped by accumulated state | Convergence: **five** distinct finales selected by codewords, not by a single "true path" (four gated, one always open) | ~60 entries |
 
 ### 4.2 The route map
 
@@ -128,7 +128,12 @@ Every combat/hazard entry ends with one compact line, always in the same order, 
 - Ember must be completable by the pregen with median dice and no system mastery (verify by scripted playthrough).
 - Lantern must be losable but not swingy: no single enemy action may deal more than 60% of the pregen's max HP **on a non-critical hit** (ruled v1.5: any d8 attack's critical breaks a literal 60% cap at 3rd level; criticals are the dice's jurisdiction, and the tier system, rescue branches, and Ember's no-death rule are the safety net for them). The Dark-only arch push at the bridge is sanctioned as a stacked worst case: it is avoidable by not fighting on the arch, and Dark's shelf promise is that it can kill you.
 - Dark must be winnable: at least one route to each finale must exist that a careful player can find without foreknowledge (no luck-only survival).
-- The three Lamp lines in any sidebar must differ only in dials (HP, targets, morale, DCs), never in story outcome. **One sanctioned exception:** the Middle Watch crisis hub's visit count (Ember reaches three of the four crises, Lantern and Dark reach two). It widens how much of the night an Ember player sees without changing any scene's outcome, it is disclosed in the tier descriptions up front, and it is the only tier dial permitted to touch story breadth.
+- The three Lamp lines in any sidebar must differ only in dials (HP, targets, morale, DCs), never in story outcome — with **four sanctioned exceptions, all disclosed in the front matter so the player chooses with them in view** (ruled v2.4, after a review found the old "no tier sees a different night" claim was false on its own page):
+  1. **The crisis hub (220):** Ember reaches three of the four crises, Lantern and Dark two. Breadth, not outcome.
+  2. **The bridge (076), Dark only:** a shove save and a fall into the water, which can put the lamp out and can kill.
+  3. **The square (277), Dark only:** the catcher takes the child on round one unless the watchman is already at the well, which decides SHELTERED versus TAKEN.
+  4. **The nest (483), Dark only:** a third shrike drops on round three.
+  Exceptions 2 to 4 are the shape of Dark Watch's promise that the night can take something from you. No further exception may be added without amending this list and the front matter together.
 
 ## 6. Character rules
 
@@ -155,7 +160,8 @@ Combat entries additionally carry the **script block**: initiative note, per-rou
 - **Primer (2 pages):** what solo play is, what you track (the four trackers only), how checks work, how to pick a Watch Lamp tier, the one-paragraph contract ("when the book is silent, you decide; err toward what makes the night more interesting"), and a worked example entry.
 - **Appendix A: After the Dawn.** A compact d6-oracle (yes/no with "but/and" on 1 and 6) plus pointers into the Wilderness Table Pack tables, so a finished reader can keep playing Brackenford freeform. This is the on-ramp to Solo Lane Rung 2 and it cross-sells an existing product.
 - **Appendix B:** the two pregens and the watch-dog block.
-- **Appendix C:** the codeword sheet and Dawn Track, print-friendly, one page.
+- **Appendix C: what the watchman knows.** One page of common knowledge for a player walking in cold. No spoilers.
+- **Appendix D:** the night sheet: Dawn Track, oil, Rekindle, tier, the two location lists, codewords and dawn marks. Print-friendly, one page.
 
 ## 9. Prose standard (the v1 rehab, codified)
 
@@ -191,8 +197,8 @@ MUST items; a failure on any blocks release.
 4. **Tactics scripts:** every combat has behavior, morale, and retreat lines. Sample-play each combat on all three tiers per the tier rules in 5.4.
 5. **Balance bounds:** verify the 60% single-hit cap (Lantern), Ember completability, and Dark winnability by scripted playthroughs with the pregen.
 6. **Conditional coverage:** count the conditional entries; at least 25, touching martial, caster, skill-monkey, and dog, with no capability referenced that a 3rd-level SRD character cannot have.
-7. **Tracker audit:** confirm nothing beyond the four trackers is ever required.
-8. **Tier integrity:** confirm no Watch Lamp sidebar changes story outcome, only dials.
+7. **Tracker audit:** confirm nothing beyond the four trackers and the two printed location lists is ever required.
+8. **Tier integrity:** confirm every Watch Lamp sidebar is a dial (numbers, targets, morale, DCs) except the four sanctioned in 5.4, which are declared in the front matter so the player chooses knowing them.
 9. **Prose audit:** every entry passes the read-aloud test and the section 9 banned-list grep (including the em dash check); flag any entry over the word caps.
 10. **SRD compliance:** no Product Identity terms anywhere in text or art references.
 11. **Primer test:** a reader who has never soloed can start playing within 10 minutes using only the primer (test with a cold reader).
@@ -251,7 +257,9 @@ the burial ending, now location-neutral); (j) the build lint gained an INDEPENDE
 extractor that fails the build whenever the parser's manifest disagrees with a dumb regex pass
 over the raw markdown — the class fix for silently dropped operations.
 
-**v1.4 (2026-08-12, Frank's playtest).** Frank played the Keeper edition into Act Three and returned the pass that produced pillars 11-13. Changes: Dawn Track rebalanced from 34 tick sites to 21 (good-deed and conversation ticks cut; ALL Last Watch ticks cut, since the finale reads the track rather than filling it; a thorough run now enters Last Watch at 9-10 of 12) and the full-track event now routes (rule in "What you track": twelfth box before Last Watch sends you to 315; the engine banners it). Prose clarity pass per pillar 12: the dusk-bell rhythm line (Frank's own wording), Anselm's lock speech, the square-fight tactics renamed chaser/catcher with a proper combat setup and "Roll initiative" on all three fights, the Nell-shields-the-child line, the SHELTERED doors line, "fortnight" replaced with "two weeks" everywhere, and every dawn epilogue line extended with a closing beat. Keeper engine per pillar 13: auto-state language, resolved-only conditionals, first-use teaching, circuit and dawn enforcement, candle icons replacing the red lanterns on the cover.
+**v2.4 (2026-08-14, documentation reconciled to the product).** Entry count, finale count, appendix list, tracker rule, tier-exception list and deliverables corrected to what was actually built; the clock rebalance figure restated as 26 tick sites / 28 box-equivalents; SRD 5.2.1 compliance closed (no half-elf, no named subclass, CC-BY attribution present). The how-to-play section was rewritten to teach the game to a reader who has never played solo.
+
+**v1.4 (2026-08-12, Frank's playtest).** Frank played the Keeper edition into Act Three and returned the pass that produced pillars 11-13. Changes: Dawn Track rebalanced to 26 tick sites (28 box-equivalents, counting the two double ticks) (good-deed and conversation ticks cut; ALL Last Watch ticks cut, since the finale reads the track rather than filling it; a thorough run now enters Last Watch at 9-10 of 12) and the full-track event now routes (rule in "What you track": twelfth box before Last Watch sends you to 315; the engine banners it). Prose clarity pass per pillar 12: the dusk-bell rhythm line (Frank's own wording), Anselm's lock speech, the square-fight tactics renamed chaser/catcher with a proper combat setup and "Roll initiative" on all three fights, the Nell-shields-the-child line, the SHELTERED doors line, "fortnight" replaced with "two weeks" everywhere, and every dawn epilogue line extended with a closing beat. Keeper engine per pillar 13: auto-state language, resolved-only conditionals, first-use teaching, circuit and dawn enforcement, candle icons replacing the red lanterns on the cover.
 
 **v1.3 (2026-08-12, post-QC).** Six findings from the first full QC pass closed in the draft sources. (1) Lamp oil wired for real: the lamp drinks a unit at the cold's arrival (090) and at deep night (310), plus one path spend in each finale route (vigil 441, barred door 460, the ice 480, the walked round 500); Mara sells nothing but hands the watch a spare flask (032, +1 capped at tier start); dark-lamp lines exist and fail forward (400, 480, 500), so oil can run out and the book says what happens. (2) The watch-dog Nell is now noticed by nine entries across all three acts (009, 076, 090, 220, 277, 400, 483, and the dawn), including two mechanical assists, making Appendix B's claim true. (3) THAWED folded into the act structure per the draft's own red-team note. (4) Codeword accounting settled at 12 slots plus two finale-only dawn marks (SCARRED, CARRIED), defined in 4.3. (5) The assembled edition no longer duplicates the primer: the First Watch source's "Before you begin" recap is a standalone-review aid that the assembler strips. (6) The crisis-hub visit count sanctioned as the single tier exception in 5.4.
 
