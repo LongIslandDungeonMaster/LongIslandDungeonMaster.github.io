@@ -56,6 +56,14 @@ Three ways to play the same night. Pick one now. You can change it later, on any
 
 **Dark Watch.** The night does not care about you. No temporary hit points, no Rekindle, DCs as printed with some late-night entries raising them further, three oil, and enemies win initiative ties. Death is death, and there is an ending written for it. Bury the watchman and make another one.
 
+**If you drop to 0 hit points.** Some entries write their own answer to this and say so plainly; follow the entry when it does. Everywhere else, this is the rule, and it depends only on your lamp:
+
+**On Ember Watch** you cannot die tonight. Somebody finds you, and you wake somewhere warm with the night finished without you. Take the dawn mark **SCARRED** and read on to the dawn.
+
+**On Lantern Watch** you make death saving throws as normal, and the village is not empty: whoever is nearest gets to you before the third failure. It costs you a level of exhaustion and it costs you whatever you were in the middle of doing, and that is the whole price. Get up and keep going.
+
+**On Dark Watch** you die, and the book has an ending written for it. Go to **535**.
+
 **Rekindle token.** Spend one to reroll any d20 you have just rolled, or to stabilise yourself at 0 hit points, or to refill one unit of lamp oil. One mechanic, three uses, two boxes on your sheet.
 
 **Watch Lamp sidebars.** Combat and hazard entries end with a single line giving the numbers for all three tiers at once, always in the same order:

@@ -56,6 +56,14 @@ Three ways to play the same night. Pick one now. You can change it later, on any
 
 **Dark Watch.** The night does not care about you. No temporary hit points, no Rekindle, DCs as printed with some late-night entries raising them further, three oil, and enemies win initiative ties. Death is death, and there is an ending written for it. Bury the watchman and make another one.
 
+**If you drop to 0 hit points.** Some entries write their own answer to this and say so plainly; follow the entry when it does. Everywhere else, this is the rule, and it depends only on your lamp:
+
+**On Ember Watch** you cannot die tonight. Somebody finds you, and you wake somewhere warm with the night finished without you. Take the dawn mark **SCARRED** and read on to the dawn.
+
+**On Lantern Watch** you make death saving throws as normal, and the village is not empty: whoever is nearest gets to you before the third failure. It costs you a level of exhaustion and it costs you whatever you were in the middle of doing, and that is the whole price. Get up and keep going.
+
+**On Dark Watch** you die, and the book has an ending written for it. Go to **535**.
+
 **Rekindle token.** Spend one to reroll any d20 you have just rolled, or to stabilise yourself at 0 hit points, or to refill one unit of lamp oil. One mechanic, three uses, two boxes on your sheet.
 
 **Watch Lamp sidebars.** Combat and hazard entries end with a single line giving the numbers for all three tiers at once, always in the same order:
@@ -2208,6 +2216,8 @@ That is the worst answer available and it gives it immediately, pleasantly, the 
 
 *Make a DC 13 Wisdom saving throw. On a failure, take 1d6 psychic damage: something in the way it said that gets in under your ribs and sits there.*
 
+**Fail-forward:** if that drops you to 0 hit points on Ember or Lantern, Hett Vance has you under the arms before your knees land, and the thing waits for you, politely, because it has nowhere to be. Take one level of exhaustion and go on to **405**. On Dark Watch, going down in front of it is a death: go to **535**.
+
 → "What do you want?" **405**
 
 ---
@@ -2575,6 +2585,8 @@ That is the whole of it, for four hours. It talks the entire time. It uses Doran
 
 **On each failure:** take 1d6 psychic damage. You do not stop ringing. The skin of your palms splits and bleeds on the rope, in a band at exactly the height of Anselm's.
 
+**Fail-forward:** if you drop to 0 hit points here on Ember or Lantern, you do not die. Brother Anselm wakes at the wrong sound. He does not say anything and he does not take the rope from you; he puts his hands on it above yours and holds it up while you get your feet back, and the bell does not miss a stroke. Take one level of exhaustion, write the dawn mark **SCARRED**, and go on to **447**. On Dark Watch, a man who goes down on that rope is not found until the doors open: go to **535**.
+
 **If you fail all three:** → **446**
 **Otherwise:** → **447**
 
@@ -2741,7 +2753,7 @@ The Wend under your boots is a grey floor that creaks and does not give. You pas
 
 The Drowned Lane is a row of half-sunk houses with reeds growing through the floors, and it has been empty for a generation, and it is not empty.
 
-Your lantern finds the larder first: the line of broken reed-stems and fence-posts along the bank with small neat corpses pushed down onto the points, and it is longer than it was at dusk, and there is nothing on the newest stake yet.
+The larder is the first thing you find, by lamplight or by the grey coming up off the ice: the line of broken reed-stems and fence-posts along the bank with small neat corpses pushed down onto the points, and it is longer than it was at dusk, and there is nothing on the newest stake yet.
 
 The nothing on the newest stake is the best thing you have ever seen.
 
@@ -2824,7 +2836,9 @@ Write the dawn mark **CARRIED**.
 
 ### 486
 
-You go down in a frozen room in an abandoned house with a child six feet away.
+*If you walked out:* you get as far as the doorway before you understand you are not going to be able to live with it, and you turn around, and that is when the floor comes up at you.
+
+One way or the other, you go down in a frozen room in an abandoned house with a child six feet away.
 
 What wakes you is being dragged. Hett Vance came across that ice after you, alone, in the dark, because of course he did, and he has got you by the collar of your coat and the child under his other arm and he is hauling both of you toward the door.
 
@@ -2914,6 +2928,8 @@ Somewhere in the third circuit it says, "You know I'll be back within the month.
 **Success.** You are still upright. Cold has got into your hands and you cannot feel the clapper, so you hold it in your fist and swing your whole arm.
 
 **Failure.** Take 1d6 cold damage and one level of exhaustion. You go down on one knee at the Greel's Yard post, and you get up, and you ring it, and the sound is fine, and that is the only part anybody else will ever hear.
+
+**Fail-forward:** if that leaves you at 0 hit points on Ember or Lantern, you finish the round on your hands and knees between the last two posts, and Goodwife Alder's door opens at the exact moment you need it to, which is the only time in her life she will admit to having been awake. Write the dawn mark **SCARRED** and go on to **505**. On Dark Watch, a watchman who goes down on the round in that cold is not getting up: go to **535**.
 
 *If you have Second Wind:* somewhere in the fourth hour you reach for it out of habit, and it is there, and it will buy you a breath and nothing else, because it was built for the worst thirty seconds of a fight and this is not a fight, it is a schedule. Spend it or do not. The round is the same length either way.
 
@@ -3100,7 +3116,11 @@ They bury you on the third day, next to Doran Welk, and the whole village comes.
 
 *If Nell is with you:* Nell will not leave the churchyard for two days. Then she walks your round, alone, on schedule, every night, and the village feeds her at five doors for the rest of her life, and nobody ever calls her anything but the watchman's dog.
 
-The ledger is settled. Brackenford will have a quiet winter, and the ford will run all season, and in the spring the children will paddle in it.
+*If you have **TOLLPAID**:* the ledger is settled, or near enough that the village will pretend it is. Brackenford gets a quiet winter, the ford runs all season, and in the spring the children paddle in it.
+
+*Otherwise, nothing is settled. The count is whatever it was before you went out, less one, and the village does not know the number and will not learn it from you. Somebody else will walk the round tomorrow night and the night after that.*
+
+*If you have **TAKEN**:* there is a six-year-old on the far bank that nobody has gone for, and Hett Vance goes across the ice himself the moment they have carried you up the slope, and whatever he finds over there he never once describes.
 
 You were the watch for one night. However the night took you, it was the night that took you: the cold counts what it collects, and it collected you. Eleven was always going to be somebody.
 
