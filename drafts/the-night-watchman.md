@@ -72,17 +72,27 @@ Three ways to play the same night. Pick one now. You can change it later, on any
 
 Read your own and ignore the other two. They are mostly numbers: hit points, distances, whether a thing presses its advantage. Two of them do reach further than that, and you should know which before you choose. **Ember Watch reaches three of the four crises in the dead hours instead of two**, so it sees more of the village. **Dark Watch puts real teeth in three scenes**: the fight on the bridge can throw you into the water, the pair on the square can take the child before you get there, and there is a third thing in the rafters of the last house. Nothing else changes.
 
-## How to play, if you have never done this alone
+## How to play
 
-You read an entry. It tells you what you see. At the bottom it offers you choices, or asks for a roll, and each option gives you a number. Go to that entry. That is the whole engine.
+If you have played D&D but never played it alone, you already know almost everything you need. This section is the rest of it. It is short, and nothing in it is clever.
 
-Three things worth knowing, because they are the three that trip people up:
+**The loop.** You read an entry. It tells you what you see. At the bottom it gives you choices, or asks you to roll. Each choice ends in a number. Go to that number and read it. That is the whole game, start to finish.
 
-**When the book asks for a check, it means it.** Both outcomes are written. Failure is never a wall in this adventure and never a restart; it is a different, usually worse, way forward. You are allowed to fail. Some of the best parts of this night are on the failure side.
+**Rolling.** When an entry asks for a check or a saving throw, it names the ability, the skill if one applies, and the number to beat. Roll a d20, add the ability modifier from your sheet, and add your proficiency bonus if you are trained in the skill it named. Match the number or beat it and you have succeeded. The book prints what happens on a success and what happens on a failure, so you never have to invent either one.
 
-**When the book is silent, you decide.** It cannot cover everything and it will not try. If you want to know what a room smells like or what a man's hands are doing and the book has not said, decide, and be generous, and err toward whatever makes the night more interesting. You will not break anything. There is no wrong answer that the book is secretly marking.
+**Failing.** Failure never ends the adventure and never sends you back to the start. It costs you something instead: time, light, blood, or somebody's good opinion. Then the night continues. Some of the best writing in this book is on the failure side, so roll honestly. You are not being graded.
 
-**You will want to fix it.** You will not be able to. Around midnight this adventure puts four emergencies in front of you and lets you reach two, and the fact that you had to choose is the point rather than a flaw. Choose, and live with it, and do not go back and re-read the ones you missed until you have finished the night. They will be there next time.
+**What you keep track of.** Four things and two short lists, all of them on one page in Appendix D. Your character sheet. Codewords, which are single words the book gives you when something happens that it wants to remember. The Dawn Track, twelve boxes that fill as the night is spent. Your lamp oil. The two lists are just where you have been: which posts you rang in at, and which crises you answered. Every entry that needs one of those reminds you.
+
+**Your Watch Lamp.** Before you start you pick a difficulty, called a Watch Lamp, and the section above describes the three. It changes numbers and a few named scenes, and you can change it later on any quiet ground. If you are not sure, take Lantern Watch. It is the night as written.
+
+**If you drop to 0 hit points.** Some scenes write their own answer and say so plainly. Everywhere else the rule is in the section above, and it depends only on your Watch Lamp. Read it once now so it is not a surprise at four in the morning.
+
+**When the book is silent, you decide.** It cannot cover everything and it does not try. If you want to know what a room smells like, or what a man is doing with his hands, and the book has not said, then decide, and be generous, and lean toward whatever makes the night more interesting. You cannot break anything this way. There is no hidden correct answer being marked.
+
+**You will want to fix everything, and you will not be able to.** Around midnight the adventure puts four emergencies in front of you and lets you reach two. That is the design, not a fault in it. Choose, live with it, and do not go back and read the ones you missed until the night is over. They will still be there next time.
+
+**Stopping and starting again.** This is a two-hour night, but nothing bad happens if you put it down. Note the entry number you are on and come back to it. If you are reading this in the interactive edition, it saves your place, your codewords, your clock and your oil by itself, and you can close the tab and return whenever you like.
 
 ## A worked example
 
