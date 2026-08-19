@@ -28,7 +28,7 @@ You cannot win this adventure. There is nothing at the end of it that you defeat
 
 ## Why 3rd level
 
-Because a lone character at 1st level dies to a single lucky hit, and a book that kills you on page four has not told you a story, it has wasted your evening. At 3rd level your character has chosen a subclass, which means this book can notice what you actually are. It does, constantly. A Battle Master reads a frozen street differently from a cleric of the dawn, and the entries know it.
+Because a lone character at 1st level dies to a single lucky hit, and a book that kills you on page four has not told you a story, it has wasted your evening. At 3rd level your character has chosen a subclass, which means this book can notice what you actually are. It does, constantly. A veteran soldier reads a frozen street differently from a cleric of the dawn, and the entries know it.
 
 If your character is a different level, play them as they are and change nothing. The encounters are tuned for 3rd level, and the Watch Lamp choice below will make up the difference.
 
@@ -882,11 +882,11 @@ If you retreat toward the village: it follows for exactly one round, then return
 
 *If Nell is with you:* she plants herself at the break of the arch and barks at the dark over the water with everything she has. While she stands with you, the shrike's dives lose Silent Rush. Nothing gets to be silent near Nell.
 
-> **Watch Lamp** · **Ember:** 14 HP, and it does not use Silent Rush; you hear the wings in time. · **Lantern:** 22 HP. · **Dark:** 22 HP, and if you are standing on the arch when it attacks, you must also make a DC 12 Dexterity saving throw or be pushed 5 feet toward the drop. Fall from the arch: 3d6 bludgeoning and you are in the freezing water. If that drops you to 0 hit points, follow the fail-forward below. Otherwise you get yourself out on the near bank, soaked through, and **your lamp is dark: mark off all your remaining oil**. Go to **078**.
+> **Watch Lamp** · **Ember:** 14 HP, and it does not use Silent Rush; you hear the wings in time. · **Lantern:** 22 HP. · **Dark:** 22 HP, and if you are standing on the arch when it attacks, you must also make a DC 12 Dexterity saving throw or be pushed 5 feet toward the drop. Fall from the arch: 3d6 bludgeoning and you are in the freezing water. If that drops you to 0 hit points, follow the fail-forward below. Otherwise you get yourself out on the near bank, soaked through. **The lamp goes out.** Go to **078**.
 
 *If you fight with a shield:* you set your back foot and put the rim up, because a shield in a narrow place is a wall and not a swatter, and the dive breaks on the boards instead of on your face. It does not stop coming. It only stops being a surprise.
 
-**Fail-forward:** if you drop to 0 hit points here on Ember or Lantern, you do not die. The shrike wanted you off the arch and you are off it, and it does not come back down for you. You come to on the near bank with your lamp out and your hair frozen to the stone. Go to **078**. On Dark Watch, going down on that arch is a death: go to **535**.
+**Fail-forward:** if you drop to 0 hit points here on Ember or Lantern, you do not die. The shrike wanted you off the arch and you are off it, and it does not come back down for you. You come to on the near bank with your hair frozen to the stone. **The lamp goes out.** Go to **078**. On Dark Watch, going down on that arch is a death: go to **535**.
 
 *If you win:* → **077**
 *If you flee to the near bank:* → **078**, and take the codeword **LARDER** if you do not have it.
@@ -2737,7 +2737,7 @@ Then she goes and takes the clean mug off the table by the fire and puts it back
 
 You go across the ice.
 
-Hett Vance shouts your name once. You do not stop, because there is a six-year-old in a nightshirt somewhere in the Drowned Lane and everything else in this village is behind a door, and this is you breaking rule three, the one Hett gave you in plain words at dusk, and you knew exactly which rule it was when you took the first step.
+Hett Vance shouts your name once. You do not stop. There is a six-year-old in a nightshirt somewhere in the Drowned Lane, and everything else in this village is behind a door. This is you breaking rule three, and you knew which rule it was when you took the first step.
 
 At the edge of the ice you turn the wick up as far as it goes, because whatever is over there, you want it to see the watch coming. **The lamp drinks a unit: mark off one oil.**
 
@@ -3105,7 +3105,7 @@ They find you at first light, wherever the night left you. However it took you, 
 
 Hett Vance carries you up the slope himself and will not let anybody take the other end.
 
-They bury you on the third day, next to Doran Welk, and the whole village comes. Goodwife Alder speaks. She is gracious and warm and says almost nothing, and she does not catch anybody's eye.
+They bury you on the third day and the whole village comes. Goodwife Alder speaks. She is gracious and warm and says almost nothing, and she does not catch anybody's eye.
 
 *If you have **TOLLPAID**:* they find the list folded in your coat when they lay you out, and so the village finally learns its own number, and what its watchman spent the last night carrying. Goodwife Alder keeps the paper. Nobody votes on that.
 
@@ -3196,10 +3196,10 @@ Skills: Athletics +5, Perception +3, Survival +3, Insight +3. Passive Perception
 
 ### Wren, who took it because somebody had to
 
-**Half-elf Cleric 3 (Life Domain).** AC 18 (chain mail, shield). HP 24. Speed 30 ft.
+**Human Cleric 3 (Life Domain).** AC 18 (chain mail, shield). HP 24. Speed 30 ft.
 STR 13 (+1) DEX 10 (+0) CON 14 (+2) INT 11 (+0) WIS 16 (+3) CHA 14 (+2)
 Proficiency +2. Saves: Wisdom +5, Charisma +4. Spell save DC 13, spell attack +5.
-Skills: Insight +5, Medicine +5, Persuasion +4, Perception +5. Passive Perception 15. Darkvision 60 ft.
+Skills: Insight +5, Medicine +5, Persuasion +4, Perception +5. Passive Perception 15.
 **Mace** +3, 1d6+1 bludgeoning.
 **Cantrips:** *guidance*, *light*, *sacred flame*, *spare the dying*.
 **Spells (4 first-level, 2 second-level):** *bless*, *cure wounds*, *healing word*, *shield of faith*, *lesser restoration*, *spiritual weapon*, *aid*, *prayer of healing*.
@@ -3299,4 +3299,8 @@ longislanddungeonmaster.com
 
 *The Night Watchman is set in the Brackenford Starter Setting, which is free at longislanddungeonmaster.com and which this adventure treats as canon. The Wilderness Pack's tables pair well with Appendix A.*
 
-*Compatible with the fifth edition of the world's most popular roleplaying game. Uses only SRD 5.2.1 content.*
+*Compatible with the fifth edition of the world's most popular roleplaying game.*
+
+*This work includes material from the System Reference Document 5.2.1 ("SRD 5.2.1") by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2.1 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.*
+
+*The Night Watchman, Brackenford, and all original text and characters are © Long Island Dungeon Master.*

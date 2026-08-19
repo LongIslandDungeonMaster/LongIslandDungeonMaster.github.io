@@ -800,11 +800,11 @@ If you retreat toward the village: it follows for exactly one round, then return
 
 *If Nell is with you:* she plants herself at the break of the arch and barks at the dark over the water with everything she has. While she stands with you, the shrike's dives lose Silent Rush. Nothing gets to be silent near Nell.
 
-> **Watch Lamp** · **Ember:** 14 HP, and it does not use Silent Rush; you hear the wings in time. · **Lantern:** 22 HP. · **Dark:** 22 HP, and if you are standing on the arch when it attacks, you must also make a DC 12 Dexterity saving throw or be pushed 5 feet toward the drop. Fall from the arch: 3d6 bludgeoning and you are in the freezing water. If that drops you to 0 hit points, follow the fail-forward below. Otherwise you get yourself out on the near bank, soaked through, and **your lamp is dark: mark off all your remaining oil**. Go to **078**.
+> **Watch Lamp** · **Ember:** 14 HP, and it does not use Silent Rush; you hear the wings in time. · **Lantern:** 22 HP. · **Dark:** 22 HP, and if you are standing on the arch when it attacks, you must also make a DC 12 Dexterity saving throw or be pushed 5 feet toward the drop. Fall from the arch: 3d6 bludgeoning and you are in the freezing water. If that drops you to 0 hit points, follow the fail-forward below. Otherwise you get yourself out on the near bank, soaked through. **The lamp goes out.** Go to **078**.
 
 *If you fight with a shield:* you set your back foot and put the rim up, because a shield in a narrow place is a wall and not a swatter, and the dive breaks on the boards instead of on your face. It does not stop coming. It only stops being a surprise.
 
-**Fail-forward:** if you drop to 0 hit points here on Ember or Lantern, you do not die. The shrike wanted you off the arch and you are off it, and it does not come back down for you. You come to on the near bank with your lamp out and your hair frozen to the stone. Go to **078**. On Dark Watch, going down on that arch is a death: go to **535**.
+**Fail-forward:** if you drop to 0 hit points here on Ember or Lantern, you do not die. The shrike wanted you off the arch and you are off it, and it does not come back down for you. You come to on the near bank with your hair frozen to the stone. **The lamp goes out.** Go to **078**. On Dark Watch, going down on that arch is a death: go to **535**.
 
 *If you win:* → **077**
 *If you flee to the near bank:* → **078**, and take the codeword **LARDER** if you do not have it.
