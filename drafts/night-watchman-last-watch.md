@@ -639,6 +639,7 @@ The guard never leaves the child and never pursues. If you drop the attacker, th
 
 If you get the child behind you (your action and a successful DC 13 Dexterity (Acrobatics) or Strength (Athletics) check to get past the guard, or simply killing it), they break for the moor within one round: the pair on Ember and Lantern, all three on Dark.
 **If you retreat:** you can leave. The door is behind you and nothing in this room follows you through it. The guard does not move. The child does not make a sound. Go to **486**, and know that you walked out.
+
 **Fail-forward:** if you drop to 0 hit points here on Ember or Lantern, you do not die. Go to **486**. On Dark Watch, a death here is a death: go to **535**.
 
 > **Watch Lamp** · **Ember:** 14 HP each; the guard is slow to react and you may take the child on round two without a check. · **Lantern:** 22 HP each. · **Dark:** 22 HP each, and there is a third in the rafters that drops on round three.
