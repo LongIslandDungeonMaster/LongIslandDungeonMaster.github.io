@@ -142,6 +142,17 @@
       <div class="shop-grid" id="etsyGrid"></div>
     </section>
 
+    <!-- The Sign Wall. Round UV-printed birch signs -- the line that pulls the most saves. -->
+    <section class="etsy-sec" id="etsySignSec" hidden style="margin-top:2.6rem;padding-top:2.6rem;">
+      <div class="etsy-head">
+        <p class="s-eyebrow">The Treasure Hoard &bull; The Sign Wall</p>
+        <h2 class="etsy-title">Signs for the Game Room</h2>
+        <div class="s-divider"></div>
+        <p class="s-sub">Round wooden signs for the game room, the home bar, or the door the party keeps kicking in. Original artwork, UV-printed onto Baltic birch, 10 or 12 inches across.</p>
+      </div>
+      <div class="shop-grid" id="etsySignGrid"></div>
+    </section>
+
     <!-- The rest of the Treasure Hoard: wall decor, table gear, and small treasures. -->
     <section class="etsy-sec" id="etsyMoreSec" hidden style="margin-top:2.6rem;padding-top:2.6rem;">
       <div class="etsy-head">
@@ -257,6 +268,25 @@
         { name: 'Fallen Moonwood',       price: 69, from: true, sizes: ['52x37', '60x50', '80x60'], img: 'img/shop/etsy-fallen-moonwood.jpg',   url: 'https://www.etsy.com/listing/4538094862/mushroom-woven-blanket-luna-moth-forest' }
       ];
 
+      var SIGNS = [
+        { name: 'Dragon Incident Counter', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-dragon-incident-counter.jpg', url: 'https://www.etsy.com/listing/4541851576/dragon-incident-counter-wood-sign-fantasy-tavern-r' },
+        { name: 'Tavern Side Quest', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-tavern-side-quest.jpg', url: 'https://www.etsy.com/listing/4541847286/tavern-side-quest-wood-sign-rpg-bar-game-room-wall' },
+        { name: 'Good Ale Bad Advice', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-good-ale-bad-advice.jpg', url: 'https://www.etsy.com/listing/4541836885/good-ale-bad-advice-wood-sign-funny-goblin-tavern-' },
+        { name: 'Adventurers Welcome (Mimic Door)', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-adventurers-welcome-mimic.jpg', url: 'https://www.etsy.com/listing/4553857690/adventurers-welcome-wood-sign-mimic-tavern-door-de' },
+        { name: 'No Fireballs Indoors', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-no-fireballs-indoors.jpg', url: 'https://www.etsy.com/listing/4553857796/no-fireballs-indoors-wood-sign-funny-fantasy-taver' },
+        { name: 'Ales Tales Trouble', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-ales-tales-trouble.jpg', url: 'https://www.etsy.com/listing/4541836829/ales-tales-trouble-wood-sign-medieval-fantasy-tave' },
+        { name: 'Dont Split the Party', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-dont-split-the-party.jpg', url: 'https://www.etsy.com/listing/4553857874/dont-split-the-party-wood-sign-funny-rpg-tavern-ru' },
+        { name: 'Coins In Fingers Out', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-coins-in-fingers-out.jpg', url: 'https://www.etsy.com/listing/4541851850/coins-in-fingers-out-wood-sign-funny-mimic-treasur' },
+        { name: 'Light for the Road', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-light-for-the-road.jpg', url: 'https://www.etsy.com/listing/4541836769/light-for-the-road-wood-sign-cozy-fantasy-inn-deco' },
+        { name: 'No Quest Givers After Midnight', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-no-quest-givers-after-midnight.jpg', url: 'https://www.etsy.com/listing/4541851652/no-quest-givers-after-midnight-wood-sign-fantasy-t' },
+        { name: 'Critical Failures Retold Nightly', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-critical-failures-retold-nightly.jpg', url: 'https://www.etsy.com/listing/4553847375/critical-failures-retold-nightly-wood-sign-funny-r' },
+        { name: 'Adventurers Welcome (Tavern Door)', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-adventurers-welcome-dungeon.jpg', url: 'https://www.etsy.com/listing/4539084207/adventurers-welcome-wood-sign-fantasy-dungeon-tave' },
+        { name: 'Healer On Duty', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-healer-on-duty.jpg', url: 'https://www.etsy.com/listing/4553847545/healer-on-duty-wood-sign-funny-fantasy-potion-shop' },
+        { name: 'Mashed Fried Served Hot', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-mashed-fried-served-hot.jpg', url: 'https://www.etsy.com/listing/4541836471/mashed-fried-served-hot-wood-sign-funny-nautical-t' },
+        { name: 'The Resting Murderhobo', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-the-resting-murderhobo.jpg', url: 'https://www.etsy.com/listing/4553847449/the-resting-murderhobo-wood-sign-funny-fantasy-tav' },
+        { name: 'Tip Your Bard', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-sign-tip-your-bard.jpg', url: 'https://www.etsy.com/listing/4553847299/tip-your-bard-wood-sign-funny-fantasy-tavern-music' }
+      ];
+
       // Everything else worth featuring — wall decor, table gear, small treasures.
       // Prices mirror the live Etsy listings; ranged items ("from") show a starting price.
       var MORE_LOOT = [
@@ -265,7 +295,6 @@
         { name: 'Vintage Compass Wall Clock',  price: 44.99, sizes: ['10 in'],            img: 'img/shop/etsy-wall-clock.jpg',      url: 'https://www.etsy.com/listing/4539100650/fantasy-dungeon-map-wall-clock' },
         { name: 'Moonlit Mushroom Cabinet Canvas', price: 44.00, sizes: ['12x16'],       img: 'img/shop/etsy-mushroom-canvas.jpg', url: 'https://www.etsy.com/listing/4539724066/moonlit-mushroom-cabinet-canvas' },
         { name: 'Luna Moth Fantasy Pennant',   price: 29.99, sizes: ['18x21'],           img: 'img/shop/etsy-luna-pennant.jpg',    url: 'https://www.etsy.com/listing/4539085689/luna-moth-fantasy-pennant-celestial' },
-        { name: 'Adventurers Welcome Wood Sign', price: 39.99, from: true, sizes: ['10 in', '12 in'], img: 'img/shop/etsy-wood-sign.jpg', url: 'https://www.etsy.com/listing/4539084207/adventurers-welcome-wood-sign-fantasy' },
         { name: "Game Master's Campaign Journal", price: 24.99, sizes: ['5.75x8'],       img: 'img/shop/etsy-campaign-journal.jpg', url: 'https://www.etsy.com/listing/4538669912/game-master-campaign-journal-tabletop' },
         { name: 'Game Night Enamel Mug',       price: 19.99, sizes: ['12 oz'],           img: 'img/shop/etsy-enamel-mug.jpg',      url: 'https://www.etsy.com/listing/4538655225/game-night-enamel-mug-cozy-cartographer' }
       ];
@@ -296,6 +325,7 @@
       }
 
       lightShelf('etsySec', 'etsyGrid', BLANKETS);
+      lightShelf('etsySignSec', 'etsySignGrid', SIGNS);
       lightShelf('etsyMoreSec', 'etsyMoreGrid', MORE_LOOT);
     })();
   </script>
