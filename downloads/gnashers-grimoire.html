@@ -2,7 +2,7 @@
 <!--
   ============================================================================
   GNASHER'S GRIMOIRE — "A Dungeon Master Companion"  (source; internal nickname "Keeper Keeper" retired 2026-07-03)
-  Gnasher's Grimoire™ · build 2026-08-12 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
+  Gnasher's Grimoire™ · build 2026-08-24 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
   ============================================================================
   v15 (2026-07-18) - THE CHRONICLE: campaign memory across Keepers (FINAL-ORDERS
   C1; the law is Scriptorium/CAMPAIGN-WEB-SPEC.md - hourglass web, one flag
@@ -987,6 +987,11 @@ body.strip-on .chronicle{top:146px;}
 .pres .dice.cx-condition{color:#c096d0;}
 .pres .dice.cx-action{color:#dd9068;}
 .pres .dice.cx-hazard{color:#cf7676;}
+.pres .dice.cx-deity{color:#b2b2e0;}
+.pres .dice.cx-vehicle{color:#7ab0cc;}
+.pres .dice.cx-reward{color:#b79ade;}
+.pres .dice.cx-book{color:#c2ad86;font-size:14px;}
+.pres .dice.cx-adventure{color:#a3c896;font-size:14px;}
 .fcard-spell{border-color:#5f7ba8;}.fcard-spell .fcard-head{border-bottom-color:#5f7ba8;}
 .fcard-item{border-color:#a8862f;}.fcard-item .fcard-head{border-bottom-color:#a8862f;}
 .fcard-class{border-color:#a86a3c;}.fcard-class .fcard-head{border-bottom-color:#a86a3c;}
@@ -998,6 +1003,27 @@ body.strip-on .chronicle{top:146px;}
 .fcard-condition{border-color:#8a5a9a;}.fcard-condition .fcard-head{border-bottom-color:#8a5a9a;}
 .fcard-action{border-color:#b0603a;}.fcard-action .fcard-head{border-bottom-color:#b0603a;}
 .fcard-hazard{border-color:#9a3b3b;}.fcard-hazard .fcard-head{border-bottom-color:#9a3b3b;}
+.fcard-deity{border-color:#7a7ab0;}.fcard-deity .fcard-head{border-bottom-color:#7a7ab0;}
+.fcard-vehicle{border-color:#3f7a9a;}.fcard-vehicle .fcard-head{border-bottom-color:#3f7a9a;}
+.fcard-reward{border-color:#7a5aa8;}.fcard-reward .fcard-head{border-bottom-color:#7a5aa8;}
+.fcard-book{border-color:#7a6a52;}.fcard-book .fcard-head{border-bottom-color:#7a6a52;}
+.fcard-adventure{border-color:#6a8a5f;}.fcard-adventure .fcard-head{border-bottom-color:#6a8a5f;}
+/* ===== v22 - THE SCRIBE - paste a statblock, own a monster ===== */
+.scribe{display:none;position:fixed;top:9vh;left:50%;transform:translateX(-50%);width:640px;max-width:94vw;z-index:101;
+  background:linear-gradient(180deg,#221407,#190d05);border:1px solid var(--gold-line);border-radius:10px;
+  box-shadow:0 26px 70px rgba(0,0,0,.62);}
+.scribe.show{display:flex;flex-direction:column;}
+.scribe-h{display:flex;align-items:baseline;gap:10px;padding:13px 16px 9px;border-bottom:1px solid var(--rule);}
+.scribe-h h2{font-family:var(--serif);font-size:20px;color:var(--gold-br);margin:0;}
+.scribe-h .m{font-size:11.5px;color:#8a6d5f;font-style:italic;}
+.scribe-h .esc{margin-left:auto;font-size:10px;color:#77614f;cursor:pointer;}
+.scribe textarea{margin:12px 16px 0;height:220px;resize:vertical;background:#160c05;color:var(--ink);
+  border:1px solid var(--rule);border-radius:7px;padding:10px 12px;font:12.5px/1.5 ui-monospace,Consolas,monospace;}
+.scribe .prev{margin:9px 16px 0;font-size:12px;color:#b99b6d;min-height:30px;}
+.scribe .row{display:flex;gap:10px;justify-content:flex-end;padding:12px 16px 14px;}
+.scribe .sbtn{font-size:12px;letter-spacing:.05em;padding:7px 16px;border-radius:7px;cursor:pointer;
+  border:1px solid var(--gold-line);background:linear-gradient(#3a2410,#2a1808);color:var(--gold-br);}
+.scribe .sbtn.ghost{background:none;border-color:var(--rule);color:#8a6d5f;}
 </style>
 </head>
 <body>
@@ -1118,7 +1144,7 @@ body.strip-on .chronicle{top:146px;}
     <p>A PDF dies in a downloads folder. Give away this deck free and every LIDM adventure someone buys <b>snaps into a living thing that gets better the more they own</b> &mdash; a deeper Summon, cross-book tables, one party through all of it. It's the DM's second screen, and it only fills up with <i>your</i> books.</p>
 
     <h2>About</h2>
-    <p class="about-ip">Gnasher's Grimoire&trade; &middot; build 2026-08-12 &middot; &copy; 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.</p>
+    <p class="about-ip">Gnasher's Grimoire&trade; &middot; <b>Version <span id="aboutVersion">?</span></b> &middot; &copy; 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.</p>
     <p class="about-ip">Free tool. Runs offline; your books stay yours. Get more books at <a href="https://longislanddungeonmaster.com/keepers" target="_blank" rel="noopener">longislanddungeonmaster.com/keepers</a>.</p>
     <p class="about-ip">The Theater: your players pair Gnasher's Satchel, its free companion, straight to this screen. No server, no accounts; the pairing code is the connection, and a same-room mode works with no internet at all.</p>
     <p class="about-ip">Found a bug, or something that made no sense? <a href="#" onclick="openBugReport();return false;">Tell me about it</a> &mdash; the Grimoire writes up the technical details, you read them, and you send it. Nothing is ever transmitted by the app itself.</p>
@@ -1417,7 +1443,16 @@ let INDEX = TABLES.map(t=>Object.assign({kind:'table'},t))
   .concat(NPCS.map(n=>Object.assign({kind:'npc'},n)));
 const SEED_INDEX = INDEX.slice();
 let INSTALLED = {};                       // id -> {id,title,kind,entries,html}
-function rebuildIndex(){ INDEX = SEED_INDEX.slice(); Object.values(INSTALLED).forEach(k=>k.entries.forEach(e=>INDEX.push(Object.assign({src:k.id},e)))); XREF_MAP=null; }
+function rebuildIndex(){ INDEX = SEED_INDEX.slice(); Object.values(INSTALLED).forEach(k=>k.entries.forEach(e=>INDEX.push(Object.assign({src:k.id},e))));
+  /* v22 - THE TOME JOINS THE SUMMON. Not the PDF's text (that would need a bundled parser and
+     we would be pretending) - the DM's OWN metadata: the Tome's title, and every page mark
+     they set. Space, three letters, and "Goblin Warrens p.34" opens the PDF on page 34. */
+  try{ Object.values(TOMES||{}).forEach(t=>{
+    INDEX.push({tome:t.id,kind:'book',nm:esc(t.title),sub:'Tome &middot; your PDF',tags:['tome','pdf']});
+    (t.bookmarks||[]).forEach(b=>INDEX.push({tome:t.id,page:b.page,kind:'book',nm:esc(b.label),
+      sub:'Page '+b.page+' &middot; '+esc(t.title),tags:['tome','page mark']}));
+  }); }catch(e){}
+  XREF_MAP=null; }
 /* v13 fix (found 2026-07-08): honor the manifest's declared kind — packs shelve with the packs,
    plaques read the true Keeper class, and a manifest-carried cover rides onto the shelf tile. */
 function addInstalledToBooks(k){
@@ -1455,6 +1490,7 @@ async function loadInstalled(){ if(!DB)return; const arr=await idbAll('keepers')
 /* ---- utilities ---- */
 function stripEnt(s){return String(s).replace(/&[a-z]+;/gi,' ').replace(/&#\d+;/g,' ');}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function unesc(s){const d=document.createElement('textarea');d.innerHTML=String(s);return d.value;}  /* v22: entities back to text, for INPUT values only */
 /* "Surface | Truth | Tell" reveal rows -> layered display */
 function rowHTML(r){if(r.indexOf(' | ')<0)return r;const p=r.split(' | ');return '<b>'+p[0]+'</b>'+p.slice(1).map(s=>'<span class="rsub">'+s+'</span>').join('');}
 /* ---- prose enrichment: rollable dice + cross-reference links ----------------
@@ -1567,7 +1603,13 @@ const CODEX_KINDS={
   feat:{sig:'&#9733;',go:'Feat'},species:{sig:'&#9752;',go:'Species'},
   background:{sig:'&#9776;',go:'Background'},rule:{sig:'&#167;',go:'Rule'},
   condition:{sig:'&#9888;',go:'Condition'},action:{sig:'&#10148;',go:'Action'},
-  hazard:{sig:'&#9760;',go:'Hazard'}};
+  hazard:{sig:'&#9760;',go:'Hazard'},
+  /* v22: the last five kinds from the codex design (proven in the private lab 7/24;
+     ported per Frank's 2026-07-28 mechanisms-not-data ruling). book/adventure are the
+     prose-volume kinds - an index card that IS a linked table of contents leads a volume. */
+  deity:{sig:'&#9737;',go:'Deity'},vehicle:{sig:'&#9875;',go:'Vehicle'},
+  reward:{sig:'&#9884;',go:'Reward'},book:{sig:'&#128214;',go:'Book'},
+  adventure:{sig:'&#128220;',go:'Adventure'}};
 function keeperClass(b){
   if(b.packkind==='monster')return 'Creature Keeper';
   if(b.packkind==='npc')return 'Character Keeper';
@@ -1595,7 +1637,8 @@ function renderShelf(){
   document.getElementById('keeperGrid').innerHTML=ks.map(coverHTML).join('')+
     '<div class="cover add" id="addTile" onclick="pickKeeperFile()"><div><div class="plus">+</div><div class="t">Add a Keeper</div><div class="m">Drag a downloaded Keeper here, or click to pick one</div></div></div>'+
     '<a class="cover add more" href="https://longislanddungeonmaster.com/keepers" target="_blank" rel="noopener" title="longislanddungeonmaster.com/keepers"><div><img class="gshop" src="'+GG_ART.die+'" alt="Gnash\'s d20, rolling"><div class="t">Get more books</div><div class="m">Gnash keeps the shop &mdash; new Keepers, bestiaries &amp; packs drop straight in</div></div></a>';
-  document.getElementById('packGrid').innerHTML=ps.map(coverHTML).join('');
+  document.getElementById('packGrid').innerHTML=ps.map(coverHTML).join('')+
+    '<div class="cover add" onclick="openScribe()" title="Paste any 5e-style statblock and it becomes a monster you own"><div><div class="plus">&#9998;</div><div class="t">Paste a statblock</div><div class="m">Homebrew text in &mdash; a rollable, musterable monster out</div></div></div>';  /* v22 THE SCRIBE */
   const gf=document.getElementById('gnashFoot'); if(gf&&!gf.src)gf.src=GG_ART.gnash;
   document.getElementById('keeperCt').textContent=ks.length+' owned';
   document.getElementById('packCt').textContent=ps.length+' owned';
@@ -1759,9 +1802,13 @@ function uninstallKeeper(id){ delete INSTALLED[id]; delete BOOKS[id]; if(DB)idbD
    live in this browser's IndexedDB as a Blob and never leave it. The viewer is the browser's OWN
    native PDF renderer in an in-app frame — no PDF library, offline forever (Chromium + Firefox);
    where the browser can't render inline (navigator.pdfViewerEnabled===false) we degrade honestly
-   to an open-in-a-new-tab panel. HONEST CAPABILITY: without a PDF library there is no in-PDF text
-   search, so Tomes deliberately do NOT feed the Summon index — the DM marks pages by hand and we
-   jump with the native viewer's #page=N fragment. STORAGE LAW: tomes ride as 'tome:<id>' entries
+   to an open-in-a-new-tab panel. HONEST CAPABILITY (amended v22, Frank 2026-08-24): without a PDF
+   library there is still no in-PDF TEXT search and we never pretend otherwise — but the DM's OWN
+   metadata (the Tome's title + their hand-set page marks) DOES feed the Summon as kind-'book'
+   rows that open the PDF at the marked page. ~~(Tombstoned 2026-08-24: this comment read "Tomes
+   deliberately do NOT feed the Summon index" — true under v20's premise that the only way in was
+   faking content search; v22 indexes metadata only, enforced by regression.py's strict tome-row
+   check.)~~ Jumps use the native viewer's #page=N fragment. STORAGE LAW: tomes ride as 'tome:<id>' entries
    in the existing kv store (NO DB version bump — an older build opening this DB must never see a
    VersionError and boot into an empty-looking binder). EXCLUSIONS (v1, deliberate): tomes ride
    NEITHER the .keeper export (state format, not binaries) NOR the Drive Binder write-through. */
@@ -1770,7 +1817,7 @@ let currentTome=null, tomeURL=null;
 const TOME_WARN_BYTES=50*1024*1024, TOME_MARK_CAP=20;
 function idbEachKV(fn){return new Promise(res=>{try{const c=DB.transaction('kv','readonly').objectStore('kv').openCursor();c.onsuccess=e=>{const cur=e.target.result;if(cur){try{fn(cur.key,cur.value);}catch(_){}cur.continue();}else res(true);};c.onerror=()=>res(false);}catch(e){res(false);}});}
 async function loadTomes(){ if(!DB)return; await idbEachKV((k,v)=>{ if(typeof k==='string'&&k.indexOf('tome:')===0&&v&&v.id&&v.blob)TOMES[v.id]=v; }); }
-function tomeSave(t){ if(DB)idbPut('kv',t,'tome:'+t.id); }
+function tomeSave(t){ if(DB)idbPut('kv',t,'tome:'+t.id); try{rebuildIndex();}catch(e){} }  /* v22: marks + renames feed the Summon */
 function tomeSizeLabel(n){ n=n||0; return n>=1048576?(n/1048576).toFixed(1)+' MB':Math.max(1,Math.round(n/1024))+' KB'; }
 function tomeTotalBytes(){ return Object.values(TOMES).reduce((s,t)=>s+(t.size||0),0); }
 async function installTome(f){
@@ -1871,10 +1918,74 @@ function tomeRename(){
 function removeTome(id,btn){
   if(!armTap('tomedel'+id,btn,'Tap again to remove'))return;
   delete TOMES[id]; if(DB)idbDel('kv','tome:'+id);
+  try{rebuildIndex();}catch(e){}  /* v22: its Summon entries leave with it */
   if(currentTome===id){ currentTome=null; if(tomeURL){ try{URL.revokeObjectURL(tomeURL);}catch(e){} tomeURL=null; } go('shelf'); }
   renderShelf();
   toast('Tome removed from the shelf. The PDF file itself is still wherever you keep it.');
 }
+/* ============================================================ THE SCRIBE (v22, 2026-08-24)
+   Paste any 5e-style statblock - a homebrew doc, a forum post, a page you own - and it
+   becomes a real monster in the binder: a Summon row, a floatable statblock card with
+   rollable attacks, and a musterable War Table combatant. Reads both the 2014 wording
+   ("Melee Weapon Attack: +4 to hit ... Hit: 7 (2d6 + 1)") and the 2024 wording
+   ("Melee Attack Roll: +4 ... Hit: 7 (2d6 + 1)"). Everything it can't parse rides along
+   whole in the card's notes, so nothing the DM pasted is ever lost. */
+function parseStatblock(txt){
+  const t=String(txt||'').replace(/\r/g,'').trim(); if(!t)return null;
+  const lines=t.split('\n').map(l=>l.trim()).filter(Boolean); if(!lines.length)return null;
+  const nm=lines[0].replace(/\s+/g,' ').trim();
+  if(!nm||nm.length>60)return null;
+  const g=re=>{const m=t.match(re);return m?m[1]:null;};
+  const ac=g(/Armor\s*Class[:\s]+(\d+)/i)||g(/\bAC[:\s]+(\d+)/i);
+  const hp=g(/Hit\s*Points[:\s]+(\d+)/i)||g(/\bHP[:\s]+(\d+)/i);
+  if(!ac&&!hp)return null;   // a name alone is not a statblock
+  const speed=(g(/Speed[:\s]+([^\n]+)/i)||'30 ft.').trim();
+  const cr=(g(/Challenge[:\s]+([\d/]+)/i)||g(/\bCR[:\s]+([\d/]+)/i)||'?');
+  const atk=[];
+  lines.forEach(l=>{
+    const hit=l.match(/Attack(?:\s*Roll)?:?\s*\+(\d+)/i); if(!hit)return;
+    const nmM=l.match(/^([A-Z][A-Za-z'’ ()/-]{1,40}?)\.\s/);
+    const dmgM=l.match(/\((\d*d\d+(?:\s*[+-]\s*\d+)?)\)/);
+    atk.push({n:(nmM?nmM[1]:'Attack').trim(), hit:+hit[1],
+              dmg:dmgM?dmgM[1].replace(/\s+/g,''):'1d4'});
+  });
+  const body=lines.slice(1).join('\n');
+  /* _k: the RAW name, for update-in-place matching. Codex catch: matching on the escaped
+     name through stripEnt() made 'A < B' and 'A > B' the same monster (entities deleted,
+     not decoded) and the second paste silently ate the first. */
+  return {kind:'monster', nm:esc(nm), _k:nm.toLowerCase().replace(/\s+/g,' ').trim(),
+          cr:String(cr), ac:+(ac||10), hp:+(hp||1),
+          speed:esc(speed), atk, note:esc(body).replace(/\n/g,'<br>'), tags:['homebrew']};
+}
+function scribeBook(){
+  let k=INSTALLED['homebrew'];
+  if(!k){ k={id:'homebrew', title:'Your Homebrew', declaredKind:'bestiary', entries:[], unverified:false};
+    INSTALLED['homebrew']=k; addInstalledToBooks(k); }
+  return k;
+}
+async function scribeSave(){
+  const ta=document.getElementById('scribeText'); const rec=parseStatblock(ta&&ta.value);
+  if(!rec){ toast('That doesn&rsquo;t read as a statblock yet &mdash; it needs a name on the first line and an AC or HP line.'); return; }
+  const k=scribeBook();
+  const ix=k.entries.findIndex(e=>e.kind==='monster'&&(e._k||unesc(e.nm).toLowerCase().replace(/\s+/g,' ').trim())===rec._k);  /* Codex r2: the fallback DECODES (unesc), never deletes (stripEnt) - so 'A < B' can't collide with 'A > B' even on a record missing _k */
+  const updated=ix>=0; if(updated)k.entries[ix]=rec; else k.entries.push(rec);
+  addInstalledToBooks(k);            // refresh the shelf row's item count
+  if(DB)await idbPut('keepers',k);
+  rebuildIndex(); renderShelf(); closeScribe();
+  toast((updated?'Updated':'Scribed')+' <b>'+rec.nm+'</b> &mdash; '+rec.atk.length+' rollable attack'+(rec.atk.length!==1?'s':'')+'. Press Space and summon it.');
+}
+function scribePreview(){
+  const ta=document.getElementById('scribeText'), pv=document.getElementById('scribePrev'); if(!ta||!pv)return;
+  const r=parseStatblock(ta.value);
+  pv.innerHTML=r?('Reads as: <b>'+r.nm+'</b> &middot; CR '+r.cr+' &middot; AC '+r.ac+' &middot; '+r.hp+' hp &middot; '+
+    (r.atk.length?r.atk.map(a=>esc(a.n)+' +'+a.hit+' ('+a.dmg+')').join(' &middot; '):'no attacks found'))
+    :'Waiting for a statblock: name on the first line, then the usual AC / HP / attack lines.';
+}
+function openScribe(){ const d=document.getElementById('scribe'); if(!d)return; d.classList.add('show');
+  const ta=document.getElementById('scribeText'); if(ta){ta.value='';} scribePreview();
+  setTimeout(()=>{try{ta.focus();}catch(e){}},60); }
+function closeScribe(){ const d=document.getElementById('scribe'); if(d)d.classList.remove('show'); }
+/* ============================================================ */
 function tomeAboutUpdate(){
   const el=document.getElementById('aboutTomes'); if(!el)return;
   const n=Object.keys(TOMES).length;
@@ -2292,7 +2403,7 @@ function searchTables(q){
   const scored=INDEX.map((t,i)=>{
     const name=stripEnt(t.nm).toLowerCase();
     const extra=t.kind==='monster'?('monster cr '+t.cr):(t.kind==='npc'?('npc '+stripEnt(t.role||'')):(CODEX_KINDS[t.kind]?(t.kind+' '+stripEnt(t.sub||'')):''));
-    const hay=(name+' '+(t.tags||[]).join(' ')+' '+extra+' '+stripEnt(BOOKS[t.src].t)).toLowerCase();
+    const hay=(name+' '+(t.tags||[]).join(' ')+' '+extra+' '+(BOOKS[t.src]?stripEnt(BOOKS[t.src].t):stripEnt(t.sub||''))).toLowerCase();  /* v22: Tome entries carry no BOOKS row - their home is in sub */
     let sc=0;
     if(name.startsWith(q))sc=100; else if(name.includes(q))sc=75; else if((t.tags||[]).some(tg=>tg.startsWith(q)))sc=60;
     else if(hay.includes(q))sc=45; else if(fuzzy(q,name))sc=25;
@@ -2316,11 +2427,16 @@ function renderPalette(){
   let html='', lastSec=null;
   palResults.forEach((r,idx)=>{
     if(r.sec!==lastSec){html+='<div class="pal-sec">'+r.sec+'</div>';lastSec=r.sec;}
-    const t=INDEX[r.i],b=BOOKS[t.src],pk=b.kind==='pack',fav=STATE.favorites.includes(r.i);
+    /* v22 CODEX FIX (BLOCKER): Tome rows carry no BOOKS entry - b was undefined and one
+       imported PDF took the whole Summon down with a TypeError. Tome rows also take no
+       star: favorites persist NUMERIC index offsets, and tome rows shift as marks come
+       and go, so a starred tome row would silently become a different entry. (That
+       offset-identity class predates v22 and is noted in DESIGN-NOTES for a real fix.) */
+    const t=INDEX[r.i],b=t.tome?{t:'your shelf',kind:'tome'}:BOOKS[t.src],pk=b.kind==='pack',fav=!t.tome&&STATE.favorites.includes(r.i);
     const f=entryFace(t), icon=f.icon, sub=f.sub, go=f.go;
     html+='<div class="pres'+(idx===palSel?' sel':'')+'" data-idx="'+idx+'">'+icon+
       '<div class="mid"><div class="nm">'+t.nm+'</div><div class="sub">from <span class="bk'+(pk?' pk':'')+'">'+b.t+'</span> &middot; '+sub+'</div></div>'+
-      '<button class="star'+(fav?' on':'')+'" data-fav="'+r.i+'" title="Favorite">&#9733;</button>'+
+      (t.tome?'':'<button class="star'+(fav?' on':'')+'" data-fav="'+r.i+'" title="Favorite">&#9733;</button>')+
       '<span class="go">'+go+'</span></div>';
   });
   list.innerHTML=html;
@@ -2335,6 +2451,7 @@ function renderPalette(){
 function entryFace(t){
   if(t.kind==='monster')return {icon:'<div class="dice mon">CR '+t.cr+'</div>',sub:'monster &middot; AC '+t.ac+' &middot; '+t.hp+' hp',go:'Stat'};
   if(t.kind==='npc')return {icon:'<div class="dice npc">&#9787;</div>',sub:stripEnt(t.role),go:'Info'};
+  if(t.tome)return {icon:'<div class="dice cx cx-book">'+CODEX_KINDS.book.sig+'</div>',sub:stripEnt(t.sub||''),go:t.page?('p.'+t.page):'Open'};  /* v22: a Tome row says where it takes you */
   if(CODEX_KINDS[t.kind])return {icon:'<div class="dice cx cx-'+t.kind+'">'+CODEX_KINDS[t.kind].sig+'</div>',sub:stripEnt(t.sub||t.kind),go:CODEX_KINDS[t.kind].go};
   return {icon:'<div class="dice">'+t.dice+'</div>',sub:(t.tags||[]).join(', '),go:'Float'};
 }
@@ -2457,7 +2574,7 @@ function closeContents(){document.getElementById('ctsScrim').classList.remove('s
    unscoped selector would index the palette's arrow-key selection off the wrong node set. */
 function markSel(){document.querySelectorAll('#palList .pres').forEach((el,i)=>el.classList.toggle('sel',i===palSel));
   const sel=document.querySelector('#palList .pres.sel'); if(sel)sel.scrollIntoView({block:'nearest'});}
-function toggleFav(i){const k=STATE.favorites.indexOf(i); if(k<0)STATE.favorites.push(i); else STATE.favorites.splice(k,1); saveState(); renderPalette();}
+function toggleFav(i){if(INDEX[i]&&INDEX[i].tome)return; /* v22: tome rows shift with marks - no stable identity to favorite */ const k=STATE.favorites.indexOf(i); if(k<0)STATE.favorites.push(i); else STATE.favorites.splice(k,1); saveState(); renderPalette();}
 function pushRecent(i){STATE.recents=[i].concat(STATE.recents.filter(x=>x!==i)).slice(0,8);saveState();}
 
 /* ============================================================ THE BOARD (floating cards) */
@@ -2471,6 +2588,15 @@ function boardKey(){return currentBook||(currentTome?('tome:'+currentTome):'_');
 function stageOpen(){return !!(currentBook||currentTome);}
 function floatTable(i,opts){
   opts=opts||{};
+  /* v22: a Tome entry doesn't float a card - it opens the PDF itself, at the marked page.
+     The Summon is the door; the browser's own viewer is the room. */
+  const _te=INDEX[i];
+  if(_te&&_te.tome){
+    if(!TOMES[_te.tome]){ toast('That Tome is no longer on the shelf.'); closePalette(); return null; }
+    if(currentTome===_te.tome){ if(_te.page)tomeGo(_te.page); }
+    else { openTome(_te.tome); if(_te.page)tomeGo(_te.page); }
+    closePalette(); return null;
+  }
   if(!stageOpen()){ openBook(INDEX[i].src); }
   pushRecent(i);
   const existing=[...document.querySelectorAll('.fcard')].find(c=>+c.dataset.ti===i);
@@ -2727,7 +2853,7 @@ function renderDraft(){
 function commitCombat(){
   const specs=[];
   Object.keys(draftMon).forEach(k=>{ const idx=+k,cnt=draftMon[k],m=INDEX[idx],h=parseHP(m.hp);
-    for(let j=0;j<cnt;j++) specs.push({id:cid(),kind:'monster',nm:m.nm+(cnt>1?' '+(j+1):''),base:m.nm,srcb:m.src,ac:m.ac,hp:h.cur,hpMax:h.max,init:0,conds:[],atk:(m.atk||[]).map(a=>({n:a.n,hit:a.hit,dmg:a.dmg})),note:m.note||'',from:(BOOKS[m.src]||{}).t||''}); });
+    for(let j=0;j<cnt;j++) specs.push({id:cid(),kind:'monster',nm:unesc(m.nm)+(cnt>1?' '+(j+1):''),base:m.nm,/* v22 Codex r2: combat names are RAW text from birth; renders escape; renames stay stable */srcb:m.src,ac:m.ac,hp:h.cur,hpMax:h.max,init:0,conds:[],atk:(m.atk||[]).map(a=>({n:a.n,hit:a.hit,dmg:a.dmg})),note:m.note||'',from:(BOOKS[m.src]||{}).t||''}); });
   draftPC.forEach(i=>{ const p=PARTY[i],h=parseHP(p.hp); specs.push({id:cid(),kind:'pc',nm:p.nm,ac:p.ac,hp:h.cur,hpMax:h.max,init:0,conds:[],atk:[],note:stripEnt(p.cls||''),from:PARTIES[activeParty].name}); });
   if(!specs.length){ toast('Add some combatants first.'); return; }
   specs.forEach(s=>{ s.init=cd20(); });
@@ -4296,7 +4422,13 @@ function theaterPushImage(inp){
    not be able to ride along by being forgotten. What is deliberately NOT here: table codes and seat
    credentials (live join secrets), character/party/hero names, book titles, adventure or table text,
    whisper and packet contents, bookmark labels, roll history, drive folder names, file paths. */
-const GRIM_BUILD='2026-08-05';   /* bump with the app, not with the About paragraph */
+/* v22 - ONE version, THREE surfaces. KK_VERSION is the public number (itch user-version,
+   README, About panel); GRIM_BUILD carries it plus the build date for problem reports.
+   Bump BOTH lines with every release - a user with an offline file kept for a year has no
+   other way to know what they hold, and neither do we when they report a bug. */
+const KK_VERSION='2.2.0';
+const GRIM_BUILD=KK_VERSION+' · 2026-08-24';
+window.KK_VERSION=KK_VERSION;
 const BUG_ERRORS=[];
 /* ⚠ ERROR MESSAGES ARE NOT SAFE TEXT. A browser quotes the offending input back at you:
    JSON.parse('the duke is the doppelganger') throws
@@ -4613,6 +4745,7 @@ document.addEventListener('keydown',e=>{
     return; // let typing flow
   }
   if(e.key==='Escape'&&document.getElementById('contents').classList.contains('show')){closeContents();e.preventDefault();return;}
+  if(e.key==='Escape'&&document.getElementById('scribe').classList.contains('show')){closeScribe();e.preventDefault();return;}  /* v22: ESC leaves the Scribe even mid-typing */
   if(typing)return;
   if(e.key===' '){openPalette();e.preventDefault();return;}
   if(e.key==='Escape'){closePalette();closeContents();closeParty();closeHelp();document.getElementById('tray').classList.remove('show');return;}
@@ -4639,6 +4772,7 @@ document.getElementById('ctsInput').addEventListener('keydown',e=>{ e.stopPropag
   await loadState();
   await loadInstalled();
   await loadTomes();   // v20: the Tome shelf (PDF blobs ride the kv store as 'tome:<id>' entries)
+  rebuildIndex();      // v22: Tomes + page marks join the Summon (the parse-time index predates the DB load)
   /* v13½ · Drive Binder: if this browser has a linked binder folder (USB stick), load from it */
   await driveConnect();
   /* seeded builds pre-install their sample Keeper(s) once (build injects window.KK_PREINSTALL) */
@@ -4649,6 +4783,7 @@ document.getElementById('ctsInput').addEventListener('keydown',e=>{ e.stopPropag
   }
   /* gentle backup nudge every 5th session (and every 3rd install, in installFromFiles) */
   STATE.nudge=STATE.nudge||{i:0,s:0}; STATE.nudge.s++; saveState();
+  try{const _av=document.getElementById('aboutVersion'); if(_av)_av.textContent=GRIM_BUILD;}catch(e){}  /* v22: the About reads the ONE version constant */
   renderShelf(); renderDiceGrid(); renderLog(); renderCombat(); applyDock();
   soundApplyMode(); renderSound(); soundReconnect();
   try{ await theaterRestore(); }catch(e){ console.warn('[theater] restore skipped:',e&&e.message); }
@@ -4656,5 +4791,16 @@ document.getElementById('ctsInput').addEventListener('keydown',e=>{ e.stopPropag
   if(STATE.nudge.s%5===0) setTimeout(()=>toast(backupNudgeMsg()),1600);
 })();
 </script>
+
+<!-- v22 - THE SCRIBE: paste a statblock, own a monster -->
+<div class="scribe" id="scribe" role="dialog" aria-label="Paste a statblock">
+  <div class="scribe-h"><h2>The Scribe</h2><span class="m">paste any 5e-style statblock &mdash; it becomes a monster you own</span>
+    <span class="esc" onclick="closeScribe()">ESC / close</span></div>
+  <textarea id="scribeText" spellcheck="false" oninput="scribePreview()"
+    placeholder="Goblin Sneak&#10;Armor Class 14&#10;Hit Points 21&#10;Speed 30 ft.&#10;Shortsword. Melee Weapon Attack: +4 to hit, reach 5 ft. Hit: 5 (1d6 + 2) piercing damage."></textarea>
+  <div class="prev" id="scribePrev"></div>
+  <div class="row"><button class="sbtn ghost" onclick="closeScribe()">Cancel</button>
+    <button class="sbtn" onclick="scribeSave()">Scribe it into the binder</button></div>
+</div>
 </body>
 </html>
