@@ -2,7 +2,7 @@
 <!--
   ============================================================================
   GNASHER'S GRIMOIRE — "A Dungeon Master Companion"  (source; internal nickname "Keeper Keeper" retired 2026-07-03)
-  Gnasher's Grimoire™ · build 2026-08-24 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
+  Gnasher's Grimoire™ · build 2026-08-29 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
   ============================================================================
   v15 (2026-07-18) - THE CHRONICLE: campaign memory across Keepers (FINAL-ORDERS
   C1; the law is Scriptorium/CAMPAIGN-WEB-SPEC.md - hourglass web, one flag
@@ -692,6 +692,74 @@ body.combat-on .sound{right:404px;}
 .snd-cue:not(.miss) .snd-st{color:#7fb07f;}
 .snd-unmatched{text-align:center;color:#6a5647;font-family:var(--mono);font-size:10.5px;padding:6px 4px 2px;letter-spacing:.03em;}
 
+/* ===== v24 THE SOUND PLAYER - second surface on the same engine (spec 3.3) ===== */
+.sound-tabs{flex:0 0 auto;display:flex;border-bottom:1px solid var(--rule);background:rgba(0,0,0,.25);}
+.sound-tabs button{flex:1 1 50%;background:none;border:0;border-bottom:2px solid transparent;color:#8a6d5f;font-family:var(--serif);font-size:13px;padding:8px 0;letter-spacing:.05em;cursor:pointer;}
+.sound-tabs button:hover{color:var(--gold-br);}
+.sound-tabs button.on{color:var(--gold-br);border-bottom-color:var(--gold);}
+.sound-cues{flex:1 1 auto;display:flex;flex-direction:column;min-height:0;}
+#sound.player-tab .sound-cues{display:none;}
+.sound-player{display:none;flex:1 1 auto;flex-direction:column;min-height:0;}
+#sound.player-tab .sound-player{display:flex;}
+.sp-top{flex:1 1 auto;display:flex;flex-direction:column;min-height:0;}
+#spPanel.fold .sp-top{display:none;}
+.sp-searchrow{flex:0 0 auto;padding:8px 10px;border-bottom:1px solid var(--rule);}
+.sp-searchrow input{width:100%;background:#1a120c;border:1px solid var(--rule);border-radius:7px;color:var(--ink);padding:7px 10px;font-size:12.5px;font-family:var(--body);}
+.sp-searchrow input:focus{outline:none;border-color:var(--gold);}
+.sp-lists{flex:0 0 auto;max-height:138px;overflow-y:auto;padding:6px 8px;border-bottom:1px solid var(--rule);}
+.sp-row{display:flex;align-items:center;gap:6px;padding:5px 7px;border:1px solid transparent;border-radius:7px;font-size:12.5px;color:var(--ink);cursor:pointer;margin-bottom:2px;}
+.sp-row:hover{border-color:var(--rule);background:rgba(0,0,0,.18);}
+.sp-row.open{border-color:var(--gold);background:rgba(0,0,0,.28);}
+.sp-row.live .nm{color:var(--gold-br);}
+.sp-row .nm{flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.sp-row .ct{flex:0 0 auto;font-family:var(--mono);font-size:10px;color:#8a6d5f;}
+.sp-row button,.sp-trk button{flex:0 0 auto;background:none;border:1px solid transparent;color:#8a6d5f;font-size:11px;line-height:1;padding:3px 5px;border-radius:5px;cursor:pointer;}
+.sp-row button:hover,.sp-trk button:hover{color:var(--gold-br);border-color:var(--rule);}
+.sp-row button.armed,.sp-trk button.armed{color:var(--crimson-br);border-color:var(--crimson);}
+.sp-newlist{width:100%;background:#241a11;border:1px dashed var(--rule);color:var(--ink-soft);border-radius:7px;padding:6px 10px;font-family:var(--serif);font-size:12px;margin-top:3px;cursor:pointer;}
+.sp-newlist:hover{border-color:var(--gold);color:var(--gold-br);}
+.sp-tracks{flex:1 1 auto;overflow-y:auto;padding:6px 8px;min-height:56px;}
+body.dock-on .sound.dock .sp-tracks{max-height:320px;}
+body.dock-on .sound.dock .sp-lists{max-height:200px;}
+.sp-listhead{display:flex;align-items:center;gap:6px;margin-bottom:6px;}
+.sp-listhead input{flex:1 1 auto;min-width:0;background:#1a120c;border:1px solid var(--rule);border-radius:6px;color:var(--gold-br);padding:5px 8px;font-size:12.5px;font-family:var(--serif);}
+.sp-trk{display:flex;align-items:center;gap:6px;padding:4px 6px;border:1px solid var(--rule);border-radius:7px;margin-bottom:4px;background:rgba(0,0,0,.22);font-size:12px;}
+.sp-trk.miss{opacity:.5;}
+.sp-trk.now{border-color:var(--gold);}
+.sp-trk.now .nm{color:var(--gold-br);}
+.sp-trk .nm{flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:default;}
+.sp-trk.pickable .nm{cursor:pointer;}
+.sp-divider{font-family:var(--mono);font-size:10px;color:#6a5647;letter-spacing:.06em;text-transform:uppercase;padding:8px 2px 4px;}
+.sp-empty{text-align:center;color:var(--ink-soft);font-style:italic;padding:16px 12px;font-size:13px;line-height:1.5;}
+.sp-empty .pick{background:#241a11;border:1px solid var(--rule);color:var(--ink);border-radius:7px;padding:7px 11px;font-family:var(--serif);font-size:12.5px;font-style:normal;cursor:pointer;margin-top:8px;}
+.sp-empty .pick:hover{border-color:var(--gold);color:var(--gold-br);}
+.sp-assign{background:rgba(122,28,28,.25);border:1px solid var(--crimson);border-radius:7px;padding:5px 8px;font-size:11.5px;color:var(--gold-br);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.sp-assign .sp-cancel{margin-left:auto;}
+.sp-padwrap{flex:0 0 auto;border-top:1px solid var(--rule);}
+.sp-padhead{font-family:var(--mono);font-size:10px;color:#6a5647;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px 0;}
+.sp-padhead .hint{text-transform:none;letter-spacing:0;color:#55453a;float:right;}
+.sp-pads{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:6px 8px 8px;}
+.sp-pad{position:relative;background:#241211;border:1px solid var(--rule);border-radius:7px;color:var(--ink);font-size:10px;font-family:var(--mono);padding:8px 3px;min-height:34px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;}
+.sp-pad:hover{border-color:var(--gold);color:var(--gold-br);}
+.sp-pad.empty{color:#55453a;border-style:dashed;}
+.sp-pad .clr{position:absolute;top:0;right:0;border:0;background:none;color:#8a6d5f;font-size:10px;padding:1px 4px;cursor:pointer;display:none;}
+.sp-pad:hover .clr{display:block;}
+.sp-pad .clr:hover{color:var(--crimson-br);}
+.sp-strip{flex:0 0 auto;display:flex;align-items:center;gap:4px;padding:7px 8px;border-top:1px solid var(--rule);background:rgba(0,0,0,.3);}
+.sp-strip button{flex:0 0 auto;background:#241211;border:1px solid var(--rule);color:var(--gold-br);border-radius:6px;font-size:11px;line-height:1;padding:6px 7px;cursor:pointer;}
+.sp-strip button:hover{border-color:var(--gold);}
+#spShuffle,#spLoop{color:#6a5647;}
+#spShuffle.on,#spLoop.on{color:var(--gold-br);border-color:var(--gold);}
+#spLoop.track{background:#2c1811;}
+.sp-now{flex:1 1 auto;min-width:0;font-family:var(--mono);font-size:10px;color:var(--ink-soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.sp-now b{color:var(--gold-br);font-weight:600;}
+.sp-now.cue{color:#b0894a;font-style:italic;}
+.sp-vol{flex:0 0 auto;display:flex;align-items:center;gap:3px;font-size:10px;color:#8a6d5f;}
+.sp-vol input{width:52px;accent-color:var(--gold);}
+.sp-vol.master input{width:44px;}   /* adv F8: master volume reachable from the Player strip */
+#spFold{color:#8a6d5f;background:none;border-color:transparent;}
+#spFold:hover{color:var(--gold-br);border-color:var(--rule);}
+
 /* ===================== COMBAT — the War Table (shell-owned tracker) ===================== */
 .combat{position:fixed;top:100px;right:16px;bottom:16px;z-index:67;width:372px;max-width:94vw;
   background:linear-gradient(180deg,#20100e,#160b0a);border:1px solid var(--gold);border-radius:12px;
@@ -714,6 +782,23 @@ body.strip-on .combat{top:146px;}
 .combat-turnbar .mini{background:#241211;border:1px solid var(--rule);color:var(--ink);border-radius:7px;padding:8px 10px;font-family:var(--serif);font-size:12px;}
 .combat-turnbar .mini:hover{border-color:var(--gold);color:var(--gold-br);}
 .combat-b{flex:1 1 auto;overflow-y:auto;padding:8px;}
+/* v25: TURN HISTORY - the fight's log folds under the roster */
+#combatHist{flex:0 0 auto;border-top:1px solid var(--rule);background:rgba(0,0,0,.25);}
+#combatHist .ch-bar{display:flex;align-items:center;gap:6px;padding:6px 10px;}
+#combatHist .ch-chip{flex:1 1 auto;min-width:0;text-align:left;background:none;border:1px solid var(--rule);border-radius:7px;
+  color:#c8ab7c;font-size:11px;padding:5px 9px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#combatHist .ch-chip:hover{border-color:var(--gold);color:var(--gold-br);}
+#combatHist .ch-clear{flex:0 0 auto;background:none;border:1px solid transparent;color:#8a6d5f;font-size:10.5px;border-radius:6px;padding:4px 7px;cursor:pointer;}
+#combatHist .ch-clear:hover{color:var(--crimson-br);border-color:var(--rule);}
+#combatHist .ch-list{display:none;max-height:180px;overflow-y:auto;padding:2px 10px 8px;}
+#combatHist.open .ch-list{display:block;}
+#combatHist .ch-rsep{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#8a6d5f;padding:6px 0 2px;border-bottom:1px solid var(--rule);margin-bottom:2px;}
+#combatHist .ch-row{display:flex;gap:7px;align-items:baseline;font-size:11px;color:#c8ab7c;padding:2.5px 0;border-bottom:1px dotted rgba(201,162,75,.14);}
+#combatHist .ch-row .k{flex:0 0 auto;font-size:9px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--rule);border-radius:5px;padding:1px 5px;color:#a8846a;}
+#combatHist .ch-row.dmg .k{color:#d88a7a;border-color:rgba(216,80,58,.4);}
+#combatHist .ch-row.heal .k,#combatHist .ch-row.up .k{color:#7ac89a;border-color:rgba(77,162,107,.4);}
+#combatHist .ch-row.down .k,#combatHist .ch-row.end .k{color:var(--crimson-br);}
+#combatHist .ch-row .tx{flex:1 1 auto;min-width:0;}
 .combat-empty{text-align:center;color:var(--ink-soft);font-style:italic;padding:22px 16px;font-size:14px;}
 .combat-empty .muster{display:block;margin:14px auto 4px;background:linear-gradient(180deg,var(--gold-br),var(--gold));color:#160a0a;border:none;border-radius:8px;padding:10px 16px;font-family:var(--serif);font-weight:700;font-size:14px;font-style:normal;}
 .cbt{display:flex;align-items:flex-start;gap:8px;padding:8px;border:1px solid var(--rule);border-radius:9px;margin-bottom:7px;background:rgba(0,0,0,.24);}
@@ -1024,6 +1109,62 @@ body.strip-on .chronicle{top:146px;}
 .scribe .sbtn{font-size:12px;letter-spacing:.05em;padding:7px 16px;border-radius:7px;cursor:pointer;
   border:1px solid var(--gold-line);background:linear-gradient(#3a2410,#2a1808);color:var(--gold-br);}
 .scribe .sbtn.ghost{background:none;border-color:var(--rule);color:#8a6d5f;}
+
+/* ===== WAR BOARD (v23) - the DM's battle-map surface; a stage occupant beside books & Tomes ===== */
+#wbStage{display:none;min-height:calc(100vh - 92px);background:#0d0806;}
+body.wb-on #wbStage{display:flex;align-items:stretch;}
+body.wb-on #stageShell{display:none;}
+body.strip-on #wbStage{min-height:calc(100vh - 139px);}
+.wb-side{flex:0 0 250px;display:flex;flex-direction:column;gap:8px;padding:10px;border-right:1px solid var(--rule);
+  background:linear-gradient(180deg,#1c0f0b,#140a08);overflow-y:auto;max-height:calc(100vh - 92px);}
+.wb-sec{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:6px;
+  border-bottom:1px solid var(--rule);padding-bottom:3px;display:flex;align-items:center;gap:6px;}
+.wb-sec .sp{flex:1;}
+.wb-btn{font-size:11.5px;padding:6px 10px;border-radius:7px;cursor:pointer;border:1px solid var(--gold-line);
+  background:linear-gradient(#3a2410,#2a1808);color:var(--gold-br);}
+.wb-btn.on{background:linear-gradient(#5a3a14,#3f280c);border-color:var(--gold);color:#ffe9b8;}
+.wb-btn:disabled{opacity:.45;cursor:default;}
+.wb-inp{background:#160c05;color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:5px 8px;font-size:12px;width:100%;}
+.wb-tray{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.wb-tile{position:relative;border:1px solid var(--rule);border-radius:7px;overflow:hidden;cursor:pointer;background:#0f0705;}
+.wb-tile img{display:block;width:100%;height:74px;object-fit:cover;opacity:.92;}
+.wb-tile .nm{display:block;font-size:10px;color:#c8ab7c;padding:3px 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.wb-tile:hover{border-color:var(--gold);}
+.wb-tile.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold);}
+.wb-tile .rn{position:absolute;top:3px;right:3px;font-size:10px;padding:1px 5px;border-radius:5px;border:1px solid var(--gold-line);
+  background:rgba(20,10,6,.85);color:var(--gold-br);cursor:pointer;opacity:0;}
+.wb-tile:hover .rn{opacity:1;}
+.wb-empty{font-size:11.5px;color:#8a6d5f;line-height:1.5;padding:4px 2px;}
+.wb-main{flex:1 1 auto;display:flex;flex-direction:column;min-width:0;}
+.wb-toolbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:7px 10px;border-bottom:1px solid var(--rule);
+  background:linear-gradient(180deg,#20100e,#160b0a);}
+.wb-toolbar .ti{font-size:12.5px;color:var(--gold-br);letter-spacing:.06em;margin-right:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;}
+.wb-toolbar .sp{flex:1;}
+.wb-canvas-wrap{flex:1 1 auto;position:relative;min-height:200px;overflow:hidden;}
+#wbCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;}
+#wbCanvas.tool-pan{cursor:grab;} #wbCanvas.dragging{cursor:grabbing;}
+#wbCanvas.tool-brush,#wbCanvas.tool-rect,#wbCanvas.tool-erase{cursor:crosshair;}
+/* v25: measure / draw / ping tools */
+#wbCanvas.tool-measure,#wbCanvas.tool-draw{cursor:crosshair;}
+#wbCanvas.tool-ping{cursor:pointer;}
+#wbMeasure{display:none;position:absolute;top:10px;left:10px;z-index:4;pointer-events:none;
+  font:600 12.5px ui-monospace,Consolas,monospace;color:#ffe9b8;background:rgba(16,8,5,.88);
+  border:1px solid var(--gold-line);border-radius:7px;padding:5px 10px;}
+#wbAlign{display:none;gap:6px;align-items:center;flex-wrap:wrap;padding:6px 10px;border-bottom:1px solid var(--rule);background:#180d08;font-size:11.5px;color:#c8ab7c;}
+#wbAlign.show{display:flex;}
+#wbAlignRead{font:11px ui-monospace,Consolas,monospace;color:var(--gold-br);}
+/* v25: the draw sub-bar */
+#wbDrawBar{display:none;gap:6px;align-items:center;flex-wrap:wrap;padding:6px 10px;border-bottom:1px solid var(--rule);background:#180d08;font-size:11.5px;color:#c8ab7c;}
+#wbDrawBar.show{display:flex;}
+.wb-drsep{width:1px;height:18px;background:var(--rule);margin:0 3px;}
+.wb-swatch{width:20px;height:20px;border-radius:50%;border:2px solid rgba(0,0,0,.55);cursor:pointer;padding:0;flex:0 0 auto;}
+.wb-swatch.on{border-color:#ffe9b8;box-shadow:0 0 0 1px var(--gold);}
+#wbTokEdit{display:none;gap:6px;align-items:center;flex-wrap:wrap;padding:6px 10px;border-bottom:1px solid var(--rule);background:#180d08;font-size:11.5px;color:#c8ab7c;}
+#wbTokEdit.show{display:flex;}
+#wbTokEdit .wb-inp{width:110px;}
+.wb-honesty{font-size:10.5px;color:#8a6d5f;line-height:1.45;padding:5px 10px;border-top:1px solid var(--rule);background:#140a08;}
+/* v23.1: dock mode - the rail is fixed-right, so the board gets the same compensating margin the stage shell does */
+body.dock-on.on-stage #wbStage{margin-right:var(--dockw,360px);}
 </style>
 </head>
 <body>
@@ -1048,6 +1189,7 @@ body.strip-on .chronicle{top:146px;}
     <button class="mbtn only-stage" id="btnSound" onclick="toggleSound()" title="Sound Mat &mdash; play a Sound Companion pack from your own folder"><span class="g">&#9834;</span><span class="lbl">Sound</span></button>
     <button class="mbtn only-stage" id="btnDock" onclick="toggleDock()" title="Dock references to a sidebar so they stop covering the text"><span class="g">&#9704;</span><span class="lbl">Dock</span></button>
     <span class="save-ind only-stage" title="Your board saves to the binder automatically"><span class="dot"></span>Saved</span>
+    <button class="mbtn" id="wbBtn" onclick="wbToggle()" title="War Board: your battle maps, grid and fog (w on the stage)"><span class="g">&#8862;</span><span class="lbl">War Board</span></button>
     <button class="mbtn" id="btnChron" onclick="toggleChronicle()" title="The Chronicle: what your table did in earlier chapters, remembered across Keepers"><span class="g">&#10002;</span><span class="lbl">Chronicle</span></button>
     <button class="mbtn" id="btnTheater" onclick="toggleTheater()" title="The Theater: pair your players&#39; Satchels to this table"><span class="g">&#9678;</span><span class="lbl">Theater</span></button>
     <button class="mbtn" onclick="openHelp()" title="Keyboard shortcuts (?)">?</button>
@@ -1092,6 +1234,88 @@ body.strip-on .chronicle{top:146px;}
       <div class="pane" id="paneL"></div>
       <div class="split-gutter" id="splitGutter" title="Drag to resize"></div>
       <div class="pane" id="paneR" style="display:none"></div>
+    </div>
+    <!-- ===================== THE WAR BOARD (v23) - a third stage occupant; map bytes stay in the user's folder ===================== -->
+    <div id="wbStage" aria-label="War Board">
+      <div class="wb-side">
+        <div class="wb-sec">Maps<span class="sp"></span></div>
+        <button class="wb-btn" id="wbLinkMaps" onclick="wbLinkMaps()" title="Point the War Board at a folder of map images on your computer">&#128193; Maps folder&hellip;</button>
+        <input class="wb-inp" id="wbTraySearch" placeholder="Search maps&hellip;" oninput="wbRenderTray()">
+        <div class="wb-tray" id="wbTray"></div>
+        <div class="wb-sec">Tokens<span class="sp"></span></div>
+        <button class="wb-btn" id="wbLinkTokens" onclick="wbLinkTokens()" title="Point the War Board at a folder of token images">&#128193; Tokens folder&hellip;</button>
+        <input class="wb-inp" id="wbTokSearch" placeholder="Search tokens&hellip;" oninput="wbRenderTokTray()">
+        <div class="wb-tray" id="wbTokTray"></div>
+        <button class="wb-btn" onclick="wbPlaceMustered()" title="Place every mustered combatant on this map as a token">&#9876; Place mustered</button>
+      </div>
+      <div class="wb-main">
+        <div class="wb-toolbar">
+          <span class="ti" id="wbTitle">War Board</span>
+          <button class="wb-btn" id="wbRenameBtn" onclick="wbRenameActive()" title="Rename this map">&#9998;</button>
+          <button class="wb-btn" data-wbtool="pan" onclick="wbSetTool('pan')" title="Pan the map (drag)">&#10021; Pan</button>
+          <button class="wb-btn" data-wbtool="brush" onclick="wbSetTool('brush')" title="Reveal: paint squares the party can see">&#128396; Reveal</button>
+          <button class="wb-btn" data-wbtool="rect" onclick="wbSetTool('rect')" title="Reveal a rectangle of squares">&#9634; Room</button>
+          <button class="wb-btn" data-wbtool="erase" onclick="wbSetTool('erase')" title="Hide squares again">&#9003; Hide</button>
+          <button class="wb-btn" data-wbtool="token" onclick="wbSetTool('token')" title="Select and move tokens">&#9823; Tokens</button>
+          <button class="wb-btn" data-wbtool="measure" onclick="wbSetTool('measure')" title="Measure: drag a ruler across the map. Esc clears it. Yours alone, nothing is sent.">&#128207; Measure</button>
+          <button class="wb-btn" data-wbtool="draw" onclick="wbSetTool('draw')" title="Draw on the map. Shared drawings reach your players live once the map is pushed.">&#9999; Draw</button>
+          <button class="wb-btn" data-wbtool="ping" onclick="wbSetTool('ping')" title="Ping: click the map to say look here. Everyone at the table sees the ring.">&#9737; Ping</button>
+          <button class="wb-btn" onclick="wbRevealAll()" title="Reveal the whole map">All</button>
+          <button class="wb-btn" onclick="wbHideAll()" title="Hide the whole map">None</button>
+          <span class="sp"></span>
+          <button class="wb-btn" id="wbAlignBtn" onclick="wbAlignToggle()" title="Align the grid to this map">&#8862; Grid</button>
+          <button class="wb-btn" onclick="wbZoomBtn(0.8)" title="Zoom out">&minus;</button>
+          <button class="wb-btn" onclick="wbZoomBtn(1.25)" title="Zoom in">&#43;</button>
+          <button class="wb-btn" onclick="wbFit()" title="Fit the map to the window">Fit</button>
+          <button class="wb-btn" id="wbPush" onclick="wbPushBoard()" title="Push this map to every paired Satchel">&#9678; Push to table</button>
+          <button class="wb-btn" onclick="wbClose()" title="Leave the board (everything is kept)">&times;</button>
+        </div>
+        <div id="wbAlign">
+          <button class="wb-btn" id="wbAlignMatch" onclick="wbAlignSetMode('match')" title="Drag a box across a few printed squares; the grid matches it">Match</button>
+          <button class="wb-btn" id="wbAlignDrop" onclick="wbAlignSetMode('drop')" title="Type a square size; the grid drops on">Drop</button>
+          <label>N <input class="wb-inp" id="wbMatchN" type="number" min="1" max="6" value="3" style="width:44px" title="How many printed squares your drag will cross" onchange="wbMatchNChange(this.value)"></label>
+          <label>px <input class="wb-inp" id="wbDropPx" type="number" min="4" step="0.25" style="width:70px" title="Square size in image pixels" oninput="wbDropPxChange(this.value)"></label>
+          <button class="wb-btn" id="wbGridless" onclick="wbGridlessToggle()" title="No grid on this map. The fog still works in fixed 64px cells.">Gridless</button>
+          <button class="wb-btn" onclick="wbAlignUndo()" title="Put the grid back the way it was">Undo</button>
+          <span id="wbAlignRead"></span>
+          <span style="color:#8a6d5f">Arrows nudge origin 1px. Shift+arrows change pitch 0.25px.</span>
+        </div>
+        <div id="wbDrawBar">
+          <button class="wb-btn" data-wbdraw="pen" onclick="wbDrSetKind('pen')" title="Freehand pen">&#9999; Pen</button>
+          <button class="wb-btn" data-wbdraw="line" onclick="wbDrSetKind('line')" title="Straight line">&#9585; Line</button>
+          <button class="wb-btn" data-wbdraw="rect" onclick="wbDrSetKind('rect')" title="Rectangle">&#9634; Box</button>
+          <button class="wb-btn" data-wbdraw="ellipse" onclick="wbDrSetKind('ellipse')" title="Ellipse">&#9675; Ring</button>
+          <button class="wb-btn" data-wbdraw="erase" onclick="wbDrSetKind('erase')" title="Eraser: tap or drag across a drawing to remove the whole mark">&#9003; Erase</button>
+          <span class="wb-drsep"></span>
+          <button class="wb-swatch" data-wbcol="#f2ede2" style="background:#f2ede2" onclick="wbDrSetCol('#f2ede2')" title="Bone white"></button>
+          <button class="wb-swatch" data-wbcol="#22201c" style="background:#22201c" onclick="wbDrSetCol('#22201c')" title="Ink black"></button>
+          <button class="wb-swatch" data-wbcol="#d8503a" style="background:#d8503a" onclick="wbDrSetCol('#d8503a')" title="Red"></button>
+          <button class="wb-swatch" data-wbcol="#e08a3c" style="background:#e08a3c" onclick="wbDrSetCol('#e08a3c')" title="Orange"></button>
+          <button class="wb-swatch" data-wbcol="#e6c84a" style="background:#e6c84a" onclick="wbDrSetCol('#e6c84a')" title="Gold"></button>
+          <button class="wb-swatch" data-wbcol="#4da26b" style="background:#4da26b" onclick="wbDrSetCol('#4da26b')" title="Green"></button>
+          <button class="wb-swatch" data-wbcol="#4a90d8" style="background:#4a90d8" onclick="wbDrSetCol('#4a90d8')" title="Blue"></button>
+          <button class="wb-swatch" data-wbcol="#9a63c8" style="background:#9a63c8" onclick="wbDrSetCol('#9a63c8')" title="Violet"></button>
+          <span class="wb-drsep"></span>
+          <button class="wb-btn" data-wbw="s" onclick="wbDrSetW('s')" title="Thin stroke">S</button>
+          <button class="wb-btn" data-wbw="m" onclick="wbDrSetW('m')" title="Medium stroke">M</button>
+          <button class="wb-btn" data-wbw="l" onclick="wbDrSetW('l')" title="Heavy stroke">L</button>
+          <span class="wb-drsep"></span>
+          <button class="wb-btn" id="wbDrDmBtn" onclick="wbDrDmToggle()" title="DM only: marks made with this lit render dashed, stay on your screen, and never reach a player">DM only</button>
+          <button class="wb-btn" id="wbDrClearBtn" onclick="wbDrClear(this)" title="Clear this layer's drawings from the map">Clear</button>
+        </div>
+        <div id="wbTokEdit">
+          <input class="wb-inp" id="wbTokLabel" placeholder="Label" oninput="wbTokEditApply()">
+          <input id="wbTokColour" type="color" value="#c9a24b" title="Ring colour" oninput="wbTokEditApply()">
+          <input class="wb-inp" id="wbTokOwner" list="wbOwnerList" placeholder="Owner (dm or a seat name)" oninput="wbTokEditApply()"><datalist id="wbOwnerList"></datalist>
+          <button class="wb-btn" onclick="wbTokSize(1)">1&times;1</button>
+          <button class="wb-btn" onclick="wbTokSize(2)">2&times;2</button>
+          <button class="wb-btn" onclick="wbTokSize(3)">3&times;3</button>
+          <label>free <input class="wb-inp" id="wbTokFree" type="number" min="0.25" step="0.25" style="width:60px" title="Size in squares" onchange="wbTokSize(parseFloat(this.value)||1)"></label>
+          <button class="wb-btn" onclick="wbTokDelete()" title="Remove this token">Delete</button>
+        </div>
+        <div class="wb-canvas-wrap" id="wbCanvasWrap"><canvas id="wbCanvas"></canvas><div id="wbMeasure"></div></div>
+        <div class="wb-honesty">Fog is honest but not armored: the whole map image travels to your players and the unexplored part is hidden on their screens. A determined player with browser devtools can peek behind it. Keep real secrets out of the map image itself.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1258,6 +1482,13 @@ body.strip-on .chronicle{top:146px;}
     <button class="mini" title="Muster more" onclick="openBuilder()">&#43; Add</button>
   </div>
   <div class="combat-b" id="combatBody"></div>
+  <div id="combatHist">
+    <div class="ch-bar">
+      <button class="ch-chip" id="chHistChip" onclick="chHistToggle()" title="The fight so far, blow by blow. Tap to open or close.">No blows traded yet.</button>
+      <button class="ch-clear" id="chHistClearBtn" onclick="chHistClear(this)" title="Clear the fight log">Clear</button>
+    </div>
+    <div class="ch-list" id="chHistList"></div>
+  </div>
 </div>
 
 <!-- ===================== THE THEATER - pair Gnasher's Satchels to the table (v14; frozen wire: Theater/THEATER-PROTOCOL.md) ===================== -->
@@ -1337,6 +1568,7 @@ body.strip-on .chronicle{top:146px;}
 </div>
 
 <!-- ===================== THE SOUND MAT — Sound Companions player (audio stays in the user's local folder) ===================== -->
+<!-- v24: two surfaces on one engine. Cues = the untouched cue engine; Player = the playlist driver (spec 3.3). -->
 <div class="sound" id="sound" aria-label="Sound Mat">
   <div class="sound-h">
     <span class="ti">&#9834; Sound Mat</span><span class="pk" id="sndPack">No sounds folder linked</span><span class="sp"></span>
@@ -1344,11 +1576,36 @@ body.strip-on .chronicle{top:146px;}
     <button id="sndStop" title="Stop all sound" onclick="soundStopAll()" disabled>&#9632;</button>
     <button class="x" title="Hide (sound keeps playing)" onclick="hideSound()">&times;</button>
   </div>
-  <div class="sound-bar">
-    <button class="pick" onclick="pickSoundFolder()" title="Point the Sound Mat at a Sound Companion folder on your computer">&#128193; Sounds folder&hellip;</button>
-    <label class="vol" title="Master volume">&#128266;<input id="sndVol" type="range" min="0" max="100" value="85" oninput="soundSetVol(this.value)"></label>
+  <div class="sound-tabs">
+    <button id="spTabCues" class="on" onclick="spSetTab('cues')" title="The adventure's sound cues">Cues</button>
+    <button id="spTab" onclick="spSetTab('player')" title="Your playlists and sound pads">Player</button>
   </div>
-  <div class="sound-b" id="sndBody"></div>
+  <div class="sound-cues" id="spCuesWrap">
+    <div class="sound-bar">
+      <button class="pick" onclick="pickSoundFolder()" title="Point the Sound Mat at a Sound Companion folder on your computer">&#128193; Sounds folder&hellip;</button>
+      <label class="vol" title="Master volume">&#128266;<input id="sndVol" type="range" min="0" max="100" value="85" oninput="soundSetVol(this.value)"></label>
+    </div>
+    <div class="sound-b" id="sndBody"></div>
+  </div>
+  <div class="sound-player" id="spPanel">
+    <div class="sp-top">
+      <div class="sp-searchrow"><input id="spSearch" type="search" placeholder="Search your tracks and playlists" oninput="spRender()"></div>
+      <div class="sp-lists" id="spLists"></div>
+      <div class="sp-tracks" id="spTracks"></div>
+      <div class="sp-padwrap"><div class="sp-padhead">Sound pads <span class="hint">tap an empty pad to set it</span></div><div class="sp-pads" id="spPads"></div></div>
+    </div>
+    <div class="sp-strip">
+      <button id="spPrev" title="Previous track" onclick="spPrev()">&#9198;</button>
+      <button id="spPlay" title="Play or pause" onclick="spPlay()">&#9654;</button>
+      <button id="spNext" title="Next track" onclick="spNext()">&#9197;</button>
+      <button id="spShuffle" title="Shuffle" onclick="spShuffleToggle()">&#128256;</button>
+      <button id="spLoop" title="Loop: off" onclick="spLoopCycle()">&#128257;</button>
+      <div class="sp-now" id="spNow">Nothing playing</div>
+      <label class="sp-vol master" title="Master volume (the whole Sound Mat)">&#128266;<input id="spMaster" type="range" min="0" max="100" value="85" oninput="soundSetVol(this.value)"></label>
+      <label class="sp-vol" title="Player volume">&#9834;<input id="spVol" type="range" min="0" max="100" value="85" oninput="spSetVol(this.value)"></label>
+      <button id="spFold" title="Fold the player to a slim strip" onclick="spToggleFold()">&#9660;</button>
+    </div>
+  </div>
 </div>
 
 <!-- ===================== THE MUSTER — assemble an encounter from your party + any bestiary you own ===================== -->
@@ -1380,6 +1637,7 @@ body.strip-on .chronicle{top:146px;}
       <tr><td class="k"><kbd>P</kbd></td><td>Party passives strip</td></tr>
       <tr><td class="k"><kbd>S</kbd></td><td>Split &mdash; two books side by side</td></tr>
       <tr><td class="k"><kbd>C</kbd></td><td>Combat &mdash; muster the fight, run initiative</td></tr>
+      <tr><td class="k"><kbd>W</kbd></td><td>War Board: maps, grid and fog</td></tr>
       <tr><td class="k"><kbd>Esc</kbd></td><td>Close whatever's open</td></tr>
     </table>
     <button class="close" onclick="closeHelp()">Got it</button>
@@ -1467,7 +1725,7 @@ function addInstalledToBooks(k){
 
 /* ---- persisted binder state (mock localStorage; real = IndexedDB) ---- */
 const SKEY='grimoire_v1';
-let STATE={favorites:[],recents:[],boards:{},session:null,coachDone:false,rollLog:[],bookParty:{},keeperSaves:{},bookmarks:{},combat:null,splitRatio:1,dock:false,dockw:360,soundMat:{open:false,mode:'dock',pack:null,vol:0.85},theaterWh:{},packets:[],chronicle:{},ctsFold:{},splitRight:null};
+let STATE={favorites:[],recents:[],boards:{},session:null,coachDone:false,rollLog:[],bookParty:{},keeperSaves:{},bookmarks:{},combat:null,splitRatio:1,dock:false,dockw:360,soundMat:{open:false,mode:'dock',pack:null,vol:0.85},theaterWh:{},packets:[],chronicle:{},ctsFold:{},splitRight:null,wb:{maps:{},active:null,open:false}};
 /* ===== persistence: IndexedDB (real build), localStorage fallback ===== */
 let DB=null;
 function idbOpen(){return new Promise((res,rej)=>{try{const r=indexedDB.open('grimoire',1);
@@ -1484,7 +1742,12 @@ async function loadState(){ let s=null; if(DB)s=await idbGet('kv','state'); if(!
   PARTY=PARTIES[activeParty].pcs; }
 /* v13½ FIX: idbPut is (store, val, key) — the old ('kv','state',STATE) call passed STATE as the IDB KEY
    (invalid → silent fail), so kv persistence never actually worked; only the keepers store did. */
-function saveState(){ STATE.parties=PARTIES; STATE.activeParty=activeParty; STATE._saved=Date.now(); if(DB)idbPut('kv',STATE,'state'); else{try{localStorage.setItem(SKEY,JSON.stringify(STATE));}catch(e){}} if(driveOK)driveSaveSoon(); }
+function saveState(){ STATE.parties=PARTIES; STATE.activeParty=activeParty; STATE._saved=Date.now();
+  /* v23.1 (finding 23): idbPut resolves false instead of rejecting, so a dead IDB was unobservable
+     by construction. The FIRST failed save says so honestly, once, instead of working-until-reboot. */
+  if(DB)idbPut('kv',STATE,'state').then(function(ok){ if(!ok&&!saveState._warned){ saveState._warned=true;
+    toast('Your binder could not be saved to this browser&rsquo;s storage. It works for now, but changes may not survive a reload. Export a .keeper backup to be safe.'); } });
+  else{try{localStorage.setItem(SKEY,JSON.stringify(STATE));}catch(e){}} if(driveOK)driveSaveSoon(); }
 async function loadInstalled(){ if(!DB)return; const arr=await idbAll('keepers'); arr.forEach(k=>{INSTALLED[k.id]=k;addInstalledToBooks(k);}); rebuildIndex(); }
 
 /* ---- utilities ---- */
@@ -1838,6 +2101,8 @@ function tomeCoverHTML(id){ const t=TOMES[id], bm=(t.bookmarks||[]).length;
 function tomePdfSupported(){ return navigator.pdfViewerEnabled!==false; }   // false = the browser SAYS it can't; undefined = older browser, try it with a note
 function openTome(id){
   const t=TOMES[id]; if(!t||!t.blob){ toast('That Tome is missing its file. Remove it and add the PDF again.'); return; }
+  /* v23.1 (finding 8): same law as openBook - no occupant swap behind the board's curtain */
+  try{ if(STATE.wb&&STATE.wb.open)wbClose(); }catch(e){}
   currentTome=id; currentBook=null;
   const _rz=document.getElementById('resume'); if(_rz)_rz.classList.remove('show');
   if(tomeURL){ try{URL.revokeObjectURL(tomeURL);}catch(e){} }
@@ -2004,11 +2269,21 @@ function portableState(){
   if(Array.isArray(s.tables)) s.tables.forEach(t=>{ if(t&&typeof t.book==='string'&&t.book.indexOf('tome:')===0)t.book=''; });
   if(s.ctsFold) Object.keys(s.ctsFold).forEach(k=>{ if(k.indexOf('tome:')===0) delete s.ctsFold[k]; });
   if(typeof s.splitRight==='string'&&s.splitRight.indexOf('tome:')===0) s.splitRight=null;
+  /* v23 THE WAR BOARD: stage pointers are machine-session-local (same law as tome pointers).
+     The per-map grid + mask + token state KEEPS riding - spec trap 3 wants it to survive
+     export/import; a new machine relinks the folder and maps re-match by filename. */
+  if(s.boards) Object.keys(s.boards).forEach(k=>{ if(k.indexOf('wb:')===0) delete s.boards[k]; });
+  if(Array.isArray(s.tables)) s.tables.forEach(t=>{ if(t&&typeof t.book==='string'&&t.book.indexOf('wb:')===0)t.book=''; });
+  if(s.wb){ s.wb.active=null; s.wb.open=false; }
   return s;
 }
 function exportBinder(){
   /* v20: TOMES are deliberately NOT in the package — PDF binaries would balloon the backup
      and .keeper is a state format, not a file locker. The DM's PDF is its own backup. */
+  /* v23.1 (finding 10, pin 9): fog history compacts before it travels - no .keeper carries a
+     50k-op brush diary when a few hundred row-runs paint the same mask */
+  try{ if(STATE.wb&&STATE.wb.maps)Object.keys(STATE.wb.maps).forEach(function(k){
+    const m=STATE.wb.maps[k]; if(m&&(m.ops||[]).length>500)wbCompactOps(m); }); }catch(e){}
   const pkg={format:'grimoire-binder',v:1,exported:Date.now(),state:portableState(),keepers:Object.values(INSTALLED)};
   const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([JSON.stringify(pkg)],{type:'application/json'}));
   a.download='my-grimoire.keeper'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),3000);
@@ -2023,6 +2298,34 @@ async function adoptBinder(pkg,opts){ opts=opts||{};
   if(STATE.parties&&STATE.parties.length)PARTIES=STATE.parties;
   if(STATE.activeParty!=null&&PARTIES[STATE.activeParty])activeParty=STATE.activeParty;
   PARTY=PARTIES[activeParty]?PARTIES[activeParty].pcs:PARTIES[0].pcs;
+  /* v23.1 (finding 24): the swapped-in STATE owns the War Board now. Stale mask cache, an open
+     surface, or a live push pointer from the OLD state would lie about the new one - close the
+     board and invalidate every wb runtime cache; the DM reopens and re-pushes from truth. */
+  try{
+    if(STATE.wb)STATE.wb.open=false;
+    document.body.classList.remove('wb-on');
+    wbMaskCv=null; wbMaskFor=''; wbMaskDirty=true;
+    wbFreeImg(); wbAlignPrev=null; wbSelTok=null; wbDrag=null;
+    WB_NET.pushedId=null; WB_NET.boardSig=''; WB_NET.needFullSync=false;
+    WB_NET.lastImg=''; WB_NET.lastImgUid=null; WB_NET.lastImgStamp=0;
+    WB_NET.revealBuf=[]; clearTimeout(WB_NET.revealTmr); WB_NET.revealTmr=null;
+    /* v25: the draw buffer, the ruler and any live rings speak the old state's frame too */
+    WB_NET.drawBuf=[]; clearTimeout(WB_NET.drawTmr); WB_NET.drawTmr=null;
+    WB_NET.pingAt={}; wbPings=[]; wbMs=null;
+    /* recheck NEW-3: parked envelopes, art-sent memory and move dedup all speak the OLD state's
+       uids - debris after an import. The next push/admit rebuilds all three from truth. */
+    WB_NET.hold={}; WB_NET.artSent={}; WB_NET.seen={};
+    if(document.body.classList.contains('on-stage')&&!stageOpen())go('shelf');
+    if(typeof wbBtnSync==='function')wbBtnSync();
+  }catch(e){}
+  /* v24.1 (adv F4): the swapped-in STATE owns the Sound Player too - the same law as the WB block
+     above. Stop the old runtime (the imported state says nothing was playing), drop the memory-only
+     shuffle deck and open-list pointer, and re-render so the imported tab/fold/shuffle/loop lights
+     and playlists are truth instead of the old state's leftovers. */
+  try{
+    if(typeof spStopLocal==='function'){ spStopLocal(); spDeck=null; spOpenId=null;
+      if(soundState().open)spRender(); else spApplyUI(); }
+  }catch(e){}
   rebuildIndex(); saveState(); renderShelf(); renderStrip(); renderLog();
 }
 function importBinder(){
@@ -2119,6 +2422,20 @@ function exportChronicle(){
         const conds=(c.conds||[]).map(cn=>esc(stripEnt(cn&&cn.n?cn.n:cn))+(cn&&cn.r?' ('+cn.r+')':'')).join(', ');
         return '<div class="cbt'+(down?' down':'')+'"><span class="ini">'+esc(String(c.init))+'</span><span class="nm">'+esc(stripEnt(c.nm))+'</span><span class="hp">'+(down?'down':esc(String(c.hp))+'/'+esc(String(c.hpMax))+' hp')+'</span>'+(conds?'<span class="cd">'+conds+'</span>':'')+'</div>'; }).join('')+'</div>';
   }
+  /* v25: the turn history tells the fight blow by blow - the live log first, else the last
+     fight's closed log (kept at end so a chronicle written after the dust settles still has it) */
+  let blow='';
+  const bh=(C&&C.hist)||STATE.combatHistLast||[];
+  if(bh.length){
+    let brows='',lastR=null;
+    bh.slice().reverse().forEach(e=>{   /* oldest first: the fight reads top to bottom */
+      if(e.r!==lastR){ brows+='<div class="browround">Round '+esc(String(e.r))+'</div>'; lastR=e.r; }
+      const d=e.t?new Date(e.t):null;
+      const tm=d?d.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'}):'';
+      brows+='<div class="brow2"><span class="tm">'+esc(tm)+'</span><span class="bl">'+esc(chHistLabel(e))+'</span></div>';
+    });
+    blow='<h2>The Battle, Blow by Blow</h2><div class="blow">'+brows+'</div>';
+  }
   let marks='';
   const bms=(bkId&&STATE.bookmarks&&STATE.bookmarks[bkId])||[];
   if(bms.length) marks='<h2>Where the Night Walked</h2><div class="marks">'+bms.map(b=>'<div class="mark">&#9670; '+esc(stripEnt(b.label||'a kept place'))+'</div>').join('')+'</div>';
@@ -2142,6 +2459,9 @@ function exportChronicle(){
     '.cbt .ini{color:#8a6d5f;min-width:26px;text-align:right;}.cbt .nm{flex:1;font-weight:700;}'+
     '.cbt .hp{color:#e0c074;}.cbt .cd{color:#c98a6a;font-size:13px;font-style:italic;}'+
     '.cbt.down{opacity:.55;}.cbt.down .nm{text-decoration:line-through;}'+
+    '.browround{margin:12px 0 3px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a8846a;}'+
+    '.brow2{display:flex;gap:12px;align-items:baseline;padding:4px 2px;border-bottom:1px dotted rgba(201,162,75,.18);}'+
+    '.brow2 .tm{color:#8a6d5f;font-size:12px;min-width:64px;}.brow2 .bl{flex:1;}'+
     '.mark{padding:4px 2px;color:#d9c6ac;}'+
     '.foot{margin-top:26px;color:#a8846a;font-size:13.5px;}.foot a{color:#d9b96a;}';
   const page='<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+
@@ -2150,7 +2470,7 @@ function exportChronicle(){
     '<div class="sub">'+esc(when)+(bk?' &middot; running <b>'+esc(stripEnt(bk.t))+'</b>':'')+(pn?' &middot; '+esc(pn):'')+'</div>'+
     '<div class="rule"></div>'+
     (heroes?'<div class="party">'+heroes+'</div>':'')+
-    '<h2>The Rolls</h2>'+rows+fight+marks+
+    '<h2>The Rolls</h2>'+rows+fight+blow+marks+
     '<div class="rule"></div>'+
     '<div class="foot">Kept with <b>Gnasher&rsquo;s Grimoire</b>, the free Dungeon Master companion &middot; <a href="https://longislanddungeonmaster.com/grimoire">longislanddungeonmaster.com/grimoire</a></div>'+
     '</div></body></html>';
@@ -2188,6 +2508,10 @@ const STAGE={
 };
 function stageHTML(id){return (STAGE[id]||STAGE._generic)(id);}
 function openBook(id){
+  /* v23.1 (finding 8): an occupant swap must never fire invisibly BEHIND the board overlay -
+     the DM would close the board later onto a silently replaced stage. Close the board first,
+     visibly, before the stage changes hands. */
+  try{ if(STATE.wb&&STATE.wb.open)wbClose(); }catch(e){}
   currentBook=id;
   currentTome=null;   // v20: a book on the stage means the Tome frame is gone
   voiceFrameDoc=null;   // v13: stale frame docs never keep chips; the new frame re-registers on load
@@ -2584,8 +2908,10 @@ let cardZ=65, focusCard=null;
    of the book they were reading and into the card's source book. Nothing may navigate the stage
    out from under an open Tome — and a board floated over a Tome is that Tome's board, so it is
    keyed by the Tome and comes back when you reopen it. */
-function boardKey(){return currentBook||(currentTome?('tome:'+currentTome):'_');}
-function stageOpen(){return !!(currentBook||currentTome);}
+/* v23: the War Board is a third stage occupant with its OWN pointer (STATE.wb.open/active) -
+   no wb code ever writes currentBook, so leaving the board restores exactly what was there. */
+function boardKey(){return (STATE.wb&&STATE.wb.open)?('wb:'+(STATE.wb.active||'_')):currentBook||(currentTome?('tome:'+currentTome):'_');}   /* v23.1: an open board with no map keys 'wb:_', never the book underneath */
+function stageOpen(){return !!(currentBook||currentTome||(STATE.wb&&STATE.wb.open));}
 function floatTable(i,opts){
   opts=opts||{};
   /* v22: a Tome entry doesn't float a card - it opens the PDF itself, at the marked page.
@@ -2861,35 +3187,64 @@ function commitCombat(){
   STATE.combat.list=STATE.combat.list.concat(specs);
   sortCombat();
   if(!STATE.combat.activeId && STATE.combat.list.length) STATE.combat.activeId=STATE.combat.list[0].id;
+  chHistLog('muster','','',specs.length,'');   /* v25 turn history */
   saveState(); closeBuilder(); openCombat();
   logRoll('combat',specs.length,'Mustered '+specs.length+' &mdash; initiative rolled');
   toast('Initiative rolled &mdash; <b>'+specs.length+'</b> in the fight.');
 }
 function sortCombat(){ if(STATE.combat) STATE.combat.list.sort((a,b)=>(b.init-a.init)||String(a.id).localeCompare(String(b.id))); }
 function activeIdx(){ const C=STATE.combat; return C?C.list.findIndex(c=>c.id===C.activeId):-1; }
-function combatNext(){ const C=STATE.combat; if(!C||!C.list.length)return; let i=activeIdx(); i++; if(i>=C.list.length){i=0;C.round=(C.round||1)+1;combatTickConds();} C.activeId=C.list[i].id; saveState(); renderCombat(); }
+function combatNext(){ const C=STATE.combat; if(!C||!C.list.length)return; let i=activeIdx(); i++;
+  if(i>=C.list.length){i=0;C.round=(C.round||1)+1;chHistLog('round','','',C.round,'');combatTickConds();}   /* v25: the wrap is history; expiries log after it, inside the new round */
+  C.activeId=C.list[i].id;
+  chHistLog('turn',stripEnt(String(C.list[i].nm||'')).trim(),'',0,'');
+  saveState(); renderCombat(); }
 /* v13 (C-revision small add): timed conditions tick down as the round turns and fall off at zero */
 function combatTickConds(){ const C=STATE.combat; if(!C)return; const ended=[];
   C.list.forEach(c=>{ c.conds=(c.conds||[]).filter(cn=>{ if(!cn||!cn.n||!cn.r)return true; cn.r--;
-    if(cn.r<=0){ ended.push(esc(stripEnt(cn.n))+' ends on '+esc(stripEnt(c.nm))); return false; } return true; }); });
+    if(cn.r<=0){ ended.push(esc(stripEnt(cn.n))+' ends on '+esc(stripEnt(c.nm)));
+      chHistLog('cond-',stripEnt(String(c.nm||'')).trim(),'',1,cn.n);   /* v25: n=1 marks a timed run-out, not a hand removal */
+      return false; } return true; }); });
   if(ended.length)toast(ended.join(' &middot; ')); }
-function combatPrev(){ const C=STATE.combat; if(!C||!C.list.length)return; let i=activeIdx(); i--; if(i<0){i=C.list.length-1;C.round=Math.max(1,(C.round||1)-1);} C.activeId=C.list[i].id; saveState(); renderCombat(); }
+function combatPrev(){ const C=STATE.combat; if(!C||!C.list.length)return; let i=activeIdx(); i--;
+  if(i<0){i=C.list.length-1;C.round=Math.max(1,(C.round||1)-1);chHistLog('round','','',C.round,'back');}   /* v25: movement backward is history too */
+  C.activeId=C.list[i].id;
+  chHistLog('turn',stripEnt(String(C.list[i].nm||'')).trim(),'',0,'back');
+  saveState(); renderCombat(); }
 function findC(id){ const C=STATE.combat; return C?C.list.find(c=>c.id===id):null; }
-function combatHP(id,delta){ const c=findC(id); if(!c)return; c.hp=Math.max(0,Math.min(c.hpMax,c.hp+delta)); saveState(); renderCombat(); }
+function combatHP(id,delta){ const c=findC(id); if(!c)return;
+  const was=c.hp;
+  c.hp=Math.max(0,Math.min(c.hpMax,c.hp+delta));
+  /* v25 turn history: log what actually LANDED (the clamp is part of the truth), and the
+     down/up threshold crossings as their own entries */
+  const d=c.hp-was, nm=stripEnt(String(c.nm||'')).trim();
+  if(d<0)chHistLog('dmg','',nm,-d,'');
+  else if(d>0)chHistLog('heal','',nm,d,'');
+  if(was>0&&c.hp<=0)chHistLog('down',nm,'',0,'');
+  if(was<=0&&c.hp>0)chHistLog('up',nm,'',0,'');
+  saveState(); renderCombat(); }
 function combatHPfield(id,sign){ const row=document.querySelector('.cbt[data-id="'+id+'"]'); const inp=row&&row.querySelector('.hpin'); const v=parseInt(inp&&inp.value,10); if(isNaN(v)||v<=0){ if(inp)inp.focus(); return; } combatHP(id,sign*v); }
 function combatRename(id,val){ const c=findC(id); if(c){c.nm=val;saveState();} }
 function combatInit(id,val){ const c=findC(id); const n=parseInt(val,10); if(c&&!isNaN(n)){ c.init=n; sortCombat(); saveState(); renderCombat(); } }
 function combatRemove(id){ const C=STATE.combat; if(!C)return; const i=C.list.findIndex(c=>c.id===id); if(i<0)return; const wasActive=C.activeId===id;
   C.list.splice(i,1);
-  if(!C.list.length){ STATE.combat=null; saveState(); renderCombat(); return; }
+  if(!C.list.length){ chHistLog('end','','',0,''); STATE.combatHistLast=C.hist||[];   /* v25: removing the last combatant ends the fight too */
+    STATE.combat=null; saveState(); renderCombat(); return; }
   if(wasActive) C.activeId=C.list[Math.min(i,C.list.length-1)].id;
   saveState(); renderCombat(); }
 /* v13: a condition may carry a duration — plain string = untimed (old saves stay valid), {n,r} = ticks down */
 function combatAddCond(id,val){ if(!val)return; const c=findC(id); if(!c)return;
   if(c.conds.some(x=>((x&&x.n)?x.n:x)===val))return;
   const rin=document.querySelector('.cbt[data-id="'+id+'"] .cbt-condr'); const r=rin?parseInt(rin.value,10):NaN;
-  c.conds.push((!isNaN(r)&&r>0)?{n:val,r:Math.min(r,99)}:val); saveState(); renderCombat(); }
-function combatDelCond(id,val){ const c=findC(id); if(c){c.conds=c.conds.filter(x=>((x&&x.n)?x.n:x)!==val);saveState();renderCombat();} }
+  const timed=(!isNaN(r)&&r>0)?Math.min(r,99):0;
+  c.conds.push(timed?{n:val,r:timed}:val);
+  chHistLog('cond+',stripEnt(String(c.nm||'')).trim(),'',timed,val);   /* v25 turn history */
+  saveState(); renderCombat(); }
+function combatDelCond(id,val){ const c=findC(id); if(!c)return;
+  const was=c.conds.length;
+  c.conds=c.conds.filter(x=>((x&&x.n)?x.n:x)!==val);
+  if(c.conds.length!==was)chHistLog('cond-',stripEnt(String(c.nm||'')).trim(),'',0,val);   /* v25: only a real removal logs */
+  saveState();renderCombat(); }
 function combatToggleAtks(id){ const el=document.querySelector('.cbt[data-id="'+id+'"]'); if(el)el.classList.toggle('atks-open'); }
 /* one-reach: tap a combatant's name -> its full stat block floats (monsters; PCs live in the Party drawer) */
 function combatStat(id){ const c=findC(id); if(!c||c.kind!=='monster')return;
@@ -2903,7 +3258,10 @@ function combatAttack(id,ai){ const c=findC(id); if(!c||!c.atk[ai])return; const
   const res=document.querySelector('.cbt[data-id="'+id+'"] .cbt-res');
   if(res)res.innerHTML='<b>'+esc(a.n)+'</b> to-hit <b>'+(roll+a.hit)+'</b> (d20 '+roll+'+'+a.hit+')'+nat+' &middot; dmg '+dm.txt+' = <b>'+dm.sum+'</b>';
   logRoll('atk',roll+a.hit,stripEnt(c.nm)+' '+a.n); }
-function endCombat(){ if(!STATE.combat)return; STATE.combat=null; saveState(); renderCombat(); toast('Combat ended &mdash; the war table is clear.'); }
+function endCombat(){ if(!STATE.combat)return;
+  chHistLog('end','','',0,'');
+  STATE.combatHistLast=STATE.combat.hist||[];   /* v25: the closed log outlives the fight for the Chronicle */
+  STATE.combat=null; saveState(); renderCombat(); toast('Combat ended &mdash; the war table is clear.'); }
 function renderCombat(){
   const C=STATE.combat, body=document.getElementById('combatBody'), rd=document.getElementById('combatRound');
   const btn=document.getElementById('btnCombat'); if(btn)btn.classList.toggle('on',!!C);
@@ -2938,6 +3296,66 @@ function renderCombat(){
   }).join('');
 }
 
+/* ===== v25 TURN HISTORY - the fight's log, kept on the combat it describes =====
+   STATE.combat.hist = [{t, r, kind, who, tgt, n, note}], newest first, cap 400. Logged from the
+   REAL mutation points (muster, next/prev turn and their round wraps, HP with down/up
+   transitions, condition add/remove/expire, combat end) - never from the render. Host-local:
+   nothing here rides the wire. It rides .keeper because combat does; when a fight ends, the
+   closed log is kept at STATE.combatHistLast so the Session Chronicle written after the dust
+   settles can still tell the story. */
+let chHistOpen=false;
+function chHistLog(kind,who,tgt,n,note){
+  const C=STATE.combat; if(!C)return;
+  if(!Array.isArray(C.hist))C.hist=[];
+  C.hist.unshift({t:Date.now(),r:C.round||1,kind:kind,who:who||'',tgt:tgt||'',n:(n==null?0:n),note:note||''});
+  if(C.hist.length>400)C.hist.length=400;   /* cap 400: the oldest blows fall away */
+}
+function chHistLabel(e){
+  const who=stripEnt(String(e.who||'')).trim(), tgt=stripEnt(String(e.tgt||'')).trim(), note=stripEnt(String(e.note||'')).trim();
+  switch(e.kind){
+    case 'muster': return 'Mustered '+e.n+' and rolled initiative';
+    case 'round':  return (note==='back'?'Back to round ':'Round ')+e.n;
+    case 'turn':   return (note==='back'?'Back to '+who+'’s turn':who+'’s turn');
+    case 'dmg':    return tgt+' takes '+e.n+' damage';
+    case 'heal':   return tgt+' heals '+e.n;
+    case 'down':   return who+' goes down';
+    case 'up':     return who+' is back up';
+    case 'cond+':  return who+' gains '+note+(e.n?' ('+e.n+' rds)':'');
+    case 'cond-':  return e.n?(note+' runs out on '+who):(who+' sheds '+note);
+    case 'end':    return 'The fight ends';
+  }
+  return note||e.kind;
+}
+function chHistKindClass(k){ return k==='cond+'?'condp':(k==='cond-'?'condm':k); }
+function chHistRender(){
+  const wrap=document.getElementById('combatHist'); if(!wrap)return;
+  const C=STATE.combat;
+  const hist=(C&&C.hist)||[];
+  wrap.style.display=C?'':'none';
+  wrap.classList.toggle('open',chHistOpen&&hist.length>0);
+  const chip=document.getElementById('chHistChip');
+  if(chip)chip.innerHTML=hist.length?(esc(chHistLabel(hist[0]))+' <span style="color:#8a6d5f">('+hist.length+')</span>'):'No blows traded yet.';
+  const list=document.getElementById('chHistList'); if(!list)return;
+  if(!(chHistOpen&&hist.length)){ list.innerHTML=''; return; }
+  let html='',lastR=null;
+  hist.forEach(function(e){   /* newest first; a separator marks each round the list crosses */
+    if(e.r!==lastR){ html+='<div class="ch-rsep">Round '+esc(String(e.r))+'</div>'; lastR=e.r; }
+    html+='<div class="ch-row '+chHistKindClass(e.kind)+'"><span class="k">'+esc(e.kind)+'</span><span class="tx">'+esc(chHistLabel(e))+'</span></div>';
+  });
+  list.innerHTML=html;
+}
+function chHistToggle(){ chHistOpen=!chHistOpen; chHistRender(); }
+function chHistClear(btn){
+  if(btn&&btn.dataset.arm!=='1'){ btn.dataset.arm='1'; btn.textContent='Tap again to clear';
+    setTimeout(function(){ if(btn){btn.dataset.arm='';btn.textContent='Clear';} },2600); return; }
+  if(btn){btn.dataset.arm='';btn.textContent='Clear';}
+  if(STATE.combat)STATE.combat.hist=[];
+  saveState(); chHistRender(); toast('Fight log cleared.');
+}
+/* every combat render refreshes the fold (the renderCombat-wrap idiom; theater + board chain after) */
+const _chPrevRenderCombat=renderCombat;
+renderCombat=function(){ _chPrevRenderCombat(); try{ chHistRender(); }catch(e){} };
+
 /* ============================================================ THE SOUND MAT — Sound Companions player (spec C1½ · law: Projects/Grimoire/SOUND-TAXONOMY.md)
    Audio is NEVER embedded: the running Keeper's manifest declares WHAT should sound (semantic cue tags);
    the buyer's own local folder (File System Access) declares HOW. Longest-prefix tag matching; beds are
@@ -2953,16 +3371,21 @@ function isBedTag(tag){ return /^(ambience|music)(\.|$)/.test(tag); }
 function isVoiceTag(tag){ return /^voice(\.|$)/.test(String(tag)); }
 let soundVoice=null, voiceFrameDoc=null;
 function soundBedDuck(on){ const S=soundState(), base=(S.vol==null?0.85:S.vol);
-  soundPlaying.forEach(x=>{ if(x.mode!=='loop')return;
-    const t=Math.max(0,Math.min(1,base*(x.rel||1)))*(on?0.25:1);   // x0.25 = about -12dB
+  soundPlaying.forEach(x=>{ if(x.mode!=='loop')return; if(x.a._dying)return;   // adv F1: never supersede a terminal fade (the dying tag)
+    const t=Math.max(0,Math.min(1,base*(x.rel==null?1:x.rel)))*(on?0.25:1);   // x0.25 = about -12dB (adv F3: rel 0 stays 0)
     soundFadeTo(x.a,t,on?250:1000); }); }   // duck fast, restore over ~1s (the law)
 function soundApplyMode(){ const el=document.getElementById('sound'); if(!el)return; const m=soundState().mode||'dock';
   el.classList.toggle('dock',m!=='overlay'); el.classList.toggle('overlay',m==='overlay'); }
-function openSound(){ soundState().open=true; document.body.classList.add('sound-on'); document.getElementById('sound').classList.add('show'); soundApplyMode(); const b=document.getElementById('btnSound'); if(b)b.classList.add('on'); renderSound(); saveState(); }
+function openSound(){ soundState().open=true; document.body.classList.add('sound-on'); document.getElementById('sound').classList.add('show'); soundApplyMode(); const b=document.getElementById('btnSound'); if(b)b.classList.add('on'); renderSound(); if(typeof spRender==='function')spRender(); saveState(); }
 function hideSound(){ soundState().open=false; document.body.classList.remove('sound-on'); document.getElementById('sound').classList.remove('show'); const b=document.getElementById('btnSound'); if(b)b.classList.remove('on'); saveState(); }
 function toggleSound(){ soundState().open?hideSound():openSound(); }
 function soundToggleMode(){ const S=soundState(); S.mode=(S.mode==='overlay')?'dock':'overlay'; soundApplyMode(); saveState(); }
-function soundSetVol(v){ const S=soundState(); S.vol=Math.max(0,Math.min(1,(+v||0)/100)); soundPlaying.forEach(x=>{ try{const duck=(soundVoice&&x.mode==='loop')?0.25:1; x.a.volume=Math.max(0,Math.min(1,S.vol*(x.rel||1)*duck));}catch(e){} }); saveState(); }
+function soundSetVol(v){ const S=soundState(); S.vol=Math.max(0,Math.min(1,(+v||0)/100));
+  soundPlaying.forEach(x=>{ if(x.a._dying)return;   // adv F1: a dying element belongs to its terminal fade alone
+    try{const duck=(soundVoice&&x.mode==='loop')?0.25:1; x.a.volume=Math.max(0,Math.min(1,S.vol*(x.rel==null?1:x.rel)*duck));}catch(e){} });   // adv F3: rel 0 stays 0
+  const pc=Math.round(S.vol*100), sv=document.getElementById('sndVol'), mv=document.getElementById('spMaster');   // adv F8: the two master sliders mirror each other
+  if(sv&&+sv.value!==pc)sv.value=pc; if(mv&&+mv.value!==pc)mv.value=pc;
+  saveState(); }
 /* ---- resolve a cue tag -> a file in the linked folder (pack manifest first, then loose filename match) ---- */
 function soundResolve(tag){
   const S=soundState(); if(!soundFiles.size)return null;
@@ -2980,22 +3403,30 @@ function soundResolve(tag){
 function soundFadeTo(a,target,ms,done){ target=Math.max(0,Math.min(1,target)); if(a._fadeIv){clearInterval(a._fadeIv);a._fadeIv=null;}  // one fade per element — a new fade supersedes the old (no dueling ramps)
   const steps=24,dt=Math.max(12,ms/steps),from=a.volume,d=(target-from)/steps; let i=0;
   a._fadeIv=setInterval(()=>{ i++; try{a.volume=Math.max(0,Math.min(1,from+d*i));}catch(e){} if(i>=steps){ clearInterval(a._fadeIv); a._fadeIv=null; try{a.volume=target;}catch(e){} done&&done(); } },dt); }
+/* v24: the bed handoff and the stinger path, extracted VERBATIM from soundPlay (2026-08-28) so the
+   Player can drive the same engine. One crossfade, one duck, two drivers - the cue engine's own
+   behavior through these is byte-identical to the pre-split soundPlay branches. */
+function soundBedTake(a,tag,rel,target,self){ const old=soundBed; soundBed=a; a.volume=0;   // beds exclusive: crossfade the old one out (taxonomy §4.1)
+  a.play().catch(()=>{}); soundFadeTo(a,soundVoice?target*0.25:target,2000); soundPlaying.push({a,tag,mode:'loop',rel});   // a bed born under a voice line is born ducked
+  if(old&&old!==a){ old._dying=1;   // adv F1: the crossfade-out is TERMINAL - no duck/restore/master-nudge may supersede it
+    soundFadeTo(old,0,2000,()=>{ try{old.pause();}catch(e){} try{URL.revokeObjectURL(old.src);}catch(e){} soundPlaying=soundPlaying.filter(x=>x.a!==old); soundStopLight(); }); }
+  if(!self&&typeof spBedTaken==='function')spBedTaken(old); }   // cue precedence pin: the Player is TOLD it lost the channel
+function soundShotFire(a,tag,rel,target,voice){ a.volume=target; a.play().catch(()=>{});
+  if(voice){ const ov=soundVoice; if(ov&&ov!==a){ try{ov.pause();}catch(e){} try{URL.revokeObjectURL(ov.src);}catch(e){} soundPlaying=soundPlaying.filter(x=>x.a!==ov); }   // §3½.2: one voice at a time
+    soundVoice=a; soundBedDuck(true); }
+  soundPlaying.push({a,tag,mode:'oneshot',rel});   // stingers stack (§4.2)
+  a.addEventListener('ended',()=>{ try{URL.revokeObjectURL(a.src);}catch(e){} soundPlaying=soundPlaying.filter(x=>x.a!==a); if(soundVoice===a){soundVoice=null;soundBedDuck(false);} soundStopLight(); }); }   // adv F7: an emptied channel unlights Stop-all
 async function soundPlay(tag,opts){ opts=opts||{}; const r=soundResolve(tag); if(!r)return false;   // unmatched → silent (taxonomy §2)
   const voice=isVoiceTag(tag); if(voice)r.mode='oneshot';   // §3½.4: one file per line, always a oneshot
   let file; try{ file=await r.handle.getFile(); }catch(e){ return false; }
   const S=soundState(), base=(S.vol==null?0.85:S.vol), rel=Math.pow(10,(r.gain||0)/20), target=Math.max(0,Math.min(1,base*rel));
   const a=new Audio(URL.createObjectURL(file)); a.dataset.tag=tag;
-  if(r.mode==='loop'){ a.loop=true; const old=soundBed; soundBed=a; a.volume=0;   // beds exclusive: crossfade the old one out (taxonomy §4.1)
-    a.play().catch(()=>{}); soundFadeTo(a,soundVoice?target*0.25:target,2000); soundPlaying.push({a,tag,mode:'loop',rel});   // a bed born under a voice line is born ducked
-    if(old&&old!==a){ soundFadeTo(old,0,2000,()=>{ try{old.pause();}catch(e){} try{URL.revokeObjectURL(old.src);}catch(e){} soundPlaying=soundPlaying.filter(x=>x.a!==old); }); }
-  } else { a.volume=target; a.play().catch(()=>{});
-    if(voice){ const ov=soundVoice; if(ov&&ov!==a){ try{ov.pause();}catch(e){} try{URL.revokeObjectURL(ov.src);}catch(e){} soundPlaying=soundPlaying.filter(x=>x.a!==ov); }   // §3½.2: one voice at a time
-      soundVoice=a; soundBedDuck(true); }
-    soundPlaying.push({a,tag,mode:'oneshot',rel});   // stingers stack (§4.2)
-    a.addEventListener('ended',()=>{ try{URL.revokeObjectURL(a.src);}catch(e){} soundPlaying=soundPlaying.filter(x=>x.a!==a); if(soundVoice===a){soundVoice=null;soundBedDuck(false);} }); }
+  if(r.mode==='loop'){ a.loop=true; soundBedTake(a,tag,rel,target,false); }
+  else soundShotFire(a,tag,rel,target,voice);
   const st=document.getElementById('sndStop'); if(st)st.disabled=false; return true;
 }
-function soundStopAll(){ soundPlaying.forEach(x=>{ try{x.a.pause();}catch(e){} try{URL.revokeObjectURL(x.a.src);}catch(e){} }); soundPlaying=[]; soundBed=null; soundVoice=null; const s=document.getElementById('sndStop'); if(s)s.disabled=true; }
+function soundStopAll(){ soundPlaying.forEach(x=>{ x.a._dying=1; try{x.a.pause();}catch(e){} try{URL.revokeObjectURL(x.a.src);}catch(e){} }); soundPlaying=[]; soundBed=null; soundVoice=null; const s=document.getElementById('sndStop'); if(s)s.disabled=true; if(typeof spStopped==='function')spStopped(); }
+function soundStopLight(){ const s=document.getElementById('sndStop'); if(s)s.disabled=!soundPlaying.length; }   // adv F7: the Stop-all light tells the truth whenever a drain settles
 /* ---- link a Sound Companion folder from the user's disk (File System Access) ---- */
 async function pickSoundFolder(){
   if(!window.showDirectoryPicker){ toast('This browser can&rsquo;t open a local sounds folder &mdash; the Sound Mat needs a Chromium browser (File System Access API).'); return; }
@@ -3017,7 +3448,8 @@ async function soundScanFolder(){
     S.pack={schema:sc,id:manifest.id||'',title:manifest.title||soundDir.name,brand:manifest.brand||'',
       entries:(manifest.entries||[]).map(e=>({tag:e.tag,files:e.files||[],mode:e.mode||'oneshot',gain:+e.gain||0}))};
   } else { S.pack={schema:1,id:'',title:soundDir.name+(soundFiles.size?' (loose folder)':''),brand:'',entries:[],loose:true}; }
-  soundLastScene=null; saveState(); renderSound(); voiceChips(); return true;
+  soundLastScene=null; spMissWarned={};   // adv F6: a fresh scan re-arms the one honest missing-file toast
+  saveState(); renderSound(); voiceChips(); if(typeof spRender==='function')spRender(); return true;
 }
 async function soundReconnect(){    // on load, try to re-link the last folder (permission may need a click to re-grant)
   if(!DB)return; let h; try{ h=await idbGet('kv','soundDir'); }catch(e){ h=null; } if(!h)return; soundDir=h;
@@ -3088,6 +3520,234 @@ function voiceChips(){ try{
     b.addEventListener('click',ev=>{ ev.stopPropagation(); soundPlay(c.tag,{}); });
     box.appendChild(b); });
 }catch(e){} }
+
+/* ============================================================ THE SOUND PLAYER (v24) - the YouTube-tab killer
+   Second driver on the SAME engine (spec 3.3; contract SOUND-PLAYER-CONTRACT.md). The Mat stays the
+   cue engine; the Player is music the DM drives when there is no Sound Keeper: playlists built from
+   the same linked folder. The playing track occupies the BED channel through the same exclusive-bed
+   crossfade; a Keeper cue that fires a bed WINS the channel and the Player says so honestly (no
+   auto-resume - predictable beats clever); pads fire on the stinger path over the bed.
+   SHUFFLE AND LOOP ARE SEPARATE CONTROLS (Frank, 2026-08-26). */
+let spA=null, spDeck=null, spTick=null, spByCue=false, spCur=null, spMissWarned={}, spOpenId=null, spAssign=null;
+let spGen=0;   // adv F5: generation counter - every new intent (start/stop/cue-takeover) bumps it; a stale async start discards itself
+function spState(){ let P=STATE.player;
+  if(!P||typeof P!=='object')P=STATE.player={};
+  if(!P.lists||typeof P.lists!=='object')P.lists={};
+  if(!Array.isArray(P.order))P.order=[];
+  if(P.active===undefined)P.active=null;
+  if(!(P.idx>=0))P.idx=0;
+  P.shuffle=!!P.shuffle;
+  if(P.loop!=='list'&&P.loop!=='track')P.loop='off';
+  if(!(P.vol>=0&&P.vol<=1))P.vol=0.85;
+  P.fold=!!P.fold;
+  if(P.tab!=='player')P.tab='cues';
+  if(!Array.isArray(P.pads))P.pads=[];
+  while(P.pads.length<12)P.pads.push(null);
+  return P; }
+/* ---- the queue: a saved list, or '@folder' = every file in the linked folder ---- */
+function spFiles(){ const out=[]; for(const h of soundFiles.values())out.push(h.name); out.sort((a,b)=>a.localeCompare(b)); return out; }
+function spHandle(file){ return soundFiles.get(normName(file))||null; }
+function spQueue(){ const P=spState();
+  if(P.active==='@folder')return spFiles();
+  const L=P.active&&P.lists[P.active]; return L?L.files.slice():[]; }
+function spViewQueue(){ const P=spState();
+  if(spOpenId==='@folder')return spFiles();
+  const L=spOpenId&&P.lists[spOpenId]; return L?L.files.slice():[]; }
+/* ---- the shuffled deck lives in MEMORY only; re-dealt when shuffle toggles on or the list ends ---- */
+function spDeal(n,frontQi){ spDeck=[]; for(let i=0;i<n;i++)spDeck.push(i);
+  for(let i=n-1;i>0;i--){ const j=(Math.random()*(i+1))|0; const t=spDeck[i]; spDeck[i]=spDeck[j]; spDeck[j]=t; }
+  if(frontQi!=null&&frontQi>=0){ const at=spDeck.indexOf(frontQi); if(at>0){ spDeck.splice(at,1); spDeck.unshift(frontQi); } } }
+function spQiAt(pos){ const P=spState(), q=spQueue(); if(!q.length)return -1;
+  if(P.shuffle){ if(!spDeck||spDeck.length!==q.length)spDeal(q.length); return spDeck[Math.max(0,Math.min(pos,spDeck.length-1))]; }
+  return Math.max(0,Math.min(pos,q.length-1)); }
+/* ---- transport ---- */
+function spTargetVol(){ const S=soundState(), base=(S.vol==null?0.85:S.vol); return Math.max(0,Math.min(1,base*spState().vol)); }
+async function spStart(tries,fromEnd){ const P=spState(), q=spQueue(); tries=tries||0;
+  if(!q.length){ spStopLocal(); spRender(); return; }
+  if(tries>=q.length){ spStopLocal(); toast('None of the tracks in this list are in the folder anymore.'); spRender(); return; }
+  P.idx=Math.max(0,Math.min(P.idx,q.length-1));
+  const qi=spQiAt(P.idx), file=q[qi], h=spHandle(file);
+  const gen=++spGen;   // adv F5: this start owns the runtime only while it is the newest intent
+  let f=null; if(h){ try{ f=await h.getFile(); }catch(e){ f=null; } }
+  if(gen!==spGen)return;   // adv F5: a newer click/stop/cue superseded this start while the file loaded
+  if(!f){ if(!spMissWarned[file]){ spMissWarned[file]=1; toast('Skipped <b>'+esc(file)+'</b>. It is not in the folder anymore.'); }
+    spAdvance(1,fromEnd,tries+1); return; }   // adv F2: the skip KEEPS the natural-end flag - loop:'off' + a missing last track still stops
+  spByCue=false; spCur=file;
+  const a=new Audio(URL.createObjectURL(f)); a.dataset.tag='@player';
+  a.loop=(P.loop==='track');
+  a.addEventListener('ended',()=>{ if(a!==spA)return; spOnEnded(); });
+  spA=a;
+  soundBedTake(a,'@player',P.vol,spTargetVol(),true);   // the SAME exclusive-bed crossfade the cue engine uses
+  const st=document.getElementById('sndStop'); if(st)st.disabled=false;
+  saveState(); spTickStart(); spRender(); }
+function spAdvance(dir,fromEnd,tries){ const P=spState(), q=spQueue();
+  if(!q.length){ spStopLocal(); spRender(); return; }
+  const len=q.length; let n=P.idx+dir;
+  if(P.shuffle&&(!spDeck||spDeck.length!==len))spDeal(len);
+  if(n>=len){ if(fromEnd&&P.loop==='off'){ spStopLocal(); saveState(); spRender(); return; }   // loop off: stop at the end (shuffle exhausts the deck first)
+    if(P.shuffle)spDeal(len); n=0; }   // loop the playlist: wrap (a fresh deal when shuffled)
+  if(n<0)n=len-1;
+  P.idx=n; spStart(tries||0,fromEnd); }   // adv F2: fromEnd rides the whole skip chain
+function spOnEnded(){ const P=spState();
+  if(P.loop==='track'){ try{ spA.currentTime=0; spA.play().catch(()=>{}); }catch(e){} return; }   // a.loop covers this; belt for a mid-flight mode switch
+  spAdvance(1,true,0); }
+function spPlay(){ const P=spState();
+  if(!soundFiles.size){ spSetTab('player'); toast('Link your sounds folder first. The link button is right there on the panel.'); return; }
+  if(spA&&soundBed===spA){ if(spA.paused){ spA.play().catch(()=>{}); spTickStart(); } else { spA.pause(); spTickStop(); } spApplyUI(); return; }
+  if(P.active==null)P.active=P.order.length?P.order[0]:'@folder';
+  if(!spQueue().length){ toast('That list is empty. Add tracks, or play the whole folder.'); return; }
+  spStart(0); }   // stopped, or a cue holds the channel: (re)start the current track and take the bed back
+function spNext(){ if(!spGuard())return; spAdvance(1,false,0); }
+function spPrev(){ if(!spGuard())return; spAdvance(-1,false,0); }
+function spGuard(){ const P=spState(); if(P.active==null)P.active=P.order.length?P.order[0]:'@folder';
+  if(!spQueue().length){ toast('Pick a playlist or the whole folder first.'); return false; } return true; }
+function spStopLocal(){ spTickStop(); spByCue=false; spCur=null; spGen++;   // adv F5: stop outranks any start still awaiting its file
+  if(spA){ const a=spA; spA=null; if(soundBed===a)soundBed=null; a._dying=1;   // adv F1: terminal fade - duck/restore/master-nudge keep their hands off
+    soundFadeTo(a,0,600,()=>{ try{a.pause();}catch(e){} try{URL.revokeObjectURL(a.src);}catch(e){} soundPlaying=soundPlaying.filter(x=>x.a!==a); soundStopLight(); }); } }   // adv F7: unlight Stop-all when the drain settles
+function spStopped(){ spTickStop(); spA=null; spCur=null; spByCue=false; spGen++; spRender(); }   // the Mat's Stop-all button reached the player too (adv F5: and outranks in-flight starts)
+function spBedTaken(old){ if(spA&&old===spA){ spTickStop(); spA=null; spByCue=true; spGen++; spRender(); } }   // a Keeper cue took the channel: honest paused-by-cue state, no auto-resume (adv F5: an in-flight start may not steal it back)
+/* ---- shuffle and loop: SEPARATE controls (the ruling) ---- */
+function spShuffleToggle(){ const P=spState(); P.shuffle=!P.shuffle; const q=spQueue();
+  if(P.shuffle){ spDeal(q.length,spCur?q.indexOf(spCur):-1); P.idx=0; }
+  else { const qi=spCur?q.indexOf(spCur):-1; P.idx=qi>=0?qi:0; spDeck=null; }
+  saveState(); spApplyUI(); }
+function spLoopCycle(){ const P=spState(); P.loop=P.loop==='off'?'list':(P.loop==='list'?'track':'off');
+  if(spA)spA.loop=(P.loop==='track');
+  saveState(); spApplyUI(); }
+function spSetVol(v){ const P=spState(); P.vol=Math.max(0,Math.min(1,(+v||0)/100));
+  if(spA){ const e=soundPlaying.find(x=>x.a===spA); if(e)e.rel=P.vol;
+    try{ const S=soundState(), duck=soundVoice?0.25:1; spA.volume=Math.max(0,Math.min(1,(S.vol==null?0.85:S.vol)*P.vol*duck)); }catch(e){} }
+  saveState(); }
+/* ---- now-playing line: name + elapsed ---- */
+function spTickStart(){ spTickStop(); spTick=setInterval(spNowLine,500); spNowLine(); }
+function spTickStop(){ if(spTick){ clearInterval(spTick); spTick=null; } spNowLine(); }
+function spFmt(t){ t=Math.max(0,t|0); return ((t/60)|0)+':'+String(t%60).padStart(2,'0'); }
+function spNowLine(){ const el=document.getElementById('spNow'); if(!el)return;
+  if(spByCue){ el.innerHTML='Paused by the adventure&rsquo;s cue. Press play to take the music back.'; el.classList.add('cue'); return; }
+  el.classList.remove('cue');
+  if(!spA||!spCur){ el.textContent='Nothing playing'; return; }
+  el.innerHTML='<b>'+esc(spCur.replace(/\.[a-z0-9]+$/i,''))+'</b> &middot; '+spFmt(spA.currentTime||0)+(spA.paused?' &middot; paused':''); }
+/* ---- playlists: create, rename, delete, reorder; tracks: add, remove, reorder ---- */
+function spId(){ return 'pl'+Date.now().toString(36)+((Math.random()*1e4)|0); }
+function spNewList(){ const P=spState(), id=spId();
+  P.lists[id]={id:id,name:'New playlist '+(P.order.length+1),files:[]};
+  P.order.push(id); spOpenId=id; saveState(); spRender(); }
+function spRenameList(id,v){ const P=spState(), L=P.lists[id]; if(!L)return;
+  L.name=String(v||'').trim()||'Untitled playlist'; saveState(); spRender(); }
+function spDeleteList(id,btn){ const P=spState(); if(!P.lists[id])return;
+  if(!armTap('spdel'+id,btn,'Tap again'))return;
+  delete P.lists[id]; P.order=P.order.filter(x=>x!==id);
+  if(P.active===id){ spStopLocal(); P.active=null; P.idx=0; spDeck=null; }
+  if(spOpenId===id)spOpenId=null;
+  saveState(); spRender(); }
+function spMoveList(id,dir){ const P=spState(), i=P.order.indexOf(id), j=i+dir;
+  if(i<0||j<0||j>=P.order.length)return; P.order[i]=P.order[j]; P.order[j]=id; saveState(); spRender(); }
+function spOpenList(id){ spOpenId=id; spAssign=null; spRender(); }
+function spListTouched(id){ const P=spState(); if(P.active===id)spDeck=null; }   // a changed live list re-deals on the next advance
+function spAddTrack(file){ const P=spState(), L=P.lists[spOpenId]; if(!L)return;
+  L.files.push(file); spListTouched(spOpenId); saveState(); spRender(); }
+function spRmTrack(i){ const P=spState(), L=P.lists[spOpenId]; if(!L||!(i>=0)||i>=L.files.length)return;
+  L.files.splice(i,1); spListTouched(spOpenId);
+  if(P.active===spOpenId&&P.idx>=L.files.length)P.idx=Math.max(0,L.files.length-1);
+  saveState(); spRender(); }
+function spMoveTrack(i,dir){ const P=spState(), L=P.lists[spOpenId]; if(!L)return; const j=i+dir;
+  if(i<0||j<0||j>=L.files.length)return; const t=L.files[i]; L.files[i]=L.files[j]; L.files[j]=t;
+  spListTouched(spOpenId); saveState(); spRender(); }
+function spPlayFrom(i){ const P=spState(); P.active=spOpenId||'@folder';
+  const q=spQueue(); if(!q.length)return;
+  if(P.shuffle){ spDeal(q.length,i); P.idx=0; } else P.idx=Math.max(0,Math.min(i,q.length-1));
+  spStart(0); }
+/* ---- pads = stingers: 12 assignable one-shots over the bed, never interrupting it ---- */
+function spPadTap(i){ const P=spState(), pad=P.pads[i];
+  if(!pad){ if(!soundFiles.size){ toast('Link your sounds folder first.'); return; }
+    spAssign=i; spRender(); return; }
+  spStinger(pad.file); }
+function spPadClear(ev,i){ if(ev)ev.stopPropagation(); const P=spState(); P.pads[i]=null; if(spAssign===i)spAssign=null; saveState(); spRender(); }
+function spPadAssign(file){ const P=spState(); if(spAssign==null)return;
+  P.pads[spAssign]={name:file.replace(/\.[a-z0-9]+$/i,''),file:file}; spAssign=null; saveState(); spRender(); }
+async function spStinger(file){ const h=spHandle(file);
+  let f=null; if(h){ try{ f=await h.getFile(); }catch(e){ f=null; } }
+  if(!f){ toast('That pad&rsquo;s file is not in the folder anymore.'); return; }
+  const S=soundState(), target=Math.max(0,Math.min(1,(S.vol==null?0.85:S.vol)));
+  const a=new Audio(URL.createObjectURL(f)); a.dataset.tag='@pad';
+  soundShotFire(a,'@pad',1,target,false);   // the SAME stinger path cue one-shots ride
+  const st=document.getElementById('sndStop'); if(st)st.disabled=false; }
+/* ---- tabs, fold, and the render ---- */
+function spSetTab(t){ const P=spState(); P.tab=(t==='player')?'player':'cues'; saveState();
+  if(P.tab==='player')spRender(); else spApplyUI(); }
+function spToggleFold(){ const P=spState(); P.fold=!P.fold; saveState(); spApplyUI(); }
+function spApplyUI(){ const P=spState(), el=document.getElementById('sound'); if(!el)return;
+  el.classList.toggle('player-tab',P.tab==='player');
+  const tc=document.getElementById('spTabCues'); if(tc)tc.classList.toggle('on',P.tab!=='player');
+  const tp=document.getElementById('spTab'); if(tp)tp.classList.toggle('on',P.tab==='player');
+  const panel=document.getElementById('spPanel'); if(panel)panel.classList.toggle('fold',!!P.fold);
+  const sh=document.getElementById('spShuffle'); if(sh){ sh.classList.toggle('on',P.shuffle); sh.title='Shuffle: '+(P.shuffle?'on':'off'); }
+  const lp=document.getElementById('spLoop'); if(lp){ lp.classList.toggle('on',P.loop!=='off'); lp.classList.toggle('track',P.loop==='track');
+    lp.innerHTML=P.loop==='track'?'&#128258;':'&#128257;';
+    lp.title='Loop: '+(P.loop==='off'?'off':(P.loop==='list'?'the playlist':'this track')); }
+  const pb=document.getElementById('spPlay'); if(pb)pb.innerHTML=(spA&&!spA.paused&&!spByCue)?'&#10074;&#10074;':'&#9654;';
+  const fb=document.getElementById('spFold'); if(fb){ fb.innerHTML=P.fold?'&#9650;':'&#9660;'; fb.title=P.fold?'Unfold the player':'Fold the player to a slim strip'; }
+  const vv=document.getElementById('spVol'); if(vv)vv.value=Math.round(P.vol*100);
+  const S=soundState(), mv=document.getElementById('spMaster'); if(mv)mv.value=Math.round((S.vol==null?0.85:S.vol)*100);   // adv F8: the strip's master mirrors #sndVol
+  spNowLine(); }
+function spTrkRow(file,i,opts){ const missing=!spHandle(file), now=(opts.now&&file===spCur);
+  return '<div class="sp-trk'+(missing?' miss':'')+(now?' now':'')+(opts.pick?' pickable':'')+'" data-file="'+esc(file)+'">'+
+    (opts.play?'<button title="Play from here" onclick="spPlayFrom('+i+')">&#9654;</button>':'')+
+    (opts.add?'<button title="Add to this playlist" onclick="spAddTrack(this.parentNode.dataset.file)">&#43;</button>':'')+
+    '<span class="nm"'+(opts.pick?' onclick="spPadAssign(this.parentNode.dataset.file)" title="Set the pad to this track"':' title="'+esc(file)+(missing?' (not in the folder)':'')+'"')+'>'+esc(file)+'</span>'+
+    (opts.edit?'<button title="Move up" onclick="spMoveTrack('+i+',-1)">&#9650;</button>'+
+               '<button title="Move down" onclick="spMoveTrack('+i+',1)">&#9660;</button>'+
+               '<button title="Remove from the playlist" onclick="spRmTrack('+i+')">&times;</button>':'')+
+  '</div>'; }
+function spRender(){ const P=spState(); const lists=document.getElementById('spLists'), tracks=document.getElementById('spTracks'), pads=document.getElementById('spPads');
+  spApplyUI(); if(!lists||!tracks||!pads)return;
+  const linked=soundFiles.size>0, files=spFiles();
+  const filter=((document.getElementById('spSearch')||{}).value||'').trim().toLowerCase();
+  const hit=s=>!filter||String(s).toLowerCase().indexOf(filter)>=0;
+  if(spOpenId&&spOpenId!=='@folder'&&!P.lists[spOpenId])spOpenId=null;
+  if(spOpenId==null)spOpenId=(P.active&&(P.active==='@folder'||P.lists[P.active]))?P.active:(P.order.length?P.order[0]:'@folder');
+  /* the playlist rail */
+  let rail='<div class="sp-row'+(spOpenId==='@folder'?' open':'')+(P.active==='@folder'?' live':'')+'" onclick="spOpenList(\'@folder\')">'+
+    '<span class="nm">&#128193; The whole folder</span><span class="ct">'+files.length+'</span></div>';
+  P.order.forEach(id=>{ const L=P.lists[id]; if(!L||!hit(L.name))return;
+    rail+='<div class="sp-row'+(spOpenId===id?' open':'')+(P.active===id?' live':'')+'" onclick="spOpenList(\''+id+'\')">'+
+      '<span class="nm">'+esc(L.name)+'</span><span class="ct">'+L.files.length+'</span>'+
+      '<button title="Move up" onclick="event.stopPropagation();spMoveList(\''+id+'\',-1)">&#9650;</button>'+
+      '<button title="Move down" onclick="event.stopPropagation();spMoveList(\''+id+'\',1)">&#9660;</button></div>'; });
+  rail+='<button class="sp-newlist" onclick="spNewList()">&#43; New playlist</button>';
+  lists.innerHTML=rail;
+  /* the track pane: the open list (or folder browser), search-filtered */
+  let body='';
+  if(spAssign!=null) body+='<div class="sp-assign">Pick a track for pad '+(spAssign+1)+'<button class="sp-cancel" onclick="spAssign=null;spRender()">Cancel</button></div>';
+  if(!linked){
+    body+='<div class="sp-empty">No sounds folder linked yet. Point the Grimoire at the folder your music lives in. The files stay on your disk.'+
+      '<br><button class="pick" onclick="pickSoundFolder()">&#128193; Sounds folder&hellip;</button></div>';
+  } else if(spOpenId==='@folder'){
+    body+='<div class="sp-divider">The whole folder</div>';
+    if(!P.order.length) body+='<div class="sp-empty">No playlists yet. Play the whole folder, or make your first list.</div>';
+    let any=false;
+    files.forEach((f,i)=>{ if(!hit(f))return; any=true; body+=spTrkRow(f,i,{play:spAssign==null,pick:spAssign!=null,now:P.active==='@folder'}); });
+    if(!any) body+='<div class="sp-empty">'+(filter?'Nothing matches that search.':'The folder has no audio files.')+'</div>';
+  } else {
+    const L=P.lists[spOpenId];
+    body+='<div class="sp-listhead"><input value="'+esc(L.name)+'" title="Rename this playlist" onchange="spRenameList(\''+L.id+'\',this.value)">'+
+      '<button title="Delete this playlist" onclick="spDeleteList(\''+L.id+'\',this)">&times;</button></div>';
+    if(!L.files.length) body+='<div class="sp-empty">Empty so far. Add tracks from the folder below.</div>';
+    let anyT=false;
+    L.files.forEach((f,i)=>{ if(!hit(f))return; anyT=true; body+=spTrkRow(f,i,{play:spAssign==null,edit:true,pick:spAssign!=null,now:P.active===L.id}); });
+    if(L.files.length&&!anyT) body+='<div class="sp-empty">Nothing in this playlist matches that search.</div>';
+    body+='<div class="sp-divider">Add from the folder</div>';
+    let anyF=false;
+    files.forEach(f=>{ if(!hit(f))return; anyF=true; body+=spTrkRow(f,-1,{add:spAssign==null,pick:spAssign!=null}); });
+    if(!anyF) body+='<div class="sp-empty">'+(filter?'Nothing matches that search.':'The folder has no audio files.')+'</div>';
+  }
+  tracks.innerHTML=body;
+  /* the pads */
+  let pg=''; for(let i=0;i<12;i++){ const pad=P.pads[i];
+    pg+='<button class="sp-pad'+(pad?'':' empty')+(spAssign===i?' armed':'')+'" title="'+(pad?esc(pad.file)+' (fires over the music)':'Tap to set this pad')+'" onclick="spPadTap('+i+')">'+
+      (pad?esc(pad.name):'&#43;')+(pad?'<span class="clr" title="Clear this pad" onclick="spPadClear(event,'+i+')">&times;</span>':'')+'</button>'; }
+  pads.innerHTML=pg;
+}
 
 /* ============================================================ DICE TRAY + roll log */
 function toggleTray(){document.getElementById('tray').classList.toggle('show');}
@@ -3606,6 +4266,10 @@ function theaterKickPeer(id,btn){
   const slot=seatSlot(rec);
   delete t.queue[slot]; delete THEATER.seats[slot];
   delete t.queue[nm];   delete THEATER.seats[nm];   /* and any pre-credential queue of theirs */
+  /* v23.1 (finding 22): the War Board queues leave with them too - a later same-slot join must
+     never be flushed the kicked seat's parked envelopes, and their art-sent memory dies here */
+  delete WB_NET.hold[slot]; delete WB_NET.artSent[slot]; if(WB_NET.seen)delete WB_NET.seen[slot];
+  delete WB_NET.hold[nm];   delete WB_NET.artSent[nm];   if(WB_NET.seen)delete WB_NET.seen[nm];
   theaterRefuse(rec,'removed');
   saveState();
   toast(esc(rec.name)+' was removed and barred. The barred list below can seat them again.');
@@ -3723,6 +4387,9 @@ function theaterAddPeer(viaCode){
 function theaterDropPeer(id,silent){ const rec=THEATER.peers.find(p=>p.id===id); if(!rec)return;
   /* silent: a reasoned bye already went out (kick/door); a second bare bye would overwrite
      the reason on the player's screen and clear a code they should keep */
+  /* v23.1 (finding 22): a deliberate drop is the end of that seat's session - parked wb
+     envelopes and art-sent memory go with it (a rejoin gets the fresh admit snapshot) */
+  try{ const _wk=seatSlot(rec); if(_wk){ delete WB_NET.hold[_wk]; delete WB_NET.artSent[_wk]; if(WB_NET.seen)delete WB_NET.seen[_wk]; } }catch(e){}
   if(!silent){ try{ rec.peer.send(TheaterTransport.envelope('bye','host',{})); }catch(e){} }
   try{ rec.peer.close(); }catch(e){}
   THEATER.peers=THEATER.peers.filter(p=>p.id!==id);
@@ -3742,7 +4409,8 @@ function renderTheaterPeers(){
     const _wu=((STATE.theaterWh||{})[String(p.name||'').toLowerCase()]||{}).unread||0;
     let h='<div class="th-peer"><div class="ph"><span class="pn">'+esc(p.name)+(p.cls?' &middot; '+esc(p.cls)+' '+esc(p.lvl==null?'':p.lvl):'')+
       (_wu?'<span class="unread" title="whispers waiting">'+_wu+'</span>':'')+
-      (p.hasHello&&!p.build?'<span style="opacity:.5;font-size:10px;margin-left:5px;" title="Their Satchel is an older build; newer table features may not reach it. A fresh free copy lives at longislanddungeonmaster.com/satchel">older Satchel</span>':'')+'</span>'+
+      (p.hasHello&&!p.build?'<span style="opacity:.5;font-size:10px;margin-left:5px;" title="Their Satchel is an older build; newer table features may not reach it. A fresh free copy lives at longislanddungeonmaster.com/satchel">older Satchel</span>':'')+
+      (p.wbStale?'<span style="color:#c96a3f;font-size:10px;margin-left:5px;" title="Some War Board updates could not be delivered to this Satchel. Re-push the board, or have them rejoin, to catch it up.">board out of sync</span>':'')+'</span>'+
       '<span class="th-pill'+(p.open?' on':'')+'" id="thSt'+p.id+'">'+(p.open?'PAIRED':(p.away?'resting':'waiting'))+'</span>'+
       '<button class="th-btn" style="padding:3px 8px;" title="'+(p.hasHello?'Remove this player and bar them from rejoining':'Clear this invite')+'" onclick="theaterKickPeer('+p.id+',this)">&times;</button></div>';
     if(!p.open&&p.viaCode){
@@ -4022,6 +4690,18 @@ function theaterOnMsg(rec,env){
     if(rec.admitted)return;                       /* already seated: a second hello changes nothing */
     rec.name=p.name||rec.name; rec.cls=p.class||''; rec.lvl=p.level;
     rec.build=p.build||'';   /* v17: the Satchel says which build it is; silence means an older one */
+    /* v23.1 (finding 18): a Satchel built 2026-08-27 or later acks wb mids, so the join snapshot
+       gets held-and-retried delivery from its very first envelope instead of fire-and-forget.
+       An older or unparseable build stays un-armed until its first REAL wb ack (wbOnAck).
+       v25 (Codex phase-3 finding 3): the arming is per TYPE. Only 2026-08-28.3+ KNOWS 'draw'
+       envelopes at all - a cached .1/.2 Satchel acks reveals and tokens but drops a draw unseen,
+       so holding draws for its ack meant 12 dead retries and a false "board out of sync". Draws
+       therefore arm on the first draw-aware build; a REAL matched draw ack still arms them
+       whatever the build string said (wbOnAck). */
+    try{ const _bd=/(\d{4}-\d{2}-\d{2})(?:\.(\d+))?/.exec(rec.build);
+      rec.wbAcks=!!(_bd&&_bd[1]>='2026-08-27');
+      rec.wbAcksDraw=!!(_bd&&(_bd[1]>'2026-08-28'||(_bd[1]==='2026-08-28'&&parseInt(_bd[2]||'0',10)>=3)));
+    }catch(e){}
     rec.sid=String(p.sid||'');/* v17.6: the seat credential - identity that a rename cannot forge */
     /* v17 THE DOOR: barred seats bounce, and a locked table admits remembered seats only.
        The refusal rides a bye with a reason so a current Satchel stops knocking on its own. */
@@ -4042,6 +4722,7 @@ function theaterOnMsg(rec,env){
     /* NOW they are at the table, and only now does the host disclose anything */
     rec.peer.send(TheaterTransport.envelope('hello','host',{table:theaterTableName(),ack:1}));
     theaterPushInit(true);
+    try{ wbPushSnapshot(rec); }catch(e){}   /* v23: board + full mask + tokens ride the admit/catch-up path once */
     toast('A Satchel joined the table.');
     /* catch-up: hand over everything the seat missed while resting, oldest first.
        v17.6: each item is dropped from the queue ONLY when send() actually reported it out.
@@ -4062,10 +4743,20 @@ function theaterOnMsg(rec,env){
       },1200);
     })();
     renderTheaterPeers(); renderTheaterCount(); }
-  else if(env.type==='ping'){ if(rec.peer.isOpen())rec.peer.send(TheaterTransport.envelope('pong','host',{})); }
+  else if(env.type==='ping'){
+    /* v25 (v1.6): the board ping RIDES the liveness type, told apart by its coordinates. The
+       typeof guard is the whole tolerance story: a liveness ping (empty payload) still pongs, a
+       board ping routes to the War Board, and a host built before wbOnPing existed would answer
+       pong and process nothing - exactly the pre-v1.6 behavior the protocol promises. */
+    const p=env.payload;
+    if(p&&typeof p.x==='number'&&typeof p.y==='number'&&typeof wbOnPing==='function'){ wbOnPing(rec,env); }
+    else if(rec.peer.isOpen())rec.peer.send(TheaterTransport.envelope('pong','host',{}));
+  }
   else if(env.type==='pong'){ /* liveness only */ }
   else if(env.type==='roll'){ theaterOnRoll(rec,env); }
   else if(env.type==='whisper'){ theaterOnWhisper(rec,env); }
+  else if(env.type==='ack'){ wbOnAck(rec,env); }          /* v23 (v1.5): a Satchel acks board/reveal/token mids */
+  else if(env.type==='token'){ wbOnTokenReq(rec,env); }   /* v23 (v1.5): a player asks to move their own token */
   else if(env.type==='bye'){ rec.open=false; if(rec.hasHello)rec.away=true; renderTheaterPeers(); renderTheaterCount(); }
 }
 function theaterOnRoll(rec,env){ const p=env.payload||{};
@@ -4426,8 +5117,8 @@ function theaterPushImage(inp){
    README, About panel); GRIM_BUILD carries it plus the build date for problem reports.
    Bump BOTH lines with every release - a user with an offline file kept for a year has no
    other way to know what they hold, and neither do we when they report a bug. */
-const KK_VERSION='2.2.0';
-const GRIM_BUILD=KK_VERSION+' · 2026-08-24';
+const KK_VERSION='2.5.0';
+const GRIM_BUILD=KK_VERSION+' · 2026-08-28';
 window.KK_VERSION=KK_VERSION;
 const BUG_ERRORS=[];
 /* ⚠ ERROR MESSAGES ARE NOT SAFE TEXT. A browser quotes the offending input back at you:
@@ -4733,9 +5424,1615 @@ function showResume(){
   r.classList.add('show');
 }
 
+/* ============================================================ THE WAR BOARD (v23) =============
+   The DM screen on crack: load your own maps from a folder on disk, align a grid to them,
+   fog the unexplored part, drop tokens, and push the picture to every paired Satchel.
+   Laws in force here:
+   - map/token BYTES stay in the user's folder; STATE carries filenames, grid + mask + token
+     placements only (they ride .keeper + Drive Binder; the folder relinks by filename).
+   - the board is a stage occupant with its OWN pointer (STATE.wb.open/active). No function in
+     this module writes currentBook or currentTome, ever.
+   - the wire face is built ONLY by boardFace(), naming its nine public keys (pkFace law).     */
+
+/* ---- instances 3 & 4 of the folder-link pattern, now registry-driven (spec section 1).
+   DELEGATION DECISION (recorded per the build contract): pickSoundFolder() and driveClick()
+   keep their own shipped bodies untouched. Their pick/persist/re-grant beats are duplicated
+   in this registry rather than delegated, because each has bespoke follow-ups (toast copy,
+   driveLoad/driveSaveAll ordering) whose behavior-identity under delegation could not be
+   proven without touching production paths this build does not need to touch. The two NEW
+   kinds (maps, tokens) run through the shared helpers below. */
+let mapsDir=null, tokensDir=null;
+const FOLDERS={
+  sound:{ key:'soundDir', mode:'read',
+    get:function(){return soundDir;}, set:function(d){soundDir=d;},
+    scan:function(){return soundScanFolder();},
+    cantMsg:'This browser can&rsquo;t open a local sounds folder &mdash; the Sound Mat needs a Chromium browser (File System Access API).' },
+  drive:{ key:'driveDir', mode:'readwrite',
+    get:function(){return driveDir;}, set:function(d){driveDir=d;},
+    scan:async function(){ driveOK=true; await driveLoad(); await driveSaveAll(); driveBtnLabel(); },
+    cantMsg:'This browser can&rsquo;t keep a binder on a drive &mdash; it needs a Chromium browser (File System Access API).' },
+  maps:{ key:'mapsDir', mode:'read',
+    get:function(){return mapsDir;}, set:function(d){mapsDir=d;},
+    scan:function(){return wbScanMaps();},
+    names:function(){return [...wbMapFiles.keys()];},
+    cantMsg:'This browser can&rsquo;t open a local maps folder. The War Board needs a Chromium browser (File System Access API).' },
+  tokens:{ key:'tokensDir', mode:'read',
+    get:function(){return tokensDir;}, set:function(d){tokensDir=d;},
+    scan:function(){return wbScanTokens();},
+    names:function(){return [...wbTokFiles.keys()];},
+    cantMsg:'This browser can&rsquo;t open a local tokens folder. The War Board needs a Chromium browser (File System Access API).' },
+};
+async function linkFolder(kind){
+  const F=FOLDERS[kind]; if(!F)return false;
+  linkFolder.lost=false;   /* v23.1 (finding 23): true = linked for the session but NOT persisted; callers must not paint success copy over the honest toast */
+  if(!window.showDirectoryPicker){ toast(F.cantMsg); return false; }   /* honest degrade, never silent */
+  /* re-grant beat (the driveClick shape): a kept handle whose permission lapsed re-grants on one click */
+  const held=F.get();
+  if(held&&held.queryPermission&&held.requestPermission){
+    try{
+      const perm=await held.queryPermission({mode:F.mode});
+      /* v23.1 (finding 21): permission still GRANTED means the click is usually "look again", not
+         "pick another folder" - rescan first without the OS picker. If the rescan finds nothing
+         new, fall through to the picker: that click really did want a different folder. */
+      if(perm==='granted'&&F.names){
+        const before=F.names().sort().join('\n');
+        await F.scan();
+        if(F.names().sort().join('\n')!==before)return true;
+      }
+      else if(perm!=='granted'
+        && (await held.requestPermission({mode:F.mode}))==='granted'){ F.set(held); await F.scan(); return true; }
+    }catch(e){}
+  }
+  let dir; try{ dir=await window.showDirectoryPicker(F.mode==='readwrite'?{mode:'readwrite'}:undefined); }catch(e){ return false; }
+  F.set(dir);
+  /* v13½ law: idbPut is (store, VALUE, KEY). v23.1 (finding 23): it resolves false instead of
+     rejecting, so a failed write must be READ, not caught - otherwise the link works all session
+     and silently asks again next boot. The honest toast fires AFTER the scan, because the scan
+     paths toast their own success copy and the single toast slot must end owning the miss. */
+  let remembered=true;
+  if(DB){ try{ if(!(await idbPut('kv',dir,F.key)))remembered=false; }catch(e){} }
+  await F.scan();
+  if(!remembered){ linkFolder.lost=true;
+    toast('This folder link could not be remembered by the browser. It works for this session, but next time the app will ask for the folder again.'); }
+  return true;
+}
+async function reconnectFolder(kind){   /* boot beat: silent re-link if permission is still held */
+  const F=FOLDERS[kind]; if(!F||!DB)return false;
+  let h; try{ h=await idbGet('kv',F.key); }catch(e){ h=null; } if(!h)return false;
+  F.set(h);
+  try{ if(h.queryPermission && (await h.queryPermission({mode:F.mode}))==='granted'){ await F.scan(); return true; } }catch(e){}
+  return false;
+}
+async function wbReconnect(){
+  const W=wbState(); W.open=false;   /* the surface never survives a boot; the maps and masks do */
+  /* v23.1 (finding 6, pin 1): every map carries a persistent opaque uid - THAT is what rides the
+     wire, never the filename. Older v23 saves get theirs minted here, once. */
+  try{ Object.keys(W.maps).forEach(function(k){ const m=W.maps[k]; if(!m)return;
+    if(!m.uid)m.uid=wbMintUid(); if(!m.seq)m.seq=0; }); }catch(e){}
+  try{ await reconnectFolder('maps'); }catch(e){}
+  try{ await reconnectFolder('tokens'); }catch(e){}
+}
+
+/* ---- state ---- */
+function wbState(){ if(!STATE.wb)STATE.wb={maps:{},active:null,open:false}; if(!STATE.wb.maps)STATE.wb.maps={}; return STATE.wb; }
+function wbMap(){ const W=wbState(); return W.active?(W.maps[W.active]||null):null; }
+function wbNewId(){ return 'wb'+Date.now().toString(36)+Math.floor(Math.random()*46656).toString(36); }
+const WB_CELL=64;   /* gridless or un-aligned maps: the fog quantises to this fixed image-px cell */
+function wbCell(m){ return (!m.gridless&&m.gridPx>0)?m.gridPx:WB_CELL; }
+function wbOrigin(m){ return (!m.gridless&&m.gridPx>0)?{x:m.originX||0,y:m.originY||0}:{x:0,y:0}; }
+/* v23.1 (pin 1): the wire identity - opaque hex, minted once, persisted on the map record.
+   The DM's filename never leaves this machine; host-local keying stays the filename (export
+   re-match law), the uid is what every envelope carries. */
+function wbMintUid(){ let s=''; for(let i=0;i<4;i++)s+=('000'+((Math.random()*65536)|0).toString(16)).slice(-4); return s; }
+function wbEnsureMap(id){ const W=wbState();
+  const m=W.maps[id]=W.maps[id]||{id:id,uid:wbMintUid(),name:id.replace(/\.[^.]+$/,''),gridPx:null,originX:0,originY:0,gridless:false,w:0,h:0,ops:[],tokens:[],draws:[],seq:0};
+  if(!m.uid)m.uid=wbMintUid(); if(!m.seq)m.seq=0;
+  if(!m.ops)m.ops=[]; if(!m.tokens)m.tokens=[]; if(!m.draws)m.draws=[]; return m; }
+
+/* ---- module runtime (never persisted) ---- */
+let wbImg=null, wbImgName=null, wbImgURL=null;
+let wbImgStamp=0;                  /* v23.1 (pin 6): bumps per decoded image - art identity for grid-only re-push */
+let wbLoadTok=0;                   /* v23.1 (finding 24): two fast tray clicks race the async load; last click wins */
+let wbFrom='stage';                /* v23.1 (finding 24): where the board was opened FROM, so close returns there */
+let wbHoodFold=false;              /* v23.1 (finding 24): board folded for Under-the-Hood reopens on the way back */
+let wbNudgeTmr=null;               /* v23.1 (finding 7): a nudge burst snapshots once, at its start */
+let wbView={x:0,y:0,z:1};
+let wbTool='pan';
+let wbDrag=null;
+let wbSelTok=null;
+let wbAlignMode=null, wbAlignPrev=null, wbMatchN=3, wbDropSnapped=false;
+let wbMapFiles=new Map(), wbTokFiles=new Map();
+const wbThumbCache=new Map();
+const wbTokArt=new Map();   /* filename -> {uri,hash,img} : art is rasterised once, hashed once */
+let wbMaskCv=null, wbMaskFor='', wbMaskDirty=true;
+/* v25 measure / draw / ping runtime (never persisted; drawings live on the map record) */
+let wbMs=null;                                  /* {x0,y0,x1,y1} original-image px, or null */
+let wbDrKind='pen', wbDrCol='#e6c84a', wbDrW='m', wbDrDm=false, wbDrCapToast=false;
+let wbPings=[], wbPingRAF=0;                    /* ephemeral rings; rAF loop has a hard end */
+
+/* ---- folder scans ---- */
+const WB_IMG_RE=/\.(png|jpe?g|webp|gif|bmp|avif)$/i;
+async function wbScanMaps(){
+  wbMapFiles.clear();
+  /* v23.1 (finding 5): a rescan is a new truth - stale thumbs from the OLD folder must not
+     survive it (a filename collision across campaigns served the wrong campaign's art) */
+  [...wbThumbCache.keys()].forEach(function(k){ if(k.indexOf('m:')===0)wbThumbCache.delete(k); });
+  if(!mapsDir)return false;
+  try{ for await(const en of mapsDir.values()){ if(en.kind==='file'&&WB_IMG_RE.test(en.name)) wbMapFiles.set(en.name,en); } }
+  catch(e){ toast('Couldn&rsquo;t read that maps folder.'); return false; }
+  wbRenderTray(); return true;
+}
+async function wbScanTokens(){
+  wbTokFiles.clear();
+  /* v23.1 (finding 5): same law for token art - the rasterised-art cache and thumbs die on rescan */
+  wbTokArt.clear();
+  [...wbThumbCache.keys()].forEach(function(k){ if(k.indexOf('t:')===0)wbThumbCache.delete(k); });
+  if(!tokensDir)return false;
+  try{ for await(const en of tokensDir.values()){ if(en.kind==='file'&&WB_IMG_RE.test(en.name)) wbTokFiles.set(en.name,en); } }
+  catch(e){ toast('Couldn&rsquo;t read that tokens folder.'); return false; }
+  wbRenderTokTray(); return true;
+}
+async function wbLinkMaps(){ if(await linkFolder('maps')&&mapsDir&&!linkFolder.lost)
+  toast('Maps folder linked: <b>'+esc(mapsDir.name)+'</b>, '+wbMapFiles.size+' image'+(wbMapFiles.size===1?'':'s')+'. Nothing leaves this computer until you push a map to your table.'); }
+async function wbLinkTokens(){ if(await linkFolder('tokens')&&tokensDir&&!linkFolder.lost)
+  toast('Tokens folder linked: <b>'+esc(tokensDir.name)+'</b>, '+wbTokFiles.size+' image'+(wbTokFiles.size===1?'':'s')+'.'); }
+
+/* ---- thumbnails: canvas thumbs no larger than 160px, built lazily, object URLs revoked ---- */
+async function wbThumb(fileMap,name,kind){
+  const ck=kind+':'+name;
+  if(wbThumbCache.has(ck))return wbThumbCache.get(ck);
+  const h=fileMap.get(name); if(!h)return null;
+  try{
+    const f=await h.getFile(); const url=URL.createObjectURL(f);
+    let im; try{ im=await new Promise(function(res,rej){ const i=new Image(); i.onload=function(){res(i);}; i.onerror=rej; i.src=url; }); }
+    finally{ URL.revokeObjectURL(url); }
+    const s=Math.min(1,160/Math.max(im.naturalWidth||1,im.naturalHeight||1));
+    const cv=document.createElement('canvas');
+    cv.width=Math.max(1,Math.round(im.naturalWidth*s)); cv.height=Math.max(1,Math.round(im.naturalHeight*s));
+    cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);
+    const d=cv.toDataURL('image/jpeg',0.7);
+    wbThumbCache.set(ck,d); return d;
+  }catch(e){ return null; }
+}
+async function wbFillThumbs(container,fileMap,kind){
+  if(!container||container._wbBusy)return; container._wbBusy=true;
+  try{
+    let el;
+    while((el=container.querySelector('img[data-wbthumb]'))){
+      const n=el.getAttribute('data-wbthumb'); el.removeAttribute('data-wbthumb');
+      const d=await wbThumb(fileMap,n,kind);
+      if(el.isConnected){ if(d)el.src=d; else el.style.visibility='hidden'; }
+    }
+  }finally{ container._wbBusy=false; }
+}
+
+/* ---- the maps tray ---- */
+function wbRenderTray(){
+  const el=document.getElementById('wbTray'); if(!el)return;
+  const qEl=document.getElementById('wbTraySearch');
+  const q=((qEl&&qEl.value)||'').trim().toLowerCase();
+  const W=wbState();
+  const names=[...wbMapFiles.keys()];
+  Object.keys(W.maps).forEach(function(n){ if(names.indexOf(n)<0)names.push(n); });   /* remembered maps whose file is gone still show, honestly broken */
+  names.sort(function(a,b){return a.localeCompare(b);});
+  const rows=names.filter(function(n){ const disp=(W.maps[n]&&W.maps[n].name)||n;
+    return !q||disp.toLowerCase().indexOf(q)>=0||n.toLowerCase().indexOf(q)>=0; });
+  if(!rows.length){
+    /* v23.1 (finding 24): three honest states - matches empty, folder linked-but-empty, unlinked.
+       (finding 24 copy scope: reads stay local; a map crosses only when the DM pushes it.) */
+    el.innerHTML='<div class="wb-empty">'+(wbMapFiles.size?'No map matches that search.'
+      :(mapsDir?'The linked folder has no map images yet. Add some PNG or JPG maps to it, then reopen the board.'
+      :'Link a folder of map images. The app reads them from your disk; a map leaves this computer only when you push it to your table.'))+'</div>';
+    return;
+  }
+  el.innerHTML=rows.map(function(n){
+    const m=W.maps[n], disp=(m&&m.name)||n.replace(/\.[^.]+$/,'');
+    const missing=!wbMapFiles.has(n);
+    return '<div class="wb-tile'+(W.active===n?' on':'')+'" data-wbmap="'+esc(n)+'" title="'+esc(n)+(missing?' (file not found: relink your maps folder or restore the file)':'')+'">'+
+      '<img alt="" data-wbthumb="'+esc(n)+'">'+
+      '<button class="rn" title="Rename this map">&#9998;</button>'+
+      '<span class="nm">'+(missing?'&#9888; ':'')+esc(disp)+'</span></div>';
+  }).join('');
+  el.querySelectorAll('.wb-tile').forEach(function(t){
+    t.onclick=function(){ wbOpen(this.getAttribute('data-wbmap')); };
+    const rn=t.querySelector('.rn');
+    if(rn)rn.onclick=function(ev){ ev.stopPropagation(); wbRenameMap(t.getAttribute('data-wbmap')); };
+  });
+  wbFillThumbs(el,wbMapFiles,'m');
+}
+function wbRenameMap(id){
+  const m=wbEnsureMap(id);
+  let tile=null; document.querySelectorAll('#wbTray .wb-tile').forEach(function(t){ if(t.getAttribute('data-wbmap')===id)tile=t; });
+  const nm=tile&&tile.querySelector('.nm'); if(!nm)return;
+  const inp=document.createElement('input'); inp.className='wb-inp'; inp.value=m.name||''; inp.style.fontSize='10px';
+  nm.replaceWith(inp); inp.focus(); inp.select();
+  inp.onclick=function(e){e.stopPropagation();};
+  inp.onkeydown=function(e){ e.stopPropagation(); if(e.key==='Enter')inp.blur(); if(e.key==='Escape'){inp.value=m.name||'';inp.blur();} };
+  inp.onblur=function(){ const v=inp.value.trim();
+    if(v){ m.name=v;
+      /* v23.1 (pin 1): only a DELIBERATE rename may ride the wire as the board title; the
+         filename-derived default never does (boardFace sends 'Battle map' instead) */
+      if(v!==m.id.replace(/\.[^.]+$/,''))m.renamed=true;
+    }
+    saveState(); wbRenderTray(); wbToolbarSync(wbMap()); wbNetBoardChanged(); };
+}
+function wbRenameActive(){ const W=wbState(); if(W.active)wbRenameMap(W.active); }
+
+/* ---- the tokens tray ---- */
+function wbRenderTokTray(){
+  const el=document.getElementById('wbTokTray'); if(!el)return;
+  const qEl=document.getElementById('wbTokSearch');
+  const q=((qEl&&qEl.value)||'').trim().toLowerCase();
+  const names=[...wbTokFiles.keys()].filter(function(n){ return !q||n.toLowerCase().indexOf(q)>=0; }).sort(function(a,b){return a.localeCompare(b);});
+  if(!names.length){
+    el.innerHTML='<div class="wb-empty">'+(wbTokFiles.size?'No token matches that search.'
+      :(tokensDir?'The linked folder has no token images yet. Add some PNGs to it, then reopen the board.'
+      :'Link a folder of token images (the PNGs a token maker gives you), then drag them onto the map.'))+'</div>';
+    return;
+  }
+  el.innerHTML=names.map(function(n){
+    return '<div class="wb-tile" draggable="true" data-wbtok="'+esc(n)+'" title="'+esc(n)+' (drag onto the map, or click to place at center; hold Alt to place off-grid)">'+
+      '<img alt="" data-wbthumb="'+esc(n)+'">'+
+      '<span class="nm">'+esc(n.replace(/\.[^.]+$/,''))+'</span></div>';
+  }).join('');
+  el.querySelectorAll('.wb-tile').forEach(function(t){
+    t.addEventListener('dragstart',function(e){ try{ e.dataTransfer.setData('text/wbtoken',t.getAttribute('data-wbtok')); }catch(x){} });
+    t.onclick=function(){
+      const c=document.getElementById('wbCanvas'); if(!wbState().open||!wbMap())return;
+      const ix=((c.width/2)-wbView.x)/wbView.z, iy=((c.height/2)-wbView.y)/wbView.z;
+      wbPlaceToken(t.getAttribute('data-wbtok'),ix,iy,false);
+    };
+  });
+  wbFillThumbs(el,wbTokFiles,'t');
+}
+function wbTokArtFor(name){
+  if(!name)return null;
+  let a=wbTokArt.get(name);
+  if(a)return a;
+  a={uri:'',hash:'',img:null}; wbTokArt.set(name,a);
+  (async function(){
+    try{
+      /* v23.1 (finding 5): a file that cannot be read right now must NOT leave a poisoned
+         empty entry pinned forever - delete it so the next render retries */
+      const h=wbTokFiles.get(name); if(!h){ wbTokArt.delete(name); return; }
+      const f=await h.getFile(); const url=URL.createObjectURL(f);
+      let im; try{ im=await new Promise(function(res,rej){ const i=new Image(); i.onload=function(){res(i);}; i.onerror=rej; i.src=url; }); }
+      finally{ URL.revokeObjectURL(url); }
+      const s=Math.min(1,256/Math.max(im.naturalWidth||1,im.naturalHeight||1));
+      const cv=document.createElement('canvas');
+      cv.width=Math.max(1,Math.round(im.naturalWidth*s)); cv.height=Math.max(1,Math.round(im.naturalHeight*s));
+      cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);
+      a.uri=cv.toDataURL('image/png');   /* tokens keep transparency */
+      a.hash=wbHash(a.uri);
+      /* recheck F5: the roster that fanned at drop time rode without this art. Now that the hash
+         is real, re-fan the pushed map's rosters (debounced) - a quiet board gets its faces
+         without waiting for the next reveal stroke, move or join. */
+      try{
+        if(WB_NET.pushedId){ const pm=wbState().maps[WB_NET.pushedId];
+          if(pm&&(pm.tokens||[]).some(function(t){return t.img===name;})){
+            clearTimeout(WB_NET.artTmr);
+            WB_NET.artTmr=setTimeout(function(){ WB_NET.artTmr=null;
+              const m2=WB_NET.pushedId?wbState().maps[WB_NET.pushedId]:null;
+              if(m2)wbSendTokens(m2); },250);
+          } }
+      }catch(x){}
+      const fin=new Image(); fin.onload=function(){ a.img=fin; wbRender(); }; fin.src=a.uri;
+    }catch(e){ wbTokArt.delete(name); }   /* v23.1 (finding 5): failed loads evict, never pin */
+  })();
+  return a;
+}
+function wbHash(s){ let h=5381; for(let i=0;i<s.length;i+=7) h=((h*33)^s.charCodeAt(i))>>>0; return h.toString(36)+':'+s.length; }
+
+/* ---- open / close: the stage occupant ---- */
+function wbToggle(){
+  const W=wbState();
+  if(W.open){ wbClose(); return; }
+  wbOpen(W.active&&(wbMapFiles.has(W.active)||W.maps[W.active])?W.active:null);
+}
+function wbBtnSync(){ const b=document.getElementById('wbBtn');
+  if(b)b.classList.toggle('on',!!(STATE.wb&&STATE.wb.open)); }   /* v23.1 (finding 24): the button wears the state */
+async function wbOpen(mapId){
+  const W=wbState();
+  const wasOpen=W.open;
+  if(!wasOpen)wbFrom=document.body.classList.contains('on-stage')?'stage':'shelf';   /* v23.1 (finding 24): remember where we came FROM */
+  if(document.body.classList.contains('on-stage')){ try{ saveBoard(); }catch(e){} }   /* the outgoing occupant keeps its floated cards under ITS key */
+  if(!document.body.classList.contains('on-stage')) go('stage');
+  if(mapId){ wbEnsureMap(mapId); W.active=mapId; }
+  W.open=true;
+  document.body.classList.add('wb-on');
+  wbBtnSync();
+  /* v23.1 (finding 7): the one-level align Undo never crosses a map boundary */
+  if(wbAlignPrev&&W.active&&wbAlignPrev.mapId!==W.active)wbAlignPrev=null;
+  wbSelTok=null; wbDrag=null;
+  saveState();
+  try{ restoreBoard(boardKey()); }catch(e){}   /* the board's own floating cards come back with it */
+  /* v23.1 (finding 21): opening the board re-reads the linked folders, so a map or token file
+     added (or restored) mid-session appears without re-picking anything */
+  try{ if(mapsDir)await wbScanMaps(); }catch(e){}
+  try{ if(tokensDir)await wbScanTokens(); }catch(e){}
+  wbRenderTray(); wbRenderTokTray(); wbTokEditSync();
+  wbDrBarSync();   /* v25: the draw sub-bar follows the tool across close/reopen */
+  await wbLoadActive();
+  wbFit();
+}
+function wbClose(){
+  const W=wbState(); if(!W.open)return;
+  try{ saveBoard(); }catch(e){}
+  W.open=false;
+  document.body.classList.remove('wb-on');
+  wbBtnSync();
+  wbFreeImg(); wbDrag=null;
+  saveState();
+  if(document.body.classList.contains('on-stage')){
+    /* v23.1 (finding 24): a board opened FROM the shelf returns to the shelf - never to
+       whatever hour-old book still happens to be loaded underneath */
+    if(wbFrom!=='shelf'&&stageOpen()){ try{ restoreBoard(boardKey()); }catch(e){} }   /* the book or Tome underneath was never touched */
+    else go('shelf');
+  }
+}
+async function wbLoadActive(){
+  const tok=++wbLoadTok;   /* v23.1 (finding 24): two fast tray clicks race - only the LAST load may land */
+  wbFreeImg();
+  /* v25: the ruler and any live rings are framed in the OLD map's pixels - they die with it */
+  wbMs=null; wbMsSync(); wbPings=[];
+  const W=wbState(); const id=W.active; if(!id){ wbRender(); return; }
+  const m=wbEnsureMap(id);
+  const h=wbMapFiles.get(id);
+  if(!h){ wbRender(); return; }   /* renders the honest file-not-found tile */
+  try{
+    const f=await h.getFile();
+    if(tok!==wbLoadTok)return;   /* a newer click superseded this load */
+    const url=URL.createObjectURL(f); wbImgURL=url;
+    const im=await new Promise(function(res,rej){ const i=new Image(); i.onload=function(){res(i);}; i.onerror=rej; i.src=url; });
+    try{ URL.revokeObjectURL(url); }catch(e){}
+    if(tok!==wbLoadTok)return;   /* superseded mid-decode: the newer load owns the stage */
+    wbImgURL=null;
+    wbImg=im; wbImgName=id; wbImgStamp++;   /* v23.1 (pin 6): a fresh decode is a fresh art identity */
+    if(!m.w||!m.h){ m.w=im.naturalWidth; m.h=im.naturalHeight; saveState(); }
+    wbMaskDirty=true;
+  }catch(e){ if(tok===wbLoadTok){ wbFreeImg(); toast('Couldn&rsquo;t load that map image.'); } }
+  if(tok===wbLoadTok)wbRender();
+}
+function wbFreeImg(){
+  if(wbImgURL){ try{ URL.revokeObjectURL(wbImgURL); }catch(e){} }
+  wbImgURL=null; wbImg=null; wbImgName=null; wbMaskDirty=true;
+}
+
+/* ---- render ---- */
+function wbRender(){
+  const c=document.getElementById('wbCanvas'); if(!c)return;
+  const W=wbState(); if(!W.open)return;
+  const wrap=document.getElementById('wbCanvasWrap');
+  const cw=Math.max(50,wrap.clientWidth||800), ch=Math.max(50,wrap.clientHeight||500);
+  if(c.width!==cw||c.height!==ch){ c.width=cw; c.height=ch; }
+  const g=c.getContext('2d');
+  g.setTransform(1,0,0,1,0,0);
+  g.fillStyle='#0d0806'; g.fillRect(0,0,cw,ch);
+  const m=wbMap();
+  wbToolbarSync(m);
+  wbAlignReadout(m);
+  if(!m){
+    g.fillStyle='#8a6d5f'; g.font='13px system-ui,sans-serif'; g.textAlign='center';
+    g.fillText('Pick a map from the tray on the left.',cw/2,ch/2);
+    return;
+  }
+  if(!wbImg||wbImgName!==m.id){
+    g.fillStyle='#8a6d5f'; g.font='13px system-ui,sans-serif'; g.textAlign='center';
+    g.fillText(wbMapFiles.size?'This map file is not in the linked folder. Relink your maps folder or restore the file.':'Link your maps folder to load this map. Its grid and fog are kept.',cw/2,ch/2);
+    return;
+  }
+  g.save();
+  g.translate(wbView.x,wbView.y); g.scale(wbView.z,wbView.z);
+  g.imageSmoothingEnabled=true;
+  g.drawImage(wbImg,0,0);
+  /* the DM sees everything; unrevealed ground is shaded, never blacked (players get opaque ink) */
+  g.globalAlpha=0.55; g.drawImage(wbMaskCanvas(m),0,0,m.w,m.h); g.globalAlpha=1;
+  if(!m.gridless&&m.gridPx>0) wbDrawGrid(g,m);
+  /* v25 paint order: map -> fog shade (the DM sees through it, as always) -> grid -> draws ->
+     tokens -> pings/ruler. On the Satchel the same draws sit UNDER its opaque fog; here the
+     shade is translucent so under/over is a wire question, not a DM-view one. Pings are a
+     deliberate signal and ride ABOVE everything; the ruler is the DM's own eye and rides last. */
+  wbDrPaint(g,m);
+  wbDrawTokens(g,m);
+  wbPingPaint(g);
+  wbMsPaint(g,m);
+  g.restore();
+  wbDrawDragGhost(g);
+}
+function wbMaskCanvas(m){
+  if(wbMaskCv&&!wbMaskDirty&&wbMaskFor===m.id)return wbMaskCv;
+  const w=Math.max(1,m.w|0), h=Math.max(1,m.h|0);
+  const msc=Math.max(1,Math.max(w,h)/1200);
+  const cv=document.createElement('canvas');
+  cv.width=Math.max(1,Math.ceil(w/msc)); cv.height=Math.max(1,Math.ceil(h/msc));
+  const g=cv.getContext('2d');
+  g.fillStyle='#000'; g.fillRect(0,0,cv.width,cv.height);
+  const cell=wbCell(m), o=wbOrigin(m), k=1/msc;
+  (m.ops||[]).forEach(function(op){
+    const r=op&&op.r; if(!r)return;
+    const x=(o.x+r[0]*cell)*k, y=(o.y+r[1]*cell)*k, rw=r[2]*cell*k, rh=r[3]*cell*k;
+    if(op.a){ g.clearRect(x,y,rw,rh); } else { g.fillStyle='#000'; g.fillRect(x,y,rw,rh); }
+  });
+  wbMaskCv=cv; wbMaskFor=m.id; wbMaskDirty=false;
+  return cv;
+}
+function wbDrawGrid(g,m){
+  const cell=m.gridPx;
+  const ox=(((m.originX||0)%cell)+cell)%cell, oy=(((m.originY||0)%cell)+cell)%cell;
+  g.strokeStyle='rgba(201,162,75,.4)'; g.lineWidth=1/wbView.z;
+  g.beginPath();
+  for(let x=ox;x<=m.w;x+=cell){ g.moveTo(x,0); g.lineTo(x,m.h); }
+  for(let y=oy;y<=m.h;y+=cell){ g.moveTo(0,y); g.lineTo(m.w,y); }
+  g.stroke();
+}
+function wbDrawTokens(g,m){
+  const cell=wbCell(m), o=wbOrigin(m);
+  const act=STATE.combat?STATE.combat.activeId:null;
+  (m.tokens||[]).forEach(function(t){
+    const x=o.x+t.x*cell, y=o.y+t.y*cell, w=t.w*cell, h=t.h*cell;
+    const a=t.img?wbTokArtFor(t.img):null;
+    g.save();
+    g.beginPath(); g.arc(x+w/2,y+h/2,Math.min(w,h)/2,0,Math.PI*2); g.clip();
+    if(a&&a.img){ g.drawImage(a.img,x,y,w,h); }
+    else { g.fillStyle=t.colour||'#c9a24b'; g.fillRect(x,y,w,h);
+      g.fillStyle='rgba(0,0,0,.5)'; g.font=(h*0.5)+'px system-ui,sans-serif'; g.textAlign='center';
+      g.fillText((t.label||'?').charAt(0).toUpperCase(),x+w/2,y+h*0.68); }
+    g.restore();
+    g.lineWidth=Math.max(1.5/wbView.z,cell*0.04);
+    g.strokeStyle=t.colour||'#c9a24b';
+    g.beginPath(); g.arc(x+w/2,y+h/2,Math.min(w,h)/2,0,Math.PI*2); g.stroke();
+    if(act&&t.tid===act){   /* the War Table drives the board: the active turn wears the ring */
+      g.strokeStyle='#ffd76a'; g.lineWidth=Math.max(2.5/wbView.z,cell*0.06);
+      g.beginPath(); g.arc(x+w/2,y+h/2,Math.min(w,h)/2+g.lineWidth*1.2,0,Math.PI*2); g.stroke();
+    }
+    if(t.tid===wbSelTok){
+      g.strokeStyle='#fff'; g.setLineDash([4/wbView.z,3/wbView.z]); g.lineWidth=1/wbView.z;
+      g.strokeRect(x,y,w,h); g.setLineDash([]);
+    }
+    if(t.label){
+      const fs=Math.max(10/wbView.z,cell*0.2);
+      g.font=fs+'px system-ui,sans-serif'; g.textAlign='center';
+      const tw=g.measureText(t.label).width;
+      g.fillStyle='rgba(0,0,0,.65)'; g.fillRect(x+w/2-tw/2-3,y+h+2,tw+6,fs*1.3);
+      g.fillStyle='#f4e3c0'; g.fillText(t.label,x+w/2,y+h+2+fs);
+    }
+  });
+}
+function wbDrawDragGhost(g){
+  if(!wbDrag)return; const m=wbMap(); if(!m)return;
+  const z=wbView.z, vx=wbView.x, vy=wbView.y;
+  function sx(ix){return ix*z+vx;} function sy(iy){return iy*z+vy;}
+  if(wbDrag.kind==='match'||wbDrag.kind==='rect'){
+    const x0=Math.min(wbDrag.x0,wbDrag.x1), y0=Math.min(wbDrag.y0,wbDrag.y1);
+    const x1=Math.max(wbDrag.x0,wbDrag.x1), y1=Math.max(wbDrag.y0,wbDrag.y1);
+    g.strokeStyle=wbDrag.kind==='match'?'#ffd76a':'#7fd0ff';
+    g.lineWidth=1.5; g.setLineDash([6,4]);
+    g.strokeRect(sx(x0),sy(y0),(x1-x0)*z,(y1-y0)*z);
+    if(wbDrag.kind==='match'){
+      const n=Math.max(1,Math.min(6,wbMatchN|0));
+      g.beginPath();
+      for(let i=1;i<n;i++){ const x=x0+(x1-x0)*i/n; g.moveTo(sx(x),sy(y0)); g.lineTo(sx(x),sy(y1)); }
+      g.stroke();
+    }
+    g.setLineDash([]);
+  } else if(wbDrag.kind==='paint'){
+    const cell=wbCell(m), o=wbOrigin(m);
+    g.fillStyle=wbDrag.a?'rgba(127,208,255,.35)':'rgba(220,80,60,.35)';
+    (wbDrag.order||[]).forEach(function(cc){ g.fillRect(sx(o.x+cc[0]*cell),sy(o.y+cc[1]*cell),cell*z,cell*z); });
+  }
+}
+function wbToolbarSync(m){
+  const t=document.getElementById('wbTitle');
+  if(t)t.textContent=m?(m.name||m.id):'War Board';
+  document.querySelectorAll('#wbStage [data-wbtool]').forEach(function(b){ b.classList.toggle('on',b.getAttribute('data-wbtool')===wbTool); });
+  const c=document.getElementById('wbCanvas');
+  if(c){ c.className='tool-'+wbTool+(wbDrag?' dragging':''); }
+}
+function wbSetTool(t){
+  if(wbTool==='measure'&&t!=='measure')wbMsClear();   /* v25: leaving the tool clears the ruler */
+  wbTool=t;
+  if(typeof wbDrBarSync==='function')wbDrBarSync();   /* v25: the draw sub-bar follows the tool */
+  wbToolbarSync(wbMap());
+  if(wbState().open)wbRender();
+}
+
+/* ===== v25 MEASURE (S1) - a local ruler, both readouts, no wire =====
+   All math lives in the ORIGINAL image frame (wbEvtImg), so the readout is identical at any
+   zoom. Aligned maps count Chebyshev cells x 5 ft (the 5e one-square-diagonal default);
+   gridless or un-aligned maps get honest image pixels, never fake feet. */
+function wbMsClear(){
+  if(!wbMs&&!(wbDrag&&wbDrag.kind==='ms'))return;
+  wbMs=null; if(wbDrag&&wbDrag.kind==='ms')wbDrag=null;
+  wbMsSync(); if(wbState().open)wbRender();
+}
+function wbMsText(m){
+  if(!wbMs)return '';
+  if(!m.gridless&&m.gridPx>0){
+    const a=wbCellPt(wbMs.x0,wbMs.y0,m), b=wbCellPt(wbMs.x1,wbMs.y1,m);
+    const sq=Math.max(Math.abs(b[0]-a[0]),Math.abs(b[1]-a[1]));
+    return sq+' sq · '+(sq*5)+' ft';
+  }
+  return Math.round(Math.hypot(wbMs.x1-wbMs.x0,wbMs.y1-wbMs.y0))+' px';
+}
+function wbMsSync(){
+  const el=document.getElementById('wbMeasure'); if(!el)return;
+  const m=wbMap();
+  const t=(wbMs&&m)?wbMsText(m):'';
+  el.textContent=t; el.style.display=t?'block':'none';
+}
+function wbMsPaint(g,m){
+  if(!wbMs)return;
+  const z=wbView.z;
+  g.save();
+  g.strokeStyle='#ffd76a'; g.lineWidth=2/z; g.setLineDash([8/z,6/z]);
+  g.beginPath(); g.moveTo(wbMs.x0,wbMs.y0); g.lineTo(wbMs.x1,wbMs.y1); g.stroke();
+  g.setLineDash([]);
+  g.fillStyle='#ffd76a';
+  g.beginPath(); g.arc(wbMs.x0,wbMs.y0,3.5/z,0,Math.PI*2); g.fill();
+  g.beginPath(); g.arc(wbMs.x1,wbMs.y1,3.5/z,0,Math.PI*2); g.fill();
+  const txt=wbMsText(m);
+  const fs=13/z; g.font='bold '+fs+'px system-ui,sans-serif'; g.textAlign='left';
+  const tw=g.measureText(txt).width;
+  const tx=wbMs.x1+14/z, ty=wbMs.y1-10/z;
+  g.fillStyle='rgba(10,5,3,.82)'; g.fillRect(tx-5/z,ty-fs,tw+10/z,fs*1.5);
+  g.fillStyle='#ffe9b8'; g.fillText(txt,tx,ty);
+  g.restore();
+}
+
+/* ===== v25 DRAW (S2) - ink on the map, an op list on the map record =====
+   m.draws = [{did, kind:'pen'|'line'|'rect'|'ellipse', pts|r, col, w, dm:0|1}] in ORIGINAL
+   image px (the F1 frame law: one frame, carried by the board envelope's w/h; a grid change
+   never re-frames ink). Pen points are decimated at ~3 screen px as they are captured. Cap
+   600 ops per map, oldest non-dm trimmed. dm:1 ops render dashed and never leave the machine. */
+function wbDrBarSync(){
+  const bar=document.getElementById('wbDrawBar'); if(!bar)return;
+  bar.classList.toggle('show',wbTool==='draw');
+  bar.querySelectorAll('[data-wbdraw]').forEach(function(b){ b.classList.toggle('on',b.getAttribute('data-wbdraw')===wbDrKind); });
+  bar.querySelectorAll('[data-wbw]').forEach(function(b){ b.classList.toggle('on',b.getAttribute('data-wbw')===wbDrW); });
+  bar.querySelectorAll('.wb-swatch').forEach(function(b){ b.classList.toggle('on',b.getAttribute('data-wbcol')===wbDrCol); });
+  const dm=document.getElementById('wbDrDmBtn'); if(dm)dm.classList.toggle('on',!!wbDrDm);
+}
+function wbDrSetKind(k){ wbDrKind=k; wbDrBarSync(); }
+function wbDrSetCol(c){ wbDrCol=c; wbDrBarSync(); }
+function wbDrSetW(w){ wbDrW=w; wbDrBarSync(); }
+function wbDrDmToggle(){ wbDrDm=!wbDrDm; wbDrBarSync(); }
+function wbDrWidthPx(m){
+  /* stroke widths live in image px so ink keeps its size on the map at any zoom; scaled to the
+     map so S is legible on a phone photo and L is not a wall on a 6000px scan */
+  const longest=Math.max(m.w||0,m.h||0)||1500;
+  const s=Math.max(2,Math.round(longest/500));
+  return wbDrW==='s'?s:(wbDrW==='l'?s*4:s*2);
+}
+function wbDrPaintOp(g,op){
+  if(!op)return;
+  g.save();
+  g.strokeStyle=op.col||'#e6c84a';
+  g.lineWidth=op.w||3; g.lineJoin='round'; g.lineCap='round';
+  if(op.dm){ g.setLineDash([Math.max(4,(op.w||3)*2),Math.max(3,(op.w||3)*1.5)]); g.globalAlpha=0.8; }
+  g.beginPath();
+  if(op.kind==='pen'){
+    const p=op.pts||[]; if(p.length<2){ g.restore(); return; }
+    g.moveTo(p[0][0],p[0][1]); for(let i=1;i<p.length;i++)g.lineTo(p[i][0],p[i][1]);
+  } else {
+    const r=op.r||[0,0,0,0];
+    if(op.kind==='line'){ g.moveTo(r[0],r[1]); g.lineTo(r[0]+r[2],r[1]+r[3]); }
+    else if(op.kind==='rect'){ g.rect(Math.min(r[0],r[0]+r[2]),Math.min(r[1],r[1]+r[3]),Math.abs(r[2]),Math.abs(r[3])); }
+    else if(op.kind==='ellipse'){ g.ellipse(r[0]+r[2]/2,r[1]+r[3]/2,Math.max(0.5,Math.abs(r[2])/2),Math.max(0.5,Math.abs(r[3])/2),0,0,Math.PI*2); }
+    else { g.restore(); return; }
+  }
+  g.stroke(); g.restore();
+}
+function wbDrPreviewOp(){
+  const m=wbMap(); if(!m||!wbDrag)return null;
+  const w=wbDrWidthPx(m), col=wbDrCol, dm=wbDrDm?1:0;
+  if(wbDrag.kind==='drpen')return {kind:'pen',pts:wbDrag.pts,col:col,w:w,dm:dm};
+  if(wbDrag.kind==='drshape'){
+    const d=wbDrag;
+    if(d.dk==='line')return {kind:'line',r:[d.x0,d.y0,d.x1-d.x0,d.y1-d.y0],col:col,w:w,dm:dm};
+    return {kind:d.dk,r:[Math.min(d.x0,d.x1),Math.min(d.y0,d.y1),Math.abs(d.x1-d.x0),Math.abs(d.y1-d.y0)],col:col,w:w,dm:dm};
+  }
+  return null;
+}
+function wbDrPaint(g,m){
+  const list=m.draws||[];
+  for(let i=0;i<list.length;i++)wbDrPaintOp(g,list[i]);
+  if(wbDrag&&(wbDrag.kind==='drpen'||wbDrag.kind==='drshape'))wbDrPaintOp(g,wbDrPreviewOp());
+}
+function wbDrCommitDrag(m,d){
+  const w=wbDrWidthPx(m), col=wbDrCol, dm=wbDrDm?1:0;
+  let op=null;
+  if(d.kind==='drpen'&&d.pts.length>=2)op={did:wbNewId(),kind:'pen',pts:d.pts,col:col,w:w,dm:dm};
+  if(d.kind==='drshape'){
+    const dx=d.x1-d.x0, dy=d.y1-d.y0;
+    if(Math.max(Math.abs(dx),Math.abs(dy))*wbView.z>=4){   /* a gesture, not a twitch (screen px) */
+      if(d.dk==='line')op={did:wbNewId(),kind:'line',r:[Math.round(d.x0),Math.round(d.y0),Math.round(dx),Math.round(dy)],col:col,w:w,dm:dm};
+      else op={did:wbNewId(),kind:d.dk,r:[Math.round(Math.min(d.x0,d.x1)),Math.round(Math.min(d.y0,d.y1)),Math.max(1,Math.round(Math.abs(dx))),Math.max(1,Math.round(Math.abs(dy)))],col:col,w:w,dm:dm};
+    }
+  }
+  if(!op){ wbRender(); return; }
+  m.draws=m.draws||[];
+  m.draws.push(op);
+  wbDrEnforceCap(m);
+  saveState(); wbRender();
+  if(!op.dm)wbDrQueue([op]);
+}
+function wbDrEnforceCap(m){
+  while((m.draws||[]).length>600){
+    /* v25 (Codex phase-3 finding 4): the JUST-ADDED op (the tail) is never the trim target.
+       An all-dm list once made the new shared stroke the only non-dm candidate: the host
+       trimmed it and queued {del:newDid} while commit still queued the add - the DM lost the
+       mark and every player kept it. When no EARLIER shared op exists, the oldest dm op goes
+       instead (dm ops are local-only: no wire del), so host and wire agree in every cap path. */
+    const last=m.draws.length-1;
+    let i=m.draws.findIndex(function(o,ix){return ix<last&&!o.dm;});
+    if(i<0)i=0;   /* every earlier op is dm: the oldest dm mark goes instead, so the list stays bounded */
+    const dead=m.draws.splice(i,1)[0];
+    if(dead&&!dead.dm)wbDrQueue([{del:dead.did}]);   /* players mirror the trim */
+    if(!wbDrCapToast){ wbDrCapToast=true;
+      toast('This map hit its drawing cap of 600. The oldest mark now goes as each new one lands. Clear old marks to keep the ones you care about.'); }
+  }
+}
+function wbDrSegDist(px,py,x0,y0,x1,y1){
+  const dx=x1-x0,dy=y1-y0; const L2=dx*dx+dy*dy;
+  const u=L2?Math.max(0,Math.min(1,((px-x0)*dx+(py-y0)*dy)/L2)):0;
+  return Math.hypot(px-(x0+dx*u),py-(y0+dy*u));
+}
+function wbDrHit(op,ix,iy,thr){
+  const t=thr+((op.w||2)/2);
+  if(op.kind==='pen'){
+    const pts=op.pts||[];
+    for(let i=1;i<pts.length;i++){ if(wbDrSegDist(ix,iy,pts[i-1][0],pts[i-1][1],pts[i][0],pts[i][1])<=t)return true; }
+    return false;
+  }
+  const r=op.r||[0,0,0,0];
+  if(op.kind==='line')return wbDrSegDist(ix,iy,r[0],r[1],r[0]+r[2],r[1]+r[3])<=t;
+  if(op.kind==='rect'){
+    const x0=Math.min(r[0],r[0]+r[2]),x1=Math.max(r[0],r[0]+r[2]),y0=Math.min(r[1],r[1]+r[3]),y1=Math.max(r[1],r[1]+r[3]);
+    const nearX=(Math.abs(ix-x0)<=t||Math.abs(ix-x1)<=t)&&iy>=y0-t&&iy<=y1+t;
+    const nearY=(Math.abs(iy-y0)<=t||Math.abs(iy-y1)<=t)&&ix>=x0-t&&ix<=x1+t;
+    return nearX||nearY;
+  }
+  if(op.kind==='ellipse'){
+    const rx=Math.max(0.5,Math.abs(r[2])/2), ry=Math.max(0.5,Math.abs(r[3])/2);
+    const q=Math.hypot((ix-(r[0]+r[2]/2))/rx,(iy-(r[1]+r[3]/2))/ry);   /* 1 on the ring */
+    return Math.abs(q-1)*Math.min(rx,ry)<=t;
+  }
+  return false;
+}
+function wbDrEraseAt(m,ix,iy){
+  const list=m.draws||[]; if(!list.length)return;
+  const thr=Math.max(6/wbView.z,2);
+  const layer=wbDrDm?1:0;   /* the eraser, like Clear, works the layer the DM-only toggle names */
+  let killed=false;
+  for(let i=list.length-1;i>=0;i--){ const op=list[i];
+    if((op.dm?1:0)!==layer)continue;
+    if(!wbDrHit(op,ix,iy,thr))continue;
+    list.splice(i,1); killed=true;
+    if(!op.dm)wbDrQueue([{del:op.did}]);   /* the delete rides the wire as {del:did} */
+  }
+  if(killed)wbRender();
+}
+function wbDrClear(btn){
+  const m=wbMap(); if(!m)return;
+  if(btn&&btn.dataset.arm!=='1'){ btn.dataset.arm='1';
+    btn.textContent=wbDrDm?'Clear DM marks?':'Clear for everyone?';
+    setTimeout(function(){ if(btn){btn.dataset.arm='';btn.textContent='Clear';} },2600); return; }
+  if(btn){btn.dataset.arm='';btn.textContent='Clear';}
+  const layer=wbDrDm?1:0;
+  const before=(m.draws||[]).length;
+  m.draws=(m.draws||[]).filter(function(o){return (o.dm?1:0)!==layer;});
+  if(m.draws.length===before){ toast(wbDrDm?'No DM-only drawings on this map.':'No shared drawings on this map.'); return; }
+  saveState(); wbRender();
+  if(layer===0)wbDrSendFull(m);   /* Clear sends a FULL: what remains replaces, everywhere */
+}
+
+/* ---- pan / zoom ---- */
+function wbEvtImg(e){
+  const c=document.getElementById('wbCanvas'); const r=c.getBoundingClientRect();
+  const px=e.clientX-r.left, py=e.clientY-r.top;
+  return {px:px,py:py,ix:(px-wbView.x)/wbView.z,iy:(py-wbView.y)/wbView.z};
+}
+function wbZoomAt(px,py,f){
+  const z2=Math.min(8,Math.max(0.02,wbView.z*f)); const k=z2/wbView.z;
+  wbView.x=px-(px-wbView.x)*k; wbView.y=py-(py-wbView.y)*k; wbView.z=z2;
+  wbRender();
+}
+function wbZoomBtn(f){ const c=document.getElementById('wbCanvas'); wbZoomAt(c.width/2,c.height/2,f); }
+function wbFit(){
+  const wrap=document.getElementById('wbCanvasWrap'); const m=wbMap();
+  const cw=Math.max(50,(wrap&&wrap.clientWidth)||800), ch=Math.max(50,(wrap&&wrap.clientHeight)||500);
+  if(!m||!m.w||!m.h){ wbView={x:0,y:0,z:1}; wbRender(); return; }
+  const z=Math.max(0.02,Math.min(8,Math.min(cw/m.w,ch/m.h)*0.96));
+  wbView={z:z,x:(cw-m.w*z)/2,y:(ch-m.h*z)/2};
+  wbRender();
+}
+function wbWheel(e){
+  if(!wbState().open)return;
+  e.preventDefault();
+  const c=document.getElementById('wbCanvas'); const r=c.getBoundingClientRect();
+  wbZoomAt(e.clientX-r.left,e.clientY-r.top,Math.exp(-e.deltaY*0.0015));
+}
+
+/* ---- pointer machine: pan, paint, rect, match-drag, token move ---- */
+function wbCellPt(ix,iy,m){ const cell=wbCell(m), o=wbOrigin(m);
+  return [Math.floor((ix-o.x)/cell),Math.floor((iy-o.y)/cell)]; }
+function wbPaintAt(p,m){
+  const cc=wbCellPt(p.ix,p.iy,m); const key=cc[0]+','+cc[1];
+  if(!wbDrag.cells[key]){ wbDrag.cells[key]=1; wbDrag.order.push(cc); wbRender(); }
+}
+function wbTokHit(ix,iy,m){
+  const cell=wbCell(m), o=wbOrigin(m); const list=m.tokens||[];
+  for(let i=list.length-1;i>=0;i--){ const t=list[i];
+    const x=o.x+t.x*cell, y=o.y+t.y*cell, w=t.w*cell, h=t.h*cell;
+    if(ix>=x&&ix<=x+w&&iy>=y&&iy<=y+h)return t; }
+  return null;
+}
+function wbPointerDown(e){
+  if(!wbState().open)return;
+  const m=wbMap(); const p=wbEvtImg(e);
+  try{ e.target.setPointerCapture(e.pointerId); }catch(x){}
+  const alignOpen=document.getElementById('wbAlign').classList.contains('show');
+  /* v23.1 (finding 20): match mode owns the PRIMARY button only - middle and right still pan */
+  if(alignOpen&&wbAlignMode==='match'&&m&&wbImg&&e.button===0){ wbDrag={kind:'match',x0:p.ix,y0:p.iy,x1:p.ix,y1:p.iy}; wbRender(); return; }
+  if(!m||!wbImg||wbImgName!==m.id||wbTool==='pan'||e.button===1||e.button===2){
+    wbDrag={kind:'pan',sx:e.clientX,sy:e.clientY,vx:wbView.x,vy:wbView.y}; wbToolbarSync(m); return; }
+  if(wbTool==='measure'){ wbMs={x0:p.ix,y0:p.iy,x1:p.ix,y1:p.iy}; wbDrag={kind:'ms'}; wbMsSync(); wbRender(); return; }
+  if(wbTool==='ping'){ wbPingHost(p,m); return; }
+  if(wbTool==='draw'){
+    if(wbDrKind==='erase'){ wbDrag={kind:'drerase'}; wbDrEraseAt(m,p.ix,p.iy); return; }
+    if(wbDrKind==='pen'){ wbDrag={kind:'drpen',pts:[[Math.round(p.ix),Math.round(p.iy)]],lx:p.ix,ly:p.iy}; wbRender(); return; }
+    wbDrag={kind:'drshape',dk:wbDrKind,x0:p.ix,y0:p.iy,x1:p.ix,y1:p.iy}; wbRender(); return;
+  }
+  if(wbTool==='brush'||wbTool==='erase'){ wbDrag={kind:'paint',a:wbTool==='brush'?1:0,cells:{},order:[]}; wbPaintAt(p,m); return; }
+  if(wbTool==='rect'){ wbDrag={kind:'rect',x0:p.ix,y0:p.iy,x1:p.ix,y1:p.iy}; wbRender(); return; }
+  if(wbTool==='token'){
+    const t=wbTokHit(p.ix,p.iy,m);
+    if(t){ wbSelTok=t.tid; const cell=wbCell(m), o=wbOrigin(m);
+      wbDrag={kind:'tok',tid:t.tid,dx:p.ix-(o.x+t.x*cell),dy:p.iy-(o.y+t.y*cell),free:e.altKey||!!m.gridless}; }
+    else wbSelTok=null;
+    wbTokEditSync(); wbRender(); return;
+  }
+}
+function wbPointerMove(e){
+  if(!wbDrag||!wbState().open)return;
+  const m=wbMap(); const p=wbEvtImg(e);
+  if(wbDrag.kind==='pan'){ wbView.x=wbDrag.vx+(e.clientX-wbDrag.sx); wbView.y=wbDrag.vy+(e.clientY-wbDrag.sy); wbRender(); return; }
+  if(!m)return;
+  if(wbDrag.kind==='ms'){ wbMs.x1=p.ix; wbMs.y1=p.iy; wbMsSync(); wbRender(); return; }
+  if(wbDrag.kind==='drpen'){
+    /* pen decimation: a point lands only ~3 SCREEN px from the last, so zoomed-in detail is
+       kept and a zoomed-out sweep does not carpet-bomb the op list; 1200 points caps a stroke */
+    if(Math.hypot(p.ix-wbDrag.lx,p.iy-wbDrag.ly)>=3/wbView.z&&wbDrag.pts.length<1200){
+      wbDrag.pts.push([Math.round(p.ix),Math.round(p.iy)]); wbDrag.lx=p.ix; wbDrag.ly=p.iy; wbRender();
+    }
+    return;
+  }
+  if(wbDrag.kind==='drshape'){ wbDrag.x1=p.ix; wbDrag.y1=p.iy; wbRender(); return; }
+  if(wbDrag.kind==='drerase'){ wbDrEraseAt(m,p.ix,p.iy); return; }
+  if(wbDrag.kind==='match'||wbDrag.kind==='rect'){ wbDrag.x1=p.ix; wbDrag.y1=p.iy; wbRender(); return; }
+  if(wbDrag.kind==='paint'){ wbPaintAt(p,m); return; }
+  if(wbDrag.kind==='tok'){
+    const t=(m.tokens||[]).find(function(x){return x.tid===wbDrag.tid;}); if(!t)return;
+    const cell=wbCell(m), o=wbOrigin(m);
+    let nx=(p.ix-wbDrag.dx-o.x)/cell, ny=(p.iy-wbDrag.dy-o.y)/cell;
+    if(!(wbDrag.free||e.altKey)&&!m.gridless){ nx=Math.round(nx); ny=Math.round(ny); }   /* snap is the default; Alt free-places */
+    t.x=nx; t.y=ny; wbRender(); return;
+  }
+}
+function wbPointerUp(){
+  if(!wbDrag)return;
+  const d=wbDrag; wbDrag=null;
+  const m=wbMap();
+  if(!m){ wbToolbarSync(null); return; }
+  if(d.kind==='ms'){ wbRender(); return; }   /* v25: the ruler stays put until Esc or a tool switch */
+  if(d.kind==='drpen'||d.kind==='drshape'){ wbDrCommitDrag(m,d); return; }
+  if(d.kind==='drerase'){ saveState(); wbRender(); return; }
+  if(d.kind==='match'){
+    const w=Math.abs(d.x1-d.x0), h=Math.abs(d.y1-d.y0);
+    /* v23.1 (finding 20): the commit threshold lives in SCREEN px (a 2px twitch at z=0.1 used to
+       commit a garbage 3px grid), and the pitch reads the DOMINANT axis so a vertical drag works */
+    if(Math.max(w,h)*wbView.z>=16){
+      wbAlignSnap(m);
+      const prev=wbGridPrev(m);   /* v23.1 (finding 1): the old frame, for fog + token migration */
+      const n=Math.max(1,Math.min(6,wbMatchN|0));
+      const span=Math.max(w,h);
+      m.gridPx=Math.max(4,Math.round((span/n)*100)/100);   /* gridPx = dominant drag span / N */
+      m.gridless=false;
+      const cx=Math.min(d.x0,d.x1), cy=Math.min(d.y0,d.y1);
+      m.originX=Math.round(((cx%m.gridPx)+m.gridPx)%m.gridPx);
+      m.originY=Math.round(((cy%m.gridPx)+m.gridPx)%m.gridPx);
+      wbGridMigrate(m,prev);
+      wbAlignCommit(m);
+    } else wbRender();
+    return;
+  }
+  if(d.kind==='paint'){
+    const ops=(d.order||[]).map(function(cc){ return {a:d.a,r:[cc[0],cc[1],1,1]}; });
+    if(ops.length)wbRevealOps(ops); else wbRender();
+    return;
+  }
+  if(d.kind==='rect'){
+    const c0=wbCellPt(Math.min(d.x0,d.x1),Math.min(d.y0,d.y1),m);
+    const c1=wbCellPt(Math.max(d.x0,d.x1),Math.max(d.y0,d.y1),m);
+    wbRevealOps([{a:1,r:[c0[0],c0[1],c1[0]-c0[0]+1,c1[1]-c0[1]+1]}]);
+    return;
+  }
+  if(d.kind==='tok'){
+    const t=(m.tokens||[]).find(function(x){return x.tid===d.tid;});
+    saveState(); wbRender();
+    if(t)wbSendTokens(m);
+    return;
+  }
+  wbToolbarSync(m);
+}
+
+/* ---- the reveal mask: append quantised ops, compact per stroke (v23.1, pin 9) ---- */
+function wbRevealOps(ops){
+  const m=wbMap(); if(!m||!ops||!ops.length)return;
+  m.ops=(m.ops||[]).concat(ops);
+  wbCompactOps(m);   /* v23.1 (finding 10, pin 9): each stroke settles into row runs at pointer-up */
+  wbMaskDirty=true; saveState(); wbRender();
+  wbQueueReveal(ops);
+}
+/* v23.1 (finding 10, pin 9): the Satchel compacts its ops at 2,500 - the HOST that generates them
+   never did, so every save/export/join paid a growing fog-history tax. Rasterise the final mask
+   state at cell resolution and re-emit it as reveal row-runs: same picture, bounded list. Fractional
+   rects (a migrated grid) quantise to the cell whose majority they cover - the mask law says fog is
+   always cell-quantised anyway. */
+function wbCompactOps(m){
+  if(!m||!(m.ops||[]).length){ return; }
+  const b=wbCellBounds(m); const bw=b[2],bh=b[3];
+  if(!(bw>0)||!(bh>0)||bw*bh>4000000)return;   /* an absurd raster is refused, list left as-is */
+  const grid=new Uint8Array(bw*bh);
+  m.ops.forEach(function(op){ const r=op&&op.r; if(!r)return;
+    const x0=Math.max(b[0],Math.round(r[0])), y0=Math.max(b[1],Math.round(r[1]));
+    const x1=Math.min(b[0]+bw-1,Math.round(r[0]+r[2])-1), y1=Math.min(b[1]+bh-1,Math.round(r[1]+r[3])-1);
+    for(let y=y0;y<=y1;y++){ const off=(y-b[1])*bw;
+      for(let x=x0;x<=x1;x++)grid[off+(x-b[0])]=op.a?1:0; }
+  });
+  const out=[];
+  for(let y=0;y<bh;y++){ const off=y*bw; let run=-1;
+    for(let x=0;x<=bw;x++){ const v=(x<bw)?grid[off+x]:0;
+      if(v&&run<0)run=x;
+      else if(!v&&run>=0){ out.push({a:1,r:[b[0]+run,b[1]+y,x-run,1]}); run=-1; }
+    }
+  }
+  m.ops=out; wbMaskDirty=true;
+}
+/* v23.1 (finding 1, pin 7): THE GRID MIGRATION. Fog rects and token placements are stored in grid
+   units but the map's IMAGE is the ground truth - any grid change re-frames both through image px
+   so what was revealed STAYS revealed and no token teleports, on any screen. The whole table
+   then gets a full re-sync on the settle. */
+function wbGridPrev(m){ return {gridPx:m.gridPx,originX:m.originX||0,originY:m.originY||0,gridless:!!m.gridless}; }
+function wbGridMigrate(m,prev){
+  if(!m||!prev)return;
+  const oc=(!prev.gridless&&prev.gridPx>0)?prev.gridPx:WB_CELL;
+  const oo=(!prev.gridless&&prev.gridPx>0)?{x:prev.originX,y:prev.originY}:{x:0,y:0};
+  const nc=wbCell(m), no=wbOrigin(m);
+  if(oc===nc&&oo.x===no.x&&oo.y===no.y)return;
+  /* recheck NEW-4 + F2: the old-frame buffer dies and the full re-sync is owed BEFORE any content
+     check - a grid change on a pushed map always fans board + full reveal + rosters at the settle,
+     even with zero ops and zero tokens (the player's mask cache keys on geometry, and a delta
+     buffered in the old frame must never fan with a new seq). */
+  WB_NET.revealBuf=[]; clearTimeout(WB_NET.revealTmr); WB_NET.revealTmr=null;
+  if(WB_NET.pushedId===m.id)WB_NET.needFullSync=true;
+  const hadOps=(m.ops||[]).length, hadToks=(m.tokens||[]).length;
+  /* recheck NEW-5: fog rects go fractional below - remember it so the 300ms settle re-quantises
+     ONCE per burst (never per nudge: that would compound rounding error every keystroke) */
+  if(hadOps&&WB_NET.pushedId===m.id)WB_NET.migrated=true;
+  if(!hadOps&&!hadToks)return;
+  (m.ops||[]).forEach(function(op){ const r=op&&op.r; if(!r)return;
+    const px=oo.x+r[0]*oc, py=oo.y+r[1]*oc, pw=r[2]*oc, ph=r[3]*oc;
+    r[0]=(px-no.x)/nc; r[1]=(py-no.y)/nc; r[2]=pw/nc; r[3]=ph/nc; });
+  (m.tokens||[]).forEach(function(t){
+    const px=oo.x+t.x*oc, py=oo.y+t.y*oc;
+    t.x=(px-no.x)/nc; t.y=(py-no.y)/nc; t.w=(t.w||1)*oc/nc; t.h=(t.h||1)*oc/nc; });
+  /* migrated ops stay FRACTIONAL on purpose: quantising per nudge would round a 1px shift back to
+     zero every keystroke and the fog would never move. The settle's compaction quantises the burst. */
+  wbMaskDirty=true;
+}
+function wbCellBounds(m){
+  const cell=wbCell(m), o=wbOrigin(m);
+  const x0=Math.floor((0-o.x)/cell), y0=Math.floor((0-o.y)/cell);
+  const x1=Math.floor((Math.max(1,m.w)-1-o.x)/cell), y1=Math.floor((Math.max(1,m.h)-1-o.y)/cell);
+  return [x0,y0,x1-x0+1,y1-y0+1];
+}
+function wbRevealAll(){ const m=wbMap(); if(!m)return; m.ops=[{a:1,r:wbCellBounds(m)}]; wbMaskDirty=true; saveState(); wbRender(); wbSendRevealFull(m); }
+function wbHideAll(){ const m=wbMap(); if(!m)return; m.ops=[]; wbMaskDirty=true; saveState(); wbRender(); wbSendRevealFull(m); }
+
+/* ---- grid alignment (spec section 3.1: the make-or-break) ---- */
+function wbAlignToggle(){
+  const p=document.getElementById('wbAlign');
+  p.classList.toggle('show');
+  document.getElementById('wbAlignBtn').classList.toggle('on',p.classList.contains('show'));
+  if(p.classList.contains('show'))wbAlignSetMode(wbAlignMode||'match');
+  else wbAlignMode=null;
+  wbRender();
+}
+function wbAlignSetMode(mode){
+  wbAlignMode=mode; wbDropSnapped=false;
+  const m=wbMap();
+  if(m&&mode==='drop'){ const el=document.getElementById('wbDropPx'); if(el)el.value=(m.gridPx||70); }
+  wbAlignBtns();
+}
+function wbAlignBtns(){
+  const m=wbMap();
+  document.getElementById('wbAlignMatch').classList.toggle('on',wbAlignMode==='match');
+  document.getElementById('wbAlignDrop').classList.toggle('on',wbAlignMode==='drop');
+  document.getElementById('wbGridless').classList.toggle('on',!!(m&&m.gridless));
+}
+/* v23.1 (finding 7): the one-level undo slot is KEYED BY MAP - align map A, click map B, press
+   Undo: it refuses instead of stamping A's old grid onto B */
+function wbAlignSnap(m){ wbAlignPrev={mapId:m.id,gridPx:m.gridPx,originX:m.originX,originY:m.originY,gridless:m.gridless}; }
+function wbAlignUndo(){
+  const m=wbMap(); if(!m||!wbAlignPrev)return;
+  if(wbAlignPrev.mapId!==m.id){ toast('That undo belongs to another map.'); wbAlignPrev=null; return; }
+  const prev=wbGridPrev(m);
+  m.gridPx=wbAlignPrev.gridPx; m.originX=wbAlignPrev.originX; m.originY=wbAlignPrev.originY; m.gridless=wbAlignPrev.gridless;
+  wbAlignPrev=null;
+  wbGridMigrate(m,prev);   /* v23.1 (finding 1): undo is a grid mutator like any other */
+  wbAlignCommit(m);
+}
+function wbAlignCommit(m){ wbMaskDirty=true; saveState(); wbAlignBtns(); wbRender(); wbNetBoardChanged(); }
+function wbMatchNChange(v){ wbMatchN=Math.max(1,Math.min(6,parseInt(v,10)||3)); }
+function wbDropPxChange(v){
+  const m=wbMap(); if(!m)return;
+  const px=parseFloat(v); if(!(px>=4))return;
+  if(wbAlignMode!=='drop')wbAlignSetMode('drop');
+  if(!wbDropSnapped){ wbAlignSnap(m); wbDropSnapped=true; }
+  const prev=wbGridPrev(m);
+  m.gridPx=Math.round(px*100)/100; m.gridless=false;
+  wbGridMigrate(m,prev);
+  wbAlignCommit(m);
+}
+function wbGridlessToggle(){
+  const m=wbMap(); if(!m)return;
+  wbAlignSnap(m);
+  const prev=wbGridPrev(m);
+  m.gridless=!m.gridless;
+  wbGridMigrate(m,prev);
+  wbAlignCommit(m);
+}
+function wbAlignNudge(e){
+  const m=wbMap(); if(!m||m.gridless)return;
+  if(!(m.gridPx>0))return;   /* v23.1 (finding 7): a nudge on an un-aligned map must never INVENT a grid */
+  const d={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key]; if(!d)return;
+  /* v23.1 (finding 7): a nudge BURST snapshots once, at its start, so Undo restores the pre-burst grid */
+  if(!wbNudgeTmr)wbAlignSnap(m);
+  clearTimeout(wbNudgeTmr); wbNudgeTmr=setTimeout(function(){ wbNudgeTmr=null; },600);
+  const prev=wbGridPrev(m);
+  if(e.shiftKey){ m.gridPx=Math.max(4,Math.round((m.gridPx+(d[0]||d[1])*0.25)*100)/100); }
+  else{ m.originX=(m.originX||0)+d[0]; m.originY=(m.originY||0)+d[1]; }
+  wbGridMigrate(m,prev);
+  wbMaskDirty=true; wbRender(); wbNetBoardChanged();
+  /* v23.1 (finding 17): a held arrow key fired ~30 full-STATE saves a second; the save now rides
+     the same 300ms settle the re-push does */
+  clearTimeout(WB_NET.nudgeSaveTmr); WB_NET.nudgeSaveTmr=setTimeout(function(){ saveState(); },300);
+}
+function wbAlignReadout(m){
+  const el=document.getElementById('wbAlignRead'); if(!el)return;
+  if(!m){ el.textContent=''; return; }
+  el.textContent = m.gridless ? ('gridless (fog cells '+WB_CELL+'px)')
+    : (m.gridPx>0 ? ('grid '+m.gridPx.toFixed(2)+'px at '+Math.round(m.originX||0)+','+Math.round(m.originY||0)) : 'no grid set yet');
+}
+
+/* ---- tokens on the board ---- */
+function wbPlaceToken(name,ix,iy,free){
+  const m=wbMap(); if(!m){ toast('Open a map first.'); return; }
+  const cell=wbCell(m), o=wbOrigin(m);
+  let x=(ix-o.x)/cell, y=(iy-o.y)/cell;
+  if(!m.gridless&&!free){ x=Math.floor(x); y=Math.floor(y); }
+  /* v23.1 (finding 6, pin 1): the label defaults EMPTY - the source filename is DM prep and must
+     never fire onto player screens as a default label (the Satchel falls back to a plain disc) */
+  const t={tid:wbNewId(),x:x,y:y,w:1,h:1,label:'',colour:'#c9a24b',owner:'dm',ownerSid:null,img:name};
+  m.tokens.push(t);
+  wbSelTok=t.tid; wbSetTool('token');
+  saveState(); wbTokEditSync(); wbRender();
+  wbSendTokens(m);
+}
+function wbSelTokObj(){ const m=wbMap(); return m&&wbSelTok?(m.tokens||[]).find(function(x){return x.tid===wbSelTok;}):null; }
+function wbTokEditSync(){
+  const p=document.getElementById('wbTokEdit'); if(!p)return;
+  const t=wbSelTokObj();
+  if(!t){ p.classList.remove('show'); return; }
+  p.classList.add('show');
+  /* v23.1 (pin 4): the owner field doubles as a picker - the table's remembered seats are offered */
+  try{ const dl=document.getElementById('wbOwnerList');
+    if(dl)dl.innerHTML='<option value="dm"></option>'+(tblActive().seats||[]).map(function(s){ return '<option value="'+esc(s.name)+'"></option>'; }).join('');
+  }catch(e){}
+  document.getElementById('wbTokLabel').value=t.label||'';
+  document.getElementById('wbTokColour').value=/^#[0-9a-fA-F]{6}$/.test(t.colour||'')?t.colour:'#c9a24b';
+  document.getElementById('wbTokOwner').value=t.owner||'dm';
+  document.getElementById('wbTokFree').value=t.w;
+}
+function wbTokEditApply(){
+  const m=wbMap(); const t=wbSelTokObj(); if(!m||!t)return;
+  t.label=document.getElementById('wbTokLabel').value;
+  t.colour=document.getElementById('wbTokColour').value;
+  const ownRaw=document.getElementById('wbTokOwner').value.trim();
+  t.owner=ownRaw||'dm';
+  /* v23.1 (finding 12, pin 4): ownership binds to the seat CREDENTIAL when the chosen name matches
+     a remembered seat that has one; free text that matches nothing stays a name-only label (the
+     legacy fallback, honoured only while no credential exists). 'dm' never binds. */
+  t.ownerSid=null;
+  try{ if(ownRaw&&seatKey(ownRaw)!=='dm'){
+    const s=(tblActive().seats||[]).filter(function(x){return seatKey(x.name)===seatKey(ownRaw);})[0];
+    if(s&&s.sid)t.ownerSid=s.sid;
+  } }catch(e){}
+  saveState(); wbRender();
+  clearTimeout(WB_NET.tokTmr);
+  WB_NET.tokTmr=setTimeout(function(){ wbSendTokens(m); },300);
+}
+function wbTokSize(n){
+  const m=wbMap(); const t=wbSelTokObj(); if(!m||!t)return;
+  n=Math.max(0.25,Math.min(12,n||1)); t.w=n; t.h=n;
+  document.getElementById('wbTokFree').value=n;
+  saveState(); wbRender(); wbSendTokens(m);
+}
+function wbTokDelete(){
+  const m=wbMap(); const t=wbSelTokObj(); if(!m||!t)return;
+  m.tokens=(m.tokens||[]).filter(function(x){return x.tid!==t.tid;});
+  wbSelTok=null; wbTokEditSync();
+  saveState(); wbRender();
+  wbSendTokensAll(m);   /* full roster: the receiver drops what is no longer listed */
+}
+function wbPlaceMustered(){
+  const m=wbMap(); if(!m){ toast('Open a map first.'); return; }
+  const C=STATE.combat;
+  if(!C||!C.list||!C.list.length){ toast('Nothing mustered. Open Combat and muster the fight first.'); return; }
+  const c=document.getElementById('wbCanvas');
+  const cell=wbCell(m), o=wbOrigin(m);
+  const cx=Math.floor(((c.width/2-wbView.x)/wbView.z-o.x)/cell);
+  const cy=Math.floor(((c.height/2-wbView.y)/wbView.z-o.y)/cell);
+  let i=0, placed=0;
+  C.list.forEach(function(cb){
+    if((m.tokens||[]).some(function(t){return t.tid===cb.id;}))return;   /* combatant and token are ONE object: tid is the combatant id */
+    m.tokens.push({tid:cb.id,x:cx+(i%6),y:cy+Math.floor(i/6),w:1,h:1,
+      label:stripEnt(String(cb.nm||'')).trim(),colour:cb.kind==='pc'?'#4da26b':'#a2452f',owner:'dm',ownerSid:null,img:''});
+    i++; placed++;
+  });
+  if(!placed){ toast('Everyone mustered is already on this map.'); return; }
+  saveState(); wbRender();
+  wbSendTokensAll(m);
+  toast(placed+' combatant'+(placed===1?'':'s')+' placed on the board.');
+}
+
+/* ============================== THE WIRE (Theater protocol v1.5, additive) ==============================
+   New types board / reveal / token, ack becomes two-way. v stays 1. Nothing here uses
+   theaterBroadcast (fire-and-forget): everything rides the tracked per-seat path below. */
+
+/* THE LAW OF THIS PAYLOAD, same discipline as pkFace(): a host map object becomes a wire
+   envelope ONLY here, by NAMING the nine public keys that go in. The DM layer (the reveal
+   ops mask, token placements, notes, folder names) has no field in this face, so a field
+   added to the map object next year cannot leak by being forgotten. */
+/* v23.1 (finding 6, pin 1): `id` is the map's opaque uid - the filename NEVER rides. The title is
+   the DM's deliberate rename or the literal 'Battle map'; the filename-derived default name is
+   prep, and prep does not cross the wire. Still exactly nine named keys. */
+function boardFace(m,img){ return {id:m.uid,title:(m.renamed&&m.name)?m.name:'Battle map',img:img||'',
+  gridPx:m.gridPx||0,originX:m.originX||0,originY:m.originY||0,
+  w:m.w|0,h:m.h|0,gridless:!!m.gridless}; }
+
+/* v25 (v1.6): THE INK FACE, the same law for drawings. A draw op crosses the wire ONLY through
+   here, by naming its five public keys - {did, kind, pts|r, col, w} and nothing else. A dm:1 op
+   is refused BEFORE any envelope exists (null out), so the DM layer is structurally unable to
+   ride; a field added to the op next year cannot leak by being forgotten. A delete rides as the
+   one-key {del: did} shape. */
+function drawFace(op){
+  if(!op)return null;
+  if(op.del)return {del:op.del};
+  if(op.dm)return null;                     /* the DM-only layer never leaves this machine */
+  const f={did:op.did,kind:op.kind,col:op.col||'',w:op.w||3};
+  if(op.kind==='pen')f.pts=op.pts||[]; else f.r=op.r||[0,0,0,0];
+  return f;
+}
+
+const WB_NET={hold:{},artSent:{},seen:{},drops:0,revSeq:0,revealBuf:[],revealTmr:null,boardTmr:null,boardSig:'',pushedId:null,
+  tokTmr:null,artTmr:null,retry:null,needFullSync:false,migrated:false,nudgeSaveTmr:null,lastImg:'',lastImgUid:null,lastImgStamp:0,
+  drawBuf:[],drawTmr:null,pingAt:{}};   /* v25: the draw delta buffer + the per-seat ping rate clock */
+function wbBoardSig(m){ return JSON.stringify([m.uid,m.name,!!m.renamed,m.gridPx,m.originX,m.originY,m.w,m.h,!!m.gridless]); }   /* recheck F7: keyed on the opaque uid, never the filename */
+let wbImgURICacheKey='', wbImgURICacheVal='';
+function wbBoardImgURI(){
+  /* downscale the longest edge to 2048px, JPEG q0.8; the ORIGINAL pixel frame stays the
+     coordinate system (gridPx/origin/w/h are original-image px; the receiver scales the art).
+     v23.1: the encode is cached per decoded image - per-seat sends stopped paying it repeatedly. */
+  if(!wbImg)return '';
+  const key=wbImgName+':'+wbImgStamp;
+  if(wbImgURICacheKey===key)return wbImgURICacheVal;
+  const s=Math.min(1,2048/Math.max(wbImg.naturalWidth||1,wbImg.naturalHeight||1));
+  const cv=document.createElement('canvas');
+  cv.width=Math.max(1,Math.round(wbImg.naturalWidth*s)); cv.height=Math.max(1,Math.round(wbImg.naturalHeight*s));
+  cv.getContext('2d').drawImage(wbImg,0,0,cv.width,cv.height);
+  wbImgURICacheKey=key; wbImgURICacheVal=cv.toDataURL('image/jpeg',0.8);
+  return wbImgURICacheVal;
+}
+/* v23.1 (pin 6): ONE board-envelope builder for every seat-facing send. The full JPEG rides only
+   when this seat has not received THIS image on THIS connection - a grid nudge re-push is a
+   grid-only envelope (img:'') and the Satchel keeps the art it has. The last-pushed JPEG is
+   cached in WB_NET so the admit snapshot never depends on the live viewport (finding 2). */
+function wbSendBoardTo(rec,m){
+  /* recheck F7: fail CLOSED. A record with no uid never crosses the wire - the id fallback to the
+     filename was the exact leak pin 1 banned, waiting for a call path that skips wbEnsureMap. */
+  if(!m||!m.uid){ console.warn('wb: map record has no uid; board not sent'); return false; }
+  const live=!!(wbImg&&wbImgName===m.id);
+  const stamp=live?wbImgStamp:((WB_NET.lastImgUid===m.uid&&WB_NET.lastImg)?WB_NET.lastImgStamp:0);
+  const k=seatSlot(rec); const sent=WB_NET.artSent[k]=WB_NET.artSent[k]||{};
+  const bk='board:'+m.uid+':'+stamp;
+  let img='';
+  if(stamp&&!sent[bk])img=live?wbBoardImgURI():WB_NET.lastImg;
+  const pay=boardFace(m,img); pay.mid=wbNewId();
+  const ok=wbSendTracked(rec,TheaterTransport.envelope('board','host',pay),false)===true;
+  if(ok&&img)sent[bk]=1;   /* marked only when the send actually reported out (pin 3 posture) */
+  return ok;
+}
+/* the one wb send path: goes now or is parked per seat; released on ack, retried on a
+   heartbeat cadence. A Satchel that has never acked (pre-v1.5) releases on confirmed send,
+   the v17.6 queue+flush floor. hold===false means never park (big board art: the hello
+   snapshot re-derives it from binder state instead of rotting in a queue).
+   v25 (Codex phase-3 finding 3): ack-arming is consulted per TYPE - a seat whose build
+   predates draw-awareness gets confirmed-send release for draws (it will never ack a type
+   it cannot parse) and is never marked stale by one. */
+function wbAckArmed(rec,env){ return (env&&env.type==='draw')?!!rec.wbAcksDraw:!!rec.wbAcks; }
+function wbSendTracked(rec,env,hold){
+  const mid=env.payload&&env.payload.mid;
+  const live=rec.open&&rec.admitted&&rec.hasHello;
+  if(!mid||hold===false)return !!(live&&rec.peer.send(env)===true);   /* board art: confirmed send IS its release; never parked, never retried */
+  const k=seatSlot(rec);
+  if(!k)return !!(live&&rec.peer.send(env)===true);
+  const q=WB_NET.hold[k]=WB_NET.hold[k]||[];
+  /* v23.1 (finding 4): coalesce parked siblings into this envelope BEFORE it goes out. A mid that
+     has been on the wire is FROZEN - merging later ops into it made them unreachable forever
+     (the ack released them undelivered, the retry hit the receiver's dedup). */
+  wbCoalesce(q,env);
+  const sent=!!(live&&rec.peer.send(env)===true);
+  if(sent&&!wbAckArmed(rec,env))return true;    /* un-armed for this type: released on confirmed send (the v17.6 floor) */
+  q.push({mid:mid,env:env,tries:sent?1:0});
+  if(q.length>30){
+    const dead=q.shift();   /* v23.1 (finding 16): a capped-out drop is never silent... */
+    /* ...except a draw dropped for a seat that cannot ack draws: that seat is OLDER, not
+       behind - a type it cannot parse never marks it stale (Codex phase-3 finding 3) */
+    if(!(dead&&dead.env&&dead.env.type==='draw'&&!rec.wbAcksDraw))wbNoteDrop(k);
+  }
+  return sent;
+}
+/* v23.1 (finding 16): every silent hold-queue drop now marks the seat stale, counts itself for QC,
+   toasts the DM once, and shows on the Theater roster until the admit snapshot squares the seat. */
+function wbNoteDrop(k){
+  WB_NET.drops++;
+  const rec=THEATER.peers.find(function(p){return p.admitted&&seatSlot(p)===k;});
+  if(rec&&!rec.wbStale){ rec.wbStale=true;
+    toast(esc(rec.name||'A player')+'&rsquo;s Satchel fell behind on the War Board. Re-push the board, or have them rejoin, to square it up.');
+    try{ renderTheaterPeers(); }catch(e){}
+  }
+}
+function wbCoalesce(q,env){
+  const t=env.type, p=env.payload||{};
+  for(let i=q.length-1;i>=0;i--){
+    const e=q[i].env, ep=e.payload||{};
+    if(e.type!==t)continue;
+    if(t==='board'&&ep.id===p.id){ q.splice(i,1); continue; }
+    if(t==='reveal'&&ep.mapId===p.mapId){
+      if(p.full){ q.splice(i,1); continue; }
+      if(!ep.full){ p.ops=(ep.ops||[]).concat(p.ops||[]); q.splice(i,1); continue; }
+    }
+    if(t==='draw'&&ep.id===p.id){   /* v25: the draw payload keys the map by `id` (the uid) */
+      if(p.full){ q.splice(i,1); continue; }
+      if(!ep.full){ p.ops=(ep.ops||[]).concat(p.ops||[]); q.splice(i,1); continue; }
+    }
+    if(t==='token'&&ep.mapId===p.mapId){
+      if(p.full){ q.splice(i,1); continue; }
+      if(!ep.full){
+        const seen={}; (p.tokens||[]).forEach(function(x){seen[x.tid]=1;});
+        p.tokens=(ep.tokens||[]).filter(function(x){return !seen[x.tid];}).concat(p.tokens||[]);
+        q.splice(i,1); continue;
+      }
+    }
+  }
+}
+function wbOnAck(rec,env){
+  const mid=env&&env.payload&&env.payload.mid; if(!mid)return;
+  const k=seatSlot(rec); const q=WB_NET.hold[k]; if(!q)return;
+  const i=q.findIndex(function(x){return x.mid===mid;});
+  if(i<0)return;
+  /* v23.1 (finding 18): arm ack-mode only from an ack that MATCHED a held wb mid - any stray ack
+     envelope arming it was a latent class bug. (The hello's build date arms current Satchels.)
+     v25 (Codex phase-3 finding 3): the arming is per TYPE - a matched DRAW ack proves the seat
+     speaks draw, whatever build string it presented. */
+  rec.wbAcks=true;
+  if(q[i].env&&q[i].env.type==='draw')rec.wbAcksDraw=true;
+  q.splice(i,1);
+  if(!q.length)delete WB_NET.hold[k];
+}
+/* heartbeat retry: same cadence as the liveness ping; un-acked wb items re-offer to open
+   seats (receiver dedups by mid), give up after 12 tries - and SAY SO (finding 16) */
+WB_NET.retry=setInterval(function(){
+  Object.keys(WB_NET.hold).forEach(function(k){
+    const q=WB_NET.hold[k]; if(!q||!q.length){ delete WB_NET.hold[k]; return; }
+    const rec=THEATER.peers.find(function(p){return p.admitted&&p.open&&seatSlot(p)===k;});
+    if(!rec||!rec.peer.isOpen())return;
+    for(let i=0;i<q.length;i++){
+      const it=q[i];
+      if(rec.peer.send(it.env)===true){
+        it.tries++;
+        if(!wbAckArmed(rec,it.env)){ q.splice(i,1); i--; }           /* release on confirmed send: the per-type v17.6 floor */
+        else if(it.tries>=12){ q.splice(i,1); i--; wbNoteDrop(k); }  /* gave up un-acked: the seat is stale, say so */
+      } else break;
+    }
+    if(!q.length)delete WB_NET.hold[k];
+  });
+},5000);
+
+function wbPushBoard(){
+  const m=wbMap(); if(!m){ toast('Open a map first.'); return; }
+  if(!theaterOpenCount()){ toast('No Satchels at the table. Open the Theater and pair your players first.'); return; }
+  if(!wbImg||wbImgName!==m.id){ toast('The map image is not loaded. Relink your maps folder first.'); return; }
+  /* v23.1 (finding 2): the pushed JPEG is cached HERE so the admit/rejoin snapshot can serve it
+     even while the DM is off reading their book with the board surface closed */
+  WB_NET.lastImg=wbBoardImgURI(); WB_NET.lastImgUid=m.uid; WB_NET.lastImgStamp=wbImgStamp;
+  /* recheck F4: a manual Push is the DM's deliberate square-everyone-up gesture - forget which
+     TOKEN art each seat holds (the board: image keys stay) so the rosters fanning below re-carry
+     it, and the fell-behind toast's "Re-push the board" advice actually heals blank discs */
+  Object.keys(WB_NET.artSent).forEach(function(sk){ const s=WB_NET.artSent[sk];
+    Object.keys(s).forEach(function(ak){ if(ak.indexOf('board:')!==0)delete s[ak]; }); });
+  let n=0;
+  THEATER.peers.forEach(function(p){ if(p.admitted&&p.hasHello){ if(wbSendBoardTo(p,m))n++; } });
+  WB_NET.pushedId=m.id; WB_NET.boardSig=wbBoardSig(m);
+  wbSendRevealFull(m);   /* fans the full mask AND every seat's roster */
+  wbDrSendFull(m);       /* v25: the shared ink fans too - a Push is the square-everyone-up gesture */
+  toast('Board pushed to '+n+' Satchel'+(n===1?'':'s')+'. Re-push after big changes; fog and tokens follow live.');
+}
+/* live re-push, mirroring the initiative auto-broadcast: own debounce timer, own signature
+   gate (never THEATER.tmr / THEATER.lastSig - those belong to initiative) */
+function wbNetBoardChanged(){
+  const W=wbState();
+  if(!WB_NET.pushedId||W.active!==WB_NET.pushedId)return;
+  clearTimeout(WB_NET.boardTmr);
+  WB_NET.boardTmr=setTimeout(function(){
+    const m=wbState().maps[WB_NET.pushedId]; if(!m)return;
+    const sig=wbBoardSig(m);
+    const need=WB_NET.needFullSync;
+    if(sig===WB_NET.boardSig&&!need)return;
+    WB_NET.boardSig=sig; WB_NET.needFullSync=false;
+    /* recheck NEW-5: a migration since the last settle left fractional fog rects - re-quantise
+       once per burst so the roster's fog filter and the painted mask agree on every cell */
+    if(WB_NET.migrated){ WB_NET.migrated=false; wbCompactOps(m); saveState();
+      const W2=wbState(); if(W2.open&&W2.active===m.id)wbRender(); }
+    if(wbImg&&wbImgName===m.id){ WB_NET.lastImg=wbBoardImgURI(); WB_NET.lastImgUid=m.uid; WB_NET.lastImgStamp=wbImgStamp; }
+    /* v23.1 (finding 17, pin 6): per-seat envelopes - a seat holding the art gets grid-only img:'' */
+    THEATER.peers.forEach(function(p){ if(p.admitted&&p.hasHello)wbSendBoardTo(p,m); });
+    if(need)wbSendRevealFull(m);   /* a grid migration re-frames everything: full mask + rosters (pin 7) */
+  },300);
+}
+function wbQueueReveal(ops){
+  const m=wbMap(); if(!m||WB_NET.pushedId!==m.id)return;
+  WB_NET.revealBuf=WB_NET.revealBuf.concat(ops);
+  clearTimeout(WB_NET.revealTmr);
+  WB_NET.revealTmr=setTimeout(function(){
+    WB_NET.revealTmr=null;
+    const buf=WB_NET.revealBuf; WB_NET.revealBuf=[];
+    if(WB_NET.pushedId!==m.id)return;   /* superseded by a newer push while buffered */
+    if(buf.length){ wbFanReveal(m,buf,false); wbSendTokens(m); }   /* pin 5: reveal changes re-fan rosters */
+  },120);
+}
+function wbFanReveal(m,ops,full){
+  /* v23.1 (pin 2): every reveal envelope carries the map's monotonic `seq`, persisted on the map
+     record - the Satchel drops any non-full delta at or below its last applied seq, so a stale
+     replayed delta can never resurrect what a newer Hide-all removed. mapId is the uid (pin 1). */
+  const seq=(m.seq=(m.seq||0)+1);
+  THEATER.peers.forEach(function(p){
+    if(!(p.admitted&&p.hasHello))return;
+    const pay={id:++WB_NET.revSeq,seq:seq,mapId:m.uid,ops:JSON.parse(JSON.stringify(ops)),mid:wbNewId()};
+    if(full)pay.full=true;
+    wbSendTracked(p,TheaterTransport.envelope('reveal','host',pay),true);
+  });
+}
+function wbSendRevealFull(m){
+  if(WB_NET.pushedId!==m.id)return;
+  /* v23.1 (finding 3): a FULL mask supersedes every buffered delta - clear the 120ms buffer AND
+     its timer first, so the 'oops, wrong room' Hide-all can never be outrun by its own strokes */
+  WB_NET.revealBuf=[]; clearTimeout(WB_NET.revealTmr); WB_NET.revealTmr=null;
+  wbFanReveal(m,m.ops||[],true);
+  wbSendTokens(m);   /* pin 5: the revealed set changed, so every seat's fog-filtered roster re-fans */
+}
+/* ===== v25 DRAW WIRE (S3) - type 'draw', EXACTLY the reveal discipline =====
+   {id: map uid, ops, seq, full} + mid. seq is the SAME per-map clock reveal uses (m.seq, one
+   clock per map - each fan of either type takes the next tick, so both streams stay monotonic
+   and a full always outranks the deltas it replaced). Deltas coalesce ~120ms; store-and-forward,
+   ack release, heartbeat retry and the pre-v1.6 confirmed-send floor all ride wbSendTracked. */
+function wbDrQueue(ops){
+  const m=wbMap(); if(!m||WB_NET.pushedId!==m.id)return;
+  WB_NET.drawBuf=WB_NET.drawBuf.concat(ops);
+  clearTimeout(WB_NET.drawTmr);
+  WB_NET.drawTmr=setTimeout(function(){
+    WB_NET.drawTmr=null;
+    const buf=WB_NET.drawBuf; WB_NET.drawBuf=[];
+    if(WB_NET.pushedId!==m.id)return;   /* superseded by a newer push while buffered */
+    if(buf.length)wbDrFan(m,buf,false);
+  },120);
+}
+function wbDrFan(m,ops,full){
+  const faces=[]; (ops||[]).forEach(function(o){ const f=drawFace(o); if(f)faces.push(f); });
+  if(!faces.length&&!full)return;
+  const seq=(m.seq=(m.seq||0)+1);
+  THEATER.peers.forEach(function(p){
+    if(!(p.admitted&&p.hasHello))return;
+    const pay={id:m.uid,ops:JSON.parse(JSON.stringify(faces)),seq:seq,mid:wbNewId()};
+    if(full)pay.full=true;
+    wbSendTracked(p,TheaterTransport.envelope('draw','host',pay),true);
+  });
+}
+function wbDrSendFull(m){
+  if(WB_NET.pushedId!==m.id)return;
+  /* the reveal-full law again: a full supersedes every buffered delta, timer included */
+  WB_NET.drawBuf=[]; clearTimeout(WB_NET.drawTmr); WB_NET.drawTmr=null;
+  wbDrFan(m,(m.draws||[]).filter(function(o){return !o.dm;}),true);
+}
+
+/* ===== v25 PING (S4) - the shared "look here", ephemeral by design =====
+   Wire: type 'ping' with a BOARD payload {id: map uid, x, y, col, nm} (host->players) or
+   {id, x, y} (player->host). No mid, no ack, no store-and-forward: a ping to a dead channel is
+   meaningless three seconds later. The liveness heartbeat KEEPS the same type with its empty
+   payload; both ends tell them apart by the coordinates (the typeof guard). Rendering is an
+   expanding ring that fades over ~2.5s, above the fog (a deliberate signal), never persisted,
+   animated by requestAnimationFrame with a hard end. */
+const WB_PING_COLS=['#e05a4e','#4a90d8','#4da26b','#c8873c','#9a63c8','#3fa8a0','#c85a9a','#a8b84a'];
+function wbSeatCol(slot){
+  let h=0; const s=String(slot||'');
+  for(let i=0;i<s.length;i++)h=((h*31)+s.charCodeAt(i))>>>0;
+  return WB_PING_COLS[h%WB_PING_COLS.length];
+}
+function wbPingShow(x,y,col,nm){
+  if(!wbState().open)return;   /* ephemeral: a folded board owes nobody a replay */
+  wbPings.push({x:x,y:y,col:col||'#e0c074',nm:nm||'',t0:Date.now()});
+  if(wbPings.length>24)wbPings.shift();
+  if(!wbPingRAF)wbPingRAF=requestAnimationFrame(wbPingLoop);
+}
+function wbPingLoop(){
+  wbPingRAF=0;
+  if(!wbState().open){ wbPings=[]; return; }   /* hard end: the surface folded mid-ring */
+  const now=Date.now();
+  wbPings=wbPings.filter(function(p){return now-p.t0<2500;});
+  wbRender();
+  if(wbPings.length)wbPingRAF=requestAnimationFrame(wbPingLoop);   /* hard end: no rings, no frames */
+}
+function wbPingPaint(g){
+  if(!wbPings.length)return;
+  const now=Date.now(), z=wbView.z;
+  wbPings.forEach(function(p){
+    const k=Math.min(1,(now-p.t0)/2500), a=1-k;
+    g.save();
+    g.globalAlpha=a;
+    g.strokeStyle=p.col; g.lineWidth=3/z;
+    g.beginPath(); g.arc(p.x,p.y,(10+42*k)/z,0,Math.PI*2); g.stroke();
+    g.lineWidth=1.5/z;
+    g.beginPath(); g.arc(p.x,p.y,(4+18*k)/z,0,Math.PI*2); g.stroke();
+    if(p.nm&&k<0.85){
+      const fs=12/z; g.font=fs+'px system-ui,sans-serif'; g.textAlign='center';
+      const tw=g.measureText(p.nm).width;
+      g.globalAlpha=a*0.9;
+      g.fillStyle='rgba(0,0,0,.7)'; g.fillRect(p.x-tw/2-4/z,p.y+14/z,tw+8/z,fs*1.35);
+      g.fillStyle='#f4e3c0'; g.fillText(p.nm,p.x,p.y+14/z+fs);
+    }
+    g.restore();
+  });
+}
+function wbPingHost(p,m){   /* the DM's own ping: local ring always; the table hears it once pushed */
+  const x=Math.max(0,Math.min(m.w||0,p.ix)), y=Math.max(0,Math.min(m.h||0,p.iy));
+  wbPingShow(x,y,'#e0c074','DM');
+  if(WB_NET.pushedId===m.id)wbFanPing(m,x,y,'#e0c074','DM');
+}
+function wbFanPing(m,x,y,col,nm){
+  THEATER.peers.forEach(function(p){
+    if(!(p.admitted&&p.hasHello))return;
+    wbSendTracked(p,TheaterTransport.envelope('ping','host',{id:m.uid,x:x,y:y,col:col,nm:nm}),false);
+  });
+}
+/* inbound player ping: validate the admitted seat pinged the map ON the table, clamp the landing
+   into the frame, stamp the seat's display name and its seat-stable colour, and rebroadcast to
+   ALL seats including the sender (the echo IS the confirmation). Rate-limited to ~1 a second per
+   seat; the excess is dropped without a word. */
+function wbOnPing(rec,env){
+  const p=env.payload||{};
+  if(typeof p.x!=='number'||typeof p.y!=='number'||!isFinite(p.x)||!isFinite(p.y))return;
+  const m=WB_NET.pushedId?wbState().maps[WB_NET.pushedId]:null;
+  if(!m||!m.uid||p.id!==m.uid)return;   /* only the pushed map takes pings (the finding-14 law) */
+  const k=seatSlot(rec)||('conn:'+rec.id);
+  const now=Date.now();
+  if(WB_NET.pingAt[k]&&now-WB_NET.pingAt[k]<1000)return;   /* silent drop: pings are cheap, floods are not */
+  WB_NET.pingAt[k]=now;
+  const x=Math.max(0,Math.min(m.w||0,p.x)), y=Math.max(0,Math.min(m.h||0,p.y));
+  const nm=stripEnt(String(rec.name||'player')).trim().slice(0,24)||'player';
+  const col=wbSeatCol(k);
+  wbFanPing(m,x,y,col,nm);
+  wbPingShow(x,y,col,nm);   /* the DM's board rings too, when it is open */
+}
+/* the token's public face: named keys only. DM-side fields (source filename lives in t.img
+   locally, the owner CREDENTIAL in t.ownerSid) never cross - art rides as rasterised bytes
+   keyed by content hash (pin 3), and the receiving seat's own tokens carry `mine:1` (pin 4:
+   no sid ever rides the wire outbound; the Satchel's drag gate is t.mine, nothing else). */
+function wbTokFace(t,uri,arth){ return {tid:t.tid,x:t.x,y:t.y,w:t.w,h:t.h,
+  label:t.label||'',colour:t.colour||'',owner:t.owner||'dm',img:uri||'',arth:arth||''}; }
+/* v23.1 (finding 12, pin 4): is this token the seat's OWN? Credential first; the name may decide
+   only when no credential exists (the seatSameAs law). 'dm' tokens are never a Satchel's. */
+function wbTokMine(t,rec){
+  if(t.ownerSid)return !!(rec.sid&&t.ownerSid===rec.sid);
+  return !!(t.owner&&t.owner!=='dm'&&seatKey(t.owner)===seatKey(rec.name));
+}
+/* v23.1 (finding 13, pin 5): the fog filter. A cell's fate is decided by the LAST op covering it;
+   a token rides to a seat only if some cell it overlaps ends revealed - or it is the seat's own. */
+function wbCellRevealed(m,cx,cy){
+  const ops=m.ops||[];
+  for(let i=ops.length-1;i>=0;i--){ const r=ops[i]&&ops[i].r; if(!r)continue;
+    if(cx>=Math.floor(r[0])&&cx<Math.ceil(r[0]+r[2])&&cy>=Math.floor(r[1])&&cy<Math.ceil(r[1]+r[3]))return !!ops[i].a; }
+  return false;
+}
+function wbTokVisible(m,t){
+  const x0=Math.floor(t.x), y0=Math.floor(t.y);
+  const x1=Math.ceil(t.x+(t.w||1))-1, y1=Math.ceil(t.y+(t.h||1))-1;
+  for(let cy=y0;cy<=y1;cy++)for(let cx=x0;cx<=x1;cx++)if(wbCellRevealed(m,cx,cy))return true;
+  return false;
+}
+/* one roster builder for the live fan AND the admit snapshot: fog-filtered per seat, art by
+   content hash, art marked sent only after the carrying send reports out */
+function wbRosterFor(m,rec){
+  const k=seatSlot(rec); const sentArt=WB_NET.artSent[k]=WB_NET.artSent[k]||{};
+  const toks=[], carried=[], inPay={};
+  (m.tokens||[]).forEach(function(t){
+    const mine=wbTokMine(t,rec);
+    if(!mine&&!wbTokVisible(m,t))return;   /* an ambush under fog stays on the DM's machine (pin 5) */
+    const a=t.img?wbTokArtFor(t.img):null; let uri='';
+    const hash=(a&&a.uri&&a.hash)||'';
+    /* recheck NEW-2: one URI per hash per PAYLOAD too - two tokens sharing an art file must not
+       both embed it in the same roster (the Satchel caches by hash on arrival anyway) */
+    if(hash&&!sentArt[hash]&&!inPay[hash])uri=a.uri;
+    const row=wbTokFace(t,uri,hash);
+    if(mine)row.mine=1;
+    if(uri){ carried.push(hash); inPay[hash]=1; }
+    toks.push(row);
+  });
+  return {toks:toks,carried:carried,sentArt:sentArt};
+}
+function wbSendTokens(m){
+  /* EVERY token envelope carries that seat's FULL (fog-filtered) roster: the Satchel applies it
+     wholesale, which also gives deletion - and fog-hiding - for free. Art crosses once per seat
+     per content hash; a roster resend after that is position data only. */
+  if(WB_NET.pushedId!==m.id)return;
+  THEATER.peers.forEach(function(p){
+    if(!(p.admitted&&p.hasHello))return;
+    const r=wbRosterFor(m,p);
+    const pay={id:++WB_NET.revSeq,mapId:m.uid,tokens:r.toks,full:true,mid:wbNewId()};
+    if(wbSendTracked(p,TheaterTransport.envelope('token','host',pay),true)===true)
+      r.carried.forEach(function(h){ r.sentArt[h]=1; });
+  });
+}
+function wbSendTokensAll(m){ wbSendTokens(m); }
+/* the once-per-join full snapshot, riding the admit/catch-up path right after the forced
+   initiative push: board face, one full-mask reveal, the seat's fog-filtered roster. Parked
+   envelopes and art-sent memory are purged FIRST - before any early return (finding 22) - and the
+   board face is served from the push-time cache, never the live viewport (finding 2): a phone that
+   reloads mid-session gets the whole board back even while the DM is off reading their book.
+   The seat's SEEN list is NOT purged here (recheck NEW-1): a same-seat readmit inherits the slot's
+   dedup memory - that is the whole finding-15 defense against a replayed stale move. seen dies
+   only where the occupant actually changes: kick and deliberate drop purge it separately. */
+function wbPushSnapshot(rec){
+  const k=seatSlot(rec);
+  if(k){ delete WB_NET.hold[k]; delete WB_NET.artSent[k]; }
+  if(!WB_NET.pushedId){
+    /* v23.1 (finding 2): a map on the board that was never pushed is worth one honest heads-up */
+    if(wbState().active)toast('The War Board has not been pushed this session. Use Push to table when the map is ready.');
+    return;
+  }
+  const m=wbState().maps[WB_NET.pushedId]; if(!m)return;
+  if(!(wbImg&&wbImgName===m.id)&&!(WB_NET.lastImgUid===m.uid&&WB_NET.lastImg)){
+    toast('A Satchel joined, but the pushed map image is not available. Open the board and push it again.');
+    return;
+  }
+  rec.wbStale=false;   /* the snapshot squares the seat (finding 16) */
+  wbSendBoardTo(rec,m);
+  const seq=(m.seq=(m.seq||0)+1);
+  const rp={id:++WB_NET.revSeq,seq:seq,mapId:m.uid,ops:JSON.parse(JSON.stringify(m.ops||[])),full:true,mid:wbNewId()};
+  wbSendTracked(rec,TheaterTransport.envelope('reveal','host',rp),true);
+  /* v25: the shared ink rides the snapshot too - one draw FULL through the drawFace gate. Sent
+     even when empty: a rejoining Satchel's persisted ink from an earlier session must be
+     replaced by the table's current truth, not merely added to. */
+  const dseq=(m.seq=(m.seq||0)+1);
+  const dp={id:m.uid,ops:JSON.parse(JSON.stringify((m.draws||[]).filter(function(o){return !o.dm;}).map(drawFace).filter(Boolean))),seq:dseq,full:true,mid:wbNewId()};
+  wbSendTracked(rec,TheaterTransport.envelope('draw','host',dp),true);
+  const r=wbRosterFor(m,rec);
+  const tp={id:++WB_NET.revSeq,mapId:m.uid,tokens:r.toks,full:true,mid:wbNewId()};
+  if(wbSendTracked(rec,TheaterTransport.envelope('token','host',tp),true)===true)
+    r.carried.forEach(function(h){ r.sentArt[h]=1; });
+}
+/* inbound player move REQUEST: ACK first (it releases the player's held copy), dedup by SEAT SLOT
+   (finding 15: a reconnect must not replay a stale move under a fresh connection's empty seen
+   list), validate against the ADMITTED seat's credential (never env.from - the v17.6 law, now
+   the v17.7 sid law too), and only for THE PUSHED MAP (finding 14). Apply, clamp, echo. */
+function wbOnTokenReq(rec,env){
+  const p=env.payload||{};
+  theaterAck(rec,p.mid||'');
+  if(wbSeen(rec,p.mid||''))return;
+  /* v23.1 (finding 15): a request older than 10s is a replayed ghost, not a move - refuse it
+     (tolerant of Satchels that send no ts, and of phone clocks running ahead) */
+  if(typeof p.ts==='number'&&isFinite(p.ts)&&(Date.now()-p.ts)>10000)return;
+  const W=wbState();
+  const m=WB_NET.pushedId?W.maps[WB_NET.pushedId]:null;
+  if(!m||!p.mapId||p.mapId!==m.uid)return;   /* v23.1 (finding 14): only the map ON the table takes moves */
+  const t=(m.tokens||[]).find(function(x){return x.tid===p.tid;}); if(!t)return;
+  if(!wbTokMine(t,rec))return;   /* pin 4: credential-gated; the DM's tokens never move from a Satchel */
+  if(typeof p.x!=='number'||typeof p.y!=='number'||!isFinite(p.x)||!isFinite(p.y))return;
+  /* v23.1 (finding 24): finite is not sane - clamp the landing inside the map's cell extent */
+  const b=wbCellBounds(m);
+  t.x=Math.max(b[0],Math.min(b[0]+b[2]-(t.w||1),p.x));
+  t.y=Math.max(b[1],Math.min(b[1]+b[3]-(t.h||1),p.y));
+  saveState();
+  if(W.open&&W.active===m.id)wbRender();
+  wbSendTokens(m);
+}
+/* v23.1 (finding 15): the seen list hangs on the SEAT SLOT, mirroring how WB_NET.hold solved the
+   outbound direction - a fresh connection inherits the slot's memory of what it already did */
+function wbSeen(rec,mid){
+  if(!mid)return false;
+  const k=seatSlot(rec)||('conn:'+rec.id);
+  const l=WB_NET.seen[k]=WB_NET.seen[k]||[];
+  if(l.indexOf(mid)>=0)return true;
+  l.push(mid); if(l.length>200)l.shift();
+  return false;
+}
+
+/* ---- wiring into the shell ---- */
+(function(){
+  const c=document.getElementById('wbCanvas'); if(!c)return;
+  c.addEventListener('pointerdown',wbPointerDown);
+  c.addEventListener('pointermove',wbPointerMove);
+  window.addEventListener('pointerup',wbPointerUp);
+  c.addEventListener('wheel',wbWheel,{passive:false});
+  c.addEventListener('contextmenu',function(e){ if(wbState().open)e.preventDefault(); });   /* v23.1 (finding 20): right-drag pans, even in match mode */
+  c.addEventListener('dragover',function(e){ if(wbState().open)e.preventDefault(); });
+  c.addEventListener('drop',function(e){
+    let n=''; try{ n=e.dataTransfer.getData('text/wbtoken'); }catch(x){}
+    if(!n)return; e.preventDefault();
+    const p=wbEvtImg(e); wbPlaceToken(n,p.ix,p.iy,e.altKey);
+  });
+  const wrap=document.getElementById('wbCanvasWrap');
+  if(window.ResizeObserver&&wrap){ new ResizeObserver(function(){ if(wbState().open)wbRender(); }).observe(wrap); }
+  window.addEventListener('resize',function(){ if(wbState().open)wbRender(); });
+  ['wbTokLabel','wbTokOwner','wbTraySearch','wbTokSearch','wbDropPx','wbMatchN','wbTokFree'].forEach(function(id){
+    const el=document.getElementById(id);
+    if(el)el.addEventListener('keydown',function(e){ e.stopPropagation(); });
+  });
+})();
+/* leaving the stage view folds the board away exactly like cards + combat (go() law, 1593);
+   its state is kept and W reopens it. This wraps go() the way the initiative hook wraps
+   renderCombat() - and never touches currentBook. */
+const _wbPrevGo=go;
+go=function(v){
+  if(v!=='stage'&&STATE.wb&&STATE.wb.open){
+    try{ saveBoard(); }catch(e){}
+    STATE.wb.open=false;
+    document.body.classList.remove('wb-on');
+    wbFreeImg();
+    saveState();
+    wbBtnSync();
+    /* v23.1 (finding 24): folded away for Under-the-Hood? The Back button must land on the
+       board again, not a blank dead stage */
+    wbHoodFold=(v==='hood');
+  } else if(v==='shelf')wbHoodFold=false;
+  _wbPrevGo(v);
+  if(v==='stage'&&wbHoodFold){ wbHoodFold=false;
+    const _f=wbFrom;   /* the hood round-trip must not overwrite where the board was opened FROM */
+    try{ wbOpen(STATE.wb.active); }catch(e){}
+    wbFrom=_f;
+  }
+};
+/* the War Table drives the board: a combat render (turn change, HP, muster) repaints the
+   active-turn ring. Chained AFTER the theater initiative wrap; both stay live. */
+const _wbPrevRenderCombat=renderCombat;
+renderCombat=function(){ _wbPrevRenderCombat(); try{ if(STATE.wb&&STATE.wb.open)wbRender(); }catch(e){} };
+
 /* ============================================================ GLOBAL KEYS */
 document.addEventListener('keydown',e=>{
-  const typing=/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName);
+  /* v23.1 (finding 19): SELECT and contenteditable are typing surfaces too - jump-typing
+     "weakened" in a combat select must not slam the War Board (or any shortcut) over the fight */
+  const typing=/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)||document.activeElement.isContentEditable;
   const palOpen=document.getElementById('palette').classList.contains('show');
   if(palOpen){
     if(e.key==='Escape'){closePalette();e.preventDefault();return;}
@@ -4748,7 +7045,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape'&&document.getElementById('scribe').classList.contains('show')){closeScribe();e.preventDefault();return;}  /* v22: ESC leaves the Scribe even mid-typing */
   if(typing)return;
   if(e.key===' '){openPalette();e.preventDefault();return;}
-  if(e.key==='Escape'){closePalette();closeContents();closeParty();closeHelp();document.getElementById('tray').classList.remove('show');return;}
+  if(e.key==='Escape'){closePalette();closeContents();closeParty();closeHelp();try{wbMsClear();}catch(_e){}document.getElementById('tray').classList.remove('show');return;}
   if(e.key==='?'){openHelp();return;}
   if(document.body.classList.contains('on-stage')){
     if(e.key==='r'||e.key==='R'){const rc=(focusCard&&document.body.contains(focusCard))?focusCard:document.querySelector('.fcard');const rb=rc&&rc.querySelector('.roll');if(rb)rb.click();return;}
@@ -4758,6 +7055,8 @@ document.addEventListener('keydown',e=>{
     if(e.key==='b'||e.key==='B'){addBookmark();return;}
     if(e.key==='c'||e.key==='C'){toggleCombat();return;}
     if(e.key==='t'||e.key==='T'){openContents();return;}   // v21: what's in this book?
+    if(e.key==='w'||e.key==='W'){wbToggle();return;}       // v23: the War Board
+    if(STATE.wb&&STATE.wb.open&&wbAlignMode&&e.key.indexOf('Arrow')===0){wbAlignNudge(e);e.preventDefault();return;}  // v23: grid nudge, align mode only
   }
 });
 document.getElementById('palInput').addEventListener('input',()=>{palSel=0;renderPalette();});
@@ -4786,6 +7085,7 @@ document.getElementById('ctsInput').addEventListener('keydown',e=>{ e.stopPropag
   try{const _av=document.getElementById('aboutVersion'); if(_av)_av.textContent=GRIM_BUILD;}catch(e){}  /* v22: the About reads the ONE version constant */
   renderShelf(); renderDiceGrid(); renderLog(); renderCombat(); applyDock();
   soundApplyMode(); renderSound(); soundReconnect();
+  wbReconnect();   /* v23: fire-and-forget like soundReconnect - relink maps/tokens folders if permission held */
   try{ await theaterRestore(); }catch(e){ console.warn('[theater] restore skipped:',e&&e.message); }
   go('shelf'); showResume();
   if(STATE.nudge.s%5===0) setTimeout(()=>toast(backupNudgeMsg()),1600);
