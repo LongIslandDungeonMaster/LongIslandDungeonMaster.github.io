@@ -2,7 +2,7 @@
 <!--
   ============================================================================
   GNASHER'S GRIMOIRE — "A Dungeon Master Companion"  (source; internal nickname "Keeper Keeper" retired 2026-07-03)
-  Gnasher's Grimoire™ · build 2026-08-29 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
+  Gnasher's Grimoire™ · build 2026-08-30 · © 2026 Long Island Dungeon Master. 'Gnasher's Grimoire', 'Adventure Keepers', and the .keeper format are marks of Long Island Dungeon Master.
   ============================================================================
   v15 (2026-07-18) - THE CHRONICLE: campaign memory across Keepers (FINAL-ORDERS
   C1; the law is Scriptorium/CAMPAIGN-WEB-SPEC.md - hourglass web, one flag
@@ -1823,6 +1823,131 @@ function atkHit(a){ const h=+((a&&a.hit)||0); return isFinite(h)?Math.max(-99,Ma
    app something that could be markup. (Strictly tighter than before - the old stripEnt deleted
    ENTITIES and passed raw '<' through untouched.) */
 function wireTxt(s){ return decEnt(String(s==null?'':s)).replace(/[<>]/g,'').trim(); }
+/* v27.2 — THE OUTBOUND TEXT LAW, SECOND CUT: ESCAPE AT THE SINK, GUARD THE LABELS.
+
+   v27.1 made every outbound string deny-by-default: wireTxt'd (entities decoded, angle
+   brackets DELETED) unless its key was named raw. That closed a real hole - theaterTableName()
+   rode out raw on `hello`, the first envelope of every join, and a table named
+   `The Rusty Flagon<img src=x onerror=...>` executed inside every paired Satchel.
+   It also broke the product. Deleting characters in transit is the wrong layer, and on PROSE
+   it silently rewrites the DM's own words:
+       he types  "The ward holds while HP > 0. DC <= 12 to notice."
+       they read "The ward holds while HP  0. DC = 12 to notice."
+   `DC <= 12` arriving as `DC = 12` INVERTS the rule at a live table, and the DM cannot see it
+   happen - the scrub returns a copy, so his own screen still shows what he wrote.
+
+   THE ARCHITECTURE: the receiver escapes at its render sinks, so the wire does not have to
+   maim the text. Verified in this build's partner, Satchel BUILD 2026-08-30.1:
+     handout data -> e.body   -> esc(e.body)  in a <textarea>   players-satchel.html:5472,4453
+     whisper text -> w.text   -> esc(w.text)                    players-satchel.html:4812,4630
+     packet body  -> e.body   -> esc(e.body)  (same textarea)   players-satchel.html:5496,4453
+     titles/from/labels       -> esc(...)     2856,4443,4458,5460,5461,5506
+     hello.table  -> thWire(table,60), THEN esc(TH.table)       players-satchel.html:5112,5294,4624
+   esc() is `[&<>"] -> &amp;&lt;&gt;&quot;` (players-satchel.html:1861). Two consequences:
+     1. PROSE CAN RIDE VERBATIM. `HP > 0` reaches the sink, is escaped there, and renders as
+        `HP > 0`. Nothing is deleted anywhere.
+     2. WE MUST NOT ENTITY-ESCAPE ON THE WIRE. Because esc() also escapes '&', a wire-escaped
+        `&lt;` would be escaped AGAIN at the sink into `&amp;lt;` and the player would read
+        the literal text "&lt;" on their phone. Sanitising the transport is not free; it is
+        double-treatment. (The same double-treatment is why the opt-in wireTxt calls that used
+        to sit in pkFace/boardFace/wbTokFace/theaterInitPayload/theaterTableName are gone: they
+        decoded entities a second time, and "5 &amp;lt; 6" shipped as "5  6".)
+
+   SO THE LAW IS SPLIT BY WHAT THE FIELD IS, not by who remembered to call a function:
+
+   WIRE_PROSE - free prose the DM (or a player) typed. Passes VERBATIM: no strip, no cap, no
+     entity decode, no trim. What he typed is what arrives, byte for byte. Every one of these
+     lands in an esc()'d sink above, so verbatim is not a hole; it is the correct layer.
+       data - the handout body (and the image data: URI on kind:'image')
+       text - a whisper
+       body - a packet's body
+   WIRE_RAW - not text at all, exempt for COST rather than for meaning:
+       img - a canvas-produced JPEG or rasterised token-art data: URI, megabytes re-sent per
+             seat. Base64 carries neither '&' nor an angle bracket, so scrubbing is provably a
+             no-op. Named raw for the cost, never as a licence to send markup.
+   EVERYTHING ELSE - still DENY BY DEFAULT, still wireTxt'd and capped. Safety needs no
+     registration: a label field added next year is guarded the day it is written, and only an
+     EXEMPTION has to be argued. Angle brackets are never legitimate content in a table name, a
+     title, a token label or a seat name, and `table` is the field that was PROVEN executing in
+     older Satchels already in the wild - which no fix to this build can ever recall. The short
+     fields keep their guard so an old client stays safe; the prose fields, which no old client
+     ever rendered unescaped, keep the DM's words.
+   WIRE_CAP names the bounded labels. `table` is 60 because the Satchel's own thWire() caps it
+   at 60 - the two builds agree on the number. Prose is uncapped by construction: a read-aloud
+   box and an image data: URI must arrive whole. */
+/* v27.2 (F6/F8): both lookup tables are NULL-PROTOTYPE. Plain object literals inherit from
+   Object.prototype, so a payload key named `constructor` found WIRE_RAW['constructor'] ===
+   Object - truthy - and rode out UNSCRUBBED; `toString`, `valueOf` and `hasOwnProperty` did
+   the same. A table with no prototype has no keys but its own. */
+function wireTable(o){ return Object.assign(Object.create(null),o); }
+const WIRE_RAW=wireTable({img:1});
+const WIRE_PROSE=wireTable({data:1,text:1,body:1});
+function wireVerbatim(k){ return !!(WIRE_RAW[k]||WIRE_PROSE[k]); }
+const WIRE_CAP=wireTable({table:60,title:80,subtitle:120,label:80,name:60,owner:60,from:60,
+  nm:60,adv:16,expr:120,reason:200});
+/* v27.2 (F4): a cap counts UTF-16 code units, so slicing at 60 can land between the two halves
+   of a surrogate pair and ship a lone high surrogate - an emoji or a rarer CJK glyph cut in
+   half, which renders as a replacement box. Drop the orphan rather than emit it. */
+function wireTrimSurrogate(s){
+  const n=s.length; if(!n)return s;
+  const c=s.charCodeAt(n-1);
+  return (c>=0xD800&&c<=0xDBFF)?s.slice(0,n-1):s;
+}
+/* v27.2 (F3): a cap that actually SHORTENS a value is the one case where the sender is
+   silently wrong - his screen keeps the whole title, the table gets 60 characters of it.
+   Say so. WIRE_TRUNC is set only on a real truncation (never on the no-op case, which is
+   almost every send), read once per envelope, and rate-limited so a re-broadcasting
+   initiative push cannot turn one long name into a stream of toasts. */
+let WIRE_TRUNC=null, WIRE_TRUNC_AT=0;
+const WIRE_FIELD_NAME=wireTable({table:'table name',title:'title',subtitle:'subtitle',
+  label:'roll label',name:'name',owner:'owner name',from:'name',nm:'name',
+  adv:'advantage note',expr:'dice expression',reason:'reason'});
+function wireSayTrunc(k){
+  const now=Date.now(); if(now-WIRE_TRUNC_AT<8000)return; WIRE_TRUNC_AT=now;
+  try{ toast('That '+(WIRE_FIELD_NAME[k]||k)+' was too long for the wire. The table got the '+
+    'first '+(WIRE_CAP[k]|0)+' characters; your copy still has all of it.'); }catch(e){}
+}
+function wireCap(s,k){
+  const t=wireTxt(s), c=WIRE_CAP[k]|0;
+  if(!c||t.length<=c)return t;
+  WIRE_TRUNC=k;
+  return wireTrimSurrogate(t.slice(0,c));
+}
+/* One bounded walk. Prose and the named raw exemption pass verbatim; every other string is
+   scrubbed and capped; numbers, booleans and null pass untouched (a coord must stay a coord);
+   arrays and plain objects recurse, so a token roster and an initiative order are covered by
+   the same pass. Returns a COPY: a producer that reads its own object back after the send
+   (pkSend's toast, wbSendBoardTo's art bookkeeping) sees what it built.
+
+   v27.2 (F7): THE DEPTH GUARD MUST REFUSE, NOT SURRENDER. The old guard was `if(d>6)return v` -
+   it handed the value back RAW, so anything a producer nested seven deep skipped the law
+   entirely. That is the opposite of a refusal. It now returns a safe empty value, and the cap
+   is far above anything this app can build: the deepest real payload is a `draw` full-resend,
+   payload -> ops[] -> op{} -> pts[] -> [x,y] -> number = depth 5 (X9l measures it live every
+   run and fails if it ever climbs past half the cap). WIRE_MAXNODES is a runaway guard for a
+   cyclic or hostile structure, not a policy limit - X9l measures that too.
+   v27.2 (F8): `__proto__` arriving as an OWN key was silently dropped by `o[kk]=...`, which
+   assigns the PROTOTYPE of the copy instead of creating a property. Defined explicitly, so the
+   value survives as ordinary data and the copy's prototype is never touched. */
+const WIRE_MAXDEPTH=24, WIRE_MAXNODES=2000000;
+function wireScrub(v,k,d,st){
+  d=d|0; st=st||{n:0,deep:0};
+  if(d>st.deep)st.deep=d;
+  if(d>WIRE_MAXDEPTH||(++st.n)>WIRE_MAXNODES)return (typeof v==='string')?'':null;
+  if(typeof v==='string')return wireVerbatim(k)?v:wireCap(v,k);
+  if(!v||typeof v!=='object')return v;
+  if(Array.isArray(v))return v.map(function(x){ return wireScrub(x,k,d+1,st); });
+  const o={};
+  for(const kk in v)if(Object.prototype.hasOwnProperty.call(v,kk)){
+    const sv=wireScrub(v[kk],kk,d+1,st);
+    if(kk==='__proto__')Object.defineProperty(o,kk,{value:sv,enumerable:true,writable:true,configurable:true});
+    else o[kk]=sv;
+  }
+  return o;
+}
+/* X9l's instrument: the last envelope's observed depth / node count, so the QC suite can prove
+   the caps sit above the real traffic instead of asserting an arithmetic guess. */
+const WIRE_SEEN={deep:0,nodes:0};
 /* "Surface | Truth | Tell" reveal rows -> layered display */
 function rowHTML(r){if(r.indexOf(' | ')<0)return r;const p=r.split(' | ');return '<b>'+p[0]+'</b>'+p.slice(1).map(s=>'<span class="rsub">'+s+'</span>').join('');}
 /* ---- prose enrichment: rollable dice + cross-reference links ----------------
@@ -2122,7 +2247,7 @@ function parseKeeper(html, fname){
 const ACCEPT=[
   {ext:'.html',label:'Keeper'},{ext:'.pdf',label:'Tome'},{ext:'.txt',label:'notes'},
   {ext:'.md',label:'Markdown'},{ext:'.markdown',label:'Markdown'},{ext:'.csv',label:'table'},{ext:'.tsv',label:'table'},
-  {ext:'.json',label:'JSON / 5eTools'}];
+  {ext:'.json',label:'JSON / 5eTools'},{ext:'.epub',label:'EPUB book'}];
 function acceptList(){ return ACCEPT.map(a=>a.ext).join(', '); }
 function importTitle(fn){ return String(fn||'Document').replace(/\.[a-z0-9]+$/i,'').replace(/[_-]+/g,' ').replace(/\s+/g,' ').trim()||'Document'; }
 /* One record shape for every text-like import: a single kind-'book' codex card carries the
@@ -2135,11 +2260,17 @@ function textDocRecord(fn,bodyHtml,rawText,sub){
   const entry={kind:'book',nm:esc(title),sub:sub,tags:['imported','document'],meta:[],
     x:bodyHtml,search:String(rawText||'').replace(/\s+/g,' ').trim().slice(0,2000).toLowerCase()};
   return {id:'inst_'+Math.abs(hashStr(title)).toString(36),title:esc(title),kind:'keeper',
-    declaredKind:'reference',cover:'',entries:[entry],cues:[],chronicle:null,
+    declaredKind:'reference',cover:'',entries:[entry],cues:[],chronicle:null,inert:1,
     html:importPageHTML(title,bodyHtml),verified:false,unverified:true,trace:'',warnings:[]};
 }
+/* ⛔ RED TEAM 2026-08-30, B3. Every IMPORT path (txt/md/csv/tsv/json/html/epub) builds
+   its page with importPageHTML, which emits no script and no event handler - the record
+   is inert BY CONSTRUCTION. `inert:1` says so out loud, and openBook/renderRight render
+   those frames sandboxed. The head string is a shared constant so an already-shelved
+   record from an earlier build can be recognised by its exact preamble (recordIsInert). */
+const IMPORT_PAGE_HEAD='<!doctype html><html><head><meta charset="utf-8"><title>';
 function importPageHTML(title,body){
-  return '<!doctype html><html><head><meta charset="utf-8"><title>'+esc(title)+'</title><style>'+
+  return IMPORT_PAGE_HEAD+esc(title)+'</title><style>'+
     'body{background:#1d1410;color:#d8c5a8;font:15px/1.62 Georgia,serif;margin:0;padding:34px 7vw;}'+
     'h1,h2,h3,h4{color:#d9b96a;font-weight:600;line-height:1.25;}code,pre{font:12.5px/1.5 Consolas,monospace;background:#160c05;color:#c8b48f;}'+
     'pre{padding:10px 12px;border-radius:6px;white-space:pre-wrap;word-break:break-word;}'+
@@ -2247,7 +2378,7 @@ function importDsv(raw,fn,sep){
   const title=importTitle(fn);
   const page=importPageHTML(title,'<table><tr>'+headers.map(h=>'<th>'+resolve5eTags(esc(String(h)))+'</th>').join('')+'</tr>'+
     data.map(r=>'<tr>'+Array.from({length:width},(_,ci)=>'<td>'+resolve5eTags(esc(String(r[ci]==null?'':r[ci])))+'</td>').join('')+'</tr>').join('')+'</table>');
-  return {id:'inst_'+Math.abs(hashStr(title)).toString(36),title:esc(title),kind:'keeper',declaredKind:'tables',cover:'',
+  return {id:'inst_'+Math.abs(hashStr(title)).toString(36),title:esc(title),kind:'keeper',declaredKind:'tables',cover:'',inert:1,
     entries:[{kind:'table',nm:esc(title),dice,tags:['imported','table'],rows:rowStrs}],cues:[],chronicle:null,
     html:page,verified:false,unverified:true,trace:'',
     warnings:rollCi>=0?[]:['No roll column detected, so the whole row set rolls as d'+data.length+'.']};
@@ -2484,10 +2615,323 @@ function import5eTools(j,fn){
   const page=importPageHTML(title,'<p>'+entries.length+' entr'+(entries.length!==1?'ies':'y')+' imported from a 5eTools JSON ('+esc(srcLabel)+'): '+
     esc(Object.keys(counts).map(k=>counts[k]+' '+k).join(', '))+'.</p>'+
     '<p>Press Space and summon any of them by name; the Contents lists everything this book holds.</p>');
-  return {id:'inst_'+Math.abs(hashStr(title)).toString(36),title:esc(title),kind:'keeper',declaredKind:dkind,cover:'',
+  return {id:'inst_'+Math.abs(hashStr(title)).toString(36),title:esc(title),kind:'keeper',declaredKind:dkind,cover:'',inert:1,
     entries,cues:[],chronicle:null,html:page,verified:false,unverified:true,trace:'',warnings};
 }
 /* ===== end v26 IMPORT FORMATS ===== */
+/* ===== v27 · THE EPUB (2026-08-30) - the DM's own .epub books, read offline =====
+   NO LIBRARY. fflate minifies to 32,665 bytes and only 13,613 of blank budget remained, so
+   the ZIP reader below is DataView over the platform's own DecompressionStream
+   ('deflate-raw') - the same call this build already made for the PDF viewer and the QR
+   encoder. No DecompressionStream = say so plainly and install nothing (the Tome degrade).
+   IMAGES ride as data: URIs, not blob URLs: a record is persisted to IndexedDB, written
+   through to Drive and packed into .keeper exports, and a blob URL is dead in all three
+   (see DEVIATIONS). */
+function epubCan(){ return typeof DecompressionStream==='function'; }
+function epubErr(m){ const e=new Error(m); e.epub=1; return e; }
+/* `big` = a budget refused it (recoverable for one picture); `fatal` = the WHOLE book
+   blew its budget, so no later entry can help and the import stops here. */
+function epubBig(m,fatal){ const e=epubErr(m); e.big=1; if(fatal)e.fatal=1; return e; }
+function epubDir(p){ const i=String(p).lastIndexOf('/'); return i<0?'':String(p).slice(0,i); }
+/* v27.1 NIT (red team 2026-08-30): an entry name is ATTACKER TEXT and every rejection
+   line lands in toast(). esc() escapes markup, but it does not stop a U+202E from
+   reversing the rendered sentence, and it does not stop a 3,000-character name from
+   burying the reason. Cap it and strip the direction overrides and control bytes.
+   NOTE: this is the DISPLAY alias only - the raw name stays the map key, exactly the
+   fn/fnD split installFromFiles already uses. */
+function epubNm(s,cap){ return String(s||'')
+  .replace(/[\x00-\x1f\x7f\u200e\u200f\u202a-\u202e\u2066-\u2069]/g,'').slice(0,cap||120); }
+function epubMB(n){ return n>=1048576?(Math.round(n/1048576)+' MB'):(Math.round(n/1024)+' KB'); }
+/* ⛔ RED TEAM 2026-08-30, B2 (blocker): inflateRaw had NO output cap anywhere and the
+   chapter path had not even a fake one. An 815 KB archive inflated to 838,860,800 bytes
+   in 1.5 s; a 1.95 MB one never returned inside 300 s in a real renderer. Neither trips
+   TOME_WARN_BYTES, so the DM did not even get the "big file" line. Every inflate now
+   carries a hard ceiling and the stream is CANCELLED the moment it is crossed.
+   ⛔ S4: w.write and w.close were never awaited or caught, so ONE corrupt entry threw
+   TWO unhandled rejections into the 12-slot BUG_ERRORS ring and evicted real
+   diagnostics. The real failure still arrives at read(), which IS awaited. */
+async function inflateRaw(u8,max,nm){
+  const ds=new DecompressionStream('deflate-raw'), w=ds.writable.getWriter(), r=ds.readable.getReader();
+  w.write(u8).catch(function(){}); w.close().catch(function(){});
+  const cs=[]; let n=0;
+  for(;;){ const q=await r.read(); if(q.done)break; cs.push(q.value); n+=q.value.length;
+    if(n>max){ try{ await r.cancel(); }catch(e){}
+      throw epubBig((nm||'a file inside it')+' unpacks to more than '+epubMB(max)+', which this reader will not open'); } }
+  const out=new Uint8Array(n); let o=0; for(const c of cs){ out.set(c,o); o+=c.length; }
+  return out; }
+/* THE BUDGETS, measured against the real ceiling case rather than guessed. Every
+   committed fixture plus the 4 MB O'Reilly book (Accessible EPUB 3, 38 zip entries)
+   was walked with python zipfile: the largest single entry in any real book is
+   2,184,720 bytes and the largest whole book unpacks to 5,914,429 bytes. So 32 MB per
+   entry is 15x the worst real entry and 128 MB per book is 21x the worst real book,
+   and a legitimate EPUB over TOME_WARN_BYTES (50 MB) still warns-not-blocks and still
+   fits. Nothing is ever measured against a DECLARED size again. */
+const EPUB_ENTRY_CAP=33554432,    /* 32 MB out of any one entry */
+      EPUB_BOOK_CAP=134217728;    /* 128 MB out of one book, pictures included */
+/* The End Of Central Directory record (found by scanning BACK past a trailing comment),
+   then the central directory, then each entry's own local header. Methods 0 (stored) and
+   8 (deflate) only; ZIP64 and every other method fail LOUDLY by name rather than handing
+   back quiet corruption. */
+async function zipOpen(buf){
+  const u8=new Uint8Array(buf), dv=new DataView(buf), n=u8.length, td=new TextDecoder('utf-8');
+  if(n<22)throw epubErr('the file is too small to be a ZIP archive');
+  let e=-1; const stop=Math.max(0,n-22-65535);
+  for(let i=n-22;i>=stop;i--)if(dv.getUint32(i,true)===0x06054b50){e=i;break;}
+  if(e<0)throw epubErr('it is not a ZIP archive, so it is not a readable EPUB');
+  const cnt=dv.getUint16(e+10,true), cdo=dv.getUint32(e+16,true);
+  /* v27.1 NIT (red team): a legitimate 65,535-entry archive was misreported as ZIP64,
+     because 0xFFFF was read as a sentinel on its own. It is only a sentinel when the
+     ZIP64 end-of-central-directory LOCATOR is actually sitting in front of the EOCD, so
+     cross-check for it instead of guessing from the count. */
+  const z64=(e>=20&&dv.getUint32(e-20,true)===0x07064b50);
+  if(cdo===0xFFFFFFFF||z64)throw epubErr('it is stored in the ZIP64 format, which this reader cannot open');
+  const map={}, names=[]; let p=cdo, spent=0;
+  for(let i=0;i<cnt;i++){
+    if(p+46>n||dv.getUint32(p,true)!==0x02014b50)throw epubErr('its ZIP directory is damaged');
+    const m=dv.getUint16(p+10,true), cs=dv.getUint32(p+20,true), us=dv.getUint32(p+24,true),
+      nl=dv.getUint16(p+28,true), el=dv.getUint16(p+30,true), cl=dv.getUint16(p+32,true),
+      lo=dv.getUint32(p+42,true), nm=td.decode(u8.subarray(p+46,p+46+nl));
+    if(cs===0xFFFFFFFF||us===0xFFFFFFFF||lo===0xFFFFFFFF)throw epubErr('it is stored in the ZIP64 format, which this reader cannot open');
+    /* ⛔ RED TEAM 2026-08-30, B1 (parse-time half): a declared size the file itself
+       cannot hold is a lie, not a size. Both tests below are PROVABLE, so neither can
+       reject a real book: a compressed size is bounded by the archive that carries it,
+       and an uncompressed size is bounded by DEFLATE's own theoretical 1032:1 ceiling.
+       (The order asked for a flat "us > file length" reject. MEASURED, and it is wrong:
+       THREE of the five committed real fixtures carry an entry whose declared us is
+       larger than the whole file - childrens' EPUB/s04.xhtml is 342,935 bytes inside a
+       161,291-byte book - so that rule would have refused real books on day one. The
+       ratio bound refuses none of them, and the load-bearing protection is the
+       actual-bytes cap below, not this line.) */
+    if(cs>n||lo>=n)throw epubErr('its ZIP directory is damaged ('+epubNm(nm)+' claims a size or a position the file cannot hold)');
+    if(us>n&&us>cs*1032+1024)throw epubErr('its ZIP directory is damaged ('+epubNm(nm)+' claims to unpack to more than the file could hold)');
+    /* ⛔ S2: this was FIRST-wins. Every zipfile-based reader on earth (Calibre,
+       epubcheck, python zipfile, this gate's own toolchain) is LAST-wins, so one file
+       installed as "BENIGN TITLE" here and "SHADOW TITLE" everywhere else - a book that
+       shows one face to every validator and another to the Grimoire. An EPUB has no
+       legitimate duplicate entry, and rejecting is the only answer that cannot be
+       two-faced. */
+    if(map[nm])throw epubErr('its ZIP directory lists '+epubNm(nm)+' twice, so this file would read differently in different readers');
+    map[nm]={m:m,cs:cs,us:us,lo:lo}; names.push(nm);
+    p+=46+nl+el+cl; }
+  /* `max` is the caller's own ceiling for THIS entry (the picture budget hands one in);
+     the entry cap and the per-book cap apply on top of it and cannot be opted out of. */
+  const bytes=async function(nm,max){ const z=map[nm]; if(!z)return null;
+    const dn=epubNm(nm);
+    if(z.lo+30>n||dv.getUint32(z.lo,true)!==0x04034b50)throw epubErr(dn+' is not where the ZIP directory says it is');
+    const at=z.lo+30+dv.getUint16(z.lo+26,true)+dv.getUint16(z.lo+28,true);
+    /* ⛔ S1: subarray CLAMPS. A 9-byte STORED entry declaring cs=5000 quietly returned
+       85 bytes - the payload plus the central directory that follows it - straight into
+       chapter content. The comment above promised entries "fail LOUDLY by name rather
+       than handing back quiet corruption"; now they do. */
+    if(at+z.cs>n)throw epubErr(dn+' runs past the end of the file, so the archive is damaged');
+    const room=Math.min(max==null?EPUB_ENTRY_CAP:max,EPUB_ENTRY_CAP);
+    let out;
+    if(z.m===0){
+      if(z.cs>room)throw epubBig(dn+' unpacks to more than '+epubMB(room)+', which this reader will not open');
+      out=u8.subarray(at,at+z.cs); }
+    else if(z.m!==8)throw epubErr(dn+' uses ZIP compression method '+z.m+', which this reader cannot open');
+    else{ try{ out=await inflateRaw(u8.subarray(at,at+z.cs),room,dn); }
+      catch(err){ if(err&&err.epub)throw err;
+        /* S4: a DecompressionStream rejection surfaced as an EMPTY message, which the
+           router then rendered as "it could not be read as an EPUB ()." Name the cause. */
+        throw epubErr(dn+' could not be unpacked, so its compressed data is damaged'); } }
+    spent+=out.length;
+    if(spent>EPUB_BOOK_CAP)throw epubBig('it unpacks to more than '+epubMB(EPUB_BOOK_CAP)+' in total, which this reader will not open',1);
+    return out; };
+  return {names:names, has:function(nm){return !!map[nm];}, size:function(nm){return map[nm]?map[nm].us:0;},
+    spent:function(){return spent;},
+    bytes:bytes, text:async function(nm){ const b=await bytes(nm); return b?td.decode(b):null; }}; }
+/* Every href resolves against the directory of the file that CARRIES it, never the zip
+   root: manifest hrefs against the OPF's folder, image srcs against their chapter's. */
+function epubPath(base,href){
+  let h=String(href||'').split('#')[0].split('?')[0]; if(!h)return '';
+  try{ h=decodeURIComponent(h); }catch(e){}
+  if(/^[a-z][a-z0-9+.\-]*:/i.test(h))return '';        /* an absolute URL is not in the zip */
+  if(h.charAt(0)==='/')h=h.slice(1);
+  const parts=(base?base.split('/'):[]).concat(h.split('/')), out=[];
+  for(const s of parts){ if(!s||s==='.')continue; if(s==='..'){out.pop();continue;} out.push(s); }
+  return out.join('/'); }
+function epubXML(s,what){ let d=null;
+  try{ d=new DOMParser().parseFromString(String(s||''),'application/xml'); }catch(e){}
+  if(!d||d.getElementsByTagName('parsererror').length)throw epubErr('its '+what+' could not be read as XML');
+  return d; }
+function epubDoc(h){ try{ return new DOMParser().parseFromString(String(h||''),'text/html'); }catch(e){ return null; } }
+function epubTag(el,nm){ return [].slice.call(el.getElementsByTagNameNS('*',nm)); }
+/* THE WALK. Each step names itself on failure, and DRM is checked FIRST so a locked book
+   is never reported as a corrupt one. */
+async function epubRead(zip,fn){
+  if(zip.has('META-INF/encryption.xml'))throw epubErr('this EPUB is DRM-protected, so it cannot be opened');
+  if(!zip.has('META-INF/container.xml'))throw epubErr('this file has no META-INF/container.xml, so it is not a readable EPUB');
+  const cd=epubXML(await zip.text('META-INF/container.xml'),'META-INF/container.xml');
+  const rf=epubTag(cd,'rootfile')[0], opfP=rf?epubPath('',rf.getAttribute('full-path')||''):'';
+  if(!opfP)throw epubErr('its META-INF/container.xml names no rootfile, so the book has no starting point');
+  if(!zip.has(opfP))throw epubErr('its container points at '+epubNm(opfP)+', which is not inside the file');
+  const opf=epubXML(await zip.text(opfP),'package file ('+opfP+')'), base=epubDir(opfP);
+  const meta1=function(t){ const x=epubTag(opf,t)[0]; return x?(x.textContent||'').replace(/\s+/g,' ').trim():''; };
+  const title=meta1('title')||importTitle(fn), author=meta1('creator'), lang=meta1('language');
+  const man={};
+  epubTag(opf,'item').forEach(function(it){ const id=it.getAttribute('id');
+    if(id)man[id]={h:epubPath(base,it.getAttribute('href')||''),t:it.getAttribute('media-type')||'',p:it.getAttribute('properties')||''}; });
+  const sp=epubTag(opf,'spine')[0], order=[];
+  if(sp)epubTag(sp,'itemref').forEach(function(ir){ const m=man[ir.getAttribute('idref')];
+    if(m&&m.h&&zip.has(m.h)&&order.indexOf(m.h)<0&&/x?html/i.test(m.t||'html'))order.push(m.h); });
+  if(!order.length)throw epubErr('its spine lists no readable chapters, so there is nothing to shelve');
+  /* The TOC is OPTIONAL by contract: EPUB3 nav first (manifest properties="nav"), then
+     EPUB2 toc.ncx (spine@toc). A broken one warns; it never fails the import. */
+  const toc={}; let tocWarn='';
+  try{
+    let nav=''; for(const id in man)if(/(^|\s)nav(\s|$)/.test(man[id].p)){nav=man[id].h;break;}
+    if(nav&&zip.has(nav)){ const nd=epubDoc(await zip.text(nav)), nb=epubDir(nav);
+      const ns=nd?[].slice.call(nd.getElementsByTagName('nav')):[];
+      const nv=ns.filter(function(x){return /toc/i.test(x.getAttribute('epub:type')||'');})[0]||ns[0];
+      if(nv)[].slice.call(nv.getElementsByTagName('a')).forEach(function(a){
+        const p=epubPath(nb,a.getAttribute('href')||''), t=(a.textContent||'').replace(/\s+/g,' ').trim();
+        if(p&&t&&!toc[p])toc[p]=t; }); }
+    if(!Object.keys(toc).length){
+      let ncx=sp?(man[sp.getAttribute('toc')||'']||{}).h||'':'';
+      if(!ncx)for(const id in man)if(/ncx/i.test(man[id].t)){ncx=man[id].h;break;}
+      if(ncx&&zip.has(ncx)){ const xd=epubXML(await zip.text(ncx),'toc.ncx'), nb=epubDir(ncx);
+        epubTag(xd,'navPoint').forEach(function(np){
+          const c=epubTag(np,'content')[0], l=epubTag(np,'navLabel')[0];
+          const p=c?epubPath(nb,c.getAttribute('src')||''):'', t=l?(l.textContent||'').replace(/\s+/g,' ').trim():'';
+          if(p&&t&&!toc[p])toc[p]=t; }); } }
+  }catch(e){ tocWarn='Its table of contents could not be read, so chapters are named from their own headings.'; }
+  return {title:title,author:author,lang:lang,base:base,order:order,toc:toc,tocWarn:tocWarn}; }
+/* SANITISING - this is untrusted third-party HTML. DOMParser gives an INERT document (v26's
+   proven path: no script runs and no resource loads during the parse). On top of that the
+   kill list goes entirely; every surviving element loses EVERY attribute, which is the
+   strongest form of the on*-strip and neutralises href/src/xlink:href in the same move;
+   unlisted tags are UNWRAPPED so their text survives; and an <img> gets back exactly one
+   src - the in-zip data: URI we resolved for it, or it is dropped and counted. Nothing an
+   imported book contains can reach the network, at import or at render. */
+const EPUB_KEEP=/^(p|div|span|section|article|header|footer|aside|main|figure|figcaption|blockquote|pre|code|kbd|samp|var|h1|h2|h3|h4|h5|h6|em|strong|b|i|u|s|small|sub|sup|mark|cite|q|abbr|dfn|time|br|hr|ul|ol|li|dl|dt|dd|table|thead|tbody|tfoot|tr|td|th|caption|colgroup|col|a|ruby|rt|rp)$/;
+const EPUB_KILL='script,style,noscript,template,iframe,object,embed,link,meta,base,form,input,select,textarea,button,svg,math,audio,video,source,track,canvas,map,area,frame,frameset,applet,param';
+const EPUB_IMG={jpg:'image/jpeg',jpeg:'image/jpeg',jpe:'image/jpeg',png:'image/png',gif:'image/gif',webp:'image/webp',svg:'image/svg+xml',bmp:'image/bmp'};
+const EPUB_IMG_CAP=6291456, EPUB_CH_CAP=200;
+function b64u8(u8){ let s=''; for(let i=0;i<u8.length;i+=0x8000)s+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000)); return btoa(s); }
+/* ⛔ RED TEAM 2026-08-30, B1 (blocker): this gated on `zip.size(path)` - the central
+   directory's `us` field, which is the ATTACKER'S OWN CLAIM - and accumulated that
+   number instead of reality. A 613 KB epub with three images each declaring us=1024
+   materialised 838 MB of data: URI strings and 1.3 GB of heap while the 6 MB cap
+   believed it had spent 3 KB, and the whole run came back warnings:[]. The cap was
+   exceeded ~140x without firing. Nothing here reads a declared size any more: the
+   remaining budget is handed to the reader as a hard output ceiling, and the budget is
+   spent in the bytes that ACTUALLY came out.
+   ⛔ S6: the counters were incremented at the call site behind an `&&!st.imgBig` guard,
+   so one oversized picture silenced every missing picture after it, and a path that had
+   already failed re-counted on every later chapter that named it. Both counts are now
+   decided ONCE per resolved identity, at the moment that identity is resolved, and the
+   cache carries the answer - so DEVIATIONS 1's "Neither is ever silent" becomes true. */
+async function epubImgs(zip,dir,doc,cache,st){
+  const out={}, ims=doc.getElementsByTagName('img');
+  for(let i=0;i<ims.length;i++){
+    const raw=ims[i].getAttribute('src')||ims[i].getAttribute('xlink:href')||'';
+    if(out[raw]!==undefined)continue;
+    const path=epubPath(dir,raw), type=EPUB_IMG[(path.match(/\.([a-z0-9]+)$/i)||['',''])[1].toLowerCase()];
+    const key=path||('?'+raw);   /* one identity per RESOLVED path, book-wide */
+    if(cache[key]===undefined){
+      cache[key]=null;
+      if(!path||!type||!zip.has(path))st.imgMiss++;
+      else{
+        const left=EPUB_IMG_CAP-st.imgBytes;
+        if(left<=0)st.imgBig++;
+        else{ let b=null,big=0;
+          try{ b=await zip.bytes(path,left+1); }
+          catch(err){ if(err&&err.fatal)throw err; if(err&&err.big)big=1; }
+          if(b&&b.length>left){ b=null; big=1; }
+          if(b){ try{ cache[key]='data:'+type+';base64,'+b64u8(b); st.imgBytes+=b.length; }
+                 catch(err){ cache[key]=null; st.imgMiss++; } }
+          else if(big)st.imgBig++; else st.imgMiss++; } } }
+    out[raw]=cache[key]||''; }
+  return out; }
+function epubClean(doc,imgs){
+  const body=doc&&doc.body; if(!body)return null;
+  body.querySelectorAll(EPUB_KILL).forEach(function(el){ el.remove(); });
+  /* ⛔ S3 (red team 2026-08-30): querySelectorAll('*') is ELEMENTS ONLY, so comment
+     nodes were never sanitised at all. A 2,009-character comment rode verbatim into
+     k.html AND entries[0].x with warnings:[] - and comment text is not entity-escaped
+     by the serializer, so arbitrary attacker bytes reached IndexedDB, the Drive
+     write-through and .keeper export files, invisible to the DM and invisible to a
+     gate that only sweeps elements and attributes. Walk them and delete them. */
+  try{ const tw=doc.createTreeWalker(body,NodeFilter.SHOW_COMMENT,null,false), cm=[];
+    while(tw.nextNode())cm.push(tw.currentNode);
+    cm.forEach(function(c){ if(c.parentNode)c.parentNode.removeChild(c); }); }catch(e){}
+  const all=[].slice.call(body.querySelectorAll('*'));
+  for(const el of all){
+    if(!el.parentNode)continue;
+    const tag=(el.localName||el.nodeName).toLowerCase();
+    if(tag==='img'){
+      const uri=imgs[el.getAttribute('src')||el.getAttribute('xlink:href')||''],
+        alt=(el.getAttribute('alt')||'').slice(0,200);
+      while(el.attributes.length)el.removeAttribute(el.attributes[0].name);
+      if(uri){ el.setAttribute('src',uri); if(alt)el.setAttribute('alt',alt); }
+      else el.parentNode.removeChild(el);
+      continue; }
+    if(!EPUB_KEEP.test(tag)){ const pa=el.parentNode;
+      while(el.firstChild)pa.insertBefore(el.firstChild,el); pa.removeChild(el); continue; }
+    while(el.attributes.length)el.removeAttribute(el.attributes[0].name); }
+  return body; }
+/* THE ENTRY. One kind-'book' card per EPUB always; PLUS one card per chapter whenever a TOC
+   or a multi-item spine exists, so a rulebook is summonable BY CHAPTER. Chapter cards carry
+   the book's title in `sub` (raw - that field is escaped at its sinks). The record's own
+   page is the whole book assembled in SPINE ORDER. */
+async function importEpub(buf,fn){
+  const zip=await zipOpen(buf), bk=await epubRead(zip,fn);
+  const st={imgMiss:0,imgBig:0,imgBytes:0}, cache={}, warn=[], chaps=[];
+  let order=bk.order, capped=0, failCause='';
+  if(order.length>EPUB_CH_CAP){ capped=order.length; order=order.slice(0,EPUB_CH_CAP); }
+  for(let i=0;i<order.length;i++){
+    const p=order[i]; let raw=null;
+    /* S4: the per-chapter catch swallowed the CAUSE and the reject line then blamed the
+       content ("none of its chapters held anything readable") for a damaged ARCHIVE.
+       Keep the first real reason. A `fatal` throw is the whole book's budget blowing,
+       which no later chapter can rescue, so it goes straight out. */
+    try{ raw=await zip.text(p); }
+    catch(e){ if(e&&e.fatal)throw e;
+      failCause=failCause||epubNm(String((e&&e.message)||''),160);
+      warn.push('One chapter ('+esc(epubNm(p))+') could not be unpacked, so it was left out.'); continue; }
+    const d=epubDoc(raw); if(!d)continue;
+    const body=epubClean(d,await epubImgs(zip,epubDir(p),d,cache,st)); if(!body)continue;
+    const html=body.innerHTML, txt=(body.textContent||'').replace(/\s+/g,' ').trim();
+    if(!txt&&html.indexOf('<img')<0)continue;
+    let t=bk.toc[p]||'';
+    if(!t){ const h=body.querySelector('h1,h2,h3,h4'); t=h?(h.textContent||'').replace(/\s+/g,' ').trim():''; }
+    if(!t)t=(d.title||'').replace(/\s+/g,' ').trim();
+    chaps.push({t:(t||'Chapter '+(i+1)).slice(0,120),h:html,x:txt}); }
+  if(!chaps.length)throw epubErr(failCause
+    ?('none of its chapters could be unpacked ('+failCause+')')
+    :'none of its chapters held anything readable');
+  const bt=bk.title, ttl=esc(bt), sub='EPUB'+(bk.author?' · '+bk.author:'');
+  /* v27 (caught live on idpf-wasteland): the gate is MORE THAN ONE CHAPTER, not "a TOC
+     exists". Wasteland ships a nav.xhtml but a single spine item, so a toc-exists gate
+     turned its one card into a one-line contents list and the poem itself vanished from
+     the card. One chapter = the book card IS the chapter; a second card would be a
+     byte-for-byte duplicate of it. */
+  const multi=chaps.length>1;
+  const meta=[['Chapters',String(chaps.length)]];
+  if(bk.author)meta.push(['Author',bk.author]);
+  if(bk.lang)meta.push(['Language',bk.lang]);
+  const entries=[{kind:'book',nm:ttl,sub:sub,tags:['imported','epub','book'],meta:meta,
+    x:multi?('<p>'+esc(bt)+(bk.author?' by '+esc(bk.author):'')+'</p><ol>'+chaps.map(function(c){return '<li>'+esc(c.t)+'</li>';}).join('')+
+      '</ol><p><i>Open the book on the stage to read it. Every chapter is also its own card in the Summon.</i></p>'):chaps[0].h,
+    search:chaps.map(function(c){return c.x;}).join(' ').slice(0,2000).toLowerCase()}];
+  if(multi)chaps.forEach(function(c){ entries.push({kind:'book',nm:esc(c.t),sub:bt,
+    tags:['imported','epub','chapter'],meta:[],x:c.h,search:c.x.slice(0,2000).toLowerCase()}); });
+  if(bk.tocWarn)warn.push(bk.tocWarn);
+  /* ⛔ S5 (red team 2026-08-30): `order` is sliced BEFORE the loop, so the cap truncates
+     the BOOK - importPageHTML reads the sliced list and the record's page stops at 200
+     too. The old wording ("shelved as cards") read as "the book is whole, the index is
+     trimmed", which is the reverse of the truth. THE CALL: keep the truncation (holding
+     a 5,000-chapter book whole is the memory hazard this cap exists to stop) and make
+     the sentence tell the truth. */
+  if(capped)warn.push('This book holds '+capped+' chapters, so only the first '+EPUB_CH_CAP+' were kept. The rest are in neither the cards nor the book page here, so keep the original EPUB file.');
+  if(st.imgMiss)warn.push(st.imgMiss+' picture'+(st.imgMiss!==1?'s':'')+' could not be found inside the EPUB, so '+(st.imgMiss!==1?'they were':'it was')+' left out.');
+  if(st.imgBig)warn.push(st.imgBig+' picture'+(st.imgBig!==1?'s':'')+' went past the 6 MB picture limit for one book, so '+(st.imgBig!==1?'they were':'it was')+' left out.');
+  return {id:'inst_'+Math.abs(hashStr(bt)).toString(36),title:ttl,kind:'keeper',declaredKind:'reference',
+    cover:'',entries:entries,cues:[],chronicle:null,inert:1,
+    html:importPageHTML(bt,chaps.map(function(c){return '<h2>'+esc(c.t)+'</h2>'+c.h;}).join('<hr>')),
+    verified:false,unverified:true,trace:'',warnings:warn}; }
+/* ===== end v27 EPUB ===== */
 /* v26.1 (2026-08-29): the CONTENT signature behind the collision guard. The guard used to
    ask only whether `html` differed, but a 5eTools record's html is a COUNT SUMMARY built
    from _meta - two homebrew files sharing a source name and an entry count produce
@@ -2514,13 +2958,25 @@ async function installFromFiles(files){
        parseKeeper-shaped record (or skip/reject) into the SAME chokepoint below */
     const extM=(f.name||'').match(/\.([a-z0-9]+)$/i), ext=extM?extM[1].toLowerCase():'';
     const isHtml=/^html?$/.test(ext)||/html/.test(f.type||'');
+    let k=null;
+    if(ext==='epub'||/epub\+zip/i.test(f.type||'')){
+      /* v27: an EPUB is BYTES, so it branches before the text read - and it degrades
+         honestly rather than half-working where the platform cannot inflate. */
+      if(!epubCan()){ rej.push(fnD+' was not installed: this browser cannot open EPUB files.'); continue; }
+      if((f.size||0)>TOME_WARN_BYTES)big.push(fnD+' ('+tomeSizeLabel(f.size||0)+')');
+      try{ k=await importEpub(await f.arrayBuffer(),fn); }
+      /* v27.1: an EPUB error message can carry attacker text (an entry name), and a
+         DecompressionStream rejection can carry NO text at all - which rendered as
+         "it could not be read as an EPUB ()." Cap it, and name the empty case. */
+      catch(e){ const m=epubNm(String((e&&e.message)||'').trim(),200)||'it could not be read';
+        k={reject:true,reason:fnD+' was not installed: '+esc(e&&e.epub?m:'it could not be read as an EPUB ('+m+')')+'.'}; }
+    } else {
     if(!isHtml&&['txt','md','markdown','csv','tsv','json'].indexOf(ext)<0){ skip.push(fnD+' (not a file this shelf takes: '+acceptList()+')'); continue; }
     let html; try{html=await f.text();}catch(e){ skip.push(fnD+' (couldn&rsquo;t be read)'); continue; }
     /* v26.1: strip a leading UTF-8 BOM. Windows tools (Notepad, PowerShell's Set-Content,
        Excel's CSV export) write one by default, and it made JSON.parse throw - a BOM'd
        homebrew file was rejected as "not valid JSON" when it was perfectly valid. */
     if(html.charCodeAt(0)===0xFEFF)html=html.slice(1);
-    let k=null;
     try{
       if(isHtml){ k=parseKeeper(html,(f.name||'keeper').replace(/\.html?$/i,''));
         if(k&&k.reject&&k.soft)k=importHtmlText(html,fn); }   /* rule-3 tail only; the Grimoire rejection stays absolute */
@@ -2530,6 +2986,7 @@ async function installFromFiles(files){
       else if(ext==='tsv')k=importDsv(html,fn,'\t');
       else if(ext==='json')k=importJson(html,fn);
     }catch(e){ k={reject:true,reason:fnD+' broke the importer and was not installed.'}; }
+    }
     if(!k){ skip.push(fnD+' (unreadable)'); continue; }
     if(k.skip){ skip.push(fnD+' ('+k.skip+')'); continue; }
     if(k.reject){ rej.push(k.reason); continue; }
@@ -2564,7 +3021,7 @@ async function installFromFiles(files){
      It works in this tab and is gone on reload, and the summary has to say so. */
   if(eph.length) parts.push('<b>'+eph.length+' could not be saved to this browser&rsquo;s storage</b> &mdash; '+(eph.length!==1?'they last':'it lasts')+' only until you close the page');
   if(nt){ let m='Shelved '+nt+' Tome'+(nt!==1?'s':'')+' ('+(nt!==1?'PDFs':'PDF')+', stored in this browser only)'; if(!DB)m+=' <b>this browser cannot keep PDFs between visits, so the Tome lasts until you close the page</b>'; parts.push(m); }
-  if(big.length) parts.push('<b>'+big.length+' big PDF'+(big.length!==1?'s':'')+' over 50 MB</b> &middot; browser storage has limits, so keep the original file safe too');
+  if(big.length) parts.push('<b>'+big.length+' big file'+(big.length!==1?'s':'')+' over 50 MB</b> &middot; browser storage has limits, so keep the original safe too');   /* v27: PDFs and EPUBs share this warn-not-block line */
   if(dup.length) parts.push(dup.length+' duplicate name'+(dup.length!==1?'s':'')+' &mdash; shelved alongside the existing');
   if(rej.length){ const uq=[...new Set(rej)]; parts.push(rej.length+' rejected: '+uq[0]+(uq.length>1?' (+'+(uq.length-1)+' more, see console)':'')); }
   if(skip.length) parts.push(skip.length+' skipped'+(skip.length===1?' &mdash; '+skip[0]:' (see console)'));
@@ -2580,7 +3037,7 @@ async function installFromFiles(files){
   if(n){ const before=(STATE.nudge&&STATE.nudge.i)||0; STATE.nudge=STATE.nudge||{i:0,s:0}; STATE.nudge.i=before+n; saveState();
     if(Math.floor(STATE.nudge.i/3)>Math.floor(before/3)) setTimeout(()=>toast(backupNudgeMsg()),3800); }
 }
-function pickKeeperFile(){ let inp=document.getElementById('kkFileInput'); if(!inp){inp=document.createElement('input');inp.type='file';inp.accept=ACCEPT.map(a=>a.ext).join(',')+',text/html,application/pdf,text/plain,text/csv,text/tab-separated-values,application/json';inp.multiple=true;inp.id='kkFileInput';inp.style.display='none';inp.addEventListener('change',()=>{if(inp.files.length)installFromFiles(inp.files);});document.body.appendChild(inp);} inp.value='';inp.click(); }
+function pickKeeperFile(){ let inp=document.getElementById('kkFileInput'); if(!inp){inp=document.createElement('input');inp.type='file';inp.accept=ACCEPT.map(a=>a.ext).join(',')+',text/html,application/pdf,text/plain,text/csv,text/tab-separated-values,application/json,application/epub+zip';inp.multiple=true;inp.id='kkFileInput';inp.style.display='none';inp.addEventListener('change',()=>{if(inp.files.length)installFromFiles(inp.files);});document.body.appendChild(inp);} inp.value='';inp.click(); }
 function pickTomeFile(){ let inp=document.getElementById('kkTomeInput'); if(!inp){inp=document.createElement('input');inp.type='file';inp.accept='.pdf,application/pdf';inp.multiple=true;inp.id='kkTomeInput';inp.style.display='none';inp.addEventListener('change',()=>{if(inp.files.length)installFromFiles(inp.files);});document.body.appendChild(inp);} inp.value='';inp.click(); }
 /* v20: the backup nudge stays honest about what a .keeper carries */
 function backupNudgeMsg(){ return 'Your whole binder lives in this browser. Back it up: Export a .keeper, or keep your binder on a drive.'+(Object.keys(TOMES).length?' Tomes stay out of .keeper files, so keep your PDF files themselves too.':''); }
@@ -3042,6 +3499,23 @@ const STAGE={
       <p><button class="tbtn" onclick="openContents('${id}')">Show me what&rsquo;s in this book</button></p></div>`;}
 };
 function stageHTML(id){return (STAGE[id]||STAGE._generic)(id);}
+/* ⛔ RED TEAM 2026-08-30, B3 (blocker, defence in depth, and broader than EPUB). The
+   srcdoc frame carried NO sandbox and the app carries no CSP, so
+   f.contentWindow.parent===window: imported third-party book HTML sat same-origin with
+   the DM's whole binder - INSTALLED, STATE, localStorage, IndexedDB, top.location. The
+   sanitiser held all 30 payloads the adversary threw at it, so this is the SECOND LINE
+   THAT DID NOT EXIST, not a live exploit; one sanitiser bug was total compromise.
+   THE SPLIT: records the IMPORT paths produced are inert by construction (importPageHTML
+   emits no script and no handler), so they render with sandbox="allow-same-origin" and
+   NO allow-scripts - anything that gets past the sanitiser is dead, while same-origin
+   keeps the SAVE BRIDGE, the Space-summon bridge, the sound scan and the Chronicle
+   injection working (those are parent-realm calls into the frame, not frame scripts).
+   REAL Keepers - window.LIBRARY and parseKeeper .html imports - legitimately run their
+   own scripts and the save bridge depends on it, so they keep today's behaviour exactly.
+   The second clause of recordIsInert covers imports already shelved from an earlier
+   build, matched on importPageHTML's exact byte preamble. */
+function recordIsInert(k){ return !!(k&&(k.inert||(k.unverified&&String(k.html||'').indexOf(IMPORT_PAGE_HEAD)===0))); }
+function frameSandbox(id){ return recordIsInert(INSTALLED[id])?' sandbox="allow-same-origin"':''; }
 function openBook(id){
   /* v23.1 (finding 8): an occupant swap must never fire invisibly BEHIND the board overlay -
      the DM would close the board later onto a silently replaced stage. Close the board first,
@@ -3055,7 +3529,7 @@ function openBook(id){
   const _b=BOOKS[id];
   const _src = (INSTALLED[id] && INSTALLED[id].html) || (window.LIBRARY && window.LIBRARY[id]) || null;
   if(_src){
-    document.getElementById('paneL').innerHTML='<iframe class="keeper-frame" title="'+esc(_b.t)+'"></iframe>';
+    document.getElementById('paneL').innerHTML='<iframe class="keeper-frame"'+frameSandbox(id)+' title="'+esc(_b.t)+'"></iframe>';
     const _f=document.querySelector('#paneL .keeper-frame'); _f.srcdoc=_src; wireKeeperFrame(_f,id);
   } else {
     document.getElementById('paneL').innerHTML='<div class="pane-inner">'+stageHTML(id)+'</div>';
@@ -3167,7 +3641,7 @@ function renderRight(){
     return;
   }
   if(src){
-    R.innerHTML=head+'<iframe class="keeper-frame" title="'+esc(decEnt(b.t))+'"></iframe>';
+    R.innerHTML=head+'<iframe class="keeper-frame"'+frameSandbox(id)+' title="'+esc(decEnt(b.t))+'"></iframe>';
     const f=R.querySelector('.keeper-frame'); f.srcdoc=src;
   } else {
     R.innerHTML=head+'<div class="pane-inner">'+stageHTML(id)+'</div>';
@@ -4657,6 +5131,24 @@ global.TheaterTransport = {
 
 })(typeof window !== "undefined" ? window : this);
 
+/* v27.1 — THE CHOKEPOINT ITSELF. Every envelope this build sends is born in
+   TheaterTransport.envelope(...) - 22 call sites today and every one written after tonight -
+   so the outbound text law is enforced HERE, once, instead of at each producer's discretion.
+   Wrapping the export (the same idiom renderCombat uses below) keeps the transport module
+   underneath a pure, standalone frame builder that knows nothing about this app's text
+   conventions, and puts a new send site inside the law by construction rather than by memory.
+   `from` is scrubbed too: it carries the ADMITTED seat's name on a rebroadcast roll, and that
+   name arrived from a player's own hello. */
+(function(){ const rawEnvelope=TheaterTransport.envelope;
+  TheaterTransport.envelope=function(type,from,payload){
+    WIRE_TRUNC=null;
+    const st={n:0,deep:0};
+    const env=rawEnvelope(type,wireCap(from,'from'),wireScrub(payload,'',0,st));
+    WIRE_SEEN.deep=st.deep; WIRE_SEEN.nodes=st.n;
+    if(WIRE_TRUNC)wireSayTrunc(WIRE_TRUNC);   /* v27.2 (F3): a cap that really cut something says so */
+    WIRE_TRUNC=null;
+    return env; }; })();
+
 const THEATER={peers:[],nid:0,sameRoom:false,lastSig:'',tmr:null,tlog:[],pushTo:'all',hb:null,seats:{}};
 /* v14.5 store-and-forward: a resting (asleep) player's seat queues what they miss.
    Waking to find it already in the satchel IS the product behavior. Cap 20 per seat. */
@@ -4852,6 +5344,11 @@ function theaterBansHTML(){ const t=tblActive();
   return '<div class="th-step" style="margin-top:6px;">Barred from this table:</div>'+
     t.bans.map(function(b,i){ return '<span class="th-pill" style="display:inline-block;margin:2px 4px 2px 0;">'+esc(theaterBanLabel(b))+
       ' &middot; <a href="#" style="color:var(--gold-br);" onclick="theaterUnban('+i+');return false;" title="Let them back in">restore</a></span>'; }).join(''); }
+/* v27.1: the table name is a FACE - it exists only to cross the wire (both callers are an
+   envelope), so it is sanitised at birth as well as at the chokepoint. This is the one that
+   was executing: it rides `hello`, the first envelope of every join. 60 = the Satchel's cap. */
+/* v27.2 (F9): the wireCap here was double-treatment - the chokepoint caps and scrubs `table`
+   already, and running it twice decoded entities twice ("5 &amp;lt; 6" shipped as "5  6"). */
 function theaterTableName(){ const t=tblActive(); return (t.name||'').trim()||'The Table'; }
 function theaterTableChanged(v){ const t=tblActive(); t.name=String(v||'').trim()||'My Table';
   STATE.theaterTable=t.name; saveState(); renderTheaterTables();
@@ -5180,8 +5677,14 @@ function pkDelete(id,btn){
 }
 function pkOpen(id){ PK_OPEN=(PK_OPEN===id?'':id); renderPackets(); }
 /* the only place a packet becomes an envelope: five named public fields, nothing else */
-function pkFace(p){ return {id:p.id,ptype:p.ptype||'person',title:p.title||'Packet',
-  subtitle:p.subtitle||'',img:p.img||'',body:p.body||'',tags:(p.tags||[]).slice()}; }
+/* v27.1: the same text law the key law already had. A packet the DM typed by hand went out
+   raw - the wireTxt on the auto-built packets (tblSend) was the whole of the old coverage.
+   v27.2 (F9): the chokepoint owns that now - title/subtitle/tags are capped and scrubbed there,
+   and running wireTxt here as well decoded entities twice. `body` is PROSE: it rides verbatim
+   and is escaped at the Satchel's textarea sink (players-satchel.html:5496 -> :4453), because a
+   dossier that says "reduce his HP > 0 and he flees" has to still say that when it lands. */
+function pkFace(p){ return {id:p.id,ptype:p.ptype||'person',title:(p.title||'').trim()||'Packet',
+  subtitle:p.subtitle||'',img:p.img||'',body:p.body||'',tags:p.tags||[]}; }
 function pkSend(id){
   const p=pkAll().find(function(x){return x.id===id;}); if(!p)return;
   if(!p.title.trim()){ toast('Give the packet a name first.'); return; }
@@ -5337,7 +5840,12 @@ function theaterOnRoll(rec,env){ const p=env.payload||{};
   /* v17.5: a held roll (queued through a dead spot, delivered on rejoin) arrives with its
      original ts. Old enough = label it, so the table knows it happened a while ago. */
   const held=env.ts&&(Date.now()-env.ts>60000);
-  const lbl=String(p.label||'roll')+(held?' (held)':'');
+  /* v27.2 (F2): the marker is the POINT of this line - it tells the table the roll happened a
+     while ago - and it was being eaten. A 78-character label plus ' (held)' is 85, the wire cap
+     for `label` is 80, so the rebroadcast arrived as '...(he'. Cap the player's own text at 72
+     FIRST (72 + 7 = 79, inside the cap whatever they typed), then append the marker, so what
+     gets shortened is their label and never our word about it. */
+  const lbl=wireTrimSurrogate(String(p.label||'roll').slice(0,72))+(held?' (held)':'');
   /* v17.6: attribution is the ADMITTED seat, never the sender-supplied `from` */
   const who=String(rec.name||'player');
   THEATER.tlog.unshift({from:who,label:lbl,total:p.total,adv:p.adv,t:Date.now()});
@@ -5356,7 +5864,8 @@ function theaterClearLog(btn){
   THEATER.tlog=[]; renderTheaterLog(); if(btn){btn.dataset.arm='';btn.textContent='Clear';} toast('Table roll log cleared.'); }
 function theaterInitPayload(){ const C=STATE.combat;
   if(!C||!C.list||!C.list.length)return {order:[],activeIndex:0,round:1};
-  return { order:C.list.map(function(c){ return {name:wireTxt(c.nm),ini:(c.init|0)}; }),
+  /* v27.2 (F9): `name` is a bounded label; the chokepoint scrubs and caps it once. */
+  return { order:C.list.map(function(c){ return {name:c.nm||'',ini:(c.init|0)}; }),
     activeIndex:Math.max(0,activeIdx()), round:C.round||1 }; }
 function theaterPushInit(force){
   if(!theaterOpenCount())return;
@@ -5686,8 +6195,8 @@ function theaterPushImage(inp){
    README, About panel); GRIM_BUILD carries it plus the build date for problem reports.
    Bump BOTH lines with every release - a user with an offline file kept for a year has no
    other way to know what they hold, and neither do we when they report a bug. */
-const KK_VERSION='2.6.0';
-const GRIM_BUILD=KK_VERSION+' · 2026-08-29';
+const KK_VERSION='2.7.3';
+const GRIM_BUILD=KK_VERSION+' · 2026-08-30.3';
 window.KK_VERSION=KK_VERSION;
 const BUG_ERRORS=[];
 /* ⚠ ERROR MESSAGES ARE NOT SAFE TEXT. A browser quotes the offending input back at you:
@@ -7077,7 +7586,11 @@ function wbPlaceMustered(){
 /* v23.1 (finding 6, pin 1): `id` is the map's opaque uid - the filename NEVER rides. The title is
    the DM's deliberate rename or the literal 'Battle map'; the filename-derived default name is
    prep, and prep does not cross the wire. Still exactly nine named keys. */
-function boardFace(m,img){ return {id:m.uid,title:(m.renamed&&m.name)?m.name:'Battle map',img:img||'',
+/* v27.1: the nine-key law kept the DM's fields off the wire, but the one field that IS text -
+   the DM's rename - left raw. A face states its own text law now, not only its key law. */
+/* v27.2 (F9): the rename is still guarded - `title` is a bounded label and the chokepoint caps
+   and scrubs it. The wireCap that used to sit here only decoded its entities a second time. */
+function boardFace(m,img){ return {id:m.uid,title:((m.renamed&&m.name)?String(m.name).trim():'')||'Battle map',img:img||'',
   gridPx:m.gridPx||0,originX:m.originX||0,originY:m.originY||0,
   w:m.w|0,h:m.h|0,gridless:!!m.gridless}; }
 
@@ -7418,8 +7931,13 @@ function wbOnPing(rec,env){
    locally, the owner CREDENTIAL in t.ownerSid) never cross - art rides as rasterised bytes
    keyed by content hash (pin 3), and the receiving seat's own tokens carry `mine:1` (pin 4:
    no sid ever rides the wire outbound; the Satchel's drag gate is t.mine, nothing else). */
+/* v27.1: label and owner are free text (wbTokEditApply takes both straight off an input), so
+   the face sanitises them. The wireTxt on wbPlaceMustered's labels covered only the mustered
+   path - a token renamed by hand in the editor went out raw. */
+/* v27.2 (F9): label and owner are bounded labels and stay guarded - at the chokepoint, once.
+   The wireCap pair here was the second decode. */
 function wbTokFace(t,uri,arth){ return {tid:t.tid,x:t.x,y:t.y,w:t.w,h:t.h,
-  label:t.label||'',colour:t.colour||'',owner:t.owner||'dm',img:uri||'',arth:arth||''}; }
+  label:t.label||'',colour:t.colour||'',owner:(t.owner||'').trim()||'dm',img:uri||'',arth:arth||''}; }
 /* v23.1 (finding 12, pin 4): is this token the seat's OWN? Credential first; the name may decide
    only when no credential exists (the seatSameAs law). 'dm' tokens are never a Satchel's. */
 function wbTokMine(t,rec){
