@@ -1705,10 +1705,15 @@ function rebuildIndex(){ INDEX = SEED_INDEX.slice(); Object.values(INSTALLED).fo
   /* v22 - THE TOME JOINS THE SUMMON. Not the PDF's text (that would need a bundled parser and
      we would be pretending) - the DM's OWN metadata: the Tome's title, and every page mark
      they set. Space, three letters, and "Goblin Warrens p.34" opens the PDF on page 34. */
+  /* v26.1 XSS PASS: `sub` is now escaped AT THE SINK (entryFace/floatTable), so these two
+     literals carry the real middle dot instead of an entity - an entity here would render
+     visibly as "&middot;" once the sink escapes it, and t.title must arrive RAW (the sink
+     escapes it exactly once). nm stays PRE-ESCAPED: that is the build's standing convention
+     (KKDATA ships "Mannerisms &amp; Tics"; combatMuster reads it back with unesc()). */
   try{ Object.values(TOMES||{}).forEach(t=>{
-    INDEX.push({tome:t.id,kind:'book',nm:esc(t.title),sub:'Tome &middot; your PDF',tags:['tome','pdf']});
+    INDEX.push({tome:t.id,kind:'book',nm:esc(t.title),sub:'Tome · your PDF',tags:['tome','pdf']});
     (t.bookmarks||[]).forEach(b=>INDEX.push({tome:t.id,page:b.page,kind:'book',nm:esc(b.label),
-      sub:'Page '+b.page+' &middot; '+esc(t.title),tags:['tome','page mark']}));
+      sub:'Page '+b.page+' · '+String(t.title==null?'':t.title),tags:['tome','page mark']}));
   }); }catch(e){}
   XREF_MAP=null; }
 /* v13 fix (found 2026-07-08): honor the manifest's declared kind — packs shelve with the packs,
@@ -1748,12 +1753,76 @@ function saveState(){ STATE.parties=PARTIES; STATE.activeParty=activeParty; STAT
   if(DB)idbPut('kv',STATE,'state').then(function(ok){ if(!ok&&!saveState._warned){ saveState._warned=true;
     toast('Your binder could not be saved to this browser&rsquo;s storage. It works for now, but changes may not survive a reload. Export a .keeper backup to be safe.'); } });
   else{try{localStorage.setItem(SKEY,JSON.stringify(STATE));}catch(e){}} if(driveOK)driveSaveSoon(); }
-async function loadInstalled(){ if(!DB)return; const arr=await idbAll('keepers'); arr.forEach(k=>{INSTALLED[k.id]=k;addInstalledToBooks(k);}); rebuildIndex(); }
+/* v26.2: the same canonicalisation on the way OUT of storage - a record shelved by an older
+   build (or by a hand-crafted binder adopted before this pass) is normalised on the next boot
+   rather than staying poisoned forever. normEntry is idempotent, so a clean binder is untouched. */
+async function loadInstalled(){ if(!DB)return; const arr=await idbAll('keepers'); arr.forEach(k=>{normEntries(k);INSTALLED[k.id]=k;addInstalledToBooks(k);}); rebuildIndex(); }
 
 /* ---- utilities ---- */
-function stripEnt(s){return String(s).replace(/&[a-z]+;/gi,' ').replace(/&#\d+;/g,' ');}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function unesc(s){const d=document.createElement('textarea');d.innerHTML=String(s);return d.value;}  /* v22: entities back to text, for INPUT values only */
+/* v26.2 (Codex r3, 2026-08-29) — decEnt REPLACES the old stripEnt, which DELETED entities
+   (`&x;` -> ' ') instead of decoding them. That deletion was silently damaging the app's own
+   text everywhere it was used: searchTables could not find "Mannerisms & Tics" by its VISIBLE
+   name (the haystack held "Mannerisms  Tics"), a table row "Black &amp; White" rolled up as
+   "Black White" in the card footer, and an NPC's "Fence &mdash; runs..." lost its dash in the
+   palette. One deletion, ~60 call sites, three visible symptoms. THE LAW that replaces it:
+   DECODE for matching, decode-then-esc() for display - never delete.
+   Fast by construction: the no-'&' early-out skips ~every entry, so the per-keystroke sweep of
+   a 2,000-entry INDEX stays a string scan. Exotic named entities fall through to unesc()'s DOM
+   table so coverage is exact, not approximate.
+   SINK LAW: decEnt can produce '<'. Anything it returns is either escaped at the sink or lands
+   in a plain-text sink (textContent / input.value / placeholder / canvas / the wire). There is
+   no unescaped-innerHTML consumer - the one that existed (the Chronicle's "How did X end?"
+   step) is escaped as of this pass. */
+const ENT_DEC={amp:'&',lt:'<',gt:'>',quot:'"',apos:"'",nbsp:' ',rsquo:'’',lsquo:'‘',
+  ldquo:'“',rdquo:'”',mdash:'—',ndash:'–',hellip:'…',middot:'·',
+  bull:'•',times:'×',minus:'−',deg:'°',plusmn:'±',sect:'§',
+  para:'¶',dagger:'†',copy:'©',reg:'®',trade:'™',frac12:'½',
+  frac14:'¼',frac34:'¾',rarr:'→',larr:'←',laquo:'«',raquo:'»',
+  prime:'′',Prime:'″',ge:'≥',le:'≤',ne:'≠',eacute:'é'};
+function decEnt(s){ s=String(s);
+  if(s.indexOf('&')<0)return s;
+  return s.replace(/&(#x[0-9a-f]+|#\d+|[a-z][a-z0-9]{1,31});/gi,function(m,b){
+    if(b.charAt(0)==='#'){ const x=b.charAt(1),n=(x==='x'||x==='X')?parseInt(b.slice(2),16):parseInt(b.slice(1),10);
+      try{ return (n>0&&n<=0x10FFFF)?String.fromCodePoint(n):m; }catch(e){ return m; } }
+    const k=ENT_DEC[b]; if(k!==undefined)return k;
+    const d=unesc(m); return d===m?m:d; });
+}
+/* v26.2 — THE ONE CANONICALIZER. Every ingestion boundary (a dropped Keeper's manifest, an
+   adopted .keeper binder, a record read back out of IndexedDB) runs its entries through this,
+   so the build's storage conventions hold no matter who authored the bytes:
+     nm / rows : PRE-ESCAPED at birth (the palette, Contents and card-title sinks interpolate
+                 them raw by design). esc(decEnt(v)) makes that IDEMPOTENT - a third-party
+                 Keeper whose manifest already ships "Mannerisms &amp; Tics" stays that, instead
+                 of becoming "&amp;amp;" and rendering its own entity at the reader.
+     speed     : a plain scalar, stored RAW (the card sink escapes it). fiveMonster already
+                 stored it raw; the Scribe was the lone producer that escaped, so it double-
+                 encoded on the card.
+     atk.hit   : a FINITE NUMBER. It renders into the data-hit ATTRIBUTE and into to-hit
+                 arithmetic, and a manifest could put any string there - a quote in it broke
+                 out of the attribute and executed. Numbers cannot.
+     note / role / want / voice / line / x : the deliberate pre-baked HTML channels
+                 (DEVIATIONS #2/#4). NEVER touched here. */
+function normEntry(e){
+  if(!e||typeof e!=='object')return e;
+  if(e.nm!=null)e.nm=esc(decEnt(String(e.nm)));
+  if(e.speed!=null&&typeof e.speed==='string')e.speed=decEnt(e.speed);
+  if(Array.isArray(e.rows))e.rows=e.rows.map(r=>typeof r==='string'?esc(decEnt(r)):r);
+  if(Array.isArray(e.atk))e.atk=e.atk.map(function(a){ const h=+((a&&a.hit)||0);
+    return {n:String((a&&a.n)||'Attack').slice(0,60),
+            hit:isFinite(h)?Math.max(-99,Math.min(99,Math.round(h))):0,
+            dmg:String((a&&a.dmg)||'')}; });
+  return e;
+}
+function normEntries(k){ if(k&&Array.isArray(k.entries))k.entries.forEach(normEntry); return k; }
+function atkHit(a){ const h=+((a&&a.hit)||0); return isFinite(h)?Math.max(-99,Math.min(99,Math.round(h))):0; }
+/* v26.2 — text that LEAVES this app (a packet's public face, the initiative payload, a token
+   label, a ping's name). The Satchel is a separate build with its own sinks, so what crosses
+   the wire is decoded for display AND stripped of angle brackets: this side never hands another
+   app something that could be markup. (Strictly tighter than before - the old stripEnt deleted
+   ENTITIES and passed raw '<' through untouched.) */
+function wireTxt(s){ return decEnt(String(s==null?'':s)).replace(/[<>]/g,'').trim(); }
 /* "Surface | Truth | Tell" reveal rows -> layered display */
 function rowHTML(r){if(r.indexOf(' | ')<0)return r;const p=r.split(' | ');return '<b>'+p[0]+'</b>'+p.slice(1).map(s=>'<span class="rsub">'+s+'</span>').join('');}
 /* ---- prose enrichment: rollable dice + cross-reference links ----------------
@@ -1783,7 +1852,7 @@ function enrichProse(s){
    hint disambiguates collisions, name-only fallback). Cache is keyed to INDEX
    length and busted by rebuildIndex(). */
 let XREF_MAP=null,XREF_MAP_N=-1;
-function xrefNorm(s){return stripEnt(String(s)).replace(/\s+/g,' ').trim().toLowerCase();}
+function xrefNorm(s){return decEnt(String(s)).replace(/\s+/g,' ').trim().toLowerCase();}
 function xrefMap(){
   if(XREF_MAP&&XREF_MAP_N===INDEX.length)return XREF_MAP;
   const m=Object.create(null);
@@ -1803,7 +1872,7 @@ function wireCardEnrichments(card,t){
   card.querySelectorAll('.idice').forEach(d=>d.addEventListener('click',e=>{
     e.stopPropagation();const expr=d.dataset.d,r=rollDmg(expr);
     if(foot)foot.innerHTML='<b>'+esc(expr)+' &rarr; '+r.sum+'</b> '+r.txt;
-    logRoll(expr,r.sum,stripEnt((t&&t.nm)||'roll'));
+    logRoll(expr,r.sum,decEnt((t&&t.nm)||'roll'));
     card.querySelectorAll('.idice.lit').forEach(o=>o.classList.remove('lit'));d.classList.add('lit');
   }));
   card.querySelectorAll('.xref').forEach(a=>{
@@ -1898,7 +1967,7 @@ function renderShelf(){
   const ks=Object.keys(BOOKS).filter(id=>BOOKS[id].kind==='keeper');
   const ps=Object.keys(BOOKS).filter(id=>BOOKS[id].kind==='pack');
   document.getElementById('keeperGrid').innerHTML=ks.map(coverHTML).join('')+
-    '<div class="cover add" id="addTile" onclick="pickKeeperFile()"><div><div class="plus">+</div><div class="t">Add a Keeper</div><div class="m">Drag a downloaded Keeper here, or click to pick one</div></div></div>'+
+    '<div class="cover add" id="addTile" onclick="pickKeeperFile()"><div><div class="plus">+</div><div class="t">Add a Keeper</div><div class="m">Drop a Keeper, a PDF, or your own notes and tables ('+acceptList()+'), or click to pick</div></div></div>'+
     '<a class="cover add more" href="https://longislanddungeonmaster.com/keepers" target="_blank" rel="noopener" title="longislanddungeonmaster.com/keepers"><div><img class="gshop" src="'+GG_ART.die+'" alt="Gnash\'s d20, rolling"><div class="t">Get more books</div><div class="m">Gnash keeps the shop &mdash; new Keepers, bestiaries &amp; packs drop straight in</div></div></a>';
   document.getElementById('packGrid').innerHTML=ps.map(coverHTML).join('')+
     '<div class="cover add" onclick="openScribe()" title="Paste any 5e-style statblock and it becomes a monster you own"><div><div class="plus">&#9998;</div><div class="t">Paste a statblock</div><div class="m">Homebrew text in &mdash; a rollable, musterable monster out</div></div></div>';  /* v22 THE SCRIBE */
@@ -1980,18 +2049,38 @@ function parseKeeper(html, fname){
     if(!isKnownKind(declaredKind)) warnings.push('Declared kind &ldquo;'+esc(declaredKind)+'&rdquo; isn&rsquo;t a known Keeper class &mdash; shelved as Adventure Keeper.');
     if(typeof m.cover==='string'&&/^data:image\//.test(m.cover))cover=m.cover;   // v13: B8 cover inheritance, the dynamic half
     else if(m.cover) warnings.push('Manifest cover was ignored (not a data:image URI).');
+    /* v26.1 XSS PASS (2026-08-29): a manifest is UNTRUSTED JSON out of a dropped file, but
+       `nm` and table `rows` were being shelved RAW while every other producer in the build
+       escapes them at birth (the v26 importers, rebuildIndex's tome rows, the SRD builders).
+       That mismatch let a hostile manifest reach the palette/Contents/card-title sinks - the
+       three places that interpolate nm without escaping BECAUSE nm is meant to arrive
+       pre-escaped. Escape at the SOURCE here, keeping the convention intact.
+       Verified byte-identical for every shipped Keeper: across 7 SRD volumes (1,594 codex +
+       335 monsters + 50 tables), the store Keepers and all 5 downloadable Keepers, no nm and
+       no row carries < or >; one row carries a quote pair ("the toll") which escapes to
+       &quot; and renders the same character. `note`/`role`/`x` stay RAW - those are the
+       deliberately pre-baked HTML channels (the SRD ships <p><b> inside note; DEVIATIONS #2/#4).
+       v26.2 (Codex r3): that escape was NOT IDEMPOTENT. A Keeper whose manifest already ships
+       the convention's own encoding - "Mannerisms &amp; Tics", exactly what KKDATA carries -
+       came out "&amp;amp;" and rendered its own entity at the reader. Every ingestion boundary
+       now runs normEntry(), which canonicalises with esc(decEnt(v)) instead: escaped stays
+       escaped, raw gets escaped, and a second pass changes nothing. It also coerces atk.hit to
+       a finite number - see normEntry. Re-verified byte-identical across all 7 SRD volumes,
+       both store Keepers and the sample Keeper: zero manifest scalars carry an entity, zero
+       carry a non-numeric hit, so this pass moves not one shipped byte. */
     let emptyTables=0, nameless=0;
-    (m.tables||[]).forEach(t=>{ const rows=Array.isArray(t.rows)?t.rows:[]; if(rows.length<1){emptyTables++;return;}   // skip empty tables rather than shelve a broken d6
-      entries.push({kind:'table',nm:t.name||t.nm||'Table',dice:t.dice||('d'+rows.length),tags:t.tags||['imported'],rows}); });
-    (m.monsters||[]).forEach(x=>{ const nm=x.nm||x.name; if(!nm)nameless++; entries.push(Object.assign({kind:'monster',tags:x.tags||['imported']},x,{nm:nm||'Unnamed monster'})); });
-    (m.npcs||[]).forEach(x=>{ const nm=x.nm||x.name; if(!nm)nameless++; entries.push(Object.assign({kind:'npc',tags:x.tags||['imported']},x,{nm:nm||'Unnamed NPC'})); });
+    (m.tables||[]).forEach(t=>{ const rows0=Array.isArray(t.rows)?t.rows:[]; if(rows0.length<1){emptyTables++;return;}   // skip empty tables rather than shelve a broken d6
+      const rows=rows0.map(r=>typeof r==='string'?r:(r==null?'':String(r)));
+      entries.push(normEntry({kind:'table',nm:t.name||t.nm||'Table',dice:t.dice||('d'+rows.length),tags:t.tags||['imported'],rows})); });
+    (m.monsters||[]).forEach(x=>{ const nm=x.nm||x.name; if(!nm)nameless++; entries.push(normEntry(Object.assign({kind:'monster',tags:x.tags||['imported']},x,{nm:nm||'Unnamed monster'}))); });
+    (m.npcs||[]).forEach(x=>{ const nm=x.nm||x.name; if(!nm)nameless++; entries.push(normEntry(Object.assign({kind:'npc',tags:x.tags||['imported']},x,{nm:nm||'Unnamed NPC'}))); });
     /* codex entries (v19): reference cards — spell/item/class/feature/feat/species/background/rule/condition/action/hazard */
     let unknownKinds=0;
     (m.codex||[]).forEach(x=>{ if(!x||!x.kind)return;
       if(!CODEX_KINDS[x.kind]){unknownKinds++;return;}   // unregistered kind = skip loudly at import, never a crash-on-open
-      entries.push(Object.assign({tags:['imported']},x,{
+      entries.push(normEntry(Object.assign({tags:['imported']},x,{
         nm:x.nm||x.name||'Unnamed', sub:x.sub||'', meta:Array.isArray(x.meta)?x.meta:[],
-        x:x.x||'', tags:Array.isArray(x.tags)?x.tags:['imported']})); });
+        x:x.x||'', tags:Array.isArray(x.tags)?x.tags:['imported']}))); });
     if(unknownKinds) warnings.push(unknownKinds+' entr'+(unknownKinds!==1?'ies':'y')+' of an unknown card kind skipped (this Keeper may need a newer Grimoire).');
     if(emptyTables) warnings.push(emptyTables+' empty table'+(emptyTables!==1?'s':'')+' skipped (no rows).');
     if(nameless) warnings.push(nameless+' unnamed entr'+(nameless!==1?'ies':'y')+' imported with a placeholder name.');
@@ -2011,51 +2100,487 @@ function parseKeeper(html, fname){
   if(!entries.length){ doc.querySelectorAll('table.kit').forEach(tbl=>{
     const cap=tbl.querySelector('caption'); const nm=(cap?cap.textContent:'Table').replace(/\s+/g,' ').trim();
     const rows=[...tbl.querySelectorAll('tbody tr')].map(tr=>{const td=tr.querySelectorAll('td');return td.length?(td[td.length-1].textContent||'').replace(/\s+/g,' ').trim():'';}).filter(Boolean);
-    if(rows.length>=2) entries.push({kind:'table',nm,dice:'d'+rows.length,tags:['imported'],rows});
+    /* v26.1 XSS PASS: textContent is RAW text - escape it here, the same as the manifest path.
+       v26.2: deliberately plain esc(), NOT the manifest path's esc(decEnt(v)). textContent is
+       ALREADY the browser's decoded truth, so it is idempotent by construction; decoding it a
+       second time would eat a page that genuinely displays the characters "&amp;". */
+    if(rows.length>=2) entries.push({kind:'table',nm:esc(nm),dice:'d'+rows.length,tags:['imported'],rows:rows.map(r=>esc(r))});
   }); if(entries.length){ unverified=true; verified=false; warnings.push('No Keeper credential &mdash; tables were scraped off the page (unverified).'); } }
-  // RULE 3 — no credential and nothing readable → not a Keeper
-  if(!entries.length) return {reject:true,reason:'That&rsquo;s not an Adventure Keeper &mdash; no Keeper manifest and no readable tables in it.'};
+  // RULE 3 — no credential and nothing readable → not a Keeper. v26: soft:true lets the
+  // router fall back to the plain-HTML text importer; rules 1 and 2 stay absolute rejects.
+  if(!entries.length) return {reject:true,soft:true,reason:'That&rsquo;s not an Adventure Keeper &mdash; no Keeper manifest and no readable tables in it.'};
   const trace=detectWatermark(html,doc);
   return {id:'inst_'+Math.abs(hashStr(title)).toString(36), title:esc(title), kind:'keeper', declaredKind, cover, entries, cues, chronicle:chronicleBlk, html, verified, unverified, trace, warnings};
 }
+/* ===== v26 IMPORT FORMATS (2026-08-29) - the shelf takes the DM's own files =====
+   .txt and .md notes, .csv/.tsv tables, .json (including 5eTools homebrew), and readable
+   plain HTML now install beside real Keepers. LAW: one chokepoint stays one chokepoint -
+   every importer below returns a parseKeeper-shaped record and rides the SAME collision
+   guard, idb write, shelf row, and honest summary as a dropped Keeper. No parallel
+   bookkeeping. ACCEPT is the single source of truth for what the shelf takes: the picker's
+   accept attribute, the skip message, and the add-tile copy are all generated from it. */
+const ACCEPT=[
+  {ext:'.html',label:'Keeper'},{ext:'.pdf',label:'Tome'},{ext:'.txt',label:'notes'},
+  {ext:'.md',label:'Markdown'},{ext:'.markdown',label:'Markdown'},{ext:'.csv',label:'table'},{ext:'.tsv',label:'table'},
+  {ext:'.json',label:'JSON / 5eTools'}];
+function acceptList(){ return ACCEPT.map(a=>a.ext).join(', '); }
+function importTitle(fn){ return String(fn||'Document').replace(/\.[a-z0-9]+$/i,'').replace(/[_-]+/g,' ').replace(/\s+/g,' ').trim()||'Document'; }
+/* One record shape for every text-like import: a single kind-'book' codex card carries the
+   whole document (per-heading splitting is a future lane - see DESIGN-NOTES), and the
+   record's own page renders it readable on the stage. `search`: the Summon matcher only
+   reads nm/tags/sub, so text entries carry a capped slice of their body (first 2,000 chars,
+   lowercased) that searchTables folds into its haystack - never the whole document. */
+function textDocRecord(fn,bodyHtml,rawText,sub){
+  const title=importTitle(fn);
+  const entry={kind:'book',nm:esc(title),sub:sub,tags:['imported','document'],meta:[],
+    x:bodyHtml,search:String(rawText||'').replace(/\s+/g,' ').trim().slice(0,2000).toLowerCase()};
+  return {id:'inst_'+Math.abs(hashStr(title)).toString(36),title:esc(title),kind:'keeper',
+    declaredKind:'reference',cover:'',entries:[entry],cues:[],chronicle:null,
+    html:importPageHTML(title,bodyHtml),verified:false,unverified:true,trace:'',warnings:[]};
+}
+function importPageHTML(title,body){
+  return '<!doctype html><html><head><meta charset="utf-8"><title>'+esc(title)+'</title><style>'+
+    'body{background:#1d1410;color:#d8c5a8;font:15px/1.62 Georgia,serif;margin:0;padding:34px 7vw;}'+
+    'h1,h2,h3,h4{color:#d9b96a;font-weight:600;line-height:1.25;}code,pre{font:12.5px/1.5 Consolas,monospace;background:#160c05;color:#c8b48f;}'+
+    'pre{padding:10px 12px;border-radius:6px;white-space:pre-wrap;word-break:break-word;}'+
+    'blockquote{border-left:3px solid #6a5335;margin:8px 0;padding:2px 14px;color:#b6987f;}'+
+    'hr{border:0;border-top:1px solid #4a3721;}table{border-collapse:collapse;margin:10px 0;}'+
+    'td,th{border:1px solid #4a3721;padding:4px 10px;text-align:left;}th{color:#d9b96a;}'+
+    '</style></head><body><h1>'+esc(title)+'</h1>'+body+'</body></html>';
+}
+/* --- .txt: readable paragraphs, nothing clever --- */
+function textToHtml(t){ return String(t).replace(/\r\n?/g,'\n').split(/\n{2,}/)
+  .map(p=>p.trim()).filter(Boolean).map(p=>'<p>'+esc(p).replace(/\n/g,'<br>')+'</p>').join(''); }
+/* v26.1: .txt and .md were the only text lanes with NO body cap - JSON rejects over 1 MB and
+   the HTML fallback trims at 500 KB, but a 40 MB log file went in whole and took the page
+   with it. Same 500 KB ceiling as the HTML fallback, and the cut is SAID OUT LOUD (the
+   honest-summary law) instead of silently truncating the DM's notes. */
+const TEXT_CAP=500000;
+function capText(raw){ const s=String(raw);
+  return s.length>TEXT_CAP?{t:s.slice(0,TEXT_CAP),cut:s.length}:{t:s,cut:0}; }
+function capWarn(cut){ return cut?['This file was larger than 500 KB, so only its first 500,000 characters were shelved (the original file has '+cut+').'] : []; }
+function importTextDoc(raw,fn){
+  if(!String(raw).trim())return {skip:'the file is empty'};
+  const c=capText(raw);
+  const r=textDocRecord(fn,textToHtml(c.t),c.t,'Imported text');
+  r.warnings=capWarn(c.cut); return r;
+}
+/* --- .md: a tiny hand-rolled renderer - headings, bold/italic/code, lists, quotes, rules.
+   Links and images keep their visible TEXT only: this binder is offline by law and ships
+   no live external link. No library. --- */
+function mdInline(s){ s=esc(s);
+  s=s.replace(/`([^`]+)`/g,'<code>$1</code>');
+  s=s.replace(/!?\[([^\]]*)\]\(([^()]*)\)/g,'$1');
+  s=s.replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/__([^_]+)__/g,'<b>$1</b>');
+  s=s.replace(/(^|[^\w*])\*([^*\n]+)\*/g,'$1<i>$2</i>');
+  return s; }
+function mdToHtml(t){
+  const out=[]; let list=null,para=[];
+  const flushP=()=>{ if(para.length){out.push('<p>'+para.map(mdInline).join('<br>')+'</p>');para=[];} };
+  const flushL=()=>{ if(list){out.push('<'+list.t+'>'+list.it.map(x=>'<li>'+mdInline(x)+'</li>').join('')+'</'+list.t+'>');list=null;} };
+  String(t).replace(/\r\n?/g,'\n').split('\n').forEach(ln=>{
+    const l=ln.trim(); let m;
+    if(!l){ flushP(); flushL(); return; }
+    if(/^(-{3,}|\*{3,}|_{3,})$/.test(l)){ flushP(); flushL(); out.push('<hr>'); return; }
+    if(m=l.match(/^(#{1,6})\s+(.*)$/)){ flushP(); flushL(); const h=Math.min(m[1].length+1,4); out.push('<h'+h+'>'+mdInline(m[2])+'</h'+h+'>'); return; }
+    if(m=l.match(/^[-*+]\s+(.*)$/)){ flushP(); if(!list||list.t!=='ul'){flushL();list={t:'ul',it:[]};} list.it.push(m[1]); return; }
+    if(m=l.match(/^\d+[.)]\s+(.*)$/)){ flushP(); if(!list||list.t!=='ol'){flushL();list={t:'ol',it:[]};} list.it.push(m[1]); return; }
+    if(m=l.match(/^>\s?(.*)$/)){ flushP(); flushL(); out.push('<blockquote>'+mdInline(m[1])+'</blockquote>'); return; }
+    para.push(l);
+  });
+  flushP(); flushL(); return out.join('');
+}
+function importMarkdown(raw,fn){
+  if(!String(raw).trim())return {skip:'the file is empty'};
+  const c=capText(raw);
+  const r=textDocRecord(fn,mdToHtml(c.t),c.t,'Imported Markdown');
+  r.warnings=capWarn(c.cut); return r;
+}
+/* --- .csv/.tsv -> a real rollable table. Quoted-cell parsing is real (commas inside
+   quotes, doubled quotes); no library. Verified against the SEED/manifest shape: table
+   rows in THIS build are plain STRINGS and the card rolls a row index - so a plain 1..N
+   roll column would just repeat the card's own row numbers and is dropped, while RANGE
+   cells ("01-02") carry information and lead the row text. --- */
+function parseDsv(text,sep){
+  const rows=[]; let row=[],cell='',q=false; text=String(text).replace(/\r\n?/g,'\n');
+  for(let i=0;i<text.length;i++){ const c=text[i];
+    if(q){ if(c==='"'){ if(text[i+1]==='"'){cell+='"';i++;} else q=false; } else cell+=c; }
+    else if(c==='"'&&!cell.trim()){ q=true; cell=''; }
+    else if(c===sep){ row.push(cell.trim()); cell=''; }
+    else if(c==='\n'){ row.push(cell.trim()); if(row.some(x=>x!==''))rows.push(row); row=[]; cell=''; }
+    else cell+=c; }
+  row.push(cell.trim()); if(row.some(x=>x!==''))rows.push(row);
+  return rows;
+}
+function dieCol(rows,ci){ /* ascending, low-anchored, plausibly contiguous = the roll column */
+  let prev=0,first=null,ranged=false,max=0;
+  for(const r of rows){ const m=String(r[ci]==null?'':r[ci]).match(/^(\d+)(?:\s*[-–]\s*(\d+))?$/);
+    if(!m)return null; const lo=+m[1]; let hi=m[2]!=null?+m[2]:lo;
+    if(hi===0&&lo>hi)hi=100;   /* the percentile convention: "99-00" means 99-100 */
+    if(hi<lo||lo<prev)return null; if(first==null)first=lo; if(m[2]!=null)ranged=true; prev=lo; if(hi>max)max=hi; }
+  if(first==null||first>2)return null;   /* a die table starts at 0, 1, or 2 - a year column does not */
+  return {ranged,max};
+}
+function importDsv(raw,fn,sep){
+  const rows=parseDsv(raw,sep);
+  if(!rows.length)return {skip:'no rows found in it'};
+  const width=Math.max.apply(null,rows.map(r=>r.length));
+  const isRoll=c=>/^\d+(\s*[-–]\s*\d+)?$/.test(c);
+  const headed=rows[0].some(c=>c!==''&&!isRoll(c));
+  const headers=headed?rows[0]:Array.from({length:width},(_,i)=>'Col '+(i+1));
+  const data=headed?rows.slice(1):rows;
+  if(!data.length)return {skip:'only a header row in it'};
+  let rollCi=-1,roll=null;
+  for(let ci=0;ci<width&&rollCi<0;ci++){ const d=dieCol(data,ci); if(d){rollCi=ci;roll=d;} }
+  let dice;
+  /* v26.1: the HEADER-declared die is clamped exactly like the derived one (2..1000).
+     Unclamped, a header reading "Roll (d0)" shelved a table whose dice label was "d0". */
+  if(rollCi>=0){ const hm=String(headers[rollCi]||'').match(/d\s*(\d+)/i);
+    dice='d'+Math.max(2,Math.min(1000,hm?+hm[1]:roll.max)); }
+  else dice='d'+data.length;   /* no roll column: the whole rows roll as themselves, the way tables already do */
+  const rowStrs=data.map((r,ri)=>{ const cells=[];
+    for(let ci=0;ci<width;ci++){ const v=String(r[ci]==null?'':r[ci]);
+      if(ci===rollCi&&!roll.ranged&&+v===ri+1)continue;
+      if(v!=='')cells.push(v); }
+    return resolve5eTags(esc(cells.join(' - '))); }).filter(Boolean);
+  if(!rowStrs.length)return {skip:'no usable rows in it'};
+  const title=importTitle(fn);
+  const page=importPageHTML(title,'<table><tr>'+headers.map(h=>'<th>'+resolve5eTags(esc(String(h)))+'</th>').join('')+'</tr>'+
+    data.map(r=>'<tr>'+Array.from({length:width},(_,ci)=>'<td>'+resolve5eTags(esc(String(r[ci]==null?'':r[ci])))+'</td>').join('')+'</tr>').join('')+'</table>');
+  return {id:'inst_'+Math.abs(hashStr(title)).toString(36),title:esc(title),kind:'keeper',declaredKind:'tables',cover:'',
+    entries:[{kind:'table',nm:esc(title),dice,tags:['imported','table'],rows:rowStrs}],cues:[],chronicle:null,
+    html:page,verified:false,unverified:true,trace:'',
+    warnings:rollCi>=0?[]:['No roll column detected, so the whole row set rolls as d'+data.length+'.']};
+}
+/* --- plain HTML fallback: parseKeeper's Grimoire rejection stays ABSOLUTE (rule 1), and a
+   manifest problem still rejects loudly (rule 2). Only the rule-3 tail ("no credential and
+   nothing readable") falls through to here: scripts/styles stripped, readable body text
+   shelved as an unverified text document. --- */
+function importHtmlText(html,fn){
+  let doc; try{ doc=new DOMParser().parseFromString(html,'text/html'); }catch(e){ return {skip:'could not be read as HTML'}; }
+  doc.querySelectorAll('script,style,noscript,template').forEach(el=>el.remove());
+  const title=(doc.title||'').trim()||importTitle(fn);
+  let txt=(doc.body&&(doc.body.innerText||doc.body.textContent))||'';
+  txt=txt.slice(0,500000);
+  if(!txt.trim())return {skip:'no readable text in it'};
+  const r=textDocRecord(fn,textToHtml(txt),txt,'Imported web page');
+  r.title=esc(title); r.id='inst_'+Math.abs(hashStr(title)).toString(36);
+  r.entries[0].nm=esc(title);
+  r.html=importPageHTML(title,textToHtml(txt));
+  r.warnings=['No Keeper credential, so its readable text was lifted off the page (unverified).'];
+  return r;
+}
+/* --- .json: sniff 5eTools first; anything else shelves as a pretty-printed readable card --- */
+const FIVE_SECTIONS=['monster','spell','item','table','background','feat','race','class'];
+function importJson(raw,fn){
+  if(raw.length>1048576)return {reject:true,reason:esc(fn)+' is over 1 MB of JSON, too big to shelve as a readable card.'};
+  let v; try{ v=JSON.parse(raw); }catch(e){ return {reject:true,reason:esc(fn)+' is not valid JSON.'}; }
+  /* v26.1: the sniff asked only whether the FIRST element of a section had a name, so a file
+     whose monster[] opened with one malformed object failed to be recognised as 5eTools at
+     all and shelved as a wall of raw JSON. Ask whether ANY element does. */
+  if(v&&typeof v==='object'&&!Array.isArray(v)&&FIVE_SECTIONS.some(s=>Array.isArray(v[s])&&v[s].some(x=>x&&typeof x==='object'&&x.name)))
+    return import5eTools(v,fn);
+  const pretty=JSON.stringify(v,null,2);
+  return textDocRecord(fn,'<pre>'+esc(pretty)+'</pre>',pretty,'Imported JSON');
+}
+/* ===== 5eTools JSON (the named ask) =====
+   Section mappers reuse what already ships: monsters take THE SCRIBE's monster-entry shape
+   (same card, same rollable attack rows, same Muster), tables take the manifest table shape,
+   and spell/item/feat/background/race/class land on their registered CODEX kinds. Unrecognised
+   top-level sections are SKIPPED BY NAME in the warnings - never silently. */
+function resolve5eTags(s){
+  /* ONE resolver for 5eTools @tags. Pipe law: {@tag name|source|display} shows display when
+     present, else name. Linkable kinds emit the EXACT xref markup enrichProse emits, so the
+     already-shipped wireCardEnrichments machinery linkifies them (live when the target is in
+     the INDEX, dead when it is not) - no second linker. Dice resolve to the plain expression;
+     enrichProse turns bare dice into roll chips, so resolving further would double-wrap.
+     Unknown tags degrade to their visible text. Raw "{@" must never reach the user.
+     Innermost-out: the payload regex takes no braces, so nested tags resolve inner-first. */
+  s=String(s==null?'':s); let guard=0, prev=null;
+  const ATKW={m:'Melee Attack:',r:'Ranged Attack:',mw:'Melee Weapon Attack:',rw:'Ranged Weapon Attack:',
+    ms:'Melee Spell Attack:',rs:'Ranged Spell Attack:','mw,rw':'Melee or Ranged Weapon Attack:',
+    'rw,mw':'Melee or Ranged Weapon Attack:','ms,rs':'Melee or Ranged Spell Attack:'};
+  const rx=/\{@([a-zA-Z]+)( [^{}]*)?\}/g;   /* fixed-point loop: replace-all, repeat until nothing changes (nested tags resolve inner-first) */
+  while(s!==prev&&guard++<9){ prev=s;
+    s=s.replace(rx,(mm,tag,payload)=>{
+      tag=tag.toLowerCase(); payload=(payload||'').trim();
+      const parts=payload.split('|').map(p=>p.trim()), name=parts[0]||'';
+      if(tag==='dice'||tag==='damage'||tag==='scaledice'||tag==='scaledamage')
+        return (parts.length>1&&parts[parts.length-1])?parts[parts.length-1]:name.replace(/;/g,', ');
+      if(tag==='hit')return /^[+-]/.test(name)?name:'+'+name;
+      if(tag==='dc')return 'DC '+name;
+      if(tag==='atk')return ATKW[name]||'Attack:';
+      if(tag==='h')return 'Hit: ';
+      if(tag==='recharge')return '(Recharge '+(name&&name!=='6'?name+'-6':'6')+')';
+      if(tag==='i'||tag==='italic')return '<i>'+payload+'</i>';
+      if(tag==='b'||tag==='bold')return '<b>'+payload+'</b>';
+      if(tag==='note')return '<i>'+payload+'</i>';
+      if(tag==='filter')return name;
+      if(tag==='quickref')return parts[4]||name;
+      const k=LINK_KIND[tag];
+      /* v26.1 XSS PASS: every SHIPPED caller hands this function already-esc()'d text, so
+         name/disp cannot carry a raw < or ", but this emission builds an ATTRIBUTE and the
+         safety of it must not depend on the caller. STRIP the three breakout characters
+         rather than esc() them: stripping is idempotent on already-escaped text, where a
+         second esc() would double-encode a legitimate "&" into a visible &amp;. */
+      if(k!==undefined){ const clean=v=>String(v).replace(/[<>"]/g,''), disp=clean(parts[2]||name);
+        return '<span class="xref" data-k="'+clean(k)+'" data-n="'+clean(name)+'">'+disp+'</span>'; }
+      return (parts.length>1&&parts[parts.length-1])?parts[parts.length-1]:name;
+    });
+  }
+  /* THE ABSOLUTE LAW (contract): raw "{@" must NEVER reach a card. The fixed-point loop
+     above only consumes WELL-FORMED tags, so three shapes can outlive it: an unterminated
+     tag ("{@damage 2d6" with no closing brace), an empty one ("{@}"), and nesting deeper
+     than the 9-iteration guard. Degrade each to its visible text the same way an unknown
+     tag degrades, then sweep any surviving marker. */
+  s=s.replace(/\{@([a-zA-Z]*)[ \t]*([^{}]*)\}?/g,function(mm,tag,pay){
+    const parts=String(pay).split('|'); return (parts[parts.length-1]||parts[0]||'').trim(); });
+  return s.replace(/\{@/g,'');
+}
+function fiveText(e){ /* flatten a 5eTools entries value to plain text (tags still in it) */
+  if(e==null)return '';
+  if(typeof e==='string')return e;
+  if(Array.isArray(e))return e.map(fiveText).filter(Boolean).join('\n');
+  if(typeof e==='object'){ const inner=fiveText(e.entries!=null?e.entries:(e.items!=null?e.items:(e.rows!=null?e.rows:'')));
+    return (e.name?e.name+'. ':'')+inner; }
+  return String(e);
+}
+function fiveProse(e){ return resolve5eTags(esc(fiveText(e))).replace(/\n/g,'<br>'); }
+/* v26.1 XSS PASS (2026-08-29): the mappers now COERCE rather than escape. Escaping here as
+   well as at the card sink would double-encode ("Sword &amp; Board" would render its own
+   entity), so each layer owns different fields: the sink HTML-escapes every scalar it
+   interpolates, and these mappers coerce the semantically-numeric ones so a hostile value
+   cannot even be stored. AC, HP-average, spell level, hit-die faces and item weight are all
+   numbers in 5eTools - a string there is malformed input, not content worth preserving. */
+function fiveAC(ac){ if(ac==null)return 10; if(typeof ac==='number')return ac;
+  if(Array.isArray(ac)&&ac.length){ const a=ac[0]; return (+((a&&typeof a==='object')?a.ac:a))||10; } return (+ac)||10; }
+function fiveHP(hp){ if(hp==null)return 1; if(typeof hp==='number')return hp;
+  if(typeof hp!=='object')return String(hp);
+  if(hp.average!=null){ const av=(+hp.average)||0; return hp.formula?(av+' ('+String(hp.formula)+')'):av; }
+  return String(hp.special||1); }
+function fiveSpeed(sp){ if(sp==null)return '30 ft.'; if(typeof sp!=='object')return sp+' ft.';
+  const out=Object.keys(sp).filter(k=>sp[k]&&k!=='canHover'&&k!=='choose').map(k=>{
+    const v=sp[k], n=(v&&typeof v==='object')?v.number:v; return (k==='walk'?'':k+' ')+n+' ft.'; });
+  return out.join(', ')||'30 ft.';
+}
+function fiveAtks(m){ const out=[];   /* the Scribe's law: a {@hit} line is an attack; unparsed text rides whole in the note */
+  (m.action||[]).forEach(a=>{ const txt=fiveText(a&&a.entries);
+    const hit=txt.match(/\{@hit ([+-]?\d+)\}/); if(!hit)return;
+    const dmg=txt.match(/\{@damage ([^}|]+)[}|]/);
+    out.push({n:String(a.name||'Attack').slice(0,40), hit:+hit[1], dmg:dmg?dmg[1].replace(/\s+/g,''):'1d4'}); });
+  return out;
+}
+function fiveMonNote(m){
+  const P=[], AB=['str','dex','con','int','wis','cha'];
+  if(AB.some(a=>m[a]!=null))P.push('<p>'+AB.map(a=>a.toUpperCase()+' '+(m[a]!=null?m[a]:10)).join(' &middot; ')+'</p>');
+  const lst=v=>Array.isArray(v)?v.map(x=>typeof x==='string'?x:fiveText(x&&x.special||'')).filter(Boolean).join(', '):(v==null?'':String(v));
+  const kv=v=>(v&&typeof v==='object'&&!Array.isArray(v))?Object.keys(v).map(k=>k.charAt(0).toUpperCase()+k.slice(1)+' '+v[k]).join(', '):lst(v);
+  const line=(lbl,v)=>{ if(v)P.push('<p><b>'+lbl+'.</b> '+resolve5eTags(esc(v))+'</p>'); };
+  line('Saving Throws',kv(m.save)); line('Skills',kv(m.skill));
+  line('Damage Vulnerabilities',lst(m.vulnerable)); line('Damage Resistances',lst(m.resist));
+  line('Damage Immunities',lst(m.immune)); line('Condition Immunities',lst(m.conditionImmune));
+  line('Senses',lst(m.senses)+(m.passive!=null?((m.senses&&m.senses.length?', ':'')+'passive Perception '+m.passive):''));
+  line('Languages',lst(m.languages));
+  const sect=(arr,hdr)=>{ if(!Array.isArray(arr)||!arr.length)return;
+    if(hdr)P.push('<p><b><i>'+hdr+'</i></b></p>');
+    arr.forEach(t=>{ if(!t)return;
+      P.push('<p>'+(t.name?'<b>'+resolve5eTags(esc(String(t.name)))+'.</b> ':'')+fiveProse(t.entries)+'</p>'); }); };
+  sect(m.trait,''); sect(m.action,'Actions'); sect(m.bonus,'Bonus Actions');
+  sect(m.reaction,'Reactions'); sect(m.legendary,'Legendary Actions');
+  return P.join('');
+}
+function fiveMonster(m){
+  const ty=(m.type&&(m.type.type||m.type))||'';
+  /* nm stays escaped (the pre-escaped-at-source convention every INDEX producer follows);
+     cr/speed/tags no longer escape here - the card and palette sinks own that now. */
+  return {kind:'monster', nm:esc(String(m.name)), cr:String((m.cr&&m.cr.cr)||m.cr||'?').slice(0,24),
+    ac:fiveAC(m.ac), hp:fiveHP(m.hp), speed:fiveSpeed(m.speed), atk:fiveAtks(m),
+    note:fiveMonNote(m), tags:['imported'].concat(typeof ty==='string'&&ty?[String(ty).slice(0,40)]:[])};
+}
+/* codex bodies do NOT pass enrichProse at render (verified: floatTable inserts t.x raw, the
+   SRD builder pre-bakes its dice chips) - so bake here at import, exactly like the SRD does */
+function fiveCodex(kind,o,sub,meta,tags){
+  const body=[].concat(o.entries||[],o.entriesHigherLevel||[]).map(e=>'<p>'+fiveProse(e)+'</p>').join('');
+  return {kind,nm:esc(String(o.name)),sub:sub,meta:meta||[],tags:['imported',kind].concat(tags||[]),
+    x:enrichProse(body||'<p>No description text rode along in this file.</p>')};
+}
+const FIVE_SCHOOLS={A:'Abjuration',C:'Conjuration',D:'Divination',E:'Enchantment',V:'Evocation',I:'Illusion',N:'Necromancy',T:'Transmutation',P:'Psionic'};
+function fiveTime(t){ if(!Array.isArray(t)||!t[0])return ''; return (t[0].number||1)+' '+(t[0].unit||'action'); }
+function fiveRange(r){ if(!r)return ''; const d=r.distance||{};
+  if(d.type==='self')return 'Self'; if(d.type==='touch')return 'Touch';
+  if(d.type==='sight')return 'Sight'; if(d.type==='unlimited')return 'Unlimited';
+  const n=d.amount!=null?(d.amount+' '+(d.type||'')):'';
+  return r.type==='point'?(n||'Self'):(n?(n+' ('+r.type+')'):String(r.type||'')); }
+function fiveComp(c){ if(!c)return ''; const p=[]; if(c.v)p.push('V'); if(c.s)p.push('S');
+  if(c.m)p.push('M'+(c.m===true?'':' ('+(typeof c.m==='object'?c.m.text:c.m)+')')); return p.join(', '); }
+function fiveDur(d){ if(!Array.isArray(d)||!d[0])return ''; const x=d[0];
+  if(x.type==='instant')return 'Instantaneous'; if(x.type==='permanent')return 'Permanent';
+  if(x.type==='timed'&&x.duration){ const n=x.duration.amount||1,u=x.duration.type||'round';
+    return (x.concentration?'Concentration, up to ':'')+n+' '+u+(n!==1?'s':''); }
+  return String(x.type||''); }
+function fiveSpell(s){
+  const sch=FIVE_SCHOOLS[s.school]||'';
+  const lv=(+s.level)||0;   /* a spell level is a NUMBER; a string there is malformed input */
+  const sub=lv?('Level '+lv+(sch?' '+sch:'')):((sch?sch+' ':'')+'Cantrip');
+  const meta=[]; const push=(k,v)=>{ if(v)meta.push([k,v]); };   /* the card sink escapes meta */
+  push('Casting Time',fiveTime(s.time)); push('Range',fiveRange(s.range));
+  push('Components',fiveComp(s.components)); push('Duration',fiveDur(s.duration));
+  return fiveCodex('spell',s,sub,meta,s.level!=null?['level-'+lv]:[]);
+}
+function fiveItem(x){ const meta=[];
+  if(x.rarity&&x.rarity!=='none')meta.push(['Rarity',String(x.rarity).slice(0,60)]);
+  if(x.weight!=null)meta.push(['Weight',((+x.weight)||0)+' lb.']);
+  if(x.value!=null)meta.push(['Value',(((+x.value)||0)/100)+' gp']);
+  return fiveCodex('item',x,'Item',meta); }
+function fiveRace(x){ const meta=[], SZ={T:'Tiny',S:'Small',M:'Medium',L:'Large',H:'Huge',G:'Gargantuan'};
+  if(x.size)meta.push(['Size',[].concat(x.size).map(s=>SZ[s]||s).join(' or ')]);
+  if(x.speed!=null)meta.push(['Speed',fiveSpeed(x.speed)]);
+  return fiveCodex('species',x,'Species',meta); }
+function fiveTable(t){
+  if(!t||!Array.isArray(t.rows)||!t.rows.length)return null;
+  const nm=String(t.name||t.caption||'Table');
+  let dice=''; (t.colLabels||[]).some(L=>{ const m=String(L).match(/d\s*(\d+)/i); if(m){dice='d'+Math.max(2,Math.min(1000,+m[1]));return true;} return false; });   /* v26.1: clamp the declared die, same law as the derived one */
+  const cellTxt=c=>{ if(c==null)return ''; if(typeof c==='object')
+      return (c.roll?(c.roll.exact!=null?String(c.roll.exact):(c.roll.min+'-'+c.roll.max)):fiveText(c)); return String(c); };
+  let maxHi=0;
+  const rows=t.rows.map((r,ri)=>{ const cells=[].concat(r).map(cellTxt);
+    const m=String(cells[0]||'').match(/^(\d+)(?:\s*[-–]\s*(\d+))?$/);
+    if(m){ let hi=+(m[2]!=null?m[2]:m[1]); if(hi===0&&+m[1]>0)hi=100;   /* "99-00" percentile convention */
+      if(hi>maxHi)maxHi=hi;
+      if(m[2]==null&&+m[1]===ri+1)cells.shift(); }   /* same law as CSV: 1..N repeats the card's row numbers, ranges carry information */
+    return resolve5eTags(esc(cells.filter(c=>c!=='').join(' - '))); }).filter(Boolean);
+  if(!rows.length)return null;
+  if(!dice)dice=(maxHi>rows.length&&maxHi>1)?('d'+Math.max(2,Math.min(1000,maxHi))):('d'+rows.length);
+  return {kind:'table',nm:esc(nm),dice,tags:['imported','table'],rows};
+}
+function import5eTools(j,fn){
+  const meta=(j._meta&&Array.isArray(j._meta.sources)&&j._meta.sources[0])||{};
+  const srcLabel=String(meta.full||meta.abbreviation||'5eTools homebrew');
+  const title=String(meta.full||importTitle(fn));
+  const entries=[],warnings=[],skipped=[];
+  /* v26.1: an entry with no `name` was dropped SILENTLY. Count them per section and name the
+     total in the warnings - the contract's honest-summary law, applied to the drop as well
+     as the skip. `nameless` is the same idea parseKeeper already carries for manifests. */
+  let nameless=0;
+  const named=(arr,f)=>{ (arr||[]).forEach(x=>{ if(x&&x.name)f(x); else if(x)nameless++; }); };
+  named(j.monster,m=>entries.push(fiveMonster(m)));
+  named(j.spell,s=>entries.push(fiveSpell(s)));
+  named(j.item,x=>entries.push(fiveItem(x)));
+  (j.table||[]).forEach(t=>{ const e=fiveTable(t); if(e)entries.push(e); });   /* a table names itself from name OR caption, so it has no nameless case */
+  named(j.feat,x=>entries.push(fiveCodex('feat',x,'Feat',[])));
+  named(j.background,x=>entries.push(fiveCodex('background',x,'Background',[])));
+  named(j.race,x=>entries.push(fiveRace(x)));
+  named(j['class'],x=>entries.push(fiveCodex('class',x,'Class',(x.hd&&x.hd.faces)?[['Hit Die','d'+((+x.hd.faces)||0)]]:[])));
+  Object.keys(j).forEach(k=>{ if(k==='_meta'||FIVE_SECTIONS.indexOf(k)>=0)return;
+    if(Array.isArray(j[k])&&j[k].length)skipped.push(k); });
+  if(skipped.length)warnings.push('Sections this Grimoire cannot import were skipped: '+esc(skipped.join(', '))+'.');
+  if(nameless)warnings.push(nameless+' unnamed entr'+(nameless!==1?'ies':'y')+' skipped (a card needs a name).');
+  /* v26.1: a reject used to DISCARD the warnings it had just earned, so a file that mapped to
+     nothing never got to say WHICH sections it had skipped. Fold them into the reason. */
+  if(!entries.length)return {reject:true,reason:esc(fn)+' is a 5eTools file, but nothing in it maps to a card this Grimoire can shelve.'+
+    (warnings.length?' '+warnings.join(' '):'')};
+  const dkind=entries.every(e=>e.kind==='monster')?'bestiary':'codex';
+  const counts={}; entries.forEach(e=>{ counts[e.kind]=(counts[e.kind]||0)+1; });
+  const page=importPageHTML(title,'<p>'+entries.length+' entr'+(entries.length!==1?'ies':'y')+' imported from a 5eTools JSON ('+esc(srcLabel)+'): '+
+    esc(Object.keys(counts).map(k=>counts[k]+' '+k).join(', '))+'.</p>'+
+    '<p>Press Space and summon any of them by name; the Contents lists everything this book holds.</p>');
+  return {id:'inst_'+Math.abs(hashStr(title)).toString(36),title:esc(title),kind:'keeper',declaredKind:dkind,cover:'',
+    entries,cues:[],chronicle:null,html:page,verified:false,unverified:true,trace:'',warnings};
+}
+/* ===== end v26 IMPORT FORMATS ===== */
+/* v26.1 (2026-08-29): the CONTENT signature behind the collision guard. The guard used to
+   ask only whether `html` differed, but a 5eTools record's html is a COUNT SUMMARY built
+   from _meta - two homebrew files sharing a source name and an entry count produce
+   byte-identical html, so the guard never fired and file 2 silently overwrote file 1. The
+   signature folds entry identity in, so distinct content always shelves alongside while a
+   genuine redrop of the same file still updates in place. */
+function recordSig(k){ let s='';
+  try{ s=JSON.stringify(k.entries||[]); }catch(e){ s='n'+((k.entries||[]).length); }
+  return (k.entries||[]).length+''+Math.abs(hashStr(s)).toString(36)+''+String(k.html||'').length; }
 async function installFromFiles(files){
-  let n=0, unv=0, nt=0; const rej=[], skip=[], warn=[], dup=[], big=[];
+  let n=0, unv=0, nt=0; const rej=[], skip=[], warn=[], dup=[], big=[], eph=[];
   for(const f of files){
     const fn=f.name||'keeper';
+    /* v26.1 BLOCKER: a FILENAME is attacker-controlled text and every push below lands in
+       toast(), which assigns innerHTML. An empty file named '<img src=x onerror=...>.txt'
+       fired its payload from the skip line. fnD is the display alias - raw `fn` still does
+       the parsing (extension match, title derivation), fnD does all the talking. */
+    const fnD=esc(fn);
     if(/\.pdf$/i.test(f.name||'')||/\bpdf\b/i.test(f.type||'')){   // v20: a PDF routes to the Tome shelf; HTML flows on untouched
-      try{ const r=await installTome(f); nt++; if(r.big)big.push(fn+' ('+tomeSizeLabel(f.size||0)+')'); }
-      catch(e){ skip.push(fn+' (couldn&rsquo;t be stored)'); }
+      try{ const r=await installTome(f); nt++; if(r.big)big.push(fnD+' ('+tomeSizeLabel(f.size||0)+')'); }
+      catch(e){ skip.push(fnD+' (couldn&rsquo;t be stored)'); }
       continue; }
-    if(!/\.html?$/i.test(f.name||'')&&!/html/.test(f.type||'')){ skip.push(fn+' (not an HTML or PDF file)'); continue; }
-    let html; try{html=await f.text();}catch(e){ skip.push(fn+' (couldn&rsquo;t be read)'); continue; }
-    const k=parseKeeper(html,(f.name||'keeper').replace(/\.html?$/i,'')); if(!k){ skip.push(fn+' (unreadable)'); continue; }
+    /* v26 ROUTER - extension branches after the PDF branch, every one returning a
+       parseKeeper-shaped record (or skip/reject) into the SAME chokepoint below */
+    const extM=(f.name||'').match(/\.([a-z0-9]+)$/i), ext=extM?extM[1].toLowerCase():'';
+    const isHtml=/^html?$/.test(ext)||/html/.test(f.type||'');
+    if(!isHtml&&['txt','md','markdown','csv','tsv','json'].indexOf(ext)<0){ skip.push(fnD+' (not a file this shelf takes: '+acceptList()+')'); continue; }
+    let html; try{html=await f.text();}catch(e){ skip.push(fnD+' (couldn&rsquo;t be read)'); continue; }
+    /* v26.1: strip a leading UTF-8 BOM. Windows tools (Notepad, PowerShell's Set-Content,
+       Excel's CSV export) write one by default, and it made JSON.parse throw - a BOM'd
+       homebrew file was rejected as "not valid JSON" when it was perfectly valid. */
+    if(html.charCodeAt(0)===0xFEFF)html=html.slice(1);
+    let k=null;
+    try{
+      if(isHtml){ k=parseKeeper(html,(f.name||'keeper').replace(/\.html?$/i,''));
+        if(k&&k.reject&&k.soft)k=importHtmlText(html,fn); }   /* rule-3 tail only; the Grimoire rejection stays absolute */
+      else if(ext==='txt')k=importTextDoc(html,fn);
+      else if(ext==='md'||ext==='markdown')k=importMarkdown(html,fn);
+      else if(ext==='csv')k=importDsv(html,fn,',');
+      else if(ext==='tsv')k=importDsv(html,fn,'\t');
+      else if(ext==='json')k=importJson(html,fn);
+    }catch(e){ k={reject:true,reason:fnD+' broke the importer and was not installed.'}; }
+    if(!k){ skip.push(fnD+' (unreadable)'); continue; }
+    if(k.skip){ skip.push(fnD+' ('+k.skip+')'); continue; }
     if(k.reject){ rej.push(k.reason); continue; }
     // COLLISION GUARD — same title-hash id but DIFFERENT content = a different Keeper. Don't overwrite (that was silent data loss);
     // shelve it alongside under a content-disambiguated id. Identical content (same file re-dropped) still updates in place.
-    const prev=INSTALLED[k.id];
-    if(prev && prev.html!==k.html){ k.id='inst_'+Math.abs(hashStr(k.title+'|'+k.html.slice(0,4000))).toString(36); dup.push(k.title); }
+    // v26.1: the discriminator is the CONTENT SIGNATURE, not html alone (see recordSig) -
+    // html is a count summary for 5eTools records and collided across different monsters.
+    const prev=INSTALLED[k.id], sig=recordSig(k);
+    if(prev && (prev.html!==k.html || recordSig(prev)!==sig)){
+      k.id='inst_'+Math.abs(hashStr(k.title+'|'+sig+'|'+String(k.html||'').slice(0,4000))).toString(36);
+      /* ...and a redrop of a doc ALREADY shelved alongside is a redrop, not a new duplicate:
+         it lands on its own disambiguated id with the same signature, so say nothing. */
+      const at=INSTALLED[k.id];
+      if(!(at && at.html===k.html && recordSig(at)===sig)) dup.push(k.title); }
     if(k.warnings&&k.warnings.length) warn.push(...k.warnings.map(w=>k.title+' &mdash; '+w));
     if(k.cover)k.cover=await thumbCover(k.cover);   // v13: cover rides the shelf as a compact thumbnail
-    INSTALLED[k.id]=k; addInstalledToBooks(k); if(DB)await idbPut('keepers',k); driveSaveKeeper(k); n++; if(k.unverified)unv++;
+    INSTALLED[k.id]=k; addInstalledToBooks(k);
+    /* v26.1 BLOCKER: idbPut RESOLVES false on a quota or transaction failure and never
+       throws, so `if(DB)await idbPut(...)` threw the answer away and the summary said
+       "Installed" for a Keeper that would be gone on reload. Capture the boolean and
+       report that file as ephemeral. Same shape as saveState's v23.1 fix at :1765. */
+    if(DB){ const stored=await idbPut('keepers',k); if(!stored)eph.push(k.title); }
+    driveSaveKeeper(k); n++; if(k.unverified)unv++;
   }
   if(n){ rebuildIndex(); renderShelf(); } else if(nt){ renderShelf(); }
   // ONE honest summary — installs, unverified, duplicates, rejections, and skips are all surfaced, never swallowed.
   const parts=[];
-  if(n){ let m='Installed '+n+' Keeper'+(n!==1?'s':''); if(unv)m+=' <b>'+unv+' unverified</b>'; parts.push(m); }
+  if(n){ let m='Installed '+n+' Keeper'+(n!==1?'s':''); if(unv)m+=' <b>'+unv+' unverified</b>';
+    if(!DB)m+=' <b>this browser cannot keep imports between visits, so they last until you close the page</b>';   /* v26: the Tome precedent, applied to every import */
+    parts.push(m); }
+  /* v26.1: a file whose idb write FAILED is not "installed" in any sense the DM would mean.
+     It works in this tab and is gone on reload, and the summary has to say so. */
+  if(eph.length) parts.push('<b>'+eph.length+' could not be saved to this browser&rsquo;s storage</b> &mdash; '+(eph.length!==1?'they last':'it lasts')+' only until you close the page');
   if(nt){ let m='Shelved '+nt+' Tome'+(nt!==1?'s':'')+' ('+(nt!==1?'PDFs':'PDF')+', stored in this browser only)'; if(!DB)m+=' <b>this browser cannot keep PDFs between visits, so the Tome lasts until you close the page</b>'; parts.push(m); }
   if(big.length) parts.push('<b>'+big.length+' big PDF'+(big.length!==1?'s':'')+' over 50 MB</b> &middot; browser storage has limits, so keep the original file safe too');
   if(dup.length) parts.push(dup.length+' duplicate name'+(dup.length!==1?'s':'')+' &mdash; shelved alongside the existing');
   if(rej.length){ const uq=[...new Set(rej)]; parts.push(rej.length+' rejected: '+uq[0]+(uq.length>1?' (+'+(uq.length-1)+' more, see console)':'')); }
   if(skip.length) parts.push(skip.length+' skipped'+(skip.length===1?' &mdash; '+skip[0]:' (see console)'));
   if(warn.length) parts.push('<b>'+warn.length+' warning'+(warn.length!==1?'s':'')+'</b> (see console)');
-  if(!parts.length) parts.push('No readable file found. Drop an Adventure Keeper .html, or a PDF for the Tome shelf');
+  if(!parts.length) parts.push('No readable file found. This shelf takes '+acceptList());
   toast(parts.join(' &middot; ')+'.');
   if(warn.length) console.warn('[Keeper import] warnings:\n- '+warn.join('\n- '));
   if(rej.length>1||skip.length>1) console.info('[Keeper import] rejected:',rej,'skipped:',skip);
+  /* the one-time storage warning, mirroring saveState._warned (:1765): the summary above
+     reports it every run, this fires once per session with what to DO about it. */
+  if(eph.length&&!installFromFiles._ephWarned){ installFromFiles._ephWarned=true;
+    setTimeout(()=>toast('This browser&rsquo;s storage refused the import, so it will not survive a reload. Free some space, or export a .keeper backup and keep the original file.'),3800); }
   if(n){ const before=(STATE.nudge&&STATE.nudge.i)||0; STATE.nudge=STATE.nudge||{i:0,s:0}; STATE.nudge.i=before+n; saveState();
     if(Math.floor(STATE.nudge.i/3)>Math.floor(before/3)) setTimeout(()=>toast(backupNudgeMsg()),3800); }
 }
-function pickKeeperFile(){ let inp=document.getElementById('kkFileInput'); if(!inp){inp=document.createElement('input');inp.type='file';inp.accept='.html,text/html,.pdf,application/pdf';inp.multiple=true;inp.id='kkFileInput';inp.style.display='none';inp.addEventListener('change',()=>{if(inp.files.length)installFromFiles(inp.files);});document.body.appendChild(inp);} inp.value='';inp.click(); }
+function pickKeeperFile(){ let inp=document.getElementById('kkFileInput'); if(!inp){inp=document.createElement('input');inp.type='file';inp.accept=ACCEPT.map(a=>a.ext).join(',')+',text/html,application/pdf,text/plain,text/csv,text/tab-separated-values,application/json';inp.multiple=true;inp.id='kkFileInput';inp.style.display='none';inp.addEventListener('change',()=>{if(inp.files.length)installFromFiles(inp.files);});document.body.appendChild(inp);} inp.value='';inp.click(); }
 function pickTomeFile(){ let inp=document.getElementById('kkTomeInput'); if(!inp){inp=document.createElement('input');inp.type='file';inp.accept='.pdf,application/pdf';inp.multiple=true;inp.id='kkTomeInput';inp.style.display='none';inp.addEventListener('change',()=>{if(inp.files.length)installFromFiles(inp.files);});document.body.appendChild(inp);} inp.value='';inp.click(); }
 /* v20: the backup nudge stays honest about what a .keeper carries */
 function backupNudgeMsg(){ return 'Your whole binder lives in this browser. Back it up: Export a .keeper, or keep your binder on a drive.'+(Object.keys(TOMES).length?' Tomes stay out of .keeper files, so keep your PDF files themselves too.':''); }
@@ -2109,7 +2634,7 @@ function openTome(id){
   tomeURL=URL.createObjectURL(t.blob);
   document.getElementById('paneL').innerHTML='<div class="tome-shell"><div class="tome-bar" id="tomeBar"></div><div id="tomeFrameWrap"></div></div>';
   renderTomeBar(); tomeMount(1);
-  document.getElementById('summonPh').textContent='Summon anything over '+stripEnt(t.title)+'…';
+  document.getElementById('summonPh').textContent='Summon anything over '+decEnt(t.title)+'…';
   if(splitOn)toggleSplit();
   go('stage');
   document.getElementById('bmkbar').innerHTML='';   // paragraph bookmarks are Keeper territory; a Tome marks pages in its own bar
@@ -2172,7 +2697,7 @@ function tomeAddMark(){
 function tomeDelMark(i){ const t=TOMES[currentTome]; if(!t||!t.bookmarks||!t.bookmarks[i])return; t.bookmarks.splice(i,1); tomeSave(t); renderTomeBar(); }
 function tomeRename(){
   const t=TOMES[currentTome]; const sp=document.getElementById('tomeTitle'); if(!t||!sp||sp.tagName==='INPUT')return;
-  const inp=document.createElement('input'); inp.className='bmk-edit'; inp.id='tomeTitle'; inp.value=stripEnt(t.title);
+  const inp=document.createElement('input'); inp.className='bmk-edit'; inp.id='tomeTitle'; inp.value=decEnt(t.title);
   sp.replaceWith(inp); inp.focus(); inp.select();
   const commit=save=>{ if(inp._done)return; inp._done=true;
     if(save){ const v=inp.value.replace(/\s+/g,' ').trim(); if(v){ t.title=v.slice(0,80); tomeSave(t); } }
@@ -2216,11 +2741,11 @@ function parseStatblock(txt){
   });
   const body=lines.slice(1).join('\n');
   /* _k: the RAW name, for update-in-place matching. Codex catch: matching on the escaped
-     name through stripEnt() made 'A < B' and 'A > B' the same monster (entities deleted,
+     name through the old entity-DELETING stripEnt() made 'A < B' and 'A > B' the same monster (entities deleted,
      not decoded) and the second paste silently ate the first. */
   return {kind:'monster', nm:esc(nm), _k:nm.toLowerCase().replace(/\s+/g,' ').trim(),
           cr:String(cr), ac:+(ac||10), hp:+(hp||1),
-          speed:esc(speed), atk, note:esc(body).replace(/\n/g,'<br>'), tags:['homebrew']};
+          speed:speed, atk, note:esc(body).replace(/\n/g,'<br>'), tags:['homebrew']};   /* v26.2 (Codex r3, finding 1): speed is a plain SCALAR and the card sink escapes it (E(t.speed)), so storing it escaped double-encoded - "30 ft. & climb 20 ft." read "30 ft. &amp; climb 20 ft." on the card. fiveMonster already stored it raw; the Scribe now agrees, and normEntry decodes records shelved by the old build on the next boot. */
 }
 function scribeBook(){
   let k=INSTALLED['homebrew'];
@@ -2232,7 +2757,7 @@ async function scribeSave(){
   const ta=document.getElementById('scribeText'); const rec=parseStatblock(ta&&ta.value);
   if(!rec){ toast('That doesn&rsquo;t read as a statblock yet &mdash; it needs a name on the first line and an AC or HP line.'); return; }
   const k=scribeBook();
-  const ix=k.entries.findIndex(e=>e.kind==='monster'&&(e._k||unesc(e.nm).toLowerCase().replace(/\s+/g,' ').trim())===rec._k);  /* Codex r2: the fallback DECODES (unesc), never deletes (stripEnt) - so 'A < B' can't collide with 'A > B' even on a record missing _k */
+  const ix=k.entries.findIndex(e=>e.kind==='monster'&&(e._k||unesc(e.nm).toLowerCase().replace(/\s+/g,' ').trim())===rec._k);  /* Codex r2: the fallback DECODES (unesc), never deletes - so 'A < B' can't collide with 'A > B' even on a record missing _k. v26.2: decEnt() decodes too, so the whole build is on one side of that line now. */
   const updated=ix>=0; if(updated)k.entries[ix]=rec; else k.entries.push(rec);
   addInstalledToBooks(k);            // refresh the shelf row's item count
   if(DB)await idbPut('keepers',k);
@@ -2242,8 +2767,10 @@ async function scribeSave(){
 function scribePreview(){
   const ta=document.getElementById('scribeText'), pv=document.getElementById('scribePrev'); if(!ta||!pv)return;
   const r=parseStatblock(ta.value);
-  pv.innerHTML=r?('Reads as: <b>'+r.nm+'</b> &middot; CR '+r.cr+' &middot; AC '+r.ac+' &middot; '+r.hp+' hp &middot; '+
-    (r.atk.length?r.atk.map(a=>esc(a.n)+' +'+a.hit+' ('+a.dmg+')').join(' &middot; '):'no attacks found'))
+  /* v26.1 XSS PASS: nm/speed/note arrive esc'd from parseStatblock and ac/hp are coerced to
+     numbers, but cr and a.dmg ride raw off the pasted text - escape them at this sink. */
+  pv.innerHTML=r?('Reads as: <b>'+r.nm+'</b> &middot; CR '+esc(String(r.cr))+' &middot; AC '+r.ac+' &middot; '+r.hp+' hp &middot; '+
+    (r.atk.length?r.atk.map(a=>esc(a.n)+' +'+a.hit+' ('+esc(String(a.dmg==null?'':a.dmg))+')').join(' &middot; '):'no attacks found'))
     :'Waiting for a statblock: name on the first line, then the usual AC / HP / attack lines.';
 }
 function openScribe(){ const d=document.getElementById('scribe'); if(!d)return; d.classList.add('show');
@@ -2294,7 +2821,15 @@ function exportBinder(){
 /* shared adoption: fold a {state,keepers} package into the running binder (used by Import + the Drive Binder) */
 async function adoptBinder(pkg,opts){ opts=opts||{};
   if(pkg.state) STATE=Object.assign(STATE,pkg.state);
-  if(Array.isArray(pkg.keepers)) for(const k of pkg.keepers){ INSTALLED[k.id]=k; addInstalledToBooks(k); if(DB)await idbPut('keepers',k); if(opts.mirror)driveSaveKeeper(k); }
+  /* v26.2 (Codex r3, finding 3): a .keeper binder is a FILE. A normal export/import round-trips
+     records that parseKeeper already canonicalised, but a hand-crafted or third-party binder
+     reaches the same raw-nm sinks (palette row, Contents row, card title) having never passed
+     the gate - proven live: an adopted record with nm:'<img onerror=...>' executed. Chosen fix:
+     NORMALISE, not "accept the limitation". A binder is shared the same way a Keeper is (dropped
+     through a picker, mailed between DMs, restored from a stranger's Drive folder), so it is not
+     a higher trust level than a download - and normEntry is idempotent, so a genuine backup
+     round-trips byte-for-byte. */
+  if(Array.isArray(pkg.keepers)) for(const k of pkg.keepers){ normEntries(k); INSTALLED[k.id]=k; addInstalledToBooks(k); if(DB)await idbPut('keepers',k); if(opts.mirror)driveSaveKeeper(k); }
   if(STATE.parties&&STATE.parties.length)PARTIES=STATE.parties;
   if(STATE.activeParty!=null&&PARTIES[STATE.activeParty])activeParty=STATE.activeParty;
   PARTY=PARTIES[activeParty]?PARTIES[activeParty].pcs:PARTIES[0].pcs;
@@ -2404,23 +2939,23 @@ function exportChronicle(){
   let face=''; document.querySelectorAll('style').forEach(st=>{ if(!face){ const m=st.textContent.match(/@font-face\{font-family:'Breathe Fire';[^}]*\}/); if(m)face=m[0]; } });
   const dt=new Date();
   const when=dt.toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  const pn=PARTIES[activeParty]?stripEnt(PARTIES[activeParty].name):'';
-  const heroes=PARTY.map(p=>'<span class="hero">'+esc(stripEnt(p.nm))+'<i>'+esc(stripEnt(p.cls||''))+'</i></span>').join('');
+  const pn=PARTIES[activeParty]?decEnt(PARTIES[activeParty].name):'';
+  const heroes=PARTY.map(p=>'<span class="hero">'+esc(decEnt(p.nm))+'<i>'+esc(decEnt(p.cls||''))+'</i></span>').join('');
   const rolls=STATE.rollLog.slice().reverse();   // oldest first: the night reads top to bottom
   let rows='',lastDay='';
   rolls.forEach(r=>{ const d=r.t?new Date(r.t):null;
     const day=d?d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}):'Earlier';
     if(day!==lastDay){ rows+='<div class="day">'+esc(day)+'</div>'; lastDay=day; }
     const tm=d?d.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'}):'';
-    rows+='<div class="roll"><span class="tm">'+esc(tm)+'</span><span class="lbl">'+esc(stripEnt(r.l||r.d))+'</span><span class="val">'+esc(String(r.v))+'</span></div>'; });
+    rows+='<div class="roll"><span class="tm">'+esc(tm)+'</span><span class="lbl">'+esc(decEnt(r.l||r.d))+'</span><span class="val">'+esc(String(r.v))+'</span></div>'; });
   if(!rows)rows='<div class="none">No rolls logged. The dice kept quiet tonight.</div>';
   let fight='';
   const C=STATE.combat;
   if(C&&C.list&&C.list.length){
     fight='<h2>The Battle</h2><div class="meta">Round '+(C.round||1)+' as this chronicle was written</div><div class="fight">'+
       C.list.map(c=>{ const down=c.hp<=0;
-        const conds=(c.conds||[]).map(cn=>esc(stripEnt(cn&&cn.n?cn.n:cn))+(cn&&cn.r?' ('+cn.r+')':'')).join(', ');
-        return '<div class="cbt'+(down?' down':'')+'"><span class="ini">'+esc(String(c.init))+'</span><span class="nm">'+esc(stripEnt(c.nm))+'</span><span class="hp">'+(down?'down':esc(String(c.hp))+'/'+esc(String(c.hpMax))+' hp')+'</span>'+(conds?'<span class="cd">'+conds+'</span>':'')+'</div>'; }).join('')+'</div>';
+        const conds=(c.conds||[]).map(cn=>esc(decEnt(cn&&cn.n?cn.n:cn))+(cn&&cn.r?' ('+cn.r+')':'')).join(', ');
+        return '<div class="cbt'+(down?' down':'')+'"><span class="ini">'+esc(String(c.init))+'</span><span class="nm">'+esc(decEnt(c.nm))+'</span><span class="hp">'+(down?'down':esc(String(c.hp))+'/'+esc(String(c.hpMax))+' hp')+'</span>'+(conds?'<span class="cd">'+conds+'</span>':'')+'</div>'; }).join('')+'</div>';
   }
   /* v25: the turn history tells the fight blow by blow - the live log first, else the last
      fight's closed log (kept at end so a chronicle written after the dust settles still has it) */
@@ -2438,7 +2973,7 @@ function exportChronicle(){
   }
   let marks='';
   const bms=(bkId&&STATE.bookmarks&&STATE.bookmarks[bkId])||[];
-  if(bms.length) marks='<h2>Where the Night Walked</h2><div class="marks">'+bms.map(b=>'<div class="mark">&#9670; '+esc(stripEnt(b.label||'a kept place'))+'</div>').join('')+'</div>';
+  if(bms.length) marks='<h2>Where the Night Walked</h2><div class="marks">'+bms.map(b=>'<div class="mark">&#9670; '+esc(decEnt(b.label||'a kept place'))+'</div>').join('')+'</div>';
   const css='body{margin:0;background:#140b09;color:#e8d9c3;font:16px/1.65 Georgia,"Times New Roman",serif;}'+
     '.pg{max-width:720px;margin:0 auto;padding:44px 26px 60px;}'+
     '.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#a8846a;}'+
@@ -2465,9 +3000,9 @@ function exportChronicle(){
     '.mark{padding:4px 2px;color:#d9c6ac;}'+
     '.foot{margin-top:26px;color:#a8846a;font-size:13.5px;}.foot a{color:#d9b96a;}';
   const page='<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+
-    '<title>Session Chronicle &middot; '+esc(stripEnt(bk?bk.t:'At the Table'))+'</title><style>'+face+css+'</style></head><body><div class="pg">'+
+    '<title>Session Chronicle &middot; '+esc(decEnt(bk?bk.t:'At the Table'))+'</title><style>'+face+css+'</style></head><body><div class="pg">'+
     '<div class="eyebrow">A Session Chronicle</div><h1>The Night at the Table</h1>'+
-    '<div class="sub">'+esc(when)+(bk?' &middot; running <b>'+esc(stripEnt(bk.t))+'</b>':'')+(pn?' &middot; '+esc(pn):'')+'</div>'+
+    '<div class="sub">'+esc(when)+(bk?' &middot; running <b>'+esc(decEnt(bk.t))+'</b>':'')+(pn?' &middot; '+esc(pn):'')+'</div>'+
     '<div class="rule"></div>'+
     (heroes?'<div class="party">'+heroes+'</div>':'')+
     '<h2>The Rolls</h2>'+rows+fight+blow+marks+
@@ -2525,7 +3060,7 @@ function openBook(id){
   } else {
     document.getElementById('paneL').innerHTML='<div class="pane-inner">'+stageHTML(id)+'</div>';
   }
-  document.getElementById('summonPh').textContent='Summon anything over '+stripEnt(BOOKS[id].t)+'…';
+  document.getElementById('summonPh').textContent='Summon anything over '+decEnt(BOOKS[id].t)+'…';
   if(splitOn)toggleSplit();
   go('stage');
   renderStrip();
@@ -2632,7 +3167,7 @@ function renderRight(){
     return;
   }
   if(src){
-    R.innerHTML=head+'<iframe class="keeper-frame" title="'+esc(stripEnt(b.t))+'"></iframe>';
+    R.innerHTML=head+'<iframe class="keeper-frame" title="'+esc(decEnt(b.t))+'"></iframe>';
     const f=R.querySelector('.keeper-frame'); f.srcdoc=src;
   } else {
     R.innerHTML=head+'<div class="pane-inner">'+stageHTML(id)+'</div>';
@@ -2725,9 +3260,9 @@ function searchTables(q){
     return fav.concat(rec).concat(rest);
   }
   const scored=INDEX.map((t,i)=>{
-    const name=stripEnt(t.nm).toLowerCase();
-    const extra=t.kind==='monster'?('monster cr '+t.cr):(t.kind==='npc'?('npc '+stripEnt(t.role||'')):(CODEX_KINDS[t.kind]?(t.kind+' '+stripEnt(t.sub||'')):''));
-    const hay=(name+' '+(t.tags||[]).join(' ')+' '+extra+' '+(BOOKS[t.src]?stripEnt(BOOKS[t.src].t):stripEnt(t.sub||''))).toLowerCase();  /* v22: Tome entries carry no BOOKS row - their home is in sub */
+    const name=decEnt(t.nm).toLowerCase();
+    const extra=t.kind==='monster'?('monster cr '+t.cr):(t.kind==='npc'?('npc '+decEnt(t.role||'')):(CODEX_KINDS[t.kind]?(t.kind+' '+decEnt(t.sub||'')):''));
+    const hay=(name+' '+(t.tags||[]).join(' ')+' '+extra+' '+(t.search||'')+' '+(BOOKS[t.src]?decEnt(BOOKS[t.src].t):decEnt(t.sub||''))).toLowerCase();  /* v22: Tome entries carry no BOOKS row - their home is in sub. v26: text-document entries carry a capped body slice in .search */
     let sc=0;
     if(name.startsWith(q))sc=100; else if(name.includes(q))sc=75; else if((t.tags||[]).some(tg=>tg.startsWith(q)))sc=60;
     else if(hay.includes(q))sc=45; else if(fuzzy(q,name))sc=25;
@@ -2772,12 +3307,17 @@ function renderPalette(){
 }
 /* one face for one index entry — the Summon and the Contents render the SAME row, so a card
    never looks like two different things depending on how you found it */
+/* v26.1 XSS PASS (2026-08-29): entryFace's return value is interpolated into innerHTML by
+   BOTH callers (the palette row and the Contents row), so every entry-derived scalar is
+   escaped HERE, once - the sink is the trust boundary. `nm` is deliberately NOT escaped by
+   either caller: it arrives pre-escaped from every producer (see rebuildIndex / parseKeeper). */
 function entryFace(t){
-  if(t.kind==='monster')return {icon:'<div class="dice mon">CR '+t.cr+'</div>',sub:'monster &middot; AC '+t.ac+' &middot; '+t.hp+' hp',go:'Stat'};
-  if(t.kind==='npc')return {icon:'<div class="dice npc">&#9787;</div>',sub:stripEnt(t.role),go:'Info'};
-  if(t.tome)return {icon:'<div class="dice cx cx-book">'+CODEX_KINDS.book.sig+'</div>',sub:stripEnt(t.sub||''),go:t.page?('p.'+t.page):'Open'};  /* v22: a Tome row says where it takes you */
-  if(CODEX_KINDS[t.kind])return {icon:'<div class="dice cx cx-'+t.kind+'">'+CODEX_KINDS[t.kind].sig+'</div>',sub:stripEnt(t.sub||t.kind),go:CODEX_KINDS[t.kind].go};
-  return {icon:'<div class="dice">'+t.dice+'</div>',sub:(t.tags||[]).join(', '),go:'Float'};
+  const E=v=>esc(String(v==null?'':v));
+  if(t.kind==='monster')return {icon:'<div class="dice mon">CR '+E(t.cr==null?'?':t.cr)+'</div>',sub:'monster &middot; AC '+E(t.ac==null?'?':t.ac)+' &middot; '+E(t.hp==null?'?':t.hp)+' hp',go:'Stat'};
+  if(t.kind==='npc')return {icon:'<div class="dice npc">&#9787;</div>',sub:E(decEnt(t.role||'')),go:'Info'};
+  if(t.tome)return {icon:'<div class="dice cx cx-book">'+CODEX_KINDS.book.sig+'</div>',sub:E(decEnt(t.sub||'')),go:t.page?('p.'+E(t.page)):'Open'};  /* v22: a Tome row says where it takes you */
+  if(CODEX_KINDS[t.kind])return {icon:'<div class="dice cx cx-'+E(t.kind)+'">'+CODEX_KINDS[t.kind].sig+'</div>',sub:E(decEnt(t.sub||t.kind)),go:CODEX_KINDS[t.kind].go};
+  return {icon:'<div class="dice">'+E(t.dice)+'</div>',sub:(t.tags||[]).map(E).join(', '),go:'Float'};
 }
 
 /* ============================================================ THE CONTENTS (v21, Frank 2026-08-12)
@@ -2806,14 +3346,14 @@ function bookGroups(id,q){
   q=String(q||'').trim().toLowerCase();
   const rows=bookRows(id).filter(r=>{
     if(!q)return true;
-    const hay=(stripEnt(r.t.nm)+' '+(r.t.tags||[]).join(' ')+' '+stripEnt(r.t.sub||r.t.role||'')).toLowerCase();
+    const hay=(decEnt(r.t.nm)+' '+(r.t.tags||[]).join(' ')+' '+decEnt(r.t.sub||r.t.role||'')).toLowerCase();
     return hay.includes(q);
   });
   const by={}; rows.forEach(r=>{ const k=r.t.kind||'table'; (by[k]=by[k]||[]).push(r); });
   const seen={}, out=[];
   CTS_GROUPS.forEach(g=>{ if(by[g[0]]){ seen[g[0]]=1; out.push({kind:g[0],label:g[1],rows:by[g[0]]}); } });
   Object.keys(by).forEach(k=>{ if(!seen[k])out.push({kind:k,label:k.charAt(0).toUpperCase()+k.slice(1),rows:by[k]}); });
-  out.forEach(g=>g.rows.sort((a,b)=>stripEnt(a.t.nm).localeCompare(stripEnt(b.t.nm))));
+  out.forEach(g=>g.rows.sort((a,b)=>decEnt(a.t.nm).localeCompare(decEnt(b.t.nm))));
   return out;
 }
 function ctsFoldKey(id,kind){return id+'|'+kind;}
@@ -2857,7 +3397,7 @@ function openContents(id){
   const b=BOOKS[id]||{t:'This book'}, n=bookRows(id).length;
   document.getElementById('ctsTitle').innerHTML=b.t;
   document.getElementById('ctsCount').innerHTML=n?(n+' card'+(n!==1?'s':'')+' in this book, all of them summonable'):'No summonable cards in this book';
-  const inp=document.getElementById('ctsInput'); inp.value=''; inp.placeholder='Filter '+stripEnt(b.t)+'…';
+  const inp=document.getElementById('ctsInput'); inp.value=''; inp.placeholder='Filter '+decEnt(b.t)+'…';
   renderContents();
   document.getElementById('ctsScrim').classList.add('show');
   document.getElementById('contents').classList.add('show');
@@ -2880,7 +3420,7 @@ function renderContents(){
   const body=document.getElementById('ctsBody'), q=document.getElementById('ctsInput').value;
   if(!ctsBook){                       // Tome mode: page marks
     const t=TOMES[currentTome]; const marks=((t&&t.bookmarks)||[])
-      .map((bm,i)=>({bm,i})).filter(x=>!q.trim()||stripEnt(x.bm.label).toLowerCase().includes(q.trim().toLowerCase()));
+      .map((bm,i)=>({bm,i})).filter(x=>!q.trim()||decEnt(x.bm.label).toLowerCase().includes(q.trim().toLowerCase()));
     body.innerHTML=marks.length
       ? '<details class="cts-g" open data-g="marks" data-b="tome"><summary><span class="fold">&#9654;</span>Page marks<span class="n">'+marks.length+'</span><span class="ln"></span></summary>'+
         marks.map(x=>'<div class="pres" data-pg="'+(+x.bm.page||1)+'"><div class="dice">p.'+(+x.bm.page||1)+'</div>'+
@@ -2914,9 +3454,16 @@ function boardKey(){return (STATE.wb&&STATE.wb.open)?('wb:'+(STATE.wb.active||'_
 function stageOpen(){return !!(currentBook||currentTome||(STATE.wb&&STATE.wb.open));}
 function floatTable(i,opts){
   opts=opts||{};
-  /* v22: a Tome entry doesn't float a card - it opens the PDF itself, at the marked page.
-     The Summon is the door; the browser's own viewer is the room. */
+  /* v26.1 (2026-08-29, found by the red-team QC): a saved board persists NUMERIC INDEX
+     offsets (saveBoard -> {ti}), and INDEX is rebuilt from scratch every time the library
+     changes. Install another Keeper, reopen a book with a saved board, and restoreBoard
+     replayed offsets that no longer exist - INDEX[i] came back undefined and the very next
+     line threw on .src, taking the whole restore down with it. Guard the entry point: an
+     index that no longer resolves is a card that is simply gone, not a crash. (The
+     offset-identity class itself predates v22 and stays a documented future lane - this
+     stops it being FATAL, it does not pretend to fix the identity.) */
   const _te=INDEX[i];
+  if(!_te)return null;
   if(_te&&_te.tome){
     if(!TOMES[_te.tome]){ toast('That Tome is no longer on the shelf.'); closePalette(); return null; }
     if(currentTome===_te.tome){ if(_te.page)tomeGo(_te.page); }
@@ -2933,32 +3480,46 @@ function floatTable(i,opts){
   const card=document.createElement('div'); card.className='fcard fcard-'+t.kind+(dock?' docked':''); card.dataset.ti=i;
   if(!dock){ card.style.right=(26+off)+'px'; card.style.top=(96+off)+'px'; }
   const fav=STATE.favorites.includes(i);
+  /* v26.1 XSS PASS (2026-08-29): E() escapes every entry-derived SCALAR interpolated into
+     the card's innerHTML below. Two fields stay deliberately RAW because they are the
+     build's pre-baked HTML channels: `t.x` (the codex body - DEVIATIONS #4, the SRD builder
+     and the 5eTools mapper both bake it through enrichProse at import) and the prose fields
+     that already run through enrichProse (`t.note`, `t.role`, `t.want`, `t.voice`, `t.line`
+     - the SRD ships <p><b> inside note). `t.nm` and `b.t` also stay raw: both arrive
+     pre-escaped from every producer, and escaping them here would double-encode
+     ("Mannerisms &amp; Tics" would render its own entity). */
+  const E=v=>esc(String(v==null?'':v));
   let meta,body,rollBtn='';
   if(t.kind==='monster'){
-    meta='CR '+(t.cr??'&mdash;')+' &middot; from '+b.t;
-    const atks=(t.atk||[]).map(a=>'<button class="atk" data-n="'+esc(a.n||'Attack')+'" data-hit="'+(a.hit||0)+'" data-dmg="'+esc(a.dmg||'')+'">'+esc(a.n||'Attack')+'<span class="ah">+'+(a.hit||0)+'</span><span class="ad">'+esc(a.dmg||'')+'</span></button>').join('');
-    body='<div class="fcard-body stat"><div class="statline"><span><b>AC</b> '+(t.ac??'&mdash;')+'</span><span><b>HP</b> '+(t.hp??'&mdash;')+'</span><span><b>Spd</b> '+(t.speed||'&mdash;')+'</span></div>'+
-      '<div class="atks">'+atks+'</div><div class="mnote">'+enrichProse(t.note||'')+'</div><div class="mtags">'+(t.tags||[]).join(' &middot; ')+'</div></div>'+
+    meta='CR '+(t.cr==null?'&mdash;':E(t.cr))+' &middot; from '+b.t;
+    /* v26.2 (Codex r3, finding 2): hit lands in an ATTRIBUTE and in the visible bonus, and a
+       manifest can put any string there - hit:'"><img src=x onerror=...>' broke out of data-hit
+       and EXECUTED (proven live). normEntry coerces it at every ingestion boundary; atkHit()
+       coerces again here, because a sink that trusts its input is one bad producer away from
+       the same hole. */
+    const atks=(t.atk||[]).map(a=>'<button class="atk" data-n="'+esc(a.n||'Attack')+'" data-hit="'+atkHit(a)+'" data-dmg="'+esc(a.dmg||'')+'">'+esc(a.n||'Attack')+'<span class="ah">+'+atkHit(a)+'</span><span class="ad">'+esc(a.dmg||'')+'</span></button>').join('');
+    body='<div class="fcard-body stat"><div class="statline"><span><b>AC</b> '+(t.ac==null?'&mdash;':E(t.ac))+'</span><span><b>HP</b> '+(t.hp==null?'&mdash;':E(t.hp))+'</span><span><b>Spd</b> '+(t.speed?E(t.speed):'&mdash;')+'</span></div>'+
+      '<div class="atks">'+atks+'</div><div class="mnote">'+enrichProse(t.note||'')+'</div><div class="mtags">'+(t.tags||[]).map(E).join(' &middot; ')+'</div></div>'+
       '<div class="fcard-foot">Click an attack to roll &middot; <kbd>R</kbd> = initiative</div>';
     rollBtn='<button class="roll">Init</button>';
   } else if(CODEX_KINDS[t.kind]){        /* codex card (v19): subtitle band, k/v stat block, prose body, tags */
-    meta=(t.sub||CODEX_KINDS[t.kind].go)+' &middot; from '+b.t;
-    const crows=(t.meta||[]).map(p=>'<div class="crow"><span class="ck">'+p[0]+'</span><span class="cv">'+p[1]+'</span></div>').join('');
-    body='<div class="fcard-body codex"><div class="cxsub">'+(t.sub||'')+'</div>'+
+    meta=E(t.sub||CODEX_KINDS[t.kind].go)+' &middot; from '+b.t;
+    const crows=(t.meta||[]).map(p=>'<div class="crow"><span class="ck">'+E(p&&p[0])+'</span><span class="cv">'+E(p&&p[1])+'</span></div>').join('');
+    body='<div class="fcard-body codex"><div class="cxsub">'+E(t.sub||'')+'</div>'+
       (crows?'<div class="cmetablk">'+crows+'</div>':'')+
       '<div class="cxbody">'+(t.x||'')+'</div>'+
-      '<div class="mtags">'+(t.tags||[]).join(' &middot; ')+'</div></div>'+
+      '<div class="mtags">'+(t.tags||[]).map(E).join(' &middot; ')+'</div></div>'+
       '<div class="fcard-foot">Click any dice to roll it</div>';
   } else if(t.kind==='npc'){
     meta='NPC &middot; from '+b.t;
     body='<div class="fcard-body dossier"><div class="drow"><span class="dk">Role</span><span>'+enrichProse(t.role||'')+'</span></div>'+
       '<div class="drow"><span class="dk">Wants</span><span>'+enrichProse(t.want||'')+'</span></div>'+
       '<div class="drow"><span class="dk">Tell</span><span>'+enrichProse(t.voice||'')+'</span></div>'+
-      '<div class="dline">'+enrichProse(t.line||'')+'</div><div class="mtags">'+(t.tags||[]).join(' &middot; ')+'</div></div>'+
+      '<div class="dline">'+enrichProse(t.line||'')+'</div><div class="mtags">'+(t.tags||[]).map(E).join(' &middot; ')+'</div></div>'+
       '<div class="fcard-foot">Your NPC, one reach away</div>';
   } else {
     const trows=Array.isArray(t.rows)?t.rows:[];
-    meta=(t.dice||('d'+(trows.length||6)))+' &middot; from '+b.t;
+    meta=E(t.dice||('d'+(trows.length||6)))+' &middot; from '+b.t;
     const rows=trows.map((r,ri)=>'<tr data-r="'+ri+'"><td class="d">'+(ri+1)+'</td><td>'+enrichProse(rowHTML(typeof r==='string'?r:(r==null?'':String(r))))+'</td></tr>').join('');
     body='<div class="fcard-body"><table><tbody>'+rows+'</tbody></table></div><div class="fcard-foot">Drag me &middot; <kbd>R</kbd> to roll</div>';
     rollBtn='<button class="roll">Roll</button>';
@@ -2972,12 +3533,12 @@ function floatTable(i,opts){
   const foot=card.querySelector('.fcard-foot');
   if(t.kind==='table'){
     const trs=card.querySelectorAll('tbody tr'); let hist=[];
-    const doRoll=()=>{const r=Math.floor(Math.random()*t.rows.length);trs.forEach(x=>x.classList.remove('hit'));trs[r].classList.add('hit');trs[r].scrollIntoView({block:'nearest',behavior:'smooth'});hist.unshift(r+1);hist=hist.slice(0,6);foot.innerHTML='<b>'+t.dice+' &rarr; '+(r+1)+'</b> '+stripEnt(t.rows[r])+(hist.length>1?'<span class="hist">prev: '+hist.slice(1).join(', ')+'</span>':'');logRoll(t.dice,r+1,stripEnt(t.nm));saveBoard();};
+    const doRoll=()=>{const r=Math.floor(Math.random()*t.rows.length);trs.forEach(x=>x.classList.remove('hit'));trs[r].classList.add('hit');trs[r].scrollIntoView({block:'nearest',behavior:'smooth'});hist.unshift(r+1);hist=hist.slice(0,6);foot.innerHTML='<b>'+E(t.dice)+' &rarr; '+(r+1)+'</b> '+esc(decEnt(t.rows[r]))+(hist.length>1?'<span class="hist">prev: '+hist.slice(1).join(', ')+'</span>':'');logRoll(t.dice,r+1,decEnt(t.nm));saveBoard();};
     card.querySelector('.roll').addEventListener('click',doRoll);
-    trs.forEach(tr=>tr.addEventListener('click',()=>{trs.forEach(x=>x.classList.remove('hit'));tr.classList.add('hit');const r=+tr.dataset.r;foot.innerHTML='<b>'+t.dice+' &rarr; '+(r+1)+'</b> '+stripEnt(t.rows[r])+' <span class="hist">(picked)</span>';}));
+    trs.forEach(tr=>tr.addEventListener('click',()=>{trs.forEach(x=>x.classList.remove('hit'));tr.classList.add('hit');const r=+tr.dataset.r;foot.innerHTML='<b>'+E(t.dice)+' &rarr; '+(r+1)+'</b> '+esc(decEnt(t.rows[r]))+' <span class="hist">(picked)</span>';}));
   } else if(t.kind==='monster'){
-    card.querySelector('.roll').addEventListener('click',()=>{const v=1+Math.floor(Math.random()*20);foot.innerHTML='<b>Initiative d20 &rarr; '+v+'</b> &middot; '+stripEnt(t.nm);logRoll('init',v,'Init '+stripEnt(t.nm));});
-    card.querySelectorAll('.atk').forEach(a=>a.addEventListener('click',()=>{const hit=+a.dataset.hit,d=a.dataset.dmg;const roll=1+Math.floor(Math.random()*20);const nat=roll===20?' &#9733;CRIT':roll===1?' fumble':'';const dm=rollDmg(d);foot.innerHTML='<b>'+esc(a.dataset.n)+'</b> to-hit <b>'+(roll+hit)+'</b> (d20 '+roll+'+'+hit+')'+nat+' &middot; dmg '+dm.txt+' = <b>'+dm.sum+'</b>';logRoll('atk',roll+hit,stripEnt(t.nm)+' '+a.dataset.n);}));
+    card.querySelector('.roll').addEventListener('click',()=>{const v=1+Math.floor(Math.random()*20);foot.innerHTML='<b>Initiative d20 &rarr; '+v+'</b> &middot; '+esc(decEnt(t.nm));logRoll('init',v,'Init '+decEnt(t.nm));});
+    card.querySelectorAll('.atk').forEach(a=>a.addEventListener('click',()=>{const hit=+a.dataset.hit,d=a.dataset.dmg;const roll=1+Math.floor(Math.random()*20);const nat=roll===20?' &#9733;CRIT':roll===1?' fumble':'';const dm=rollDmg(d);foot.innerHTML='<b>'+esc(a.dataset.n)+'</b> to-hit <b>'+(roll+hit)+'</b> (d20 '+roll+'+'+hit+')'+nat+' &middot; dmg '+dm.txt+' = <b>'+dm.sum+'</b>';logRoll('atk',roll+hit,decEnt(t.nm)+' '+a.dataset.n);}));
   }
   wireCardEnrichments(card,t);
   card.querySelector('.ic.x').addEventListener('click',()=>{card.remove();saveBoard();renderDockRail();});
@@ -3014,7 +3575,11 @@ function toggleCollapse(card){
 function saveBoard(){ const cards=[...document.querySelectorAll('.fcard')].map(c=>{const r=c.getBoundingClientRect();return {ti:+c.dataset.ti,x:Math.round(r.left),y:Math.round(r.top),collapsed:c.classList.contains('collapsed')};});
   STATE.boards[boardKey()]=cards; saveState(); }
 function restoreBoard(id){ document.querySelectorAll('.fcard').forEach(c=>c.remove());
-  const cards=STATE.boards[id]||[]; cards.forEach(c=>floatTable(c.ti,{x:c.x,y:c.y,collapsed:c.collapsed})); }
+  /* v26.1: a saved offset that no longer resolves is DROPPED, not fatal (see floatTable).
+     Say so once rather than leaving the DM wondering where two of their cards went. */
+  const cards=STATE.boards[id]||[]; let lost=0;
+  cards.forEach(c=>{ if(!INDEX[c.ti])lost++; else floatTable(c.ti,{x:c.x,y:c.y,collapsed:c.collapsed}); });
+  if(lost)setTimeout(()=>toast(lost+' card'+(lost!==1?'s':'')+' on this board could not be found again &mdash; your library changed since you saved it. Summon them back with <kbd>Space</kbd>.'),900); }
 
 /* ============================================================ BOOKMARKS — up to 10 spots in the running adventure, per book, saved in the binder */
 /* Complements (doesn't fight) the Keeper engine's own 1–9 scene jumps: these are arbitrary, cross-session marks that ride in the .keeper export. */
@@ -3147,17 +3712,19 @@ function renderBuilder(){
   let html='<div class="bsec">Your Party &mdash; '+esc(PARTIES[activeParty].name)+'</div>';
   if(!PARTY.length) html+='<div class="draft-empty">No heroes in this party yet.</div>';
   PARTY.forEach((p,i)=>{ const on=draftPC.has(i);
-    html+='<div class="brow"><div class="bi pc">&#9823;</div><div class="bm"><div class="bn">'+p.nm+'</div>'+
-      '<div class="bd">'+esc(stripEnt(p.cls))+' &middot; AC '+p.ac+' &middot; '+esc(String(p.hp))+' hp</div></div>'+
+    /* v26.1 XSS PASS: a hero's name/AC is RAW user text (heroField writes it straight), so it
+       escapes HERE - the sibling render at :4239 already did, this row did not. */
+    html+='<div class="brow"><div class="bi pc">&#9823;</div><div class="bm"><div class="bn">'+esc(String(p.nm==null?'':p.nm))+'</div>'+
+      '<div class="bd">'+esc(decEnt(p.cls))+' &middot; AC '+esc(String(p.ac==null?'':p.ac))+' &middot; '+esc(String(p.hp))+' hp</div></div>'+
       '<button class="badd'+(on?' on':'')+'" onclick="draftPCToggle('+i+')">'+(on?'&#10003; Added':'&#43; Add')+'</button></div>'; });
   const monByBook={}; INDEX.forEach((t,i)=>{ if(t.kind==='monster')(monByBook[t.src]=monByBook[t.src]||[]).push(i); });
   const bookIds=Object.keys(monByBook);
   if(!bookIds.length) html+='<div class="bsec">Bestiary</div><div class="draft-empty">No monsters owned yet &mdash; install a bestiary pack and its chapter shows up here.</div>';
   bookIds.forEach(bid=>{ const b=BOOKS[bid]||{t:'Unknown'};
-    html+='<div class="bsec">'+esc(b.t)+'</div>';
+    html+='<div class="bsec">'+b.t+'</div>';   /* v26.2 (Codex r3, finding 1): b.t arrives PRE-ESCAPED from every producer (parseKeeper stores esc(title); KKDATA ships its own entities), so escaping again showed "SRD Classes &amp; Features" literally in the Muster. Raw here, exactly like the palette row and the card meta line already are. */
     monByBook[bid].forEach(i=>{ const m=INDEX[i], q=draftMon[i]||0;
       html+='<div class="brow"><div class="bi mon">CR '+esc(String(m.cr||'?'))+'</div>'+
-        '<div class="bm"><div class="bn">'+m.nm+'</div><div class="bd">AC '+m.ac+' &middot; '+m.hp+' hp</div></div>'+
+        '<div class="bm"><div class="bn">'+m.nm+'</div><div class="bd">AC '+esc(String(m.ac==null?'?':m.ac))+' &middot; '+esc(String(m.hp==null?'?':m.hp))+' hp</div></div>'+
         '<button class="stat" title="Float the full stat block on the stage" onclick="floatTable('+i+')">Stat</button>'+
         '<div class="stepper"><button title="Fewer" onclick="draftMonStep('+i+',-1)">&minus;</button><span class="qn">'+q+'</span><button title="More" onclick="draftMonStep('+i+',1)">&#43;</button></div></div>'; });
   });
@@ -3166,8 +3733,10 @@ function renderBuilder(){
 }
 function renderDraft(){
   const items=[];
+  /* v26.1: an INDEX nm arrives pre-escaped; a hero's nm is raw user text, so it escapes here
+     (the two names meet in one list, so they have to be normalised before the render). */
   Object.keys(draftMon).forEach(i=>items.push({n:INDEX[i].nm, c:draftMon[i], t:'monster'}));
-  draftPC.forEach(i=>items.push({n:PARTY[i].nm, c:1, t:'hero'}));
+  draftPC.forEach(i=>items.push({n:esc(String(PARTY[i].nm==null?'':PARTY[i].nm)), c:1, t:'hero'}));
   const total=items.reduce((s,x)=>s+x.c,0);
   document.getElementById('draftList').innerHTML = items.length
     ? items.map(x=>'<div class="draft-item"><span class="dn">'+x.n+'</span><span class="di">'+x.t+'</span><span class="dc">&times;'+x.c+'</span></div>').join('')
@@ -3179,8 +3748,8 @@ function renderDraft(){
 function commitCombat(){
   const specs=[];
   Object.keys(draftMon).forEach(k=>{ const idx=+k,cnt=draftMon[k],m=INDEX[idx],h=parseHP(m.hp);
-    for(let j=0;j<cnt;j++) specs.push({id:cid(),kind:'monster',nm:unesc(m.nm)+(cnt>1?' '+(j+1):''),base:m.nm,/* v22 Codex r2: combat names are RAW text from birth; renders escape; renames stay stable */srcb:m.src,ac:m.ac,hp:h.cur,hpMax:h.max,init:0,conds:[],atk:(m.atk||[]).map(a=>({n:a.n,hit:a.hit,dmg:a.dmg})),note:m.note||'',from:(BOOKS[m.src]||{}).t||''}); });
-  draftPC.forEach(i=>{ const p=PARTY[i],h=parseHP(p.hp); specs.push({id:cid(),kind:'pc',nm:p.nm,ac:p.ac,hp:h.cur,hpMax:h.max,init:0,conds:[],atk:[],note:stripEnt(p.cls||''),from:PARTIES[activeParty].name}); });
+    for(let j=0;j<cnt;j++) specs.push({id:cid(),kind:'monster',nm:unesc(m.nm)+(cnt>1?' '+(j+1):''),base:m.nm,/* v22 Codex r2: combat names are RAW text from birth; renders escape; renames stay stable */srcb:m.src,ac:m.ac,hp:h.cur,hpMax:h.max,init:0,conds:[],atk:(m.atk||[]).map(a=>({n:a.n,hit:atkHit(a),dmg:a.dmg})),note:m.note||'',from:(BOOKS[m.src]||{}).t||''}); });
+  draftPC.forEach(i=>{ const p=PARTY[i],h=parseHP(p.hp); specs.push({id:cid(),kind:'pc',nm:p.nm,ac:p.ac,hp:h.cur,hpMax:h.max,init:0,conds:[],atk:[],note:decEnt(p.cls||''),from:PARTIES[activeParty].name}); });
   if(!specs.length){ toast('Add some combatants first.'); return; }
   specs.forEach(s=>{ s.init=cd20(); });
   if(!STATE.combat) STATE.combat={round:1,activeId:null,list:[]};
@@ -3189,7 +3758,7 @@ function commitCombat(){
   if(!STATE.combat.activeId && STATE.combat.list.length) STATE.combat.activeId=STATE.combat.list[0].id;
   chHistLog('muster','','',specs.length,'');   /* v25 turn history */
   saveState(); closeBuilder(); openCombat();
-  logRoll('combat',specs.length,'Mustered '+specs.length+' &mdash; initiative rolled');
+  logRoll('combat',specs.length,'Mustered '+specs.length+', initiative rolled');   /* v26.2: a roll-log LABEL is a plain scalar - its sinks escape it - so the old '&mdash;' printed literally as "&mdash;" in the dice tray (found live while sweeping the entity class). House copy also owes the em-dash rule a comma here. */
   toast('Initiative rolled &mdash; <b>'+specs.length+'</b> in the fight.');
 }
 function sortCombat(){ if(STATE.combat) STATE.combat.list.sort((a,b)=>(b.init-a.init)||String(a.id).localeCompare(String(b.id))); }
@@ -3197,19 +3766,19 @@ function activeIdx(){ const C=STATE.combat; return C?C.list.findIndex(c=>c.id===
 function combatNext(){ const C=STATE.combat; if(!C||!C.list.length)return; let i=activeIdx(); i++;
   if(i>=C.list.length){i=0;C.round=(C.round||1)+1;chHistLog('round','','',C.round,'');combatTickConds();}   /* v25: the wrap is history; expiries log after it, inside the new round */
   C.activeId=C.list[i].id;
-  chHistLog('turn',stripEnt(String(C.list[i].nm||'')).trim(),'',0,'');
+  chHistLog('turn',decEnt(String(C.list[i].nm||'')).trim(),'',0,'');
   saveState(); renderCombat(); }
 /* v13 (C-revision small add): timed conditions tick down as the round turns and fall off at zero */
 function combatTickConds(){ const C=STATE.combat; if(!C)return; const ended=[];
   C.list.forEach(c=>{ c.conds=(c.conds||[]).filter(cn=>{ if(!cn||!cn.n||!cn.r)return true; cn.r--;
-    if(cn.r<=0){ ended.push(esc(stripEnt(cn.n))+' ends on '+esc(stripEnt(c.nm)));
-      chHistLog('cond-',stripEnt(String(c.nm||'')).trim(),'',1,cn.n);   /* v25: n=1 marks a timed run-out, not a hand removal */
+    if(cn.r<=0){ ended.push(esc(decEnt(cn.n))+' ends on '+esc(decEnt(c.nm)));
+      chHistLog('cond-',decEnt(String(c.nm||'')).trim(),'',1,cn.n);   /* v25: n=1 marks a timed run-out, not a hand removal */
       return false; } return true; }); });
   if(ended.length)toast(ended.join(' &middot; ')); }
 function combatPrev(){ const C=STATE.combat; if(!C||!C.list.length)return; let i=activeIdx(); i--;
   if(i<0){i=C.list.length-1;C.round=Math.max(1,(C.round||1)-1);chHistLog('round','','',C.round,'back');}   /* v25: movement backward is history too */
   C.activeId=C.list[i].id;
-  chHistLog('turn',stripEnt(String(C.list[i].nm||'')).trim(),'',0,'back');
+  chHistLog('turn',decEnt(String(C.list[i].nm||'')).trim(),'',0,'back');
   saveState(); renderCombat(); }
 function findC(id){ const C=STATE.combat; return C?C.list.find(c=>c.id===id):null; }
 function combatHP(id,delta){ const c=findC(id); if(!c)return;
@@ -3217,7 +3786,7 @@ function combatHP(id,delta){ const c=findC(id); if(!c)return;
   c.hp=Math.max(0,Math.min(c.hpMax,c.hp+delta));
   /* v25 turn history: log what actually LANDED (the clamp is part of the truth), and the
      down/up threshold crossings as their own entries */
-  const d=c.hp-was, nm=stripEnt(String(c.nm||'')).trim();
+  const d=c.hp-was, nm=decEnt(String(c.nm||'')).trim();
   if(d<0)chHistLog('dmg','',nm,-d,'');
   else if(d>0)chHistLog('heal','',nm,d,'');
   if(was>0&&c.hp<=0)chHistLog('down',nm,'',0,'');
@@ -3238,26 +3807,26 @@ function combatAddCond(id,val){ if(!val)return; const c=findC(id); if(!c)return;
   const rin=document.querySelector('.cbt[data-id="'+id+'"] .cbt-condr'); const r=rin?parseInt(rin.value,10):NaN;
   const timed=(!isNaN(r)&&r>0)?Math.min(r,99):0;
   c.conds.push(timed?{n:val,r:timed}:val);
-  chHistLog('cond+',stripEnt(String(c.nm||'')).trim(),'',timed,val);   /* v25 turn history */
+  chHistLog('cond+',decEnt(String(c.nm||'')).trim(),'',timed,val);   /* v25 turn history */
   saveState(); renderCombat(); }
 function combatDelCond(id,val){ const c=findC(id); if(!c)return;
   const was=c.conds.length;
   c.conds=c.conds.filter(x=>((x&&x.n)?x.n:x)!==val);
-  if(c.conds.length!==was)chHistLog('cond-',stripEnt(String(c.nm||'')).trim(),'',0,val);   /* v25: only a real removal logs */
+  if(c.conds.length!==was)chHistLog('cond-',decEnt(String(c.nm||'')).trim(),'',0,val);   /* v25: only a real removal logs */
   saveState();renderCombat(); }
 function combatToggleAtks(id){ const el=document.querySelector('.cbt[data-id="'+id+'"]'); if(el)el.classList.toggle('atks-open'); }
 /* one-reach: tap a combatant's name -> its full stat block floats (monsters; PCs live in the Party drawer) */
 function combatStat(id){ const c=findC(id); if(!c||c.kind!=='monster')return;
   let i=c.base?INDEX.findIndex(t=>t.kind==='monster'&&t.nm===c.base&&(!c.srcb||t.src===c.srcb)):-1;
-  if(i<0){ const bn=stripEnt(c.nm).replace(/\s+\d+$/,'').trim().toLowerCase();
-    i=INDEX.findIndex(t=>t.kind==='monster'&&stripEnt(t.nm).trim().toLowerCase()===bn); }
+  if(i<0){ const bn=decEnt(c.nm).replace(/\s+\d+$/,'').trim().toLowerCase();
+    i=INDEX.findIndex(t=>t.kind==='monster'&&decEnt(t.nm).trim().toLowerCase()===bn); }
   if(i>=0) floatTable(i); else toast('That stat block isn&rsquo;t in your library anymore.');
 }
 function combatAttack(id,ai){ const c=findC(id); if(!c||!c.atk[ai])return; const a=c.atk[ai];
-  const roll=cd20(), nat=roll===20?' &#9733;CRIT':roll===1?' fumble':'', dm=rollDmg(a.dmg);
+  const roll=cd20(), nat=roll===20?' &#9733;CRIT':roll===1?' fumble':'', dm=rollDmg(a.dmg), hb=atkHit(a);
   const res=document.querySelector('.cbt[data-id="'+id+'"] .cbt-res');
-  if(res)res.innerHTML='<b>'+esc(a.n)+'</b> to-hit <b>'+(roll+a.hit)+'</b> (d20 '+roll+'+'+a.hit+')'+nat+' &middot; dmg '+dm.txt+' = <b>'+dm.sum+'</b>';
-  logRoll('atk',roll+a.hit,stripEnt(c.nm)+' '+a.n); }
+  if(res)res.innerHTML='<b>'+esc(a.n)+'</b> to-hit <b>'+(roll+hb)+'</b> (d20 '+roll+'+'+hb+')'+nat+' &middot; dmg '+dm.txt+' = <b>'+dm.sum+'</b>';
+  logRoll('atk',roll+hb,decEnt(c.nm)+' '+a.n); }
 function endCombat(){ if(!STATE.combat)return;
   chHistLog('end','','',0,'');
   STATE.combatHistLast=STATE.combat.hist||[];   /* v25: the closed log outlives the fight for the Chronicle */
@@ -3280,7 +3849,7 @@ function renderCombat(){
       '<input class="cbt-condr" type="number" min="1" max="99" placeholder="rds" title="Optional: rounds it lasts. Set it, then pick the condition; it ticks down as rounds turn and falls off at zero.">';
     const hasAtk=c.kind==='monster'&&c.atk&&c.atk.length;
     const atkBtn=hasAtk?'<button class="atkt" title="Show attacks" onclick="combatToggleAtks(\''+c.id+'\')">&#9876;</button>':'';
-    const atks=hasAtk?'<div class="cbt-atks">'+c.atk.map((a,ai)=>'<button class="atk" onclick="combatAttack(\''+c.id+'\','+ai+')">'+esc(a.n)+'<span class="ah">+'+a.hit+'</span><span class="ad">'+esc(a.dmg)+'</span></button>').join('')+'</div>':'';
+    const atks=hasAtk?'<div class="cbt-atks">'+c.atk.map((a,ai)=>'<button class="atk" onclick="combatAttack(\''+c.id+'\','+ai+')">'+esc(a.n)+'<span class="ah">+'+atkHit(a)+'</span><span class="ad">'+esc(a.dmg)+'</span></button>').join('')+'</div>':'';   /* v26.2: same law as the card - a bonus renders as a number */
     return '<div class="cbt '+c.kind+(active?' active':'')+(down?' down':'')+'" data-id="'+esc(c.id)+'">'+
       '<input class="cbt-init" value="'+c.init+'" title="Initiative — click to edit" onchange="combatInit(\''+c.id+'\',this.value)">'+
       '<div class="cbt-mid">'+
@@ -3311,7 +3880,7 @@ function chHistLog(kind,who,tgt,n,note){
   if(C.hist.length>400)C.hist.length=400;   /* cap 400: the oldest blows fall away */
 }
 function chHistLabel(e){
-  const who=stripEnt(String(e.who||'')).trim(), tgt=stripEnt(String(e.tgt||'')).trim(), note=stripEnt(String(e.note||'')).trim();
+  const who=decEnt(String(e.who||'')).trim(), tgt=decEnt(String(e.tgt||'')).trim(), note=decEnt(String(e.note||'')).trim();
   switch(e.kind){
     case 'muster': return 'Mustered '+e.n+' and rolled initiative';
     case 'round':  return (note==='back'?'Back to round ':'Round ')+e.n;
@@ -3774,8 +4343,8 @@ function renderStrip(){const s=document.getElementById('pstrip'); if(!s)return;
   if(!PARTIES[activeParty])activeParty=0;
   PARTY=PARTIES[activeParty].pcs;
   s.innerHTML='<span class="lead" title="Active party — switch in the Party panel">'+esc(PARTIES[activeParty].name)+'</span>'+PARTY.map((p,i)=>{
-    const bg=p.img?'background-image:url('+p.img+')':''; const ini=stripEnt(p.nm).trim()[0]||'?';
-    return '<div class="pchip" onclick="openParty()"><div class="av" style="'+bg+'">'+(p.img?'':ini)+'</div><div class="pn">'+p.nm+'</div>'+passiveChips(p)+'</div>';}).join('');}
+    const bg=p.img?'background-image:url('+p.img+')':''; const ini=decEnt(p.nm).trim()[0]||'?';
+    return '<div class="pchip" onclick="openParty()"><div class="av" style="'+bg+'">'+esc(ini)+'</div><div class="pn">'+esc(String(p.nm==null?'':p.nm))+'</div>'+passiveChips(p)+'</div>';}).join('');}
 function toggleStrip(){document.body.classList.toggle('strip-on');document.getElementById('btnStrip').classList.toggle('on',document.body.classList.contains('strip-on'));}
 function openParty(){document.getElementById('partyScrim').classList.add('show');document.getElementById('partyDrawer').classList.add('open');renderParty();}
 function closeParty(){document.getElementById('partyScrim').classList.remove('show');document.getElementById('partyDrawer').classList.remove('open');}
@@ -3848,7 +4417,7 @@ function heroTo(i,sel){ partySafe();
   const hero=PARTY.splice(i,1)[0];
   PARTIES[tp].pcs.push(hero);
   partyTouch();
-  toast(esc(stripEnt(hero.nm).trim()||'That hero')+' moved to '+esc(PARTIES[tp].name)+'.'); }
+  toast(esc(decEnt(hero.nm).trim()||'That hero')+' moved to '+esc(PARTIES[tp].name)+'.'); }
 function renderParty(){
   const host=document.getElementById('partyList'); if(!host)return;
   partySafe();
@@ -4563,20 +5132,20 @@ function pkNew(seed){
    Table -> name only; a random table is prep, not a handout. */
 function pkFromIndex(i){
   const t=INDEX[i]; if(!t)return;
-  const src=(BOOKS[t.src]&&stripEnt(BOOKS[t.src].t))||'';
+  const src=(BOOKS[t.src]&&decEnt(BOOKS[t.src].t))||'';
   if(t.kind==='npc'){
-    pkNew({ptype:'person',title:stripEnt(t.nm),subtitle:stripEnt(t.role||''),
+    pkNew({ptype:'person',title:wireTxt(t.nm),subtitle:wireTxt(t.role||''),
       body:'',
-      dm:'From '+src+'.\nWants: '+stripEnt(t.want||'')+'\nTell: '+stripEnt(t.voice||'')+
-         '\nLine: '+stripEnt(t.line||'')+'\nTags: '+((t.tags||[]).join(', '))});
+      dm:'From '+src+'.\nWants: '+decEnt(t.want||'')+'\nTell: '+decEnt(t.voice||'')+
+         '\nLine: '+decEnt(t.line||'')+'\nTags: '+((t.tags||[]).join(', '))});
     toast('Packet built. Their <b>role</b> is the face; wants, tell, line and tags stayed with you.');
   }else if(t.kind==='monster'){
-    pkNew({ptype:'thing',title:stripEnt(t.nm),subtitle:'',body:'',
+    pkNew({ptype:'thing',title:wireTxt(t.nm),subtitle:'',body:'',
       dm:'From '+src+'.\nCR '+(t.cr==null?'?':t.cr)+' · AC '+(t.ac==null?'?':t.ac)+' · HP '+(t.hp==null?'?':t.hp)+
-         '\n'+stripEnt(t.note||'')});
+         '\n'+decEnt(t.note||'')});
     toast('Packet built with the name only. The stat block stayed with you.');
   }else{
-    pkNew({ptype:'thing',title:stripEnt(t.nm),subtitle:'',body:'',dm:'From '+src+'. (Random table; rows kept here.)'});
+    pkNew({ptype:'thing',title:wireTxt(t.nm),subtitle:'',body:'',dm:'From '+src+'. (Random table; rows kept here.)'});
     toast('Packet built. The table rows stayed with you.');
   }
   document.getElementById('pkFromQ').value='';
@@ -4592,7 +5161,7 @@ function pkSuggest(){
     const g=t.kind==='npc'?'\u{1F464}':(t.kind==='monster'?'\u{1F5DD}':'\u{1F3B2}');
     return '<div class="pk-row" onclick="pkFromIndex('+r.i+')" style="cursor:pointer;">'+
       '<span class="pkg">'+g+'</span><span class="pkm"><b>'+t.nm+'</b><i>'+
-      esc(t.kind==='npc'?stripEnt(t.role||'npc'):t.kind)+'</i></span></div>';
+      esc(t.kind==='npc'?decEnt(t.role||'npc'):t.kind)+'</i></span></div>';
   }).join('')||'<p class="th-hint">Nothing on your shelf matches that.</p>';
 }
 function pkSet(id,field,v){ const p=pkAll().find(function(x){return x.id===id;}); if(!p)return;
@@ -4787,7 +5356,7 @@ function theaterClearLog(btn){
   THEATER.tlog=[]; renderTheaterLog(); if(btn){btn.dataset.arm='';btn.textContent='Clear';} toast('Table roll log cleared.'); }
 function theaterInitPayload(){ const C=STATE.combat;
   if(!C||!C.list||!C.list.length)return {order:[],activeIndex:0,round:1};
-  return { order:C.list.map(function(c){ return {name:stripEnt(String(c.nm||'')).trim(),ini:(c.init|0)}; }),
+  return { order:C.list.map(function(c){ return {name:wireTxt(c.nm),ini:(c.init|0)}; }),
     activeIndex:Math.max(0,activeIdx()), round:C.round||1 }; }
 function theaterPushInit(force){
   if(!theaterOpenCount())return;
@@ -5117,8 +5686,8 @@ function theaterPushImage(inp){
    README, About panel); GRIM_BUILD carries it plus the build date for problem reports.
    Bump BOTH lines with every release - a user with an offline file kept for a year has no
    other way to know what they hold, and neither do we when they report a bug. */
-const KK_VERSION='2.5.0';
-const GRIM_BUILD=KK_VERSION+' · 2026-08-28';
+const KK_VERSION='2.6.0';
+const GRIM_BUILD=KK_VERSION+' · 2026-08-29';
 window.KK_VERSION=KK_VERSION;
 const BUG_ERRORS=[];
 /* ⚠ ERROR MESSAGES ARE NOT SAFE TEXT. A browser quotes the offending input back at you:
@@ -5349,7 +5918,7 @@ function renderChronicle(){ const body=document.getElementById('chBody'); if(!bo
   body.innerHTML=names.map(web=>{ const w=webs[web]; const st=chronState(web); const flags=chronFlags(web,webs);
     const nodes=Object.keys(w.known).sort(chronNodeOrder).map(n=>{ const inst=w.nodes[n], done=st.done[n];
       const cls='ch-node'+(done?' done':'')+(inst?'':' miss')+(inst&&currentBook===inst.book?' here':'');
-      const ttl=done?('Sealed: '+done.code):inst?stripEnt(inst.bt):'Not on your shelf yet';
+      const ttl=done?('Sealed: '+done.code):inst?decEnt(inst.bt):'Not on your shelf yet';
       return '<span class="'+cls+'" title="'+esc(ttl)+'">'+esc(n)+(done?' &#10003;':'')+'</span>'; }).join('');
     const prose=chronTouched(web)?chronProse(w,flags):'';
     const doneNodes=Object.keys(st.done).sort(chronNodeOrder);
@@ -5360,7 +5929,7 @@ function renderChronicle(){ const body=document.getElementById('chBody'); if(!bo
       (lastCode?'<div class="ch-code" title="Players can type this into any later chapter, even outside this binder.">'+esc(lastCode)+'</div>':'');
     const cur=Object.keys(w.nodes).map(n=>w.nodes[n]).find(n=>n.book===currentBook);
     if(cur&&!st.done[cur.node]&&cur.exits.length){
-      h+='<div class="th-step">How did '+stripEnt(cur.bt)+' end?</div>'+
+      h+='<div class="th-step">How did '+esc(decEnt(cur.bt))+' end?</div>'+   /* v26.2: the ONE raw-innerHTML consumer of the old stripEnt. Deleting entities made a title inert by accident; decoding does not, so this sink escapes like its sibling at :5905 always did. */
         cur.exits.map(x=>'<button class="th-btn ch-exit" onclick="chronPickExit(\''+esc(web)+'\',\''+esc(cur.node)+'\',\''+esc(x.id)+'\',this)">'+esc(x.label||x.when||x.id)+'</button>').join('');
     }
     h+='<div class="th-row" style="margin-top:8px;"><input class="th-inp" id="chCode_'+esc(web)+'" placeholder="Type a Chronicle Code&hellip;" style="flex:1 1 auto;min-width:0;">'+
@@ -6488,7 +7057,7 @@ function wbPlaceMustered(){
   C.list.forEach(function(cb){
     if((m.tokens||[]).some(function(t){return t.tid===cb.id;}))return;   /* combatant and token are ONE object: tid is the combatant id */
     m.tokens.push({tid:cb.id,x:cx+(i%6),y:cy+Math.floor(i/6),w:1,h:1,
-      label:stripEnt(String(cb.nm||'')).trim(),colour:cb.kind==='pc'?'#4da26b':'#a2452f',owner:'dm',ownerSid:null,img:''});
+      label:wireTxt(cb.nm),colour:cb.kind==='pc'?'#4da26b':'#a2452f',owner:'dm',ownerSid:null,img:''});
     i++; placed++;
   });
   if(!placed){ toast('Everyone mustered is already on this map.'); return; }
@@ -6840,7 +7409,7 @@ function wbOnPing(rec,env){
   if(WB_NET.pingAt[k]&&now-WB_NET.pingAt[k]<1000)return;   /* silent drop: pings are cheap, floods are not */
   WB_NET.pingAt[k]=now;
   const x=Math.max(0,Math.min(m.w||0,p.x)), y=Math.max(0,Math.min(m.h||0,p.y));
-  const nm=stripEnt(String(rec.name||'player')).trim().slice(0,24)||'player';
+  const nm=wireTxt(rec.name||'player').slice(0,24)||'player';
   const col=wbSeatCol(k);
   wbFanPing(m,x,y,col,nm);
   wbPingShow(x,y,col,nm);   /* the DM's board rings too, when it is open */
