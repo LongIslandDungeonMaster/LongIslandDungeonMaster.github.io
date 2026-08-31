@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- hidden delivery page: reachable by link, kept out of search + off the public shelf -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Your Free Table: What&rsquo;s in the Grave | Long Island Dungeon Master</title>
+  <meta name="description" content="Download What's in the Grave, a free d100 for what is actually in the hole when your party gets it open, plus a d20 for who put it there and a d20 for what it costs them. Ten bands, one printable card, no stat blocks. Print PDF and a Table Keeper that installs into Gnasher's Grimoire.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 78%); color: var(--parchment); min-height: 100vh; margin: 0; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 1.2rem 1.2rem 4rem; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; padding: .3rem 0 1.6rem; }
+    .brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.35rem; letter-spacing: 1px; text-decoration: none; }
+    .brand:hover { color: var(--gold-light); }
+    .back { font-family: 'Merriweather Sans', sans-serif; font-size: .74rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .back:hover { color: var(--gold); }
+    .eyebrow { font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; color: var(--gold); text-align: center; margin: .5rem 0 .4rem; }
+    h1.title { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: clamp(2.1rem, 7.6vw, 3.5rem); line-height: 1.05; text-align: center; margin: 0 0 .5rem; text-shadow: 0 0 34px rgba(201,168,76,.4), 2px 2px 0 #000; }
+    .dek { text-align: center; font-style: italic; color: var(--parchment-dk); font-size: 1.08rem; max-width: 34rem; margin: 0 auto 1.4rem; }
+    .cover { display: block; width: 100%; max-width: 560px; margin: 0 auto 1.8rem; border: 3px solid var(--gold); border-radius: 6px; box-shadow: 0 0 40px rgba(0,0,0,.6); }
+    .cta { text-align: center; margin: 1.6rem 0 .6rem; }
+    .btn-keep { display: inline-block; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 1.05rem; background: var(--gold); color: var(--crimson-deep); text-decoration: none; padding: .95rem 2.1rem; border-radius: 5px; box-shadow: 0 4px 0 #8a7226, 0 8px 20px rgba(0,0,0,.5); transition: transform .1s, box-shadow .1s; }
+    .btn-keep:hover { color: var(--crimson-deep); transform: translateY(2px); box-shadow: 0 2px 0 #8a7226, 0 5px 14px rgba(0,0,0,.5); }
+    .btn-keep i { margin-right: .5rem; }
+    .btn-alt { display: inline-block; margin-top: .9rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: .88rem; color: var(--gold); border: 2px solid var(--gold); text-decoration: none; padding: .7rem 1.5rem; border-radius: 5px; transition: background .12s, color .12s; }
+    .btn-alt:hover { background: var(--gold); color: var(--crimson-deep); }
+    .btn-alt i { margin-right: .5rem; }
+    .preview { display: block; text-align: center; margin: .9rem 0 0; color: var(--gold-light); font-size: .9rem; text-decoration: none; }
+    .preview:hover { color: var(--gold); }
+    .fineprint { text-align: center; color: var(--muted); font-size: .8rem; margin: .6rem 0 0; }
+    .divider { width: 6rem; height: 2px; margin: 2.6rem auto; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .whatis { color: var(--parchment-dk); font-size: 1rem; line-height: 1.7; }
+    .whatis strong { color: var(--gold-light); }
+    .taste { background: linear-gradient(180deg, rgba(61,0,0,.5), rgba(26,0,0,.5)); border: 1px solid rgba(201,168,76,.3); border-left: 3px solid var(--gold); border-radius: 4px; padding: 1rem 1.2rem; margin: 1.6rem 0 0; }
+    .taste p { color: var(--parchment-dk); font-size: .95rem; line-height: 1.65; margin: 0 0 .55rem; }
+    .taste p:last-child { margin-bottom: 0; }
+    .taste .num { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-weight: 700; margin-right: .45rem; }
+    h2.sect { font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .9rem; color: var(--gold); text-align: center; margin: 0 0 1.3rem; }
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
+    .card { background: linear-gradient(180deg, rgba(61,0,0,.55), rgba(26,0,0,.55)); border: 1px solid rgba(201,168,76,.35); border-radius: 6px; padding: 1.1rem 1.15rem; text-decoration: none; display: block; transition: border-color .15s, transform .1s; }
+    .card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .card .ic { color: var(--gold); font-size: 1.4rem; margin-bottom: .5rem; }
+    .card h3 { font-family: 'Merriweather Sans', sans-serif; color: var(--gold-light); font-size: .98rem; text-transform: uppercase; letter-spacing: .4px; margin: 0 0 .35rem; }
+    .card p { color: var(--parchment-dk); font-size: .88rem; line-height: 1.5; margin: 0; }
+    .card .go { color: var(--gold); font-size: .82rem; font-family: 'Merriweather Sans', sans-serif; margin-top: .5rem; display: inline-block; }
+    .foot { text-align: center; margin-top: 3rem; color: var(--muted); font-size: .74rem; line-height: 1.6; }
+    .foot .fb { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="../index.html">Long Island Dungeon Master</a>
+      <a class="back" href="../index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Home</a>
+    </div>
+
+    <p class="eyebrow">A Free DM Table &middot; Long Island Dungeon Master</p>
+    <h1 class="title">What&rsquo;s in the Grave</h1>
+    <p class="dek">A d100 for what is actually in the hole when they get it open, with a d20 for who put it there and a d20 for what it costs them. Ten bands, no stat blocks.</p>
+
+    <img class="cover" src="whats-in-the-grave-cover.png" alt="What's in the Grave, a free DM table from Long Island Dungeon Master, in gold on a dark crimson field">
+
+    <div class="cta">
+      <a class="btn-keep" href="whats-in-the-grave.pdf" download="Whats-In-The-Grave.pdf"><i class="fas fa-download" aria-hidden="true"></i> Download the Table</a>
+      <a class="preview" href="whats-in-the-grave.pdf" target="_blank" rel="noopener"><i class="fas fa-eye" aria-hidden="true"></i> or open the PDF in your browser first</a>
+      <p class="fineprint">One print-ready PDF, with the card on its own page and no table broken across a page turn. No account, no app. Yours to keep.</p>
+      <a class="btn-alt" href="whats-in-the-grave-keeper.html"><i class="fas fa-dice-d20" aria-hidden="true"></i> Or open the Table Keeper</a>
+      <p class="fineprint">The same three tables, running. All of them roll in the browser, the digging clock is already built with its four boxes, and the who-notices clock is built beside it. Offline, no login. It also installs into Gnasher&rsquo;s Grimoire.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="whatis">Your party is standing over an open grave and looking at you, and you have exactly two answers ready: bones and some coin, or nothing. Both of those end the scene in one sentence, and a party that stops opening things is a party you have to push through your own adventure with both hands. A grave is the best container in the game: somebody filled it on purpose, closed it, carried it out to a hole and paid a mason to mark it. This is <strong>a hundred rows in ten bands</strong> for what is actually down there, from the body that is not who the plate says, through the things somebody hid in a grave because a grave is the one box nobody opens, to the ten reasons a hole is empty. Plus <strong>a d20 for who dug it</strong>, rolled before you describe the hole, where most of the twenty reframe what is down there without changing a single object, and <strong>a d20 for what it costs them</strong>, rolled when they take something out. Four rows in the hundred carry any mechanics at all. There is a card with the whole thing on one printable page. No stat blocks, nothing to convert. Free to use at your table and in your own material under CC BY 4.0.</p>
+
+    <div class="taste">
+      <p><span class="num">9.</span> Bound, and it was cooperative. Good rope at the wrists and ankles, and the knots are tied on the inside, where the person being tied could reach them. Two people did this and one of them was the one in the box.</p>
+      <p><span class="num">67.</span> An instruction inside the lid. Addressed to whoever opens this, in plain language, giving them one specific thing to do and no reason at all why. It takes about a minute to do.</p>
+      <p><span class="num">d20, who, 20.</span> Somebody who wanted it found. Every part of this is a fraction too shallow, a fraction too obvious, and the marker stands a foot taller than the ones on either side of it. This grave was dug to be dug up.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="sect">While you&rsquo;re here</h2>
+    <div class="cards">
+      <a class="card" href="../grimoire">
+        <div class="ic"><i class="fas fa-book-open" aria-hidden="true"></i></div>
+        <h3>Gnasher&rsquo;s Grimoire</h3>
+        <p>The free Dungeon Master companion: your reference, your rolls and your trackers open on the screen while you play. The Table Keeper above installs straight into it.</p>
+        <span class="go">Open it &rarr;</span>
+      </a>
+      <a class="card" href="dms-field-kit.html" download>
+        <div class="ic"><i class="fas fa-toolbox" aria-hidden="true"></i></div>
+        <h3>The DM&rsquo;s Field Kit</h3>
+        <p>The free signup gift: hand-made tables that make any session better. No AI slop, yours to keep.</p>
+        <span class="go">Grab it &rarr;</span>
+      </a>
+      <a class="card" href="../keepers.html">
+        <div class="ic"><i class="fas fa-dungeon" aria-hidden="true"></i></div>
+        <h3>A full free Keeper</h3>
+        <p><em>The Keeper of Halcyon Light</em>, a complete free one-shot you run from your browser. See what a whole Adventure Keeper feels like.</p>
+        <span class="go">Open it &rarr;</span>
+      </a>
+      <a class="card" href="https://longislanddungeonmaster.itch.io/gallowsgrass">
+        <div class="ic"><i class="fas fa-scroll" aria-hidden="true"></i></div>
+        <h3>Gallowsgrass</h3>
+        <p>The flagship on itch.io: a framed-for-murder gallows thriller with a whole town as the battlefield. The one you buy outright.</p>
+        <span class="go">See it &rarr;</span>
+      </a>
+    </div>
+
+    <div class="foot">
+      <p class="fb">Long Island Dungeon Master</p>
+      <p>The adventures are mine. 30+ years of real tables. Compatible with fifth edition. Portions derived from the SRD 5.1, &copy; Wizards of the Coast LLC, under CC-BY-4.0. What&rsquo;s in the Grave is original &copy; Long Island Dungeon Master, free to use at your table and in your own work under CC BY 4.0.</p>
+    </div>
+  </div>
+
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+</body>
+</html>
