@@ -1,7 +1,7 @@
 /* Gnasher's Satchel service worker - cache-first of the app itself so a phone
    opens it with no signal after the first visit. Cache key is version-locked to
    the build, so a new deploy replaces the old copy on next load. */
-const CACHE = "satchel-2026-09-04.3-9df4ee3a";
+const CACHE = "satchel-2026-09-04.4-3e5ad5aa";
 const ASSETS = ["./players-satchel.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 self.addEventListener("install", e => {
   /* v35 (adversary F1): under the live origin's Cache-Control: max-age=600 a launch inside ten minutes
