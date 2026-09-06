@@ -141,7 +141,7 @@
     .g-sec-head p strong { color: var(--gold-light); }
 
     /* ---- binder manifesto ---- */
-    .g-manifesto { max-width: 760px; margin: 0 auto; text-align: center; }
+    .g-manifesto { max-width: 760px; margin-left: auto; margin-right: auto; text-align: center; }
     .g-manifesto p { color: rgba(255,255,255,.76); line-height: 1.95; font-size: 1.02rem; }
     .g-manifesto p + p { margin-top: 1.1rem; }
     .g-manifesto strong { color: var(--gold); }
@@ -149,15 +149,21 @@
 
     /* ---- feature grid ---- */
     .g-feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    #ownbooks p { color: rgba(255,255,255,.78); line-height: 1.9; font-size: 1rem; max-width: 820px; margin: 1.1rem auto 0; text-align: center; }
+    #ownbooks p b, #ownbooks p strong { color: var(--gold-light); }
+    #ownbooks .promises { list-style: none; padding: 0; margin: 1.8rem auto 0; max-width: 820px; display: grid; gap: .8rem; text-align: left; }
+    #ownbooks .promises li { position: relative; padding: 1rem 1.2rem 1rem 3rem; color: rgba(255,255,255,.74); font-size: .93rem; line-height: 1.7; border: 1px solid rgba(201,168,76,.28); border-radius: 10px; background: linear-gradient(160deg, rgba(139,0,0,.12), rgba(0,0,0,.35)); }
+    #ownbooks .promises li i { position: absolute; left: 1.2rem; top: 1.2rem; color: var(--gold); font-size: .95rem; }
+    #ownbooks .promises b { color: var(--gold-light); }
     .g-feat { background: linear-gradient(160deg, rgba(139,0,0,.18), rgba(0,0,0,.42)); border: 1px solid rgba(201,168,76,.3); border-radius: 12px; padding: 1.6rem 1.3rem; transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease; }
     .g-feat:hover { transform: translateY(-3px); border-color: var(--gold); box-shadow: 0 12px 30px rgba(0,0,0,.4); }
-    .g-feat .fi { font-size: 1.5rem; color: var(--gold); filter: drop-shadow(0 0 10px rgba(201,168,76,.35)); margin-bottom: .8rem; }
-    .g-feat h3 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold-light); font-size: 1.35rem; letter-spacing: .4px; margin-bottom: .45rem; }
+    .g-feat .fi { display: block; text-align: center; font-size: 1.5rem; color: var(--gold); filter: drop-shadow(0 0 10px rgba(201,168,76,.35)); margin-bottom: .8rem; }
+    .g-feat h3 { text-align: center; font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold-light); font-size: 1.35rem; letter-spacing: .4px; margin-bottom: .7rem; }
     .g-feat p { color: rgba(255,255,255,.7); font-size: .86rem; line-height: 1.65; margin: 0; }
     .g-feat p .k { color: var(--gold-light); font-weight: 700; font-family: 'Merriweather Sans', sans-serif; font-size: .74rem; padding: .05rem .3rem; border: 1px solid rgba(201,168,76,.4); border-radius: 4px; }
 
     /* ---- synergy / the Keeper family ---- */
-    .g-synergy { max-width: 940px; margin: 0 auto; }
+    .g-synergy { max-width: 940px; margin-left: auto; margin-right: auto; }
     .g-fam-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; }
     .g-fam { position: relative; padding: 1.3rem 1.1rem 1.2rem; background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.4)); border: 1px solid rgba(201,168,76,.28); border-radius: 10px; transition: transform .14s ease, border-color .14s ease; }
     .g-fam:hover { transform: translateY(-2px); border-color: var(--gold); }
@@ -208,7 +214,7 @@
     .gcbt.down .who { text-decoration: line-through; }
 
     /* ---- the model ---- */
-    .g-model { max-width: 820px; margin: 0 auto; text-align: center; }
+    .g-model { max-width: 820px; margin-left: auto; margin-right: auto; text-align: center; }
     .g-model .free-badge { display:inline-block; font-family:'Breathe Fire','UnifrakturMaguntia',cursive; font-size: clamp(2.6rem,8vw,4rem); color: var(--gold); text-shadow: 0 0 32px rgba(201,168,76,.4); }
     .g-model p { color: rgba(255,255,255,.76); line-height: 1.9; font-size: 1rem; margin-top: .6rem; }
     .g-model strong { color: var(--gold-light); }
@@ -218,6 +224,14 @@
     .g-model .split ul { list-style:none; padding:0; margin:0; }
     .g-model .split li { position: relative; padding-left: 1.4rem; margin-bottom: .45rem; color: rgba(255,255,255,.72); font-size: .85rem; line-height: 1.5; }
     .g-model .split li i { position:absolute; left:0; top:.25rem; color: var(--gold); font-size:.72rem; }
+    .g-model #patrons { text-align: left; padding: 1.4rem 1.5rem; border: 1px solid rgba(201,168,76,.28); border-radius: 10px; background: linear-gradient(160deg, rgba(139,0,0,.12), rgba(0,0,0,.35)); }
+    .g-model #patrons h4 { font-family:'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold-light); font-size: 1.5rem; margin-bottom: .5rem; }
+    .g-model #patrons p { color: rgba(255,255,255,.76); font-size: .95rem; line-height: 1.8; margin-top: .6rem; }
+    .g-model #patrons ul { list-style:none; padding:0; margin:.7rem 0 0; }
+    .g-model #patrons li { position: relative; padding-left: 1.4rem; margin-bottom: .45rem; color: rgba(255,255,255,.72); font-size: .9rem; line-height: 1.5; }
+    .g-model #patrons li i { position:absolute; left:0; top:.28rem; color: var(--gold); font-size:.72rem; }
+    .g-model #patrons a:not(.g-btn) { color: var(--gold-light); text-decoration: underline; text-underline-offset: 2px; }
+    .g-model #patrons a:not(.g-btn):hover { color: var(--gold); }
     .g-store { margin: 1.1rem 0 0; font-family:'Merriweather Sans',sans-serif; font-size:.8rem; color: rgba(255,255,255,.66); }
     .g-store a { color: var(--gold); font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(201,168,76,.5); }
     .g-store a:hover { color: var(--gold-light); border-color: var(--gold-light); }
@@ -391,12 +405,7 @@
         <article class="g-feat">
           <i class="fas fa-scroll fi" aria-hidden="true"></i>
           <h3>A sheet in three minutes</h3>
-          <p>Pick a class and level; proficiency, saves, hit dice, and spell slots fill themselves in. Or forge one from scratch in the new <b>Forge</b>: species, class, background, feats, spells, and gear from the free SRD 5.2.1, with every number computed for you. Own other material, or wrote your own? Put it in <b>Your Books</b> and the Forge uses it: species, backgrounds, feats, spells, items, whole classes and subclasses, typed in, loaded from a file, or read straight out of a book you own (a PDF, an EPUB, a Word file, plain text, a 5eTools file), with the whole text searchable from the sheet, kept in your browser and never sent anywhere. Or paste your <b>D&amp;D Beyond</b> link, or drop a <b>Foundry VTT</b> file, and keep the character you already have.</p>
-        </article>
-        <article class="g-feat">
-          <i class="fas fa-heart-pulse fi" aria-hidden="true"></i>
-          <h3>The bookkeeping face</h3>
-          <p>One-tap damage and healing, temp HP, death saves, conditions, spell-slot pips, and rests that do the right thing. Your class resources sit on the Fight tab as coins: Rage, Second Wind, Action Surge, Channel Divinity, Focus Points, Bardic Inspiration, Sorcery Points, Wild Shape and the rest, grown from your level, spent with a tap, and handed back by the right rest. Cast a spell and pick the slot; concentrate on one and the sheet asks for the save when you take a hit. Every rule, action, feat, feature and item in the free SRD 5.2.1 is a search away, with the dice in the text ready to roll. Saving throws sit on the sheet with their numbers, prepared spells are counted against your level, a multiclass caster gets a save DC per class, and the sheet prints on paper when you want paper. Your familiar, your steed and your summoned beast keep their own hit points and attacks on the Fight tab; a Druid wears a Wild Shape form and the sheet becomes the beast until you drop it. Fly, swim, climb and burrow speeds sit beside your walk. When your XP earns a level, the sheet asks whether you want it now. No character yet? Sit down at the table by name and watch.</p>
+          <p>Pick a class and a level and your proficiency, saves, hit dice and spell slots fill themselves in. Or build one from scratch in the <b>Forge</b>, with every number computed for you.</p>
         </article>
         <article class="g-feat">
           <i class="fas fa-dice-d20 fi" aria-hidden="true"></i>
@@ -404,9 +413,29 @@
           <p>Every check, save, skill, and attack rolls with one tap, advantage and disadvantage included, with an honest result card and a session log you can clear.</p>
         </article>
         <article class="g-feat">
+          <i class="fas fa-heart-pulse fi" aria-hidden="true"></i>
+          <h3>The bookkeeping face</h3>
+          <p>One-tap damage and healing, temp HP, conditions, and rests that do the right thing. At 0 the hit-point plaque turns into death saves by itself, with a Healed button waiting.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-coins fi" aria-hidden="true"></i>
+          <h3>Your resources, as coins</h3>
+          <p>Rage, Second Wind, Action Surge, Channel Divinity, Bardic Inspiration, Sorcery Points and the rest sit on the Fight tab, grown from your level, spent with a tap, handed back by the right rest.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-hat-wizard fi" aria-hidden="true"></i>
+          <h3>Spells that keep their own count</h3>
+          <p>Cast one and pick the slot. Concentrate on one and the sheet asks for the save when you take a hit. Prepared spells are counted against your level, so you always know where you stand.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-magnifying-glass fi" aria-hidden="true"></i>
+          <h3>The whole SRD, a search away</h3>
+          <p>Every rule, action, feat, feature and item in the free SRD 5.2.1 is one search from your sheet, and the dice written into the text are ready to roll where they sit.</p>
+        </article>
+        <article class="g-feat">
           <i class="fas fa-satellite-dish fi" aria-hidden="true"></i>
           <h3>The live table</h3>
-          <p>Your DM reads a short code off <a href="/grimoire">Gnasher's Grimoire</a>; you type it in. Your rolls appear at the table, the initiative order lights up when it's your turn, and handouts land in your Journal.</p>
+          <p>Your DM reads a short code off Gnasher's Grimoire; you type it in. Your rolls appear at the table, the initiative order lights up when it's your turn, and handouts land in your Journal.</p>
         </article>
         <article class="g-feat">
           <i class="fas fa-moon fi" aria-hidden="true"></i>
@@ -421,16 +450,106 @@
       </div>
     </section>
 
+    <!-- ==================== WHEN IT GETS COMPLICATED ==================== -->
+    <section class="g-sec">
+      <div class="g-sec-head">
+        <h2>When your character gets complicated</h2>
+        <p>The parts that usually end up on a sticky note next to the sheet.</p>
+      </div>
+      <div class="g-feats">
+        <article class="g-feat">
+          <i class="fas fa-paw fi" aria-hidden="true"></i>
+          <h3>Wild Shape, and the sheet becomes the beast</h3>
+          <p>A Druid wears a form and the whole sheet turns into the animal until you drop it. Add a form once under <b>Companions &amp; Forms</b> and it is waiting the next time you need it.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-crow fi" aria-hidden="true"></i>
+          <h3>Familiars, steeds and summons</h3>
+          <p>Anything you bring to the fight carries its own hit points and its own attacks on the Fight tab, so your owl is not being tracked on the back of a napkin.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-code-branch fi" aria-hidden="true"></i>
+          <h3>Multiclass without the spreadsheet</h3>
+          <p>Add a class with one button and the Satchel keeps the math straight underneath: hit dice, proficiency, and which ability each half of you casts with.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-feather-pointed fi" aria-hidden="true"></i>
+          <h3>Every other speed</h3>
+          <p>Fly, swim, climb, burrow. Other speeds and your darkvision sit right beside your walking speed, where you can see them on the turn you actually need them.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-arrow-up-right-dots fi" aria-hidden="true"></i>
+          <h3>Level when you are ready</h3>
+          <p>When your XP earns a level the sheet asks whether you want it now, shows you what the level brings, and then moves every number that should move.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-chair fi" aria-hidden="true"></i>
+          <h3>No character? Pull up a chair</h3>
+          <p>Join your DM's table with nothing but your name and watch the fight from the top of the screen. Make a character later and your handouts move into its binder.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== BRING YOUR OWN BOOKS ==================== -->
+    <section id="ownbooks" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Bring your own books</h2>
+        <p>The Satchel ships with the free SRD 5.2.1 and nothing else, on purpose. The rest of your table is yours to bring.</p>
+      </div>
+      <div class="g-feats">
+        <article class="g-feat">
+          <i class="fas fa-hand-holding-droplet fi" aria-hidden="true"></i>
+          <h3>Drop the files in</h3>
+          <p>Drop them anywhere into your Satchel, several at once. A <b>.satchel</b> backup, a D&amp;D Beyond character or a Foundry VTT actor becomes a character. A <b>.md</b> or <b>.txt</b> note becomes a page in the open character's binder. A <b>.csv</b>, <b>.tsv</b> or <b>.xlsx</b> sheet becomes a page you can roll on. A <b>PDF</b>, <b>EPUB</b>, <b>Word</b> or <b>5eTools</b> file is a book.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-book-journal-whills fi" aria-hidden="true"></i>
+          <h3>Your Books holds the rest</h3>
+          <p>Species, backgrounds, feats, spells, items, armor, whole classes and subclasses. Three ways in: type an entry yourself, load a book file, or read a book you already own. Every one shows up in the Forge the moment you keep it.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-list-check fi" aria-hidden="true"></i>
+          <h3>Then build, in about three minutes</h3>
+          <p>Species, background, class, feats, spells and gear, with your own material sitting in the same lists as the SRD. Tick what your table uses, leave the rest, and every number computes itself. Most of the three minutes is you reading your own book.</p>
+        </article>
+      </div>
+      <ul class="promises">
+        <li><i class="fas fa-house-lock" aria-hidden="true"></i><b>It stays in this browser.</b> The Satchel never sends your material anywhere, and nothing you put in can be shared from inside the app. That is deliberate. Your books are yours.</li>
+        <li><i class="fas fa-code-branch" aria-hidden="true"></i><b>A name clash never overwrites you.</b> Where your entry shares a name with the SRD, the SRD keeps the plain name and yours carries its book's name after it. Take a book back out and the characters built from it keep their names and say plainly what is no longer installed.</li>
+      </ul>
+    </section>
+
+    <!-- ==================== RULEBOOK PACKS ==================== -->
+    <section id="packs" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Free rulebook packs</h2>
+        <p>Open rulebooks, already packaged for the Forge. Download one, load it in Your Books, and its options sit in the same lists as the SRD, picked the same way, computed the same way. No account, no sign-in, nothing phones home.</p>
+      </div>
+
+      <div class="g-packs">
+        <a class="g-pack" href="downloads/feats-and-backgrounds.satchel.json" download>
+          <i class="fas fa-scroll" aria-hidden="true"></i>
+          <b>Feats and Backgrounds</b>
+          <span class="count">59 feats &middot; 21 backgrounds &middot; 82 KB</span>
+          <span>The feats and backgrounds from the A5E Adventurer&rsquo;s Guide, built as real Forge data. Pick one and the sheet grants what it grants; where A5E offers you a choice, it says so and leaves the choice to you.</span>
+          <span class="lic">EN Publishing &middot; CC BY 4.0</span>
+        </a>
+      </div>
+
+      <p class="g-packs-note">This is somebody else&rsquo;s rulebook, shared under the open licence its publisher chose, and the pack carries its credit line inside it. We are not affiliated with EN Publishing. Take it back out whenever you like. A pack is never welded in.</p>
+      <p class="g-packs-note">Running the game instead? <a href="grimoire.html#packs">Gnasher&rsquo;s Grimoire has more of them</a>, whole bestiaries and spell lists, built for the table behind the screen.</p>
+    </section>
+
     <!-- ==================== QUICKSTART ==================== -->
     <section class="g-sec" id="quickstart">
       <div class="g-sec-head">
         <h2>Install to rolling, in ten steps</h2>
-        <p>The same walkthrough lives inside the app, under <b>How to use</b> on your character shelf.</p>
+        <p>The same walkthrough lives inside the app, under <b>How to use</b> in your Satchel.</p>
       </div>
       <div class="g-list">
         <ol>
           <li><b>Install it.</b> Open the Satchel. iPhone: Safari's <b>Share</b> button, then <b>Add to Home Screen</b>. Android: Chrome's menu, then <b>Add to Home screen</b>, then <b>Install</b>.</li>
-          <li><b>Or tap "Try a sample hero"</b> on the empty shelf: a ready-made Fighter, every number real, so you can tap things before you build anything.</li>
+          <li><b>Or tap "Try a sample hero"</b> when your Satchel is still empty: a ready-made Fighter, every number real, so you can tap things before you build anything.</li>
           <li><b>Make a character</b> with <b>+ New Character</b>: name, class, level, and the <b>Standard array</b> button for instant ability scores. Three minutes, playable.</li>
           <li><b>Or bring your D&amp;D Beyond character.</b> Set it to Public on dndbeyond.com (Manage, then Character Settings, then Privacy), then paste your character's <b>link</b> into the Satchel's <b>Import</b>. It opens your data page in a new tab; select all, copy, tap <b>Paste</b>, done. You carry your own data; the Satchel never fetches it for you.</li>
           <li><b>Or bring your Foundry character:</b> right-click the actor, <b>Export Data</b>, and feed the .json to <b>Import</b>.</li>
@@ -482,6 +601,25 @@
           <div class="tp-row tp-player"><i class="fas fa-mobile-screen"></i><div><b>You &middot; the Satchel</b><span class="tp-turn">Your turn</span></div></div>
           <div class="tp-row tp-player"><i class="fas fa-paper-plane"></i><div><b>Handout</b><span>arrived in your Journal</span></div></div>
         </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHO PAYS FOR THIS (Patron tier) ==================== -->
+    <section class="g-sec g-model">
+      <div id="patrons">
+        <h4>Who pays for this</h4>
+        <p>No company, no investors, no ads, and nothing in the Satchel calls home. It is one DM on Long Island, building the tools he wanted at his own table. The Satchel is free and it stays free.</p>
+        <p>Two things keep it going. People buy Keepers, the adventures, tables and packs that drop into the Grimoire. And people become Patrons, or donate.</p>
+        <p style="margin-bottom:.4rem;"><strong>Patron &middot; $25, once.</strong> It unlocks nothing, because nothing is locked. There is no tier that opens a feature you already have on your phone. What it buys is the next build.</p>
+        <ul>
+          <li><i class="fas fa-feather"></i> Your name on the <a href="/patrons">Patrons&rsquo; Page</a></li>
+          <li><i class="fas fa-comments"></i> The patrons&rsquo; room in the Discord, where I answer first</li>
+          <li><i class="fas fa-check-to-slot"></i> A vote that counts on what gets forged next</li>
+        </ul>
+        <p style="margin-top:1.1rem;">
+          <a class="g-btn g-btn-gold" href="https://longislanddungeonmaster.itch.io/gnashers-grimoire" target="_blank" rel="noopener"><i class="fas fa-feather" aria-hidden="true"></i> Become a Patron &middot; $25</a>
+          <a class="g-btn g-btn-ghost" href="/app/satchel/players-satchel.html"><i class="fas fa-hand-sparkles" aria-hidden="true"></i> Or just take the Satchel, free</a>
+        </p>
       </div>
     </section>
 

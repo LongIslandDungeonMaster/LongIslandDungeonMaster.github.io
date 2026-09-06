@@ -2159,3 +2159,23 @@ html.js [data-reveal].revealed {
   max-width: 520px;
   margin: 0 auto 1.5rem;
 }
+
+/* ---- rulebook packs (Grimoire) ---- */
+.g-packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:28px}
+.g-pack{display:flex;flex-direction:column;gap:8px;padding:24px;text-decoration:none;
+  border:1px solid rgba(201,162,75,.28);border-radius:10px;background:rgba(22,10,10,.5);
+  color:#cdbf9c;transition:border-color .18s ease,transform .18s ease}
+.g-pack:hover,.g-pack:focus-visible{border-color:rgba(201,162,75,.75);transform:translateY(-2px)}
+.g-pack i{font-size:26px;color:#C9A24B}
+/* `var(--display,...)` was wrong: this site has no --display custom property, so every pack
+   card title silently fell back to Georgia while every other card on the page used the
+   display face. Name the stack the way the rest of the sheet does. */
+.g-pack b{font-family:'Breathe Fire','UnifrakturMaguntia',cursive;font-size:23px;color:#f0dfae}
+.g-pack .count{font-family:ui-monospace,Consolas,monospace;font-size:12px;letter-spacing:.06em;
+  text-transform:uppercase;color:#c9a24b}
+.g-pack span:not(.count):not(.lic){font-size:15px;line-height:1.55;color:#cdbf9c}
+.g-pack,.g-pack:visited,.g-pack:hover{color:#cdbf9c}
+.g-pack .lic{margin-top:6px;padding-top:10px;border-top:1px solid rgba(201,162,75,.18);
+  font-size:12px;letter-spacing:.04em;color:#9c8a76}
+.g-packs-note{margin-top:22px;font-size:14px;line-height:1.6;color:#9c8a76;max-width:70ch}
+@media (prefers-reduced-motion:reduce){.g-pack{transition:none}.g-pack:hover{transform:none}}
