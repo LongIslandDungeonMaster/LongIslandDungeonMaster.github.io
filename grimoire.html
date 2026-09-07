@@ -65,9 +65,9 @@
     /* ============================================================
        INTERFACE MOCKUP: the companion window
        SCREENSHOT SLOT #1 (primary): filled with the live gesture
-       recording (poster assets/grimoire/shot2-summon.png). To swap
+       recording (poster assets/grimoire/shot10-summon.png). To swap
        in a different shot, replace the .gwin-body markup with:
-         <img src="assets/grimoire/shot2-summon.png" alt="..." style="width:100%;display:block;">
+         <img src="assets/grimoire/shot10-summon.png" alt="..." style="width:100%;display:block;">
        and keep the .gwin / .gwin-bar chrome around it.
        ============================================================ */
     .gwin { max-width: 940px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid rgba(201,168,76,.55); box-shadow: 0 0 0 4px rgba(139,0,0,.28), 0 26px 70px rgba(0,0,0,.6); background: #120404; }
@@ -350,10 +350,10 @@
           <span class="gwin-hint">The Keeper of Halcyon Light &nbsp;&middot;&nbsp; open</span>
         </div>
         <div class="gwin-body">
-          <video autoplay muted loop playsinline preload="metadata" poster="assets/grimoire/shot2-summon.png" style="width:100%;display:block;" aria-label="Live recording: The Keeper of Halcyon Light opens, Space summons the palette, typing 'wend' searches the whole library, the table floats over the page and rolls in place">
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/grimoire/shot10-summon.png" style="width:100%;display:block;" aria-label="Live recording: The Keeper of Halcyon Light opens, Space summons the palette, typing 'wend' searches the whole library, the table floats over the page and rolls in place">
             <source src="assets/grimoire/motion/gesture.webm" type="video/webm">
             <source src="assets/grimoire/motion/gesture.mp4" type="video/mp4">
-            <img src="assets/grimoire/shot2-summon.png" alt="Gnasher's Grimoire with The Keeper of Halcyon Light open and the Summon palette floating over it" style="width:100%;display:block;">
+            <img src="assets/grimoire/shot10-summon.png" alt="The Summon palette open over an adventure, three letters typed, matches from across the whole library" style="width:100%;display:block;">
           </video>
         </div>
       </div>
@@ -402,47 +402,7 @@
         <article class="g-feat">
           <i class="fas fa-terminal fi" aria-hidden="true"></i>
           <h3>The Summon</h3>
-          <p>A command palette over your whole library. Fuzzy-search tables, monsters, and NPCs across every book you own. Hit <span class="k">Space</span>, type, done. No tab-hunting, no flipping.</p>
-        </article>
-        <article class="g-feat">
-          <i class="fas fa-hand-pointer fi" aria-hidden="true"></i>
-          <h3>Install your own</h3>
-          <p>Drag a downloaded Keeper onto the binder and it's in. Its tables and monsters join the Summon, its art streams in when you open it. No account, no upload, no sign-in.</p>
-        </article>
-        <article class="g-feat">
-          <i class="fas fa-feather-alt fi" aria-hidden="true"></i>
-          <h3>Make your own Keeper</h3>
-          <p><b>Write an adventure in plain Markdown, right in the app, and get a Keeper out.</b> A <b>##</b> heading starts a scene, and a quoted line becomes read-aloud text.</p>
-        </article>
-        <article class="g-feat">
-          <i class="fas fa-table-list fi" aria-hidden="true"></i>
-          <h3>Markdown that rolls</h3>
-          <p>A plain Markdown table rolls, with the die read off the first column. Paste a 5e stat block and it becomes a monster you can muster into a fight. Five lines make an NPC card.</p>
-        </article>
-        <article class="g-feat">
-          <i class="fas fa-file-word fi" aria-hidden="true"></i>
-          <h3>Tables you already typed</h3>
-          <p><b>Write a table in Word or a spreadsheet, drop it in, and roll on it the same night.</b> Every table in a <b>.docx</b> and every sheet in an <b>.xlsx</b> arrives ready to roll, with the die read off your own roll column.</p>
-        </article>
-        <article class="g-feat">
-          <i class="fas fa-paste fi" aria-hidden="true"></i>
-          <h3>Or paste the cells</h3>
-          <p>Google Docs and Sheets work too: download as Word or Excel first. So do <b>.csv</b>, <b>.tsv</b> and a Markdown table in <b>.md</b>. No file at all? Paste the cells straight in and the app shows you the grid it read.</p>
-        </article>
-        <article class="g-feat">
-          <i class="fas fa-book-open fi" aria-hidden="true"></i>
-          <h3>Notes, books and homebrew</h3>
-          <p><b>.txt</b> and <b>.md</b> notes, a saved web page, <b>.epub</b> books with every chapter summonable, and <b>.pdf</b> for the Tome shelf. Homebrew <b>.json</b> in the 5eTools shape musters straight into the War Table.</p>
-        </article>
-        <article class="g-feat">
-          <i class="fas fa-folder-open fi" aria-hidden="true"></i>
-          <h3>Import from Obsidian</h3>
-          <p><b>Point it at your Obsidian vault and every note becomes a page and a card you can summon</b> over the adventure you are running. Any folder of .md notes works.</p>
-        </article>
-        <article class="g-feat">
-          <i class="fas fa-puzzle-piece fi" aria-hidden="true"></i>
-          <h3>Your plugins come with it</h3>
-          <p>Fantasy Statblocks blocks become monsters. Initiative Tracker encounters become encounter cards. Notes tagged npc become NPC cards. Tables roll, [[links]] still link, and the pictures you embedded come along.</p>
+          <p>A command line over your whole library. Hit <span class="k">Space</span>, type three letters, and tables, monsters, NPCs and pages from every book you own come up at once. Pick one and it floats over the scene you are running.</p>
         </article>
         <article class="g-feat">
           <i class="fas fa-layer-group fi" aria-hidden="true"></i>
@@ -452,34 +412,89 @@
         <article class="g-feat">
           <i class="fas fa-bookmark fi" aria-hidden="true"></i>
           <h3>Bookmarks</h3>
-          <p>Drop up to ten spots in a long adventure, auto-named from the scene you're on, so a bookmark you drop on the Gull's Tooth battle map arrives already labelled. Click a chip and you're back there instantly.</p>
+          <p>Drop up to ten spots in a long adventure, auto-named from the scene you are on, so a bookmark you drop on the Gull’s Tooth battle map arrives already labelled. Click a chip and you are back there.</p>
         </article>
         <article class="g-feat">
           <i class="fas fa-chess-board fi" aria-hidden="true"></i>
           <h3>The War Table</h3>
-          <p>Muster a fight from your party and any <em>Creature Keeper</em> you own, browsed like chapters, then run full initiative, HP, and conditions <em>without leaving the page.</em> Monster attacks roll right there.</p>
+          <p>Muster a fight from your party and any monsters you own, then run initiative, HP and conditions without leaving the page. Attacks roll to-hit and damage into your log, a concentrating character who takes damage gets the DC, and a monster’s name plate hides from the players until they work out what it is.</p>
         </article>
         <article class="g-feat">
           <i class="fas fa-map fi" aria-hidden="true"></i>
           <h3>The War Board</h3>
-          <p>Point it at your own folder of map images and run the fight on the map. Align the grid or go gridless, pan and zoom, then measure, draw, and ping a spot for the table. Press <b>W</b>.</p>
+          <p>Point it at your own folder of map images and run the fight on the map. Drop a grid on any picture or match the one it already has, pan and zoom, measure in squares and feet, draw on a layer your players never see, and ping a spot so every screen looks where you point. Press <b>W</b>.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-fire fi" aria-hidden="true"></i>
+          <h3>Light and walls</h3>
+          <p>Trace the walls of a room and they block sight, with a gap brush for doorways and arrow slits. Then light the map the way the fiction does: a candle, a torch, a hooded lantern, a light spell or open daylight, each with its own reach. Every player token sees for itself, so the party only uncovers what it could see from where it stands. Fog paints back by brush, rectangle or eraser.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-pen-ruler fi" aria-hidden="true"></i>
+          <h3>Scenes, and a table that draws</h3>
+          <p>Keep several scenes on one board and change rooms in the middle of a fight without losing a token or redrawing a wall. Drop text notes anywhere on the map, kept to yourself or shown to the table. Your players can draw on the board too, so the rogue can sketch the plan everybody argues about.</p>
         </article>
         <article class="g-feat">
           <i class="fas fa-chess-pawn fi" aria-hidden="true"></i>
-          <h3>Fog, and tokens that know who they are</h3>
-          <p>Hide the room behind a fog mask you paint back with a brush, a rectangle or an eraser. Drop tokens from your own art, and a combatant you mustered on the War Table <em>is</em> its token.</p>
+          <h3>Make your own tokens</h3>
+          <p>Drop in a picture, or paste one off your clipboard, and the app punches it into a round token: pan it, size it, pick one of six borders drawn in the app. Conditions ride as a ring around the art instead of dots over it, and a monster you rename in the fight carries the new name everywhere.</p>
         </article>
         <article class="g-feat">
           <i class="fas fa-satellite-dish fi" aria-hidden="true"></i>
           <h3>The Live Table</h3>
-          <p>Read one code off the screen and your players link in with <a href="/satchel">Gnasher's Satchel</a>. Muster a fight and initiative lights up every screen; push handouts and whispers; their rolls come home to your log. No server, no account.</p>
+          <p>Read one code off the screen and your players link in with <a href="/satchel">Gnasher’s Satchel</a>. Muster a fight and initiative lights up every screen; push handouts and whispers; their rolls come home to your log. No server, no account.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-box-open fi" aria-hidden="true"></i>
+          <h3>The party pile and the Table Thread</h3>
+          <p>A shared pile the whole table reaches into. Players take from it, give to it and trade with each other, and none of it waits on you. Beside it runs the Table Thread: post a note, reply to it, drop a dice chip into a message that the sheet’s owner rolls for real. Freeze the thread when the night ends and keep it.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-hammer fi" aria-hidden="true"></i>
+          <h3>The Forge</h3>
+          <p><b>Write an adventure in plain Markdown, right in the app, and get a Keeper out.</b> A <b>##</b> heading starts a scene, a quoted line becomes read-aloud text, a table written with pipes rolls, and a pasted 5e stat block becomes a monster you can muster. Keep it, or download one file anyone can drop into theirs.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-folder-open fi" aria-hidden="true"></i>
+          <h3>Import from Obsidian</h3>
+          <p>Point it at your vault and every note becomes a page and a card you can summon. Fantasy Statblocks blocks become monsters, Initiative Tracker encounters become encounter cards, notes tagged npc become NPC cards, tables roll and [[links]] still link. <b>With a vault linked, tonight’s Chronicle writes itself back into it as a note.</b> It asks before it reads, and again before it writes.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-hand-pointer fi" aria-hidden="true"></i>
+          <h3>Drop in what you already have</h3>
+          <p>Drag a downloaded Keeper onto the binder and it is in. So are the tables you already typed: <b>.docx</b>, <b>.xlsx</b>, <b>.csv</b>, <b>.tsv</b> and Markdown, with the die read off your own roll column. No file at all? Paste the cells. Your <b>.txt</b> and <b>.md</b> notes come in with the pictures you embedded, and any phrase inside them is searchable.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-book-open fi" aria-hidden="true"></i>
+          <h3>Tomes</h3>
+          <p>Shelve your own <b>.pdf</b> books beside your Keepers, open them in the app, and set page marks. The Summon reads the words inside, so a phrase from page 200 finds that page. <b>.epub</b> books come in chapter by chapter, each one summonable. Nothing is uploaded.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-music fi" aria-hidden="true"></i>
+          <h3>The Sound Mat</h3>
+          <p>Put your music in a folder and play the night from the same screen: playlists, search, shuffle and loop as separate controls, and twelve one shot pads for doors, thunder and lockpicks. It sits beside the cue engine that plays a Sound Companion pack when an adventure calls for one.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-dice-d20 fi" aria-hidden="true"></i>
+          <h3>Five rollers</h3>
+          <p>For the question you did not prepare for: an NPC with a face, a manner and a want; names by culture; a tavern with a sign and a rumour; a shop with stock and prices; and loot. Reroll any single line until it fits, then drop the result into tonight’s Chronicle.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-rotate-left fi" aria-hidden="true"></i>
+          <h3>Take a book out, or put it back</h3>
+          <p>Retire any volume from its own cover, in three presses so it never happens by accident. The file on your computer is never touched and your notes and page marks stay put. Changed your mind? Restore the starting stock from About and every missing volume comes back, with nothing fetched from anywhere.</p>
+        </article>
+        <article class="g-feat">
+          <i class="fas fa-palette fi" aria-hidden="true"></i>
+          <h3>The look</h3>
+          <p>The pages read like a book on the desk: parchment, crimson rubrics and square rules, with the War Board and the fight screen staying dark where you want them dark. Six colour packs, and seven figure faces so HP, AC and roll results read clean from across the table.</p>
         </article>
       </div>
       <article class="g-feat" style="margin-top:1rem; display:flex; align-items:center; gap:1.1rem; text-align:left;">
         <i class="fas fa-infinity fi" aria-hidden="true" style="margin-bottom:0; flex-shrink:0;"></i>
         <div>
           <h3 style="margin-bottom:.2rem; text-align:left;">Yours, offline, forever</h3>
-          <p>Runs 100% offline, like the Keepers themselves. Your whole binder exports to one file you can back up or move. No subscription to open what you already own.</p>
+          <p>Runs 100% offline, like the Keepers themselves. Your whole binder exports to one file you can back up or move, or you can link a folder on a drive and keep the binder in it: open the Grimoire on any computer, link the same folder, and your books, notes and saves are all there. No subscription to open what you already own.</p>
         </div>
       </article>
     </section>
@@ -547,7 +562,7 @@
         <a class="g-pack" href="downloads/feats-and-backgrounds.html" download>
           <i class="fas fa-scroll" aria-hidden="true"></i>
           <b>Feats and Backgrounds</b>
-          <span class="count">86 entries &middot; 105 KB</span>
+          <span class="count">59 feats &middot; 21 backgrounds &middot; 6 conditions &middot; 105 KB</span>
           <span>Fifty-nine feats, twenty-one backgrounds and six conditions from the A5E Adventurer&rsquo;s Guide. Every background brings its own roll tables for connections and mementos.</span>
           <span class="lic">EN Publishing &middot; CC BY 4.0</span>
         </a>
@@ -560,6 +575,7 @@
         </a>
       </div>
 
+      <p class="g-packs-note">Which rules do they speak? The 2024 rules are built into the app already. Advanced 5th Edition and Black Flag arrive by pack, from the five above. Anything else that is 5e shaped comes in as your own file: <b>.json</b> in the 5eTools shape, a table in <b>.docx</b>, or a note in Markdown.</p>
       <p class="g-packs-note">These are other people&rsquo;s rulebooks, shared under the open licences their publishers chose, and each pack carries its own credit line inside it. We are not affiliated with any of these publishers. Your own books stay your own: the Grimoire reads a PDF you already have without ever uploading it.</p>
       <p class="g-packs-note">Playing rather than running? <a href="satchel.html#packs">The Player&rsquo;s Satchel takes packs too</a>, the same A5E feats and backgrounds, built so the character sheet actually uses them.</p>
     </section>
@@ -579,10 +595,10 @@
           </ul>
         </div>
         <div class="gwar" style="padding:0;overflow:hidden;" aria-label="Live recording: the War Table advancing turns through an orc fight over the bestiary that supplied the monsters">
-          <video autoplay muted loop playsinline preload="metadata" poster="assets/grimoire/shot4-war-table.png" style="width:100%;display:block;border-radius:inherit;">
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/grimoire/shot3-war-table.png" style="width:100%;display:block;border-radius:inherit;">
             <source src="assets/grimoire/motion/wartable.webm" type="video/webm">
             <source src="assets/grimoire/motion/wartable.mp4" type="video/mp4">
-            <img src="assets/grimoire/shot4-war-table.png" alt="The War Table panel over a bestiary Keeper: initiative order, per-combatant HP, conditions" style="width:100%;display:block;">
+            <img src="assets/grimoire/shot3-war-table.png" alt="The War Table beside the running page: initiative order, per-combatant HP, a condition ring and a concentration check" style="width:100%;display:block;">
           </video>
         </div>
       </div>
@@ -619,7 +635,7 @@
       <div class="g-sec-head" style="margin-bottom:.4rem;">
         <span class="free-badge">The binder is free.</span>
       </div>
-      <p>Gnasher's Grimoire is free, and it always will be. It's the shelf, and a shelf only matters once there's something on it. <strong>What you fill it with is up to you.</strong> Load it with free Table Keepers from The Hoard, then fill it with the Bi-Weekly One-Shots and Keepers when you want more teeth. Own more, summon more. That's the whole deal.</p>
+      <p>Gnasher's Grimoire is free, and it always will be. It's the binder, and a binder only matters once there's something in it. <strong>What you fill it with is up to you.</strong> Load it with free Table Keepers from The Hoard, then fill it with the Bi-Weekly One-Shots and Keepers when you want more teeth. Own more, summon more. That's the whole deal.</p>
       <div class="split">
         <div>
           <h4>Free, forever</h4>
@@ -680,19 +696,19 @@
         </div>
         <div class="shot">
           <div class="shot-frame">
-            <img src="assets/grimoire/shot4-war-board-lighting.png" alt="The War Board with dynamic lighting: a walled room, a torch tied to a token, fog beyond the walls" style="width:100%;display:block;" loading="lazy">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/grimoire/shot4-war-board-lighting.png" style="width:100%;display:block;" aria-label="Live recording: a box wall drawn, a door cut, a torch tied to a token and carried through it, daylight toggled"><source src="assets/grimoire/motion/lighting.webm" type="video/webm"><source src="assets/grimoire/motion/lighting.mp4" type="video/mp4"><img src="assets/grimoire/shot4-war-board-lighting.png" alt="Live recording: a box wall drawn, a door cut, a torch tied to a token and carried through it, daylight toggled" style="width:100%;display:block;" loading="lazy"></video>
           </div>
           <div class="shot-cap"><b>Light and walls</b><span>Torches, lanterns, daylight; walls block sight</span></div>
         </div>
         <div class="shot">
           <div class="shot-frame">
-            <img src="assets/grimoire/shot5-token-maker.png" alt="The token maker: a portrait punched into a ring with a Futhark border, name on the plate" style="width:100%;display:block;" loading="lazy">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/grimoire/shot5-token-maker.png" style="width:100%;display:block;" aria-label="Live recording: a picture dropped into the token maker, punched into a Futhark ring and placed on the board"><source src="assets/grimoire/motion/tokenmaker.webm" type="video/webm"><source src="assets/grimoire/motion/tokenmaker.mp4" type="video/mp4"><img src="assets/grimoire/shot5-token-maker.png" alt="Live recording: a picture dropped into the token maker, punched into a Futhark ring and placed on the board" style="width:100%;display:block;" loading="lazy"></video>
           </div>
           <div class="shot-cap"><b>Make your own tokens</b><span>Any picture, six borders, straight onto the board</span></div>
         </div>
         <div class="shot">
           <div class="shot-frame">
-            <img src="assets/grimoire/shot6-party-pile.png" alt="The party pile: items and coin the players take from, give to and trade in" style="width:100%;display:block;" loading="lazy">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/grimoire/shot6-party-pile.png" style="width:100%;display:block;" aria-label="Live recording: a hoard rolled, sent to the party pile, and the coin split across three seats"><source src="assets/grimoire/motion/partypile.webm" type="video/webm"><source src="assets/grimoire/motion/partypile.mp4" type="video/mp4"><img src="assets/grimoire/shot6-party-pile.png" alt="Live recording: a hoard rolled, sent to the party pile, and the coin split across three seats" style="width:100%;display:block;" loading="lazy"></video>
           </div>
           <div class="shot-cap"><b>The party pile</b><span>They take, give and trade; you do nothing</span></div>
         </div>
@@ -708,7 +724,44 @@
           </div>
           <div class="shot-cap"><b>Five rollers</b><span>NPC, name, tavern, shop, loot</span></div>
         </div>
+        <div class="shot">
+          <div class="shot-frame">
+            <img src="assets/grimoire/shot10-summon.png" alt="The Summon palette open over an adventure, three letters typed, matches from across the whole library" style="width:100%;display:block;" loading="lazy">
+          </div>
+          <div class="shot-cap"><b>The Summon</b><span>Space, three letters, every book you own</span></div>
+        </div>
+        <div class="shot">
+          <div class="shot-frame">
+            <img src="assets/grimoire/shot11-forge.png" alt="The Forge: an adventure written in plain Markdown inside the app, over the Keeper it built" style="width:100%;display:block;" loading="lazy">
+          </div>
+          <div class="shot-cap"><b>The Forge</b><span>Write a Keeper in plain Markdown</span></div>
+        </div>
+        <div class="shot">
+          <div class="shot-frame">
+            <img src="assets/grimoire/shot12-obsidian.png" alt="A vault linked from Obsidian: six notes read as pages, with an NPC card and a stat block floating over the cover" style="width:100%;display:block;" loading="lazy">
+          </div>
+          <div class="shot-cap"><b>Your Obsidian vault</b><span>Notes become pages and cards</span></div>
+        </div>
+        <div class="shot">
+          <div class="shot-frame">
+            <img src="assets/grimoire/shot13-sound-mat.png" alt="The Sound Mat: a playlist off your own music folder beside twelve one shot pads" style="width:100%;display:block;" loading="lazy">
+          </div>
+          <div class="shot-cap"><b>The Sound Mat</b><span>Your own music, and twelve pads</span></div>
+        </div>
+        <div class="shot">
+          <div class="shot-frame">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/grimoire/shot14-takeout.png" style="width:100%;display:block;" aria-label="Live recording: a book taken out in three presses and restored from About"><source src="assets/grimoire/motion/takeout.webm" type="video/webm"><source src="assets/grimoire/motion/takeout.mp4" type="video/mp4"><img src="assets/grimoire/shot14-takeout.png" alt="Live recording: a book taken out in three presses and restored from About" style="width:100%;display:block;" loading="lazy"></video>
+          </div>
+          <div class="shot-cap"><b>Take a book out</b><span>From its cover, and put it back</span></div>
+        </div>
+        <div class="shot">
+          <div class="shot-frame">
+            <img src="assets/grimoire/shot15-hidden-name.png" alt="Two kobolds on the War Board: one name plate hidden from the players and dimmed for the DM, a condition ring on the other, lighting on" style="width:100%;display:block;" loading="lazy">
+          </div>
+          <div class="shot-cap"><b>Hide the name</b><span>It stays a shape until they work it out</span></div>
+        </div>
       </div>
+    </section>
     <!-- ==================== FINAL CTA ==================== -->
     <section id="get-it" class="g-final">
       <h2>Take it. It's free.</h2>
