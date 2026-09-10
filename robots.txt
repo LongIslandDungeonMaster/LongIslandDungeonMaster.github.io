@@ -1,0 +1,10 @@
+# Long Island Dungeon Master
+User-agent: *
+Allow: /
+
+# Channel landing pages are per-source duplicates of /links and carry noindex.
+Disallow: /tt
+Disallow: /ig
+Disallow: /yt
+
+Sitemap: https://longislanddungeonmaster.com/sitemap.xml
