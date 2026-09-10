@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Free DM Tools for In-Person D&amp;D Games (2026)</title>
+<link rel="canonical" href="https://longislanddungeonmaster.com/best-free-dm-tools">
+<meta name="description" content="A practical, no-fluff guide to the best free tools for running Dungeons &amp; Dragons at a physical table in 2026: combat trackers, generators, maps, rules lookup, and note-taking, with honest notes on what's free versus what leads to a paywall.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Long Island Dungeon Master">
+<meta property="og:title" content="Best Free DM Tools for In-Person D&amp;D Games">
+<meta property="og:description" content="A working list for a physical table: combat trackers, generators, maps and rules lookup that are free, fast to open, and usable one-handed while you referee.">
+<meta property="og:url" content="https://longislanddungeonmaster.com/best-free-dm-tools">
+<meta property="og:image" content="https://longislanddungeonmaster.com/assets/grimoire/shot3-war-table.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --ink: #2a2018;
+    --ink-soft: #4a4038;
+    --paper: #faf6ee;
+    --paper-raised: #ffffff;
+    --line: #ddd2bd;
+    --accent: #7a3b2e;
+    --accent-soft: #a85c46;
+    --gold: #9c7c3c;
+    --code-bg: #f0e9d8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #ece4d6;
+      --ink-soft: #c9bfae;
+      --paper: #1c1712;
+      --paper-raised: #26201a;
+      --line: #453b2e;
+      --accent: #d98a6f;
+      --accent-soft: #e0a68f;
+      --gold: #c9a959;
+      --code-bg: #2a2319;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+    line-height: 1.65;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+    font-size: 17px;
+  }
+  header.page-head {
+    padding: 40px 0 20px;
+    border-bottom: 3px double var(--line);
+    margin-bottom: 30px;
+  }
+  .kicker {
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    color: var(--accent-soft);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.15;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .dek {
+    font-size: 18px;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0 0 12px;
+  }
+  .byline-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  h2 {
+    font-size: 25px;
+    margin: 48px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    color: var(--accent);
+  }
+  h3 {
+    font-size: 19px;
+    margin: 26px 0 8px;
+    color: var(--ink);
+  }
+  p { margin: 0 0 16px; }
+  ul, ol { margin: 0 0 16px; padding-left: 26px; }
+  li { margin-bottom: 8px; }
+  strong { color: var(--ink); }
+  a { color: var(--accent); }
+  .callout {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin: 20px 0;
+    font-size: 15.5px;
+  }
+  .callout strong { color: var(--accent); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0;
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 14.5px;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 9px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--code-bg);
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .toolbox-shot {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px;
+    margin: 18px 0;
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+  }
+  .toolbox-shot .shot-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .shot-mock {
+    background: linear-gradient(135deg, var(--code-bg), var(--paper-raised));
+    border: 1px dashed var(--line);
+    border-radius: 6px;
+    padding: 28px 16px;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+  .checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+  .checklist li {
+    padding-left: 30px;
+    position: relative;
+  }
+  .checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .faq-block {
+    margin-top: 12px;
+  }
+  .faq-item {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .faq-item h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    color: var(--accent);
+  }
+  .faq-item p {
+    margin: 0;
+    font-size: 15.5px;
+  }
+  footer.page-foot {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  .updated-line {
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+  code {
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+
+<header class="page-head">
+  <div class="kicker">DM Toolbox</div>
+  <h1>Best Free DM Tools for In-Person D&amp;D Games (2026)</h1>
+  <p class="dek">A working list for the table, not the internet. Every tool here was picked for one job: run a physical session without a laptop full of tabs.</p>
+  <div class="byline-row">
+    <span>By a DM who's run games for over 30 years</span>
+    <span class="updated-line">Updated 2026</span>
+  </div>
+</header>
+
+<p>Running a game in person is a different problem than running one online. You don't need voice chat or a virtual tabletop with a thousand settings. You need initiative that doesn't fall apart when someone stands up to get a drink, a name generator you can hit in two seconds when a player talks to a shopkeeper you didn't plan for, and rules you can find before the table gets bored watching you flip pages.</p>
+
+<p>This list only includes tools that work at a real table: fast to open, fast to use one-handed while you're also refereeing a fight, and free enough that a new DM can use every one of them without pulling out a credit card. Where a tool has a paid tier, that's said plainly, because "free forever" and "free trial" are not the same promise.</p>
+
+<h2>Combat &amp; Initiative Tools</h2>
+
+<p>The single biggest slowdown at a real table is combat bookkeeping: whose turn is it, who has what condition, how much HP is left on the goblin nobody wrote down. A good tracker gets out of the way and just answers those questions.</p>
+
+<p>Look for a tracker that handles three things without extra taps: initiative order, HP per combatant, and status conditions that don't get forgotten two rounds later. A difficulty estimate before you start the fight (so you're not guessing whether four goblins will kill a level-2 party) is a genuine time-saver, not a gimmick.</p>
+
+<figure class="toolbox-shot">
+  <img src="assets/grimoire/shot3-war-table.png" width="1600" height="1000" loading="lazy" decoding="async"
+       alt="A combat tracker mid-fight: initiative order down the left, armour class and current hit points per combatant, and condition tags on two of them."
+       style="width:100%;height:auto;display:block;border-radius:6px;">
+  <figcaption class="shot-label">A fight in progress: initiative order, hit points per combatant, and conditions that stay visible.</figcaption>
+</figure>
+
+<p><a href="/grimoire" title="Gnasher's Grimoire, a free offline DM companion">Gnasher's Grimoire's War Table</a> is built for exactly this. You muster your party and any monsters into an encounter, get a plain difficulty read (Trivial through Deadly) before you commit, then run it: initiative order, HP and conditions per combatant, and a round counter. Timed conditions count down and drop off on their own instead of you tracking them on a sticky note. If you want a shared map, the same combat tracker doubles as the token layer on the built-in battle map, so a monster's HP and its position on the map are the same piece of data instead of two things you update separately.</p>
+
+<h2>Generators for Improv (Names, Loot, NPCs)</h2>
+
+<p>Every DM eventually gets asked a question they didn't prep for: what's the barkeep's name, what's in this chest, who is this stranger at the crossroads. A name generator and a loot table are the fastest way to answer without breaking the scene to think out loud.</p>
+
+<ul>
+  <li><strong>Name generators:</strong> the best ones let you filter by race or culture and spit out several options at once, so you can pick the one that sounds right instead of accepting the first result.</li>
+  <li><strong>Loot and treasure tables:</strong> a rollable table beats a static list, because the randomness is part of the fun at the table, not just a convenience.</li>
+  <li><strong>NPC quirk/motivation tables:</strong> a one-line hook ("nervous, owes money, lies about it") turns a nameless extra into someone the party remembers.</li>
+</ul>
+
+<p>The SRD rules content built into Gnasher's Grimoire includes encounter and treasure tables you can roll straight from the search bar, and any table you build yourself (even a quick one pasted from a spreadsheet) becomes rollable too, reading the die size off your own column. That covers homebrew loot tables and published SRD tables from the same search box, without switching apps mid-scene.</p>
+
+<h2>Maps &amp; Battle Displays</h2>
+
+<p>Not every table wants a screen for maps, and that's a legitimate choice. But for tables that do, a digital battle map earns its place by replacing dry-erase mats and loose miniatures with something that remembers positions, fog, and terrain between sessions.</p>
+
+<table>
+  <thead><tr><th>What to check for</th><th>Why it matters at a physical table</th></tr></thead>
+  <tbody>
+    <tr><td>Use your own map images</td><td>You're not locked into a library that doesn't have the dungeon you drew or bought.</td></tr>
+    <tr><td>Grid alignment, not just grid-required maps</td><td>Hand-drawn and purchased maps rarely arrive pre-gridded.</td></tr>
+    <tr><td>Fog of war you control</td><td>Players see only what their characters have seen, without a second screen.</td></tr>
+    <tr><td>Tokens tied to your combat tracker</td><td>Moving a token shouldn't be disconnected from that combatant's HP and conditions.</td></tr>
+  </tbody>
+</table>
+
+<figure class="toolbox-shot">
+  <img src="assets/grimoire/shot4-war-board-lighting.png" width="1600" height="1000" loading="lazy" decoding="async"
+       alt="A battle map with a square grid aligned to the artwork, unexplored areas darkened, and character tokens placed on it."
+       style="width:100%;height:auto;display:block;border-radius:6px;">
+  <figcaption class="shot-label">A battle map with the grid aligned to the art, unlit ground held back, and tokens on the board.</figcaption>
+</figure>
+
+<p><a href="/grimoire" title="Gnasher's Grimoire, a free offline DM companion">Gnasher's Grimoire's War Board</a> lets you point at your own folder of map images, align the grid (or skip grid entirely), and paint fog back with a brush, rectangle, or eraser. Tokens use your own art, and a combatant mustered on the War Table is its token on the map, so HP and position stay in sync automatically. If players are running <a href="/satchel" title="Gnasher's Satchel, the free player companion">Gnasher's Satchel</a> on their own phones, the board and its fog push to their screens live, and their rolls come back to your log, all without a server or an account on either end.</p>
+
+<h2>Reference &amp; Rules Lookup</h2>
+
+<p>The rulebook flip is the second-biggest table-slowdown after combat math. A searchable rules reference beats physical books for one reason: you can search it, and a physical book only opens to where your thumb lands.</p>
+
+<p>What actually helps mid-session is a reference that returns a monster stat block, a spell description, or a rule in one search, and lets you pull it up as a small card without losing your place in the adventure text you're reading aloud from.</p>
+
+<p>Gnasher's Grimoire ships with the full free 5th-edition SRD already installed and searchable (monsters, spells, items, and rules), so there's nothing to download or import before your first session. Press a key, type a few letters of what you're looking for, and it floats over whatever page you're already on.</p>
+
+<h2>Session Notes &amp; Campaign Tracking</h2>
+
+<p>The best note system is the one you'll actually use after a long night at the table, which usually means it has to be fast, not fancy. Bullet points beat prose. A running list of NPCs and open threads beats a wiki you have to maintain.</p>
+
+<ul class="checklist">
+  <li>Capture what happened the same night, while it's fresh, not "sometime this week."</li>
+  <li>Keep a short list of loose threads so nothing a player asked about gets forgotten for three sessions.</li>
+  <li>If you use a note-taking app like Obsidian for prep, look for a tool that can read your existing notes rather than asking you to re-enter everything a second time.</li>
+</ul>
+
+<p>Gnasher's Grimoire can export a self-contained recap page of a session (the rolls, the fight, your bookmarks, the party) with one click, and separately can link an Obsidian vault folder so your own notes, statblocks, and NPCs appear inside the app alongside anything you bought. Neither of those requires an account or uploads anything off your machine.</p>
+
+<h2>What to Look For in a Free Tool</h2>
+
+<p>"Free" gets used loosely in this space. Before you build a session around a tool, check what it actually costs you:</p>
+
+<ul class="checklist">
+  <li><strong>Does it work with no internet at the table?</strong> Plenty of venues, basements, and game stores have bad or no wifi.</li>
+  <li><strong>Does it require an account?</strong> An account is a password to remember and, often, a place your data lives on someone else's server.</li>
+  <li><strong>What happens when the free tier runs out?</strong> Some tools are free until your campaign grows past a page or map limit, then ask you to subscribe to keep using content you already made.</li>
+  <li><strong>Does it survive if the company folds?</strong> A tool that only runs through a hosted website disappears if that website goes away. A tool that's a single file you keep on your computer does not.</li>
+</ul>
+
+<div class="callout">
+  <strong>Being straight about our own tool:</strong> Gnasher's Grimoire is one HTML file with no install and no account, and it runs the same with the internet off. That's true and worth knowing before you pick anything. It is not the only offline DM tool on the market: some competitors also work offline on tablets and phones through their own apps. What Gnasher's Grimoire commits to specifically is no install, no account, and one file you keep, which is a different bet than an app-store app, not automatically a better one for every table.
+</div>
+
+<h2 id="faq">FAQ</h2>
+
+<div class="faq-block">
+  <div class="faq-item">
+    <h3>Is it really free?</h3>
+    <p>The tools in this list have a genuinely free tier you can run a full session on: a combat tracker, generators, and rules lookup with no payment required. Some, including our own Grimoire, are free with optional paid content (adventures, monster packs) layered on top rather than a subscription gate on the core app. Read the fine print before you build a campaign around a "free" tool with a page or feature cap.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does it work offline, without internet at the table?</h3>
+    <p>Check this specifically, because a lot of "free DM tools" are web apps that need a live connection to load. Gnasher's Grimoire is one HTML file that opens in any browser and runs the same with the internet off, since nothing it does depends on a server. If a tool advertises itself as an app instead of a website, ask whether "offline mode" means fully offline or just a cached view of an online tool.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do I need an account?</h3>
+    <p>Not for anything on this list at the core-feature level. Gnasher's Grimoire specifically needs no account, no login, and no server; your data lives in the browser you're running it in (or on a USB stick if you link one), not on a company's servers.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What's the best single tool for a beginner DM?</h3>
+    <p>Start with whichever tool bundles the most of what you need in one place, so you're not juggling four browser tabs at the table. A combat tracker plus a searchable rules reference plus generators, in one app, is the highest-leverage combination for a first-time DM. Gnasher's Grimoire bundles those three plus a battle map and covers most of a beginner's first few sessions without any other tool open.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is there a paid tool worth upgrading to?</h3>
+    <p>Only if a specific limitation is actually slowing your table down. A paid virtual tabletop with heavy online-multiplayer features makes sense if you're running a hybrid table with remote players every week. For a purely in-person table, most paid upgrades in this space buy you content (published adventures, art packs) rather than functionality you couldn't already do for free.</p>
+  </div>
+</div>
+
+
+<aside class="toolbox-cta" style="margin:2.5rem 0;padding:1.25rem 1.5rem;border:1px solid var(--line);border-radius:8px;background:var(--paper-raised);">
+  <h2 style="margin-top:0;">Try the one this list keeps pointing at</h2>
+  <p style="margin-bottom:0.75rem;">Gnasher's Grimoire is free, and it is one HTML file. No install, no account, no server, and it runs with the wifi off. It ships with the SRD 5.2.1 already loaded, so it is useful the moment you open it.</p>
+  <p style="margin-bottom:0;"><a href="/grimoire"><strong>See what it does</strong></a> &middot; <a href="/satchel">the free player companion</a></p>
+</aside>
+<footer class="page-foot">
+  <p>Gnasher's Grimoire is a free tool for in-person Dungeons &amp; Dragons games, built and maintained by Long Island Dungeon Master.</p>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Best Free DM Tools for In-Person D&D Games (2026)",
+  "description": "A practical guide to the best free tools for running Dungeons & Dragons at a physical table in 2026: combat trackers, generators, maps, rules lookup, and note-taking.",
+  "articleSection": "DM Toolbox",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Organization",
+    "name": "Long Island Dungeon Master"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Long Island Dungeon Master"
+  },
+  "url": "https://longislanddungeonmaster.com/best-free-dm-tools",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://longislanddungeonmaster.com/best-free-dm-tools"
+  },
+  "datePublished": "2026-09-09",
+  "dateModified": "2026-09-09",
+  "image": "https://longislanddungeonmaster.com/assets/grimoire/shot3-war-table.png"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tools in this list have a genuinely free tier you can run a full session on: a combat tracker, generators, and rules lookup with no payment required. Some, including our own Grimoire, are free with optional paid content (adventures, monster packs) layered on top rather than a subscription gate on the core app. Read the fine print before you build a campaign around a 'free' tool with a page or feature cap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work offline, without internet at the table?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Check this specifically, because a lot of 'free DM tools' are web apps that need a live connection to load. Gnasher's Grimoire is one HTML file that opens in any browser and runs the same with the internet off, since nothing it does depends on a server. If a tool advertises itself as an app instead of a website, ask whether 'offline mode' means fully offline or just a cached view of an online tool."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not for anything on this list at the core-feature level. Gnasher's Grimoire specifically needs no account, no login, and no server; your data lives in the browser you're running it in (or on a USB stick if you link one), not on a company's servers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the best single tool for a beginner DM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with whichever tool bundles the most of what you need in one place, so you're not juggling four browser tabs at the table. A combat tracker plus a searchable rules reference plus generators, in one app, is the highest-leverage combination for a first-time DM. Gnasher's Grimoire bundles those three plus a battle map and covers most of a beginner's first few sessions without any other tool open."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a paid tool worth upgrading to?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only if a specific limitation is actually slowing your table down. A paid virtual tabletop with heavy online-multiplayer features makes sense if you're running a hybrid table with remote players every week. For a purely in-person table, most paid upgrades in this space buy you content (published adventures, art packs) rather than functionality you couldn't already do for free."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
