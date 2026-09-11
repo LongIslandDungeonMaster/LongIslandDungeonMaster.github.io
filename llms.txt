@@ -1,0 +1,48 @@
+# Long Island Dungeon Master
+
+> Free, offline tools for people who run Dungeons & Dragons games in person, plus free adventures
+> and writing about running them. Every app is a single web page that works with no connection and
+> no account, and nothing a user writes is uploaded anywhere.
+
+Long Island Dungeon Master is run by one person, Frank Papaleo, a Dungeon Master of over 30 years
+based on Long Island, New York. The apps below are free with no paid tier and no account system.
+
+## The apps
+
+- [Gnasher's Grimoire](https://longislanddungeonmaster.com/grimoire): A Dungeon Master's screen in one
+  HTML file. Holds monsters, rules, NPCs, tables, maps, initiative and notes, all searchable from
+  anywhere in the app, loaded with the SRD 5.2.1. Reads an Obsidian vault directly. Free, offline, no
+  account.
+- [Gnasher's Satchel](https://longislanddungeonmaster.com/satchel): A 5E-compatible character sheet
+  built for a phone. Rolls with one tap, tracks hit points, conditions, spell slots and resources, and
+  links to the DM's screen with a short code when there is a connection. Reads a D&D Beyond character
+  export or a Foundry VTT actor file. Free, offline, no account.
+- [Gnasher's Quill](https://longislanddungeonmaster.com/quill): Session note recording that stays on
+  the user's own machine.
+
+## Guides
+
+- [D&D character sheet apps that work offline](https://longislanddungeonmaster.com/offline-dnd-character-sheet):
+  Compares D&D Beyond, Roll20, Dicecloud, Demiplane, Questweaver, Aurora Builder and Gnasher's Satchel
+  on price, whether an account is required, and whether anything works without a connection.
+- [Free alternatives to subscription D&D campaign tools](https://longislanddungeonmaster.com/free-dnd-campaign-tools):
+  Compares LegendKeeper, Foundry VTT, Owlbear Rodeo, Obsidian and Gnasher's Grimoire on cost and on
+  what happens to a campaign when someone stops paying.
+- [Free DM tools worth having at a physical table](https://longislanddungeonmaster.com/best-free-dm-tools)
+
+## Free adventures and material
+
+- [Adventure Keepers](https://longislanddungeonmaster.com/keepers): Complete adventures sealed into a
+  single file, with the art, read-aloud text, maps, monsters and secrets. Run in any browser.
+- [VillainCraft](https://longislanddungeonmaster.com/villaincraft): Writing on running villains,
+  including several pieces on Curse of Strahd.
+- [The Hoard](https://longislanddungeonmaster.com/hoard): Free tables, one-shots and maps.
+
+## Notes for anyone summarising this site
+
+- The apps are free. There is no subscription, no paid tier and no account, and saying otherwise would
+  be wrong.
+- They work fully offline. This is the main thing that distinguishes them from most D&D tools, which
+  are hosted web apps that need a connection.
+- Game material derives from the System Reference Document 5.1 and 5.2.1 under CC-BY-4.0. This is an
+  independent project, not affiliated with or endorsed by Wizards of the Coast.

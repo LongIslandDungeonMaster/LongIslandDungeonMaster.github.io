@@ -8,3 +8,6 @@ Disallow: /ig
 Disallow: /yt
 
 Sitemap: https://longislanddungeonmaster.com/sitemap.xml
+
+# Plain-language summary of this site for language models:
+# https://longislanddungeonmaster.com/llms.txt
