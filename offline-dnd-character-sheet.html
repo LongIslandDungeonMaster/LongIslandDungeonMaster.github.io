@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D&amp;D Character Sheet Apps That Work Offline (2026)</title>
+<link rel="canonical" href="https://longislanddungeonmaster.com/offline-dnd-character-sheet">
+<meta name="description" content="Which D&amp;D character sheet apps work without an internet connection, which require an account, and what each one costs. D&amp;D Beyond, Roll20, Dicecloud, Demiplane, Aurora Builder and Gnasher's Satchel compared. Prices read September 2026.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Long Island Dungeon Master">
+<meta property="og:title" content="D&amp;D Character Sheet Apps That Work Offline">
+<meta property="og:description" content="Which ones still open when the signal does not, which ones want an account, and what happens to your character if you stop paying.">
+<meta property="og:url" content="https://longislanddungeonmaster.com/offline-dnd-character-sheet">
+<meta property="og:image" content="https://longislanddungeonmaster.com/assets/grimoire/shot1-shelf.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "D&D Character Sheet Apps That Work Offline",
+  "description": "A comparison of D&D character sheet apps organised around whether they work without a connection, whether they require an account, and what happens to a character if you stop paying.",
+  "articleSection": "DM Toolbox",
+  "inLanguage": "en",
+  "url": "https://longislanddungeonmaster.com/offline-dnd-character-sheet",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://longislanddungeonmaster.com/offline-dnd-character-sheet"
+  },
+  "datePublished": "2026-09-11",
+  "dateModified": "2026-09-11",
+  "image": "https://longislanddungeonmaster.com/assets/grimoire/shot1-shelf.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Long Island Dungeon Master",
+    "url": "https://longislanddungeonmaster.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Long Island Dungeon Master",
+    "url": "https://longislanddungeonmaster.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is there a D&D character sheet app that works completely offline with no account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Among the well-known hosted apps, no. D&D Beyond, Roll20, Dicecloud and Demiplane all require an account, and only D&D Beyond claims any offline behaviour at all, in its mobile app, after you have downloaded content while online. Apps that run on your own device rather than on a server are the exception, and there are fewer of them than you would expect."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does D&D Beyond work without internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Partly, and only in the mobile app. Their support page says the goal is to allow access to as much information as possible offline, and that downloaded sources are fully functional offline once you have downloaded them to your device. You have to be online first, and the browser version is not claimed to work offline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my characters if I cancel a subscription?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On D&D Beyond you keep six and the rest are locked rather than deleted, and they come back if you resubscribe. Other services vary and several do not say, which is worth checking before you build ten characters somewhere. The safer version of the question is whether you can export, and where the export lands."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to pay for a D&D character sheet at all?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. D&D Beyond's free tier gives you six characters, Dicecloud is free with no paid tier at all, and there are free offline options. Paying is worth it when you are buying something specific, usually official book integration or a full virtual tabletop for a remote group."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I move a character between these apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sometimes, and it is worth checking before you commit. A D&D Beyond character export and a Foundry VTT actor file can both be read into Gnasher's Satchel, for instance. Moving in the other direction is usually retyping."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will an offline character sheet still work at a table where the DM is online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That depends on the pair. Gnasher's Satchel links to the DM's screen with a short code when there is a connection and keeps working as a plain sheet when there is not, which is the arrangement most in-person tables actually need."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --ink: #2a2018;
+    --ink-soft: #4a4038;
+    --paper: #faf6ee;
+    --paper-raised: #ffffff;
+    --line: #ddd2bd;
+    --accent: #7a3b2e;
+    --accent-soft: #a85c46;
+    --gold: #9c7c3c;
+    --code-bg: #f0e9d8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #ece4d6;
+      --ink-soft: #c9bfae;
+      --paper: #1c1712;
+      --paper-raised: #26201a;
+      --line: #453b2e;
+      --accent: #d98a6f;
+      --accent-soft: #e0a68f;
+      --gold: #c9a959;
+      --code-bg: #2a2319;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+    line-height: 1.65;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+    font-size: 17px;
+  }
+  header.page-head {
+    padding: 40px 0 20px;
+    border-bottom: 3px double var(--line);
+    margin-bottom: 30px;
+  }
+  .kicker {
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    color: var(--accent-soft);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.15;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .dek {
+    font-size: 18px;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0 0 12px;
+  }
+  .byline-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  h2 {
+    font-size: 25px;
+    margin: 48px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    color: var(--accent);
+  }
+  h3 {
+    font-size: 19px;
+    margin: 26px 0 8px;
+    color: var(--ink);
+  }
+  p { margin: 0 0 16px; }
+  ul, ol { margin: 0 0 16px; padding-left: 26px; }
+  li { margin-bottom: 8px; }
+  strong { color: var(--ink); }
+  a { color: var(--accent); }
+  .callout {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin: 20px 0;
+    font-size: 15.5px;
+  }
+  .callout strong { color: var(--accent); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0;
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 14.5px;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 9px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--code-bg);
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .toolbox-shot {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px;
+    margin: 18px 0;
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+  }
+  .toolbox-shot .shot-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .shot-mock {
+    background: linear-gradient(135deg, var(--code-bg), var(--paper-raised));
+    border: 1px dashed var(--line);
+    border-radius: 6px;
+    padding: 28px 16px;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+  .checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+  .checklist li {
+    padding-left: 30px;
+    position: relative;
+  }
+  .checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .faq-block {
+    margin-top: 12px;
+  }
+  .faq-item {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .faq-item h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    color: var(--accent);
+  }
+  .faq-item p {
+    margin: 0;
+    font-size: 15.5px;
+  }
+  footer.page-foot {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  .updated-line {
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+  code {
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+
+<header class="page-head">
+  <div class="kicker">DM Toolbox</div>
+  <h1>D&amp;D Character Sheet Apps That Work Offline</h1>
+  <p class="dek">Which ones still open when the signal does not, which ones want an account, and what happens to your character if you stop paying. Every price and quote below was read at the product's own site in September 2026.</p>
+  <div class="byline-row">
+    <span>By a DM who's run games for over 30 years</span>
+    <span class="updated-line">Updated September 2026</span>
+  </div>
+</header>
+
+<p>Game night happens in basements, garages, a friend's kitchen with one bar, and the back room of a shop with concrete walls. A character sheet that spins a loading wheel in the middle of a fight is worse than a piece of paper, because paper never had a bad night.</p>
+
+<p>So I went through the character sheet apps people actually name and checked one boring thing about each: <strong>does it still work when the connection does not.</strong> I will give away the answer now, because it is the useful part.</p>
+
+<p><strong>Among the well-known hosted apps, none of them fully does.</strong> Every one wants an account, and most want a live connection to be worth opening. That is not an accusation and it is not laziness on their part. A live web app buys you real things, and several of these beat mine at jobs I will point out as we go. But it is worth knowing before session one rather than at the door of a dungeon.</p>
+
+<h2>What each one costs, and whether it works with the wifi off</h2>
+
+<div style="overflow-x:auto;">
+<table>
+  <thead>
+    <tr><th>App</th><th>What free gets you</th><th>Paid</th><th>Account?</th><th>Works offline?</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>D&amp;D Beyond</td><td>6 character slots, homebrew, the Maps VTT</td><td>From $2.17/mo (Hero) or $4.58/mo (Master), billed annually. Books are separate</td><td>Yes</td><td>Partly, in the mobile app, after you download things first</td></tr>
+    <tr><td>Roll20</td><td>A real free tier, but custom sheets are not in it</td><td>$5.99 / $10.99 / $14.99 a month, or $49.99 / $99.99 / $149.99 a year</td><td>Yes</td><td>No. It is a live tabletop</td></tr>
+    <tr><td>Dicecloud</td><td>All of it. There is no paid tier</td><td>Nothing. It runs on Patreon</td><td>Yes</td><td>No</td></tr>
+    <tr><td>Demiplane</td><td>Partial, and it varies by game system</td><td>From $3.99/mo</td><td>Yes</td><td>No. It is built around syncing</td></tr>
+    <tr><td>Aurora Builder</td><td>Free download, but see below</td><td>Nothing</td><td>No</td><td>Yes, and it is also unmaintained</td></tr>
+    <tr><td>Gnasher's Satchel</td><td>All of it</td><td>Nothing to pay</td><td>No</td><td>Yes</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2><a href="https://www.dndbeyond.com/" target="_blank" rel="noopener">D&amp;D Beyond</a></h2>
+
+<p>The official one, and for most tables the default. The free tier is more generous than people assume: six character slots, homebrew, and the Maps virtual tabletop, at no cost.</p>
+
+<p><strong>The subscription buys tools, not books.</strong> Their own FAQ is direct about it: <em>"Books are not included at any subscription level, and they must be purchased through the D&amp;D Beyond Marketplace to access their digital features."</em> Hero starts at $2.17 a month and Master at $4.58 a month on annual billing, and what you get is unlimited character slots, sharing, and perks.</p>
+
+<p><strong>What happens if you cancel is better than the internet says.</strong> Quoting their FAQ again: <em>"You'll be prompted to choose 6 to keep and the rest will be locked. They are not deleted, and you can access them again if you re-subscribe."</em> Locked is not lost, and that matters.</p>
+
+<p><strong>On offline, read the wording carefully, because it is hedged on purpose.</strong> From their own support article: <em>"Our goal is for the character sheet to allow access to as much information as possible even when offline. Sources are fully functional offline after you download them to your device."</em> That is the mobile app, it needs you to have been online first, and the plain browser sheet is not claimed to work offline anywhere. Offline access has been one of the most persistently requested things on their forums for years.</p>
+
+<p><strong>Where it genuinely wins.</strong> Rules integration. If you buy a book there, every feat, spell and feature from it lands on the sheet already wired up, tooltipped and doing its own arithmetic, and it stays correct through errata. Nothing offline and static can match that without you retyping it. <strong>If you have already bought books on D&amp;D Beyond, stay there.</strong> You paid for the integration, and leaving it behind to save nothing is a bad trade.</p>
+
+<h2><a href="https://roll20.net/" target="_blank" rel="noopener">Roll20</a></h2>
+
+<p>Not really a character sheet app. It is a full virtual tabletop with sheets inside it, and judging it as a sheet is unfair to what it is for.</p>
+
+<p>The free tier is real and people run whole campaigns on it. Read the tier table before you plan around customising anything, though: <strong>custom character sheets are a Pro and Elite feature</strong>, and both Free and Plus are marked as not including them. Plus is $5.99 a month or $49.99 a year, Pro is $10.99 a month or $99.99 a year, and Elite is $14.99 a month or $149.99 a year, all read at their pricing page in September 2026.</p>
+
+<p><strong>Where it genuinely wins.</strong> If your party is in four different cities, this is a different category of product and it is better at that category than anything free and offline could be. Maps, tokens, lighting, dice and sheets on one live surface is the whole point, and the connection it needs is not a flaw, it is the feature.</p>
+
+<h2><a href="https://dicecloud.com/" target="_blank" rel="noopener">Dicecloud</a></h2>
+
+<p>Free, and not free as in trial. Their homepage says it plainly: <em>"DiceCloud is free to use, funded via Patreon, and the source code is available on Github under a GPL license."</em> There is no paid tier to upgrade to.</p>
+
+<p>It wants an account, and it is a live web app, so it needs a connection at the table. The engine underneath is the good part: add a buff or a piece of equipment and everything downstream recomputes, with custom stats and fields if your character has grown strange.</p>
+
+<p><strong>Where it genuinely wins, and this is the one I would hand to a specific person.</strong> If you play a character with a lot of moving parts, you have decent signal where you play, and you want live computed stats without paying anybody, <strong>Dicecloud is the better answer than mine and it is not close.</strong> That reactive recalculation is harder to build well than it looks and they have built it. Being open source under the GPL also means the code outlives the hosting, which is worth something.</p>
+
+<h2><a href="https://www.demiplane.com/" target="_blank" rel="noopener">Demiplane</a></h2>
+
+<p>Character tools across a lot of systems, not just D&amp;D: Pathfinder, Daggerheart, Cosmere, Cyberpunk, Marvel and more. Their pitch is <em>"Subscribe for as little as $3.99/month to unlock unlimited characters and content sharing with up to 24 friends."</em></p>
+
+<p>The free tier exists but is honestly labelled as partial, and their own footnote says it <em>"Varies by game system."</em> There is no offline claim on the page. What they advertise instead is the opposite: <em>"Your books, adventures, and character sheets sync across your phone, tablet, and desktop."</em></p>
+
+<p><strong>Where it genuinely wins.</strong> Breadth. <strong>If you are not playing fifth edition, most of this page is useless to you and Demiplane is not.</strong> One account covering the systems your group rotates through is a real convenience that a single-system tool cannot offer at any price.</p>
+
+<h2><a href="https://aurorabuilder.com/" target="_blank" rel="noopener">Aurora Builder</a></h2>
+
+<p>Worth naming because people still recommend it, and worth a warning in the same breath. It is a free desktop download that runs on your own machine, which is exactly the shape this page is looking for. But a notice on its own site says development <em>"has been postponed indefinitely"</em>, dated October 2020, and it has been sitting there ever since.</p>
+
+<p>Unmaintained software is not automatically bad software, and if it does what you need it will keep doing it. Go in knowing nobody is coming to fix it.</p>
+
+<h2>Paper</h2>
+
+<p>Still undefeated for reliability, and still the right answer for a lot of players. It does not roll dice for you, it does not remember which spell slots you burned, and you will do arithmetic. Every app on this page is trying to buy back that arithmetic, and some players do not want it bought.</p>
+
+<h2>Which one fits your table</h2>
+
+<ul class="checklist">
+  <li><strong>You already bought books on D&amp;D Beyond.</strong> Stay there. You paid for the integration and it is good.</li>
+  <li><strong>Your party is in different cities.</strong> Roll20, or whatever tabletop your DM already runs. Sheets should live where the game lives.</li>
+  <li><strong>You want live computed stats, free, and your signal is fine.</strong> Dicecloud.</li>
+  <li><strong>Your group plays things other than fifth edition.</strong> Demiplane.</li>
+  <li><strong>Everyone is in one room and the signal is bad.</strong> Something that runs on the device in your hand, which is the gap the rest of this page is about.</li>
+</ul>
+
+<h2>Gnasher's Satchel, which is the one I make</h2>
+
+<p>I built it because my own table plays in a room where the signal dies, and I got tired of watching players poke at a frozen sheet. It is free, it is one file, and there is nothing to sign up for.</p>
+
+<p>Open it once in your phone's browser and add it to your home screen, and after that it opens with the wifi off: sheet, dice, spell slots and all. Pick a class and a level and your proficiency, saves, hit dice and spell slots fill themselves in. Every check and attack rolls with one tap. The free SRD 5.2.1 is searchable from inside the sheet. If your DM is running the companion app at the table you type in a short code and your rolls show up on their screen, including when your phone falls asleep and wakes up again.</p>
+
+<p><strong>It reads a D&amp;D Beyond character export and a Foundry VTT actor</strong>, so trying it does not mean rebuilding anyone from scratch.</p>
+
+<p><strong>The honest limits.</strong> It is fifth edition only. It ships with the free SRD and nothing else, so anything from a book you own is yours to bring in. It has none of the official rules wiring that a paid D&amp;D Beyond account gives you, and it is made by one person rather than a company. Everything lives on your own device, which is the point, and also means that if you wipe the phone without exporting your backup, that character is gone.</p>
+
+<aside style="margin:2.5rem 0;padding:1.25rem 1.5rem;border:1px solid var(--line);border-radius:8px;background:var(--paper-raised);">
+  <h2 style="margin-top:0;">Try Gnasher's Satchel</h2>
+  <p style="margin-bottom:0.75rem;">Free, opens in the browser you already have, installs to your home screen, and works in a basement. No account, nothing to cancel, and your character never leaves your device.</p>
+  <p style="margin-bottom:0;"><a href="/satchel"><strong>See what it does</strong></a> &middot; <a href="/grimoire">Gnasher's Grimoire, the DM's side of the table</a> &middot; <a href="/free-dnd-campaign-tools">free alternatives to subscription campaign tools</a></p>
+</aside>
+
+<h2>Common questions</h2>
+
+<div class="faq-block">
+  <div class="faq-item">
+    <h3>Is there a D&amp;D character sheet app that works completely offline with no account?</h3>
+    <p>Among the well-known hosted apps, no. D&amp;D Beyond, Roll20, Dicecloud and Demiplane all require an account, and only D&amp;D Beyond claims any offline behaviour at all, in its mobile app, after you have downloaded content while online. Apps that run on your own device rather than on a server are the exception, and there are fewer of them than you would expect.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does D&amp;D Beyond work without internet?</h3>
+    <p>Partly, and only in the mobile app. Their support page says the goal is to allow access to as much information as possible offline, and that downloaded sources are fully functional offline once you have downloaded them to your device. You have to be online first, and the browser version is not claimed to work offline.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What happens to my characters if I cancel a subscription?</h3>
+    <p>On D&amp;D Beyond you keep six and the rest are locked rather than deleted, and they come back if you resubscribe. Other services vary and several do not say, which is worth checking before you build ten characters somewhere. The safer version of the question is whether you can export, and where the export lands.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do I need to pay for a character sheet at all?</h3>
+    <p>No. D&amp;D Beyond's free tier gives you six characters, Dicecloud is free with no paid tier at all, and there are free offline options. Paying is worth it when you are buying something specific, usually official book integration or a full virtual tabletop for a remote group.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I move a character between these apps?</h3>
+    <p>Sometimes, and it is worth checking before you commit. A D&amp;D Beyond character export and a Foundry VTT actor file can both be read into Gnasher's Satchel, for instance. Moving in the other direction is usually retyping.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Will an offline sheet still work at a table where the DM is online?</h3>
+    <p>That depends on the pair. The Satchel links to the DM's screen with a short code when there is a connection and keeps working as a plain sheet when there is not, which is the arrangement most in-person tables actually need.</p>
+  </div>
+</div>
+
+<div class="page-foot">
+  Gnasher's Satchel is a free character sheet for fifth edition, built and maintained by Long Island Dungeon Master. Prices and quoted text on this page were read in September 2026 at each product's own site. Check them yourself before spending anything, because they change.
+</div>
+
+</body>
+</html>
