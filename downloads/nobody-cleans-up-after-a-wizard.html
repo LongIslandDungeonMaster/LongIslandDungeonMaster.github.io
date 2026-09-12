@@ -37,7 +37,8 @@
     .taste { background: linear-gradient(180deg, rgba(61,0,0,.5), rgba(26,0,0,.5)); border: 1px solid rgba(201,168,76,.3); border-left: 3px solid var(--gold); border-radius: 4px; padding: 1rem 1.2rem; margin: 1.6rem 0 0; }
     .taste p { color: var(--parchment-dk); font-size: .95rem; line-height: 1.65; margin: 0 0 .55rem; }
     .taste p:last-child { margin-bottom: 0; }
-    .taste .taste-label { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; opacity: .75; margin: 0 0 .7rem; }
+    .taste p { position: relative; padding-left: 1.1rem; }
+    .taste p::before { content: '\2022'; position: absolute; left: 0; color: var(--gold); }
     .taste .num { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-weight: 700; margin-right: .45rem; }
     h2.sect { font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .9rem; color: var(--gold); text-align: center; margin: 0 0 1.3rem; }
     .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -76,11 +77,9 @@
     <p class="whatis">The duel ends. The ritual works. The war is signed away in a tent somewhere and the people who did the casting go home or go into the ground. <strong>Nothing else goes back.</strong> The bread in that village will not stale. The dogs will not walk down that street. Nobody sends anyone to fix that, so the people who live there just learn the rules and stop mentioning them to visitors. This is a <strong>d100 of those rules</strong>, plus a <strong>d10 of who is still paying for them</strong>, which is the roll that turns a piece of dressing into an adventure hook. There is not a stat block or a saving throw in the whole thing: it runs in fifth edition, in an OSR game, in anything you can roll a die in. Seven print-ready pages, free to use at your table and in your own material under CC BY 4.0.</p>
 
     <div class="taste">
-      <p class="taste-label">Three, picked at random.</p>
-      
-      <p><span class="num">7.</span> The forge fire burns green on the day someone in the village is going to die. The smith stopped announcing it, because people started asking him to check before journeys.</p>
-      <p><span class="num">45.</span> The cellar door cannot be opened while anyone is watching it. This has never once been a convenience.</p>
-      <p><span class="num">99.</span> The tax rolls list one household no living person can find. It has paid on time and in full for sixty years.</p>
+      <p>The forge fire burns green on the day someone in the village is going to die. The smith stopped announcing it, because people started asking him to check before journeys.</p>
+      <p>The cellar door cannot be opened while anyone is watching it. This has never once been a convenience.</p>
+      <p>The tax rolls list one household no living person can find. It has paid on time and in full for sixty years.</p>
     </div>
 
     <div class="divider"></div>

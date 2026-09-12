@@ -40,7 +40,8 @@
     .taste { background: linear-gradient(180deg, rgba(61,0,0,.5), rgba(26,0,0,.5)); border: 1px solid rgba(201,168,76,.3); border-left: 3px solid var(--gold); border-radius: 4px; padding: 1rem 1.2rem; margin: 1.6rem 0 0; }
     .taste p { color: var(--parchment-dk); font-size: .95rem; line-height: 1.65; margin: 0 0 .55rem; }
     .taste p:last-child { margin-bottom: 0; }
-    .taste .taste-label { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; opacity: .75; margin: 0 0 .7rem; }
+    .taste p { position: relative; padding-left: 1.1rem; }
+    .taste p::before { content: '\2022'; position: absolute; left: 0; color: var(--gold); }
     .taste .num { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-weight: 700; margin-right: .45rem; }
     h2.sect { font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .9rem; color: var(--gold); text-align: center; margin: 0 0 1.3rem; }
     .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -80,8 +81,6 @@
     <p class="whatis">Most low-level monsters threaten hit points, and a party with a cleric stops caring about hit points somewhere in the second session. This one threatens the <strong>water</strong>. A seepworm smells damp through sixty feet of solid rock, surfaces under whatever is wettest in the camp, takes <strong>one bite for one point of piercing damage</strong>, and burrows back out before anyone has finished standing up. The wound is trivial. Then the party guards the water, and the worm takes the next wettest thing in the camp, which is a person: a DC 13 Constitution save, and on a failure it is under the skin. A host gains nothing from drinking, because the worm drinks first, and picks up a level of Exhaustion every long rest that will not come off. And <strong>a dead seepworm holds every drop it ever took</strong>, roughly a day&rsquo;s water, drinkable, seeded with young. It looks and tastes like water, because it is. You get the full stat block, three tables, a witness worth talking to, and a Keeper that runs the whole thing from a browser tab. Free to use at your table under CC BY 4.0.</p>
 
     <div class="taste">
-      <p class="taste-label">Three, picked at random.</p>
-      
       <p><span class="num">d10, 8.</span> The tally board gets checked twice in one evening, by two different people, an hour apart.</p>
       <p><span class="num">d10, 10.</span> A skin has been buried in the cool sand under a bedroll, and the sand has been smoothed over it.</p>
       <p><span class="num">d8, 4.</span> It found the wound on the mount the party has been nursing since the last fight.</p>

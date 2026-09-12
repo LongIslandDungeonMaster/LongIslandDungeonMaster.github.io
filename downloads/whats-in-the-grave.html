@@ -40,7 +40,8 @@
     .taste { background: linear-gradient(180deg, rgba(61,0,0,.5), rgba(26,0,0,.5)); border: 1px solid rgba(201,168,76,.3); border-left: 3px solid var(--gold); border-radius: 4px; padding: 1rem 1.2rem; margin: 1.6rem 0 0; }
     .taste p { color: var(--parchment-dk); font-size: .95rem; line-height: 1.65; margin: 0 0 .55rem; }
     .taste p:last-child { margin-bottom: 0; }
-    .taste .taste-label { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; opacity: .75; margin: 0 0 .7rem; }
+    .taste p { position: relative; padding-left: 1.1rem; }
+    .taste p::before { content: '\2022'; position: absolute; left: 0; color: var(--gold); }
     .taste .num { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-weight: 700; margin-right: .45rem; }
     h2.sect { font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .9rem; color: var(--gold); text-align: center; margin: 0 0 1.3rem; }
     .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -81,10 +82,8 @@
     <p class="whatis">Your party is standing over an open grave and looking at you, and you have exactly two answers ready: bones and some coin, or nothing. Both of those end the scene in one sentence, and a party that stops opening things is a party you have to push through your own adventure with both hands. A grave is the best container in the game: somebody filled it on purpose, closed it, carried it out to a hole and paid a mason to mark it. This is <strong>a hundred rows in ten bands</strong> for what is actually down there, from the body that is not who the plate says, through the things somebody hid in a grave because a grave is the one box nobody opens, to the ten reasons a hole is empty. Plus <strong>a d20 for who dug it</strong>, rolled before you describe the hole, where most of the twenty reframe what is down there without changing a single object, and <strong>a d20 for what it costs them</strong>, rolled when they take something out. Four rows in the hundred carry any mechanics at all. There is a card with the whole thing on one printable page. No stat blocks, nothing to convert. Free to use at your table and in your own material under CC BY 4.0.</p>
 
     <div class="taste">
-      <p class="taste-label">Three, picked at random.</p>
-      
-      <p><span class="num">9.</span> Bound, and it was cooperative. Good rope at the wrists and ankles, and the knots are tied on the inside, where the person being tied could reach them. Two people did this and one of them was the one in the box.</p>
-      <p><span class="num">67.</span> An instruction inside the lid. Addressed to whoever opens this, in plain language, giving them one specific thing to do and no reason at all why. It takes about a minute to do.</p>
+      <p>Bound, and it was cooperative. Good rope at the wrists and ankles, and the knots are tied on the inside, where the person being tied could reach them. Two people did this and one of them was the one in the box.</p>
+      <p>An instruction inside the lid. Addressed to whoever opens this, in plain language, giving them one specific thing to do and no reason at all why. It takes about a minute to do.</p>
       <p><span class="num">d20, who, 20.</span> Somebody who wanted it found. Every part of this is a fraction too shallow, a fraction too obvious, and the marker stands a foot taller than the ones on either side of it. This grave was dug to be dug up.</p>
     </div>
 

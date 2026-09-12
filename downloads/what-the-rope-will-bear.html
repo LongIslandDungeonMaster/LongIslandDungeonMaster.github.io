@@ -40,7 +40,8 @@
     .taste { background: linear-gradient(180deg, rgba(61,0,0,.5), rgba(26,0,0,.5)); border: 1px solid rgba(201,168,76,.3); border-left: 3px solid var(--gold); border-radius: 4px; padding: 1rem 1.2rem; margin: 1.6rem 0 0; }
     .taste p { color: var(--parchment-dk); font-size: .95rem; line-height: 1.65; margin: 0 0 .55rem; }
     .taste p:last-child { margin-bottom: 0; }
-    .taste .taste-label { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; opacity: .75; margin: 0 0 .7rem; }
+    .taste p { position: relative; padding-left: 1.1rem; }
+    .taste p::before { content: '\2022'; position: absolute; left: 0; color: var(--gold); }
     .taste .num { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-weight: 700; margin-right: .45rem; }
     h2.sect { font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .9rem; color: var(--gold); text-align: center; margin: 0 0 1.3rem; }
     .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -81,8 +82,6 @@
     <p class="whatis">A gorge two hundred feet deep, a slate quarry on the far shelf with thirty people cut off in it, and one cable across. A strand has parted out over the middle where nobody can reach it, and <strong>Ingrith Lorimer has counted what is left in hauls</strong>. Her number is eleven, and she has already decided that eleven hauls is flour, not people. She will run the cage for your party if they ask her for it in words, and then she will write down which day of somebody else&rsquo;s bread they just spent. Nothing here is hidden, which is the whole difficulty: <strong>the only thing she has never said out loud is that eleven is a guess</strong>, because a three-strand rope with one strand gone might have eleven hauls in it or eighty, and nobody alive can tell you which. Three doors, none of them clean. One optional fight on an abandoned quarry stair, tool-verified at <strong>1,200 adjusted XP, Hard for four 3rd-level characters</strong>. A <strong>d10 for what the gorge does while you are on the wall</strong>. One printable card with every number on it. Free to use at your table and in your own material under CC BY 4.0.</p>
 
     <div class="taste">
-      <p class="taste-label">Three, picked at random.</p>
-      
       <p><span class="num">Her argument.</span> &ldquo;Somebody had to put a number on it. I did. Bring me a better one and I will use it.&rdquo;</p>
       <p><span class="num">d10, 3.</span> Somebody&rsquo;s rope. A fixed line, nine years old, knotted through a notch by a person who did not come back. It will hold a pack. Nobody will agree on whether it will hold a person, and finding out is a decision rather than a check.</p>
       <p><span class="num">d10, 10.</span> The wheel turns. Everybody on the wall hears the winch working, plain and unmistakable, from a quarter mile south where nobody is standing.</p>

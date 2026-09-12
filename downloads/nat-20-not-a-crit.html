@@ -40,7 +40,8 @@
     .taste { background: linear-gradient(180deg, rgba(61,0,0,.5), rgba(26,0,0,.5)); border: 1px solid rgba(201,168,76,.3); border-left: 3px solid var(--gold); border-radius: 4px; padding: 1rem 1.2rem; margin: 1.6rem 0 0; }
     .taste p { color: var(--parchment-dk); font-size: .95rem; line-height: 1.65; margin: 0 0 .55rem; }
     .taste p:last-child { margin-bottom: 0; }
-    .taste .taste-label { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; opacity: .75; margin: 0 0 .7rem; }
+    .taste p { position: relative; padding-left: 1.1rem; }
+    .taste p::before { content: '\2022'; position: absolute; left: 0; color: var(--gold); }
     .taste .num { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-weight: 700; margin-right: .45rem; }
     h2.sect { font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .9rem; color: var(--gold); text-align: center; margin: 0 0 1.3rem; }
     .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -81,8 +82,6 @@
     <p class="whatis">A player rolls a natural 20 on a Persuasion check, the table looks up, and you say "great, he agrees," which is what you were going to say for a 14. Nothing is broken there. A crit is an attack-roll thing, and outside of that a 20 is a 20 plus your modifier. But nobody at your table is thinking about the rules when that die stops moving, and a 20 the world does not answer teaches them to stop looking up. This is <strong>a d6 of six things to hand them instead</strong>, each one a shape that fits any check your table just passed: the way in that stays open, the free adjacent fact, the price you refund before you charge it, the person the success recruits, the authorship you hand to the player, and the reputation the world writes down. Plus <strong>a d20 for the object itself</strong>, in four bands of five, for the nights you cannot think of one. Nothing here takes the success back, nothing asks for a second roll, and no row needs a rule your table does not already have. There is a card with the whole thing on one printable page. Free to use at your table and in your own material under CC BY 4.0.</p>
 
     <div class="taste">
-      <p class="taste-label">Three, picked at random.</p>
-      
       <p><span class="num">d6, 5.</span> The player says what it looked like. Hand the authorship across the table. "You did it. Tell me how." Whatever they say is true from that moment, including the half of it you would never have thought of, and you write it down and use it four sessions later. This one is free and it is the one they remember.</p>
       <p><span class="num">d20, 10.</span> It works twice. Whatever they just did will work one more time if they do it the same way. Tell them so, then watch them build an hour of planning on top of it.</p>
       <p><span class="num">d20, 20.</span> The wrong person hears. All of the above, and one more thing. It reached somebody who now has to do something about it. Not tonight. It is moving.</p>
