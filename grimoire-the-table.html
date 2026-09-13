@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The table in Gnasher&rsquo;s Grimoire: pair your players&rsquo; phones, and what to do when a router blocks them</title>
+  <meta name="description" content="How to link your players' phones to your screen: the table code, the picture they can point a camera at, the road that works when guest Wi-Fi refuses, what every word on a seat means, the check you run before anybody arrives, and what happens when somebody drops.">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/grimoire-the-table">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://longislanddungeonmaster.com/grimoire-the-table">
+  <meta property="og:title" content="The table, and the phones around it">
+  <meta property="og:description" content="One code read aloud. What to do when the router refuses. What every word on a seat means. And why a player who drops comes back as the same player.">
+  <meta property="og:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The table, and the phones around it">
+  <meta name="twitter:description" content="One code read aloud. What to do when the router refuses. What every word on a seat means. And why a player who drops comes back as the same player.">
+  <meta name="twitter:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 78%); min-height: 100vh; }
+
+    /* ---- Top bar (matches the Grimoire page) ---- */
+    .h-top { position: fixed; top: 0; left: 0; right: 0; z-index: 30; background: linear-gradient(180deg, rgba(26,0,0,.98), rgba(61,0,0,.92)); border-bottom: 2px solid var(--gold); padding: .9rem 0; }
+    .h-top .container { display: flex; align-items: center; justify-content: space-between; }
+    .h-brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.3rem; letter-spacing: 1px; text-decoration: none; }
+    .h-brand:hover { color: var(--gold-light); }
+    .h-back { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .h-back:hover { color: var(--gold); }
+    .h-wrap { max-width: 1060px; margin: 0 auto; padding: 6.6rem 1.2rem 4rem; }
+
+    /* ---- Shared type ---- */
+    .g-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.78); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; }
+    .g-breathe { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); }
+    .g-divider { width: 6rem; height: 2px; margin: 1.8rem auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    section { scroll-margin-top: 5.5rem; }
+
+    /* ---- hero ---- */
+    .g-hero { text-align: center; margin-bottom: 3rem; }
+    .g-title { font-size: clamp(2.6rem, 9vw, 4.6rem); line-height: 1; margin: .2rem 0 .5rem; text-shadow: 0 0 42px rgba(201,168,76,.42), 2px 2px 0 #000; }
+    .g-lede { color: rgba(255,255,255,.82); max-width: 660px; margin: 1.2rem auto 0; line-height: 1.9; font-size: 1.06rem; }
+    .g-lede b { color: var(--gold-light); }
+
+    /* ---- section shell (same spacing rule as the Grimoire page) ---- */
+    .g-sec { margin-top: 4.5rem; }
+    .g-sec-head { text-align: center; max-width: 720px; margin: 0 auto 2.2rem; }
+    .g-sec-head h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(2rem,6vw,3rem); line-height: 1.04; margin-bottom: .8rem; }
+    .g-sec-head p { color: rgba(255,255,255,.75); line-height: 1.9; font-size: 1rem; }
+    .g-sec-head p strong { color: var(--gold-light); }
+
+    /* ---- the guide body ---- */
+    .g-guide { max-width: 760px; margin: 0 auto; }
+    .g-guide p { color: rgba(255,255,255,.78); line-height: 1.95; font-size: 1.02rem; }
+    .g-guide p b, .g-guide li b { color: var(--gold-light); }
+    .g-steps { counter-reset: gstep; list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-steps li { counter-increment: gstep; position: relative; padding: .55rem 0 .55rem 3rem; color: rgba(255,255,255,.82); line-height: 1.85; font-size: 1.02rem; }
+    .g-steps li::before { content: counter(gstep); position: absolute; left: 0; top: .55rem; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(201,168,76,.5); border-radius: 50%; background: rgba(201,168,76,.08); color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; font-weight: 700; }
+    .g-plain { list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-plain li { position: relative; padding: .45rem 0 .45rem 1.5rem; color: rgba(255,255,255,.8); line-height: 1.85; font-size: 1.02rem; }
+    .g-plain li::before { content: "\25C6"; position: absolute; left: 0; top: .45rem; color: rgba(201,168,76,.7); font-size: .7rem; }
+    .g-limits { border-left: 3px solid rgba(201,168,76,.5); background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.34)); border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1.4rem 0 0; }
+    .g-limits p { margin: 0; color: rgba(255,255,255,.76); font-size: .98rem; }
+    .g-limits .lab { display: block; font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .68rem; color: rgba(201,168,76,.85); margin-bottom: .4rem; }
+    .g-key { display: inline-block; font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; padding: .06rem .45rem; border: 1px solid rgba(201,168,76,.5); border-radius: 4px; background: rgba(201,168,76,.1); color: var(--gold-light); }
+    .g-code { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--gold-light); background: rgba(0,0,0,.35); border-radius: 4px; padding: .05rem .35rem; }
+
+    /* ---- jump list ---- */
+    .g-jump { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; max-width: 820px; margin: 2.4rem auto 0; }
+    .g-jump a { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; letter-spacing: .4px; text-decoration: none; color: var(--gold-light); border: 1px solid rgba(201,168,76,.38); border-radius: 999px; padding: .4rem .85rem; background: rgba(201,168,76,.06); }
+    .g-jump a:hover { color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,.14); }
+
+    /* ---- closing ---- */
+    .g-final { text-align: center; margin-top: 4.5rem; padding: 2.6rem 1.2rem; border: 1px solid rgba(201,168,76,.35); border-radius: 14px; background: linear-gradient(160deg, rgba(139,0,0,.2), rgba(0,0,0,.45)); }
+    .g-final h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(1.9rem,5.4vw,2.8rem); margin-bottom: .8rem; }
+    .g-final p { color: rgba(255,255,255,.78); line-height: 1.9; max-width: 640px; margin: 0 auto 1.4rem; }
+    .g-btn { display: inline-flex; align-items: center; gap: .55rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .86rem; letter-spacing: .4px; text-decoration: none; padding: .8rem 1.4rem; border-radius: 6px; margin: .3rem; transition: transform .12s ease, box-shadow .12s ease, background .15s ease; }
+    .g-btn-gold { background: var(--gold); color: var(--crimson-dark); box-shadow: 0 6px 18px rgba(201,168,76,.28); }
+    .g-btn-gold:hover { color: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(201,168,76,.44); }
+    .g-btn-ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .g-btn-ghost:hover { background: rgba(201,168,76,.12); color: var(--gold-light); transform: translateY(-2px); }
+
+    @media (max-width: 640px) {
+      .h-wrap { padding: 5.8rem .9rem 3rem; }
+      .g-steps li { padding-left: 2.6rem; }
+      .g-steps li::before { width: 1.8rem; height: 1.8rem; }
+      .g-guide p, .g-steps li, .g-plain li { font-size: .99rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="h-top">
+    <div class="container">
+      <a class="h-brand" href="/">Long Island Dungeon Master</a>
+      <a class="h-back" href="/grimoire">&larr; Back to the Grimoire</a>
+    </div>
+  </div>
+
+  <main class="h-wrap">
+
+    <!-- ==================== HERO ==================== -->
+    <header class="g-hero">
+      <p class="g-eyebrow">Gnasher&rsquo;s Grimoire</p>
+      <h1 class="g-title g-breathe">The table, and the phones around it</h1>
+      <p class="g-lede">Your screen runs the game. Their phones run <b>Gnasher's Satchel</b>, and the two halves link with one code read aloud. This page walks the whole thing: opening the table, the road that still works when a router refuses, what every word on a seat means, the check you run before anybody arrives, and what happens when somebody's phone drops out.</p>
+      <div class="g-divider"></div>
+      <nav class="g-jump" aria-label="On this page">
+        <a href="#open-the-table">Open the table</a>
+        <a href="#hostile-router">When the router refuses</a>
+        <a href="#status-line">What a seat says</a>
+        <a href="#table-night">The table-night check</a>
+        <a href="#a-player-drops">When a player drops</a>
+        <a href="#what-you-send">What you send</a>
+        <a href="#second-screen">The second screen</a>
+      </nav>
+    </header>
+
+    <!-- ==================== 1. OPEN THE TABLE ==================== -->
+    <section id="open-the-table" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Open the table</h2>
+        <p>One code, read aloud, and their phones are on your screen.</p>
+      </div>
+      <div class="g-guide">
+        <!-- REVISIT: the header bar is being rebuilt (every command in one menu, pin what you want), so this step names the menu route rather than a button on the bar. -->
+        <ol class="g-steps">
+          <li>Press <b>Everything</b> on the bar and choose <b>Theater</b>.</li>
+          <li>Type a name for this table in the top box, and pick the party that sits at it.</li>
+          <li>Press <b>Open the table by code</b>. A code appears, something like EMBER-42, with a small picture under it.</li>
+          <li>Read the code aloud. Each player opens Gnasher's Satchel, taps the wax seal at the top left, types the code and taps Join.</li>
+          <li>Or hold your screen up. That picture under the code is the Satchel with the join already in it, so a phone camera is enough.</li>
+        </ol>
+        <p>The code belongs to the table, not to the night. A saved table keeps the same code, so your players type it once and it still works next week, and reloading your own page mid-session reopens the table on its own, seats and all, with nobody typing anything.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Only <b>Change the code</b> makes everybody retype, so reach for it when a code has leaked and not otherwise. <b>Lock the table</b> admits only the seats this table already remembers: your own party keeps rejoining by itself, and a new face waits for you to unlock. <b>Same room</b> pairs on the room's own network for a venue with no internet at all, and <b>+ Invite by paste</b> trades the same handshake as copied text.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. WHEN THE ROUTER REFUSES ==================== -->
+    <section id="hostile-router" class="g-sec">
+      <div class="g-sec-head">
+        <h2>When the router will not let them talk</h2>
+        <p>Guest Wi-Fi in a hall or a cafe often stops two devices talking to each other. That is a setting on their router, not a fault in your app or in anybody's phone.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <b>The router won't let us talk</b> in the Theater panel.</li>
+          <li>A code appears on your screen and keeps turning over.</li>
+          <li>Each player opens their Satchel, taps the pairing ring, presses <b>Read the invite with the camera</b> and points their phone at your screen.</li>
+          <li>A reply comes back on their screen. They press <b>Show my reply as a code</b>, and you read their phone with <b>Open the camera</b>.</li>
+          <li>The link opens and they are seated with a name and a seat number, exactly like a code join.</li>
+        </ol>
+        <p>Nothing leaves the room on this road, so there is nothing for the network to block. It carries the handshake only: once the link is open, the board, the handouts and the rolls all travel the way they always do.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>This road hands things across by camera, so it carries sheets, rosters and notes and <b>not</b> maps, art or a whole Keeper: those are too big for a camera, and saying otherwise would waste somebody's evening. If a player's Satchel tells them this network will not let their phone and your screen talk to each other, this is the road it is pointing at.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. WHAT A SEAT SAYS ==================== -->
+    <section id="status-line" class="g-sec">
+      <div class="g-sec-head">
+        <h2>What the line on a seat means</h2>
+        <p>Every word on a seat is telling you something specific. Here is the whole vocabulary.</p>
+      </div>
+      <div class="g-guide">
+        <ul class="g-plain">
+          <li><b>Waiting for the next player.</b> with no number on it: the table is listening and nobody is halfway in. A number belongs to a chair, and a chair exists once somebody sits in it.</li>
+          <li><b>PAIRED</b>: linked, awake, and getting everything you push.</li>
+          <li><b>resting</b>: their phone dozed off. The seat is held, and whatever you push is delivered the moment their screen wakes. Their Satchel rejoins by itself.</li>
+          <li><b>waiting</b>: a paste invite that has been made and not yet answered. A code seat that has not said hello is not drawn at all, so you never see a phantom row.</li>
+          <li><b>seat 1</b>, <b>seat 2</b>: the number that device keeps. A player who loses Wi-Fi and comes back is the same player, in the same chair, with the same number.</li>
+          <li><b>older Satchel</b>: that phone is running an older free copy, so newer table things like the turned grid and the condition dots do not reach it.</li>
+          <li><b>grid not turned</b> or <b>board out of sync</b>: their fog and tokens are sitting off the map, or some board updates never landed. Push the board again, or have them rejoin.</li>
+        </ul>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The line under an open code tells you how many invites are out at once, because that depends on the code service and not on you. When it can take four players together it says so; when it takes one player at a time it says that instead, and a table of four simply sits down in turn.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. THE TABLE-NIGHT CHECK ==================== -->
+    <section id="table-night" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The table-night check</h2>
+        <p>One press, before anybody arrives, and it reads everything live.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Open the Theater panel before your players get there.</li>
+          <li>Press <b>Table-night check</b>.</li>
+          <li>Read the four rows: the code service, a relay for a network that blocks devices, the join link on the code's picture, and the second screen.</li>
+          <li>It answers <b>GO</b>, or <b>NO GO</b> on however many of the four failed, with the reason written on every row.</li>
+        </ol>
+        <p>Write down what it says before your first player joins. That is your baseline for the night, and if the code service row is red there, nothing after it means very much.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The join link row reads the page and says what the site answered, and a row it could not read from your machine counts as a no go rather than a pass. When the relay row says none, a table whose two halves are on different networks has nothing to fall back on, and the row names the road that still works instead of leaving you to guess.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. WHEN A PLAYER DROPS ==================== -->
+    <section id="a-player-drops" class="g-sec">
+      <div class="g-sec-head">
+        <h2>When a player drops</h2>
+        <p>The honest answer is that there is nothing for you to do.</p>
+      </div>
+      <div class="g-guide">
+        <ul class="g-plain">
+          <li>Their Satchel shows one line at the bottom of their screen, <b>Reconnecting...</b>, and nothing else. No join prompt, no new name.</li>
+          <li>It comes back on its own, as the same player, in the same chair, with the same number.</li>
+          <li>After two minutes it stops spinning and says so plainly: nothing is wrong with their Satchel, the table just is not reachable from there yet.</li>
+          <li>After ten minutes it stops, says that too, and offers one button: <b>Join by camera instead</b>.</li>
+          <li>It never asks anybody to sit down again as somebody new, so nobody ends up being called player ninety-six.</li>
+        </ul>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>A sick code service no longer closes your table on one bad answer: it is retried, and the code closes only after two minutes of silence, with the line saying which and counting down. And if the evening is going badly anyway, your own screen runs the game perfectly well with nothing paired at all: put the board on a television and use metal minis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. WHAT YOU SEND ==================== -->
+    <section id="what-you-send" class="g-sec">
+      <div class="g-sec-head">
+        <h2>What you send, and what you keep</h2>
+        <p>Handouts, whispers and dossiers all have a face for the table and a side that never leaves your screen.</p>
+      </div>
+      <div class="g-guide">
+        <ul class="g-plain">
+          <li><b>Handouts</b>: a title, then text or a picture, then <b>Push text</b> or <b>Push image</b>. Pick a name in the To row first and it goes to that chair alone.</li>
+          <li><b>The quiet word</b>: a whisper thread with one player. Nobody else ever sees it, and a resting seat gets it when the phone wakes.</li>
+          <li><b>Packets</b>: a dossier you hand somebody. The top half is headed <i>The face: this is what they get</i>; the box underneath is headed <i>Yours only, never sent</i>. Press <b>Send it</b> and only the face travels.</li>
+          <li><b>Table rolls</b>: every roll a player makes lands in the Theater log and in your session dice log, under the name of the seat that rolled it.</li>
+        </ul>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>A packet's private box is never sent, and it is left out of the handout faces shown on the second screen too. The one thing worth remembering: an open link is not a pair of eyes. A resting seat gets what you pushed when it wakes, which is not the same as somebody having read it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. THE SECOND SCREEN ==================== -->
+    <section id="second-screen" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The second screen, and a television</h2>
+        <p>The half of this that worked at a real table on the first night, with no phones paired at all.</p>
+      </div>
+      <div class="g-guide">
+        <!-- REVISIT: the header bar is being rebuilt (every command in one menu, pin what you want), so this step names the menu route rather than a button on the bar. -->
+        <ol class="g-steps">
+          <li>Press <b>Everything</b> on the bar and choose <b>Second screen</b>.</li>
+          <li>Drag the window it opens onto the television.</li>
+          <li>Press <b>Full screen</b> on that window.</li>
+          <li>Open the War Board and run the fight on it, with minis on the table if you like.</li>
+        </ol>
+        <p>It shows the board your players may see and nothing of yours, it needs no network at all, and it works whether or not a single phone is paired.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Private drawings and hidden tokens you do not own are left out. With lighting on, it shows what their eyes reach right now rather than everywhere they have been, so a dark corridor reads as dark. Token art is drawn as labelled markers rather than as pictures.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CLOSING ==================== -->
+    <section class="g-final">
+      <h2>Try it on two phones</h2>
+      <p>Ten minutes with two phones and the airplane mode switch tells you more than any page can. Open a table, join with one, turn its network off for a minute, and watch it come back as the same player in the same chair.</p>
+      <a class="g-btn g-btn-gold" href="downloads/gnashers-grimoire.html" download="gnashers-grimoire.html"><i class="fas fa-book-bookmark" aria-hidden="true"></i> Download Gnasher&rsquo;s Grimoire, free</a>
+      <a class="g-btn g-btn-ghost" href="/grimoire"><i class="fas fa-circle-info" aria-hidden="true"></i> Everything else it does</a>
+    </section>
+
+    <p class="g-more">Still stuck? Write to <a href="mailto:grimoire@longislanddungeonmaster.com?subject=Grimoire%20feedback&amp;body=What%20I%20was%20doing%3A%0AWhat%20happened%3A%0ABrowser%20%2F%20device%3A%0A">grimoire@longislanddungeonmaster.com</a> or say so in the <a href="https://discord.gg/BqgAbEcwJu" target="_blank" rel="noopener">LIDM Discord</a>. It goes to me, and bad news is the useful kind.<br><span style="opacity:.85;">The companion line: <b>Gnasher&rsquo;s Grimoire&trade;</b> (DM app) &middot; <a href="/satchel">Gnasher&rsquo;s Satchel&trade;</a> (player app) &middot; <a href="/quill">Gnasher&rsquo;s Quill&trade;</a> (session recorder).</span></p>
+
+  </main>
+
+  <div class="h-foot">
+    &copy; 2020&ndash;2026 Frank Papaleo &middot; Long Island Dungeon Master &bull; <a href="/">Home</a> &bull; <a href="/grimoire">Gnasher&rsquo;s Grimoire</a> &bull; <a href="/keepers">Adventure Keepers</a> &bull; <a href="/hoard">The Hoard</a> &bull; <a href="/privacy">Privacy</a> &bull; <a href="/how-its-made">How this gets made</a><br>
+    Long Island Dungeon Master is an independent service, not affiliated with or endorsed by Wizards of the Coast. Dungeons &amp; Dragons and D&amp;D are trademarks of Wizards of the Coast LLC. Compatible with fifth edition; portions derived from the SRD 5.2.1 under CC-BY-4.0.
+  </div>
+
+  <!-- The Herald&rsquo;s Nudge (dismissible newsletter bar) -->
+  <script src="js/nudge.js" defer></script>
+  <!-- Cloudflare Web Analytics (cookieless, no personal data) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+
+</body>
+
+</html>

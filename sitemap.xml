@@ -13,6 +13,42 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://longislanddungeonmaster.com/grimoire-the-table</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://longislanddungeonmaster.com/grimoire-the-fight</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://longislanddungeonmaster.com/grimoire-the-war-board</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://longislanddungeonmaster.com/grimoire-time</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://longislanddungeonmaster.com/grimoire-notes-and-recaps</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://longislanddungeonmaster.com/grimoire-spells-and-rules</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://longislanddungeonmaster.com/keepers</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>weekly</changefreq>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your own books in Gnasher's Grimoire: import PDFs, EPUBs, notes and tables</title>
+  <meta name="description" content="How to get your own books into Gnasher's Grimoire and use them: which files it takes, where they live, searching the words inside a PDF, page marks, narrowing a search to one book, moving your whole library to another computer, and what does not work.">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/grimoire-your-books">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://longislanddungeonmaster.com/grimoire-your-books">
+  <meta property="og:title" content="Your own books in the Grimoire">
+  <meta property="og:description" content="Get a book in, find the words inside it, set page marks, and carry the whole shelf to another computer. Nothing is uploaded.">
+  <meta property="og:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your own books in the Grimoire">
+  <meta name="twitter:description" content="Which files it takes, where they live, and how to find a phrase from page 200. Nothing is uploaded.">
+  <meta name="twitter:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 78%); min-height: 100vh; }
+
+    /* ---- Top bar (matches the Grimoire page) ---- */
+    .h-top { position: fixed; top: 0; left: 0; right: 0; z-index: 30; background: linear-gradient(180deg, rgba(26,0,0,.98), rgba(61,0,0,.92)); border-bottom: 2px solid var(--gold); padding: .9rem 0; }
+    .h-top .container { display: flex; align-items: center; justify-content: space-between; }
+    .h-brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.3rem; letter-spacing: 1px; text-decoration: none; }
+    .h-brand:hover { color: var(--gold-light); }
+    .h-back { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .h-back:hover { color: var(--gold); }
+    .h-wrap { max-width: 1060px; margin: 0 auto; padding: 6.6rem 1.2rem 4rem; }
+
+    /* ---- Shared type ---- */
+    .g-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.78); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; }
+    .g-breathe { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); }
+    .g-divider { width: 6rem; height: 2px; margin: 1.8rem auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    section { scroll-margin-top: 5.5rem; }
+
+    /* ---- hero ---- */
+    .g-hero { text-align: center; margin-bottom: 3rem; }
+    .g-title { font-size: clamp(2.6rem, 9vw, 4.6rem); line-height: 1; margin: .2rem 0 .5rem; text-shadow: 0 0 42px rgba(201,168,76,.42), 2px 2px 0 #000; }
+    .g-lede { color: rgba(255,255,255,.82); max-width: 660px; margin: 1.2rem auto 0; line-height: 1.9; font-size: 1.06rem; }
+    .g-lede b { color: var(--gold-light); }
+
+    /* ---- section shell (same spacing rule as the Grimoire page) ---- */
+    .g-sec { margin-top: 4.5rem; }
+    .g-sec-head { text-align: center; max-width: 720px; margin: 0 auto 2.2rem; }
+    .g-sec-head h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(2rem,6vw,3rem); line-height: 1.04; margin-bottom: .8rem; }
+    .g-sec-head p { color: rgba(255,255,255,.75); line-height: 1.9; font-size: 1rem; }
+    .g-sec-head p strong { color: var(--gold-light); }
+
+    /* ---- the guide body ---- */
+    .g-guide { max-width: 760px; margin: 0 auto; }
+    .g-guide p { color: rgba(255,255,255,.78); line-height: 1.95; font-size: 1.02rem; }
+    .g-guide p b, .g-guide li b { color: var(--gold-light); }
+    .g-steps { counter-reset: gstep; list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-steps li { counter-increment: gstep; position: relative; padding: .55rem 0 .55rem 3rem; color: rgba(255,255,255,.82); line-height: 1.85; font-size: 1.02rem; }
+    .g-steps li::before { content: counter(gstep); position: absolute; left: 0; top: .55rem; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(201,168,76,.5); border-radius: 50%; background: rgba(201,168,76,.08); color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; font-weight: 700; }
+    .g-plain { list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-plain li { position: relative; padding: .45rem 0 .45rem 1.5rem; color: rgba(255,255,255,.8); line-height: 1.85; font-size: 1.02rem; }
+    .g-plain li::before { content: "\25C6"; position: absolute; left: 0; top: .45rem; color: rgba(201,168,76,.7); font-size: .7rem; }
+    .g-limits { border-left: 3px solid rgba(201,168,76,.5); background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.34)); border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1.4rem 0 0; }
+    .g-limits p { margin: 0; color: rgba(255,255,255,.76); font-size: .98rem; }
+    .g-limits .lab { display: block; font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .68rem; color: rgba(201,168,76,.85); margin-bottom: .4rem; }
+    .g-key { display: inline-block; font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; padding: .06rem .45rem; border: 1px solid rgba(201,168,76,.5); border-radius: 4px; background: rgba(201,168,76,.1); color: var(--gold-light); }
+    .g-code { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--gold-light); background: rgba(0,0,0,.35); border-radius: 4px; padding: .05rem .35rem; }
+
+    /* ---- jump list ---- */
+    .g-jump { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; max-width: 820px; margin: 2.4rem auto 0; }
+    .g-jump a { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; letter-spacing: .4px; text-decoration: none; color: var(--gold-light); border: 1px solid rgba(201,168,76,.38); border-radius: 999px; padding: .4rem .85rem; background: rgba(201,168,76,.06); }
+    .g-jump a:hover { color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,.14); }
+
+    /* ---- closing ---- */
+    .g-final { text-align: center; margin-top: 4.5rem; padding: 2.6rem 1.2rem; border: 1px solid rgba(201,168,76,.35); border-radius: 14px; background: linear-gradient(160deg, rgba(139,0,0,.2), rgba(0,0,0,.45)); }
+    .g-final h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(1.9rem,5.4vw,2.8rem); margin-bottom: .8rem; }
+    .g-final p { color: rgba(255,255,255,.78); line-height: 1.9; max-width: 640px; margin: 0 auto 1.4rem; }
+    .g-btn { display: inline-flex; align-items: center; gap: .55rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .86rem; letter-spacing: .4px; text-decoration: none; padding: .8rem 1.4rem; border-radius: 6px; margin: .3rem; transition: transform .12s ease, box-shadow .12s ease, background .15s ease; }
+    .g-btn-gold { background: var(--gold); color: var(--crimson-dark); box-shadow: 0 6px 18px rgba(201,168,76,.28); }
+    .g-btn-gold:hover { color: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(201,168,76,.44); }
+    .g-btn-ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .g-btn-ghost:hover { background: rgba(201,168,76,.12); color: var(--gold-light); transform: translateY(-2px); }
+
+    @media (max-width: 640px) {
+      .h-wrap { padding: 5.8rem .9rem 3rem; }
+      .g-steps li { padding-left: 2.6rem; }
+      .g-steps li::before { width: 1.8rem; height: 1.8rem; }
+      .g-guide p, .g-steps li, .g-plain li { font-size: .99rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="h-top">
+    <div class="container">
+      <a class="h-brand" href="/">Long Island Dungeon Master</a>
+      <a class="h-back" href="/grimoire">&larr; Back to the Grimoire</a>
+    </div>
+  </div>
+
+  <main class="h-wrap">
+
+    <!-- ==================== HERO ==================== -->
+    <header class="g-hero">
+      <p class="g-eyebrow">Gnasher's Grimoire</p>
+      <h1 class="g-title g-breathe">Your own books in the Grimoire</h1>
+      <p class="g-lede">The Grimoire arrives with the <b>SRD 5.2.1</b> reference and a sample adventure. Everything else on the shelf is yours to bring: the PDFs you bought, the notes you typed, the tables in that spreadsheet, the vault of Markdown you have been keeping for two years. This page walks the whole thing, door by door.</p>
+      <div class="g-divider"></div>
+      <nav class="g-jump" aria-label="On this page">
+        <a href="#get-a-book-in">Get a book in</a>
+        <a href="#where-it-lives">Where the file lives</a>
+        <a href="#search-inside">Find things inside it</a>
+        <a href="#marks">Page marks and the viewer</a>
+        <a href="#one-book">Search one book only</a>
+        <a href="#covers">Covers</a>
+        <a href="#move-it">Move it to another computer</a>
+        <a href="#limits">What does not work</a>
+        <a href="#packs">The free packs</a>
+      </nav>
+    </header>
+
+    <!-- ==================== 1. GET A BOOK IN ==================== -->
+    <section id="get-a-book-in" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Get a book in</h2>
+        <p>One door, and it is not fussy about what you put through it.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Open the Grimoire and go to the shelf.</li>
+          <li>Drag the file onto it. Several at once is fine.</li>
+          <li>Or press the <b>Add a Keeper</b> tile and pick the files from your computer.</li>
+          <li>A PDF can go through that same door, or through <b>Add a Tome</b> on the PDF shelf.</li>
+          <li>Read the line it gives you back. It names every file it took and every file it skipped, and why.</li>
+        </ol>
+        <p><b>What it takes:</b> <b>.pdf</b> and <b>.epub</b> books, <b>.docx</b> and <b>.xlsx</b> from Word, Google Docs or Excel, <b>.csv</b> and <b>.tsv</b> tables, <b>.txt</b> and <b>.md</b> notes, <b>.json</b> homebrew in the 5eTools shape, and <b>.html</b>, which covers an Adventure Keeper and any web page you saved to your computer.</p>
+        <p>A folder of Markdown notes has its own door: <b>Import from Obsidian</b>. Pick the folder and every note becomes a page and a card you can summon, with stat blocks arriving as monsters, encounters as encounter cards, pipe tables rollable, and your <span class="g-code">[[links]]</span> still linking. It asks for permission to read, and only to read.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The old binary Word and Excel formats, <b>.doc</b> and <b>.xls</b>, are not read. Save them as .docx or .xlsx and drop them again. Nothing disappears quietly: a file the app cannot read is named with the reason on the way in. A vault comes in up to 1,500 notes, 15 MB of writing, 8 MB of pictures and 12 folder levels deep, and it tells you out loud when one of those caps bites.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. WHERE IT LIVES ==================== -->
+    <section id="where-it-lives" class="g-sec">
+      <div class="g-sec-head">
+        <h2>What happens to the file</h2>
+        <p>The short version: it stays on your computer, and there is nowhere else for it to go.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>The file is copied into this browser's own storage, on this machine.</li>
+          <li>Nothing is uploaded. There is no account and no server to upload it to.</li>
+          <li>Drop the same file again later and the book updates in place. You do not end up with two.</li>
+          <li>Taking one out again depends on what it is. A Keeper: press the &#10005; in the corner of its cover, then <b>Take out</b>, then <b>Are you sure?</b> Three presses, on purpose.</li>
+          <li>A PDF: open it and press <b>Remove</b> in its own bar at the top, then press again. Two presses, and the PDF file on your computer is untouched.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The shelf belongs to that browser on that machine. Open the Grimoire in a different browser and you are looking at a different shelf. Clear the browser's site data and the shelf goes with it, so keep a <b>.keeper</b> backup. Your PDFs are stored in the browser only and do not ride inside a .keeper backup, so keep the PDF files themselves too.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. SEARCH INSIDE ==================== -->
+    <section id="search-inside" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Find things inside a book</h2>
+        <p>The point of putting a book on the shelf is never having to remember which page it was on.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <span class="g-key">Space</span>.</li>
+          <li>Type any phrase you remember.</li>
+          <li>Hits come back from titles and from the words inside your books, each with a piece of the sentence around it so you can tell which hit is yours.</li>
+          <li>Press Enter. A PDF opens at that page. A chapter, a note or a table opens as a card over the scene you are running.</li>
+        </ol>
+        <p>A PDF's words are read once, when it comes in, and kept page by page, so a phrase from page 200 finds page 200. An EPUB comes in chapter by chapter, so you can summon a single chapter instead of hunting through a whole book.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>A scanned book is pictures of words and holds no text at all. The Grimoire says so on that book's bar rather than leaving you with a search that looks broken, and your page marks still work. Some PDFs space their letters oddly, so the search is deliberately forgiving about spaces. A table printed inside a PDF stays a picture of a table.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. MARKS AND THE VIEWER ==================== -->
+    <section id="marks" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Page marks and the viewer</h2>
+        <p>For the eight pages in a 300 page book that you actually need at the table.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Open a Tome. It opens inside the app, in your browser's own PDF viewer.</li>
+          <li>Turn to a page worth keeping.</li>
+          <li>Set a page mark and give it a name you will recognise mid-session.</li>
+          <li>Jump back to it later from the book's own bar, or by summoning the mark by name.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Twenty marks per book, and they are the marks you set. The app does not read a book's own contents page and make them for you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. ONE BOOK ONLY ==================== -->
+    <section id="one-book" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Search one book, not the whole shelf</h2>
+        <p>When you know exactly which book it was in, say so and the noise goes away.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <span class="g-key">Space</span>.</li>
+          <li>Type <span class="g-code">book:</span> and a piece of the title, like <span class="g-code">book:salt</span>.</li>
+          <li>Pin it down further with <span class="g-code">kind:monster</span>, <span class="g-code">cr:2</span>, <span class="g-code">level:3</span>, <span class="g-code">school:evocation</span> or <span class="g-code">tag:undead</span>.</li>
+          <li>Or open the book itself and use the filter box at the top of its Contents, which only ever searches that one book.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span><span class="g-code">book:</span> matches on the title, so two books with near-identical titles need a longer piece of the name to tell apart.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. COVERS ==================== -->
+    <section id="covers" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Covers on the shelf</h2>
+        <p>How to tell at a glance which books arrived with art and which ones you brought.</p>
+      </div>
+      <div class="g-guide">
+        <ul class="g-plain">
+          <li>An <b>Adventure Keeper</b> carries its own cover art, and the shelf shows it.</li>
+          <li>A book you write yourself in the <b>Forge</b> takes whatever cover you give it when you build it.</li>
+          <li>A <b>PDF</b> you shelve wears a plain plaque with its title on it until you give it one.</li>
+          <li>Any PDF you have shelved can wear a cover of your own: press <b>Add a cover</b> on its tile and pick a picture, or drop the picture straight onto the tile.</li>
+          <li>The Grimoire shrinks it to fit the tile and keeps it small, in this browser beside the PDF, so it costs you almost nothing and it never leaves your computer.</li>
+          <li>Changed your mind? The same spot on the tile says <b>Remove cover</b>, and your PDF and its page marks are untouched.</li>
+        </ul>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The Grimoire does not draw a cover from a PDF's first page. Doing that would mean carrying a whole page-rendering library inside the app, and the app is one file that has to stay small enough to open anywhere. A cover you add has to be a picture, PNG, JPEG or WebP. The cover you put on a PDF stays in this browser beside the PDF: your PDFs and their covers do not ride any export, so move the PDF files across yourself and add the picture again on the other computer. A Keeper that arrived with its own cover art keeps it wherever that Keeper goes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. MOVE IT ==================== -->
+    <section id="move-it" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Move your library to another computer</h2>
+        <p>A new laptop, a second machine at the table, or a stick in your pocket.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Open the binder bar and press <b>Export .keeper</b>. That is your whole binder in one file.</li>
+          <li>Copy it across however you like: a stick, a drive, a cable.</li>
+          <li>On the other computer, open the Grimoire and press <b>Import .keeper</b>.</li>
+          <li>Copy your PDF files over separately, drop them into your Grimoire there, and add their covers again.</li>
+        </ol>
+        <p>There is a second way that skips the copying entirely. Press <b>Binder on a drive</b> and pick a folder, and your books, notes and saves live in that folder from then on. Point it at a USB stick, run the Grimoire from the stick, and your books, notes, saves and tables travel with it. Your PDFs and their covers do not: they stay in the browser on the machine you shelved them on.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>A .keeper backup carries your books, notes, saves and tables. It does not carry your PDFs, because they are large and they are already files you own. Keep them beside the backup and you can rebuild your Grimoire anywhere in a couple of minutes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 8. WHAT DOES NOT WORK ==================== -->
+    <section id="limits" class="g-sec">
+      <div class="g-sec-head">
+        <h2>What does not work, and why</h2>
+        <p>Written down in one place so you find out here instead of ten minutes before a session.</p>
+      </div>
+      <div class="g-guide">
+        <ul class="g-plain">
+          <li><b>A book locked with DRM.</b> An EPUB with a publisher's lock on it says so plainly and stops there. It is not damaged and neither are you.</li>
+          <li><b>A scan.</b> Pictures of words hold no words. Marks and the viewer still work.</li>
+          <li><b>.doc and .xls.</b> The old binary formats are not read. Save as .docx or .xlsx.</li>
+          <li><b>Files from other table apps.</b> Module files exported by other virtual tabletops are not read today.</li>
+          <li><b>Tables inside PDFs.</b> A wrong table looks exactly like a right one, so the app will not guess. Retype it into a .csv, a spreadsheet or a Markdown pipe table and it arrives rollable, with the die read off your own roll column.</li>
+          <li><b>Very large PDFs.</b> Over 50 MB it warns you and shelves the book anyway. Past 32 MB it stops reading the words out and says so, so a huge book is still a book with marks and a viewer.</li>
+        </ul>
+        <p>One thing that surprises people, and it is the question I get most: the Grimoire is not tied to one game. It is a container, so any system's books, notes and tables are welcome in it. What is 5e specific is what it ships with, the free SRD 5.2.1 reference, and the War Table, which builds encounters and runs initiative off 5e style stat blocks.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>If something you own will not come in and it is not on this list, write to me. The app has a <b>Report a problem</b> button that writes the technical half for you, shows you the entire report before anything happens, and then lets you copy it or mail it yourself. It sends nothing on its own.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 9. THE FREE PACKS ==================== -->
+    <section id="packs" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The free rulebook packs</h2>
+        <p>Whole openly licensed rulebooks, built as Keepers, costing nothing.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Go to the <a href="/grimoire#packs">free packs on the Grimoire page</a>.</li>
+          <li>Download one. It is a single file, like every other Keeper.</li>
+          <li>Drop it on your shelf.</li>
+          <li>Every monster, spell and item in it is in your Summon from the next keypress.</li>
+        </ol>
+        <p>The SRD 5.2.1 is already in the box: the monsters, the spells, the items and the rules, free under CC-BY-4.0. The packs sit beside it, so your own homebrew, a free pack and a book you bought all answer to the same <span class="g-key">Space</span> bar.</p>
+      </div>
+    </section>
+
+    <!-- ==================== CLOSING ==================== -->
+    <section class="g-final">
+      <h2>Bring your shelf</h2>
+      <p>Gnasher's Grimoire is one file, free, and it works with no internet after the download. Take it, drop your own books on it, and see whether it holds them the way you wanted.</p>
+      <a class="g-btn g-btn-gold" href="downloads/gnashers-grimoire.html" download="gnashers-grimoire.html"><i class="fas fa-book-bookmark" aria-hidden="true"></i> Download Gnasher's Grimoire, free</a>
+      <a class="g-btn g-btn-ghost" href="/grimoire"><i class="fas fa-circle-info" aria-hidden="true"></i> Everything else it does</a>
+    </section>
+
+    <p class="g-more">Still stuck? Write to <a href="mailto:grimoire@longislanddungeonmaster.com?subject=Grimoire%20feedback&amp;body=What%20I%20was%20doing%3A%0AWhat%20happened%3A%0ABrowser%20%2F%20device%3A%0A">grimoire@longislanddungeonmaster.com</a> or say so in the <a href="https://discord.gg/BqgAbEcwJu" target="_blank" rel="noopener">LIDM Discord</a>. It goes to me, and bad news is the useful kind.<br><span style="opacity:.85;">The companion line: <b>Gnasher's Grimoire&trade;</b> (DM app) &middot; <a href="/satchel">Gnasher's Satchel&trade;</a> (player app) &middot; <a href="/quill">Gnasher's Quill&trade;</a> (session recorder).</span></p>
+
+  </main>
+
+  <div class="h-foot">
+    &copy; 2020&ndash;2026 Frank Papaleo &middot; Long Island Dungeon Master &bull; <a href="/">Home</a> &bull; <a href="/grimoire">Gnasher's Grimoire</a> &bull; <a href="/keepers">Adventure Keepers</a> &bull; <a href="/hoard">The Hoard</a> &bull; <a href="/privacy">Privacy</a> &bull; <a href="/how-its-made">How this gets made</a><br>
+    Long Island Dungeon Master is an independent service, not affiliated with or endorsed by Wizards of the Coast. Dungeons &amp; Dragons and D&amp;D are trademarks of Wizards of the Coast LLC. Compatible with fifth edition; portions derived from the SRD 5.2.1 under CC-BY-4.0.
+  </div>
+
+  <!-- The Herald's Nudge (dismissible newsletter bar) -->
+  <script src="js/nudge.js" defer></script>
+  <!-- Cloudflare Web Analytics (cookieless, no personal data) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+
+</body>
+
+</html>

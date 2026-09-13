@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The muster and the fight in Gnasher&rsquo;s Grimoire: initiative in one press, to-hit and damage on every attack</title>
+  <meta name="description" content="How a fight runs: muster it, roll initiative for everybody in one press, roll to hit and damage on every attack with crits and advantage, put conditions on a row, hide a monster's name from your players, read the fight log back, and put them all on the map.">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/grimoire-the-fight">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://longislanddungeonmaster.com/grimoire-the-fight">
+  <meta property="og:title" content="The muster, and the fight">
+  <meta property="og:description" content="Initiative for everybody in one press. To hit and damage on every attack, printed the way you would say it out loud. Conditions, hidden names, and a log you can read back.">
+  <meta property="og:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The muster, and the fight">
+  <meta name="twitter:description" content="Initiative for everybody in one press. To hit and damage on every attack, printed the way you would say it out loud. Conditions, hidden names, and a log you can read back.">
+  <meta name="twitter:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 78%); min-height: 100vh; }
+
+    /* ---- Top bar (matches the Grimoire page) ---- */
+    .h-top { position: fixed; top: 0; left: 0; right: 0; z-index: 30; background: linear-gradient(180deg, rgba(26,0,0,.98), rgba(61,0,0,.92)); border-bottom: 2px solid var(--gold); padding: .9rem 0; }
+    .h-top .container { display: flex; align-items: center; justify-content: space-between; }
+    .h-brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.3rem; letter-spacing: 1px; text-decoration: none; }
+    .h-brand:hover { color: var(--gold-light); }
+    .h-back { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .h-back:hover { color: var(--gold); }
+    .h-wrap { max-width: 1060px; margin: 0 auto; padding: 6.6rem 1.2rem 4rem; }
+
+    /* ---- Shared type ---- */
+    .g-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.78); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; }
+    .g-breathe { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); }
+    .g-divider { width: 6rem; height: 2px; margin: 1.8rem auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    section { scroll-margin-top: 5.5rem; }
+
+    /* ---- hero ---- */
+    .g-hero { text-align: center; margin-bottom: 3rem; }
+    .g-title { font-size: clamp(2.6rem, 9vw, 4.6rem); line-height: 1; margin: .2rem 0 .5rem; text-shadow: 0 0 42px rgba(201,168,76,.42), 2px 2px 0 #000; }
+    .g-lede { color: rgba(255,255,255,.82); max-width: 660px; margin: 1.2rem auto 0; line-height: 1.9; font-size: 1.06rem; }
+    .g-lede b { color: var(--gold-light); }
+
+    /* ---- section shell (same spacing rule as the Grimoire page) ---- */
+    .g-sec { margin-top: 4.5rem; }
+    .g-sec-head { text-align: center; max-width: 720px; margin: 0 auto 2.2rem; }
+    .g-sec-head h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(2rem,6vw,3rem); line-height: 1.04; margin-bottom: .8rem; }
+    .g-sec-head p { color: rgba(255,255,255,.75); line-height: 1.9; font-size: 1rem; }
+    .g-sec-head p strong { color: var(--gold-light); }
+
+    /* ---- the guide body ---- */
+    .g-guide { max-width: 760px; margin: 0 auto; }
+    .g-guide p { color: rgba(255,255,255,.78); line-height: 1.95; font-size: 1.02rem; }
+    .g-guide p b, .g-guide li b { color: var(--gold-light); }
+    .g-steps { counter-reset: gstep; list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-steps li { counter-increment: gstep; position: relative; padding: .55rem 0 .55rem 3rem; color: rgba(255,255,255,.82); line-height: 1.85; font-size: 1.02rem; }
+    .g-steps li::before { content: counter(gstep); position: absolute; left: 0; top: .55rem; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(201,168,76,.5); border-radius: 50%; background: rgba(201,168,76,.08); color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; font-weight: 700; }
+    .g-plain { list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-plain li { position: relative; padding: .45rem 0 .45rem 1.5rem; color: rgba(255,255,255,.8); line-height: 1.85; font-size: 1.02rem; }
+    .g-plain li::before { content: "\25C6"; position: absolute; left: 0; top: .45rem; color: rgba(201,168,76,.7); font-size: .7rem; }
+    .g-limits { border-left: 3px solid rgba(201,168,76,.5); background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.34)); border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1.4rem 0 0; }
+    .g-limits p { margin: 0; color: rgba(255,255,255,.76); font-size: .98rem; }
+    .g-limits .lab { display: block; font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .68rem; color: rgba(201,168,76,.85); margin-bottom: .4rem; }
+    .g-key { display: inline-block; font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; padding: .06rem .45rem; border: 1px solid rgba(201,168,76,.5); border-radius: 4px; background: rgba(201,168,76,.1); color: var(--gold-light); }
+    .g-code { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--gold-light); background: rgba(0,0,0,.35); border-radius: 4px; padding: .05rem .35rem; }
+
+    /* ---- jump list ---- */
+    .g-jump { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; max-width: 820px; margin: 2.4rem auto 0; }
+    .g-jump a { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; letter-spacing: .4px; text-decoration: none; color: var(--gold-light); border: 1px solid rgba(201,168,76,.38); border-radius: 999px; padding: .4rem .85rem; background: rgba(201,168,76,.06); }
+    .g-jump a:hover { color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,.14); }
+
+    /* ---- closing ---- */
+    .g-final { text-align: center; margin-top: 4.5rem; padding: 2.6rem 1.2rem; border: 1px solid rgba(201,168,76,.35); border-radius: 14px; background: linear-gradient(160deg, rgba(139,0,0,.2), rgba(0,0,0,.45)); }
+    .g-final h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(1.9rem,5.4vw,2.8rem); margin-bottom: .8rem; }
+    .g-final p { color: rgba(255,255,255,.78); line-height: 1.9; max-width: 640px; margin: 0 auto 1.4rem; }
+    .g-btn { display: inline-flex; align-items: center; gap: .55rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .86rem; letter-spacing: .4px; text-decoration: none; padding: .8rem 1.4rem; border-radius: 6px; margin: .3rem; transition: transform .12s ease, box-shadow .12s ease, background .15s ease; }
+    .g-btn-gold { background: var(--gold); color: var(--crimson-dark); box-shadow: 0 6px 18px rgba(201,168,76,.28); }
+    .g-btn-gold:hover { color: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(201,168,76,.44); }
+    .g-btn-ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .g-btn-ghost:hover { background: rgba(201,168,76,.12); color: var(--gold-light); transform: translateY(-2px); }
+
+    @media (max-width: 640px) {
+      .h-wrap { padding: 5.8rem .9rem 3rem; }
+      .g-steps li { padding-left: 2.6rem; }
+      .g-steps li::before { width: 1.8rem; height: 1.8rem; }
+      .g-guide p, .g-steps li, .g-plain li { font-size: .99rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="h-top">
+    <div class="container">
+      <a class="h-brand" href="/">Long Island Dungeon Master</a>
+      <a class="h-back" href="/grimoire">&larr; Back to the Grimoire</a>
+    </div>
+  </div>
+
+  <main class="h-wrap">
+
+    <!-- ==================== HERO ==================== -->
+    <header class="g-hero">
+      <p class="g-eyebrow">Gnasher&rsquo;s Grimoire</p>
+      <h1 class="g-title g-breathe">The muster, and the fight</h1>
+      <p class="g-lede">Everything a fight needs is in one panel: who is in it, what order they act in, what every attack rolls, what is wrong with each of them, and a log of the whole thing afterwards. This page walks it in the order a fight actually happens.</p>
+      <div class="g-divider"></div>
+      <nav class="g-jump" aria-label="On this page">
+        <a href="#muster">Muster the fight</a>
+        <a href="#initiative">Initiative in one press</a>
+        <a href="#to-hit">To hit, and damage</a>
+        <a href="#conditions">Conditions</a>
+        <a href="#hidden-monsters">Hidden monsters</a>
+        <a href="#the-log">The log, and the undo</a>
+        <a href="#onto-the-map">Onto the map</a>
+      </nav>
+    </header>
+
+    <!-- ==================== 1. MUSTER THE FIGHT ==================== -->
+    <section id="muster" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Muster the fight</h2>
+        <p>Who is in it, before anything is rolled.</p>
+      </div>
+      <div class="g-guide">
+        <!-- REVISIT: the header bar is being rebuilt (every command in one menu, pin what you want), so this step names the menu route rather than a button on the bar. -->
+        <ol class="g-steps">
+          <li>Press <b>Everything</b> on the bar and choose <b>Combat</b>.</li>
+          <li>Press <b>+ Add</b> in the turn bar and pick your party and whatever monsters you own.</li>
+          <li>Every mustered monster arrives with its armour class, its hit points and its attacks already read out of its own block.</li>
+          <li><b>Next turn</b> walks the order forward; the small arrow beside it walks back.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>A monster you muster twice is numbered, so the second wolf is its own row with its own hit points. Everything here is read off the block you own: where a block has nothing to read, the app says so at the point where it matters rather than quietly inventing a number.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. INITIATIVE IN ONE PRESS ==================== -->
+    <section id="initiative" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Initiative, in one press</h2>
+        <p>The thing that used to mean going round the table asking. It is one control now.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <b>Roll initiative</b> in the turn bar.</li>
+          <li>Every monster rolls a d20 and adds the bonus written on its own block: the Initiative line first, its DEX second, and when the block has neither, a flat d20 with a line saying that it is flat.</li>
+          <li>A player who already rolled on their Satchel keeps the number they rolled, under their own name.</li>
+          <li>A player whose roll never arrived is rolled for, and the log line says the DM rolled it.</li>
+          <li>The order sorts itself from the top down and the first round begins.</li>
+        </ol>
+        <ul class="g-plain">
+          <li>Re-roll one combatant from its own row without restarting anything.</li>
+          <li>Type a number straight into the box on a row, for when somebody at the table just tells you theirs.</li>
+          <li><b>Undo order</b> puts the previous order back exactly as it was, with the same round and the same turn active.</li>
+        </ul>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Ties break on the initiative bonus and then on the name, so the same fight sorts the same way twice. A lair acts on 20 by the rule rather than on a roll, and it loses every tie on purpose.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. TO HIT, AND DAMAGE ==================== -->
+    <section id="to-hit" class="g-sec">
+      <div class="g-sec-head">
+        <h2>To hit, and damage</h2>
+        <p>Both halves of an attack, from one press, in the words you would use out loud.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press an attack on a block and you get both halves at once: the d20 with the block's own bonus on it, and the damage behind it.</li>
+          <li>It reads the way you would say it: <b>18 to hit (d20 13 + 5)</b>.</li>
+          <li>The small <b>hit</b> and <b>dmg</b> controls beside an attack roll each half alone, for when the table has already agreed the blow landed.</li>
+          <li><b>Straight</b> in the turn bar becomes <b>Advantage</b>, then <b>Disadvantage</b>, and rolls two dice for you until you turn it back.</li>
+        </ol>
+        <ul class="g-plain">
+          <li>A natural 20 is called out and rolls <b>double the damage dice</b>, never double the modifier.</li>
+          <li>A natural 1 is called out too.</li>
+          <li>An attack with no to-hit bonus written on its block <b>says so and rolls no d20</b>, rather than quietly rolling a plus nothing.</li>
+        </ul>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Every one of these rolls lands in the fight log and in your session dice log, so a disagreement five minutes later is settled by reading rather than by arguing. The small dice printed inside a block's own prose still roll damage only: those are the numbers in the sentence, not an attack.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. CONDITIONS ==================== -->
+    <section id="conditions" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Conditions, and the dots on a token</h2>
+        <p>What is wrong with each of them, in front of you, and on the board when you want it there.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Put a condition on a row from its own list: seventeen names, Blinded through to Dead, with Concentrating, Dodging and Hidden among them.</li>
+          <li>Give it a count of rounds when it has one.</li>
+          <li>Press the eye beside a condition to decide whether your players see it. Hidden from them, it stays on your screen alone.</li>
+          <li>On the board, a token wears its conditions as small dots, so one glance tells you who is in trouble.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>An older free copy of the Satchel does not get the condition dots or a turned grid, and the seat says so beside that player's name rather than leaving you wondering. A condition here is a label and a count: it does not enforce itself, because a rule the app applied behind your back is worse than one you forgot.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. HIDDEN MONSTERS ==================== -->
+    <section id="hidden-monsters" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Monsters they have not worked out yet</h2>
+        <p>They can see the thing. Knowing what it is called is a different matter.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press the mask on a monster's row and its name is hidden from your players; their token shows its number instead.</li>
+          <li>Press the mask in the panel's own bar to do that to <b>every</b> monster at once, and again to put the names back.</li>
+          <li>Nothing changes on your side: you keep reading the name while they read a number.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>This hides the name plate, not the monster. A token they can see is a token they can see, and working out what it is remains the point of the encounter.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. THE LOG, AND THE UNDO ==================== -->
+    <section id="the-log" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The fight log, and the one undo</h2>
+        <p>For the moment somebody asks what that thing rolled two turns ago.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>The chip under the turn bar reads <b>No blows traded yet.</b> until somebody swings.</li>
+          <li>Press it to open the fight so far, blow by blow, in the order it happened.</li>
+          <li><b>Clear</b> empties that log when you want a clean sheet.</li>
+          <li><b>Undo order</b> in the turn bar is the undo that matters mid-fight: it restores the previous order, the round, and whose turn it was.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>There is one undo and it is for the order. Hit points and conditions are typed in, so they are corrected the way they were set: by typing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. ONTO THE MAP ==================== -->
+    <section id="onto-the-map" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Put them on the map</h2>
+        <p>The muster and the board are the same fight seen twice.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Open the War Board on the map you want.</li>
+          <li>In the Tokens section, press <b>Place mustered</b>.</li>
+          <li>Every mustered combatant lands on that map as a token.</li>
+        </ol>
+        <p>From there the fight belongs to the board: <a href="/grimoire-the-war-board">the War Board, step by step</a> walks the grid, the fog, the light and the push to your players' phones.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Capturing a scene in the Saga saves the map, the grid, the fog, every token where it stands and the order of battle together, which is the cheapest way to have a fight ready before the night starts.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CLOSING ==================== -->
+    <section class="g-final">
+      <h2>Roll one fight with it</h2>
+      <p>Muster three monsters and your party, press the one control, and see whether the order and the to-hit rolls save you the reaching for a die and the squinting at a page. That is the whole test.</p>
+      <a class="g-btn g-btn-gold" href="downloads/gnashers-grimoire.html" download="gnashers-grimoire.html"><i class="fas fa-book-bookmark" aria-hidden="true"></i> Download Gnasher&rsquo;s Grimoire, free</a>
+      <a class="g-btn g-btn-ghost" href="/grimoire"><i class="fas fa-circle-info" aria-hidden="true"></i> Everything else it does</a>
+    </section>
+
+    <p class="g-more">Still stuck? Write to <a href="mailto:grimoire@longislanddungeonmaster.com?subject=Grimoire%20feedback&amp;body=What%20I%20was%20doing%3A%0AWhat%20happened%3A%0ABrowser%20%2F%20device%3A%0A">grimoire@longislanddungeonmaster.com</a> or say so in the <a href="https://discord.gg/BqgAbEcwJu" target="_blank" rel="noopener">LIDM Discord</a>. It goes to me, and bad news is the useful kind.<br><span style="opacity:.85;">The companion line: <b>Gnasher&rsquo;s Grimoire&trade;</b> (DM app) &middot; <a href="/satchel">Gnasher&rsquo;s Satchel&trade;</a> (player app) &middot; <a href="/quill">Gnasher&rsquo;s Quill&trade;</a> (session recorder).</span></p>
+
+  </main>
+
+  <div class="h-foot">
+    &copy; 2020&ndash;2026 Frank Papaleo &middot; Long Island Dungeon Master &bull; <a href="/">Home</a> &bull; <a href="/grimoire">Gnasher&rsquo;s Grimoire</a> &bull; <a href="/keepers">Adventure Keepers</a> &bull; <a href="/hoard">The Hoard</a> &bull; <a href="/privacy">Privacy</a> &bull; <a href="/how-its-made">How this gets made</a><br>
+    Long Island Dungeon Master is an independent service, not affiliated with or endorsed by Wizards of the Coast. Dungeons &amp; Dragons and D&amp;D are trademarks of Wizards of the Coast LLC. Compatible with fifth edition; portions derived from the SRD 5.2.1 under CC-BY-4.0.
+  </div>
+
+  <!-- The Herald&rsquo;s Nudge (dismissible newsletter bar) -->
+  <script src="js/nudge.js" defer></script>
+  <!-- Cloudflare Web Analytics (cookieless, no personal data) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+
+</body>
+
+</html>

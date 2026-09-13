@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The War Board in Gnasher&rsquo;s Grimoire: your own maps, a grid that lines up, fog, light and one push to the table</title>
+  <meta name="description" content="Every control on the War Board, in the order you meet them: point it at your own map folder, align the grid, paint fog, place and own tokens, measure and draw, light and walls, pins on a campaign map, day and night, the three starter maps, and pushing the board to your players.">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/grimoire-the-war-board">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://longislanddungeonmaster.com/grimoire-the-war-board">
+  <meta property="og:title" content="The War Board, step by step">
+  <meta property="og:description" content="Your own map images, a grid that actually lines up, fog you paint with a brush, light that behaves like light, and one press that puts it on every phone at the table.">
+  <meta property="og:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The War Board, step by step">
+  <meta name="twitter:description" content="Your own map images, a grid that actually lines up, fog you paint with a brush, light that behaves like light, and one press that puts it on every phone at the table.">
+  <meta name="twitter:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 78%); min-height: 100vh; }
+
+    /* ---- Top bar (matches the Grimoire page) ---- */
+    .h-top { position: fixed; top: 0; left: 0; right: 0; z-index: 30; background: linear-gradient(180deg, rgba(26,0,0,.98), rgba(61,0,0,.92)); border-bottom: 2px solid var(--gold); padding: .9rem 0; }
+    .h-top .container { display: flex; align-items: center; justify-content: space-between; }
+    .h-brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.3rem; letter-spacing: 1px; text-decoration: none; }
+    .h-brand:hover { color: var(--gold-light); }
+    .h-back { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .h-back:hover { color: var(--gold); }
+    .h-wrap { max-width: 1060px; margin: 0 auto; padding: 6.6rem 1.2rem 4rem; }
+
+    /* ---- Shared type ---- */
+    .g-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.78); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; }
+    .g-breathe { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); }
+    .g-divider { width: 6rem; height: 2px; margin: 1.8rem auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    section { scroll-margin-top: 5.5rem; }
+
+    /* ---- hero ---- */
+    .g-hero { text-align: center; margin-bottom: 3rem; }
+    .g-title { font-size: clamp(2.6rem, 9vw, 4.6rem); line-height: 1; margin: .2rem 0 .5rem; text-shadow: 0 0 42px rgba(201,168,76,.42), 2px 2px 0 #000; }
+    .g-lede { color: rgba(255,255,255,.82); max-width: 660px; margin: 1.2rem auto 0; line-height: 1.9; font-size: 1.06rem; }
+    .g-lede b { color: var(--gold-light); }
+
+    /* ---- section shell (same spacing rule as the Grimoire page) ---- */
+    .g-sec { margin-top: 4.5rem; }
+    .g-sec-head { text-align: center; max-width: 720px; margin: 0 auto 2.2rem; }
+    .g-sec-head h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(2rem,6vw,3rem); line-height: 1.04; margin-bottom: .8rem; }
+    .g-sec-head p { color: rgba(255,255,255,.75); line-height: 1.9; font-size: 1rem; }
+    .g-sec-head p strong { color: var(--gold-light); }
+
+    /* ---- the guide body ---- */
+    .g-guide { max-width: 760px; margin: 0 auto; }
+    .g-guide p { color: rgba(255,255,255,.78); line-height: 1.95; font-size: 1.02rem; }
+    .g-guide p b, .g-guide li b { color: var(--gold-light); }
+    .g-steps { counter-reset: gstep; list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-steps li { counter-increment: gstep; position: relative; padding: .55rem 0 .55rem 3rem; color: rgba(255,255,255,.82); line-height: 1.85; font-size: 1.02rem; }
+    .g-steps li::before { content: counter(gstep); position: absolute; left: 0; top: .55rem; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(201,168,76,.5); border-radius: 50%; background: rgba(201,168,76,.08); color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; font-weight: 700; }
+    .g-plain { list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-plain li { position: relative; padding: .45rem 0 .45rem 1.5rem; color: rgba(255,255,255,.8); line-height: 1.85; font-size: 1.02rem; }
+    .g-plain li::before { content: "\25C6"; position: absolute; left: 0; top: .45rem; color: rgba(201,168,76,.7); font-size: .7rem; }
+    .g-limits { border-left: 3px solid rgba(201,168,76,.5); background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.34)); border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1.4rem 0 0; }
+    .g-limits p { margin: 0; color: rgba(255,255,255,.76); font-size: .98rem; }
+    .g-limits .lab { display: block; font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .68rem; color: rgba(201,168,76,.85); margin-bottom: .4rem; }
+    .g-key { display: inline-block; font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; padding: .06rem .45rem; border: 1px solid rgba(201,168,76,.5); border-radius: 4px; background: rgba(201,168,76,.1); color: var(--gold-light); }
+    .g-code { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--gold-light); background: rgba(0,0,0,.35); border-radius: 4px; padding: .05rem .35rem; }
+
+    /* ---- jump list ---- */
+    .g-jump { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; max-width: 820px; margin: 2.4rem auto 0; }
+    .g-jump a { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; letter-spacing: .4px; text-decoration: none; color: var(--gold-light); border: 1px solid rgba(201,168,76,.38); border-radius: 999px; padding: .4rem .85rem; background: rgba(201,168,76,.06); }
+    .g-jump a:hover { color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,.14); }
+
+    /* ---- closing ---- */
+    .g-final { text-align: center; margin-top: 4.5rem; padding: 2.6rem 1.2rem; border: 1px solid rgba(201,168,76,.35); border-radius: 14px; background: linear-gradient(160deg, rgba(139,0,0,.2), rgba(0,0,0,.45)); }
+    .g-final h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(1.9rem,5.4vw,2.8rem); margin-bottom: .8rem; }
+    .g-final p { color: rgba(255,255,255,.78); line-height: 1.9; max-width: 640px; margin: 0 auto 1.4rem; }
+    .g-btn { display: inline-flex; align-items: center; gap: .55rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .86rem; letter-spacing: .4px; text-decoration: none; padding: .8rem 1.4rem; border-radius: 6px; margin: .3rem; transition: transform .12s ease, box-shadow .12s ease, background .15s ease; }
+    .g-btn-gold { background: var(--gold); color: var(--crimson-dark); box-shadow: 0 6px 18px rgba(201,168,76,.28); }
+    .g-btn-gold:hover { color: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(201,168,76,.44); }
+    .g-btn-ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .g-btn-ghost:hover { background: rgba(201,168,76,.12); color: var(--gold-light); transform: translateY(-2px); }
+
+    @media (max-width: 640px) {
+      .h-wrap { padding: 5.8rem .9rem 3rem; }
+      .g-steps li { padding-left: 2.6rem; }
+      .g-steps li::before { width: 1.8rem; height: 1.8rem; }
+      .g-guide p, .g-steps li, .g-plain li { font-size: .99rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="h-top">
+    <div class="container">
+      <a class="h-brand" href="/">Long Island Dungeon Master</a>
+      <a class="h-back" href="/grimoire">&larr; Back to the Grimoire</a>
+    </div>
+  </div>
+
+  <main class="h-wrap">
+
+    <!-- ==================== HERO ==================== -->
+    <header class="g-hero">
+      <p class="g-eyebrow">Gnasher&rsquo;s Grimoire</p>
+      <h1 class="g-title g-breathe">The War Board, step by step</h1>
+      <p class="g-lede">Your own map images, a grid that actually lines up, fog you paint with a brush, light that behaves like light, and one press that puts it all on your players' phones. This page walks every control on the board, roughly in the order you meet them.</p>
+      <div class="g-divider"></div>
+      <nav class="g-jump" aria-label="On this page">
+        <a href="#open-and-point">Open it, point it</a>
+        <a href="#grid">The grid</a>
+        <a href="#fog">Fog</a>
+        <a href="#tokens">Tokens</a>
+        <a href="#ruler-and-shapes">Ruler and shapes</a>
+        <a href="#light">Light and walls</a>
+        <a href="#pins">Pins and campaign maps</a>
+        <a href="#day-and-night">Day and night</a>
+        <a href="#starter-maps">The starter maps</a>
+        <a href="#video-maps">A map that moves</a>
+        <a href="#push">Push it to the table</a>
+        <a href="#screens">A window for every screen</a>
+      </nav>
+    </header>
+
+    <!-- ==================== 1. OPEN IT, POINT IT ==================== -->
+    <section id="open-and-point" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Open it, and point it at your maps</h2>
+        <p>The board runs on the pictures you already own.</p>
+      </div>
+      <div class="g-guide">
+        <!-- REVISIT: the header bar is being rebuilt (every command in one menu, pin what you want), so this step names the menu route rather than a button on the bar. -->
+        <ol class="g-steps">
+          <li>Press <b>Everything</b> on the bar and choose <b>War Board</b>.</li>
+          <li>Press <b>Maps folder...</b> and pick the folder of map images on your computer.</li>
+          <li>Search the tray by name and press a map to open it on the board.</li>
+          <li>Press <b>Tokens folder...</b> and do the same for your token pictures.</li>
+          <li>Press <b>+ Scene</b> to save what is on the board right now, fog and tokens and all, and <b>Copy</b> to make a second version of it.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Nothing here is uploaded, because there is no account and no server to upload it to. The board needs no internet at all: the only part of it that reaches anybody else is the push, and that goes to the phones in the room.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. THE GRID ==================== -->
+    <section id="grid" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The grid</h2>
+        <p>Four ways in, because maps come out of the world crooked.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <b>Grid</b> to open the aligning bar.</li>
+          <li><b>Match</b>: drag a box across a few of the map's own printed squares and the grid matches what it finds.</li>
+          <li><b>Drop</b>: type a square size in pixels and the grid drops straight on.</li>
+          <li><b>Turn</b>: give it an angle in degrees for a map that was scanned at a slant.</li>
+          <li><b>Gridless</b> for a picture with no squares in it at all, and <b>Undo</b> for the attempt you did not like.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>A turned grid is newer than some copies of the Satchel. A player on an older one is flagged on your roster as <b>grid not turned</b>, rather than silently drawing their fog in the wrong place all night.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. FOG ==================== -->
+    <section id="fog" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Fog, and what they can see</h2>
+        <p>A brush, a rectangle, and two controls for the whole map.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li><b>Reveal</b> paints the squares the party can see, with a brush.</li>
+          <li><b>Room</b> reveals a rectangle in one drag.</li>
+          <li><b>Hide</b> puts squares back into the dark.</li>
+          <li><b>All</b> and <b>None</b> do the whole map at once, which is how most nights start.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Fog belongs to the map and it is remembered, so a corridor you opened last week is still open. Your players and the second screen see what you revealed, not what you can see.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. TOKENS ==================== -->
+    <section id="tokens" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Tokens</h2>
+        <p>Who is on the map, how big they are, who may move them, and what they can see.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Choose <b>Tokens</b> to select and move them.</li>
+          <li>Give one a label, a colour, and a size of one, two or three squares, or a free size in between.</li>
+          <li>Set an owner: <b>dm</b>, or the name of a seat at your table, and that player may move their own.</li>
+          <li>Give it sight in feet, and <b>Darkvision</b> when it has it. <b>Normal</b>, <b>Dv 60</b> and <b>Dv 120</b> are one press each.</li>
+          <li><b>Player's art</b> puts the picture from that player's own sheet on their token.</li>
+          <li><b>Make a token...</b> builds one out of any picture: drop a file, drag one out of another browser tab, or paste one, then crop it round and put a border on it.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>A picture from a site that will not let a browser copy it can be shown but never saved, and the app tells you so instead of failing quietly. Drag the picture in from its own tab and that always works.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. RULER AND SHAPES ==================== -->
+    <section id="ruler-and-shapes" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The ruler, the shapes and the ping</h2>
+        <p>Four tools, and only one of them is private on purpose.</p>
+      </div>
+      <div class="g-guide">
+        <ul class="g-plain">
+          <li><b>Measure</b> drags a ruler across the map in squares and feet. Escape clears it, and it is yours alone: nothing is sent.</li>
+          <li><b>Draw</b> gives you a pen, a line, a box, a ring and a written note, in eight colours and three widths. <b>DM only</b> keeps a drawing on your screen; otherwise it reaches your players live once the map is pushed.</li>
+          <li><b>Players</b> lets a chosen seat draw as well, and <b>Rub out</b> clears what they drew.</li>
+          <li><b>Area</b> sets a size in feet, then aims a circle, a cone, a line or a cube from a press on the map or on a token. Shared templates reach your players; <b>DM only</b> keeps them here.</li>
+          <li><b>Ping</b> says look here: press the map and everybody at the table sees the ring.</li>
+        </ul>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The ruler is the one tool on this list that is never shared, and that is deliberate. It is for you working out whether the blast reaches, not for telling the table that it does.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. LIGHT AND WALLS ==================== -->
+    <section id="light" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Light and walls</h2>
+        <p>A wall stops sight. A torch carries its own bright and dim range. The two together are most of a dungeon.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <b>Lighting</b> to turn it on, and set the ambient light: <b>Dark</b>, <b>Moon</b>, or brighter.</li>
+          <li>Drag a wall to block sight, and use <b>Gap</b> to put a doorway in one.</li>
+          <li>Press the map with <b>Light</b> to drop a light, or pick a preset: a candle, a lamp, a torch, a hooded lantern, a bullseye lantern, or the light of a spell, each with its own bright and dim range in feet.</li>
+          <li>Type your own bright and dim numbers, pick the colour of the flame, and press <b>On token</b> so the light travels with whoever carries it.</li>
+          <li><b>Undo wall</b>, <b>Remove light</b> and <b>Clear all</b> take it back.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>A creature's eyes are set on its own token, not on the map, so darkvision is a property of the thing looking. That is why two tokens standing in the same dark room can honestly see different amounts of it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. PINS AND CAMPAIGN MAPS ==================== -->
+    <section id="pins" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Pins, and the campaign map</h2>
+        <p>The same board, holding a region instead of a room.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <b>Battle map</b> and it becomes a <b>Campaign map</b>. Press it again to switch back: nothing is lost either way.</li>
+          <li>A campaign map holds pins instead of tokens. Choose what a pin opens: a note, a page, another map, or a piece of text.</li>
+          <li>Tap the map to place one, and drag a pin to move it. The search box finds the note, page or map you want it to point at.</li>
+          <li><b>Party here</b> drops the party marker, and <b>Clear marker</b> takes it off again.</li>
+          <li>Set the scale in the bar: so many pixels to so many miles, kilometres, feet or metres, and the ruler reads in that.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The party marker lives on a campaign map. Ask for it on a battle map and the app tells you to switch the map first, rather than putting a marker somewhere it would mean nothing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 8. DAY AND NIGHT ==================== -->
+    <section id="day-and-night" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Day and night, and the look of the map</h2>
+        <p>A tint over your picture, driven by the hour in your world, and never a change to the file.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Set the light on this map from the box on the bar: <b>Light: the clock</b>, or hold it at Dawn, Daylight, Dusk, Night, Sepia, Storm or Underdark.</li>
+          <li>Left on the clock it follows the hour in your world: dawn from five in the morning, daylight from seven, dusk from six in the evening, night from eight.</li>
+          <li>Tick <b>To the table</b> to show the light of day to your players as well as to you.</li>
+          <li>Untick <b>Day and night</b> to turn the whole thing off on every map.</li>
+        </ol>
+        <p>The hour it follows is the one on your calendar, and dragging that clock past dusk darkens the pushed map on every seat. <a href="/grimoire-time">The calendar, and the clock</a> walks that end of it.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>None of this touches your map image. It is a tint over the picture and a look held on top, so the file in your folder is exactly the file in your folder, and the look you chose survives a reload.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 9. THE STARTER MAPS ==================== -->
+    <section id="starter-maps" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The three starter maps</h2>
+        <p>Plain tiles, for testing and a quick fight, so you are never stuck for a map.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Open the maps tray and scroll to <b>Starter maps</b>.</li>
+          <li>There are three: <b>Parchment grid</b>, <b>Dungeon stone</b> and <b>Grass field</b>.</li>
+          <li>Press one and it opens with the grid already lined up.</li>
+        </ol>
+        <p>The Grimoire draws these itself rather than carrying pictures of them, which is why they cost the download almost nothing. They are bare tiles: no props and no trees, so put your own on top.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>They are for testing and a quick fight, and the tray says so at the top of that section. The parchment and the stone are twenty squares by fourteen; the grass is twenty four by sixteen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 10. A MAP THAT MOVES ==================== -->
+    <section id="video-maps" class="g-sec">
+      <div class="g-sec-head">
+        <h2>A map that moves</h2>
+        <p>The animated map loops you already own, running under everything the board already draws.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Put an mp4 or a webm in the same maps folder your still maps live in. There is nothing else to set up and nothing to convert.</li>
+          <li>Open the maps tray and press it. A small film mark beside the name is how you tell a moving map from a still one.</li>
+          <li>It plays under your grid, your fog, your lights, your tokens, your pins, your shapes and anything you draw, exactly where a still map sits.</li>
+          <li>Press <b>Pause</b> on the board's toolbar to stop it on the frame you want, and drag the scrub beside it to run it forwards or back.</li>
+          <li>Everything else works as it always did: <b>Grid</b> aligns on the moving art, <b>Reveal</b> and <b>Hide</b> paint fog over it, walls and lights sit on top of it, and <b>Draw</b> leaves your ink where you put it.</li>
+        </ol>
+        <p>Pausing and scrubbing move the picture and nothing else. The fog you painted, the tokens you placed and the ink you drew stay exactly where they were, so you can stop a burning room on the frame you like and keep running the fight on it.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The video file never leaves your computer. When you press <b>Push to table</b> your players get one still frame of it, with a line telling them the table's map is animated, because a phone on a hotel network does not want forty megabytes. A moving map also repaints the whole board every frame: on a laptop with lighting and a big fog mask this runs fine, and on a machine that struggles, <b>Pause</b> is one press away.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 11. PUSH IT TO THE TABLE ==================== -->
+    <section id="push" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Push it to the table</h2>
+        <p>Nothing on the board has reached anybody until you press this.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <b>Push to table</b> and the map goes to every paired Satchel.</li>
+          <li>Their phones get the map, the grid, the fog you revealed, and the tokens they are allowed to see.</li>
+          <li>Press it again after a big change. A seat reading <b>board out of sync</b> is telling you something never landed.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Switching to a different map detaches your table: they still hold the last board you pushed, and nothing new reaches them until you press it again, and the app says so at the moment it happens. If you have not pushed at all this session it tells you that too. For a television you need none of this: see <a href="/grimoire-the-table#second-screen">the second screen</a>, which needs no phones and no network.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 12. A WINDOW FOR EVERY SCREEN ==================== -->
+    <section id="screens" class="g-sec">
+      <div class="g-sec-head">
+        <h2>A window for every screen</h2>
+        <p>The board on the television, the fight at your elbow, the book in front of you.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <b>Screens</b> on the header bar, or find it in the <b>Everything</b> menu.</li>
+          <li>Open the ones you want, each in a window of its own: the party view, the muster and the fight, your book, or the clock and the calendar.</li>
+          <li>Drag each window onto whichever monitor you want it on, and size it to that screen.</li>
+          <li>Every window follows this Grimoire as you work, because they are views of one state rather than copies of it: what you change here changes there.</li>
+          <li>Close any of them whenever you like. They come back where you left them the next time you open them.</li>
+        </ol>
+        <p>The party window is the one to put on the television: it shows only what your players may see, the same half the second screen shows, so your ink and your hidden figures stay on your own screen.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>These are screens to read, not surfaces to drive: the controls inside a window are inert, so you run the fight from the main window and watch it on the monitor across the table. They are windows on this computer, so they want a second monitor plugged into it; a phone in somebody's hand is still <a href="/satchel">Gnasher&rsquo;s Satchel</a>. And the party window plays a moving map by reading the same file from the same folder on this computer, so it cannot drift out of step with yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CLOSING ==================== -->
+    <section class="g-final">
+      <h2>Open it on a starter map</h2>
+      <p>The three starter maps exist so you can try all of this without hunting for a picture first. Open one, drop a few tokens, drag a wall across it and light a torch, and you will know in two minutes whether the board is the one you want.</p>
+      <a class="g-btn g-btn-gold" href="downloads/gnashers-grimoire.html" download="gnashers-grimoire.html"><i class="fas fa-book-bookmark" aria-hidden="true"></i> Download Gnasher&rsquo;s Grimoire, free</a>
+      <a class="g-btn g-btn-ghost" href="/grimoire"><i class="fas fa-circle-info" aria-hidden="true"></i> Everything else it does</a>
+    </section>
+
+    <p class="g-more">Still stuck? Write to <a href="mailto:grimoire@longislanddungeonmaster.com?subject=Grimoire%20feedback&amp;body=What%20I%20was%20doing%3A%0AWhat%20happened%3A%0ABrowser%20%2F%20device%3A%0A">grimoire@longislanddungeonmaster.com</a> or say so in the <a href="https://discord.gg/BqgAbEcwJu" target="_blank" rel="noopener">LIDM Discord</a>. It goes to me, and bad news is the useful kind.<br><span style="opacity:.85;">The companion line: <b>Gnasher&rsquo;s Grimoire&trade;</b> (DM app) &middot; <a href="/satchel">Gnasher&rsquo;s Satchel&trade;</a> (player app) &middot; <a href="/quill">Gnasher&rsquo;s Quill&trade;</a> (session recorder).</span></p>
+
+  </main>
+
+  <div class="h-foot">
+    &copy; 2020&ndash;2026 Frank Papaleo &middot; Long Island Dungeon Master &bull; <a href="/">Home</a> &bull; <a href="/grimoire">Gnasher&rsquo;s Grimoire</a> &bull; <a href="/keepers">Adventure Keepers</a> &bull; <a href="/hoard">The Hoard</a> &bull; <a href="/privacy">Privacy</a> &bull; <a href="/how-its-made">How this gets made</a><br>
+    Long Island Dungeon Master is an independent service, not affiliated with or endorsed by Wizards of the Coast. Dungeons &amp; Dragons and D&amp;D are trademarks of Wizards of the Coast LLC. Compatible with fifth edition; portions derived from the SRD 5.2.1 under CC-BY-4.0.
+  </div>
+
+  <!-- The Herald&rsquo;s Nudge (dismissible newsletter bar) -->
+  <script src="js/nudge.js" defer></script>
+  <!-- Cloudflare Web Analytics (cookieless, no personal data) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+
+</body>
+
+</html>

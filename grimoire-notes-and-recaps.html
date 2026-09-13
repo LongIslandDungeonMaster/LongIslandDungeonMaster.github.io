@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notes, the thread and the recap in Gnasher&rsquo;s Grimoire: a face for the party and a side they never see</title>
+  <meta name="description" content="The four places words live in the Grimoire: the notebook you type into mid-sentence, the dossier with a face for the table and a private box that is never sent, the Table Thread between you and their phones, and the session recap your players keep afterwards.">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/grimoire-notes-and-recaps">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://longislanddungeonmaster.com/grimoire-notes-and-recaps">
+  <meta property="og:title" content="Notes, the thread, and the recap">
+  <meta property="og:description" content="A notebook one keypress away, a dossier that splits itself into what they get and what you keep, a thread that rolls dice, and a recap they keep after the night.">
+  <meta property="og:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Notes, the thread, and the recap">
+  <meta name="twitter:description" content="A notebook one keypress away, a dossier that splits itself into what they get and what you keep, a thread that rolls dice, and a recap they keep after the night.">
+  <meta name="twitter:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 78%); min-height: 100vh; }
+
+    /* ---- Top bar (matches the Grimoire page) ---- */
+    .h-top { position: fixed; top: 0; left: 0; right: 0; z-index: 30; background: linear-gradient(180deg, rgba(26,0,0,.98), rgba(61,0,0,.92)); border-bottom: 2px solid var(--gold); padding: .9rem 0; }
+    .h-top .container { display: flex; align-items: center; justify-content: space-between; }
+    .h-brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.3rem; letter-spacing: 1px; text-decoration: none; }
+    .h-brand:hover { color: var(--gold-light); }
+    .h-back { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .h-back:hover { color: var(--gold); }
+    .h-wrap { max-width: 1060px; margin: 0 auto; padding: 6.6rem 1.2rem 4rem; }
+
+    /* ---- Shared type ---- */
+    .g-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.78); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; }
+    .g-breathe { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); }
+    .g-divider { width: 6rem; height: 2px; margin: 1.8rem auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    section { scroll-margin-top: 5.5rem; }
+
+    /* ---- hero ---- */
+    .g-hero { text-align: center; margin-bottom: 3rem; }
+    .g-title { font-size: clamp(2.6rem, 9vw, 4.6rem); line-height: 1; margin: .2rem 0 .5rem; text-shadow: 0 0 42px rgba(201,168,76,.42), 2px 2px 0 #000; }
+    .g-lede { color: rgba(255,255,255,.82); max-width: 660px; margin: 1.2rem auto 0; line-height: 1.9; font-size: 1.06rem; }
+    .g-lede b { color: var(--gold-light); }
+
+    /* ---- section shell (same spacing rule as the Grimoire page) ---- */
+    .g-sec { margin-top: 4.5rem; }
+    .g-sec-head { text-align: center; max-width: 720px; margin: 0 auto 2.2rem; }
+    .g-sec-head h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(2rem,6vw,3rem); line-height: 1.04; margin-bottom: .8rem; }
+    .g-sec-head p { color: rgba(255,255,255,.75); line-height: 1.9; font-size: 1rem; }
+    .g-sec-head p strong { color: var(--gold-light); }
+
+    /* ---- the guide body ---- */
+    .g-guide { max-width: 760px; margin: 0 auto; }
+    .g-guide p { color: rgba(255,255,255,.78); line-height: 1.95; font-size: 1.02rem; }
+    .g-guide p b, .g-guide li b { color: var(--gold-light); }
+    .g-steps { counter-reset: gstep; list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-steps li { counter-increment: gstep; position: relative; padding: .55rem 0 .55rem 3rem; color: rgba(255,255,255,.82); line-height: 1.85; font-size: 1.02rem; }
+    .g-steps li::before { content: counter(gstep); position: absolute; left: 0; top: .55rem; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(201,168,76,.5); border-radius: 50%; background: rgba(201,168,76,.08); color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; font-weight: 700; }
+    .g-plain { list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-plain li { position: relative; padding: .45rem 0 .45rem 1.5rem; color: rgba(255,255,255,.8); line-height: 1.85; font-size: 1.02rem; }
+    .g-plain li::before { content: "\25C6"; position: absolute; left: 0; top: .45rem; color: rgba(201,168,76,.7); font-size: .7rem; }
+    .g-limits { border-left: 3px solid rgba(201,168,76,.5); background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.34)); border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1.4rem 0 0; }
+    .g-limits p { margin: 0; color: rgba(255,255,255,.76); font-size: .98rem; }
+    .g-limits .lab { display: block; font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .68rem; color: rgba(201,168,76,.85); margin-bottom: .4rem; }
+    .g-key { display: inline-block; font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; padding: .06rem .45rem; border: 1px solid rgba(201,168,76,.5); border-radius: 4px; background: rgba(201,168,76,.1); color: var(--gold-light); }
+    .g-code { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--gold-light); background: rgba(0,0,0,.35); border-radius: 4px; padding: .05rem .35rem; }
+
+    /* ---- jump list ---- */
+    .g-jump { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; max-width: 820px; margin: 2.4rem auto 0; }
+    .g-jump a { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; letter-spacing: .4px; text-decoration: none; color: var(--gold-light); border: 1px solid rgba(201,168,76,.38); border-radius: 999px; padding: .4rem .85rem; background: rgba(201,168,76,.06); }
+    .g-jump a:hover { color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,.14); }
+
+    /* ---- closing ---- */
+    .g-final { text-align: center; margin-top: 4.5rem; padding: 2.6rem 1.2rem; border: 1px solid rgba(201,168,76,.35); border-radius: 14px; background: linear-gradient(160deg, rgba(139,0,0,.2), rgba(0,0,0,.45)); }
+    .g-final h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(1.9rem,5.4vw,2.8rem); margin-bottom: .8rem; }
+    .g-final p { color: rgba(255,255,255,.78); line-height: 1.9; max-width: 640px; margin: 0 auto 1.4rem; }
+    .g-btn { display: inline-flex; align-items: center; gap: .55rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .86rem; letter-spacing: .4px; text-decoration: none; padding: .8rem 1.4rem; border-radius: 6px; margin: .3rem; transition: transform .12s ease, box-shadow .12s ease, background .15s ease; }
+    .g-btn-gold { background: var(--gold); color: var(--crimson-dark); box-shadow: 0 6px 18px rgba(201,168,76,.28); }
+    .g-btn-gold:hover { color: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(201,168,76,.44); }
+    .g-btn-ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .g-btn-ghost:hover { background: rgba(201,168,76,.12); color: var(--gold-light); transform: translateY(-2px); }
+
+    @media (max-width: 640px) {
+      .h-wrap { padding: 5.8rem .9rem 3rem; }
+      .g-steps li { padding-left: 2.6rem; }
+      .g-steps li::before { width: 1.8rem; height: 1.8rem; }
+      .g-guide p, .g-steps li, .g-plain li { font-size: .99rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="h-top">
+    <div class="container">
+      <a class="h-brand" href="/">Long Island Dungeon Master</a>
+      <a class="h-back" href="/grimoire">&larr; Back to the Grimoire</a>
+    </div>
+  </div>
+
+  <main class="h-wrap">
+
+    <!-- ==================== HERO ==================== -->
+    <header class="g-hero">
+      <p class="g-eyebrow">Gnasher&rsquo;s Grimoire</p>
+      <h1 class="g-title g-breathe">Notes, the thread, and the recap</h1>
+      <p class="g-lede">Four places words live in the Grimoire: the notebook you type into mid-sentence, the dossier with a face for the table and a side that never leaves your screen, the thread that runs between you and their phones, and the recap they keep afterwards. This page walks all four.</p>
+      <div class="g-divider"></div>
+      <nav class="g-jump" aria-label="On this page">
+        <a href="#the-notebook">The notebook</a>
+        <a href="#two-faces">A face, and a private side</a>
+        <a href="#the-thread">The Table Thread</a>
+        <a href="#the-recap">The recap</a>
+        <a href="#the-chronicle">The Chronicle</a>
+        <a href="#the-vault">Back into your notes</a>
+      </nav>
+    </header>
+
+    <!-- ==================== 1. THE NOTEBOOK ==================== -->
+    <section id="the-notebook" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The notebook</h2>
+        <p>One keypress, because a thought you have to go looking for a menu to write down is a thought you lose.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <span class="g-key">N</span>.</li>
+          <li>Type what just happened. Enter saves it; Shift and Enter together give you a new line.</li>
+          <li>Paste or drop a picture on the box to keep it in the note.</li>
+          <li>Find it again later by pressing <span class="g-key">Space</span> and typing any word of it.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>A note holds up to two thousand characters, which is a paragraph and not a chapter. Notes ride the Chronicle and your <b>.keeper</b> backup, so they leave with everything else when you move to another computer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. A FACE, AND A PRIVATE SIDE ==================== -->
+    <section id="two-faces" class="g-sec">
+      <div class="g-sec-head">
+        <h2>What they see, and what you keep</h2>
+        <p>One record with two halves, and only one half can travel.</p>
+      </div>
+      <div class="g-guide">
+        <!-- REVISIT: the header bar is being rebuilt (every command in one menu, pin what you want), so this step names the menu route rather than a button on the bar. -->
+        <ol class="g-steps">
+          <li>Press <b>Everything</b> on the bar and choose <b>Theater</b>, then find <b>Packets</b>.</li>
+          <li>Type a name in <b>Build from your Grimoire</b> and it builds the dossier out of what you already own, splitting it in two by itself.</li>
+          <li>The top half is headed <i>The face: this is what they get</i>: a name, a line under it, what kind of thing it is, what the table is allowed to know, and a picture.</li>
+          <li>The box underneath is headed <i>Yours only, never sent</i>: secrets, stats, what the person really wants.</li>
+          <li>Press <b>Send it</b> and only the face travels.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The private box is never sent, and it is left out of the handout faces shown on the second screen too. A packet that carries private notes says so on its own line in the list, so a glance tells you which of them have a second floor under the first.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. THE TABLE THREAD ==================== -->
+    <section id="the-thread" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The Table Thread</h2>
+        <p>Words and dice between your screen and their phones, kept in order, and kept afterwards.</p>
+      </div>
+      <div class="g-guide">
+        <!-- REVISIT: the header bar is being rebuilt (every command in one menu, pin what you want), so this step names the menu route rather than a button on the bar. -->
+        <ol class="g-steps">
+          <li>Press <b>Everything</b> on the bar and choose <b>Thread</b>.</li>
+          <li>Write a post to the table. Bold and italics carry.</li>
+          <li>Put a roll in brackets, a d20 with a bonus or a handful of dice with a damage type, and it is rolled here as you post.</li>
+          <li>Press <b>Post</b>. Replies come back from their phones and land under it.</li>
+          <li><b>Freeze</b> the thread when the night ends, and <b>Export the thread</b> keeps it as a file.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Bold and italics carry; anything richer is written out in plain words, on purpose. One grammar is the whole point of a wire that has to work on every phone at the table, including the old one somebody borrowed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. THE RECAP ==================== -->
+    <section id="the-recap" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The recap the party keeps</h2>
+        <p>Read it over first, then hand it to them, and it stays on their phones.</p>
+      </div>
+      <div class="g-guide">
+        <!-- REVISIT: the header bar is being rebuilt (every command in one menu, pin what you want), so this step names the menu route rather than a button on the bar. -->
+        <ol class="g-steps">
+          <li>Press <b>Everything</b> on the bar and choose <b>Chronicle</b>, then find <b>Session recaps</b>.</li>
+          <li>Press <b>Import a recap</b> and pick the player copy.</li>
+          <li>Read it over in the box and press <b>Save</b> to keep the words as they stand.</li>
+          <li>Press <b>Publish to the table</b>. It lands in every paired Satchel and stays there as campaign history, readable a week later with nobody at the table.</li>
+          <li><b>Take back</b> removes it from their phones again.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The DM copy of a recap is refused at the door, on purpose: the player copy is the one that goes to players. A recap carries ten thousand characters and the tail of a longer one is left off, with a line saying so. Your players keep the newest twenty and so does your binder: import a twenty first and the oldest is let go and taken back off their phones. A phone that was asleep gets the recap when it wakes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. THE CHRONICLE ==================== -->
+    <section id="the-chronicle" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The Chronicle</h2>
+        <p>What your table did in earlier chapters, remembered across books rather than trapped in one.</p>
+      </div>
+      <div class="g-guide">
+        <!-- REVISIT: the header bar is being rebuilt (every command in one menu, pin what you want), so this step names the menu route rather than a button on the bar. -->
+        <ol class="g-steps">
+          <li>Press <b>Everything</b> on the bar and choose <b>Chronicle</b> to read what earlier chapters left behind.</li>
+          <li>In the Dice tray, press <b>Chronicle</b> to export the night as one page: the rolls, the battle, your bookmarks, and the notes you wrote in the last eighteen hours.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The export is a page you can hand to anybody, and it is a page rather than a save. The binder is what remembers; the page is what you share.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. BACK INTO YOUR NOTES ==================== -->
+    <section id="the-vault" class="g-sec">
+      <div class="g-sec-head">
+        <h2>And back into your own notes</h2>
+        <p>The one thing that goes the other way.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>If you brought a folder of Markdown notes in, <b>Chronicle to vault</b> writes tonight's Session Chronicle back into that folder as a note.</li>
+          <li>Press the import control again after you edit those notes, and the Grimoire re-reads them.</li>
+        </ol>
+        <p>Getting a folder of notes in, and everything else about your own books, is its own walkthrough: <a href="/grimoire-your-books">your own books, step by step</a>.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>It re-reads your notes when you press the control, never on its own, so nothing changes under you between sessions. Writing the Chronicle back is the one direction that goes outward, and it writes one note, nothing else.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CLOSING ==================== -->
+    <section class="g-final">
+      <h2>Write one line mid-sentence</h2>
+      <p>The test for the notebook is whether you can use it without stopping talking. One keypress, a line, Enter, and back to the table. If it breaks your flow, tell me and I will fix it.</p>
+      <a class="g-btn g-btn-gold" href="downloads/gnashers-grimoire.html" download="gnashers-grimoire.html"><i class="fas fa-book-bookmark" aria-hidden="true"></i> Download Gnasher&rsquo;s Grimoire, free</a>
+      <a class="g-btn g-btn-ghost" href="/grimoire"><i class="fas fa-circle-info" aria-hidden="true"></i> Everything else it does</a>
+    </section>
+
+    <p class="g-more">Still stuck? Write to <a href="mailto:grimoire@longislanddungeonmaster.com?subject=Grimoire%20feedback&amp;body=What%20I%20was%20doing%3A%0AWhat%20happened%3A%0ABrowser%20%2F%20device%3A%0A">grimoire@longislanddungeonmaster.com</a> or say so in the <a href="https://discord.gg/BqgAbEcwJu" target="_blank" rel="noopener">LIDM Discord</a>. It goes to me, and bad news is the useful kind.<br><span style="opacity:.85;">The companion line: <b>Gnasher&rsquo;s Grimoire&trade;</b> (DM app) &middot; <a href="/satchel">Gnasher&rsquo;s Satchel&trade;</a> (player app) &middot; <a href="/quill">Gnasher&rsquo;s Quill&trade;</a> (session recorder).</span></p>
+
+  </main>
+
+  <div class="h-foot">
+    &copy; 2020&ndash;2026 Frank Papaleo &middot; Long Island Dungeon Master &bull; <a href="/">Home</a> &bull; <a href="/grimoire">Gnasher&rsquo;s Grimoire</a> &bull; <a href="/keepers">Adventure Keepers</a> &bull; <a href="/hoard">The Hoard</a> &bull; <a href="/privacy">Privacy</a> &bull; <a href="/how-its-made">How this gets made</a><br>
+    Long Island Dungeon Master is an independent service, not affiliated with or endorsed by Wizards of the Coast. Dungeons &amp; Dragons and D&amp;D are trademarks of Wizards of the Coast LLC. Compatible with fifth edition; portions derived from the SRD 5.2.1 under CC-BY-4.0.
+  </div>
+
+  <!-- The Herald&rsquo;s Nudge (dismissible newsletter bar) -->
+  <script src="js/nudge.js" defer></script>
+  <!-- Cloudflare Web Analytics (cookieless, no personal data) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+
+</body>
+
+</html>

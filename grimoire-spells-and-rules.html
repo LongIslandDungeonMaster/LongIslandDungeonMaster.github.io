@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spells and rules in Gnasher&rsquo;s Grimoire: hover a spell name for its card, and one box that searches everything you own</title>
+  <meta name="description" content="Every spell in a creature's list is a link that pops its card. Twenty five rules words carry a plain note that opens where the word sits. And one box searches every book you own, narrowed in the line you type it, or scoped to a single book.">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/grimoire-spells-and-rules">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://longislanddungeonmaster.com/grimoire-spells-and-rules">
+  <meta property="og:title" content="Spells, rules, and one box to find them">
+  <meta property="og:description" content="Hover a spell on a stat block and read its card. Twenty five rules words explained where they sit. One box, narrowed in the line you type it.">
+  <meta property="og:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Spells, rules, and one box to find them">
+  <meta name="twitter:description" content="Hover a spell on a stat block and read its card. Twenty five rules words explained where they sit. One box, narrowed in the line you type it.">
+  <meta name="twitter:image" content="https://longislanddungeonmaster.com/img/og.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 78%); min-height: 100vh; }
+
+    /* ---- Top bar (matches the Grimoire page) ---- */
+    .h-top { position: fixed; top: 0; left: 0; right: 0; z-index: 30; background: linear-gradient(180deg, rgba(26,0,0,.98), rgba(61,0,0,.92)); border-bottom: 2px solid var(--gold); padding: .9rem 0; }
+    .h-top .container { display: flex; align-items: center; justify-content: space-between; }
+    .h-brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.3rem; letter-spacing: 1px; text-decoration: none; }
+    .h-brand:hover { color: var(--gold-light); }
+    .h-back { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .h-back:hover { color: var(--gold); }
+    .h-wrap { max-width: 1060px; margin: 0 auto; padding: 6.6rem 1.2rem 4rem; }
+
+    /* ---- Shared type ---- */
+    .g-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.78); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; }
+    .g-breathe { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); }
+    .g-divider { width: 6rem; height: 2px; margin: 1.8rem auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    section { scroll-margin-top: 5.5rem; }
+
+    /* ---- hero ---- */
+    .g-hero { text-align: center; margin-bottom: 3rem; }
+    .g-title { font-size: clamp(2.6rem, 9vw, 4.6rem); line-height: 1; margin: .2rem 0 .5rem; text-shadow: 0 0 42px rgba(201,168,76,.42), 2px 2px 0 #000; }
+    .g-lede { color: rgba(255,255,255,.82); max-width: 660px; margin: 1.2rem auto 0; line-height: 1.9; font-size: 1.06rem; }
+    .g-lede b { color: var(--gold-light); }
+
+    /* ---- section shell (same spacing rule as the Grimoire page) ---- */
+    .g-sec { margin-top: 4.5rem; }
+    .g-sec-head { text-align: center; max-width: 720px; margin: 0 auto 2.2rem; }
+    .g-sec-head h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(2rem,6vw,3rem); line-height: 1.04; margin-bottom: .8rem; }
+    .g-sec-head p { color: rgba(255,255,255,.75); line-height: 1.9; font-size: 1rem; }
+    .g-sec-head p strong { color: var(--gold-light); }
+
+    /* ---- the guide body ---- */
+    .g-guide { max-width: 760px; margin: 0 auto; }
+    .g-guide p { color: rgba(255,255,255,.78); line-height: 1.95; font-size: 1.02rem; }
+    .g-guide p b, .g-guide li b { color: var(--gold-light); }
+    .g-steps { counter-reset: gstep; list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-steps li { counter-increment: gstep; position: relative; padding: .55rem 0 .55rem 3rem; color: rgba(255,255,255,.82); line-height: 1.85; font-size: 1.02rem; }
+    .g-steps li::before { content: counter(gstep); position: absolute; left: 0; top: .55rem; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(201,168,76,.5); border-radius: 50%; background: rgba(201,168,76,.08); color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; font-weight: 700; }
+    .g-plain { list-style: none; padding: 0; margin: 0 0 1.4rem; }
+    .g-plain li { position: relative; padding: .45rem 0 .45rem 1.5rem; color: rgba(255,255,255,.8); line-height: 1.85; font-size: 1.02rem; }
+    .g-plain li::before { content: "\25C6"; position: absolute; left: 0; top: .45rem; color: rgba(201,168,76,.7); font-size: .7rem; }
+    .g-limits { border-left: 3px solid rgba(201,168,76,.5); background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.34)); border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1.4rem 0 0; }
+    .g-limits p { margin: 0; color: rgba(255,255,255,.76); font-size: .98rem; }
+    .g-limits .lab { display: block; font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .68rem; color: rgba(201,168,76,.85); margin-bottom: .4rem; }
+    .g-key { display: inline-block; font-family: 'Merriweather Sans', sans-serif; font-size: .8rem; padding: .06rem .45rem; border: 1px solid rgba(201,168,76,.5); border-radius: 4px; background: rgba(201,168,76,.1); color: var(--gold-light); }
+    .g-code { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--gold-light); background: rgba(0,0,0,.35); border-radius: 4px; padding: .05rem .35rem; }
+
+    /* ---- jump list ---- */
+    .g-jump { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; max-width: 820px; margin: 2.4rem auto 0; }
+    .g-jump a { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; letter-spacing: .4px; text-decoration: none; color: var(--gold-light); border: 1px solid rgba(201,168,76,.38); border-radius: 999px; padding: .4rem .85rem; background: rgba(201,168,76,.06); }
+    .g-jump a:hover { color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,.14); }
+
+    /* ---- closing ---- */
+    .g-final { text-align: center; margin-top: 4.5rem; padding: 2.6rem 1.2rem; border: 1px solid rgba(201,168,76,.35); border-radius: 14px; background: linear-gradient(160deg, rgba(139,0,0,.2), rgba(0,0,0,.45)); }
+    .g-final h2 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: clamp(1.9rem,5.4vw,2.8rem); margin-bottom: .8rem; }
+    .g-final p { color: rgba(255,255,255,.78); line-height: 1.9; max-width: 640px; margin: 0 auto 1.4rem; }
+    .g-btn { display: inline-flex; align-items: center; gap: .55rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .86rem; letter-spacing: .4px; text-decoration: none; padding: .8rem 1.4rem; border-radius: 6px; margin: .3rem; transition: transform .12s ease, box-shadow .12s ease, background .15s ease; }
+    .g-btn-gold { background: var(--gold); color: var(--crimson-dark); box-shadow: 0 6px 18px rgba(201,168,76,.28); }
+    .g-btn-gold:hover { color: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(201,168,76,.44); }
+    .g-btn-ghost { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .g-btn-ghost:hover { background: rgba(201,168,76,.12); color: var(--gold-light); transform: translateY(-2px); }
+
+    @media (max-width: 640px) {
+      .h-wrap { padding: 5.8rem .9rem 3rem; }
+      .g-steps li { padding-left: 2.6rem; }
+      .g-steps li::before { width: 1.8rem; height: 1.8rem; }
+      .g-guide p, .g-steps li, .g-plain li { font-size: .99rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="h-top">
+    <div class="container">
+      <a class="h-brand" href="/">Long Island Dungeon Master</a>
+      <a class="h-back" href="/grimoire">&larr; Back to the Grimoire</a>
+    </div>
+  </div>
+
+  <main class="h-wrap">
+
+    <!-- ==================== HERO ==================== -->
+    <header class="g-hero">
+      <p class="g-eyebrow">Gnasher&rsquo;s Grimoire</p>
+      <h1 class="g-title g-breathe">Spells, rules, and one box</h1>
+      <p class="g-lede">A creature's spell list is a list of links. Twenty five of the words a table argues about carry a plain note that opens where the word sits. And one box finds anything you own, in any book, narrowed in the same line you type it.</p>
+      <div class="g-divider"></div>
+      <nav class="g-jump" aria-label="On this page">
+        <a href="#spell-cards">Spell cards</a>
+        <a href="#the-word">The word explained</a>
+        <a href="#one-box">One box</a>
+        <a href="#one-book">One book only</a>
+        <a href="#packs">The free packs</a>
+      </nav>
+    </header>
+
+    <!-- ==================== 1. SPELL CARDS ==================== -->
+    <section id="spell-cards" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Spell cards where the spell is named</h2>
+        <p>The thing a stat block never does on paper: tell you what the spell actually is.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Open a creature that casts. Every spell in its list is a link, and so is any spell you own that a block says it casts in plain prose.</li>
+          <li>Hover it with a mouse, or tap it on a touch screen, and the card appears beside the name with its level, its range and the start of its text.</li>
+          <li>Press it again for the whole card, opened over whatever you are running.</li>
+          <li>Escape closes it, wherever you are.</li>
+        </ol>
+        <p>It is reachable from the keyboard as well as the mouse: the card opens when the link takes focus, so a DM who does not want to chase a pointer mid-fight does not have to.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>A spell you have not got says so in plain words, and names the pack that carries it when your library knows which one does. The card comes from what you own: the free reference in the box, a free pack you downloaded, or your own homebrew, all answering the same way.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. THE WORD EXPLAINED ==================== -->
+    <section id="the-word" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The word explained</h2>
+        <p>Twenty five of the words that stop a table dead, in plain language, where the word sits.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>The conditions are in there, along with exhaustion, concentration, advantage and disadvantage, a saving throw, an opportunity attack, cover, a reaction, a bonus action, a ritual and a cantrip.</li>
+          <li>Hover or focus the word in whatever you are reading and the note opens beside it.</li>
+          <li>Escape closes it.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>These are plain-words reminders, not the rule text. They are here to stop a five minute argument, not to replace the book: the full rule is in the free reference the app ships with, and <span class="g-key">Space</span> finds it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. ONE BOX ==================== -->
+    <section id="one-box" class="g-sec">
+      <div class="g-sec-head">
+        <h2>One box, and how to narrow it</h2>
+        <p>Everything you own answers the same keypress.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <span class="g-key">Space</span>.</li>
+          <li>Type any phrase you remember. Hits come back from titles and from the words inside your books.</li>
+          <li>Narrow it in the same line: <span class="g-code">kind:monster</span>, <span class="g-code">cr:2</span>, <span class="g-code">level:3</span>, <span class="g-code">school:evocation</span>, <span class="g-code">tag:undead</span>.</li>
+          <li>Press Enter on a hit. A card opens over the scene you are running; a PDF opens at the page.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>The narrowing words are printed under the box, so you never have to remember them. They combine: a phrase and two of them together is still one line of typing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. ONE BOOK ONLY ==================== -->
+    <section id="one-book" class="g-sec">
+      <div class="g-sec-head">
+        <h2>One book, not everything you own</h2>
+        <p>When you know exactly which book it was in, say so and the noise goes away.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Press <span class="g-key">Space</span>.</li>
+          <li>Type <span class="g-code">book:</span> and a piece of the title, like <span class="g-code">book:salt</span>.</li>
+          <li>Add any other filter beside it.</li>
+          <li>Or open the book itself and use the filter box at the top of its Contents, which only ever searches that one book.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span><span class="g-code">book:</span> matches on the title, so two books with near-identical titles need a longer piece of the name to tell apart.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. THE FREE PACKS ==================== -->
+    <section id="packs" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The free rulebook packs</h2>
+        <p>Whole openly licensed rulebooks, built as Keepers, costing nothing.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>Go to the <a href="/grimoire#packs">free packs on the Grimoire page</a>.</li>
+          <li>Download one. It is a single file, like every other Keeper.</li>
+          <li>Drop it into your Grimoire.</li>
+          <li>Every monster, spell and item in it answers <span class="g-key">Space</span> from the next keypress.</li>
+        </ol>
+        <p>The SRD 5.2.1 reference is already in the box, free under CC-BY-4.0: the monsters, the spells, the items and the rules. The packs sit beside it, so a free pack, a book you bought and your own homebrew all answer the same keypress.</p>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>A spell card exists for a spell you own, which is exactly why a missing one names the pack instead of shrugging. Downloading that pack is the whole fix, and it costs nothing. Getting your own books in is its own walkthrough: <a href="/grimoire-your-books">your own books, step by step</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CLOSING ==================== -->
+    <section class="g-final">
+      <h2>Hover one spell</h2>
+      <p>Open a creature that casts, put the pointer on the first spell in its list, and see whether the card arrives fast enough to be worth using mid-sentence. That is the only measure that matters on this one.</p>
+      <a class="g-btn g-btn-gold" href="downloads/gnashers-grimoire.html" download="gnashers-grimoire.html"><i class="fas fa-book-bookmark" aria-hidden="true"></i> Download Gnasher&rsquo;s Grimoire, free</a>
+      <a class="g-btn g-btn-ghost" href="/grimoire"><i class="fas fa-circle-info" aria-hidden="true"></i> Everything else it does</a>
+    </section>
+
+    <p class="g-more">Still stuck? Write to <a href="mailto:grimoire@longislanddungeonmaster.com?subject=Grimoire%20feedback&amp;body=What%20I%20was%20doing%3A%0AWhat%20happened%3A%0ABrowser%20%2F%20device%3A%0A">grimoire@longislanddungeonmaster.com</a> or say so in the <a href="https://discord.gg/BqgAbEcwJu" target="_blank" rel="noopener">LIDM Discord</a>. It goes to me, and bad news is the useful kind.<br><span style="opacity:.85;">The companion line: <b>Gnasher&rsquo;s Grimoire&trade;</b> (DM app) &middot; <a href="/satchel">Gnasher&rsquo;s Satchel&trade;</a> (player app) &middot; <a href="/quill">Gnasher&rsquo;s Quill&trade;</a> (session recorder).</span></p>
+
+  </main>
+
+  <div class="h-foot">
+    &copy; 2020&ndash;2026 Frank Papaleo &middot; Long Island Dungeon Master &bull; <a href="/">Home</a> &bull; <a href="/grimoire">Gnasher&rsquo;s Grimoire</a> &bull; <a href="/keepers">Adventure Keepers</a> &bull; <a href="/hoard">The Hoard</a> &bull; <a href="/privacy">Privacy</a> &bull; <a href="/how-its-made">How this gets made</a><br>
+    Long Island Dungeon Master is an independent service, not affiliated with or endorsed by Wizards of the Coast. Dungeons &amp; Dragons and D&amp;D are trademarks of Wizards of the Coast LLC. Compatible with fifth edition; portions derived from the SRD 5.2.1 under CC-BY-4.0.
+  </div>
+
+  <!-- The Herald&rsquo;s Nudge (dismissible newsletter bar) -->
+  <script src="js/nudge.js" defer></script>
+  <!-- Cloudflare Web Analytics (cookieless, no personal data) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+
+</body>
+
+</html>
