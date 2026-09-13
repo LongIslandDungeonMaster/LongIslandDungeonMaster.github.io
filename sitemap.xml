@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://longislanddungeonmaster.com/grimoire</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://longislanddungeonmaster.com/satchel</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -80,13 +80,13 @@
   </url>
   <url>
     <loc>https://longislanddungeonmaster.com/downloads/gnashers-grimoire</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://longislanddungeonmaster.com/downloads/gnashers-satchel</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -111,6 +111,12 @@
   <url>
     <loc>https://longislanddungeonmaster.com/downloads/spells-that-dont-suck</loc>
     <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://longislanddungeonmaster.com/downloads/the-fair-return-keeper</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -225,6 +231,12 @@
   <url>
     <loc>https://longislanddungeonmaster.com/free-dnd-campaign-tools</loc>
     <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://longislanddungeonmaster.com/how-to-play-zariel-in-combat</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

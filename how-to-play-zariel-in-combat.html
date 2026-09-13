@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Play Zariel in Combat (Descent into Avernus)</title>
+<link rel="canonical" href="https://longislanddungeonmaster.com/how-to-play-zariel-in-combat">
+<meta name="description" content="How Zariel's stat block actually plays at the table: the fireball math, why altitude decides the fight, what her wall of fire is really for, where she is genuinely weak, and whether she flees at 100 hit points. From four full runs of Descent into Avernus.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Long Island Dungeon Master">
+<meta property="og:title" content="How to Play Zariel in Combat">
+<meta property="og:description" content="She is not a boss who stands still and trades hit points. How her kit actually works, and where she is genuinely weak.">
+<meta property="og:url" content="https://longislanddungeonmaster.com/how-to-play-zariel-in-combat">
+<meta property="og:image" content="https://longislanddungeonmaster.com/assets/grimoire/shot1-shelf.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Play Zariel in Combat",
+  "description": "A Dungeon Master's guide to running Zariel, Archduke of Avernus, in combat: her mobility, her at-will spells, her real weaknesses, and the module's own alternative to the fight.",
+  "articleSection": "VillainCraft",
+  "inLanguage": "en",
+  "url": "https://longislanddungeonmaster.com/how-to-play-zariel-in-combat",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://longislanddungeonmaster.com/how-to-play-zariel-in-combat"
+  },
+  "datePublished": "2026-09-12",
+  "dateModified": "2026-09-12",
+  "image": "https://longislanddungeonmaster.com/assets/grimoire/shot1-shelf.png",
+  "author": {
+    "@type": "Person",
+    "name": "Long Island Dungeon Master",
+    "url": "https://longislanddungeonmaster.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Long Island Dungeon Master",
+    "url": "https://longislanddungeonmaster.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Zariel too strong for a level 14 party?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not on paper, but she is never in a fair fight. My table was six to eight players at level 14, fully geared and arriving fresh, and she beat them twice. The difficulty is not her damage, it is that her mobility and her free spells let her choose the shape of every round while the party's resources run on a clock and hers do not."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Zariel flee, or fight to the death?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By the book she withdraws at 100 hit points or fewer and holes up in her flying fortress. That is the module's answer and it is defensible, because she is a general and generals leave. I keep her in the fight past that point, which is a narrative choice rather than a rules one. Decide which you are doing before the session, not during it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What actually works against Zariel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plain obscurement, because she has no truesight and no blindsight, so fog cloud blanks her gaze, her teleport and her targeting without asking for a save. Automatic radiant riders on weapon hits, because they shut off her regeneration without touching a save. Cracking her single concentration, which every wall and every vanish rides on. And Earthbind, because everything she does well stops the moment her feet stay on the ground."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the party talk Zariel down instead of fighting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and the book prices it deliberately. It is DC 25 with the Sword of Zariel presented, minus 5 if Lulu is present and minus 5 again if Olanthius is, so bringing the two people she abandoned takes it down to 15. That is the module telling you what the fight is really about."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does banishment or hold monster never work on Zariel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DC 26 on her saves, magic resistance giving her advantage, +16 or better on every mental save, and three legendary resistances for anything that does land. She is also immune to charmed, frightened, poisoned and exhaustion. Roughly half the soft control a level 14 party brings is not in this fight at all."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a TPK against Zariel a bad ending?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It does not have to be. Mine rose as her death knights, the same arrangement the module gives Olanthius, and they are fighting the Blood War now. I read each character's epilogue out at the table. The campaign is not over after that, and it leaves a great deal of room for callbacks."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --ink: #2a2018;
+    --ink-soft: #4a4038;
+    --paper: #faf6ee;
+    --paper-raised: #ffffff;
+    --line: #ddd2bd;
+    --accent: #7a3b2e;
+    --accent-soft: #a85c46;
+    --gold: #9c7c3c;
+    --code-bg: #f0e9d8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #ece4d6;
+      --ink-soft: #c9bfae;
+      --paper: #1c1712;
+      --paper-raised: #26201a;
+      --line: #453b2e;
+      --accent: #d98a6f;
+      --accent-soft: #e0a68f;
+      --gold: #c9a959;
+      --code-bg: #2a2319;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+    line-height: 1.65;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+    font-size: 17px;
+  }
+  header.page-head {
+    padding: 40px 0 20px;
+    border-bottom: 3px double var(--line);
+    margin-bottom: 30px;
+  }
+  .kicker {
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    color: var(--accent-soft);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.15;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .dek {
+    font-size: 18px;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0 0 12px;
+  }
+  .byline-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  h2 {
+    font-size: 25px;
+    margin: 48px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    color: var(--accent);
+  }
+  h3 {
+    font-size: 19px;
+    margin: 26px 0 8px;
+    color: var(--ink);
+  }
+  p { margin: 0 0 16px; }
+  ul, ol { margin: 0 0 16px; padding-left: 26px; }
+  li { margin-bottom: 8px; }
+  strong { color: var(--ink); }
+  a { color: var(--accent); }
+  .callout {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin: 20px 0;
+    font-size: 15.5px;
+  }
+  .callout strong { color: var(--accent); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0;
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 14.5px;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 9px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--code-bg);
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .toolbox-shot {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px;
+    margin: 18px 0;
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+  }
+  .toolbox-shot .shot-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .shot-mock {
+    background: linear-gradient(135deg, var(--code-bg), var(--paper-raised));
+    border: 1px dashed var(--line);
+    border-radius: 6px;
+    padding: 28px 16px;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+  .checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+  .checklist li {
+    padding-left: 30px;
+    position: relative;
+  }
+  .checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .faq-block {
+    margin-top: 12px;
+  }
+  .faq-item {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .faq-item h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    color: var(--accent);
+  }
+  .faq-item p {
+    margin: 0;
+    font-size: 15.5px;
+  }
+  footer.page-foot {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  .updated-line {
+    font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+  code {
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+
+<header class="page-head">
+  <div class="kicker">VillainCraft</div>
+  <h1>How to Play Zariel in Combat</h1>
+  <p class="dek">She is not a boss who stands still and trades hit points. Here is how her kit actually works at the table, where she is genuinely weak, and what four runs through Avernus taught me about the fight.</p>
+  <div class="byline-row">
+    <span>By a DM who's run games for over 30 years</span>
+    <span class="updated-line">Updated September 2026</span>
+  </div>
+</header>
+
+<p><strong>The short version: use movement aggressively, fireball everything, and fireball the player who is already down too.</strong></p>
+
+<p>I have run Descent into Avernus four times, all the way through. Every one of those campaigns ends standing in front of Zariel one way or another, and nobody has ever beaten her. All four were nasty Zariels. I play her for keeps. Two of them never got to execute in combat, because those parties straight up simped for her, and honestly the simps got the better endings. The two groups that did fight her, she bested both. The closest anyone came, she flew away with 22 hit points left.</p>
+
+<p>This was not a homebrew souped-up Zariel. Straight off the page. The party was six to eight players around level 14, loaded with gear, and they arrived fresh.</p>
+
+<h2>Read her stat block again before you run her</h2>
+
+<p>Fireball at will. Wall of fire, also at will. Invisibility at will, self only. A 150 foot fly speed. Teleport as a legendary action. Regeneration 20. Magic resistance and legendary resistance, with DC 26 on everything. Finger of death three times a day. And a 26 Intelligence.</p>
+
+<p>You read that last line and you start to understand that you are supposed to be playing for keeps. A 26 Intelligence when this book came out was one of the smartest monsters on paper. That means she calculates at a rate mortals could not understand. Unfortunately I do not have a 26 Intelligence, so I need to finesse the crap out of this.</p>
+
+<p><strong>Where the book puts her matters too.</strong> She is not waiting in a throne room. She is in the middle of the Blood War whooping a ton of asses at once when the party shows up, locked up with one of Yeenoghu's balors, a hundred foot ring cleared around them because nothing else wants to be near it. If you do not want to roll it out, the book says she wins in four rounds and stands there on 450 of her 580, collecting herself.</p>
+
+<p><strong>A tip:</strong> actually play her against the balor stat block with a friend running the balor. You will understand her kit better before your players ever get there. It is a fun exercise.</p>
+
+<h2>The fireball math, and why no formation solves her</h2>
+
+<p>Fireball is a 20 foot radius. That is a 40 foot wide hole in your map, and she puts one wherever she wants, every round, for free.</p>
+
+<p>Now do the party math. If you want to guarantee she never catches two of you in one blast, every player needs to stand 40 or more feet from every other player. Eight players spaced like that is a battle line longer than a football field, and now nobody can heal anybody, and whoever she lands on is fighting her alone.</p>
+
+<p><strong>That is the trap. Spread out and she duels you one at a time. Bunch up and every fireball does two jobs.</strong> There is no right answer. There is only which wrong answer you are giving her this round.</p>
+
+<h2>Altitude is the whole game</h2>
+
+<p>She moves 50 on the ground and 150 in the air, 300 with a dash. Your careful 40 foot spacing is one move to her.</p>
+
+<p><strong>My rule for running her is simple: if her feet are on the ground, I screwed up.</strong> She can reposition almost at will between that speed and the teleport. And if it ever starts leaning the wrong way she goes 300 feet straight up and just exists for a couple of rounds while the regeneration ticks.</p>
+
+<p>What is the party doing about that? Spending resources on nothing, mostly. Haste, spirit guardians, holy weapon, all of it runs on a clock measured in minutes. Hers does not.</p>
+
+<h2>Wall of fire is not damage, it is control</h2>
+
+<p>Up to 60 feet of wall, 20 feet tall, and she picks which side is burning. Drop it between the front group and the back group and the fight is now happening in the room she chose, with the people she chose. Changing rooms costs 5d8 at the door, and 20 feet tall means most grounded martials are not hopping it.</p>
+
+<p>None of it costs her anything, so you do not need the perfect fireball. You need the next one. Then the next one.</p>
+
+<h2>A downed player is a weapon</h2>
+
+<p>My players know I will fireball a downed player in order to also drop the one coming to rescue him, and everybody at the table knows I will take that economy trade.</p>
+
+<p>So from the first drop onward, every rescue is a bet, and the party starts hesitating. <strong>That hesitation is worth more than the damage.</strong> Bonus points if you can isolate the downed player with wall of fire.</p>
+
+<h2>Half your table's control does not exist</h2>
+
+<p>Before somebody says just banish her, just hold her: DC 26, magic resistance, +16 or better on the mental saves, and three legendary resistances for whatever sticks. She is immune to charmed, frightened, poisoned and exhaustion on top of it. About half the soft control at your table is not in this fight.</p>
+
+<h2>Play the character, not just the kit</h2>
+
+<p><strong>She does not care what your party has been doing all campaign.</strong> My Zariel is not my Strahd. Strahd is obsessed with the party. He watches them, he collects them, he shows up. Zariel could not care less. That is not just my take, it is the book's: chapter 5 says outright that it is hard for insignificant mortals to get the archduke's attention, and then lists the only three things that make her look up. You anger her. You help her in the fight. Or you show her Lulu or the sword. That is the list.</p>
+
+<p>So when my players came out of nowhere onto her battlefield, she was not insulted. She expected loyal soldiers. She was genuinely heartened that they had travelled all the way to her side of Avernus. Then they drew on her.</p>
+
+<p><strong>She took the blindfold off.</strong> As an angel she was a solar and she wore a blindfold, the blind justice thing. Look at the art of her now. No blindfold, eyes lit up white hot. That is the whole character in one image.</p>
+
+<p><strong>Her kit is the angel's kit run backwards, and it is my favourite thing about her.</strong> A solar casts resurrection three times a day. She casts finger of death three times a day. A solar's touch cures blindness, deafness and poison. Her Horrid Touch inflicts all three. A solar has truesight and can tell when you are lying to it. She has neither, and that is not an oversight on her stat block, it is what she traded.</p>
+
+<p><strong>Use the telepathy. Nobody uses the telepathy.</strong> She has 120 feet of it and speaks every language there is. She can drop one private sentence into one player's head, in their language, mid fireball, and nobody else at the table hears it. Charisma 30 and a +18 to intimidate. She judges people by whether they can fight, whether they are willing to, and why. A party fighting her well is a party she would rather hire, and she will say so, mid combat, while she is killing them.</p>
+
+<p><strong>Her contempt is pointed at Elturel, not at your players.</strong> This one does the most story driving at my table. There is a moment in the book where a character offers up their own soul to save the city, and she stops and asks whether they would really lay their soul down for these people, people whose cowardice and weakness have caused them nothing but grief. She is not sneering at the party. She is sneering at the city they came to save, and she has a point, because that city's own High Overseer sold it to her. Give her that instead of generic devil gloating and watch your players.</p>
+
+<h2>So where is she actually weak?</h2>
+
+<p>She is not unkillable. She is just never in a fair fight, and every plan I have seen against her quietly assumes she will stand still for it.</p>
+
+<p><strong>Her eyes are just eyes.</strong> No blindsight, no truesight. That is a real problem for her: the gaze needs to see the target and the teleport needs to see the destination. The fireballs need targets too. She does have Devil's Sight, so magical darkness does nothing. What works is plain obscurement. Fog cloud is a first level spell with no save attached to it at all, and 120 feet of darkvision does not see through fog. Invisibility on the party, same, because she never got the truesight back.</p>
+
+<p><strong>Radiant, but only if it is automatic.</strong> Radiant that asks for a save mostly just does not happen to her. Radiant that simply happens, riders on weapon hits, shuts the regeneration off without ever touching a save. Yes, she resists radiant. It does not matter. It is not the damage, it is stopping the regeneration. Whoever is doing that needs to eat fireballs, and quickly.</p>
+
+<p><strong>She only gets one concentration.</strong> Wall of fire. Blade barrier. Invisibility. Every wall she builds and every vanish she pulls rides the same slot. She cannot be controlling space and be gone at the same time, and if your party cracks her concentration, everything she built around them disappears.</p>
+
+<p><strong>Her physical saves are the softest thing on the sheet, and they are still not soft.</strong> All the save proficiency went into Int, Wis and Cha, so Dex sits at a bare +7 and Strength at +8. The catch is magic resistance, so players tend to burn her three legendary resistances on cheap stuff nobody minds losing, then try to land the real one. <strong>Earthbind is the one that scares me</strong>, because everything above stops working the round her feet hit the ground and stay there.</p>
+
+<h2>Your party is probably carrying the counter</h2>
+
+<p>The Sword of Zariel, the thing they spent a whole campaign getting. Its Searing Radiance adds 2d8 radiant on every hit, no save on the damage. An evil creature taking it makes a DC 17 Constitution save or goes blind until the end of its next turn, and since that is an item property and not a spell, her magic resistance does not apply. Blinding her kills the gaze and the teleport at once. The wielder also has truesight out to 60 feet, so her invisibility is dead in melee range.</p>
+
+<h2>The fight is the failure state</h2>
+
+<p>By the book the Sword of Zariel carries a spark of her own soul, and she is the one who hid it there, back when she could still feel what she was turning into. Present it at the right moment and the win condition is not damage at all.</p>
+
+<p>Look at how the book prices it, because the mechanics are telling you the characterisation. DC 25 to talk her back. Minus 5 if Lulu is standing there. Minus 5 if Olanthius is. Twenty five down to fifteen, and all you did was bring the two people she left behind. Lulu cries and she remembers having a friend. Olanthius kneels and she has to look at what she did to the one who stayed with her. <strong>She cannot take the people she abandoned looking at her.</strong></p>
+
+<p>Personally I like redemption arcs, but it did not fit the kit at my table, and it did not fit the campaign we had been running, to have her put down her hammer because somebody nailed a Charisma check before the fight started. That is a ruling, not a rule. Yours can go the other way.</p>
+
+<h2>One thing the book and I disagree about</h2>
+
+<p>Chapter 5 says that if Zariel drops to 100 hit points or fewer she withdraws to the edge of the battle and holes up in her flying fortress. The module gives her an exit at 100. Mine stayed in it down to 22.</p>
+
+<p>I am not saying that to brag. I am saying it because if you are prepping this fight and you had her fighting to the death, the book disagrees with me. She is a general. Generals leave. I choose to make her stay. That is a narrative decision, and you should make it on purpose rather than by accident.</p>
+
+<h2>What actually happened at my table</h2>
+
+<p>It was five hours of combat and it was close the whole way. This was not rocks fall. They blasted her with a ton of stuff and she still ended on 22 hit points.</p>
+
+<p>Early on the party had real staying power. There were a lot of heals flying around. But resources get thinned and hers did not. Two of the players were tieflings with fire resistance and it did not save them, because it was never about any one fireball. It was the volume, plus wall of fire cutting up the battlefield so they could not keep up with her.</p>
+
+<p>Then the first player dropped and everything fell apart. Going to get your friend now means standing in fireball potential, and they all knew it. The squishy went down first. The fighter and the hexblade were the last two standing.</p>
+
+<p>They drew on her, so she wiped them and kept them. Same arrangement as Olanthius. They rose as her death knights, and I read each character's epilogue out at the table. They are fighting the Blood War now, knocking off demons. <strong>The reason I love this ending is that the story is not over after a TPK.</strong> It gives you an extraordinary amount of latitude for callbacks.</p>
+
+<p>That is not a punishment ending. That is Hellrider theology.</p>
+
+<h2>The one piece of advice under all of this</h2>
+
+<p>When you are running something like this and you have been waiting to play the villain for months, and your players walk straight through you, that is not a great feeling for you either. I am not advocating for killing all of your players all the time. <strong>Play like you mean it. Your players deserve a good fight, and so do you, and they should have to earn it.</strong></p>
+
+<aside style="margin:2.5rem 0;padding:1.25rem 1.5rem;border:1px solid var(--line);border-radius:8px;background:var(--paper-raised);">
+  <h2 style="margin-top:0;">Running this fight at the table</h2>
+  <p style="margin-bottom:0.75rem;">Gnasher's Grimoire is the free Dungeon Master app I built for exactly this: your stat blocks, legendary actions, initiative and notes open on one screen, searchable from anywhere, and it works with the wifi off.</p>
+  <p style="margin-bottom:0;"><a href="/grimoire"><strong>See what it does</strong></a> &middot; <a href="/villaincraft">more VillainCraft writing on running villains</a> &middot; <a href="/keepers">free Adventure Keepers</a></p>
+</aside>
+
+<h2>Common questions</h2>
+
+<div class="faq-block">
+  <div class="faq-item">
+    <h3>Is Zariel too strong for a level 14 party?</h3>
+    <p>Not on paper, but she is never in a fair fight. My table was six to eight players at level 14, fully geared and arriving fresh, and she beat them twice. The difficulty is not her damage, it is that her mobility and her free spells let her choose the shape of every round while the party's resources run on a clock and hers do not.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does Zariel flee, or fight to the death?</h3>
+    <p>By the book she withdraws at 100 hit points or fewer and holes up in her flying fortress. That is the module's answer and it is a defensible one, because she is a general and generals leave. I keep her in the fight past that point, which is a narrative choice rather than a rules one. Decide which you are doing before the session, not during it.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What actually works against Zariel?</h3>
+    <p>Plain obscurement, because she has no truesight and no blindsight, so fog cloud blanks her gaze, her teleport and her targeting without asking for a save. Automatic radiant riders on weapon hits, because they shut off her regeneration without touching a save. Cracking her single concentration, which every wall and every vanish rides on. And Earthbind, because everything she does well stops the moment her feet stay on the ground.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can the party talk Zariel down instead of fighting?</h3>
+    <p>Yes, and the book prices it deliberately. It is DC 25 with the Sword of Zariel presented, minus 5 if Lulu is present and minus 5 again if Olanthius is, so bringing the two people she abandoned takes it down to 15. That is the module telling you what the fight is really about.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Why does banishment or hold monster never work on her?</h3>
+    <p>DC 26 on her saves, magic resistance giving her advantage, +16 or better on every mental save, and three legendary resistances for anything that does land. She is also immune to charmed, frightened, poisoned and exhaustion. Roughly half the soft control a level 14 party brings is not in this fight at all.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is a TPK against Zariel a bad ending?</h3>
+    <p>It does not have to be. Mine rose as her death knights, the same arrangement the module gives Olanthius, and they are fighting the Blood War now. I read each character's epilogue out at the table. The campaign is not over after that, and it leaves you a great deal of room for callbacks.</p>
+  </div>
+</div>
+
+<div class="page-foot">
+  Written by Long Island Dungeon Master, a Dungeon Master of over 30 years. This is commentary on Descent into Avernus, a published product. It is free to read and nothing on this page is for sale. This site is independent and is not affiliated with, endorsed or sponsored by Wizards of the Coast. Dungeons &amp; Dragons and D&amp;D are trademarks of Wizards of the Coast.
+</div>
+
+</body>
+</html>
