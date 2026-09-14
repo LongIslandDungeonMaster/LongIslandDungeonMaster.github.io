@@ -116,9 +116,13 @@
       <nav class="g-jump" aria-label="On this page">
         <a href="#open-the-table">Open the table</a>
         <a href="#hostile-router">When the router refuses</a>
+        <a href="#camera-invite">The camera invite</a>
         <a href="#status-line">What a seat says</a>
         <a href="#table-night">The table-night check</a>
         <a href="#a-player-drops">When a player drops</a>
+        <a href="#seats-and-vitals">What a seat tells you</a>
+        <a href="#your-rolls-travel">Your dice, and the catch-up</a>
+        <a href="#their-marks">Their marks and their thread</a>
         <a href="#what-you-send">What you send</a>
         <a href="#second-screen">The second screen</a>
       </nav>
@@ -168,6 +172,25 @@
     </section>
 
     <!-- ==================== 3. WHAT A SEAT SAYS ==================== -->
+    <!-- ==================== THE CAMERA INVITE ROW ==================== -->
+    <section id="camera-invite" class="g-sec">
+      <div class="g-sec-head">
+        <h2>The camera invite, and a box to paste into</h2>
+        <p>For the desk with no webcam, and for the light that is never quite right.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li>An invite made by camera has a row of its own that says it is a <b>camera invite</b>, and it stays in your list.</li>
+          <li>Beside it is the same paste box the typed road has, and a <b>Link</b> control.</li>
+          <li>The player reads your screen with their phone, then shows you their reply, or sends you the text of it.</li>
+          <li>Paste it in. A single frame says it took a frame; a whole reply says so and goes where it belongs.</li>
+        </ol>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Paste something that is neither and it tells you in a sentence instead of doing nothing at all. Nothing on this road leaves the room, so there is nothing on it for a network to block.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="status-line" class="g-sec">
       <div class="g-sec-head">
         <h2>What the line on a seat means</h2>
@@ -199,8 +222,9 @@
         <ol class="g-steps">
           <li>Open the Theater panel before your players get there.</li>
           <li>Press <b>Table-night check</b>.</li>
-          <li>Read the four rows: the code service, a relay for a network that blocks devices, the join link on the code's picture, and the second screen.</li>
-          <li>It answers <b>GO</b>, or <b>NO GO</b> on however many of the four failed, with the reason written on every row.</li>
+          <li>Read the rows: the code service, a relay for a network that blocks devices, the join link on the code's picture, the second screen, and whether the light of day is travelling to the table.</li>
+          <li>It answers <b>GO</b>, or <b>NO GO</b> on however many of them failed, with the reason written on every row.</li>
+          <li>A row can also come back as a <b>note</b>. A note is a note: it tells you something and it never counts against the night.</li>
         </ol>
         <p>Write down what it says before your first player joins. That is your baseline for the night, and if the code service row is red there, nothing after it means very much.</p>
         <div class="g-limits">
@@ -225,6 +249,61 @@
         </ul>
         <div class="g-limits">
           <p><span class="lab">Honest limits</span>A sick code service no longer closes your table on one bad answer: it is retried, and the code closes only after two minutes of silence, with the line saying which and counting down. And if the evening is going badly anyway, your own screen runs the game perfectly well with nothing paired at all: put the board on a television and use metal minis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHAT A SEAT TELLS YOU ==================== -->
+    <section id="seats-and-vitals" class="g-sec">
+      <div class="g-sec-head">
+        <h2>What a seat tells you</h2>
+        <p>Enough to run the fight without asking anybody for a number out loud.</p>
+      </div>
+      <div class="g-guide">
+        <ul class="g-plain">
+          <li>Every seat's row carries hit points as a bar and a number, temporary hit points, armour class, what they are concentrating on, the conditions they are wearing, and death saves as pips.</li>
+          <li>Down, dead and back up each say so once, at the moment it happens, and never again on a redraw.</li>
+          <li>A multiclass character reads <b>Fighter 3 (Champion) / Wizard 1</b>, each level beside its own class, and a level taken mid-session repaints without anybody rejoining.</li>
+          <li>Tick a seat into the muster and it fights as itself. <a href="/grimoire-the-fight#your-players">Seats in the muster</a>.</li>
+        </ul>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>This is the list, and it goes to you and to nobody else. A player still chooses what the rest of the table sees of their sheet, and what they hold back is never sent in the first place. A payload that carries another chair's credential is dropped rather than believed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WHAT TRAVELS ==================== -->
+    <section id="your-rolls-travel" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Your dice, and the rolls a sleeping phone missed</h2>
+        <p>One log for the night, instead of two halves of one.</p>
+      </div>
+      <div class="g-guide">
+        <ol class="g-steps">
+          <li><b>Table rolls</b> in the Theater panel starts on, and belongs to the table, so it travels with the table.</li>
+          <li>Your rolls land in the table's log marked as yours, with a natural 20 or a natural 1 called out.</li>
+          <li>A creature whose name you have hidden travels as its number and nothing else.</li>
+          <li>Press the hold on a card to keep that roll behind the screen. It stays in your own log and goes nowhere.</li>
+        </ol>
+        <p>A player who comes back into the chair after a phone has slept gets the table's recent rolls straight away, newest first, with the ones from while they were away marked as such. A catch-up that arrives twice does not double anything, and a roll you held is not in it.</p>
+      </div>
+    </section>
+
+    <!-- ==================== THEIR MARKS, THEIR THREAD, THEIR CHAIR ==================== -->
+    <section id="their-marks" class="g-sec">
+      <div class="g-sec-head">
+        <h2>Their marks, their thread, and taking a seat off</h2>
+        <p>Three small things that were each wrong in their own way.</p>
+      </div>
+      <div class="g-guide">
+        <ul class="g-plain">
+          <li><b>An erase lands.</b> A player who takes their own marks off the board takes them off yours. Their Satchel says it is asking, then says the marks are off the table, because it waited for your screen to answer.</li>
+          <li>It works on a layer you have locked, because locking a layer stops new drawing rather than trapping somebody's own marks.</li>
+          <li><b>A whisper thread belongs to the seat</b>, not to the name on it. A player who drops and comes back is the same conversation, and a rename does not start a second one. The heading reads the name and the seat number together.</li>
+          <li><b>Take off</b> beside a seat drops that phone and bars nobody. They can come straight back on the same code.</li>
+        </ul>
+        <div class="g-limits">
+          <p><span class="lab">Honest limits</span>Every control in both halves of the app says <b>Erase</b> now, so there is one word for one thing.</p>
         </div>
       </div>
     </section>
