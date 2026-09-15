@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VillainCraft: Loadouts, the Rotation, and the Longest Con (free Keeper)</title>
+  <meta name="description" content="The Strahd loadouts guide from VillainCraft as a free Keeper for Gnasher's Grimoire: one HTML file, sixteen scene cards and three tables, opens in any browser, works offline, installs into the Grimoire where the tables roll and the Summon finds every loadout.">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/downloads/villaincraft-strahd-loadouts">
+  <meta property="og:title" content="VillainCraft: Loadouts, the Rotation, and the Longest Con (free Keeper)">
+  <meta property="og:description" content="The Strahd loadouts guide from VillainCraft as a free Keeper for Gnasher's Grimoire: one file, sixteen scene cards, three tables that roll, every loadout summonable by name.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://longislanddungeonmaster.com/downloads/villaincraft-strahd-loadouts">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="VillainCraft: Loadouts, the Rotation, and the Longest Con (free Keeper)">
+  <meta name="twitter:description" content="The Strahd loadouts guide from VillainCraft as a free Keeper for Gnasher's Grimoire: one file, sixteen scene cards, three tables that roll, every loadout summonable by name.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 78%); color: var(--parchment); min-height: 100vh; margin: 0; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 1.2rem 1.2rem 4rem; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; padding: .3rem 0 1.6rem; }
+    .brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.35rem; letter-spacing: 1px; text-decoration: none; }
+    .brand:hover { color: var(--gold-light); }
+    .back { font-family: 'Merriweather Sans', sans-serif; font-size: .74rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .back:hover { color: var(--gold); }
+    .eyebrow { font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; color: var(--gold); text-align: center; margin: .5rem 0 .4rem; }
+    h1.title { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: clamp(2.1rem, 7.6vw, 3.5rem); line-height: 1.05; text-align: center; margin: 0 0 .5rem; text-shadow: 0 0 34px rgba(201,168,76,.4), 2px 2px 0 #000; }
+    .dek { text-align: center; font-style: italic; color: var(--parchment-dk); font-size: 1.08rem; max-width: 34rem; margin: 0 auto 1.4rem; }
+    .cta { text-align: center; margin: 1.6rem 0 .6rem; }
+    .btn-keep { display: inline-block; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 1.05rem; background: var(--gold); color: var(--crimson-deep); text-decoration: none; padding: .95rem 2.1rem; border-radius: 5px; box-shadow: 0 4px 0 #8a7226, 0 8px 20px rgba(0,0,0,.5); transition: transform .1s, box-shadow .1s; }
+    .btn-keep:hover { color: var(--crimson-deep); transform: translateY(2px); box-shadow: 0 2px 0 #8a7226, 0 5px 14px rgba(0,0,0,.5); }
+    .btn-keep i { margin-right: .5rem; }
+    .btn-alt { display: inline-block; margin-top: .9rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: .88rem; color: var(--gold); border: 2px solid var(--gold); text-decoration: none; padding: .7rem 1.5rem; border-radius: 5px; transition: background .12s, color .12s; }
+    .btn-alt:hover { background: var(--gold); color: var(--crimson-deep); }
+    .btn-alt i { margin-right: .5rem; }
+    .preview { display: block; text-align: center; margin: .9rem 0 0; color: var(--gold-light); font-size: .9rem; text-decoration: none; }
+    .preview:hover { color: var(--gold); }
+    .fineprint { text-align: center; color: var(--muted); font-size: .8rem; margin: .6rem 0 0; }
+    .divider { width: 6rem; height: 2px; margin: 2.6rem auto; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .whatis { color: var(--parchment-dk); font-size: 1rem; line-height: 1.7; }
+    .whatis strong { color: var(--gold-light); }
+    .whatis a { color: var(--gold); }
+    .taste { background: linear-gradient(180deg, rgba(61,0,0,.5), rgba(26,0,0,.5)); border: 1px solid rgba(201,168,76,.3); border-left: 3px solid var(--gold); border-radius: 4px; padding: 1rem 1.2rem; margin: 1.6rem 0 0; }
+    .taste p { color: var(--parchment-dk); font-size: .95rem; line-height: 1.65; margin: 0 0 .55rem; position: relative; padding-left: 1.1rem; }
+    .taste p:last-child { margin-bottom: 0; }
+    .taste p::before { content: '\2022'; position: absolute; left: 0; color: var(--gold); }
+    .taste .num { color: var(--gold); font-family: 'Merriweather Sans', sans-serif; font-weight: 700; margin-right: .45rem; }
+    h2.sect { font-family: 'Merriweather Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .9rem; color: var(--gold); text-align: center; margin: 0 0 1.3rem; }
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
+    .card { background: linear-gradient(180deg, rgba(61,0,0,.55), rgba(26,0,0,.55)); border: 1px solid rgba(201,168,76,.35); border-radius: 6px; padding: 1.1rem 1.15rem; text-decoration: none; display: block; transition: border-color .15s, transform .1s; }
+    .card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .card .ic { color: var(--gold); font-size: 1.4rem; margin-bottom: .5rem; }
+    .card h3 { font-family: 'Merriweather Sans', sans-serif; color: var(--gold-light); font-size: .98rem; text-transform: uppercase; letter-spacing: .4px; margin: 0 0 .35rem; }
+    .card p { color: var(--parchment-dk); font-size: .88rem; line-height: 1.5; margin: 0; }
+    .card .go { color: var(--gold); font-size: .82rem; font-family: 'Merriweather Sans', sans-serif; margin-top: .5rem; display: inline-block; }
+    .foot { text-align: center; margin-top: 3rem; color: var(--muted); font-size: .74rem; line-height: 1.6; }
+    .foot .fb { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="../index.html">Long Island Dungeon Master</a>
+      <a class="back" href="../villaincraft-strahd-loadouts"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to the article</a>
+    </div>
+
+    <p class="eyebrow">A Free Keeper &middot; VillainCraft, Volume One: Barovia &middot; Long Island Dungeon Master</p>
+    <h1 class="title">VillainCraft: Loadouts, the Rotation, and the Longest Con</h1>
+    <p class="dek">The Strahd loadouts guide, packaged as a Keeper for Gnasher&rsquo;s Grimoire.</p>
+
+    <div class="cta">
+      <a class="btn-keep" href="villaincraft-strahd-loadouts-keeper.html" download="VillainCraft-Strahd-Loadouts-Keeper.html"><i class="fas fa-download" aria-hidden="true"></i> Download the Keeper</a>
+      <a class="preview" href="villaincraft-strahd-loadouts-keeper.html" target="_blank" rel="noopener"><i class="fas fa-eye" aria-hidden="true"></i> or open it in your browser first</a>
+      <p class="fineprint">One HTML file, 160 KB. It opens in any browser, works offline, and runs no scripts. No account, no app. Free.</p>
+      <a class="btn-alt" href="../villaincraft-strahd-loadouts"><i class="fas fa-chess-king" aria-hidden="true"></i> Read the article</a>
+      <p class="fineprint">The same text on the site: How to Run Strahd in Combat: Loadouts, Tactics and the Rotation.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="whatis"><strong>A Keeper is one file.</strong> It opens in any browser and works offline. Drop it onto the shelf in <a href="../grimoire">Gnasher&rsquo;s Grimoire</a> and it installs there: the tables roll inside the app, and the Summon finds every loadout by name. <strong>This one is the Strahd loadouts guide from VillainCraft.</strong> Sixteen scene cards carry the guide, from the suit of armour con to the six loadouts and the ritual note at the end. Three tables roll: the rotation, the flip ladder, and a d6 of which Strahd walked in today. Type Warlord or Vasili into the Summon and the loadout comes up with its spell list on the card. It is <a href="../villaincraft-strahd-loadouts">the article</a>, in a form the app can use at the table.</p>
+
+    <div class="taste">
+      <p><span class="num">The rotation, d5.</span> Observe, Test, Isolate, Bleed, Feast.</p>
+      <p><span class="num">The flip ladder, d5.</span> From the journal, which annoys him, to the one thing that scares him.</p>
+      <p><span class="num">Which Strahd walked in today, d6.</span> All Purpose, Recon, Social, Warlord, Vasili von Holtz, and The Answer for when they have the Sunsword.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="sect">While you&rsquo;re here</h2>
+    <div class="cards">
+      <a class="card" href="../grimoire">
+        <div class="ic"><i class="fas fa-book-open" aria-hidden="true"></i></div>
+        <h3>Gnasher&rsquo;s Grimoire</h3>
+        <p>The free Dungeon Master companion: your reference, your rolls and your trackers open on the screen while you play. The Keeper above installs straight into it. Nothing to install, nothing to sign up for.</p>
+        <span class="go">Open it &rarr;</span>
+      </a>
+      <a class="card" href="https://longislanddungeonmaster.itch.io/gnashers-grimoire">
+        <div class="ic"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+        <h3>The Grimoire on itch.io</h3>
+        <p>The same Grimoire as a download you keep on your own machine.</p>
+        <span class="go">Get it on itch &rarr;</span>
+      </a>
+      <a class="card" href="../villaincraft">
+        <div class="ic"><i class="fas fa-chess-king" aria-hidden="true"></i></div>
+        <h3>More VillainCraft</h3>
+        <p>The running notes on how the opposition operates when the party is not looking.</p>
+        <span class="go">Read them &rarr;</span>
+      </a>
+      <a class="card" href="../keepers.html">
+        <div class="ic"><i class="fas fa-dungeon" aria-hidden="true"></i></div>
+        <h3>The Adventure Keepers</h3>
+        <p>Complete one-shots you run from your browser, the same way. Start with <em>The Keeper of Halcyon Light</em>, which is free.</p>
+        <span class="go">Open them &rarr;</span>
+      </a>
+    </div>
+
+    <div class="foot">
+      <p class="fb">Long Island Dungeon Master</p>
+      <p>Original content. 30+ years of real tables. Compatible with SRD 5.1. Not affiliated with Wizards of the Coast.</p>
+    </div>
+  </div>
+
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+</body>
+</html>
