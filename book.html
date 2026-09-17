@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a Session | Long Island Dungeon Master</title>
+  <meta name="description" content="Book one-on-one DM mentoring with the Long Island Dungeon Master, or join the waitlist for a seat at a campaign table.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/book">
+  <link rel="icon" href="img/brand.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <!-- Booking availability: same source of truth the homepage and /links read -->
+  <script src="availability.js"></script>
+
+  <style>
+    body {
+      min-height: 100vh; margin: 0; color: var(--parchment);
+      background:
+        radial-gradient(1100px 620px at 50% -12%, rgba(139,0,0,.6), transparent 62%),
+        var(--crimson-deep);
+    }
+    .bk-wrap { max-width: 760px; margin: 0 auto; padding: 2.6rem 1rem 3.5rem; text-align: center; }
+    .bk-back { display: inline-block; margin-bottom: 1.6rem; font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .bk-back:hover { color: var(--gold); }
+    .bk-title { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: clamp(2.6rem, 8vw, 4rem); line-height: 1; margin: 0 0 .7rem; text-shadow: 0 0 30px rgba(201,168,76,.3), 2px 2px 0 #000; }
+    .bk-sub { color: rgba(242,232,208,.78); line-height: 1.75; max-width: 540px; margin: 0 auto 2.2rem; }
+
+    .bk-card { position: relative; text-align: center; border-radius: 12px; padding: 1.6rem 1.5rem 1.7rem; margin: 0 auto 1.4rem; }
+    .bk-card h2 { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; font-size: 1.9rem; margin: .9rem 0 .5rem; }
+    .bk-card p { line-height: 1.75; font-size: .95rem; margin: 0 auto .9rem; max-width: 520px; }
+    .bk-open { background: linear-gradient(160deg, rgba(139,0,0,.22), rgba(0,0,0,.45)); border: 1px solid var(--gold); box-shadow: 0 0 0 4px rgba(139,0,0,.28), 0 12px 34px rgba(0,0,0,.5); }
+    .bk-open h2 { color: var(--gold); }
+    .bk-open p { color: rgba(255,255,255,.82); }
+    .bk-locked { background: rgba(0,0,0,.35); border: 1px dashed rgba(201,168,76,.45); }
+    .bk-locked h2 { color: rgba(201,168,76,.7); }
+    .bk-locked p { color: rgba(255,255,255,.6); }
+    .bk-lock { font-size: 1.9rem; color: rgba(201,168,76,.75); }
+    .bk-note { display: block; margin-top: .6rem; color: rgba(255,255,255,.65); font-size: .85rem; }
+    .bk-card .btn-crimson { margin-top: .9rem; }
+    .bk-card .avail a { color: inherit; text-decoration: underline; }
+  </style>
+</head>
+
+<body>
+  <main class="bk-wrap">
+    <a class="bk-back" href="/">&larr; Back to the realm</a>
+    <h1 class="bk-title">Book a Session</h1>
+    <p class="bk-sub">Two ways to work with me. Here's what's open right now.</p>
+
+    <!-- One-on-one mentoring: follows takingSoloSessions -->
+    <section class="bk-card" id="soloCard"></section>
+
+    <!-- Group / campaign DMing: follows takingNewCampaignClients -->
+    <section class="bk-card" id="groupCard"></section>
+  </main>
+
+  <script>
+    (function () {
+      var A = window.LIDM_AVAILABILITY || {};
+      var CAL = 'https://calendly.com/longislanddungeonmaster/30min';
+      var LIST = 'https://longislanddungeonmaster.substack.com';
+      var LOCK = '<div class="bk-lock"><i class="fas fa-lock" aria-hidden="true"></i></div>';
+
+      var solo = document.getElementById('soloCard');
+      if (A.takingSoloSessions) {
+        solo.className = 'bk-card bk-open';
+        solo.innerHTML =
+          '<span class="avail avail-open"><i class="fas fa-circle" aria-hidden="true"></i> One-on-one sessions still open for booking</span>' +
+          '<h2>One-on-One DM Mentoring</h2>' +
+          '<p>Private sessions for Dungeon Masters: pacing, improv, encounter design, prep, or a story you want to get off the ground. Bring an idea or a bare skeleton and we build it into something you can run.</p>' +
+          '<a class="btn btn-xl btn-crimson" href="' + CAL + '" target="_blank" rel="noopener">Book a 1-on-1 session &rarr;</a>';
+      } else {
+        solo.className = 'bk-card bk-locked';
+        solo.innerHTML = LOCK +
+          '<h2>One-on-One DM Mentoring</h2>' +
+          '<p>One-on-one sessions are booked up for now.</p>' +
+          '<a href="' + LIST + '" target="_blank" rel="noopener" style="color:var(--gold-light);">Join the list to hear when they open &rarr;</a>';
+      }
+
+      var group = document.getElementById('groupCard');
+      if (A.takingNewCampaignClients) {
+        group.className = 'bk-card bk-open';
+        group.innerHTML =
+          '<span class="avail avail-open"><i class="fas fa-circle" aria-hidden="true"></i> Now accepting new campaign players</span>' +
+          '<h2>I DM for Your Group</h2>' +
+          '<p>Campaigns and one-shots run for your table, in person on Long Island or online.</p>' +
+          '<a class="btn btn-xl btn-crimson" href="' + CAL + '" target="_blank" rel="noopener">Book an intro call &rarr;</a>';
+      } else {
+        group.className = 'bk-card bk-locked';
+        group.innerHTML = LOCK +
+          '<h2>I DM for Your Group</h2>' +
+          '<p>I\'m not taking on new groups right now.</p>' +
+          '<span class="avail avail-full"><i class="fas fa-hourglass-half" aria-hidden="true"></i> Campaign roster is full: <a href="' + LIST + '" target="_blank" rel="noopener">join the waitlist</a></span>' +
+          '<span class="bk-note">Waitlist announcements go to the list first.</span>';
+      }
+    })();
+  </script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+</body>
+
+</html>

@@ -136,7 +136,7 @@
             </ul>
           </li>
           <li class="nav-item ms-lg-2">
-            <a class="nav-link btn-book px-3 py-2" href="https://calendly.com/longislanddungeonmaster/30min" target="_blank">
+            <a class="nav-link btn-book px-3 py-2" href="/book">
               &#9876; Book a Session
             </a>
           </li>
@@ -162,7 +162,7 @@
         Curated D&amp;D 5e experiences, run by a 30-year Dungeon Master — Long Island, NY &amp; online.
       </p>
       <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-        <a class="btn btn-xl btn-crimson" href="https://calendly.com/longislanddungeonmaster/30min" target="_blank">
+        <a class="btn btn-xl btn-crimson" href="/book">
           Book a Session
         </a>
         <a class="btn btn-xl btn-outline-parchment" href="#services">Explore Services</a>
@@ -377,7 +377,7 @@
             <div class="service-icon"><i class="fas fa-crown"></i></div>
             <h3>Highly Curated Campaigns</h3>
             <p>Exclusive, limited-seat long-form campaigns — bespoke stories, hand-painted minis, terrain, and the 40&quot; animated battle-map table. Not a commodity. The best seat in the realm.</p>
-            <a class="service-cta" href="https://calendly.com/longislanddungeonmaster/30min" target="_blank">Inquire &rarr;</a>
+            <a class="service-cta" href="/book">Inquire &rarr;</a>
           </div>
         </div>
 
@@ -1090,7 +1090,7 @@
           <h2>Ready to Roll?</h2>
           <hr class="divider">
           <p class="text-muted mb-4">Book a free intro call or reach out directly — campaigns, workshops, commissions, or just questions. Let's build something legendary.</p>
-          <a href="https://calendly.com/longislanddungeonmaster/30min" target="_blank" class="btn btn-xl btn-crimson">
+          <a href="/book" class="btn btn-xl btn-crimson">
             Book a Session
           </a>
         </div>
@@ -1098,7 +1098,8 @@
 
       <div class="row g-4 justify-content-center align-items-start mb-5">
         <div class="col-lg-7" data-reveal>
-          <h3 class="contact-sub"><i class="fas fa-calendar-check" aria-hidden="true"></i> Book Your Free Intro Call</h3>
+          <h3 class="contact-sub"><i class="fas fa-calendar-check" aria-hidden="true"></i> Book a One-on-One Session</h3>
+          <p id="calendarStatus" style="margin:0 0 1rem;"></p>
           <div class="calendly-inline-widget"
                data-url="https://calendly.com/longislanddungeonmaster/30min?hide_gdpr_banner=1&background_color=1a0000&text_color=f2e8d0&primary_color=c9a84c"
                style="min-width:300px;height:640px;"></div>
@@ -1189,6 +1190,11 @@
       el.innerHTML = TAKING_NEW_CAMPAIGN_CLIENTS
         ? '<span class="avail avail-open"><i class="fas fa-circle" aria-hidden="true"></i> Now accepting new campaign players</span>'
         : '<span class="avail avail-full"><i class="fas fa-hourglass-half" aria-hidden="true"></i> Campaign roster is full &mdash; <a href="https://longislanddungeonmaster.substack.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">join the waitlist</a></span><br><span style="display:inline-block;margin-top:.5rem;color:rgba(255,255,255,.65);font-size:.85rem;">Waitlist announcements go to the list first.</span>';
+      // The inline calendar books one-on-one sessions; say so while the group roster is full.
+      const cal = document.getElementById('calendarStatus');
+      if (cal && !TAKING_NEW_CAMPAIGN_CLIENTS) {
+        cal.innerHTML = '<span class="avail avail-full"><i class="fas fa-lock" aria-hidden="true"></i> Not taking new groups. This calendar books one-on-one DM mentoring.</span>';
+      }
     })();
 
     // Nav shrink on scroll
@@ -1401,7 +1407,7 @@
           '<p class="quiz-result-sub">' + r.sub + '</p>' +
           '<p class="quiz-result-text">' + r.text + '</p>' +
           '<div class="quiz-result-actions">' +
-          '<a class="btn btn-xl btn-crimson" href="https://calendly.com/longislanddungeonmaster/30min" target="_blank" rel="noopener">Bring this hero to life &rarr;</a>' +
+          '<a class="btn btn-xl btn-crimson" href="/book">Bring this hero to life &rarr;</a>' +
           '<button type="button" class="quiz-restart">Roll again</button>' +
           '</div></div>';
         body.querySelector('.quiz-restart').addEventListener('click', () => {
@@ -1441,7 +1447,7 @@
           clearInterval(iv);
           const n = 1 + Math.floor(Math.random() * 20);
           document.dispatchEvent(new CustomEvent('lidm:roll', { detail: n }));
-          const cta = n >= 15 ? ' <a href="https://calendly.com/longislanddungeonmaster/30min" target="_blank" rel="noopener">Book a session →</a>' : '';
+          const cta = n >= 15 ? ' <a href="/book">Book a session →</a>' : '';
           out.innerHTML = '<strong>' + n + '</strong> &mdash; ' + verdict(n) + cta;
           if (n === 20) out.classList.add('crit');
           btn.classList.remove('rolling');
