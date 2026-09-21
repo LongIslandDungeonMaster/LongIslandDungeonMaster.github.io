@@ -1,0 +1,16 @@
+{
+  "name": "Gnasher's Satchel",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "author": "Long Island Dungeon Master",
+  "homepage_url": "https://longislanddungeonmaster.com/satchel",
+  "icon": "https://longislanddungeonmaster.com/app/satchel/icon-192.png",
+  "description": "A 5e character sheet that opens in your room. No account, and it keeps working when the internet does not.",
+  "action": {
+    "title": "Satchel",
+    "icon": "https://longislanddungeonmaster.com/app/satchel/icon-192.png",
+    "popover": "https://longislanddungeonmaster.com/downloads/gnashers-satchel.html",
+    "width": 400,
+    "height": 720
+  }
+}
