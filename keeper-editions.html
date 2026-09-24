@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keepers by Other Authors — Adventure Keeper Editions from the Long Island Dungeon Master</title>
+  <meta name="description" content="Adventures by other designers, rebuilt as Adventure Keepers — one browser file where the tables roll, the monsters load into a combat tracker, and the maps are already inside. Their words, their art, their storefronts. Every link goes to the author's own page.">
+  <meta name="theme-color" content="#1a0000">
+  <link rel="canonical" href="https://longislanddungeonmaster.com/keeper-editions">
+  <link rel="icon" href="img/brand.png" type="image/png">
+
+  <meta property="og:title" content="Keepers by Other Authors">
+  <meta property="og:description" content="Adventures by other designers, rebuilt as Adventure Keepers. Their words, their art, their storefronts — every link goes straight to the author's page.">
+  <meta property="og:image" content="https://longislanddungeonmaster.com/img/keeper-ext-carrion-vale-cover.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://longislanddungeonmaster.com/keeper-editions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Keepers by Other Authors">
+  <meta name="twitter:description" content="Adventures by other designers, rebuilt as Adventure Keepers. Their words, their art, their storefronts.">
+  <meta name="twitter:image" content="https://longislanddungeonmaster.com/img/keeper-ext-carrion-vale-cover.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    body { background: radial-gradient(ellipse at top, #2a0808, var(--crimson-deep) 75%); min-height: 100vh; }
+    .h-top { position: fixed; top: 0; left: 0; right: 0; z-index: 10; background: linear-gradient(180deg, rgba(26,0,0,.98), rgba(61,0,0,.92)); border-bottom: 2px solid var(--gold); padding: .9rem 0; }
+    .h-top .container { display: flex; align-items: center; justify-content: space-between; }
+    .h-brand { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.3rem; letter-spacing: 1px; text-decoration: none; }
+    .h-brand:hover { color: var(--gold-light); }
+    .h-back { font-family: 'Merriweather Sans', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-light); text-decoration: none; }
+    .h-back:hover { color: var(--gold); }
+    .h-wrap { max-width: 1040px; margin: 0 auto; padding: 7rem 1.2rem 4rem; }
+
+    /* ---- Hero ---- */
+    .dk-head { text-align: center; margin-bottom: 2.4rem; }
+    .dk-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.75); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; }
+    .dk-title { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: clamp(2.5rem, 8vw, 4.6rem); line-height: 1.02; margin: .4rem 0 .6rem; text-shadow: 0 0 38px rgba(201,168,76,.42), 2px 2px 0 #000; }
+    .dk-lede { color: rgba(255,255,255,.8); max-width: 660px; margin: 0 auto; line-height: 1.85; font-size: 1.05rem; }
+    .dk-lede b { color: var(--gold-light); }
+    .dk-divider { width: 6rem; height: 2px; margin: 1.8rem auto 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+    /* ---- The plain terms ---- */
+    .dk-manifesto { max-width: 760px; margin: 0 auto 3.2rem; text-align: center; }
+    .dk-manifesto h2 { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold-light); font-size: clamp(1.7rem,5vw,2.3rem); margin-bottom: 1rem; }
+    .dk-manifesto p { color: rgba(255,255,255,.74); line-height: 1.95; font-size: 1rem; }
+    .dk-manifesto p + p { margin-top: 1rem; }
+    .dk-manifesto strong { color: var(--gold); }
+
+    /* ---- The shelf ---- */
+    .sh-label { text-align: center; font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.7); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; margin-bottom: 1.4rem; }
+    .sh-shelf { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 300px)); justify-content: center; gap: 1.8rem; max-width: 1000px; margin: 0 auto; }
+    .sh-card { display: flex; flex-direction: column; background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.45)); border: 1px solid var(--gold); border-radius: 12px; box-shadow: 0 0 0 4px rgba(139,0,0,.28), 0 14px 40px rgba(0,0,0,.5); overflow: hidden; transition: transform .14s ease, box-shadow .14s ease; }
+    .sh-card:hover { transform: translateY(-3px); box-shadow: 0 0 0 4px rgba(139,0,0,.36), 0 20px 50px rgba(0,0,0,.62); }
+    .sh-art { display: block; width: 100%; aspect-ratio: 347 / 449; object-fit: cover; border-bottom: 1px solid rgba(201,168,76,.45); }
+    .sh-body { padding: 1.3rem 1.25rem 1.45rem; display: flex; flex-direction: column; flex: 1 1 auto; }
+    .sh-card h3 { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.62rem; line-height: 1.12; margin: 0 0 .35rem; }
+    .sh-by { font-family: 'Merriweather Sans', sans-serif; color: rgba(255,255,255,.66); font-size: .82rem; margin: 0 0 .7rem; }
+    .sh-by a { color: var(--gold-light); text-decoration: none; border-bottom: 1px dotted rgba(201,168,76,.5); }
+    .sh-by a:hover { color: var(--gold); }
+    .sh-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .85rem; }
+    .sh-tag { font-family: 'Merriweather Sans', sans-serif; font-size: .68rem; text-transform: uppercase; letter-spacing: .8px; color: var(--gold-light); border: 1px solid rgba(201,168,76,.45); border-radius: 100px; padding: .2rem .65rem; }
+    .sh-card p.blurb { color: rgba(255,255,255,.76); line-height: 1.78; font-size: .9rem; margin: 0 0 1.15rem; flex: 1 1 auto; }
+    .sh-get { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .84rem; letter-spacing: .4px; text-decoration: none; padding: .72rem 1.1rem; border-radius: 6px; background: var(--gold); color: var(--crimson-dark); box-shadow: 0 6px 18px rgba(201,168,76,.22); transition: transform .12s ease, box-shadow .12s ease; }
+    .sh-get:hover { color: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 9px 24px rgba(201,168,76,.4); }
+    .sh-note { display: block; margin-top: .75rem; color: rgba(255,255,255,.5); font-size: .74rem; font-style: italic; line-height: 1.55; }
+
+    .sh-empty { max-width: 700px; margin: 2rem auto 0; text-align: center; color: rgba(201,168,76,.62); font-family: 'Merriweather Sans', sans-serif; font-size: .86rem; font-style: italic; line-height: 1.85; }
+    .sh-empty b { color: rgba(201,168,76,.88); font-style: normal; }
+
+    /* ---- Designer call ---- */
+    .dk-designer { max-width: 820px; margin: 3.4rem auto 0; background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.45)); border: 1px solid var(--gold); border-radius: 12px; box-shadow: 0 0 0 4px rgba(139,0,0,.25), 0 14px 40px rgba(0,0,0,.5); padding: 1.9rem; }
+    .dk-designer h3 { font-family: 'Breathe Fire','UnifrakturMaguntia',cursive; color: var(--gold); font-size: 1.9rem; line-height: 1.08; margin: 0 0 .6rem; }
+    .dk-designer p { color: rgba(255,255,255,.78); line-height: 1.85; font-size: .94rem; margin: 0 0 .9rem; }
+    .dk-designer ul { color: rgba(255,255,255,.74); line-height: 1.8; font-size: .9rem; margin: 0 0 1.1rem; padding-left: 1.2rem; }
+    .dk-designer li { margin-bottom: .3rem; }
+    .dk-designer strong { color: var(--gold-light); }
+    .dk-designer a.cta { display: inline-flex; align-items: center; gap: .5rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .83rem; letter-spacing: .4px; text-decoration: none; color: var(--gold); border: 1px solid var(--gold); border-radius: 6px; padding: .6rem 1.15rem; }
+    .dk-designer a.cta:hover { background: rgba(201,168,76,.12); color: var(--gold-light); }
+
+    .h-foot { text-align: center; color: rgba(201,168,76,.5); font-family: 'Merriweather Sans', sans-serif; font-size: .72rem; letter-spacing: .5px; padding: 3rem 1rem 1rem; line-height: 1.7; }
+    .h-foot a { color: rgba(201,168,76,.7); }
+  </style>
+</head>
+
+<body>
+  <div class="h-top">
+    <div class="container">
+      <a class="h-brand" href="/">Long Island Dungeon Master</a>
+      <a class="h-back" href="/keepers">&larr; What is an Adventure Keeper?</a>
+    </div>
+  </div>
+
+  <main class="h-wrap">
+
+    <!-- HERO -->
+    <div class="dk-head">
+      <p class="dk-eyebrow">Adventure Keepers &middot; Other Authors' Adventures</p>
+      <h1 class="dk-title">Keepers by Other Authors</h1>
+      <p class="dk-lede">Adventures written by <b>other designers</b>, rebuilt as Adventure Keepers &mdash; one file you open in a browser, where the tables roll when you click them, the monsters drop into a combat tracker, and the maps and handouts are already inside. Every one of these is sold or given away on <b>the author's own page.</b> Follow the link, and you're on their storefront.</p>
+      <div class="dk-divider"></div>
+    </div>
+
+    <!-- THE TERMS, PLAINLY -->
+    <section class="dk-manifesto">
+      <h2>Their adventure. Their words. Their shop.</h2>
+      <p>I didn't write these. I don't sell them, I don't host them, and I don't take a cut. A designer said yes, sent me their adventure, and I built it into a Keeper and handed the file back &mdash; <strong>not one word of their text changed</strong>, their own art, their own layout. What they do with it after that is entirely theirs.</p>
+      <p>The one thing every Keeper carries is a small line at the end saying it also runs in <strong>Gnasher's Grimoire</strong>, my free DM app. That's the whole arrangement. The file works perfectly well on its own; drop it into the Grimoire and it does considerably more.</p>
+    </section>
+
+    <!-- THE SHELF -->
+    <p class="sh-label">&#9670; The Shelf &#9670;</p>
+    <div class="sh-shelf">
+
+      <!-- ============ CARD: Battle for Carrion Vale ============ -->
+      <article class="sh-card">
+        <a href="https://josephrlewis.itch.io/battle-for-carrion-vale-ose-adventure-keeper-edition" target="_blank" rel="noopener">
+          <img class="sh-art" src="img/keeper-ext-carrion-vale-cover.jpg" alt="Battle for Carrion Vale — cover art by Joseph R. Lewis.">
+        </a>
+        <div class="sh-body">
+          <h3>Battle for Carrion Vale</h3>
+          <p class="sh-by">by <a href="https://www.josephrlewis.com/" target="_blank" rel="noopener">Joseph R. Lewis</a></p>
+          <div class="sh-tags">
+            <span class="sh-tag">Old-School Essentials</span>
+            <span class="sh-tag">Dark sandbox</span>
+            <span class="sh-tag">Name your own price</span>
+          </div>
+          <p class="blurb">The forces of Law and Chaos clashed at Castle Yennagor, and by nightfall an explosion had levelled the castle and both armies. Now the survivors stir. Your party are battlefield scavengers who pick their own side and their own goal &mdash; escape the field alive, plunder the dead, or reach the castle and find out what happened inside.</p>
+          <a class="sh-get" href="https://josephrlewis.itch.io/battle-for-carrion-vale-ose-adventure-keeper-edition" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> Get it on itch.io</a>
+          <span class="sh-note">Downloads from Joseph R. Lewis's own itch page. Twenty illustrations, clickable d66 tables, and every fight ready for the tracker.</span>
+        </div>
+      </article>
+      <!-- ============ /CARD ============ -->
+
+    </div>
+
+    <p class="sh-empty">More are on the bench. <b>If you're a designer and you'd like one of yours here, the offer is below</b> &mdash; and if you've already got a Keeper edition of your adventure listed, send me the link and I'll shelve it.</p>
+
+    <!-- DESIGNER CALL -->
+    <section class="dk-designer">
+      <h3>Designers: want a Keeper edition of your adventure?</h3>
+      <p>I'll build one, free, and hand it to you. No catch and no invoice &mdash; I'd just like more adventures in the world to run like this.</p>
+      <ul>
+        <li><strong>Your words exactly as written.</strong> It's typesetting, not editing. I don't rewrite a line, and nothing is added to your text.</li>
+        <li><strong>You own it and you list it.</strong> Sell it, bundle it, give it away. I take no cut and host no file. The rights never leave you.</li>
+        <li><strong>You see it before anyone else does.</strong> Nothing goes anywhere until you've opened it and said it's right.</li>
+        <li><strong>One line is the whole fee</strong> &mdash; a small note at the end saying it also runs in Gnasher's Grimoire, with the link.</li>
+        <li><strong>One email, ever.</strong> If you're not interested, you'll never hear from me again.</li>
+      </ul>
+      <p>Send me the adventure as Markdown, a PDF or a Word file, plus any cover art you're happy to see on it. If it's your own IP (or SRD / CC&#8209;BY), it's a candidate.</p>
+      <a class="cta" href="mailto:frankpapaleo76@gmail.com?subject=Keeper%20edition%20-%20my%20adventure"><i class="fas fa-envelope" aria-hidden="true"></i> Email me about a Keeper edition</a>
+    </section>
+
+    <!-- THE GRIMOIRE TIE-IN -->
+    <section style="max-width:820px;margin:3rem auto 0;">
+      <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;background:linear-gradient(160deg,rgba(139,0,0,.16),rgba(0,0,0,.45));border:1px solid var(--gold);border-radius:12px;box-shadow:0 0 0 4px rgba(139,0,0,.25),0 14px 40px rgba(0,0,0,.5);padding:1.9rem;">
+        <i class="fas fa-book-bookmark" aria-hidden="true" style="font-size:2.8rem;color:var(--gold);filter:drop-shadow(0 0 14px rgba(201,168,76,.45));flex:0 0 auto;"></i>
+        <div style="flex:1 1 340px;">
+          <p style="font-family:'Merriweather Sans',sans-serif;color:rgba(201,168,76,.8);text-transform:uppercase;letter-spacing:2px;font-size:.7rem;margin-bottom:.3rem;">The free companion app</p>
+          <h3 style="font-family:'Breathe Fire','UnifrakturMaguntia',cursive;color:var(--gold);font-size:1.9rem;line-height:1.05;margin:0 0 .5rem;">Every Keeper drops into <span style="white-space:nowrap;">Gnasher's Grimoire</span></h3>
+          <p style="color:rgba(255,255,255,.78);line-height:1.8;font-size:.94rem;margin:0 0 1.1rem;">Gnasher's Grimoire is a free, offline binder that holds every Adventure Keeper you own &mdash; whoever wrote it &mdash; and lets you summon any table, monster or NPC from your whole library right over the page you're running. Roll it in place, never lose your spot. <strong style="color:var(--gold-light);">It's live &mdash; download it free.</strong></p>
+          <a href="/grimoire" style="display:inline-flex;align-items:center;gap:.5rem;font-family:'Merriweather Sans',sans-serif;font-weight:700;font-size:.83rem;letter-spacing:.4px;text-decoration:none;color:var(--gold);border:1px solid var(--gold);border-radius:6px;padding:.6rem 1.15rem;transition:background .15s ease;" onmouseover="this.style.background='rgba(201,168,76,.12)'" onmouseout="this.style.background='transparent'">See how Gnasher's Grimoire works <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <p class="sh-empty" style="margin-top:2.6rem;">Looking for the ones I wrote myself? They're on <a href="/keepers" style="color:var(--gold);">the Adventure Keepers page</a>, and the free tools live in <a href="/hoard" style="color:var(--gold);">The Hoard</a>.</p>
+
+  </main>
+
+  <div class="h-foot">
+    &copy; 2020&ndash;2026 Frank Papaleo &mdash; Long Island Dungeon Master &bull; <a href="/">Home</a> &bull; <a href="/keepers">Adventure Keepers</a> &bull; <a href="/hoard">The Hoard</a> &bull; <a href="/privacy">Privacy</a><br>
+    Adventures on this page are the property of their respective authors and are linked, not hosted. All titles, text and artwork remain theirs.<br>
+    Long Island Dungeon Master is an independent service, not affiliated with or endorsed by Wizards of the Coast. Dungeons &amp; Dragons and D&amp;D are trademarks of Wizards of the Coast LLC.
+  </div>
+
+  <!-- The Herald's Nudge (dismissible newsletter bar) -->
+  <script src="js/nudge.js" defer></script>
+  <!-- Cloudflare Web Analytics (cookieless, no personal data) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "792bc51ec0234525a2e06d69febe99fd"}'></script>
+
+</body>
+
+</html>
