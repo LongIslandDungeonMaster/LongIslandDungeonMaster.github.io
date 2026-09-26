@@ -93,21 +93,26 @@
 
     /* ---- The shelf ---- */
     .sh-label { text-align: center; font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.7); text-transform: uppercase; letter-spacing: 3px; font-size: .72rem; margin-bottom: 1.4rem; }
-    .sh-shelf { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 300px)); justify-content: center; gap: 1.8rem; max-width: 1000px; margin: 0 auto; }
-    .sh-card { display: flex; flex-direction: column; background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.45)); border: 1px solid var(--gold); border-radius: 12px; box-shadow: 0 0 0 4px rgba(139,0,0,.28), 0 14px 40px rgba(0,0,0,.5); overflow: hidden; transition: transform .14s ease, box-shadow .14s ease; }
-    .sh-card:hover { transform: translateY(-3px); box-shadow: 0 0 0 4px rgba(139,0,0,.36), 0 20px 50px rgba(0,0,0,.62); }
-    .sh-art { display: block; width: 100%; aspect-ratio: 347 / 449; object-fit: cover; border-bottom: 1px solid rgba(201,168,76,.45); }
-    .sh-body { padding: 1.3rem 1.25rem 1.45rem; display: flex; flex-direction: column; flex: 1 1 auto; }
-    .sh-card h3 { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: 1.62rem; line-height: 1.12; margin: 0 0 .35rem; }
-    .sh-by { font-family: 'Merriweather Sans', sans-serif; color: rgba(255,255,255,.66); font-size: .82rem; margin: 0 0 .7rem; }
+    .sh-shelf { display: flex; flex-direction: column; gap: 2rem; max-width: 960px; margin: 0 auto; }
+    .sh-card { display: grid; grid-template-columns: 300px 1fr; gap: 2.2rem; align-items: center; background: linear-gradient(160deg, rgba(139,0,0,.16), rgba(0,0,0,.45)); border: 1px solid var(--gold); border-radius: 12px; box-shadow: 0 0 0 4px rgba(139,0,0,.3), 0 16px 46px rgba(0,0,0,.55); padding: 2rem; }
+    .sh-cover { display: block; margin: 0; }
+    .sh-cover img { display: block; width: 100%; height: auto; border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,.6); transition: transform .14s ease; }
+    .sh-cover:hover img { transform: translateY(-2px) scale(1.01); }
+    .sh-eyebrow { font-family: 'Merriweather Sans', sans-serif; color: rgba(201,168,76,.8); text-transform: uppercase; letter-spacing: 2px; font-size: .7rem; margin: 0 0 .25rem; }
+    .sh-card h3 { font-family: 'Breathe Fire', 'UnifrakturMaguntia', cursive; color: var(--gold); font-size: clamp(1.9rem, 5vw, 2.8rem); line-height: 1.05; margin: 0 0 .3rem; }
+    .sh-by { font-family: 'Merriweather Sans', sans-serif; color: rgba(255,255,255,.66); font-size: .84rem; margin: 0 0 .8rem; }
     .sh-by a { color: var(--gold-light); text-decoration: none; border-bottom: 1px dotted rgba(201,168,76,.5); }
     .sh-by a:hover { color: var(--gold); }
-    .sh-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .85rem; }
-    .sh-tag { font-family: 'Merriweather Sans', sans-serif; font-size: .68rem; text-transform: uppercase; letter-spacing: .8px; color: var(--gold-light); border: 1px solid rgba(201,168,76,.45); border-radius: 100px; padding: .2rem .65rem; }
-    .sh-card p.blurb { color: rgba(255,255,255,.76); line-height: 1.78; font-size: .9rem; margin: 0 0 1.15rem; flex: 1 1 auto; }
-    .sh-get { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .84rem; letter-spacing: .4px; text-decoration: none; padding: .72rem 1.1rem; border-radius: 6px; background: var(--gold); color: var(--crimson-dark); box-shadow: 0 6px 18px rgba(201,168,76,.22); transition: transform .12s ease, box-shadow .12s ease; }
+    .sh-facts { font-family: 'Merriweather Sans', sans-serif; color: rgba(255,255,255,.6); font-size: .8rem; letter-spacing: .3px; line-height: 1.7; margin: 0 0 .9rem; }
+    .sh-facts span { color: var(--gold-light); }
+    .sh-card p.blurb { color: rgba(255,255,255,.78); line-height: 1.85; font-size: .96rem; margin: 0 0 1.1rem; }
+    .sh-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.1rem; }
+    .sh-tag { font-family: 'Merriweather Sans', sans-serif; font-size: .68rem; text-transform: uppercase; letter-spacing: .8px; color: var(--gold-light); border: 1px solid rgba(201,168,76,.45); border-radius: 100px; padding: .25rem .7rem; }
+    .sh-tag.price { background: var(--gold); border-color: var(--gold); color: var(--crimson-dark); font-weight: 700; }
+    .sh-get { display: inline-flex; align-items: center; gap: .5rem; font-family: 'Merriweather Sans', sans-serif; font-weight: 700; font-size: .85rem; letter-spacing: .4px; text-decoration: none; padding: .75rem 1.3rem; border-radius: 6px; background: var(--gold); color: var(--crimson-dark); box-shadow: 0 6px 18px rgba(201,168,76,.25); transition: transform .12s ease, box-shadow .12s ease; }
     .sh-get:hover { color: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 9px 24px rgba(201,168,76,.4); }
-    .sh-note { display: block; margin-top: .75rem; color: rgba(255,255,255,.5); font-size: .74rem; font-style: italic; line-height: 1.55; }
+    .sh-note { display: block; margin-top: .85rem; color: rgba(255,255,255,.5); font-size: .76rem; font-style: italic; line-height: 1.55; }
+    @media (max-width: 720px) { .sh-card { grid-template-columns: 1fr; text-align: center; padding: 1.4rem; } .sh-cover { max-width: 320px; margin: 0 auto; } .sh-tags { justify-content: center; } }
 
     .sh-empty { max-width: 700px; margin: 2rem auto 0; text-align: center; color: rgba(201,168,76,.62); font-family: 'Merriweather Sans', sans-serif; font-size: .86rem; font-style: italic; line-height: 1.85; }
     .sh-empty b { color: rgba(201,168,76,.88); font-style: normal; }
@@ -140,45 +145,47 @@
     <p class="sh-label">&#9670; The Shelf &#9670;</p>
     <div class="sh-shelf">
 
-      <!-- ============ CARD: Battle for Carrion Vale ============ -->
+      <!-- ============ Battle for Carrion Vale ============ -->
       <article class="sh-card">
-        <a href="https://josephrlewis.itch.io/battle-for-carrion-vale-ose-adventure-keeper-edition" target="_blank" rel="noopener">
-          <img class="sh-art" src="img/keeper-ext-carrion-vale-cover.jpg" alt="Battle for Carrion Vale, cover art by Joseph R. Lewis.">
+        <a class="sh-cover" href="https://josephrlewis.itch.io/battle-for-carrion-vale-ose-adventure-keeper-edition" target="_blank" rel="noopener">
+          <img src="img/keeper-ext-carrion-vale-cover.jpg" width="720" height="932" alt="Battle for Carrion Vale, cover art by Joseph R. Lewis.">
         </a>
-        <div class="sh-body">
+        <div>
+          <p class="sh-eyebrow">Old-School Essentials &middot; a dark sandbox</p>
           <h3>Battle for Carrion Vale</h3>
           <p class="sh-by">by <a href="https://www.josephrlewis.com/" target="_blank" rel="noopener">Joseph R. Lewis</a></p>
-          <div class="sh-tags">
-            <span class="sh-tag">Old-School Essentials</span>
-            <span class="sh-tag">Dark sandbox</span>
-            <span class="sh-tag">Name your own price</span>
-          </div>
+          <p class="sh-facts">Levels <span>6 to 7</span> &middot; <span>30</span> encounter locations &middot; <span>70+</span> magic items &middot; <span>30+</span> monsters &middot; <span>1 to 4</span> sessions</p>
           <p class="blurb">The forces of Law and Chaos clashed at Castle Yennagor, and by nightfall an explosion had levelled the castle and both armies. Now the survivors stir. Your party are battlefield scavengers who pick their own side and their own goal: escape the field alive, plunder the dead, or reach the castle and find out what happened inside.</p>
+          <div class="sh-tags">
+            <span class="sh-tag price">Name your own price</span>
+            <span class="sh-tag">Old-School Essentials</span>
+            <span class="sh-tag">Adventure Keeper edition</span>
+          </div>
           <a class="sh-get" href="https://josephrlewis.itch.io/battle-for-carrion-vale-ose-adventure-keeper-edition" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> Get it on itch.io</a>
           <span class="sh-note">Downloads from Joseph R. Lewis's own itch page.</span>
         </div>
       </article>
-      <!-- ============ /CARD ============ -->
 
-      <!-- ============ CARD: Curse of Moths ============ -->
+      <!-- ============ Curse of Moths ============ -->
       <article class="sh-card">
-        <a href="https://elven-tower.itch.io/curse-of-moths-level-3" target="_blank" rel="noopener">
-          <img class="sh-art" style="aspect-ratio: 960 / 400;" src="img/keeper-ext-curse-of-moths-cover.jpg" alt="Curse of Moths, cover art by Elven Tower Adventures.">
+        <a class="sh-cover" href="https://elven-tower.itch.io/curse-of-moths-level-3" target="_blank" rel="noopener">
+          <img src="img/keeper-ext-curse-of-moths-cover.jpg" width="630" height="499" alt="Curse of Moths, cover art by Elven Tower Adventures.">
         </a>
-        <div class="sh-body">
+        <div>
+          <p class="sh-eyebrow">D&amp;D 5e and Shadowdark &middot; a one-shot</p>
           <h3>Curse of Moths</h3>
           <p class="sh-by">by <a href="https://www.patreon.com/elventower" target="_blank" rel="noopener">Elven Tower Adventures</a></p>
+          <p class="sh-facts">Level <span>3</span> &middot; <span>5e</span> and <span>Shadowdark</span> versions &middot; <span>two</span> dungeon levels with VTT maps &middot; one sitting</p>
+          <p class="blurb">The Jade Scarabs were stolen from the djinni who made them, and the curse that followed wiped out the thieves' whole civilization. Now it is back as the Jade Fever: villagers wander off in the same direction and walk into the Jade Sepulcher, where the scarabs still sit. The party has to find the way in, get through the moths, and decide whether a cursed treasure is worth taking.</p>
           <div class="sh-tags">
+            <span class="sh-tag price">$2.95 or more</span>
             <span class="sh-tag">D&amp;D 5e</span>
             <span class="sh-tag">Shadowdark</span>
-            <span class="sh-tag">Level 3</span>
           </div>
-          <p class="blurb">The Jade Scarabs were stolen from the djinni who made them, and the curse that followed wiped out the thieves' whole civilization. Now it is back as the Jade Fever: villagers wander off in the same direction and walk into the Jade Sepulcher, where the scarabs still sit. The party has to find the way in, get through the moths, and decide whether a cursed treasure is worth taking.</p>
           <a class="sh-get" href="https://elven-tower.itch.io/curse-of-moths-level-3" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> Get it on itch.io</a>
           <span class="sh-note">Sold on Elven Tower's own itch page. The Keeper edition was built for the author.</span>
         </div>
       </article>
-      <!-- ============ /CARD ============ -->
 
     </div>
 
