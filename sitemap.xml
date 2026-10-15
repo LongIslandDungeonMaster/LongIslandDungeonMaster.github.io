@@ -91,6 +91,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://longislanddungeonmaster.com/downloads/heatstroke-hallucinations-keeper</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://longislanddungeonmaster.com/downloads/nat-20-not-a-crit-keeper</loc>
     <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -99,6 +105,12 @@
   <url>
     <loc>https://longislanddungeonmaster.com/downloads/open-bestiary</loc>
     <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://longislanddungeonmaster.com/downloads/rimejaw-keeper</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -188,7 +200,7 @@
   </url>
   <url>
     <loc>https://longislanddungeonmaster.com/downloads/the-woods-are-not-empty-keeper</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -201,6 +213,18 @@
   <url>
     <loc>https://longislanddungeonmaster.com/downloads/twelve-good-names-keeper</loc>
     <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://longislanddungeonmaster.com/downloads/villaincraft-dinner-at-ravenloft</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://longislanddungeonmaster.com/downloads/villaincraft-dinner-at-ravenloft-keeper</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
