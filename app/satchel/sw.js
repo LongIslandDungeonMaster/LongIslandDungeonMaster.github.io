@@ -1,12 +1,11 @@
 /* Gnasher's Satchel service worker - cache-first of the app itself so a phone
    opens it with no signal after the first visit. Cache key is version-locked to
    the build, so a new deploy replaces the old copy on next load. */
-const CACHE = "satchel-2026-09-19.1-a488c607";
+const CACHE = "satchel-2026-11-16.4-c6046f7f";
 const ASSETS = ["./players-satchel.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 self.addEventListener("install", e => {
-  /* v35 (adversary F1): under the live origin's Cache-Control: max-age=600 a launch inside ten minutes
-     of a push installed the NEW worker with the OLD html read from the HTTP cache, and that stale copy
-     sat in the bucket named for the new build until the next release. Bypass the HTTP cache here. */
+  /* read past the HTTP cache: the site's pages may be cached for ten minutes, and a launch inside that
+     window would otherwise put the previous release's html into the cache named for this one. */
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS.map(u => new Request(u, {cache: "reload"})))).then(() => self.skipWaiting()));
 });
 self.addEventListener("activate", e => {
