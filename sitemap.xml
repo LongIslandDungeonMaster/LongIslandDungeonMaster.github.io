@@ -157,6 +157,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://longislanddungeonmaster.com/downloads/play-without-a-dungeon-master</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://longislanddungeonmaster.com/downloads/the-night-watchman</loc>
     <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
